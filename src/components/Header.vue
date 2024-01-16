@@ -13,6 +13,7 @@
                     <a :href="item.link" class="text-white font-semibold">{{ item.text }}</a>
                 </li>
             </ul>
+
         </nav>
     </header>
 </template>
