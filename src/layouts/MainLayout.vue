@@ -21,10 +21,8 @@ export default {
     <div class="main-layout">
         <TopMenu />
         <Navbar />
-
         <RouterView />
         <Footer />
-
     </div>
 </template>
 

@@ -1,17 +1,51 @@
 <template>
-    <nav class="navbar">
-        <!-- Navbar content goes here -->
-        samosa
+    <nav class="navbar w-full bg-white flex justify-between items-center">
+        <div>
+            <div v-for="(item, index) in navBarItems" :key="index">
+                <a class="text-black text-base font-medium font-['Plus Jakarta Sans'] tracking-tight mr-3">
+                    {{ item.text }}
+                </a>
+            </div>
+        </div>
+        <div>
+            <IconMainSamosa />
+            <div>
+                <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">samosa</span>
+                <span className="text-black text-2xl font-normal font-['Plus Jakarta">feribot</span>
+            </div>
+        </div>
+        <div>
+            <div className="text-black text-base font-semibold font-['Plus Jakarta Sans' tracking-tight] mr-3">
+                Giriş Yap
+            </div>
+            <IconNavLogin />
+        </div>
     </nav>
 </template>
-
+  
 <script>
+import IconMainSamosa from "../icons/IconMainSamosa.vue";
+import IconNavLogin from "../icons/IconNavLogin.vue"
+
 export default {
     name: 'Navbar',
-    // Component logic goes here
-}
+    data() {
+        return {
+            navBarItems: [
+                { text: "Samos Turları", link: "#", items: [] },
+                { text: "Ücretler", link: "#", items: [] },
+                { text: "Seferlerimiz", link: "#", items: [] },
+            ],
+        };
+    },
+    components: {
+        IconMainSamosa,
+        IconNavLogin
+    },
+};
 </script>
+  
+<style scoped></style>
+  
 
-<style scoped>
-/* Component styles go here */
-</style>
+<style scoped></style>
