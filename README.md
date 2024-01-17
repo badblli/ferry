@@ -22,7 +22,7 @@ Additionally I added [vite-svg-loader](https://github.com/jpkleemans/vite-svg-lo
 
 
 ```
-git clone [https://github.com/badblli/ferry.git](https://github.com/badblli/ferry.git)
+git clone https://github.com/badblli/ferry.git
 ```
 
 then
