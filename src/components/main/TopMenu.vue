@@ -21,7 +21,7 @@
 </template>
   
 <script>
-import LanguageChanger from './LanguageChanger.vue';
+import LanguageChanger from '@/components/LanguageChanger.vue';
 export default {
     data() {
         return {
