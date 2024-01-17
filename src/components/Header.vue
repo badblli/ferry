@@ -21,7 +21,6 @@
 </template>
   
 <script>
-import { Select as DSelect } from 'daisy-ui-kit'
 import LanguageChanger from './LanguageChanger.vue';
 export default {
     data() {
@@ -37,7 +36,6 @@ export default {
         };
     },
     components: {
-        DSelect,
         LanguageChanger
     }
 };
