@@ -25,10 +25,10 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(row, index) in tableData" :key="index"
-                                    :class="{ 'border-none': index === tableData.length - 1 }"
-                                    class="m-6 flex flex-row justify-between text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-loose border border-neutral-200 rounded-lg">
+                                    className="m-6 flex flex-row justify-between text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
                                     <td v-for="(cell, cellIndex) in row" :key="cellIndex"
-                                        class="w-full border-r border-neutral-300 pt-3 pb-3 pl-6">{{ cell }}</td>
+                                        className="w-full border-r border-neutral-300 pt-3 pb-3 pl-6">
+                                        {{ cell }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -67,4 +67,3 @@ export default {
 </script>
   
 <style scoped></style>
-  
