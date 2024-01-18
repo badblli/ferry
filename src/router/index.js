@@ -28,11 +28,11 @@ const router = createRouter({
         //   name: "campaigns",
         //   component: () => import("@/views/CampaignsView.vue"),
         // },
-        // {
-        //   path: "/ticket-price",
-        //   name: "ticket-price",
-        //   component: () => import("@/views/TicketPriceView.vue"),
-        // },
+        {
+          path: "/price",
+          name: "price",
+          component: () => import("@/views/TicketPrice.vue"),
+        },
         // {
         //   path: "/schedule",
         //   name: "schedule",
