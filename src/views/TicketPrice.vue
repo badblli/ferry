@@ -1,13 +1,13 @@
 <template>
     <div class="home-view">
-        <h1 className="text-white">Welcome to the Home View!</h1>
+        <h1>Welcome to the Ticket Price View!</h1>
         <!-- Add your content here -->
     </div>
 </template>
   
 <script>
 export default {
-    name: 'TickerPrice',
+    name: 'HomeView',
     // Add your component logic here
 }
 </script>

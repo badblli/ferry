@@ -13,6 +13,11 @@ const router = createRouter({
           name: "home",
           component: () => import("@/views/HomeView.vue"),
         },
+        {
+          path: "/price",
+          name: "price",
+          component: () => import("@/views/TicketPrice.vue"),
+        },
         // {
         //   path: "/about",
         //   name: "about",
@@ -28,11 +33,7 @@ const router = createRouter({
         //   name: "campaigns",
         //   component: () => import("@/views/CampaignsView.vue"),
         // },
-        {
-          path: "/price",
-          name: "price",
-          component: () => import("@/views/TicketPrice.vue"),
-        },
+
         // {
         //   path: "/schedule",
         //   name: "schedule",
