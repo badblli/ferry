@@ -1,26 +1,32 @@
 <template>
-    <nav class="navbar w-full bg-white flex justify-between items-center">
-        <div>
-            <div v-for="(item, index) in navBarItems" :key="index">
-                <a class="text-black text-base font-medium font-['Plus Jakarta Sans'] tracking-tight mr-3">
+    <div class="navbar flex justify-between items-center">
+        <div class="navbar-section flex">
+            <div v-for="(item, index) in navBarItems" :key="index" class="navbar-item">
+                <a class="text-black text-base font-medium tracking-tight mr-3">
                     {{ item.text }}
                 </a>
             </div>
         </div>
-        <div>
-            <IconMainSamosa />
-            <div>
-                <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">samosa</span>
-                <span className="text-black text-2xl font-normal font-['Plus Jakarta">feribot</span>
+
+        <div class="navbar-section">
+            <div class="navbar-item">
+                <preline-icon-main-samosa />
+                <div>
+                    <span class="text-black text-2xl font-bold tracking-wide">samosa</span>
+                    <span class="text-black text-2xl font-normal">feribot</span>
+                </div>
             </div>
         </div>
-        <div>
-            <div className="text-black text-base font-semibold font-['Plus Jakarta Sans' tracking-tight] mr-3">
-                Giriş Yap
+
+        <div class="navbar-section">
+            <div class="navbar-item">
+                <div class="text-black text-base font-semibold tracking-tight mr-3">
+                    Giriş Yap
+                </div>
+                <!-- <preline-icon-nav-login /> -->
             </div>
-            <!-- <IconNavLogin /> -->
         </div>
-    </nav>
+    </div>
 </template>
   
 <script>
