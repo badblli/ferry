@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4">
-    <div class="text-center text-black text-lg font-medium font-['Plus Jakarta Sans']">
-      {{ footerContactText }}
+    <div class="text-center text-black text-lg font-medium ">
+      {{ footerContactText }}dsfsf
     </div>
     <div className="flex flex-row justify-evenly items-center">
       <span className="mr-3">İletişime Geç </span>
@@ -11,9 +11,12 @@
     </div>
   </div>
   <footer class="bg-white text-black p-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-10">
+      <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
+        <!-- for first column and space -->
+      </div>
       <div>
-        <div class="text-lg font-bold mb-8 flex">
+        <div class="text-lg font-bold mb-4 flex">
           <IconMainSamosa />
           <div>
             <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">samosa</span>
@@ -29,7 +32,7 @@
             </div>
           </li>
           <li>
-            <div class="text-black text-2xl font-normal font-['Plus Jakarta Display'] leading-loose mb-8">Abone ol,
+            <div class="text-black text-2xl font-normal font-['Plus Jakarta Display'] leading-loose mb-2">Abone ol,
               kampanya<br />kaçırma!</div>
           </li>
           <li>
@@ -38,9 +41,25 @@
                 <input
                   class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                   type="text" placeholder="Email Address" aria-label="Full name">
-                <button class="flex-shrink-0 bg-slate-200 text-sm text-white py-4 px-4 rounded-full" type="button">
-                  Icon
+                <button
+                  class="flex-shrink-0 bg-slate-200 text-sm text-white flex justify-center items-center  w-[50px] h-[50px]  rounded-full"
+                  type="button">
+                  <IconArrow />
                 </button>
+              </div>
+              <div class="relative">
+                <input type="email"
+                  class="peer py-3 pe-0 ps-8 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600"
+                  placeholder="Enter name">
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-2 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                  <svg class="flex-shrink-0 w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
               </div>
             </form>
           </li>
@@ -69,7 +88,7 @@
             item.text
           }}</a>
         </div>
-        <a className="mb-5 text-black text-base font-medium font-['Plus Jakarta Sans'] tracking-tight cursor-pointer">
+        <a className="mb-5 text-black text-base font-medium  tracking-tight cursor-pointer">
           Diğer Turlar
         </a>
       </div>
@@ -80,6 +99,11 @@
           </div>
         </div>
       </div>
+      <div>
+        <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
+          <!-- for last column and space -->
+        </div>
+      </div>
     </div>
   </footer>
 </template>
@@ -87,10 +111,10 @@
 <script>
 import IconFooter from "../icons/IconFooter.vue";
 import IconMainSamosa from "../icons/IconMainSamosa.vue";
-//import IconAnotherTour from "../icons/IconAnotherTour.vue"
+import IconAnotherTour from "../icons/IconAnotherTour.vue"
+import IconArrow from "../icons/IconArrow.vue";
 
 export default {
-  name: "MainFooter",
   data() {
     return {
       currentYear: new Date().getFullYear(),
@@ -121,7 +145,8 @@ export default {
   components: {
     IconFooter,
     IconMainSamosa,
-    // IconAnotherTour
+    IconAnotherTour,
+    IconArrow
   },
 };
 </script>
