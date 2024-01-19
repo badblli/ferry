@@ -47,20 +47,6 @@
                   <IconArrow />
                 </button>
               </div>
-              <div class="relative">
-                <input type="email"
-                  class="peer py-3 pe-0 ps-8 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600"
-                  placeholder="Enter name">
-                <div
-                  class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-2 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                  <svg class="flex-shrink-0 w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-              </div>
             </form>
           </li>
         </ul>
@@ -101,14 +87,13 @@
       </div>
       <div>
         <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
-          <!-- for last column and space -->
         </div>
       </div>
     </div>
   </footer>
 </template>
 
-<script>
+<script lang="ts">
 import IconFooter from "../icons/IconFooter.vue";
 import IconMainSamosa from "../icons/IconMainSamosa.vue";
 import IconAnotherTour from "../icons/IconAnotherTour.vue"

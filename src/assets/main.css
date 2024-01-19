@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -32,11 +32,9 @@
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
 6. Use the user's configured `sans` font-variation-settings by default.
-7. Disable tap highlights on iOS
 */
 
-html,
-:host {
+html {
   line-height: 1.5;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -52,8 +50,6 @@ html,
   /* 5 */
   font-variation-settings: normal;
   /* 6 */
-  -webkit-tap-highlight-color: transparent;
-  /* 7 */
 }
 
 /*
@@ -125,10 +121,8 @@ strong {
 }
 
 /*
-1. Use the user's configured `mono` font-family by default.
-2. Use the user's configured `mono` font-feature-settings by default.
-3. Use the user's configured `mono` font-variation-settings by default.
-4. Correct the odd `em` font sizing in all browsers.
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
 */
 
 code,
@@ -137,12 +131,8 @@ samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* 1 */
-  font-feature-settings: normal;
-  /* 2 */
-  font-variation-settings: normal;
-  /* 3 */
   font-size: 1em;
-  /* 4 */
+  /* 2 */
 }
 
 /*
@@ -973,6 +963,10 @@ select {
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-40 {
   z-index: 40;
 }
@@ -987,6 +981,10 @@ select {
 
 .z-\[60\] {
   z-index: 60;
+}
+
+.-z-10 {
+  z-index: -10;
 }
 
 .col-start-1 {
@@ -1081,7 +1079,8 @@ select {
 }
 
 .me-2 {
-  margin-inline-end: 0.5rem;
+  -webkit-margin-end: 0.5rem;
+          margin-inline-end: 0.5rem;
 }
 
 .ml-3 {
@@ -1105,11 +1104,13 @@ select {
 }
 
 .ms-1 {
-  margin-inline-start: 0.25rem;
+  -webkit-margin-start: 0.25rem;
+          margin-inline-start: 0.25rem;
 }
 
 .ms-2 {
-  margin-inline-start: 0.5rem;
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
 }
 
 .mt-1 {
@@ -1130,6 +1131,30 @@ select {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mr-48 {
+  margin-right: 12rem;
+}
+
+.ml-48 {
+  margin-left: 12rem;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.ml-\[-25px\] {
+  margin-left: -25px;
+}
+
+.ml-\[-35px\] {
+  margin-left: -35px;
 }
 
 .block {
@@ -1232,6 +1257,10 @@ select {
   height: 35px;
 }
 
+.h-\[360px\] {
+  height: 360px;
+}
+
 .h-\[39px\] {
   height: 39px;
 }
@@ -1270,6 +1299,18 @@ select {
 
 .h-px {
   height: 1px;
+}
+
+.h-\[160px\] {
+  height: 160px;
+}
+
+.h-\[120px\] {
+  height: 120px;
+}
+
+.h-\[100px\] {
+  height: 100px;
 }
 
 .max-h-\[300px\] {
@@ -1667,10 +1708,6 @@ select {
   white-space: nowrap;
 }
 
-.text-nowrap {
-  text-wrap: nowrap;
-}
-
 .rounded {
   border-radius: 0.25rem;
 }
@@ -1819,6 +1856,11 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 250 252 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1930,11 +1972,13 @@ select {
 }
 
 .pe-0 {
-  padding-inline-end: 0px;
+  -webkit-padding-end: 0px;
+          padding-inline-end: 0px;
 }
 
 .pe-9 {
-  padding-inline-end: 2.25rem;
+  -webkit-padding-end: 2.25rem;
+          padding-inline-end: 2.25rem;
 }
 
 .pl-6 {
@@ -1950,11 +1994,13 @@ select {
 }
 
 .ps-2 {
-  padding-inline-start: 0.5rem;
+  -webkit-padding-start: 0.5rem;
+          padding-inline-start: 0.5rem;
 }
 
 .ps-8 {
-  padding-inline-start: 2rem;
+  -webkit-padding-start: 2rem;
+          padding-inline-start: 2rem;
 }
 
 .pt-3 {
@@ -2923,6 +2969,10 @@ div.code-toolbar > .toolbar a:hover {
   color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
+.focus\:border-none:focus {
+  border-style: none;
+}
+
 .focus\:bg-gray-100:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(247 250 252 / var(--tw-bg-opacity));
@@ -3694,7 +3744,8 @@ div.code-toolbar > .toolbar a:hover {
   }
 
   .sm\:ps-5 {
-    padding-inline-start: 1.25rem;
+    -webkit-padding-start: 1.25rem;
+            padding-inline-start: 1.25rem;
   }
 
   .sm\:shadow-md {
