@@ -45,7 +45,7 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
 import LanguageChanger from "../advanced/LanguageChanger.vue";
 import IconTopMenu from "../icons/IconTopMenu.vue";
 
@@ -73,6 +73,5 @@ export default {
 header {
   background-color: #2149D5;
   color: #fff;
-
 }
 </style>

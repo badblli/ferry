@@ -38,7 +38,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
 import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
 
