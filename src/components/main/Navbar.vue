@@ -1,24 +1,24 @@
 <template>
-    <nav class="navbar w-full bg-white flex justify-between items-center">
+    <nav class="navbar w-full bg-white flex justify-between items-center lg:px-28 md:px-16 sm:px-8">
         <div>
             <div v-for="(item, index) in navBarItems" :key="index">
-                <a class="text-black text-base font-medium font-['Plus Jakarta Sans'] tracking-tight mr-3">
+                <a class="text-black text-base font-medium font-['Plus Jakarta Sans'] tracking-tight mr-4">
                     {{ item.text }}
                 </a>
             </div>
         </div>
-        <div>
+        <div className="mr-24">
             <IconMainSamosa />
             <div>
-                <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">samosa</span>
-                <span className="text-black text-2xl font-normal font-['Plus Jakarta">feribot</span>
+                <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">Samosa</span>
+                <span className="text-black text-2xl font-normal font-['Plus Jakarta">Feribot</span>
             </div>
         </div>
         <div>
             <div className="text-black text-base font-semibold font-['Plus Jakarta Sans' tracking-tight] mr-3">
                 Giriş Yap
             </div>
-            <IconNavLogin />
+            <IconMainSamosa />
         </div>
     </nav>
 </template>

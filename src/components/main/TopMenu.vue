@@ -1,9 +1,10 @@
 <template>
-  <header class="bg-blue-700 h-16 flex non-italic items-center justify-between p-2 relative overflow-hidden">
-    <div class="ml-4">
-      <span class="text-blue-100 font-medium z-50">{{ message }}</span>
+  <header
+    class="bg-blue-700 h-16 flex non-italic items-center justify-between p-2 relative overflow-hidden lg:px-28 md:px-16 sm:px-8">
+    <div>
+      <span class="text-blue-100 font-medium z-50 tracking-wide">{{ message }}</span>
       <div
-        class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-15px]">
+        class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center">
         <span class="text-white font-bold text-[15px] opacity-80">{{
           buttonText
         }}</span>
@@ -47,4 +48,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+/* header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+} */
+</style>

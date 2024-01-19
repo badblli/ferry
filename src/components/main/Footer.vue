@@ -11,9 +11,12 @@
     </div>
   </div>
   <footer class="bg-white text-black p-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-10">
+      <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
+        <!-- for first column and space -->
+      </div>
       <div>
-        <div class="text-lg font-bold mb-8 flex">
+        <div class="text-lg font-bold mb-4 flex">
           <IconMainSamosa />
           <div>
             <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">samosa</span>
@@ -29,7 +32,7 @@
             </div>
           </li>
           <li>
-            <div class="text-black text-2xl font-normal font-['Plus Jakarta Display'] leading-loose mb-8">Abone ol,
+            <div class="text-black text-2xl font-normal font-['Plus Jakarta Display'] leading-loose mb-2">Abone ol,
               kampanya<br />kaçırma!</div>
           </li>
           <li>
@@ -78,6 +81,11 @@
           <div class="w-[50px] h-[50px] left-0 top-0 absolute bg-slate-200 rounded-[25px]"></div>
           <div class="origin-top-left -rotate-90 w-5 h-5 left-[14.81px] top-[35.50px] absolute">
           </div>
+        </div>
+      </div>
+      <div>
+        <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
+          <!-- for last column and space -->
         </div>
       </div>
     </div>
