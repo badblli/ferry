@@ -184,12 +184,12 @@ router.beforeEach((to, from, next) => {
     next(); // Doğrulama gerektirmeyen sayfalarda devam et
   }
 });
-router.afterEach((to, from, failure) => {
-  if (!failure) {
-    setTimeout(() => {
-      HSStaticMethods.autoInit()
-    }, 100)
-  }
-})
+// router.afterEach((to, from, failure) => {
+//   if (!failure) {
+//     setTimeout(() => {
+//       HSStaticMethods.autoInit()
+//     }, 100)
+//   }
+// })
 
 export default router
