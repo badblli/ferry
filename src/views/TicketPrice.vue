@@ -1,15 +1,15 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="m-5 relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <h1 className="text-black text-4xl font-bold font-['Plus Jakarta Display'] tracking-wide mb-9">
+        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
+            <h1 class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide mb-9">
                 Feribot Bileti Ücretleri
             </h1>
             <div className="w-full mx-auto bg-neutral-100 rounded-[20px] p-4">
                 <div className="flex flex-col pt-8">
                     <div className="p-8">
                         <div className="flex flex-row items-center">
-                            <IconMainSamosa />
+                            <IconAsteriskSimple />
                             <h2 className="text-black text-base font-medium  leading-[26.88px] h-7 ml-3">
                                 {{ whichFerry }}
                             </h2>
@@ -35,6 +35,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 

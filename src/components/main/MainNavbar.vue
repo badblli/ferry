@@ -14,19 +14,18 @@
                 <span className="text-black text-2xl font-normal font-['Plus Jakarta">Feribot</span>
             </div>
         </div>
-        <div className="flex items-center justify-center">
+        <button className="flex items-center justify-center cursor-pointer" @click="openModal">
             <div className="text-black text-base font-semibold font-['Plus Jakarta Sans' tracking-tight] mr-3">
                 Giriş Yap
             </div>
-            <IconMainSamosa />
-        </div>
+            <IconArrowDown />
+        </button>
     </nav>
 </template>
 
-  
 <script lang="ts">
 import IconMainSamosa from "../icons/IconMainSamosa.vue";
-// import IconNavLogin from "../icons/IconNavLogin.vue"
+import IconArrowDown from "../icons/IconArrowDown.vue";
 
 export default {
     name: 'MainNavbar',
@@ -37,14 +36,26 @@ export default {
                 { text: "Ücretler", link: "#", items: [] },
                 { text: "Seferlerimiz", link: "#", items: [] },
             ],
+            isModalOpen: false
         };
+
     },
     components: {
         IconMainSamosa,
-        // IconNavLogin
+        IconArrowDown
+    },
+    methods: {
+        openModal() {
+            this.isModalOpen = true;
+            console.log('Modal opened. isModalOpen:', this.isModalOpen);
+        },
+        closeModal() {
+            this.isModalOpen = false;
+            console.log('Modal closed. isModalOpen:', this.isModalOpen);
+        },
     },
 };
 </script>
-  
+
+
 <style scoped></style>
-  

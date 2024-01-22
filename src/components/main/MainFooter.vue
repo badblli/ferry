@@ -1,9 +1,9 @@
 <template>
   <div class="w-full h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4">
     <div class="text-center text-black text-lg font-medium ">
-      {{ footerContactText }}dsfsf
+      {{ footerContactText }}
     </div>
-    <div className="flex flex-row justify-evenly items-center">
+    <div className="flex flex-row justify-evenly items-center cursor-pointer">
       <span className="mr-3">İletişime Geç </span>
       <div class="flex items-center justify-center w-7 h-7 p-1 flex-shrink-0 rounded-full bg-gray-800">
         <IconFooter />
@@ -74,13 +74,20 @@
             item.text
           }}</a>
         </div>
-        <a className="mb-5 text-black text-base font-medium  tracking-tight cursor-pointer">
-          Diğer Turlar
-        </a>
+        <div className="flex cursor-pointer">
+          <a className="mb-5 mr-3 text-black text-base font-medium  tracking-tight">
+            Diğer Turlar
+          </a>
+          <div className="pt-1">
+            <IconArrowUpRight />
+          </div>
+        </div>
       </div>
       <div>
         <div class="w-[50px] h-[50px] relative">
-          <div class="w-[50px] h-[50px] left-0 top-0 absolute bg-slate-200 rounded-[25px]"></div>
+          <div class="w-[50px] h-[50px] left-0 top-0 absolute bg-slate-200 rounded-[25px] cursor-pointer">
+            <IconArrowTop />
+          </div>
           <div class="origin-top-left -rotate-90 w-5 h-5 left-[14.81px] top-[35.50px] absolute">
           </div>
         </div>
@@ -97,7 +104,9 @@
 import IconFooter from "../icons/IconFooter.vue";
 import IconMainSamosa from "../icons/IconMainSamosa.vue";
 import IconAnotherTour from "../icons/IconAnotherTour.vue"
+import IconArrowTop from "../icons/IconArrowTop.vue";
 import IconArrow from "../icons/IconArrow.vue";
+import IconArrowUpRight from "../icons/IconArrowUpRight.vue";
 
 export default {
   data() {
@@ -131,7 +140,9 @@ export default {
     IconFooter,
     IconMainSamosa,
     IconAnotherTour,
-    IconArrow
+    IconArrowTop,
+    IconArrow,
+    IconArrowUpRight
   },
 };
 </script>

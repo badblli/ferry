@@ -1,7 +1,7 @@
 <template>
     <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
         <button id="hs-mega-menu-basic-dr" type="button"
-            class="flex items-center w-full text-white hover:text-gray-400 font-semibold dark:text-gray-400 dark:hover:text-gray-500"
+            class=" cursor-pointer flex items-center w-full text-white hover:text-gray-400 font-semibold dark:text-gray-400 dark:hover:text-gray-500"
             @click="toggleDropdown">
             {{ selectedLanguage }}
             <svg class="ms-1 flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -22,7 +22,7 @@
     </div>
 </template>
   
-<script>
+<script lang="ts">
 export default {
     data() {
         return {
