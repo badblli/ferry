@@ -35,19 +35,30 @@
                 </div>
             </div>
         </div>
-
+        <!-- <MyProfile /> -->
+        <!-- <MyNotifications />
+        <MySettingsDeactive />
+        <MySettingPassword /> -->
     </div>
 </template>
 
 <script lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
 import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
+// import MyNotifications from "../components/advanced/MyNotifications.vue"
+// import MySettingsDeactive from "../components/advanced/MySettingsDeactive.vue"
+// import MyProfile from "../components/advanced/MyProfile.vue"
+// import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
 
 export default {
     name: 'HomeView',
     components: {
         IconAsteriskSimple,
-        IconMainSamosa
+        IconMainSamosa,
+        // MyProfile,
+        // MySettingPassword,
+        // MySettingsDeactive,
+        // MyNotifications
     },
     data() {
         return {
@@ -60,7 +71,7 @@ export default {
                 ["Tek Yön", "39TL", "39TL", "39TL"]
 
             ],
-            whichFerry: "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir."
+            whichFerry: "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.",
         };
     }
 };

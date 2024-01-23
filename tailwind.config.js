@@ -44,6 +44,39 @@ module.exports = {
         800: '#1f2937',
         900: '#111827',
       },
+      red: {
+        100: '#fff5f5',
+        200: '#fed7d7',
+        300: '#feb2b2',
+        400: '#fc8181',
+        500: '#f56565',
+        600: '#e53e3e',
+        700: '#c53030',
+        800: '#9b2c2c',
+        900: '#742a2a',
+      },
+      green: {
+        100: '#E4F3E5;',
+        200: '#c6f6d6',
+        300: '#9ae6b4',
+        400: '#68d391',
+        500: '#48bb78',
+        600: '#38a160',
+        700: '#2f855a',
+        800: '#276749',
+        900: '#22543d',
+      },
+      zinc: {
+        100: '#f7fafc',
+        200: '#edf2f7',
+        300: '#575757',
+        400: '#3f3f3f',
+        500: '#212121',
+        600: '#1a1a1a',
+        700: '#121212',
+        800: '#0c0c0c',
+        900: '#060606',
+      },
       white: '#fff',
     },
     extend: {
@@ -52,7 +85,7 @@ module.exports = {
           'Plus Jakarta Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji'
         ]
       }
-    }
+    },
   },
   plugins: [require('@tailwindcss/forms'), require('preline/plugin')]
 }

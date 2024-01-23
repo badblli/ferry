@@ -11,11 +11,11 @@
     </div>
   </div>
   <footer class="bg-white text-black p-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
       <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
         <!-- for first column and space -->
       </div>
-      <div>
+      <div class="">
         <div class="text-lg font-bold mb-4 flex">
           <IconMainSamosa />
           <div>
@@ -50,6 +50,9 @@
             </form>
           </li>
         </ul>
+      </div>
+      <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
+        <!-- for first column and space -->
       </div>
       <div>
         <div class="text-black text-lg font-medium font-['Plus Jakarta Display'] mb-5">Samosa Feribot</div>
