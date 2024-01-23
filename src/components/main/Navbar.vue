@@ -23,29 +23,16 @@
     </nav>
 </template>
   
-<script>
+<script setup lang="ts">
 import IconMainSamosa from "../icons/IconMainSamosa.vue";
-import IconNavLogin from "../icons/IconNavLogin.vue"
+// import IconNavLogin from "../icons/IconNavLogin.vue";
+import { ref } from "vue";
 
-export default {
-    name: 'Navbar',
-    data() {
-        return {
-            navBarItems: [
-                { text: "Samos Turları", link: "#", items: [] },
-                { text: "Ücretler", link: "#", items: [] },
-                { text: "Seferlerimiz", link: "#", items: [] },
-            ],
-        };
-    },
-    components: {
-        IconMainSamosa,
-        IconNavLogin
-    },
-};
+const navBarItems = ref([
+    { text: "Samos Turları", link: "#", items: [] },
+    { text: "Ücretler", link: "#", items: [] },
+    { text: "Seferlerimiz", link: "#", items: [] },
+]);
 </script>
   
-<style scoped></style>
-  
-
 <style scoped></style>

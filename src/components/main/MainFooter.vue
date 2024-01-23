@@ -88,7 +88,7 @@
       </div>
       <div>
         <div class="w-[50px] h-[50px] relative">
-          <div class="w-[50px] h-[50px] left-0 top-0 absolute bg-slate-200 rounded-[25px] cursor-pointer">
+          <div @click="toTop" class="w-[50px] h-[50px] left-0 top-0 absolute bg-slate-200 rounded-[25px] cursor-pointer">
             <IconArrowTop />
           </div>
           <div class="origin-top-left -rotate-90 w-5 h-5 left-[14.81px] top-[35.50px] absolute">
@@ -103,49 +103,46 @@
   </footer>
 </template>
 
-<script lang="ts">
-import IconFooter from "../icons/IconFooter.vue";
-import IconMainSamosa from "../icons/IconMainSamosa.vue";
-import IconAnotherTour from "../icons/IconAnotherTour.vue"
-import IconArrowTop from "../icons/IconArrowTop.vue";
-import IconArrow from "../icons/IconArrow.vue";
-import IconArrowUpRight from "../icons/IconArrowUpRight.vue";
+<script setup lang="ts">
+import { ref } from 'vue';
+import IconFooter from '../icons/IconFooter.vue';
+import IconMainSamosa from '../icons/IconMainSamosa.vue';
+import IconArrowTop from '../icons/IconArrowTop.vue';
+import IconArrow from '../icons/IconArrow.vue';
+import IconArrowUpRight from '../icons/IconArrowUpRight.vue';
 
-export default {
-  data() {
-    return {
-      currentYear: new Date().getFullYear(),
-      footerContactText:
-        "SamosaFeribot destek hizmetlerinden faydalanmak ve hızlı bilet almak için bize ulaşın.",
-      footerCol: [
-        { text: "Kullanım Koşulları", link: "#", items: [] },
-        { text: "Gizlilik Politikası", link: "#", items: [] },
-        { text: "İptal Koşulları", link: "#", items: [] },
-        { text: "Misafir Kuralları", link: "#", items: [] },
-        { text: "Rezervasyon Rehberi", link: "#", items: [] },
-      ],
-      footerSecCol: [
-        { text: "Hikayemiz", link: "#", items: [] },
-        { text: "SamosFeribot'a Ulaş", link: "#", items: [] },
-        { text: "Blog", link: "#", items: [] },
-        { text: "S.S.S.", link: "#", items: [] },
-        { text: "Rezervasyon Rehberi", link: "#", items: [] },
-      ],
-      footerThrdCol: [
-        { text: "Sakız Adası Turu", link: "#", items: [] },
-        { text: "Mikanos Adası Turu", link: "#", items: [] },
-        { text: "Rodos Adası Turu", link: "#", items: [] },
-        { text: "Samos Adası Turu", link: "#", items: [] },
-      ],
-    };
-  },
-  components: {
-    IconFooter,
-    IconMainSamosa,
-    IconAnotherTour,
-    IconArrowTop,
-    IconArrow,
-    IconArrowUpRight
-  },
+const currentYear = ref(new Date().getFullYear());
+const footerContactText =
+  'SamosaFeribot destek hizmetlerinden faydalanmak ve hızlı bilet almak için bize ulaşın.';
+
+const footerCol = ref([
+  { text: 'Kullanım Koşulları', link: '#', items: [] },
+  { text: 'Gizlilik Politikası', link: '#', items: [] },
+  { text: 'İptal Koşulları', link: '#', items: [] },
+  { text: 'Misafir Kuralları', link: '#', items: [] },
+  { text: 'Rezervasyon Rehberi', link: '#', items: [] },
+]);
+
+const footerSecCol = ref([
+  { text: 'Hikayemiz', link: '#', items: [] },
+  { text: 'SamosFeribot\'a Ulaş', link: '#', items: [] },
+  { text: 'Blog', link: '#', items: [] },
+  { text: 'S.S.S.', link: '#', items: [] },
+  { text: 'Rezervasyon Rehberi', link: '#', items: [] },
+]);
+
+const footerThrdCol = ref([
+  { text: 'Sakız Adası Turu', link: '#', items: [] },
+  { text: 'Mikanos Adası Turu', link: '#', items: [] },
+  { text: 'Rodos Adası Turu', link: '#', items: [] },
+  { text: 'Samos Adası Turu', link: '#', items: [] },
+]);
+
+const toTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
 };
 </script>

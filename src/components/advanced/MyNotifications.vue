@@ -24,28 +24,30 @@ before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    name: 'MyProfile',
-    // props: {
-    //     profileData: {
-    //         type: Array,
-    //         required: true
-    //     }
-    // },
-    // mockProfileData: [
-    //     {
-    //         firstName: "Antonio",
-    //         lastName: "Giovanazzi",
-    //         phoneNumber: "+90 537 311 9470",
-    //         birthDate: "10.06.2000",
-    //         nationality: "Türkiye Cumhuriyeti",
-    //         identityNumber: "1241455124151",
-    //         taxNumber: "36995118946",
-    //         address: "Ata Mahallesi, 1087 Sokak, Vadi Öveçler Sitesi No: 1/10 Çankaya / ANKARA"
-    //     },
-    // ] as profileData,
-}
+<script setup lang="ts">
+
+const name = 'MyProfile';
+
+// const mockProfileData = ref([
+//     {
+//         firstName: "Antonio",
+//         lastName: "Giovanazzi",
+//         phoneNumber: "+90 537 311 9470",
+//         birthDate: "10.06.2000",
+//         nationality: "Türkiye Cumhuriyeti",
+//         identityNumber: "1241455124151",
+//         taxNumber: "36995118946",
+//         address: "Ata Mahallesi, 1087 Sokak, Vadi Öveçler Sitesi No: 1/10 Çankaya / ANKARA",
+//     },
+// ]);
+// You can uncomment the following lines if you want to use props
+// const props = defineProps({
+//   profileData: {
+//     type: Array,
+//     required: true,
+//   },
+// });
+
 </script>
 
 <style></style>

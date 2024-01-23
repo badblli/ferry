@@ -45,28 +45,20 @@
   </header>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from "vue";
 import LanguageChanger from "../advanced/LanguageChanger.vue";
 import IconTopMenu from "../icons/IconTopMenu.vue";
 
-export default {
-  data() {
-    return {
-      message:
-        "Samos’ta artık bir araban var. Günlük kiralık aracın sadece 30€!",
-      buttonText: "Daha Fazla Bilgi",
-      navItems: [
-        { text: "Kampanyalarımız", link: "#", items: [] },
-        { text: "Ferry Destek", link: "#", items: [] },
-      ],
-      iconClass: "w-5 h-5",
-    };
-  },
-  components: {
-    LanguageChanger,
-    IconTopMenu,
-  },
-};
+const message = ref("Samos’ta artık bir araban var. Günlük kiralık aracın sadece 30€!");
+const buttonText = ref("Daha Fazla Bilgi");
+
+const navItems = ref([
+  { text: "Kampanyalarımız", link: "#", items: [] },
+  { text: "Ferry Destek", link: "#", items: [] },
+]);
+
+const iconClass = "w-5 h-5";
 </script>
 
 <style scoped>

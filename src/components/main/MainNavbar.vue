@@ -23,37 +23,27 @@
     </nav>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import IconMainSamosa from "../icons/IconMainSamosa.vue";
 import IconArrowDown from "../icons/IconArrowDown.vue";
+import { ref } from 'vue';
 
-export default {
-    name: 'MainNavbar',
-    data() {
-        return {
-            navBarItems: [
-                { text: "Samos Turları", link: "#", items: [] },
-                { text: "Ücretler", link: "#", items: [] },
-                { text: "Seferlerimiz", link: "#", items: [] },
-            ],
-            isModalOpen: false
-        };
+const navBarItems = ref([
+    { text: "Samos Turları", link: "#", items: [] },
+    { text: "Ücretler", link: "#", items: [] },
+    { text: "Seferlerimiz", link: "#", items: [] },
+]);
 
-    },
-    components: {
-        IconMainSamosa,
-        IconArrowDown
-    },
-    methods: {
-        openModal() {
-            this.isModalOpen = true;
-            console.log('Modal opened. isModalOpen:', this.isModalOpen);
-        },
-        closeModal() {
-            this.isModalOpen = false;
-            console.log('Modal closed. isModalOpen:', this.isModalOpen);
-        },
-    },
+const isModalOpen = ref(false);
+
+const openModal = () => {
+    isModalOpen.value = true;
+    console.log('Modal opened. isModalOpen:', isModalOpen.value);
+};
+
+const closeModal = () => {
+    isModalOpen.value = false;
+    console.log('Modal closed. isModalOpen:', isModalOpen.value);
 };
 </script>
 
