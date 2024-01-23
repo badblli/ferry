@@ -51,7 +51,7 @@ import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
 // import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
 
 export default {
-    name: 'HomeView',
+    name: 'TicketPrice',
     components: {
         IconAsteriskSimple,
         IconMainSamosa,
