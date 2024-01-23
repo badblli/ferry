@@ -1,31 +1,52 @@
 <template>
   <header
-    class="bg-blue-700 h-16 flex non-italic items-center justify-between p-2 relative overflow-hidden lg:px-28 md:px-16 sm:px-8">
-    <div>
-      <span class="text-blue-100 font-medium z-50 tracking-wide">{{ message }}</span>
-      <div
-        class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center">
-        <span class="text-white font-bold text-[15px] opacity-80">{{
-          buttonText
-        }}</span>
-        <IconTopMenu :iconClass="iconClass" />
+    class="relative flex flex-wrap sm:justify-start sm:flex-nowrap -z-10 w-full h-[60px] bg-blue-700 text-sm py-4 dark:bg-gray-800">
+    <nav class="w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-28 md:px-16 sm:px-8" aria-label="Global">
+      <div class="flex items-center justify-between">
+        <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ message }}</a>
+        <div
+          class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-35px]">
+          <span class="text-white font-bold text-[15px]">{{
+            buttonText
+          }}</span>
+          <IconTopMenu />
+        </div>
+        <div class="sm:hidden">
+          <button type="button"
+            class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-whiteshadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            data-hs-collapse="#navbar-with-mega-menu" aria-controls="navbar-with-mega-menu"
+            aria-label="Toggle navigation">
+            <svg class="hs-collapse-open:hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="3" x2="21" y1="6" y2="6" />
+              <line x1="3" x2="21" y1="12" y2="12" />
+              <line x1="3" x2="21" y1="18" y2="18" />
+            </svg>
+            <svg class="hs-collapse-open:block hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
-    <nav class="mr-6 flex items-center justify-center">
-      <ul class="flex space-x-4">
-        <li v-for="(item, index) in navItems" :key="index">
-          <a :href="item.link" class="text-white font-semibold text-sm tracking-wide">{{
-            item.text
-          }}</a>
-        </li>
-      </ul>
-      <LanguageChanger />
+      <div id="navbar-with-mega-menu"
+        class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+        <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+          <a v-for="(item, index) in navItems" :key="index"
+            class="text-sm font-semibold dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            :href="item.link" aria-current="page">{{ item.text }}</a>
+          <LanguageChanger />
+        </div>
+      </div>
     </nav>
   </header>
 </template>
 
-<script>
-import LanguageChanger from "@/components/LanguageChanger.vue";
+<script lang="ts">
+import LanguageChanger from "../advanced/LanguageChanger.vue";
 import IconTopMenu from "../icons/IconTopMenu.vue";
 
 export default {
@@ -49,10 +70,8 @@ export default {
 </script>
 
 <style scoped>
-/* header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-} */
+header {
+  background-color: #2149D5;
+  color: #fff;
+}
 </style>

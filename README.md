@@ -1,82 +1,52 @@
-# Vue 3 - Vite, Pinia, Vue Router & Tailwind CSS (daisyUi && daisyUiKit)
+# /
 
-`<script setup>` is suitable for use with SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This template should help get you started developing with Vue 3 in Vite.
 
+## Recommended IDE Setup
 
-## Dependencies 
-- [nodejs ^14.18.0](https://nodejs.org/)
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Stack
+## Type Support for `.vue` Imports in TS
 
-- [Vue 3.2](https://vuejs.org/)
-- [Pinia 2.0](https://pinia.vuejs.org/)
-- [Router 4.1](https://router.vuejs.org/)
-- [Tailwind CSS 3.1](https://tailwindcss.com/)
-- [DaisyUi](https://daisyui.com/)
-- [DaisyUiKit](https://daisyuikit.com/)
-- eslint 8.5
-- prettier 2.5
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-Additionally I added [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader) for easier SVG imports.
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
+## Customize configuration
 
-```
-git clone https://github.com/badblli/ferry.git
-```
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-then
-## Install
+## Project Setup
 
-```
-cd ferry
-yarn install
+```sh
+npm install
 ```
 
-or
+### Compile and Hot-Reload for Development
 
-```
-cd ferry
-npm i
-```
-
-
-## Run / Develop
-
-```
+```sh
 npm run dev
 ```
-or
-```
-yarn dev
-```
 
-## Build
+### Type-Check, Compile and Minify for Production
 
-```
+```sh
 npm run build
 ```
-or
-```
-yarn build
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
 ```
 
-## Preview
+### Lint with [ESLint](https://eslint.org/)
 
-```
-npm run preview
-```
-or
-```
-yarn preview
-```
-
-## Lint
-
-```
+```sh
 npm run lint
-```
-or
-```
-yarn lint
 ```

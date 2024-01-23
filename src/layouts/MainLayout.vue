@@ -1,16 +1,16 @@
 <script>
 import { RouterView } from "vue-router";
-import TopMenu from '@/components/main/TopMenu.vue'
-import Navbar from '@/components/main/Navbar.vue'
-import Footer from '@/components/main/Footer.vue'
+import TopMenu from '../components/main/TopMenu.vue'
+import MainNavbar from '../components/main/MainNavbar.vue'
+import MainFooter from '../components/main/MainFooter.vue'
 
 export default {
     name: 'MainLayout',
     components: {
         RouterView,
         TopMenu,
-        Navbar,
-        Footer,
+        MainNavbar,
+        MainFooter,
     },
     // Component logic goes here
 }
@@ -18,12 +18,10 @@ export default {
 
 
 <template>
-    <div class="main-layout">
-        <TopMenu />
-        <Navbar />
-        <RouterView />
-        <Footer />
-    </div>
+    <TopMenu />
+    <MainNavbar />
+    <RouterView />
+    <MainFooter />
 </template>
 
 
