@@ -204,6 +204,8 @@ const router = createRouter({
 //     next() // Doğrulama gerektirmeyen sayfalarda devam et
 //   }
 // })
+
+
 router.afterEach((to, from, failure) => {
   if (!failure) {
     setTimeout(() => {
