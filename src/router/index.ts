@@ -187,29 +187,29 @@ const router = createRouter({
     },
   ]
 })
-router.beforeEach((to, from, next) => {
-  const userStore = useUserStore()
-  const isAuthenticated = userStore.isAuthenticated
+// router.beforeEach((to, from, next) => {
+//   const userStore = useUserStore()
+//   const isAuthenticated = userStore.isAuthenticated
 
-  // Doğrulama gerektiren sayfalara erişim kontrolü
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (!isAuthenticated) {
-      // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
-      userStore.loginModal = true
-      // next("/login");
-    } else {
-      next() // Kullanıcı giriş yapmışsa devam et
-    }
-  } else {
-    next() // Doğrulama gerektirmeyen sayfalarda devam et
-  }
-})
-// router.afterEach((to, from, failure) => {
-//   if (!failure) {
-//     setTimeout(() => {
-//       HSStaticMethods.autoInit()
-//     }, 100)
+//   // Doğrulama gerektiren sayfalara erişim kontrolü
+//   if (to.matched.some((record) => record.meta.requiresAuth)) {
+//     if (!isAuthenticated) {
+//       // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+//       userStore.loginModal = true
+//       // next("/login");
+//     } else {
+//       next() // Kullanıcı giriş yapmışsa devam et
+//     }
+//   } else {
+//     next() // Doğrulama gerektirmeyen sayfalarda devam et
 //   }
 // })
+router.afterEach((to, from, failure) => {
+  if (!failure) {
+    setTimeout(() => {
+      HSStaticMethods.autoInit()
+    }, 100)
+  }
+})
 
 export default router
