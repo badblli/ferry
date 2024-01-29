@@ -1,188 +1,294 @@
 <template>
     <div>
         <div class="w-full h-[223px] bg-slate-200" />
-        <div className="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <span className="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide">Merhaba
-                Kevin.</span>
-            <div>
-                <nav class="pb-1 flex mb-4 space-x-1 overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
-                    aria-label="Tabs" role="tablist">
-                    <button v-for="(tab, index) in tabs" :key="index" type="button"
-                        class="text-[1.125rem] hs-tab-active:border-gray-900 hs-tab-active:text-gray-950 py-8 inline-flex items-center gap-x-2 border-b-2 border-transparent whitespace-nowrap text-gray-450 focus:outline-none focus:text-gray-450"
-                        :class="{ 'active': activeTab === index }" @click="changeTab(index)"
-                        :id="'horizontal-scroll-tab-item-' + (index + 1)"
-                        :data-hs-tab="'#horizontal-scroll-tab-' + (index + 1)"
-                        :aria-controls="'horizontal-scroll-tab-' + (index + 1)" role="tab">
-                        <component :is="currentIcon[index]" />
-                        {{ tab }}
-                    </button>
-                </nav>
-                <div class="mt-3">
-                    <div v-for="(tabContent, index) in data" :key="index" :id="'horizontal-scroll-tab-' + (index + 1)"
-                        role="tabpanel" :aria-labelledby="'horizontal-scroll-tab-item-' + (index + 1)"
-                        :class="{ 'hidden': activeTab !== index }">
-                        <div class="text-gray-500">{{ tabContent }}</div>
+        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
+            <span class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide">Merhaba Kevin.</span>
+            <div class="mt-[56px] pr-[50px]">
+                <div class="border-b border-gray-200">
+                    <nav class="flex overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
+                        aria-label="Tabs" role="tablist">
+                        <button type="button"
+                            class="mr-[48px] text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-8 inline-flex items-center gap-x-4 border-b-2 border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-30 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                            id="tabs-with-icons-item-1" data-hs-tab="#tabs-with-icons-1" aria-controls="tabs-with-icons-1"
+                            role="tab">
+                            <IconReceipt />
+                            Rezervasyon
+                        </button>
+                        <button type="button"
+                            class="mr-[48px] text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-8 inline-flex items-center gap-x-4 border-b-2 border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-30 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
+                            id="tabs-with-icons-item-2" data-hs-tab="#tabs-with-icons-2" aria-controls="tabs-with-icons-2"
+                            role="tab">
+                            <IconUsers />
+                            Profilim
+                        </button>
+                        <button type="button"
+                            class="mr-[48px] text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-8 inline-flex items-center gap-x-4 border-b-2 border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
+                            id="tabs-with-icons-item-3" data-hs-tab="#tabs-with-icons-3" aria-controls="tabs-with-icons-3"
+                            role="tab">
+                            <IconGearSix />
+                            Hesap Ayarlarım
+                        </button>
+                        <button type="button"
+                            class="mr-[48px] text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-8 inline-flex items-center gap-x-4 border-b-2 border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
+                            id="tabs-with-icons-item-4" data-hs-tab="#tabs-with-icons-4" aria-controls="tabs-with-icons-4"
+                            role="tab">
+                            <IconBellSimple />
+                            Bildirimler
+                        </button>
+                        <button type="button"
+                            class="mr-[48px] text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-8 inline-flex items-center gap-x-4 border-b-2 border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                            id="tabs-with-icons-item-5" data-hs-tab="#tabs-with-icons-5" aria-controls="tabs-with-icons-5"
+                            role="tab">
+                            <IconMile />
+                            Mil Puan
+                        </button>
+                    </nav>
+                </div>
+                <div class="mt-16 mb-16">
+                    <div id="tabs-with-icons-1" role="tabpanel">
+                        <div>
+                            <nav class="-mb-0.5 flex space-x-8" aria-label="Tabs" role="tablist">
+                                <button type="button"
+                                    class="leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                                    id="horizontal-alignment-item-1" data-hs-tab="#horizontal-alignment-1"
+                                    aria-controls="horizontal-alignment-1" role="tab">
+                                    Güncel Rezervasyon
+                                </button> <button type="button"
+                                    class=" leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                                    id="horizontal-alignment-item-2" data-hs-tab="#horizontal-alignment-2"
+                                    aria-controls="horizontal-alignment-2" role="tab">
+                                    Geçmiş Rezervasyon
+                                </button>
+                            </nav>
+                            <div class="pt-[91px] w-full">
+                                <div id="horizontal-alignment-1" role="tabpanel"
+                                    aria-labelledby="horizontal-alignment-item-1">
+                                    <div class="w-full justify-between">
+                                        <div class="-m-1.5 overflow-x-auto w-full">
+                                            <div class="p-1.5 w-full inline-block align-middle">
+                                                <div class="overflow-hidden w-full">
+                                                    <ReservationTable :reservations="reservations" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="horizontal-alignment-2" role="tabpanel"
+                                    aria-labelledby="horizontal-alignment-item-2">
+                                    <div class="w-full justify-between">
+                                        <div class="-m-1.5 overflow-x-auto w-full">
+                                            <div class="p-1.5 w-full inline-block align-middle">
+                                                <div class="overflow-hidden w-full">
+                                                    <ReservationTable :reservations="pastReservations" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row items-center justify-center pt-12 cursor-pointer">
+                                    <h1 class="pt-4 text-black text-lg font-medium font-['Plus Jakarta Display'] mb-4 mr-4">
+                                        Daha fazla
+                                        rezervasyon</h1>
+                                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M21.7631 16.4402C22.0161 16.6932 22.0161 17.1035 21.7631 17.3566L15.898 23.2216C15.645 23.4747 15.2347 23.4747 14.9816 23.2216L9.11657 17.3566C8.86351 17.1035 8.86351 16.6932 9.11657 16.4402C9.36963 16.1871 9.77993 16.1871 10.033 16.4402L14.7918 21.199V8.10085C14.7918 7.74297 15.0819 7.45285 15.4398 7.45285C15.7977 7.45285 16.0878 7.74297 16.0878 8.10085L16.0878 21.199L20.8466 16.4402C21.0997 16.1871 21.51 16.1871 21.7631 16.4402Z"
+                                            fill="black" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabs-with-icons-2" class="hidden" role="tabpanel" aria-labelledby="tabs-with-icons-item-2">
+                        <div id="tabs-with-icons-1" role="tabpanel">
+                            <div>
+                                <div>
+                                    <nav class="-mb-0.5 flex space-x-8" aria-label="Tabs" role="tablist">
+                                        <button type="button"
+                                            class="leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                                            id="horizontal-alignment-item-1" data-hs-tab="#horizontal-alignment-1"
+                                            aria-controls="horizontal-alignment-1" role="tab">
+                                            Profil Bilgileri
+                                        </button>
+                                    </nav>
+                                </div>
+                                <div class="pt-[91px] w-full">
+                                    <div id="horizontal-alignment-1" role="tabpanel"
+                                        aria-labelledby="horizontal-alignment-item-1">
+                                        <div class="-m-1.5 overflow-x-auto w-full">
+                                            <div class="p-1.5 w-full inline-block align-middle">
+                                                <MyProfile :profileData="profileData" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabs-with-icons-3" class="hidden" role="tabpanel" aria-labelledby="tabs-with-icons-item-3">
+                        <div id="tabs-with-icons-1" role="tabpanel">
+                            <div>
+                                <div>
+                                    <nav class="-mb-0.5 flex space-x-8" aria-label="Tabs" role="tablist">
+                                        <button type="button"
+                                            class="leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                                            id="horizontal-alignment-item-1" data-hs-tab="#horizontal-alignment-1"
+                                            aria-controls="horizontal-alignment-1" role="tab">
+                                            Kişisel Ayarlarım
+                                        </button>
+                                    </nav>
+                                </div>
+                                <div class="pt-[91px] w-full">
+                                    <div id="horizontal-alignment-1" role="tabpanel"
+                                        aria-labelledby="horizontal-alignment-item-1">
+                                        <div class="-m-1.5 overflow-x-auto w-full">
+                                            <div>
+                                                <AccountMail />
+                                            </div>
+                                            <div>
+                                                <AccountPassword />
+                                            </div>
+                                            <div>
+                                                <AccountDeactive />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabs-with-icons-1" role="tabpanel">
+                            <div>
+                                <div>
+                                    <nav class="-mb-0.5 flex space-x-8" aria-label="Tabs" role="tablist">
+                                        <button type="button"
+                                            class="pt-12 leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                                            id="horizontal-alignment-item-1" data-hs-tab="#horizontal-alignment-1"
+                                            aria-controls="horizontal-alignment-1" role="tab">
+                                            Diğer Ayarlarım
+                                        </button>
+                                    </nav>
+                                </div>
+                                <div class="pt-[91px] w-full">
+                                    <div id="horizontal-alignment-1" role="tabpanel"
+                                        aria-labelledby="horizontal-alignment-item-1">
+                                        <div class="-m-1.5 overflow-x-auto w-full">
+                                            <div>
+                                                <AccountLanguage />
+                                            </div>
+                                            <div>
+                                                <AccountCurrency />
+                                            </div>
+                                            <div>
+                                                <AccountGMT />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabs-with-icons-4" class="hidden" role="tabpanel" aria-labelledby="tabs-with-icons-item-4">
+                        <AccountNotification :notifications="notifications" />
+                    </div>
+                    <div id="tabs-with-icons-5" class="hidden " role="tabpanel" aria-labelledby="tabs-with-icons-item-5">
+                        <ReservationMileTab />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="border-b border-gray-200 dark:border-gray-700">
-        <nav class="flex space-x-2" aria-label="Tabs" role="tablist">
-            <button type="button"
-                class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
-                id="tabs-with-underline-item-1" data-hs-tab="#tabs-with-underline-1" aria-controls="tabs-with-underline-1"
-                role="tab">
-                Tab 1
-            </button>
-            <button type="button"
-                class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-                id="tabs-with-underline-item-2" data-hs-tab="#tabs-with-underline-2" aria-controls="tabs-with-underline-2"
-                role="tab">
-                Tab 2
-            </button>
-            <button type="button"
-                class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-                id="tabs-with-underline-item-3" data-hs-tab="#tabs-with-underline-3" aria-controls="tabs-with-underline-3"
-                role="tab">
-                Tab 3
-            </button>
-        </nav>
-    </div>
-    <div class="mt-3">
-        <div id="tabs-with-underline-1" role="tabpanel" aria-labelledby="tabs-with-underline-item-1">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">first</em> item's tab body.
-            </p>
-        </div>
-        <div id="tabs-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-2">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">second</em> item's tab body.
-            </p>
-        </div>
-        <div id="tabs-with-underline-3" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-3">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">third</em> item's tab body.
-            </p>
-        </div>
-    </div>
 </template> 
   
-<script lang="ts">
-import IconMainSamosa from '@/components/icons/IconMainSamosa.vue';
-import IconArrowTop from '@/components/icons/IconArrowTop.vue';
-import IconAsteriskSimple from '@/components/icons/IconAsteriskSimple.vue';
-import TabsView from "@/components/sample/TabsItem.vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import ReservationTable from "../components/ReservationComponent/ReservationTable.vue";
+import MyProfile from "../components/ReservationComponent/MyProfile.vue";
+import ReservationMileTab from "@/components/ReservationComponent/ReservationMileTab.vue";
+import AccountMail from "../components/ReservationComponent/AccountMail.vue";
+import AccountPassword from "../components/ReservationComponent/AccountPassword.vue";
+import AccountDeactive from "../components/ReservationComponent/AccountDeactive.vue";
+import AccountLanguage from "../components/ReservationComponent/AccountLanguage.vue";
+import AccountCurrency from "../components/ReservationComponent/AccountCurrency.vue";
+import AccountGMT from "../components/ReservationComponent/AccountGMT.vue";
+import AccountNotification from "../components/ReservationComponent/AccountNotification.vue";
+import IconReceipt from "../components/icons/IconReceipt.vue";
+import IconUsers from "../components/icons/IconUsers.vue";
+import IconGearSix from "../components/icons/IconGearSix.vue";
+import IconBellSimple from "../components/icons/IconBellSimple.vue";
+import IconMile from "../components/icons/IconMile.vue";
 
-export default {
-    name: 'MyReservation',
+// const reservations = ref([
+//     {
+//         number: "#575433",
+//         date: "28.10.2023",
+//         status: "Onaylandı",
+//         total: 1549.40,
+//     },
+// ]);
 
-    data() {
-        return {
-            tabs: ["Rezervasyon", "Profilim", "Hesap Ayarlarım", "Bildirimler", "Mil Puan"],
-            data: [
-                "This is the first item's tab body.",
-                "This is the second item's tab body.",
-                "This is the third item's tab body.",
-                "This is the fourth item's tab body.",
-                "This is the fifth item's tab body."
-            ],
-            activeTab: 0,
-            currentIcon: [IconMainSamosa, IconArrowTop, IconAsteriskSimple, IconAsteriskSimple, IconAsteriskSimple]
-        };
+const pastReservations = ref([
+    {
+        number: "#575433",
+        date: "28.10.2023",
+        status: "Geçmiş",
+        total: "1 ürün, 1,549.40 ₺",
+    }
+])
+
+const profileData = ref([
+    {
+        İsim: "Antonio",
+        Soyisim: "Govanazzi",
+        TelefonNumarası: "+90 537 311 9470",
+        DoğumTarihi: "10.06.2000",
+        Uyruğu: "Türkiye Cumhuriyeti",
+        PasaportNumarası: "1242145124151",
+        TCKimlikNumarası: "36995118956",
+        AdresBilgilerim: "Ata mahallesi, 1087, Vadi Öveçleri Sitesi No: 1/10 Çankaya Ankara",
     },
-    methods: {
-        changeTab(index: any) {
-            this.activeTab = index;
-        }
+]);
+
+const notifications = ref([
+    {
+        offers: {
+            name: "Teklifler ve İpuçları",
+            subName: "Günlük Teklif ve İpuçları",
+        },
+        trends: {
+            name: "Trendler ve Öneriler",
+            subName: "Günlük kişiselleştirilmiş trendler ve öneriler",
+        },
+        news: {
+            name: "Haberler ve Güncellemeler",
+            subName: "Günlük olarak güncelleme ve haberler",
+        },
+        feedback: {
+            name: "Geri Bildirimler",
+            subName: "E-posta üzerinden geri bildirimler",
+        },
     },
-    components: { IconMainSamosa, IconArrowTop, IconAsteriskSimple, TabsView }
-};
+]);
+
+const reservations = ref([
+    {
+        number: "#575433",
+        date: "28.10.2023",
+        status: "Onaylandı",
+        total: "1 ürün, 1,549.40 ₺",
+    },
+    {
+        number: "#575433",
+        date: "29.10.2023",
+        status: "İptal Edildi",
+        total: "2 ürün, 1,249.40 ₺",
+    },
+    {
+        number: "#575433",
+        date: "29.10.2023",
+        status: "Onay Bekliyor",
+        total: "2 ürün, 1,249.40 ₺",
+    },
+]);
 </script>
   
 <style scoped></style>
-  
-
-<!-- <template>
-    <nav class="pb-1 flex space-x-1 overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
-        aria-label="Tabs" role="tablist">
-        <button type="button"
-            class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
-            id="horizontal-scroll-tab-item-1" data-hs-tab="#horizontal-scroll-tab-1" aria-controls="horizontal-scroll-tab-1"
-            role="tab">
-            Long tab link 1
-        </button>
-        <button type="button"
-            class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-            id="horizontal-scroll-tab-item-2" data-hs-tab="#horizontal-scroll-tab-2" aria-controls="horizontal-scroll-tab-2"
-            role="tab">
-            Long tab link 2
-        </button>
-        <button type="button"
-            class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-            id="horizontal-scroll-tab-item-3" data-hs-tab="#horizontal-scroll-tab-3" aria-controls="horizontal-scroll-tab-3"
-            role="tab">
-            Long tab link 3
-        </button>
-        <button type="button"
-            class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-            id="horizontal-scroll-tab-item-4" data-hs-tab="#horizontal-scroll-tab-4" aria-controls="horizontal-scroll-tab-4"
-            role="tab">
-            Long tab link 4
-        </button>
-        <button type="button"
-            class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-            id="horizontal-scroll-tab-item-5" data-hs-tab="#horizontal-scroll-tab-5" aria-controls="horizontal-scroll-tab-5"
-            role="tab">
-            Long tab link 5
-        </button>
-    </nav>
-
-    <div class="mt-3">
-        <div id="horizontal-scroll-tab-1" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-1">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">first</em> item's tab body.
-            </p>
-        </div>
-        <div id="horizontal-scroll-tab-2" class="hidden" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-2">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">second</em> item's tab body.
-            </p>
-        </div>
-        <div id="horizontal-scroll-tab-3" class="hidden" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-3">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">third</em> item's tab body.
-            </p>
-        </div>
-        <div id="horizontal-scroll-tab-4" class="hidden" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-4">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">fourth</em> item's tab body.
-            </p>
-        </div>
-        <div id="horizontal-scroll-tab-5" class="hidden" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-5">
-            <p class="text-gray-500 dark:text-gray-400">
-                This is the <em class="font-semibold text-gray-800 dark:text-gray-200">fifth</em> item's tab body.
-            </p>
-        </div>
-    </div>
-</template>
-
-<script lang="ts">
-import { ref } from 'vue';
-
-export default {
-    data() {
-        return {
-            activeTab: ref(0),
-        };
-    },
-
-    methods: {
-        changeTab(index: any) {
-            this.activeTab = index;
-        },
-    },
-};
-</script>
-
-<style></style> -->

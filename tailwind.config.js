@@ -4,10 +4,13 @@ module.exports = {
   theme: {
     colors: {
       blue: {
-        100: '#f7fafc',
-        // ...
-        600: '#2C55E7  ',
-        700: '#2149D5',
+        100: '#EBE4F3',
+        200: '#c0d9fd',
+        300: '#97b3f7',
+        400: '#6495ed',
+        500: '#4277e5',
+        600: '#3157c9',
+        700: '#2b45a1',
       },
       gray: {
         100: '#f7fafc',
@@ -49,11 +52,22 @@ module.exports = {
         200: '#fed7d7',
         300: '#feb2b2',
         400: '#fc8181',
-        500: '#f56565',
+        500: '#EA4335',
         600: '#e53e3e',
         700: '#c53030',
         800: '#9b2c2c',
         900: '#742a2a',
+      },
+      rose: {
+        100: '#ffe8e8',
+        200: '#feebc8',
+        300: '#fbd3d4',
+        400: '#f6ad95',
+        500: '#ed8966',
+        600: '#dd6b40',
+        700: '#c05621',
+        800: '#9c4221',
+        900: '#7b341e',
       },
       green: {
         100: '#E4F3E5;',
@@ -78,6 +92,7 @@ module.exports = {
         900: '#060606',
       },
       white: '#fff',
+      black: '#000000',
     },
     extend: {
       fontFamily: {
@@ -86,6 +101,22 @@ module.exports = {
         ]
       }
     },
+    // screens: {
+    //   '2xl': { 'max': '1535px' },
+    //   // => @media (max-width: 1535px) { ... }
+
+    //   'xl': { 'max': '1279px' },
+    //   // => @media (max-width: 1279px) { ... }
+
+    //   'lg': { 'max': '1023px' },
+    //   // => @media (max-width: 1023px) { ... }
+
+    //   'md': { 'max': '767px' },
+    //   // => @media (max-width: 767px) { ... }
+
+    //   'sm': { 'max': '639px' },
+    //   // => @media (max-width: 639px) { ... }
+    // }
   },
   plugins: [require('@tailwindcss/forms'), require('preline/plugin')]
 }

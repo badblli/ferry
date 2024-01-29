@@ -1,7 +1,7 @@
 <template>
     <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
         <div className="w-full mx-auto rounded-[20px]">
-            <div className="flex flex-col">
+            <div className="flex flex-col mb-4">
                 <div className="items-center">
                     <div
                         className="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex justify-between items-center">
@@ -24,28 +24,10 @@ before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    name: 'MyProfile',
-    // props: {
-    //     profileData: {
-    //         type: Array,
-    //         required: true
-    //     }
-    // },
-    // mockProfileData: [
-    //     {
-    //         firstName: "Antonio",
-    //         lastName: "Giovanazzi",
-    //         phoneNumber: "+90 537 311 9470",
-    //         birthDate: "10.06.2000",
-    //         nationality: "Türkiye Cumhuriyeti",
-    //         identityNumber: "1241455124151",
-    //         taxNumber: "36995118946",
-    //         address: "Ata Mahallesi, 1087 Sokak, Vadi Öveçler Sitesi No: 1/10 Çankaya / ANKARA"
-    //     },
-    // ] as profileData,
-}
+<script setup lang="ts">
+
+
+
 </script>
 
 <style></style>

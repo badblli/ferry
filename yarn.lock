@@ -690,7 +690,7 @@
 
 "@vitejs/plugin-vue-jsx@^3.0.2":
   version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-3.1.0.tgz#9953fd9456539e1f0f253bf0fcd1289e66c67cd1"
+  resolved "https://registry.npmjs.org/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-3.1.0.tgz"
   integrity sha512-w9M6F3LSEU5kszVb9An2/MmXNxocAnUb3WhRr8bHlimhDrXNt6n6D2nJQR3UXpGlZHh/EsgouOHCsM8V3Ln+WA==
   dependencies:
     "@babel/core" "^7.23.3"
@@ -2580,7 +2580,7 @@ postcss@^8.4.23, postcss@^8.4.27, postcss@^8.4.31:
 
 preline@^2.0.1:
   version "2.0.3"
-  resolved "https://registry.yarnpkg.com/preline/-/preline-2.0.3.tgz#48b460b7f0b9fadeb1f8bbb0bba70832516716c4"
+  resolved "https://registry.npmjs.org/preline/-/preline-2.0.3.tgz"
   integrity sha512-V/sLmRIHd23UCdvJNRKKszntgUqA0381erVzRpQ48NjjMOgI7DyFW4mr+lg387V0oeBc5Dx9Jxa5voppVoH9GA==
   dependencies:
     "@popperjs/core" "^2.11.2"
@@ -2884,6 +2884,11 @@ svg-tags@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/svg-tags/-/svg-tags-1.0.0.tgz"
   integrity sha512-ovssysQTa+luh7A5Weu3Rta6FJlFBBbInjOh722LIt6klpU2/HtdUbszju/G4devcvk8PGt7FCLv5wftu3THUA==
+
+swiper@^11.0.5:
+  version "11.0.5"
+  resolved "https://registry.npmjs.org/swiper/-/swiper-11.0.5.tgz"
+  integrity sha512-rhCwupqSyRnWrtNzWzemnBLMoyYuoDgGgspAm/8iBD3jCvAWycPLH4Z3TB0O5520DHLzMx94yUMH/B9Efpa48w==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
