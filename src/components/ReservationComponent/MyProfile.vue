@@ -26,8 +26,8 @@
 </template>
   
 <script setup lang="ts">
-// import { ref, defineProps } from 'vue';
-// const props = defineProps(['profileData']);
+import { ref, defineProps } from 'vue';
+const props = defineProps(['profileData']);
 </script>
 
 <style></style>

@@ -791,6 +791,10 @@ select {
   bottom: 0px;
 }
 
+.-left-36 {
+  left: -9rem;
+}
+
 .-left-4 {
   left: -1rem;
 }
@@ -981,6 +985,10 @@ select {
 
 .-z-10 {
   z-index: -10;
+}
+
+.-z-50 {
+  z-index: -50;
 }
 
 .z-10 {
@@ -1188,6 +1196,10 @@ select {
   margin-left: -35px;
 }
 
+.ml-\[13px\] {
+  margin-left: 13px;
+}
+
 .ml-\[15px\] {
   margin-left: 15px;
 }
@@ -1206,6 +1218,10 @@ select {
 
 .ml-\[46px\] {
   margin-left: 46px;
+}
+
+.ml-\[48px\] {
+  margin-left: 48px;
 }
 
 .ml-\[6px\] {
@@ -1366,10 +1382,6 @@ select {
   margin-top: auto;
 }
 
-.mt-\[74px\] {
-  margin-top: 74px;
-}
-
 .block {
   display: block;
 }
@@ -1468,6 +1480,10 @@ select {
 
 .h-\[118px\] {
   height: 118px;
+}
+
+.h-\[121px\] {
+  height: 121px;
 }
 
 .h-\[145px\] {
@@ -1672,6 +1688,10 @@ select {
 
 .w-\[168px\] {
   width: 168px;
+}
+
+.w-\[178px\] {
+  width: 178px;
 }
 
 .w-\[195px\] {
@@ -2715,6 +2735,10 @@ select {
   line-height: 21px;
 }
 
+.leading-\[24\.86px\] {
+  line-height: 24.86px;
+}
+
 .leading-\[26\.88px\] {
   line-height: 26.88px;
 }
@@ -2745,10 +2769,6 @@ select {
 
 .leading-tight {
   line-height: 1.25;
-}
-
-.leading-\[24\.86px\] {
-  line-height: 24.86px;
 }
 
 .tracking-tight {
@@ -3935,11 +3955,6 @@ div.code-toolbar > .toolbar a:hover {
   border-color: rgb(49 87 201 / var(--tw-border-opacity));
 }
 
-.hs-accordion.active.hs-accordion-active\:border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(237 242 247 / var(--tw-border-opacity));
-}
-
 .hs-accordion.active.hs-accordion-active\:text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(49 87 201 / var(--tw-text-opacity));
@@ -3963,11 +3978,6 @@ div.code-toolbar > .toolbar a:hover {
   border-color: rgb(49 87 201 / var(--tw-border-opacity));
 }
 
-.hs-accordion.active > .hs-accordion-toggle .hs-accordion-active\:border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(237 242 247 / var(--tw-border-opacity));
-}
-
 .hs-accordion.active > .hs-accordion-toggle .hs-accordion-active\:text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(49 87 201 / var(--tw-text-opacity));
@@ -3989,11 +3999,6 @@ div.code-toolbar > .toolbar a:hover {
 .hs-accordion.active > .hs-accordion-toggle.hs-accordion-active\:border-blue-600 {
   --tw-border-opacity: 1;
   border-color: rgb(49 87 201 / var(--tw-border-opacity));
-}
-
-.hs-accordion.active > .hs-accordion-toggle.hs-accordion-active\:border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(237 242 247 / var(--tw-border-opacity));
 }
 
 .hs-accordion.active > .hs-accordion-toggle.hs-accordion-active\:text-blue-600 {
@@ -4562,11 +4567,6 @@ div.code-toolbar > .toolbar a:hover {
   color: rgb(203 213 224 / var(--tw-text-opacity));
 }
 
-:is(.dark .hs-accordion.active.dark\:hs-accordion-active\:border-gray-700) {
-  --tw-border-opacity: 1;
-  border-color: rgb(74 85 104 / var(--tw-border-opacity));
-}
-
 :is(.dark .hs-accordion.active.dark\:hs-accordion-active\:text-blue-500) {
   --tw-text-opacity: 1;
   color: rgb(66 119 229 / var(--tw-text-opacity));
@@ -4592,11 +4592,6 @@ div.code-toolbar > .toolbar a:hover {
   color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
-:is(.dark .hs-accordion.active > .hs-accordion-toggle .dark\:hs-accordion-active\:border-gray-700) {
-  --tw-border-opacity: 1;
-  border-color: rgb(74 85 104 / var(--tw-border-opacity));
-}
-
 :is(.dark .hs-accordion.active > .hs-accordion-toggle .dark\:hs-accordion-active\:text-blue-500) {
   --tw-text-opacity: 1;
   color: rgb(66 119 229 / var(--tw-text-opacity));
@@ -4620,11 +4615,6 @@ div.code-toolbar > .toolbar a:hover {
 .dark :is(.dark .hs-accordion.active > .hs-accordion-toggle .hs-accordion-active\:text-blue-500).active-link {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
-:is(.dark .hs-accordion.active > .hs-accordion-toggle.dark\:hs-accordion-active\:border-gray-700) {
-  --tw-border-opacity: 1;
-  border-color: rgb(74 85 104 / var(--tw-border-opacity));
 }
 
 :is(.dark .hs-accordion.active > .hs-accordion-toggle.dark\:hs-accordion-active\:text-blue-500) {
@@ -4792,6 +4782,10 @@ div.code-toolbar > .toolbar a:hover {
     margin-right: auto;
   }
 
+  .md\:mb-40 {
+    margin-bottom: 10rem;
+  }
+
   .md\:mb-\[104px\] {
     margin-bottom: 104px;
   }
@@ -4806,14 +4800,6 @@ div.code-toolbar > .toolbar a:hover {
 
   .md\:mt-20 {
     margin-top: 5rem;
-  }
-
-  .md\:mt-\[74\] {
-    margin-top: 74;
-  }
-
-  .md\:mt-\[74px\] {
-    margin-top: 74px;
   }
 
   .md\:hidden {
