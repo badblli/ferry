@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainLayout from '../layouts/MainLayout.vue'
-import HomeView from '../views/HomeView.vue'
-import ComponentsView from '../views/ComponentsView.vue'
 import { useUserStore } from '../stores/auth'
 
 const router = createRouter({
@@ -9,12 +6,12 @@ const router = createRouter({
   routes: [
     {
       path: '/main',
-      component: () => MainLayout,
+      component: () => import('../layouts/MainLayout.vue'),
       children: [
         {
           path: '/',
           name: 'home',
-          component: () => HomeView
+          component: () => import('../views/HomeView.vue'),
         },
         {
           path: '/price',
@@ -108,7 +105,7 @@ const router = createRouter({
     {
       path: '/components',
       name: 'components',
-      component: ComponentsView,
+      component: () => import('../views/ComponentsView.vue'),
       children: [
         {
           path: '/accordion',
