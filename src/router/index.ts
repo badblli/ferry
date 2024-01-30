@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainLayout from '../layouts/MainLayout.vue'
 import HomeView from '../views/HomeView.vue'
 import ComponentsView from '../views/ComponentsView.vue'
-import BlogPostView from '@/views/BlogPostView.vue'
 import { useUserStore } from '../stores/auth'
 
 const router = createRouter({
@@ -10,12 +8,12 @@ const router = createRouter({
   routes: [
     {
       path: '/main',
-      component: () => MainLayout,
+      component: () => import('../layouts/MainLayout.vue'),
       children: [
         {
           path: '/',
           name: 'home',
-          component: () => HomeView
+          component: () => import('../views/HomeView.vue'),
         },
         {
           path: '/price',
@@ -36,21 +34,6 @@ const router = createRouter({
           path: '/general',
           name: 'general',
           component: () => import('@/views/GeneralPage.vue')
-        },
-        {
-          path: '/blog',
-          name: 'blog',
-          component: () => import('@/views/BlogView.vue')
-        },
-        {
-          path: '/blog/:postId',
-          name: 'uniqueBlogPost',
-          component: () => import('@/views/BlogPostView.vue')
-        },
-        {
-          path: '/faq',
-          name: 'faq',
-          component: () => import('@/views/FAQView.vue')
         }
         // {
         //   path: "/about",
@@ -109,7 +92,7 @@ const router = createRouter({
     {
       path: '/components',
       name: 'components',
-      component: ComponentsView,
+      component: () => import('../views/ComponentsView.vue'),
       children: [
         {
           path: '/accordion',
@@ -199,8 +182,8 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
-      component: () => import('../layouts/ErrorLayout.vue')
-    }
+      component: () => import('../layouts/ErrorLayout.vue'),
+    },
   ]
 })
 // router.beforeEach((to, from, next) => {
