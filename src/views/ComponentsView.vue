@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
     <header>
         <div class="py-[20px] px-[50px]">
@@ -30,3 +28,10 @@
         <RouterView />
     </div>
 </template>
+  
+<script setup>
+import { RouterView, RouterLink } from 'vue-router';
+
+// Component logic goes here
+</script>
+  

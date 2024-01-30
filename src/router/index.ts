@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MainLayout from '../layouts/MainLayout.vue'
 import HomeView from '../views/HomeView.vue'
 import ComponentsView from '../views/ComponentsView.vue'
-import BlogPostView from '@/views/BlogPostView.vue'
 import { useUserStore } from '../stores/auth'
 
 const router = createRouter({
@@ -220,7 +219,6 @@ const router = createRouter({
 //     next() // Doğrulama gerektirmeyen sayfalarda devam et
 //   }
 // })
-
 
 router.afterEach((to, from, failure) => {
   if (!failure) {
