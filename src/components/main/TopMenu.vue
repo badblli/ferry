@@ -45,7 +45,7 @@
             <div
               class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
               aria-labelledby="hs-dropdown-slideup-animation">
-              <a v-for="(language, langIndex) in languages" :key="langIndex"
+              <a v-for="(language, langIndex) in languages" :key="langIndex" @click="updateCurrentLanguage(language.name)"
                 class="flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-['Plus Jakarta Display'] tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
                   language.name }}</a>
             </div>
@@ -57,8 +57,12 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '../../stores/auth';
 import IconTopMenu from "../icons/IconTopMenu.vue";
 import IconArrowWhite from "../icons/IconArrowWhite.vue";
+
+const userStore = useUserStore();
 
 const message =
   "Samos’ta artık bir araban var. Günlük kiralık aracın sadece 30€!";
@@ -67,14 +71,28 @@ const navItems = [
   { text: "Kampanyalarımız", link: "#", items: [] },
   { text: "Ferry Destek", link: "#", items: [] },
 ];
-const currentLink = "your-current-link";
-const currentLanguage = "Turkish";
+
 const languages = [
+  { name: "Turkish", link: "#" },
   { name: "English", link: "#" },
   { name: "Greek", link: "#" },
   { name: "Russian", link: "#" },
   { name: "German", link: "#" },
 ];
+
+const selectedLanguage = ref(userStore.selectedLanguage);
+
+const updateCurrentLanguage = (language: string) => {
+  selectedLanguage.value = language;
+  userStore.updateLanguage(language);
+};
+
+const currentLanguage = selectedLanguage;
+
+onMounted(() => {
+  selectedLanguage.value = localStorage.getItem('selectedLanguage') || 'Turkish';
+  userStore.updateLanguage(selectedLanguage.value);
+});
 </script>
 
 <style scoped>

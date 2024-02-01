@@ -1,6 +1,9 @@
 <template>
     <nav class="navbar w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-28 md:px-16 sm:px-8">
-        <div className="flex">
+        <button class="block md:hidden bg-slate-200">
+            ikon
+        </button>
+        <div className="hidden md:flex">
             <div v-for="(item, index) in navBarItems" :key="index">
                 <a class="text-black text-base font-medium  tracking-tight mr-4">
                     {{ item.text }}
@@ -34,8 +37,7 @@
                     class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
                     <div
                         class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all md:max-w-2xl md:w-full m-3 md:mx-auto">
-                        <div
-                            class="  h-[629px] flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+                        <div class="  h-[629px] flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
                             <div class="text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                 <h2 class="block text-2xl font-bold text-gray-800 text-center mt-10 mb-[83px]">Kullanıcı
                                     Girişi</h2>
@@ -53,7 +55,7 @@
                                                         type="email" id="email" name="email" placeholder="Email Address"
                                                         aria-label="Full name">
                                                     <span
-                                                        class="flex-shrink-0 bg-white text-sm text-white flex justify-center items-center  w-[50px] h-[50px]  rounded-full"
+                                                        class="flex-shrink-0 bg-white text-sm text-white flex justify-center items-center w-[50px] h-[50px] rounded-full"
                                                         type="button">
                                                     </span>
                                                 </div>
@@ -150,7 +152,10 @@
                 </div>
             </div>
         </div>
+        <!-- Navigation Toggle -->
+        <!-- End Navigation Toggle -->
     </nav>
+    <div class="w-full h-[0.5px] border border-gray-200"></div>
     <div class="w-full h-[0.5px] border border-gray-200"></div>
 </template>
 
