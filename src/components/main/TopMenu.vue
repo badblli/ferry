@@ -33,8 +33,7 @@
         class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
         <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
           <a :href="item.link" v-for="(item, index) in navItems" :key="index"
-            class="text-sm font-semibold dark:focus:outline-none dark:focus:ring-1"
-            :aria-current="item.link === currentLink ? 'page' : null">{{ item.text }}</a>
+            class="text-sm font-semibold dark:focus:outline-none dark:focus:ring-1">{{ item.text }}</a>
           <div class="hs-dropdown relative inline-flex">
             <button id="hs-dropdown-slideup-animation" type="button"
               class=" hs-dropdown-toggle flex flex-row justify-center items-center mr-2">
@@ -46,7 +45,7 @@
             <div
               class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
               aria-labelledby="hs-dropdown-slideup-animation">
-              <a v-for="(language, langIndex) in languages" :key="langIndex" :href="language.link"
+              <a v-for="(language, langIndex) in languages" :key="langIndex"
                 class="flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-['Plus Jakarta Display'] tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
                   language.name }}</a>
             </div>
