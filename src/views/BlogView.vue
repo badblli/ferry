@@ -224,9 +224,8 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import IconArrowTopRight from "../components/icons/IconArrowTopRight.vue";
-
 </script>
 
 <style scoped></style>

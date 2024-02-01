@@ -1,14 +1,11 @@
 <template>
-  <header
-    class="relative flex flex-wrap sm:justify-start sm:flex-nowrap -z-10 w-full h-[60px] bg-blue-700 text-sm py-4 dark:bg-gray-800">
+  <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
     <nav class="w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-28 md:px-16 sm:px-8" aria-label="Global">
       <div class="flex items-center justify-between">
         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ message }}</a>
         <div
           class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-35px]">
-          <span class="text-white font-bold text-[15px]">{{
-            buttonText
-          }}</span>
+          <span class="text-white font-bold text-[15px]">{{ buttonText }}</span>
           <IconTopMenu />
         </div>
         <div class="sm:hidden">
@@ -35,43 +32,55 @@
       <div id="navbar-with-mega-menu"
         class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
         <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-          <a v-for="(item, index) in navItems" :key="index"
-            class="text-sm font-semibold dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            :href="item.link" aria-current="page">{{ item.text }}</a>
-          <LanguageChanger />
+          <a :href="item.link" v-for="(item, index) in navItems" :key="index"
+            class="text-sm font-semibold dark:focus:outline-none dark:focus:ring-1"
+            :aria-current="item.link === currentLink ? 'page' : null">{{ item.text }}</a>
+          <div class="hs-dropdown relative inline-flex">
+            <button id="hs-dropdown-slideup-animation" type="button"
+              class=" hs-dropdown-toggle flex flex-row justify-center items-center mr-2">
+              <span
+                class="text-white text-sm font-semibold font-['Plus Jakarta Sans'] tracking-tight cursor-pointer mr-[9px]">{{
+                  currentLanguage }}</span>
+              <IconArrowWhite />
+            </button>
+            <div
+              class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
+              aria-labelledby="hs-dropdown-slideup-animation">
+              <a v-for="(language, langIndex) in languages" :key="langIndex" :href="language.link"
+                class="flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-['Plus Jakarta Display'] tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
+                  language.name }}</a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
   </header>
 </template>
 
-<script lang="ts">
-import LanguageChanger from "../advanced/LanguageChanger.vue";
+<script setup lang="ts">
 import IconTopMenu from "../icons/IconTopMenu.vue";
+import IconArrowWhite from "../icons/IconArrowWhite.vue";
 
-export default {
-  data() {
-    return {
-      message:
-        "Samos’ta artık bir araban var. Günlük kiralık aracın sadece 30€!",
-      buttonText: "Daha Fazla Bilgi",
-      navItems: [
-        { text: "Kampanyalarımız", link: "#", items: [] },
-        { text: "Ferry Destek", link: "#", items: [] },
-      ],
-      iconClass: "w-5 h-5",
-    };
-  },
-  components: {
-    LanguageChanger,
-    IconTopMenu,
-  },
-};
+const message =
+  "Samos’ta artık bir araban var. Günlük kiralık aracın sadece 30€!";
+const buttonText = "Daha Fazla Bilgi";
+const navItems = [
+  { text: "Kampanyalarımız", link: "#", items: [] },
+  { text: "Ferry Destek", link: "#", items: [] },
+];
+const currentLink = "your-current-link";
+const currentLanguage = "Turkish";
+const languages = [
+  { name: "English", link: "#" },
+  { name: "Greek", link: "#" },
+  { name: "Russian", link: "#" },
+  { name: "German", link: "#" },
+];
 </script>
 
 <style scoped>
 header {
-  background-color: #2149D5;
+  background-color: #2149d5;
   color: #fff;
 }
 </style>

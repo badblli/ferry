@@ -11,7 +11,7 @@ const router = createRouter({
         {
           path: '/',
           name: 'home',
-          component: () => import('../views/HomeView.vue'),
+          component: () => import('../views/HomeView.vue')
         },
         {
           path: '/price',
@@ -47,6 +47,21 @@ const router = createRouter({
           path: '/faq',
           name: 'faq',
           component: () => import('@/views/FAQView.vue')
+        },
+        {
+          path: '/deals',
+          name: 'deals',
+          component: () => import('@/views/DealsView.vue')
+        },
+        {
+          path: '/campaign',
+          name: 'campaign',
+          component: () => import('@/views/CampaignView.vue')
+        },
+        {
+          path: '/tours',
+          name: 'tours',
+          component: () => import('@/views/CampaingToursView.vue')
         }
         // {
         //   path: "/about",
