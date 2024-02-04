@@ -174,7 +174,7 @@
                             </div>
                         </div>
                         <div
-                            class="flex flex-row justify-center items-center text-black text-lg font-medium font-['Plus Jakarta Display'] mr-1 cursor-pointer">
+                            class="flex flex-row justify-center items-center text-black text-lg font-medium font-display mr-1 cursor-pointer">
                             <h2>Daha fazla soru</h2>
                             <div>
                                 <IconArrowDownBlack />

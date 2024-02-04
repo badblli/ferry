@@ -6,9 +6,9 @@
                     <div
                         className="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex justify-between items-center">
                         <div className="ml-[46px]">
-                            <h2 className="mb-3 text-black text-base font-medium font-['Plus Jakarta Display']">Teklifler ve
+                            <h2 className="mb-3 text-black text-base font-medium font-display">Teklifler ve
                                 İpuçları</h2>
-                            <h2 class="text-zinc-300 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                            <h2 class="text-zinc-300 text-base font-normal font-display tracking-tight">
                                 Günlük teklif ve ipuçları</h2>
                         </div>
                         <div

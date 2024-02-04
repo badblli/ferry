@@ -2,8 +2,7 @@
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
             <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
-                <h1
-                    class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide my-auto flex items-center">
+                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                     {{ pageTitle }}
                 </h1>
             </div>

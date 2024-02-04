@@ -2,8 +2,7 @@
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
             <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
-                <h1
-                    class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide my-auto flex items-center">
+                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                     İletişim
                 </h1>
             </div>
@@ -26,8 +25,7 @@
                                 <div>
                                     <div
                                         class="w-[142px] h-[39px] rounded-lg border border-stone-300 flex items-center justify-center cursor-pointer">
-                                        <div
-                                            class="text-center items-center text-black text-base font-medium font-['Plus Jakarta Display']">
+                                        <div class="text-center items-center text-black text-base font-medium font-display">
                                             Hemen ara</div>
                                     </div>
                                 </div>
@@ -48,7 +46,7 @@
                                     <div
                                         class="w-[142px] h-[39px] rounded-lg border border-stone-300 flex items-center justify-center">
                                         <div
-                                            class="text-center items-center text-black text-base font-medium font-['Plus Jakarta Display'] cursor-pointer">
+                                            class="text-center items-center text-black text-base font-medium font-display cursor-pointer">
                                             Tıkla Konuş</div>
                                     </div>
                                 </div>
@@ -69,7 +67,7 @@
                                     <div
                                         class="w-[142px] h-[39px] rounded-lg border border-stone-300 flex items-center justify-center">
                                         <div
-                                            class="text-center items-center text-black text-base font-medium font-['Plus Jakarta Display'] cursor-pointer">
+                                            class="text-center items-center text-black text-base font-medium font-display cursor-pointer">
                                             Adres Tarifi Al</div>
                                     </div>
                                 </div>
@@ -113,9 +111,9 @@
                                     </div>
                                     <div class="flex flex-row justify-end">
                                         <button
-                                            class="px-8 text-center text-black text-base font-medium font-['Plus Jakarta Display'] tracking-tight">Temizle</button>
+                                            class="px-8 text-center text-black text-base font-medium font-displaytracking-tight">Temizle</button>
                                         <button
-                                            class="w-[222px] h-[53px] bg-slate-200 rounded-lg border text-center text-black text-base font-medium font-['Plus Jakarta Display'] tracking-tight">Mesajı
+                                            class="w-[222px] h-[53px] bg-slate-200 rounded-lg border text-center text-black text-base font-medium font-display tracking-tight">Mesajı
                                             Gönder</button>
                                     </div>
                                 </form>

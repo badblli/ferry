@@ -2,7 +2,7 @@
     <div>
         <div class="w-full h-[223px] bg-slate-200" />
         <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <span class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide">Merhaba Kevin.</span>
+            <span class="text-black text-4xl font-medium font-display tracking-wide">Merhaba Kevin.</span>
             <div class="mt-[56px] pr-[50px]">
                 <div class="border-b border-gray-200">
                     <nav class="flex overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-row items-center justify-center pt-12 cursor-pointer">
-                                    <h1 class="pt-4 text-black text-lg font-medium font-['Plus Jakarta Display'] mb-4 mr-4">
+                                    <h1 class="pt-4 text-black text-lg font-medium font-display mb-4 mr-4">
                                         Daha fazla
                                         rezervasyon</h1>
                                     <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
@@ -124,11 +124,11 @@
                                                             <div class="ml-[46px]">
                                                                 <div>
                                                                     <h2
-                                                                        class="mb-1 text-black text-base font-medium font-['Plus Jakarta Display']">
+                                                                        class="mb-1 text-black text-base font-medium font-display">
                                                                         İsim
                                                                     </h2>
                                                                     <h2
-                                                                        class="text-zinc-600 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
                                                                         Antonio
                                                                     </h2>
                                                                 </div>
@@ -136,7 +136,7 @@
                                                             <div
                                                                 class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
                                                                 <button
-                                                                    class="text-center text-black text-base font-bold font-['Plus Jakarta Text'] leading-normal">
+                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
                                                                     Düzenle
                                                                 </button>
                                                             </div>
@@ -150,11 +150,11 @@
                                                             <div class="ml-[46px]">
                                                                 <div>
                                                                     <h2
-                                                                        class="mb-1 text-black text-base font-medium font-['Plus Jakarta Display']">
+                                                                        class="mb-1 text-black text-base font-medium font-display">
                                                                         Soyisim
                                                                     </h2>
                                                                     <h2
-                                                                        class="text-zinc-600 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
                                                                         Giovanazzi
                                                                     </h2>
                                                                 </div>
@@ -162,7 +162,7 @@
                                                             <div
                                                                 class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
                                                                 <button
-                                                                    class="text-center text-black text-base font-bold font-['Plus Jakarta Text'] leading-normal">
+                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
                                                                     Düzenle
                                                                 </button>
                                                             </div>
@@ -176,11 +176,11 @@
                                                             <div class="ml-[46px]">
                                                                 <div>
                                                                     <h2
-                                                                        class="mb-1 text-black text-base font-medium font-['Plus Jakarta Display']">
+                                                                        class="mb-1 text-black text-base font-medium font-display">
                                                                         Telefon Numarası
                                                                     </h2>
                                                                     <h2
-                                                                        class="text-zinc-600 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
                                                                         0 555 555 55 55
                                                                     </h2>
                                                                 </div>
@@ -188,7 +188,7 @@
                                                             <div
                                                                 class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
                                                                 <button
-                                                                    class="text-center text-black text-base font-bold font-['Plus Jakarta Text'] leading-normal">
+                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
                                                                     Düzenle
                                                                 </button>
                                                             </div>
@@ -202,11 +202,11 @@
                                                             <div class="ml-[46px]">
                                                                 <div>
                                                                     <h2
-                                                                        class="mb-1 text-black text-base font-medium font-['Plus Jakarta Display']">
+                                                                        class="mb-1 text-black text-base font-medium font-display">
                                                                         Doğum Tarihi
                                                                     </h2>
                                                                     <h2
-                                                                        class="text-zinc-600 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
                                                                         10.06.2000
                                                                     </h2>
                                                                 </div>
@@ -214,7 +214,7 @@
                                                             <div
                                                                 class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
                                                                 <button
-                                                                    class="text-center text-black text-base font-bold font-['Plus Jakarta Text'] leading-normal">
+                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
                                                                     Düzenle
                                                                 </button>
                                                             </div>

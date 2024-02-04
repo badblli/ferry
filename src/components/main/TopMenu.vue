@@ -8,26 +8,6 @@
           <span class="text-white font-bold text-[15px]">{{ buttonText }}</span>
           <IconTopMenu />
         </div>
-        <div class="sm:hidden">
-          <button type="button"
-            class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-whiteshadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            data-hs-collapse="#navbar-with-mega-menu" aria-controls="navbar-with-mega-menu"
-            aria-label="Toggle navigation">
-            <svg class="hs-collapse-open:hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <line x1="3" x2="21" y1="6" y2="6" />
-              <line x1="3" x2="21" y1="12" y2="12" />
-              <line x1="3" x2="21" y1="18" y2="18" />
-            </svg>
-            <svg class="hs-collapse-open:block hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
       </div>
       <div id="navbar-with-mega-menu"
         class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
@@ -46,7 +26,7 @@
               class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
               aria-labelledby="hs-dropdown-slideup-animation">
               <a v-for="(language, langIndex) in languages" :key="langIndex" @click="updateCurrentLanguage(language.name)"
-                class="flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-['Plus Jakarta Display'] tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
+                class="flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
                   language.name }}</a>
             </div>
           </div>

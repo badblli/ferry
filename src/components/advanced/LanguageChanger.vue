@@ -23,7 +23,7 @@
                         Sadece 5 dakika içinde<br />biletini alabilirsin.</div>
                     <div
                         class="w-[200px] h-[53px] bg-slate-200 rounded-lg border flex justify-center items-center mt-[24px]">
-                        <div class="text-center text-black text-base font-medium font-['Plus Jakarta Display']">
+                        <div class="text-center text-black text-base font-medium font-display">
                             Şimdi Bilet Al</div>
                     </div>
                 </div>

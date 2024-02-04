@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
         <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <h1 class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide mb-9">
+            <h1 class="text-black text-4xl font-medium font-display tracking-wide mb-9">
                 Feribot Bileti Ücretleri
             </h1>
             <div className="w-full mx-auto bg-neutral-100 rounded-[20px] p-4">
@@ -38,7 +38,7 @@
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
 import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
 // import MyNotifications from "../components/advanced/MyNotifications.vue"
@@ -46,31 +46,17 @@ import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
 // import MyProfile from "../components/advanced/MyProfile.vue"
 // import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
 
-export default {
-    name: 'TicketPrice',
-    components: {
-        IconAsteriskSimple,
-        IconMainSamosa,
-        // MyProfile,
-        // MySettingPassword,
-        // MySettingsDeactive,
-        // MyNotifications
-    },
-    data() {
-        return {
-            tableHeaders: [
-                ["Bilet Tipi", "Yetişkin", "Çocuk 6-11", "Çocuk 6-11"]
-            ],
-            tableData: [
-                ["Tek Yön", "39TL", "39TL", "39TL"],
-                ["Tek Yön", "39TL", "39TL", "39TL"],
-                ["Tek Yön", "39TL", "39TL", "39TL"]
+const tableHeaders = [
+    ["Bilet Tipi", "Yetişkin", "Çocuk 6-11", "Çocuk 6-11"]
+];
 
-            ],
-            whichFerry: "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.",
-        };
-    }
-};
+const tableData = [
+    ["Tek Yön", "39TL", "39TL", "39TL"],
+    ["Tek Yön", "39TL", "39TL", "39TL"],
+    ["Tek Yön", "39TL", "39TL", "39TL"]
+];
+
+const whichFerry = "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.";
 </script>
   
 <style scoped></style>

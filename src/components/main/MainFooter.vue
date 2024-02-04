@@ -19,20 +19,20 @@
         <div class="text-lg font-bold mb-4 flex">
           <IconMainSamosa />
           <div>
-            <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">samosa</span>
-            <span className="text-black text-2xl font-normal font-['Plus Jakarta">feribot</span>
+            <span className="text-black text-2xl font-bold font-display tracking-wide">samosa</span>
+            <span className="text-black text-2xl font-normal font-display">feribot</span>
           </div>
         </div>
         <ul>
           <li>
             <div className="mb-8">
-              <div className="text-black text-sm font-normal font-['Plus Jakarta Display']">
+              <div className="text-black text-sm font-normal font-display">
                 Copyright © 2022. SamosaFeribot. All rights reserved.
               </div>
             </div>
           </li>
           <li>
-            <div class="text-black text-2xl font-normal font-['Plus Jakarta Display'] leading-loose mb-2">Abone ol,
+            <div class="text-black text-2xl font-normal font-display leading-loose mb-2">Abone ol,
               kampanya<br />kaçırma!</div>
           </li>
           <li>
@@ -55,25 +55,25 @@
         <!-- for first column and space -->
       </div>
       <div>
-        <div class="text-black text-lg font-medium font-['Plus Jakarta Display'] mb-5">Samosa Feribot</div>
+        <div class="text-black text-lg font-medium font-display mb-5">Samosa Feribot</div>
         <div v-for="(item, index ) in footerCol" :key="index" className="mb-5">
-          <a :href="item.link" class="text-zinc-600 text-sm font-normal font-['Plus Jakarta Display']">{{
+          <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{
             item.text
           }}</a>
         </div>
       </div>
       <div>
-        <div class="text-black text-lg font-medium font-['Plus Jakarta Display'] mb-5">Hakkımızda</div>
+        <div class="text-black text-lg font-medium font-display mb-5">Hakkımızda</div>
         <div v-for="(item, index ) in footerSecCol" :key="index" className="mb-5">
-          <a :href="item.link" class="text-zinc-600 text-sm font-normal font-['Plus Jakarta Display']">{{
+          <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{
             item.text
           }}</a>
         </div>
       </div>
       <div>
-        <div class="text-black text-lg font-medium font-['Plus Jakarta Display'] mb-5">Turlar</div>
+        <div class="text-black text-lg font-medium font-display mb-5">Turlar</div>
         <div v-for="(item, index ) in footerThrdCol" :key="index" className="mb-5">
-          <a :href="item.link" class="text-zinc-600 text-sm font-normal font-['Plus Jakarta Display']">{{
+          <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{
             item.text
           }}</a>
         </div>
@@ -107,7 +107,7 @@
 import { ref } from 'vue';
 import IconFooter from '../icons/IconFooter.vue';
 import IconMainSamosa from '../icons/IconMainSamosa.vue';
-import IconAnotherTour from '../icons/IconAnotherTour.vue';
+// import IconAnotherTour from '../icons/IconAnotherTour.vue';
 import IconArrowTop from '../icons/IconArrowTop.vue';
 import IconArrow from '../icons/IconArrow.vue';
 import IconArrowUpRight from '../icons/IconArrowUpRight.vue';

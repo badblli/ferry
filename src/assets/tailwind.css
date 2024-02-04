@@ -551,3 +551,11 @@ div.code-toolbar > .toolbar a:hover {
 .docs-prism:not(.language-markup):not(.language-js)::after {
   display: none;
 }
+
+.half-pixel {
+  transform: scaleY(0.5);
+}
+
+.border-half {
+  border-width: 0.5px;
+}

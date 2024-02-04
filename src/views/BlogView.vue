@@ -21,8 +21,7 @@
                         Blog
                     </li>
                 </ol>
-                <h1
-                    class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide my-auto flex items-center">
+                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                     Samos'a Blog
                 </h1>
             </div>
@@ -30,192 +29,37 @@
         <!-- CONTENT SWİPER SECTİON -->
         <section class="w-full">
             <div class="w-full h-[147px] relative flex flex-row items-center lg:pl-28 md:pl-16 sm:pl-8">
-                <div
-                    class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
-                    <img class="w-[66px] h-[66px] rounded-full ml-[17px]" src="https://via.placeholder.com/66x66" />
-                    <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">Placeholder</div>
-                </div>
-                <div
-                    class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
-                    <img class="w-[66px] h-[66px] rounded-full ml-[17px]" src="https://via.placeholder.com/66x66" />
-                    <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">Placeholder</div>
-                </div>
-                <div
-                    class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
-                    <img class="w-[66px] h-[66px] rounded-full ml-[17px]" src="https://via.placeholder.com/66x66" />
-                    <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">Placeholder</div>
-                </div>
-                <div
-                    class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
-                    <img class="w-[66px] h-[66px] rounded-full ml-[17px]" src="https://via.placeholder.com/66x66" />
-                    <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">Placeholder</div>
-                </div>
-                <div
-                    class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
-                    <img class="w-[66px] h-[66px] rounded-full ml-[17px]" src="https://via.placeholder.com/66x66" />
-                    <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">Placeholder</div>
-                </div>
+                <Swiper :options="options" :space-between="20" :loop="true" :pagination="{ clickable: true }"
+                    :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }">
+                    <SwiperSlide v-for="container in images" :key="container.name">
+                        <div
+                            class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
+                            <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="container.src" />
+                            <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">{{
+                                container.name }}</div>
+                        </div>
+                    </SwiperSlide>
+                </Swiper>
             </div>
         </section>
         <!-- CONTENT SWİPER SECTİON -->
         <div class="w-full lg:px-28 md:px-16 sm:px-8 px-4">
             <div class="mb-16 md:mb-[204px]">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-                    <div class="space-y-[70px]">
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                    </div>
-                    <div class="space-y-[70px]">
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                    </div>
-                    <div class="space-y-[70px]">
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                    </div>
-                    <div class="space-y-[70px]">
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
-                        <div class="cursor-pointer">
-                            <img class="w-full h-[295px] object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Image Description">
-                            <div
-                                class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
-                                KEŞFET - 15 MİN</div>
-                            <div
-                                class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
-                                Samos
-                                Non Stop ile<br />adayı tanıyalım</div>
-                        </div>
+                    <div v-for="(blog, index) in blogs" :key="index" class="cursor-pointer mb-[50px]">
+                        <img class="w-full h-[295px] object-cover rounded-xl"
+                            src="https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Image Description">
+                        <div
+                            class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide mt-[31px]">
+                            KEŞFET - 15 MİN</div>
+                        <div
+                            class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
+                            {{ blog.title }}</div>
                     </div>
                 </div>
                 <div class="flex flex-row justify-center items-center mt-[83px] cursor-pointer">
-                    <div class="text-black text-lg font-medium font-['Plus Jakarta Display'] mr-[16px]">Daha fazla yazı
+                    <div class="text-black text-lg font-medium font-display mr-[16px]">Daha fazla yazı
                     </div>
                     <IconArrowTopRight />
                 </div>
@@ -226,6 +70,67 @@
 
 <script setup lang="ts">
 import IconArrowTopRight from "../components/icons/IconArrowTopRight.vue";
+import { ref } from 'vue';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+
+const options = {
+    type: 'loop',
+    perPage: 5,
+    perMove: 1,
+};
+
+const images = ref([
+    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 1' },
+    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 2' },
+    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 3' },
+    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 4' },
+    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 5' },
+]);
+
+const blogs = [
+    {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    },
+    {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    }, {
+        image: "https://images.unsplash.com/photo-1517202058079-41d919c02222?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image Description",
+        title: "Samos Non Stop ile adayı tanıyalım"
+    },
+];
+
 </script>
 
 <style scoped></style>

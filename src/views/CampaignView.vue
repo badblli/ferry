@@ -21,8 +21,7 @@
                         Fırsatlar
                     </li>
                 </ol>
-                <h1
-                    class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide my-auto flex items-center">
+                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                     <span class="font-bold">Samos</span>Fırsatlar
                 </h1>
             </div>
@@ -55,29 +54,29 @@
                         <div
                             class="h-[66px] w-[183px] rounded-xl border border-zinc-200 md:ml-6 flex flex-col justify-center pl-6 mt-[20px] bg-slate-50">
                             <div
-                                class="flex text-black text-sm font-light font-['Plus Jakarta Display'] leading-normal justify-start items-start">
+                                class="flex text-black text-sm font-light font-display leading-normal justify-start items-start">
                                 Satış Tarihi</div>
-                            <div class="text-black text-sm font-medium font-['Plus Jakarta Display'] leading-normal">Last
+                            <div class="text-black text-sm font-medium font-display leading-normal">Last
                                 {{ item.schedule }}</div>
                         </div>
                         <div
                             class="h-[66px] w-[183px] rounded-xl border border-zinc-200 ml-6 flex flex-col justify-center pl-6 mt-[20px] bg-slate-50">
                             <div
-                                class="flex text-black text-sm font-light font-['Plus Jakarta Display'] leading-normal justify-start items-start">
+                                class="flex text-black text-sm font-light font-display leading-normal justify-start items-start">
                                 Geçerlilik Tarihi</div>
-                            <div class="text-black text-sm font-medium font-['Plus Jakarta Display'] leading-normal">Last
+                            <div class="text-black text-sm font-medium font-display leading-normal">Last
                                 {{ item.lastTime }}</div>
                         </div>
                         <div
                             class="h-[66px] w-[183px] rounded-xl border border-zinc-200 ml-6 flex flex-col justify-center pl-6 mt-[20px]">
-                            <div class="text-black text-sm font-medium font-['Plus Jakarta Display'] leading-normal">
+                            <div class="text-black text-sm font-medium font-display leading-normal">
                                 Kampanyaya Git</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex flex-row justify-center items-center mt-[83px] cursor-pointer lg:mb-[146px] mb-10">
-                <div class="text-black text-lg font-medium font-['Plus Jakarta Display'] mr-[16px]">Daha fazla yazı
+                <div class="text-black text-lg font-medium font-display mr-[16px]">Daha fazla yazı
                 </div>
                 <IconArrowTopRight />
             </div>

@@ -14,8 +14,11 @@
     "tailwind": "npx tailwindcss -i ./src/assets/tailwind.css -o ./src/assets/main.css --watch"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/vue-splide": "^0.6.12",
     "pinia": "^2.1.7",
     "preline": "^2.0.1",
+    "slider": "^1.0.4",
     "swiper": "^11.0.5",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"

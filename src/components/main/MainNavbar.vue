@@ -1,8 +1,32 @@
 <template>
     <nav class="navbar w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-28 md:px-16 sm:px-8">
-        <button class="block md:hidden bg-slate-200">
+        <div class="hs-dropdown relative inline-flex block md:hidden">
+            <button id="hs-dropdown-slideup-animation block md:hidden" type="button"
+                class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                <svg width="26" height="12" viewBox="0 0 26 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="26" height="2" fill="black" />
+                    <rect y="10" width="26" height="2" fill="black" />
+                </svg>
+            </button>
+            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-72 p-12 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                aria-labelledby="hs-dropdown-slideup-animation">
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                    href="#">
+                    Samosa Turları
+                </a>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                    href="#">
+                    Ücretler
+                </a>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                    href="#">
+                    Seferlerimiz
+                </a>
+            </div>
+        </div>
+        <!-- <button class=" bg-slate-200">
             ikon
-        </button>
+        </button> -->
         <div className="hidden md:flex">
             <div v-for="(item, index) in navBarItems" :key="index">
                 <a class="text-black text-base font-medium  tracking-tight mr-4">
@@ -14,7 +38,7 @@
             <IconMainSamosa />
             <div className="ml-4">
                 <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">Samosa</span>
-                <span className="text-black text-2xl font-normal font-['Plus Jakarta">Feribot</span>
+                <span className="text-black text-2xl font-normal font-['Plus Jakarta Display']">Feribot</span>
             </div>
         </div>
         <div>
@@ -103,7 +127,7 @@
                                         <button type="submit"
                                             class="m-auto w-[398px] h-[62px] py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                                             <div
-                                                class="text-center text-white text-base font-bold font-['Plus Jakarta Text'] leading-normal">
+                                                class="text-center text-white text-base font-bold font-text leading-normal">
                                                 Giriş Yap
                                             </div>
                                         </button>
@@ -152,8 +176,6 @@
                 </div>
             </div>
         </div>
-        <!-- Navigation Toggle -->
-        <!-- End Navigation Toggle -->
     </nav>
     <div class="w-full h-[0.5px] border border-gray-200"></div>
     <div class="w-full h-[0.5px] border border-gray-200"></div>
@@ -178,16 +200,6 @@ export default {
         IconMainSamosa,
         IconArrowDown
     },
-    // methods: {
-    //     openModal() {
-    //         this.isModalOpen = true;
-    //         console.log('Modal opened. isModalOpen:', this.isModalOpen);
-    //     },
-    //     closeModal() {
-    //         this.isModalOpen = false;
-    //         console.log('Modal closed. isModalOpen:', this.isModalOpen);
-    //     },
-    // },
 };
 </script>
 
