@@ -3,11 +3,13 @@
     <div class="text-center text-black text-lg font-medium ">
       {{ footerContactText }}
     </div>
-    <div className="flex flex-row justify-evenly items-center cursor-pointer">
+    <div className="flex flex-row justify-evenly items-center cursor-pointer"
+      data-hs-overlay="#hs-vertically-centered-modal">
       <span className="mr-3">İletişime Geç </span>
       <div class="flex items-center justify-center w-7 h-7 p-1 flex-shrink-0 rounded-full bg-gray-800">
         <IconFooter />
       </div>
+      <ContactModal />
     </div>
   </div>
   <footer class="bg-white text-black p-8">
@@ -107,10 +109,10 @@
 import { ref } from 'vue';
 import IconFooter from '../icons/IconFooter.vue';
 import IconMainSamosa from '../icons/IconMainSamosa.vue';
-// import IconAnotherTour from '../icons/IconAnotherTour.vue';
 import IconArrowTop from '../icons/IconArrowTop.vue';
 import IconArrow from '../icons/IconArrow.vue';
 import IconArrowUpRight from '../icons/IconArrowUpRight.vue';
+import ContactModal from '../advanced/ContactModal.vue';
 
 const currentYear = ref(new Date().getFullYear());
 const footerContactText =

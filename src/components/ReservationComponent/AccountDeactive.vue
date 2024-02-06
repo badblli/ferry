@@ -17,8 +17,48 @@
                 <div>
                     <button
                         class="text-center text-base text-red-500 font-bold font-['Plus Jakarta Text'] leading-normal bg-red-100 hover:bg-red-200 transition ease-in-out delay-100 w-[211px] h-14 px-8 py-4 mr-5 rounded-md justify-center items-center gap-2.5 inline-flex cursor-pointer"
-                        type="button" data-hs-overlay="#hs-custom-backdrop-modal">
+                        type="button" data-hs-overlay="#hs-medium-modal-deactive">
                         Şimdi Hesabımı Sil</button>
+                    <div id="hs-medium-modal-deactive"
+                        class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
+                        <div
+                            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all md:max-w-2xl md:w-full m-3 md:mx-auto">
+                            <div
+                                class="  h-[82-79px] flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
+                                <div class="text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                                    <h2 class="block text-2xl font-bold text-gray-800 text-center mt-10 mb-[83px]">Hesap
+                                        Silme</h2>
+                                </div>
+                                <div>
+                                    <!-- Form -->
+                                    <form class="flex justify-center items-center">
+                                        <div class="grid gap-y-4 my-auto justify-between">
+                                            <!-- Form Group -->
+                                            <p
+                                                class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] ml-[50px] mb-[30px]">
+                                                Hesabını Silme Durumunda ;</p>
+                                            <p v-for="(item, index) in messages" :key="index"
+                                                class="text-black text-base font-normal font-['Plus Jakarta Sans'] mb-[70px] ml-[50px] [&>*:nth-last-child(1)]:m-0">
+                                                {{ item }}
+                                            </p>
+                                            <button type="submit"
+                                                class="m-auto w-[398px] h-[62px] py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                <div
+                                                    class="text-center text-white text-base font-bold font-text leading-normal">
+                                                    Hesabımı kalıcı olarak sil
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div
+                                        class="text-center text-black text-xl font-semibold font-['Plus Jakarta Sans'] mt-[23px] mb-[23px] cursor-pointer">
+                                        Vazgeç, silme.
+                                    </div>
+                                    <!-- End Form -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,6 +102,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const messages = ref([
+    "Yunan adalarına indirimli fiyata feribot bileti alma",
+    "Samosa özel paket turlardan yararlanma",
+    "Eşssiz yunan koylarına seyahat etme",
+    "gibi fırsatlardan yararlanamayacaksınız. Yine de silmek isterseniz altta yer alan buton ile hesabınızı kalıcı olarak silebileceksiniz."
+]);
 
 </script>
 

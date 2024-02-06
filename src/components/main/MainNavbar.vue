@@ -10,41 +10,38 @@
             </button>
             <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-72 p-12 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                 aria-labelledby="hs-dropdown-slideup-animation">
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
                     href="#">
                     Samosa Turları
                 </a>
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
                     href="#">
                     Ücretler
                 </a>
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
                     href="#">
                     Seferlerimiz
                 </a>
             </div>
         </div>
-        <!-- <button class=" bg-slate-200">
-            ikon
-        </button> -->
         <div className="hidden md:flex">
             <div v-for="(item, index) in navBarItems" :key="index">
-                <a class="text-black text-base font-medium  tracking-tight mr-4">
+                <a class="text-black text-base font-medium tracking-tight mr-4">
                     {{ item.text }}
                 </a>
             </div>
         </div>
-        <div className="mr-48 flex justify-center items-center ">
+        <div className="flex justify-center items-center ">
             <IconMainSamosa />
             <div className="ml-4">
-                <span className="text-black text-2xl font-bold font-['Plus Jakarta Display'] tracking-wide">Samosa</span>
-                <span className="text-black text-2xl font-normal font-['Plus Jakarta Display']">Feribot</span>
+                <span className="text-black text-xl md:text-2xl font-bold font-display tracking-wide">Samosa</span>
+                <span className="text-black text-xl md:text-2xl font-normal font-display">Feribot</span>
             </div>
         </div>
         <div>
             <div class="text-center cursor-pointer flex">
                 <button type="button"
-                    class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1"
+                    class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1"
                     data-hs-overlay="#hs-medium-modal">
                     Giriş Yap
                 </button>

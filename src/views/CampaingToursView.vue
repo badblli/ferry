@@ -314,7 +314,7 @@
                 </div>
                 <div class="flex flex-col justify-center items-center m-auto relative">
                     <div className="w-full mx-auto rounded-[20px]">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col overflow-x-auto">
                             <div>
                                 <table className="relative bg-white mb-8 rounded-2xl w-full">
                                     <thead>
@@ -337,7 +337,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

@@ -28,21 +28,17 @@
         </div>
         <!-- CONTENT SWİPER SECTİON -->
         <section class="w-full">
-            <div class="w-full h-[147px] relative flex flex-row items-center lg:pl-28 md:pl-16 sm:pl-8">
-                <Swiper :options="options" :space-between="20" :loop="true" :pagination="{ clickable: true }"
-                    :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }">
-                    <SwiperSlide v-for="container in images" :key="container.name">
-                        <div
-                            class="w-[270px] h-[90px] bg-white rounded-[128px] border border-neutral-200 flex flex-row items-center mr-5 cursor-pointer">
-                            <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="container.src" />
-                            <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">{{
-                                container.name }}</div>
-                        </div>
-                    </SwiperSlide>
-                </Swiper>
+            <div class="w-full h-[147px] justify-between relative items-center pt-6 lg:pl-28 md:pl-16 sm:pl-8">
+                <Splide :options="splideOptions">
+                    <SplideSlide v-for="(item, index) in images" :key="index"
+                        class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
+                        <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="item.src" alt="Slide Image">
+                        <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">{{
+                            item.name }}</div>
+                    </SplideSlide>
+                </Splide>
             </div>
         </section>
-        <!-- CONTENT SWİPER SECTİON -->
         <div class="w-full lg:px-28 md:px-16 sm:px-8 px-4">
             <div class="mb-16 md:mb-[204px]">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
@@ -69,25 +65,45 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import IconArrowTopRight from "../components/icons/IconArrowTopRight.vue";
 import { ref } from 'vue';
-import { Swiper, SwiperSlide } from "swiper/vue";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+import '@splidejs/vue-splide/css';
 
-const options = {
+const splideOptions = {
     type: 'loop',
-    perPage: 5,
+    perPage: 4,
     perMove: 1,
+    arrows: false,
+    pagination: 'false',
+    gap: '1rem',
+    watchOverflow: false,
+    breakpoints: {
+        1380: {
+            perPage: 4,
+        },
+        1140: {
+            perPage: 3,
+        },
+        840: {
+            perPage: 2,
+        },
+        580: {
+            perPage: 1,
+        },
+    },
 };
 
 const images = ref([
-    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 1' },
-    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 2' },
-    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 3' },
-    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 4' },
-    { src: 'https://via.placeholder.com/66x66', name: 'Placeholder 5' },
+    { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', name: 'Macera Turu' },
+    { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', name: 'Yiyecek İçecek' },
+    { src: 'https://images.unsplash.com/photo-1585338475469-b02ff0ec409c?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', name: 'Deniz Doğa' },
+    { src: 'https://images.unsplash.com/photo-1651778278530-4a017ba98f46?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', name: 'Sokak Turları' },
+    { src: 'https://images.unsplash.com/photo-1543591783-4bb30f471a72?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', name: 'Tarihi Geziler' },
 ]);
 
 const blogs = [

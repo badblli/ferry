@@ -2,19 +2,19 @@
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
         <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <h1 class="text-black text-4xl font-medium font-display tracking-wide mb-9">
+            <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-9">
                 Feribot Bileti Ücretleri
             </h1>
             <div className="w-full mx-auto bg-neutral-100 rounded-[20px] p-4">
-                <div className="flex flex-col pt-8">
+                <div className="flex flex-col pt-8 overflow-x-auto">
                     <div className="p-8">
                         <div className="flex flex-row items-center">
                             <IconAsteriskSimple />
-                            <h2 className="text-black text-base font-medium  leading-[26.88px] h-7 ml-3">
+                            <h2 className="text-black teacxt-base font-medium  leading-[26.88px] h-7 ml-3">
                                 {{ whichFerry }}
                             </h2>
                         </div>
-                        <table className="relative bg-white mt-8 mb-8 rounded-2xl w-full">
+                        <table className="relative bg-white mt-8a mb-8 rounded-2xl w-full mt-10">
                             <thead>
                                 <tr v-for="(header, index) in tableHeaders" :key="index"
                                     class="my-6 mx-8 flex flex-row justify-between items-center text-black text-lg font-semibold  leading-loose rounded-lg">
@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
-import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
+// import IconMainSamosa from "../components/icons/IconMainSamosa.vue";
 // import MyNotifications from "../components/advanced/MyNotifications.vue"
 // import MySettingsDeactive from "../components/advanced/MySettingsDeactive.vue"
 // import MyProfile from "../components/advanced/MyProfile.vue"

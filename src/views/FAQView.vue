@@ -1,8 +1,7 @@
 <template>
     <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
         <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
-            <h1
-                class="text-black text-4xl font-medium font-['Plus Jakarta Display'] tracking-wide my-auto flex items-center">
+            <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                 Sıkça Sorulan Sorular
             </h1>
         </div>
@@ -15,8 +14,7 @@
                         Sadece
                         soruları okumak yetmez. Samos’a ait tüm bilgilerin yer aldığı kanalımızı inceleyyibilirsin.</div>
                     <div class="flex flex-row justify-center items-center cursor-pointer">
-                        <div
-                            class="text-gray-700 text-base font-medium font-['Plus Jakarta Display'] leading-[24.86px] tracking-tight ">
+                        <div class="text-gray-700 text-base font-medium font-display leading-[24.86px] tracking-tight ">
                             Youtube Kanalımıza Gidin</div>
                         <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex ml-[13px]">
                             <div class="w-5 h-5 relative flex-col justify-start items-start flex">
@@ -44,19 +42,8 @@
                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center py-8 gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-5 disabled:opacity-50 disabled:pointer-events-none"
                                     aria-controls="hs-basic-active-bordered-collapse-one">
                                     {{ accordion.title }}
-                                    <svg class="hs-accordion-active:hidden block w-3.5 h-3.5"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                    <svg class="hs-accordion-active:block hidden w-3.5 h-3.5"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                    </svg>
+                                    <IconAccordionActiveArrow class="hs-accordion-active:block hidden" />
+                                    <IconAccordionArrow class="hs-accordion-active:hidden block" />
                                 </button>
                                 <div id="hs-basic-active-bordered-collapse-one"
                                     class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
@@ -94,19 +81,8 @@
                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center py-8 gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-5 disabled:opacity-50 disabled:pointer-events-none"
                                     aria-controls="hs-basic-active-bordered-collapse-one">
                                     {{ accordion.title }}
-                                    <svg class="hs-accordion-active:hidden block w-3.5 h-3.5"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                    <svg class="hs-accordion-active:block hidden w-3.5 h-3.5"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                    </svg>
+                                    <IconAccordionActiveArrow class="hs-accordion-active:block hidden" />
+                                    <IconAccordionArrow class="hs-accordion-active:hidden block" />
                                 </button>
                                 <div id="hs-basic-active-bordered-collapse-one"
                                     class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
@@ -144,19 +120,8 @@
                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center py-8 gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-5 disabled:opacity-50 disabled:pointer-events-none"
                                     aria-controls="hs-basic-active-bordered-collapse-one">
                                     {{ accordion.title }}
-                                    <svg class="hs-accordion-active:hidden block w-3.5 h-3.5"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                    <svg class="hs-accordion-active:block hidden w-3.5 h-3.5"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                    </svg>
+                                    <IconAccordionActiveArrow class="hs-accordion-active:block hidden" />
+                                    <IconAccordionArrow class="hs-accordion-active:hidden block" />
                                 </button>
                                 <div id="hs-basic-active-bordered-collapse-one"
                                     class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
@@ -193,6 +158,8 @@ import ArrowUpRightWhite from '../components/icons/IconArrowUpRightWhite.vue'
 import IconEllips2077 from '../components/icons/IconEllips2077.vue'
 import IconPlay from '../components/icons/IconPlay.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
+import IconAccordionActiveArrow from '@/components/icons/IconAccordionActiveArrow.vue';
+import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue';
 
 const accordions = ref([
     {

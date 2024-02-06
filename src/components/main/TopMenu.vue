@@ -3,11 +3,11 @@
     <nav class="w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-28 md:px-16 sm:px-8" aria-label="Global">
       <div class="flex items-center justify-between">
         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ message }}</a>
-        <div
-          class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-35px]">
+        <!-- <div
+          class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-35px] ">
           <span class="text-white font-bold text-[15px]">{{ buttonText }}</span>
           <IconTopMenu />
-        </div>
+        </div> -->
       </div>
       <div id="navbar-with-mega-menu"
         class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
