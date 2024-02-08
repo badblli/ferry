@@ -6,10 +6,10 @@
                 <div className="ml-[46px]">
                     <div className="flex justify-center items-center">
                         <div>
-                            <h2 className="mb-1 text-black text-base font-medium font-['Plus Jakarta Display']">
+                            <h2 className="mb-1 text-black text-base font-medium font-display">
                                 Şifre
                             </h2>
-                            <div class="text-zinc-600 text-base font-normal font-['Plus Jakarta Display'] tracking-wider">
+                            <div class="text-zinc-600 text-base font-normal font-display tracking-wider">
                                 ***********</div>
                         </div>
                         <div class="w-[146px] h-[29px] rounded-md border ml-[42px] bg-green-100">
@@ -21,7 +21,7 @@
                 </div>
                 <div
                     class="w-[195px] h-14 px-8 py-4 rounded-md justify-center items-center gap-2.5 mr-5  inline-flex hover:bg-slate-200 transition ease-in-out delay-100 cursor-pointer">
-                    <div class="text-center text-zinc-900 text-base font-bold font-['Plus Jakarta Text'] leading-normal">
+                    <div class="text-center text-zinc-900 text-base font-bold font-text leading-normal">
                         Şifremi Güncelle</div>
                 </div>
             </div>

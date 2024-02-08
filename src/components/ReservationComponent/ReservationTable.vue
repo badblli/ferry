@@ -1,5 +1,5 @@
 <template>
-    <table class="w-full divide-y divide-gray-200">
+    <table class="w-full relative divide-y divide-gray-200">
         <thead>
             <tr>
                 <th scope="col"
@@ -23,7 +23,7 @@
         </thead>
         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
             <tr v-for="(reservation, index) in reservations" :key="index"
-                class="border border-stone-300 rounded-2xl p-3 pb-3 border-spacing-2.5">
+                class="m-6 border border-stone-300 rounded-2xl p-3 pb-3 border-spacing-2.5">
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 flex p-6">
                     <span class="whitespace-nowrap text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-7">
                         {{ reservation.number }}

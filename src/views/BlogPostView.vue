@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col lg:px-28 md:px-16 sm:px-8">
-        <ol class="flex items-center whitespace-nowrap mt-[30px]" aria-label="Breadcrumb">
+        <ol class="flex items-center whitespace-nowrap mt-[30px] pl-5 md:pl-0" aria-label="Breadcrumb">
             <li class="inline-flex items-center">
                 <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
                     href="#">
@@ -21,9 +21,9 @@
         </ol>
         <div>
             <div class="mt-[39px] flex flex-row justify-between">
-                <div class="text-black text-4xl font-semibold font-['Plus Jakarta Sans']">Samos’a gidince
+                <div class="text-black text-4xl font-semibold font-['Plus Jakarta Sans'] pl-5 md:pl-0">Samos’a gidince
                     yemeniz<br />gereken 10 başlangıç</div>
-                <div class="flex flex-row">
+                <div class="flex flex-col md:flex-row">
                     <div
                         class="w-[77px] h-[77px] bg-white rounded-full border border-neutral-200 ml-[15px] justify-center items-center flex cursor-pointer">
                         <IconAa />
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full">
+        <div class="w-full px-5 md:px-0">
             <div class="mb-16 md:mb-[104px] mt-[60px]">
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
                     <div class="space-y-[70px]">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-row">
+        <div class="flex flex-row px-5 md:px-0">
             <div class="w-3/4">
                 <div class=" text-black text-[28px] font-medium font-['Plus Jakarta Sans'] leading-[43.23px] mb-[55px]">
                     Candy

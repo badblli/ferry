@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
+            <div class="relative w-full lg:px-28 md:px-16 sm:px-8 px-6">
                 <ol class="pb-4 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                     <li class="inline-flex items-center">
                         <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
@@ -21,7 +21,8 @@
                         Fırsatlar
                     </li>
                 </ol>
-                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
+                <h1
+                    class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide my-auto flex items-center">
                     <span class="font-bold">Samos</span>
                     Fırsatlar
                 </h1>

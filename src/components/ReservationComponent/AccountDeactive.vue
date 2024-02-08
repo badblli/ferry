@@ -6,17 +6,17 @@
                 <div className="ml-[46px]">
                     <div className="flex justify-center items-center">
                         <div>
-                            <h2 className="mb-1 text-black text-base font-medium font-['Plus Jakarta Display']">
+                            <h2 className="mb-1 text-black text-base font-medium font-display">
                                 Hesabımı Sil
                             </h2>
-                            <div class="text-zinc-600 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                            <div class="text-zinc-600 text-base font-normal font-display tracking-tight">
                                 You can deactive your account permanantly.</div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <button
-                        class="text-center text-base text-red-500 font-bold font-['Plus Jakarta Text'] leading-normal bg-red-100 hover:bg-red-200 transition ease-in-out delay-100 w-[211px] h-14 px-8 py-4 mr-5 rounded-md justify-center items-center gap-2.5 inline-flex cursor-pointer"
+                        class="text-center text-base text-red-500 font-bold font-text leading-normal bg-red-100 hover:bg-red-200 transition ease-in-out delay-100 w-[211px] h-14 px-8 py-4 mr-5 rounded-md justify-center items-center gap-2.5 inline-flex cursor-pointer"
                         type="button" data-hs-overlay="#hs-medium-modal-deactive">
                         Şimdi Hesabımı Sil</button>
                     <div id="hs-medium-modal-deactive"

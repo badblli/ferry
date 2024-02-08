@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div v-for="(item, index) in fakeData" :key="index"
-                        class="flex flex-row justify-between bg-white mt-8 p-3 rounded-2xl">
+                        class="flex flex-col md:flex-row md:justify-between bg-white mt-8 p-3 rounded-2xl">
                         <div class="flex flex-row justify-between">
                             <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
                             <div class="mt-3 mr-5 lg:mr-[75px]">
@@ -81,7 +81,7 @@
                                     item.arrivalLocation }}</p>
                             </div>
                         </div>
-                        <div class="flex flex-row justify-center items-center mr-2">
+                        <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
                             <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
                                 item.price }}</div>
                             <button
@@ -141,7 +141,6 @@ const fakeData = [
         arrivalLocation: 'Vathy Limanı',
         price: '€39'
     },
-    // Ek fake verileri buraya ekleyebilirsiniz
 ];
 
 const splideOptions = {

@@ -17,7 +17,7 @@
                 </li>
                 <li class="ml-[6px] text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight"
                     aria-current="page">
-                    Blog
+                    Turlar
                 </li>
             </ol>
             <div>
@@ -211,7 +211,7 @@
                     </div>
                 </div>
             </div>
-            <div class="border pl-10 rounded-[20px]">
+            <div class="border pl-10 rounded-[20px] mb-[30px]">
                 <div class="bg-white">
                     <div>
                         <h1 class="text-black text-[42px] font-medium font-display tracking-wide pt-[74px] pb-[37px]">

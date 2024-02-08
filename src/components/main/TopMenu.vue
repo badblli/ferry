@@ -1,7 +1,7 @@
 <template>
   <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
     <nav class="w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-28 md:px-16 sm:px-8" aria-label="Global">
-      <div class="flex items-center justify-between">
+      <div class="lg:flex hidden items-center justify-between">
         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ message }}</a>
         <!-- <div
           class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-35px] ">
@@ -10,10 +10,10 @@
         </div> -->
       </div>
       <div id="navbar-with-mega-menu"
-        class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
-        <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+        class="hs-collapse justify-center my-auto overflow-hidden transition-all duration-300 basis-full grow sm:block">
+        <div class="flex gap-5 items-center sm:flex-row sm:items-center lg:justify-end sm:mt-0 md:pl-0 pl-5">
           <a :href="item.link" v-for="(item, index) in navItems" :key="index"
-            class="text-sm font-semibold dark:focus:outline-none dark:focus:ring-1">{{ item.text }}</a>
+            class="text-sm font-semibold">{{ item.text }}</a>
           <div class="hs-dropdown relative inline-flex">
             <button id="hs-dropdown-slideup-animation" type="button"
               class=" hs-dropdown-toggle flex flex-row justify-center items-center mr-2">
@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useUserStore } from '../../stores/auth';
-import IconTopMenu from "../icons/IconTopMenu.vue";
+// import IconTopMenu from "../icons/IconTopMenu.vue";
 import IconArrowWhite from "../icons/IconArrowWhite.vue";
 
 const userStore = useUserStore();

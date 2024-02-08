@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4">
-    <div class="text-center text-black text-lg font-medium ">
+  <div class="w-full h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4 ">
+    <div class="text-center text-black text-lg font-medium lg:m-0 m-2">
       {{ footerContactText }}
     </div>
-    <div className="flex flex-row justify-evenly items-center cursor-pointer"
+    <div className="flex flex-row justify-evenly items-center cursor-pointer lg:m-0 m-2"
       data-hs-overlay="#hs-vertically-centered-modal">
-      <span className="mr-3">İletişime Geç </span>
+      <span className="mr-3">İletişime Geç</span>
       <div class="flex items-center justify-center w-7 h-7 p-1 flex-shrink-0 rounded-full bg-gray-800">
         <IconFooter />
       </div>
@@ -13,11 +13,11 @@
     </div>
   </div>
   <footer class="bg-white text-black p-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-10 md:gap-0 xl:gap-0">
       <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
         <!-- for first column and space -->
       </div>
-      <div class="">
+      <div>
         <div class="text-lg font-bold mb-4 flex">
           <IconMainSamosa />
           <div>
@@ -44,7 +44,7 @@
                   class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                   type="text" placeholder="Email Address" aria-label="Full name">
                 <button
-                  class="flex-shrink-0 bg-slate-200 text-sm text-white flex justify-center items-center  w-[50px] h-[50px]  rounded-full"
+                  class="flex-shrink-0 bg-slate-200 text-sm text-white flex justify-center items-center w-[50px] h-[50px] rounded-full"
                   type="button">
                   <IconArrow />
                 </button>

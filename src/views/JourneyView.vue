@@ -2,12 +2,13 @@
     <!-- <DatePicker /> -->
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <div class="flex flex-row justify-between">
-                <h1 class="text-black text-4xl font-medium font-display tracking-wide mb-9">
+        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8 px-8">
+            <div class="flex flex-col md:flex-row justify-between">
+                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-10">
                     Feribot Seferleri 2024
                 </h1>
-                <div class="h-[37px] bg-white rounded-lg border flex justify-center items-center p-1">
+                <div
+                    class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
                     <div class="text-black text-lg font-medium font-display ml-1">Feribot Bileti Al</div>
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -20,7 +21,8 @@
                 <div className="flex flex-col">
                     <div className="p-8">
                         <div className="flex flex-col md:flex-row justify-start">
-                            <div class="py-3 flex flex-col justify-center bg-white rounded-xl border cursor-pointer">
+                            <div
+                                class="py-3 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer">
                                 <div
                                     class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">
                                     Hangi
@@ -31,9 +33,9 @@
                                     Tarih aralığı seçin</div>
                             </div>
                             <div
-                                class="max-w-[307px] py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
+                                class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
                                 <div class="flex flex-row justify-between items-center mr-[15px]">
-                                    <div class="flex flex-col mb-[3px]">
+                                    <div class="flex flex-col mb-[3px] mr-[100px] ">
                                         <div class="text-black text-base font-medium font-display tracking-tight ml-[24px]">
                                             Rota
                                             Seçin</div>
@@ -57,7 +59,7 @@
                                 class="bg-white pt-10 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                 Kuşadası -
                                 Samos Feribot Seferleri</div>
-                            <table className="relative bg-white w-full">
+                            <table className="relative w-full bg-white">
                                 <thead class="">
                                     <tr v-for="(header, index) in tableHeaders" :key="index"
                                         class="mt-[64px] md:pl-[50px] md:ml-16 m-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-lg">
@@ -67,9 +69,9 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(row, index) in tableData" :key="index"
-                                        class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg">
+                                        class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
                                         <td v-for="(cell, cellIndex) in row" :key="cellIndex"
-                                            class="w-full border-r border-neutral-300 pt-[33px] pb-[33px] md:pl-[50px] pl-2 md:pr-[50px] pr-2">
+                                            class="w-full border-r border-neutral-300 pt-[33px] pb-[33px] lg:pl-[50px] pl-2 lg:pr-[50px] pr-2">
                                             <span v-if="Array.isArray(cell)">
                                                 <ul>
                                                     <li v-for="(item, itemIndex) in cell" :key="itemIndex"

@@ -555,7 +555,3 @@ div.code-toolbar > .toolbar a:hover {
 .half-pixel {
   transform: scaleY(0.5);
 }
-
-.border-half {
-  border-width: 0.5px;
-}

@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-[50px] flex flex-col justify-center w-[1440px] xl:flex-row">
+    <div class="mt-[50px] flex flex-col justify-center max-w-[1440px] xl:flex-row">
         <div class="w-[550px] w-max-[1240px] h-[310px] bg-white rounded-2xl border border-neutral-200 mr-5 xl:w-full">
             <div>
                 <div class="flex flex-row pl-12">
@@ -31,7 +31,7 @@
                     +21 mil puan beklemede.</div>
             </div>
         </div>
-        <div class="w-[550px] h-[310px] bg-white rounded-2xl border border-neutral-200 pl-12 xl:w-full">
+        <div class="w-[550px] h-[310px] bg-white rounded-2xl border border-neutral-200 pl-12 xl:w-full mt-5 xl:m-0">
             <div>
                 <div class="flex flex-row pr-3">
                     <div class="flex flex-row justify-center items-center mt-[40px]">
@@ -40,16 +40,16 @@
                             hızlıca<br />çevir. Tatilin hazır!</div>
                     </div>
                 </div>
-                <div
+                <divs
                     class="w-[200px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mt-[76px] cursor-pointer">
                     <div class="text-black text-base font-semibold font-['Plus Jakarta Sans']">
                         Nasıl kazanabilirim?</div>
-                </div>
+                </divs>
             </div>
         </div>
     </div>
     <div class="mt-[100px] mb-[70px]">
-        <div class="w-[439px] text-black text-[42px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+        <div class="w-[439px] text-black text-[42px] font-medium font-display tracking-wide">
             Nasıl Mil Puan Kazanırım?</div>
         <div class="text-black text-lg pr-1 font-medium font-['Plus Jakarta Sans'] leading-7 pr-3">Puan
             kazan,

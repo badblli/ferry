@@ -20,11 +20,10 @@
                                     <div
                                         class="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex justify-between items-center">
                                         <div class="ml-[46px]">
-                                            <h2 class="mb-3 text-black text-base font-medium font-['Plus Jakarta Display']">
+                                            <h2 class="mb-3 text-black text-base font-medium font-display">
                                                 {{ value.offers.name }}
                                             </h2>
-                                            <h2
-                                                class="text-zinc-300 text-base font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                            <h2 class="text-zinc-300 text-base font-normal font-display tracking-tight">
                                                 {{ value.offers.subName }}
                                             </h2>
                                         </div>

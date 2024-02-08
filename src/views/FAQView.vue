@@ -1,18 +1,19 @@
 <template>
     <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-        <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
+        <div class="relative w-full lg:px-28 md:px-16 sm:px-8 pl-10">
             <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                 Sıkça Sorulan Sorular
             </h1>
         </div>
     </div>
-    <div class="w-4/5 text-black text-lg font-normal leading-loose mt-12">
+    <div class="md:w-4/5 w-full text-black text-lg font-normal leading-loose mt-12 pl-5 md:pl-0">
         <div class="flex flex-col justify-center items-center m-auto relative">
             <div class="w-full">
-                <div class="flex w-full justify-between lg:px-28 md:px-16 sm:px-8 items-center mt-[50px] mb-10 md:mb-40">
+                <div
+                    class="flex flex-col md:flex-row w-full justify-between lg:px-28 md:px-16 sm:px-8 items-center mt-[50px] mb-10 md:mb-40">
                     <div class="w-[484px] text-black text-2xl font-medium font-['Plus Jakarta Sans'] leading-[37.06px] ">
                         Sadece
-                        soruları okumak yetmez. Samos’a ait tüm bilgilerin yer aldığı kanalımızı inceleyyibilirsin.</div>
+                        soruları okumak yetmez. Samos’a ait tüm bilgilerin yer aldığı kanalımızı inceleyibilirsin.</div>
                     <div class="flex flex-row justify-center items-center cursor-pointer">
                         <div class="text-gray-700 text-base font-medium font-display leading-[24.86px] tracking-tight ">
                             Youtube Kanalımıza Gidin</div>
@@ -30,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full mb-44 relative lg:px-28 md:px-16 sm:px-8">
+                <div class="w-full mb-12 md:mb-44 relative lg:px-28 md:px-16 sm:px-8">
                     <div>
                         <h1 class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] leading-[37.06px] mb-9">
                             Genel Bilgiler</h1>
@@ -69,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full mb-44 relative lg:px-28 md:px-16 sm:px-8">
+                <div class="w-full mb-12 md:mb-44 relative lg:px-28 md:px-16 sm:px-8">
                     <div>
                         <h1 class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] leading-[37.06px] mb-9">
                             Vize</h1>
@@ -108,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full mb-44 relative lg:px-28 md:px-16 sm:px-8">
+                <div class="w-full mb-12 md:mb-44 relative lg:px-28 md:px-16 sm:px-8">
                     <div>
                         <h1 class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] leading-[37.06px] mb-9">
                             Paket Turlar</h1>
