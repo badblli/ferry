@@ -114,7 +114,7 @@ import IconArrow from '../icons/IconArrow.vue';
 import IconArrowUpRight from '../icons/IconArrowUpRight.vue';
 import ContactModal from '../advanced/ContactModal.vue';
 
-const currentYear = ref(new Date().getFullYear());
+// const currentYear = ref(new Date().getFullYear());
 const footerContactText =
   'SamosaFeribot destek hizmetlerinden faydalanmak ve hızlı bilet almak için bize ulaşın.';
 

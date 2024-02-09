@@ -555,3 +555,7 @@ div.code-toolbar > .toolbar a:hover {
 .half-pixel {
   transform: scaleY(0.5);
 }
+
+.splide__arrow--prev{
+  left: -3em;
+}

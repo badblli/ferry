@@ -4,17 +4,13 @@
         <div class="w-full h-[223px] bg-slate-200" />
         <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8 px-8">
             <div class="flex flex-col md:flex-row justify-between">
-                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-10">
+                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-14">
                     Feribot Seferleri 2024
                 </h1>
                 <div
                     class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
                     <div class="text-black text-lg font-medium font-display ml-1">Feribot Bileti Al</div>
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M21.5868 16.4397C21.8398 16.6927 21.8398 17.103 21.5868 17.3561L15.7217 23.2211C15.4687 23.4742 15.0584 23.4742 14.8053 23.2211L8.94031 17.3561C8.68725 17.103 8.68725 16.6928 8.94031 16.4397C9.19336 16.1866 9.60366 16.1866 9.85672 16.4397L14.6155 21.1985V8.10036C14.6155 7.74248 14.9057 7.45236 15.2635 7.45236C15.6214 7.45236 15.9115 7.74248 15.9115 8.10036L15.9115 21.1985L20.6704 16.4397C20.9234 16.1866 21.3337 16.1866 21.5868 16.4397Z"
-                            fill="black" />
-                    </svg>
+                    <IconArrowDownBlack />
                 </div>
             </div>
             <div className="w-full mx-auto bg-neutral-100 rounded-[20px] md:p-4 p-0">
@@ -22,15 +18,22 @@
                     <div className="p-8">
                         <div className="flex flex-col md:flex-row justify-start">
                             <div
-                                class="py-3 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer">
-                                <div
-                                    class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">
+                                class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer hs-dropdown relative">
+                                <div id="hs-dropdown-auto-close-outside"
+                                    class="hs-dropdown-toggle text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">
                                     Hangi
                                     tarihlerde
                                     gitmek istersin?</div>
                                 <div
-                                    class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px]">
+                                    class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px] hs-dropdown-toggle">
                                     Tarih aralığı seçin</div>
+                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 bg-white shadow-md rounded-lg p-2"
+                                    aria-labelledby="hs-dropdown-auto-close-outside">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                        href="#">
+                                        Date picker component will be here
+                                    </a>
+                                </div>
                             </div>
                             <div
                                 class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
@@ -43,13 +46,7 @@
                                             Kuşadası - Samos</div>
                                     </div>
                                     <div>
-                                        <svg width="30" height="31" viewBox="0 0 30 31" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M21.5863 16.4397C21.8394 16.6927 21.8394 17.103 21.5863 17.3561L15.7213 23.2211C15.4682 23.4742 15.0579 23.4742 14.8048 23.2211L8.93982 17.3561C8.68676 17.103 8.68676 16.6928 8.93982 16.4397C9.19288 16.1866 9.60317 16.1866 9.85623 16.4397L14.615 21.1985V8.10036C14.615 7.74248 14.9052 7.45236 15.263 7.45236C15.6209 7.45236 15.911 7.74248 15.911 8.10036L15.911 21.1985L20.6699 16.4397C20.9229 16.1866 21.3332 16.1866 21.5863 16.4397Z"
-                                                fill="black" />
-                                        </svg>
-
+                                        <IconArrowDownBlack />
                                     </div>
                                 </div>
                             </div>
@@ -60,14 +57,14 @@
                                 Kuşadası -
                                 Samos Feribot Seferleri</div>
                             <table className="relative w-full bg-white">
-                                <thead class="">
+                                <thead>
                                     <tr v-for="(header, index) in tableHeaders" :key="index"
                                         class="mt-[64px] md:pl-[50px] md:ml-16 m-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-lg">
                                         <th v-for="(label, labelIndex) in header" :key="labelIndex" class="w-full flex">
                                             {{ label }}</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="">
                                     <tr v-for="(row, index) in tableData" :key="index"
                                         class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
                                         <td v-for="(cell, cellIndex) in row" :key="cellIndex"
@@ -83,20 +80,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="mt-16">
-                                <div className="flex flex-row items-center">
-                                    <IconAsteriskSimple />
-                                    <h2 className="text-black teacxt-base font-medium leading-[26.88px] h-7 ml-3">
-                                        {{ whichFerry }}
-                                    </h2>
-                                </div>
-                                <div className="flex flex-row items-center mt-5">
-                                    <IconAsteriskSimple />
-                                    <h2 className="text-black teacxt-base font-medium leading-[26.88px] h-7 ml-3">
-                                        Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli bir pasaport ve
-                                        Schengen<br /> vizesi olup vize konusunda dilerseniz firmamız sizlere yardımcı
-                                        olmaktan
-                                        mutluluk duyacaktır.
+                            <div class="mt-16 lg:w-4/6 w-full">
+                                <div v-for="(info, index) in infoData" :key="index" class="flex items-center mt-5">
+                                    <IconAsteriskSimple class="min-w-7 min-h-7" />
+                                    <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">
+                                        {{ info.whichFerry }}
                                     </h2>
                                 </div>
                             </div>
@@ -110,6 +98,8 @@
 
 <script setup lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
+import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
+import { ref } from 'vue'
 
 const tableHeaders = [
     ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
@@ -121,7 +111,11 @@ const tableData = [
     ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
 ];
 
-const whichFerry = "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.";
+
+const infoData = ref([
+    { whichFerry: 'Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.' },
+    { whichFerry: 'Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli bir pasaport ve Schengen vizesi olup vize konusunda dilerseniz firmamız sizlere yardımcıolmaktanmutluluk duyacaktır.' },
+]);
 </script>
   
 <style scoped></style>

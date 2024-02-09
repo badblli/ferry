@@ -55,7 +55,7 @@
                                     aria-controls="horizontal-alignment-1" role="tab">
                                     Güncel Rezervasyon
                                 </button> <button type="button"
-                                    class=" leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
+                                    class="leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
                                     id="horizontal-alignment-item-2" data-hs-tab="#horizontal-alignment-2"
                                     aria-controls="horizontal-alignment-2" role="tab">
                                     Geçmiş Rezervasyon
@@ -90,12 +90,7 @@
                                     <h1 class="pt-4 text-black text-lg font-medium font-display mb-4 mr-4">
                                         Daha fazla
                                         rezervasyon</h1>
-                                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M21.7631 16.4402C22.0161 16.6932 22.0161 17.1035 21.7631 17.3566L15.898 23.2216C15.645 23.4747 15.2347 23.4747 14.9816 23.2216L9.11657 17.3566C8.86351 17.1035 8.86351 16.6932 9.11657 16.4402C9.36963 16.1871 9.77993 16.1871 10.033 16.4402L14.7918 21.199V8.10085C14.7918 7.74297 15.0819 7.45285 15.4398 7.45285C15.7977 7.45285 16.0878 7.74297 16.0878 8.10085L16.0878 21.199L20.8466 16.4402C21.0997 16.1871 21.51 16.1871 21.7631 16.4402Z"
-                                            fill="black" />
-                                    </svg>
+                                        <IconArrowDownBlack/>
                                 </div>
                             </div>
                         </div>
@@ -118,110 +113,7 @@
                                         aria-labelledby="horizontal-alignment-item-1">
                                         <div class="-m-1.5 overflow-x-auto w-full">
                                             <div class="p-1.5 w-full inline-block align-middle">
-                                                <div class="flex flex-col mb-8">
-                                                    <div class="items-center">
-                                                        <div
-                                                            class="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex items-center justify-between">
-                                                            <div class="ml-[46px]">
-                                                                <div>
-                                                                    <h2
-                                                                        class="mb-1 text-black text-base font-medium font-display">
-                                                                        İsim
-                                                                    </h2>
-                                                                    <h2
-                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
-                                                                        Antonio
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
-                                                                <button
-                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
-                                                                    Düzenle
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex flex-col mb-8">
-                                                    <div class="items-center">
-                                                        <div
-                                                            class="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex items-center justify-between">
-                                                            <div class="ml-[46px]">
-                                                                <div>
-                                                                    <h2
-                                                                        class="mb-1 text-black text-base font-medium font-display">
-                                                                        Soyisim
-                                                                    </h2>
-                                                                    <h2
-                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
-                                                                        Giovanazzi
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
-                                                                <button
-                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
-                                                                    Düzenle
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex flex-col mb-8">
-                                                    <div class="items-center">
-                                                        <div
-                                                            class="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex items-center justify-between">
-                                                            <div class="ml-[46px]">
-                                                                <div>
-                                                                    <h2
-                                                                        class="mb-1 text-black text-base font-medium font-display">
-                                                                        Telefon Numarası
-                                                                    </h2>
-                                                                    <h2
-                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
-                                                                        0 555 555 55 55
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
-                                                                <button
-                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
-                                                                    Düzenle
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex flex-col mb-8">
-                                                    <div class="items-center">
-                                                        <div
-                                                            class="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex items-center justify-between">
-                                                            <div class="ml-[46px]">
-                                                                <div>
-                                                                    <h2
-                                                                        class="mb-1 text-black text-base font-medium font-display">
-                                                                        Doğum Tarihi
-                                                                    </h2>
-                                                                    <h2
-                                                                        class="text-zinc-600 text-base font-normal font-display tracking-tight">
-                                                                        10.06.2000
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
-                                                                <button
-                                                                    class="text-center text-black text-base font-bold font-text leading-normal">
-                                                                    Düzenle
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <MyProfile :profileData="people"/>
                                             </div>
                                         </div>
                                     </div>
@@ -320,15 +212,7 @@ import IconUsers from "../components/icons/IconUsers.vue";
 import IconGearSix from "../components/icons/IconGearSix.vue";
 import IconBellSimple from "../components/icons/IconBellSimple.vue";
 import IconMile from "../components/icons/IconMile.vue";
-
-// const reservations = ref([
-//     {
-//         number: "#575433",
-//         date: "28.10.2023",
-//         status: "Onaylandı",
-//         total: 1549.40,
-//     },
-// ]);
+import IconArrowDownBlack from "@/components/icons/IconArrowDownBlack.vue";
 
 const pastReservations = ref([
     {
@@ -339,17 +223,14 @@ const pastReservations = ref([
     }
 ])
 
-const profileData = ref([
-    {
-        İsim: "Antonio",
-        Soyisim: "Govanazzi",
-        TelefonNumarası: "+90 537 311 9470",
-        DoğumTarihi: "10.06.2000",
-        Uyruğu: "Türkiye Cumhuriyeti",
-        PasaportNumarası: "1242145124151",
-        TCKimlikNumarası: "36995118956",
-        AdresBilgilerim: "Ata mahallesi, 1087, Vadi Öveçleri Sitesi No: 1/10 Çankaya Ankara",
-    },
+const people = ref([
+    { title: 'İsim', name: 'Antonio' },
+    { title: 'Soyisim', name: 'John' },
+    { title: 'Telefon Numarası', name: '555 555 555' },
+    { title: 'Uyruğu', name: 'Türkiye Cumhuriyeti' },
+    { title: 'Pasaport Numarası', name: '124145124151' },
+    { title: 'TC Kimlik Numarası', name: '36995118956' },
+    { title: 'Adres Bilgilerim', name: 'Ata Mah. 108 Sok. Vadi Öveçler Sitesi. No: 1/10 Ankara/Çankaya' },
 ]);
 
 const notifications = ref([

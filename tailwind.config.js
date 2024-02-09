@@ -120,7 +120,10 @@ module.exports = {
         text: [
           'Plus Jakarta Text',
         ]
-      }
+      },
+      'splide__arrow--prev': {
+        left: '-3em',
+      },
     },
     // screens: {
     //   '2xl': { 'max': '1535px' },

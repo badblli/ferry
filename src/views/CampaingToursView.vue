@@ -119,12 +119,12 @@
                 </div>
                 <div class="w-1/4">
                     <div class="flex flex-row justify-end items-end">
-                        <div class="hs-dropdown relative inline-flex">
+                        <div class="hs-dropdown relative inline-flex [--auto-close:outside]">
                             <button @click="toggleDropdown" type="button"
                                 class="hs-dropdown-toggle z-50 -left-4 top-6 relative w-[84px] h-[29px] bg-white rounded-[46px] border border-neutral-200 text-center text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[18.12px]">
                                 {{ isOpen ? 'Open' : 'Close' }}
                             </button>
-                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[278px] h-[300px] bg-white rounded-xl border border-neutral-200"
+                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[278px] h-[300px] bg-white rounded-xl border border-neutral-200"
                                 aria-labelledby="hs-dropdown-slideup-animation">
                                 <div class="flex flex-col justify-center items-center mt-5 mx-8">
                                     <div class="cursor-pointer">

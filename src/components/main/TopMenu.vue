@@ -12,8 +12,10 @@
       <div id="navbar-with-mega-menu"
         class="hs-collapse justify-center my-auto overflow-hidden transition-all duration-300 basis-full grow sm:block">
         <div class="flex gap-5 items-center sm:flex-row sm:items-center lg:justify-end sm:mt-0 md:pl-0 pl-5">
-          <a :href="item.link" v-for="(item, index) in navItems" :key="index"
-            class="text-sm font-semibold">{{ item.text }}</a>
+          <router-link v-for="(item, index) in topNavbarRoutes" :key="index" :to="item.to" class="text-sm font-semibold"
+            href="#">
+            {{ item.text }}
+          </router-link>
           <div class="hs-dropdown relative inline-flex">
             <button id="hs-dropdown-slideup-animation" type="button"
               class=" hs-dropdown-toggle flex flex-row justify-center items-center mr-2">
@@ -23,10 +25,10 @@
               <IconArrowWhite />
             </button>
             <div
-              class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
+              class="hs-dropdown-menu w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 hidden z-10  opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
               aria-labelledby="hs-dropdown-slideup-animation">
               <a v-for="(language, langIndex) in languages" :key="langIndex" @click="updateCurrentLanguage(language.name)"
-                class="flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
+                class="cursor-pointer flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
                   language.name }}</a>
             </div>
           </div>
@@ -42,15 +44,16 @@ import { useUserStore } from '../../stores/auth';
 // import IconTopMenu from "../icons/IconTopMenu.vue";
 import IconArrowWhite from "../icons/IconArrowWhite.vue";
 
+const topNavbarRoutes = [
+  { text: "Kampanyalarımız", link: "#", to: "/campaign" },
+  { text: "Ferry Destek", link: "#", to: "/contact" },
+];
+
 const userStore = useUserStore();
 
 const message =
   "Samos’ta artık bir araban var. Günlük kiralık aracın sadece 30€!";
-const buttonText = "Daha Fazla Bilgi";
-const navItems = [
-  { text: "Kampanyalarımız", link: "#", items: [] },
-  { text: "Ferry Destek", link: "#", items: [] },
-];
+// const buttonText = "Daha Fazla Bilgi";
 
 const languages = [
   { name: "Turkish", link: "#" },

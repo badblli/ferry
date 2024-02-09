@@ -6,13 +6,7 @@
                     href="#">
                     Anasayfa
                 </a>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <g id="Chevron - Down" opacity="0.6">
-                        <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
-                            d="M8.46967 18.5303C8.17678 18.2374 8.17678 17.7626 8.46967 17.4697L13.9393 12L8.46967 6.53033C8.17678 6.23744 8.17678 5.76256 8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967L15.5303 11.4697C15.8232 11.7626 15.8232 12.2374 15.5303 12.5303L9.53033 18.5303C9.23744 18.8232 8.76256 18.8232 8.46967 18.5303Z"
-                            fill="black" />
-                    </g>
-                </svg>
+                <IconChevronRight />
             </li>
             <li class="ml-[6px] text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight"
                 aria-current="page">
@@ -113,7 +107,7 @@
             </div>
             <div class="w-1/4">
                 <div class="flex flex-row justify-end items-end">
-                    <div class="hs-dropdown relative inline-flex">
+                    <div class="hs-dropdown relative inline-flex [--auto-close:outside]">
                         <button @click="toggleDropdown" type="button"
                             class="hs-dropdown-toggle z-50 -left-4 top-6 relative w-[84px] h-[29px] bg-white rounded-[46px] border border-neutral-200 text-center text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[18.12px]">
                             {{ isOpen ? 'Open' : 'Close' }}
@@ -146,24 +140,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="flex flex-col justify-end items-end">
-                    <button
-                        class="w-[84px] h-[29px] bg-white rounded-[46px] border border-neutral-200 z-50 top-4 right-4 relative text-center text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[18.12px] ">
-                        Kapat
-                    </button>
-                    <div>
-                        <div
-                            class="w-[278px] h-[340px] bg-white rounded-xl border border-neutral-200 flex flex-row justify-center">
-                            <div
-                                class="w-[77px] h-[77px] bg-neutral-100 rounded-full justify-center items-center flex mt-10">
-                                <IconAa />
-                            </div>
-                            <div>
-                                selamlar deneme
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -173,6 +149,7 @@
 import IconAa from '@/components/icons/IconAa.vue';
 import IconLinkSimple from '@/components/icons/IconLinkSimple.vue';
 import IconShare from '@/components/icons/IconShare.vue';
+import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 
 import { ref } from 'vue';
 
