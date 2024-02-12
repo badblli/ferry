@@ -191,6 +191,20 @@ onMounted(() => {
         gap: '1rem',
         focus: 0,
         interval: 3000,
+            breakpoints: {
+        1380: {
+            perPage: 4,
+        },
+        1140: {
+            perPage: 3,
+        },
+        840: {
+            perPage: 2,
+        },
+        580: {
+            perPage: 1,
+        },
+    },
     }).mount();
     splide.on('moved', () => {
         const activeSlideIndex = splide.index;
@@ -249,6 +263,6 @@ onMounted(() => {
 .splide__arrow svg {
     fill: #000;
     height: 2em;
-    width: 3em;
+    width: 4em;
 }
 </style>

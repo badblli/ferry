@@ -632,3 +632,21 @@ div.code-toolbar > .toolbar a:hover {
   height: 5em;
   width: 5rem;
 }
+
+@media (max-width: 1024px) { 
+  .splide__arrow.splide__arrow--prev {
+    height: full;
+    top: 40px;
+    left: -2rem;
+    opacity: 1;
+    background: transparent;
+  }
+  
+  .splide__arrow.splide__arrow--next {
+    height: full;
+    top: 40px;
+    right: -2rem;
+    opacity: 1;
+    background: transparent;
+  }
+ }
