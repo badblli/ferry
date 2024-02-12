@@ -30,17 +30,31 @@
                 <div className=" bg-neutral-100 rounded-[20px] p-4 ">
                     <div className="pt-1">
                         <div className="flex flex-row items-center gap-5 lg:mx-12 md:mx-6 mx-3 mb-[22px]">
-                            <Splide :options="splideOptions">
-                                <SplideSlide v-for="item in items" :key="item.id"
-                                    class="h-[81px] w-full bg-white rounded-xl border flex flex-col justify-center items-center">
-                                    <div class="text-center text-black text-lg font-medium font-display">{{ item.date }}
-                                    </div>
-                                    <div
-                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                        {{ item.price }}s
-                                    </div>
-                                </SplideSlide>
-                            </Splide>
+                            <div id="splide" class="splide" ref="splideRef">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li v-for="(item, index) in items" :key="index" class="splide__slide">
+                                            <div class="text-center text-black text-lg font-medium font-display">{{
+                                                item.date }}
+                                            </div>
+                                            <div
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                                {{ item.price }}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="splide__arrows">
+                                    <button class="splide__arrow splide__arrow--prev" type="button"
+                                        aria-controls="mobile-testim-carousel-track" aria-label="Go to last slide">
+                                        <IconArrowRight />
+                                    </button>
+                                    <button class="splide__arrow splide__arrow--next" type="button"
+                                        aria-controls="mobile-testim-carousel-track" aria-label="Next slide">
+                                        <IconArrowRight />
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div v-for="(item, index) in fakeData" :key="index"
@@ -70,7 +84,7 @@
                         <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
                             <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
                                 item.price }}</div>
-                            <button
+                            <button @click="logSelectedData(item)"
                                 class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
                         </div>
                     </div>
@@ -93,10 +107,27 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import IconsArrowsLeftRight from '@/components/icons/IconsArrowsLeftRight.vue';
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
+import IconArrowRight from "@/components/icons/IconArrowRight.vue";
+import { onMounted, ref } from 'vue';
+// import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
+
+// const store = useTemporaryStore();
+// const selectedItem = ref(null);
+
+// const selectItem = (item: any) => {
+//     selectedItem.value = item;
+//     store.setSelectedItem(item);
+//     localStorage.setItem('selectedItem', JSON.stringify(item));
+// };
+
+const logSelectedData = (item: any) => {
+    console.log("Tıklanan Butondaki Veriler:");
+    console.log(item);
+};
 
 const fakeData = [
     {
@@ -128,67 +159,96 @@ const fakeData = [
     },
 ];
 
-const splideOptions = {
-    type: 'slide',
-    perPage: 3,
-    perMove: 1,
-    arrows: true,
-    pagination: false,
-    gap: '1rem',
-    watchOverflow: false,
-    focus: 0,
-    omitEnd: true,
-    breakpoints: {
-        1380: {
-            perPage: 4,
-        },
-        1140: {
-            perPage: 3,
-        },
-        840: {
-            perPage: 2,
-        },
-        580: {
-            perPage: 1,
-        },
-    },
-};
+interface fakeSlidertems {
+    id: number;
+    date: string;
+    price: string;
+}
 
-const items = [
+const items: fakeSlidertems[] = [
     { id: 1, date: "15 Kasım Perşembe", price: "En Uygun €39" },
     { id: 2, date: "16 Kasım Cuma", price: "En Uygun €49" },
     { id: 3, date: "17 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "18 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "19 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "20 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "21 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "22 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "23 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "24 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "25 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 3, date: "26 Kasım Cumartesi", price: "En Uygun €59" },
+    { id: 4, date: "18 Kasım Cumartesi", price: "En Uygun €69" },
+    { id: 5, date: "19 Kasım Cumartesi", price: "En Uygun €79" },
+    { id: 6, date: "20 Kasım Cumartesi", price: "En Uygun €89" },
+    { id: 7, date: "21 Kasım Cumartesi", price: "En Uygun €19" },
+    { id: 8, date: "22 Kasım Cumartesi", price: "En Uygun €29" },
+    { id: 9, date: "23 Kasım Cumartesi", price: "En Uygun €39" },
+    { id: 10, date: "24 Kasım Cumartesi", price: "En Uygun €49" },
+    { id: 11, date: "25 Kasım Cumartesi", price: "En Uygun €59" },
+    { id: 12, date: "26 Kasım Cumartesi", price: "En Uygun €69" },
 ];
 
-const fakeItems = [
-    {
-        image: "https://via.placeholder.com/100x100",
-        company: "Meander Travel",
-        departure: "5 Kasım 2023 Pazar 17.00",
-        departureLocation: "Kuşadası Limanı",
-        arrival: "5 Kasım 2023 Pazar 18:15",
-        arrivalLocation: "Vathy Limanı",
-        price: "€39"
-    },
-    {
-        image: "https://via.placeholder.com/100x100",
-        company: "Another Company",
-        departure: "6 Kasım 2023 Pazartesi 09.30",
-        departureLocation: "Another Departure Location",
-        arrival: "6 Kasım 2023 Pazartesi 11:45",
-        arrivalLocation: "Another Arrival Location",
-        price: "€45"
-    }
-];
+const splideRef = ref<string | HTMLElement>('');
+onMounted(() => {
+    const splide = new Splide(splideRef.value, {
+        type: 'slide',
+        perPage: 3,
+        perMove: 1,
+        arrows: true,
+        pagination: false,
+        gap: '1rem',
+        focus: 0,
+        interval: 3000,
+    }).mount();
+    splide.on('moved', () => {
+        const activeSlideIndex = splide.index;
+        const activeSlideContent = items[activeSlideIndex];
+        console.log(activeSlideContent);
+        console.log(activeSlideIndex);
+    });
+});
 </script>
   
-<style scoped></style>
+<style scoped>
+.splide {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%
+}
+
+.splide__list {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.splide__track {
+    width: 100%;
+}
+
+.splide__slide {
+    height: 81px;
+    display: block;
+    width: 100%;
+    background-color: rgb(248 250 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 361px;
+    height: 81px;
+    flex-shrink: 0;
+    border-radius: 20px;
+}
+
+.splide__slide.is-active {
+    transform: scale(1);
+    filter: grayscale(100%);
+    background-color: white
+}
+
+.splide__arrow {
+    transform: none;
+    border-radius: unset;
+    opacity: .9;
+}
+
+.splide__arrow svg {
+    fill: #000;
+    height: 2em;
+    width: 3em;
+}
+</style>

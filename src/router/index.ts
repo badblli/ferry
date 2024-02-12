@@ -72,6 +72,11 @@ const router = createRouter({
           path: '/tickets',
           name: 'tickets',
           component: () => import('../views/FerryTicketListingViews/OneWayListView.vue')
+        },
+        {
+          path: '/slider',
+          name: 'slider',
+          component: () => import('../views/SplideExample.vue')
         }
         // {
         //   path: "/about",

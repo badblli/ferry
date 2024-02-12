@@ -16,6 +16,7 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "@splidejs/vue-splide": "^0.6.12",
+    "json-server": "^1.0.0-alpha.23",
     "pinia": "^2.1.7",
     "preline": "^2.0.1",
     "slider": "^1.0.4",

@@ -823,10 +823,6 @@ select {
   left: 14.81px;
 }
 
-.right-4 {
-  right: 1rem;
-}
-
 .start-0 {
   inset-inline-start: 0px;
 }
@@ -837,10 +833,6 @@ select {
 
 .top-1\/2 {
   top: 50%;
-}
-
-.top-4 {
-  top: 1rem;
 }
 
 .top-6 {
@@ -1084,8 +1076,16 @@ select {
   margin-bottom: 10px;
 }
 
+.mb-\[15px\] {
+  margin-bottom: 15px;
+}
+
 .mb-\[20px\] {
   margin-bottom: 20px;
+}
+
+.mb-\[22px\] {
+  margin-bottom: 22px;
 }
 
 .mb-\[23px\] {
@@ -1434,22 +1434,6 @@ select {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-\[22px\] {
-  margin-top: 22px;
-}
-
-.mb-\[22px\] {
-  margin-bottom: 22px;
-}
-
-.mb-\[15px\] {
-  margin-bottom: 15px;
-}
-
-.mt-14 {
-  margin-top: 3.5rem;
 }
 
 .block {
@@ -1992,6 +1976,10 @@ select {
   flex: none;
 }
 
+.flex-shrink {
+  flex-shrink: 1;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -2431,6 +2419,11 @@ select {
   background-color: rgb(235 228 243 / var(--tw-bg-opacity));
 }
 
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(192 217 253 / var(--tw-bg-opacity));
+}
+
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(66 119 229 / var(--tw-bg-opacity));
@@ -2720,11 +2713,6 @@ select {
 .py-\[9px\] {
   padding-top: 9px;
   padding-bottom: 9px;
-}
-
-.py-9 {
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
 }
 
 .pb-1 {
@@ -3220,6 +3208,16 @@ select {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.grayscale {
+  --tw-grayscale: grayscale(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -3673,11 +3671,11 @@ pre[class*='language-']::-webkit-scrollbar-thumb {
 }
 
 .dark pre[class*='language-']::-webkit-scrollbar {
-  background-color: #334155 !important;
+  background-color: #334155 ;
 }
 
 .dark pre[class*='language-']::-webkit-scrollbar-thumb {
-  background-color: #64748b !important;
+  background-color: #64748b ;
 }
 
 :not(pre) > code[class*='language-'],
@@ -3692,7 +3690,7 @@ pre[class*='language-'] {
 }
 
 .plugin-language-markup > code {
-  color: #fff !important;
+  color: #fff ;
 }
 
 /* Light Theme */
@@ -3862,12 +3860,83 @@ div.code-toolbar > .toolbar a:hover {
   display: none;
 }
 
-.half-pixel {
-  transform: scaleY(0.5);
+.splide.splide__arrow {
+  background: white;
 }
 
-.splide__arrow--prev{
-  left: -3em;
+.splide__arrow.splide__arrow--prev:disabled {
+  opacity: 1;
+  background: transparent
+}
+
+.splide__arrow.splide__arrow--prev {
+  height: full;
+  top: 40px;
+  left: -3rem;
+  opacity: 1;
+  background: transparent;
+}
+
+.splide__arrow.splide__arrow--next {
+  height: full;
+  top: 40px;
+  right: -3rem;
+  opacity: 1;
+  background: transparent;
+}
+
+.splide__arrow.splide__arrow--next:disabled {
+  opacity: 1;
+  background: transparent
+}
+
+.splide {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%
+}
+
+.splide__list {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.splide__track {
+  width: 100%;
+}
+
+.splide__slide {
+  display: block;
+  width: 100%;
+  background-color: rgb(248 250 252);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 361px;
+  height: 81px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.splide__slide.is-active {
+  transform: scale(1);
+  filter: grayscale(100%);
+  background-color: white
+}
+
+.splide__arrow {
+  transform: none;
+  border-radius: unset;
+  opacity: .9;
+}
+
+.splide__arrow svg {
+  fill: #000;
+  height: 5em;
+  width: 5rem;
 }
 
 .before\:absolute::before {
@@ -5256,6 +5325,10 @@ div.code-toolbar > .toolbar a:hover {
     margin-bottom: 4rem;
   }
 
+  .md\:mb-20 {
+    margin-bottom: 5rem;
+  }
+
   .md\:mb-24 {
     margin-bottom: 6rem;
   }
@@ -5316,6 +5389,10 @@ div.code-toolbar > .toolbar a:hover {
     margin-right: 4rem;
   }
 
+  .md\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
   .md\:mt-20 {
     margin-top: 5rem;
   }
@@ -5330,14 +5407,6 @@ div.code-toolbar > .toolbar a:hover {
 
   .md\:mt-\[55px\] {
     margin-top: 55px;
-  }
-
-  .md\:mb-20 {
-    margin-bottom: 5rem;
-  }
-
-  .md\:mt-14 {
-    margin-top: 3.5rem;
   }
 
   .md\:flex {
