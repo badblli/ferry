@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
+        <div class="relative top-[-11rem] w-full lg:px-28 md:px-16 sm:px-8">
             <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-14 pl-10 md:pl-0">
                 Feribot Bileti Ücretleri
             </h1>

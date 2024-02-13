@@ -615,10 +615,19 @@ div.code-toolbar > .toolbar a:hover {
   border-radius: 20px;
 }
 
+.splide__slide div {
+  opacity: .6;
+}
+
+.splide__slide.is-active div {
+  opacity: 1;
+}
+
 .splide__slide.is-active {
   transform: scale(1);
   filter: grayscale(100%);
-  background-color: white
+  background-color: white;
+  opacity: 1;
 }
 
 .splide__arrow {
@@ -650,3 +659,18 @@ div.code-toolbar > .toolbar a:hover {
     background: transparent;
   }
  }
+
+ .custom-placeholder::placeholder {
+  color: #3C3C3C;
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+}
+
+.custom-border-stone-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(195, 195, 195);
+}

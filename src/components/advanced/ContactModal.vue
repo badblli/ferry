@@ -4,7 +4,7 @@
         <div
             class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto h-[558px] w-[567px] flex items-center">
             <div class="w-full h-full flex flex-col bg-white border shadow-sm rounded-xl justify-between">
-                <div class="p-4 overflow-y-auto">
+                <div class="p-4 overflow-y-aufto">
                     <div class="flex flex-row justify-center mt-[50px]">
                         <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center mr-10">
                             <IconEnvelope />

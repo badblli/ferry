@@ -79,12 +79,12 @@
                         YA DA </div>
                     <div class="flex justify-center items-center">
                         <button
-                            class="flex p-4 h-14 bg-white rounded-xl border border-stone-300 mr-1 text-zinc-600 text-base font-semibold font-['Plus Jakarta Sans'] leading-normal">
+                            class="flex p-4 h-14 bg-white rounded-xl border border-stone-300 mr-1 text-zinc-600 text-base font-semibold font-['Plus Jakarta Sans'] leading-normal flex flex-row items-center">
                             <IconGoogle />
                             <span class="ml-5">Sign up with Google</span>
                         </button>
                         <button
-                            class="flex p-4 h-14 bg-white rounded-xl border border-stone-300 text-zinc-600 text-base font-semibold font-['Plus Jakarta Sans'] leading-normal">
+                            class="flex p-4 h-14 bg-white rounded-xl border border-stone-300  text-zinc-600 text-base font-semibold font-['Plus Jakarta Sans'] leading-normal flex flex-row items-center">
                             <IconFacebook />
                             <span class="ml-5">Sign up with Facebook</span>
                         </button>
