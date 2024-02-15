@@ -1,22 +1,23 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
-            <div class="flex lg:flex-row flex-col justify-between items-center">
-                <div class="flex flex-row">
-                    <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">
+        <div class="relative top-[-11rem] w-full lg:px-28 md:px-16 sm:px-8">
+            <div class="flex lg:flex-row flex-col justify-between items-center mb-9">
+                <div class="flex flex-row justify-center items-center">
+                    <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">
                         Kuşadası
                     </div>
                     <div
                         class="w-[52px] h-[52px] opacity-75 bg-white rounded-full flex justify-center items-center mx-[33px]">
                         <IconsArrowsLeftRight />
                     </div>
-                    <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
+                    <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">
                         Samosa
                     </div>
                 </div>
-                <div class="flex flex-row">
-                    <div class="h-[37px] bg-white rounded-lg border flex justify-center items-center py-[7px] px-5 cursor-pointer">
+                <div class="flex flex-row items-center">
+                    <div
+                        class="h-[37px] bg-white rounded-lg border flex justify-center items-center py-[7px] px-5 cursor-pointer">
                         <div class="text-black text-lg font-medium font-display ml-1">Yeni Bilet Ara</div>
                         <IconArrowDownBlack />
                     </div>
@@ -33,21 +34,21 @@
                 </div>
             </div>
             <div>
-                <div className=" bg-neutral-100 rounded-[20px] p-4 mt-[10px]">
+                <div className=" bg-neutral-100 rounded-[20px] p-4">
                     <div class="flex flex-row justify-between">
                         <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5 ">
                             Yolcu ve İletişim Bilgileri
                         </div>
                         <div class="hs-dropdown relative inline-flex [--auto-close:outside]">
                             <p
-                                class="text-black mb-8 text-lg font-medium font-display items-center justify-center mt-4 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
+                                class="text-black text-lg font-medium font-display items-center justify-center mt-4 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
                                 Yeni yolcu ekle
                             </p>
                             <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4"
                                 aria-labelledby="hs-dropdown-slideup-animation">
                                 <div class="bg-white space-y-3">
                                     <div v-for="(item, index) in ages" :key="index"
-                                        class="w-full h-[57px]  rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
+                                        class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
                                         <div class="text-black text-base font-medium font-display tracking-tight">
                                             {{ item.title }}
                                         </div>
@@ -61,16 +62,20 @@
                     </div>
                     <div class="hs-accordion-group">
                         <div v-for="(accordion, index) in accordions" :key="index"
-                            class="hs-accordion items-centers rounded-xl mb-5 bg-white"
+                            class="hs-accordion items-centers rounded-xl mb-5 bg-white first:mt-8"
                             id="hs-active-bordered-heading-one">
                             <button
-                                class="hs-accordion-toggle inline-flex flex-row justify-between py-3 px-6 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-black disabled:opacity-50 disabled:pointer-events-none"
+                                class="hs-accordion-toggle inline-flex flex-row justify-between py-3 px-[25px] w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-black disabled:opacity-50 disabled:pointer-events-none"
                                 aria-controls="hs-basic-active-bordered-collapse-one">
                                 <div class="flex flex-row items-center justify-between w-full">
                                     <div class="flex flex-row items-center">
-                                        <div
+                                        <div v-if="accordion.age === 'yetişkin'"
                                             class="w-[60px] h-[60px] bg-neutral-100 rounded-full flex justify-center items-center">
                                             <IconPersonSimpleRun />
+                                        </div>
+                                        <div v-else
+                                            class="w-[60px] h-[60px] bg-neutral-100 rounded-full flex justify-center items-center">
+                                            <IconBaby />
                                         </div>
                                         <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] ml-[20px]">
                                             {{ accordion.title }}
@@ -150,7 +155,7 @@
                                 </div>
                             </div>
                             <div class="py-5 px-8 ml-5 bg-blue-700 rounded-lg border cursor-pointer">
-                                <div
+                                <div @click="navigateToPassenger"
                                     class="flex items-center justify-center text-center text-white text-base font-medium font-display">
                                     Faturanlandırmaya Git
                                 </div>
@@ -174,6 +179,9 @@ import IconArrowUpRight2 from '@/components/icons/IconArrowUpRight2.vue'
 import InputBasic from '../PassengerPaymentViews/components/InputBasic.vue'
 import InputBirth from '../PassengerPaymentViews/components/InputBirth.vue'
 import InputPhone from '../PassengerPaymentViews/components/InputPhone.vue'
+import IconBaby from '@/components/icons/IconBaby.vue'
+import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
+import { useRouter } from "vue-router";
 import { ref } from 'vue'
 
 interface AgeItem {
@@ -184,20 +192,24 @@ interface AgeItem {
 interface Accordion {
     title: string;
     active: boolean;
+    age: string;
 }
 
 const accordions = ref<Accordion[]>([
     {
         title: '1. Yetişkin Yolcu',
-        active: true
+        active: true,
+        age: 'yetişkin',
+    },
+    {
+        title: '1. Bebek Yolcu',
+        active: true,
+        age: 'bebek',
     },
     {
         title: '1. Yetişkin Yolcu',
-        active: true
-    },
-    {
-        title: '1. Yetişkin Yolcu',
-        active: true
+        active: true,
+        age: 'yetişkin'
     }
 ]);
 
@@ -206,6 +218,11 @@ const ages = ref<AgeItem[]>([
     { title: 'Çocuk Ekle', age: '6-12 yaş' },
     { title: 'Bebek Ekle', age: '0-5 yaş' }
 ]);
+
+const router = useRouter();
+const navigateToPassenger = () => {
+    router.push('/payment');
+};
 
 </script>
 

@@ -3,7 +3,7 @@
         class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
         <div
             class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all md:max-w-2xl md:w-full m-3 md:mx-auto">
-            <div class="  h-[629px] flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
+            <div class="h-[629px] flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
                 <div class="text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                     <h2 class="block text-2xl font-bold text-gray-800 text-center mt-10 mb-[83px]">Kullanıcı
                         Girişi</h2>

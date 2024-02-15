@@ -669,8 +669,3 @@ div.code-toolbar > .toolbar a:hover {
   line-height: normal;
   letter-spacing: 0.32px;
 }
-
-.custom-border-stone-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(195, 195, 195);
-}

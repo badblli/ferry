@@ -79,9 +79,14 @@ const router = createRouter({
           component: () => import('../views/SplideExample.vue')
         },
         {
+          path: '/passenger',
+          name: 'passenger',
+          component: () => import('../views/PassengerPaymentViews/PassengerDetails.vue')
+        },
+        {
           path: '/payment',
           name: 'payment',
-          component: () => import('../views/PassengerPaymentViews/PassengerDetails.vue')
+          component: () => import('../views/PassengerPaymentViews/PaymentStep.vue')
         },
         // {
         //   path: "/about",

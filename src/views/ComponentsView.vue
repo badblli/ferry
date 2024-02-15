@@ -29,7 +29,7 @@
     </div>
 </template>
   
-<script setup>
+<script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router';
 
 // Component logic goes here
