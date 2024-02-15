@@ -1,7 +1,7 @@
 <template>
     <div class="w-full bg-white p-5">
         <div class="w-[100px] h-[100px] bg-slate-200 rounded-full mb-[37px] flex flex-row items-center justify-center">
-            <IconCheck />
+            <IconCheckBlack />
         </div>
         <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mb-[34px]">Ödemeniz başarıyla
             alınmıştır.</div>
@@ -58,11 +58,10 @@
 </template>
 
 <script setup lang="ts">
-// import IconCheck from '@/components/icons/IconCheck.vue';
 import IconQR from '@/components/icons/IconQR.vue';
 import IconDownloadSimple from '@/components/icons/IconDownloadSİmple.vue'
 import IconPrinter from '@/components/icons/IconPrinter.vue'
-import IconCheck from '@/components/icons/IconCheck.vue'
+import IconCheckBlack from '@/components/icons/IconCheckBlack.vue'
 </script>
 
 <style></style>

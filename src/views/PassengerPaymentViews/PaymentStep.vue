@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div id="horizontal-scroll-tab-2" class="hidden" role="tabpanel"
                                                     aria-labelledby="horizontal-scroll-tab-item-2">
-                                                    <PaymentTab :fakeData="fakeData" />
+                                                    <PaymentTab :fakeData="fakeData2" />
                                                 </div>
                                             </div>
                                         </div>
@@ -339,8 +339,12 @@ const paymentSuccess = ref(false);
 // ]);
 
 const fakeData: Data = {
-    title: "Bireysel Fatura Bilgileri Deneme",
+    title: "Bireysel Fatura Bilgileri",
 };
+
+const fakeData2: Data = {
+    title: "Kurumsal Fatura Bilgileri",
+}
 
 const fakeCreditCart: Data = {
     title: "Ödemenizi bu sayfa üzerinden güvenli bir şekilde yapabilirsiniz. 3D Secure aktif olarak kullanabilirisiniz.",
