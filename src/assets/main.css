@@ -1227,6 +1227,10 @@ select {
   margin-left: 1.5rem;
 }
 
+.ml-7 {
+  margin-left: 1.75rem;
+}
+
 .ml-8 {
   margin-left: 2rem;
 }
@@ -1407,6 +1411,10 @@ select {
   margin-top: 3rem;
 }
 
+.mt-14 {
+  margin-top: 3.5rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -1547,12 +1555,24 @@ select {
   margin-top: auto;
 }
 
-.ml-7 {
-  margin-left: 1.75rem;
+.ml-\[19px\] {
+  margin-left: 19px;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
+.mt-\[41px\] {
+  margin-top: 41px;
+}
+
+.mt-\[46px\] {
+  margin-top: 46px;
+}
+
+.mr-\[50px\] {
+  margin-right: 50px;
+}
+
+.mb-\[48px\] {
+  margin-bottom: 48px;
 }
 
 .block {
@@ -2091,8 +2111,8 @@ select {
   width: 100%;
 }
 
-.w-2 {
-  width: 0.5rem;
+.w-\[326px\] {
+  width: 326px;
 }
 
 .min-w-\[15rem\] {
@@ -2727,9 +2747,9 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-blue-400 {
+.bg-slate-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(100 149 237 / var(--tw-bg-opacity));
+  background-color: rgb(163 181 201 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -3361,6 +3381,10 @@ select {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.leading-snug {
+  line-height: 1.375;
 }
 
 .tracking-tight {
@@ -6052,6 +6076,10 @@ div.code-toolbar > .toolbar a:hover {
 
   .lg\:w-4\/6 {
     width: 66.666667%;
+  }
+
+  .lg\:w-2\/5 {
+    width: 40%;
   }
 
   .lg\:grid-cols-4 {

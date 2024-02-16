@@ -23,7 +23,7 @@
             <div>
                 <div className=" bg-neutral-100 rounded-[20px] p-5">
                     <div class="flex flex-col md:flex-row gap-5">
-                        <div class="md:w-3/5 w-full">
+                        <div class="lg:w-3/5 w-full">
                             <div v-if="paymentSuccess" class=" bg-white rounded-2xl p-3 text-blue-900 mb-3">
                                 <PaymentSuccess />
                             </div>
@@ -132,9 +132,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="md:w-2/5 w-full rounded-[20px]">
+                        <div class="lg:w-2/5 w-full rounded-[20px]">
                             <div>
-                                <div class="bg-white p-[30px] rounded-[20px]">
+                                <div v-for="(item, index) in fakeData" :key="index" class="bg-white p-[30px] rounded-[20px]">
                                     <h2
                                         class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[10px] mb-[31px] ml-[10px]">
                                         Sipariş Özetiniz
@@ -172,7 +172,7 @@
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                     ( 650 ₺ x 2 )</p>
                                             </div>
-                                            <div class="flex flex-row justify-between mb-[41px]">
+                                            <d iv class="flex flex-row justify-between mb-[41px]">
                                                 <p
                                                     class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                     Bebek Yolcu
@@ -180,7 +180,7 @@
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                     ( 0 ₺ x 2 )</p>
-                                            </div>
+                                            </d>
                                         </div>
                                         <div class="w-full h-[1px] origin-top-left border border-zinc-300">
                                         </div>
@@ -234,9 +234,11 @@
                                                     Vathy - 10:15</p>
                                             </div>
                                         </div>
-                                        <div class="w-full h-[1px] origin-top-left border border-zinc-300">
+                                        <div v-if="!paymentSuccess"
+                                            class="w-full h-[1px] origin-top-left border border-zinc-300">
                                         </div>
-                                        <div class="flex flex-row items-center justify-between px-[30px] py-9">
+                                        <div v-if="!paymentSuccess"
+                                            class="flex flex-row items-center justify-between px-[30px] py-9">
                                             <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
                                                 Kazanılacak Mil Puan</div>
                                             <div
@@ -244,7 +246,7 @@
                                                 5 puan</div>
                                         </div>
                                     </div>
-                                    <div
+                                    <div v-if="!paymentSuccess"
                                         class="w-full flex flex-row items-center justify-between px-[30px] bg-slate-200 mt-[10px] rounded-2xl">
                                         <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
                                             Mil Puanım: 45
@@ -256,7 +258,27 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex flex-row items-center justify-between mt-8 mb-[5px]">
+                                    <div v-if="paymentSuccess" class="flex flex-row mt-[41px] mb-4">
+                                        <div
+                                            class="w-[60px] h-[60px] bg-slate-200 rounded-full flex flex-row justify-center items-center">
+                                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M26 5H6C5.46957 5 4.96086 5.21071 4.58579 5.58579C4.21071 5.96086 4 6.46957 4 7V14.3462C4 25.5487 13.4775 29.2638 15.375 29.8937C15.7801 30.0324 16.2199 30.0324 16.625 29.8937C18.525 29.2625 28 25.5475 28 14.345V7C28 6.46957 27.7893 5.96086 27.4142 5.58579C27.0391 5.21071 26.5304 5 26 5ZM26 14.3488C26 24.1512 17.7075 27.4263 16 27.9963C14.3088 27.4338 6 24.1613 6 14.3488V7H26V14.3488ZM15 17V12C15 11.7348 15.1054 11.4804 15.2929 11.2929C15.4804 11.1054 15.7348 11 16 11C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12V17C17 17.2652 16.8946 17.5196 16.7071 17.7071C16.5196 17.8946 16.2652 18 16 18C15.7348 18 15.4804 17.8946 15.2929 17.7071C15.1054 17.5196 15 17.2652 15 17ZM14.5 21.5C14.5 21.2033 14.588 20.9133 14.7528 20.6666C14.9176 20.42 15.1519 20.2277 15.426 20.1142C15.7001 20.0007 16.0017 19.9709 16.2926 20.0288C16.5836 20.0867 16.8509 20.2296 17.0607 20.4393C17.2704 20.6491 17.4133 20.9164 17.4712 21.2074C17.5291 21.4983 17.4993 21.7999 17.3858 22.074C17.2723 22.3481 17.08 22.5824 16.8334 22.7472C16.5867 22.912 16.2967 23 16 23C15.6022 23 15.2206 22.842 14.9393 22.5607C14.658 22.2794 14.5 21.8978 14.5 21.5Z"
+                                                    fill="#1F2A37" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex flex-col ml-[19px]">
+                                            <div class="text-black text-base font-semibold font-['Plus Jakarta Sans']">İptal
+                                                ve İade İşlemi</div>
+                                            <div
+                                                class="w-[326px] text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug tracking-tight">
+                                                Faturalama sırasında kaydettiğimiz yolcu bilgilerini seçerek fatura
+                                                bilgilerini otomatik doldurabilirsiniz.</div>
+                                        </div>
+                                    </div>
+                                    <div v-if="!paymentSuccess"
+                                        class="flex flex-row items-center justify-between mt-8 mb-[5px]">
                                         <div class="text-neutral-700 text-lg font-normal font-['Plus Jakarta Sans']">Toplam
                                             Ödenmesi Gereken</div>
                                         <div class="flex flex-col">
@@ -271,14 +293,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-row items-center justify-end mt-7 opacity-40">
-                                <button class="] bg-white rounded-lg border px-4 py-4">
-                                    Hesabımı Oluştur
-                                </button>
-                                <button @click="paymentSuccess = true"
-                                    class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
-                                    3260 TL Şimdi Öde
-                                </button>
+                            <div v-if="!paymentSuccess">
+                                <div class="flex flex-row items-center justify-end mt-7 opacity-40">
+                                    <button class="] bg-white rounded-lg border px-4 py-4">
+                                        Hesabımı Oluştur
+                                    </button>
+                                    <button @click="paymentSuccess = true"
+                                        class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
+                                        3260 TL Şimdi Öde
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -349,6 +373,7 @@ const fakeData2: Data = {
 const fakeCreditCart: Data = {
     title: "Ödemenizi bu sayfa üzerinden güvenli bir şekilde yapabilirsiniz. 3D Secure aktif olarak kullanabilirisiniz.",
 }
+
 </script>
 
 <style scoped></style>
