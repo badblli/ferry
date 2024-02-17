@@ -54,7 +54,8 @@
                                     id="horizontal-alignment-item-1" data-hs-tab="#horizontal-alignment-1"
                                     aria-controls="horizontal-alignment-1" role="tab">
                                     Güncel Rezervasyon
-                                </button> <button type="button"
+                                </button>
+                                <button type="button"
                                     class="leading-4 tracking-tight text-xl hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black inline-flex items-center gap-x-2 whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
                                     id="horizontal-alignment-item-2" data-hs-tab="#horizontal-alignment-2"
                                     aria-controls="horizontal-alignment-2" role="tab">
@@ -64,33 +65,17 @@
                             <div class="lg:pt-[67px] md:pt-[61px] pt-10 w-full">
                                 <div id="horizontal-alignment-1" role="tabpanel"
                                     aria-labelledby="horizontal-alignment-item-1">
-                                    <div class="w-full justify-between">
-                                        <div class="-m-1.5 overflow-x-auto w-full">
-                                            <div class="p-1.5 w-full inline-block align-middle">
-                                                <div class="overflow-hidden w-full">
-                                                    <ReservationTable :reservations="reservations" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ReservationTable :reservations="reservations" />
                                 </div>
                                 <div id="horizontal-alignment-2" role="tabpanel"
                                     aria-labelledby="horizontal-alignment-item-2">
-                                    <div class="w-full justify-between">
-                                        <div class="-m-1.5 overflow-x-auto w-full">
-                                            <div class="p-1.5 w-full inline-block align-middle">
-                                                <div class="overflow-hidden w-full">
-                                                    <ReservationTable :reservations="pastReservations" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ReservationTable :reservations="pastReservations" />
                                 </div>
                                 <div class="flex flex-row items-center justify-center pt-12 cursor-pointer">
                                     <h1 class="pt-4 text-black text-lg font-medium font-display mb-4 mr-4">
                                         Daha fazla
                                         rezervasyon</h1>
-                                        <IconArrowDownBlack/>
+                                    <IconArrowDownBlack />
                                 </div>
                             </div>
                         </div>
@@ -113,7 +98,7 @@
                                         aria-labelledby="horizontal-alignment-item-1">
                                         <div class="-m-1.5 overflow-x-auto w-full">
                                             <div class="p-1.5 w-full inline-block align-middle">
-                                                <MyProfile :profileData="people"/>
+                                                <MyProfile :profileData="people" />
                                             </div>
                                         </div>
                                     </div>

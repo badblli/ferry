@@ -92,11 +92,7 @@
                         class="md:mt-14 mt-7 md:mb-20 mb-10 flex flex-row justify-center items-center text-black text-base font-medium font-display bg-white p-3 w-48 rounded-full m-auto">
                         Daha fazla
                         <div class="ml-2">
-                            <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M21.5873 16.4399C21.8403 16.693 21.8403 17.1033 21.5873 17.3563L15.7222 23.2214C15.4692 23.4744 15.0589 23.4744 14.8058 23.2214L8.94079 17.3563C8.68773 17.1033 8.68773 16.693 8.94079 16.4399C9.19385 16.1869 9.60414 16.1869 9.8572 16.4399L14.616 21.1988V8.1006C14.616 7.74272 14.9061 7.4526 15.264 7.4526C15.6219 7.4526 15.912 7.74272 15.912 8.1006L15.912 21.1988L20.6709 16.4399C20.9239 16.1869 21.3342 16.1869 21.5873 16.4399Z"
-                                    fill="black" />
-                            </svg>
+                            <IconArrowDownBlack />
                         </div>
                     </div>
                 </div>
@@ -112,18 +108,19 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import IconsArrowsLeftRight from '@/components/icons/IconsArrowsLeftRight.vue';
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
 import IconArrowRight from "@/components/icons/IconArrowRight.vue";
+
 import { onMounted, ref } from 'vue';
 // import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
-
+// do not clean
 // const store = useTemporaryStore();
 // const selectedItem = ref(null);
-
+// do not clean
 // const selectItem = (item: any) => {
 //     selectedItem.value = item;
 //     store.setSelectedItem(item);
 //     localStorage.setItem('selectedItem', JSON.stringify(item));
 // };
-
+// do not clean
 const logSelectedData = (item: any) => {
     console.log("Tıklanan Butondaki Veriler:");
     console.log(item);
@@ -191,20 +188,20 @@ onMounted(() => {
         gap: '1rem',
         focus: 0,
         interval: 3000,
-            breakpoints: {
-        1380: {
-            perPage: 4,
+        breakpoints: {
+            1380: {
+                perPage: 4,
+            },
+            1140: {
+                perPage: 3,
+            },
+            840: {
+                perPage: 2,
+            },
+            580: {
+                perPage: 1,
+            },
         },
-        1140: {
-            perPage: 3,
-        },
-        840: {
-            perPage: 2,
-        },
-        580: {
-            perPage: 1,
-        },
-    },
     }).mount();
     splide.on('moved', () => {
         const activeSlideIndex = splide.index;

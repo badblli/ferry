@@ -12,12 +12,15 @@
                         Ödeme Adımı
                     </div>
                 </div>
-                <div class="flex flex-row items-center">
-                    <div
-                        class="h-[37px] bg-white rounded-lg border flex justify-center items-center py-[7px] px-5 cursor-pointer">
-                        <div class="text-black text-lg font-medium font-display ml-1">Yeni Bilet Ara</div>
-                        <IconArrowDownBlack />
+                <div v-if="!paymentSuccess" class="flex flex-row justify-center items-center mr-2 ml-9">
+                    <div class="flex flex-col">
+                        <div class="text-black text-base font-medium font-display">Ödenecek Tutar</div>
+                        <div
+                            class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">
+                            41TL
+                        </div>
                     </div>
+                    <IconArrowDownBlack class="ml-[20px]" />
                 </div>
             </div>
             <div>
@@ -134,7 +137,8 @@
                         </div>
                         <div class="lg:w-2/5 w-full rounded-[20px]">
                             <div>
-                                <div v-for="(item, index) in fakeData" :key="index" class="bg-white p-[30px] rounded-[20px]">
+                                <div v-for="(item, index) in fakeData" :key="index"
+                                    class="bg-white p-[30px] rounded-[20px]">
                                     <h2
                                         class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[10px] mb-[31px] ml-[10px]">
                                         Sipariş Özetiniz

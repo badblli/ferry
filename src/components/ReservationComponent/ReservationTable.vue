@@ -1,6 +1,6 @@
 <template>
-    <table class="w-full relative divide-y divide-gray-200">
-        <thead>
+    <table class="w-full divide-y divide-gray-200">
+        <thead class="">
             <tr>
                 <th scope="col"
                     class="text-start text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-loose p-6">
@@ -21,7 +21,7 @@
                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase"></th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody class="divide-y divide-gray-200">
             <tr v-for="(reservation, index) in reservations" :key="index"
                 class="m-6 border border-stone-300 rounded-2xl p-3 pb-3 border-spacing-2.5">
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 flex p-6">

@@ -6,7 +6,7 @@
                 Feribot Bileti Ücretleri
             </h1>
             <div className="w-full mx-auto bg-neutral-100 rounded-[20px] p-4">
-                <div className="flex flex-col pt-8 overflow-x-auto">
+                <div className="flex flex-col overflow-x-auto">
                     <div className="p-8">
                         <div className="flex flex-row items-center">
                             <IconAsteriskSimple />
@@ -14,20 +14,21 @@
                                 {{ whichFerry }}
                             </h2>
                         </div>
-                        <table className="relative bg-white mb-8 rounded-2xl w-full mt-10">
+                        <table className="relative bg-white mb-4 rounded-2xl w-full mt-10">
                             <thead>
+
                                 <tr v-for="(header, index) in tableHeaders" :key="index"
-                                    class="my-6 md:mx-8 mx-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-2xl">
+                                    class="md:mx-24 mx-14  mt-8 md:mt-14 flex flex-row justify-between text-black md:text-lg text-base font-semibold leading-loose rounded-2xl ">
                                     <th v-for="(label, labelIndex) in header" :key="labelIndex"
-                                        class="pt-3 pl-8 w-full flex">{{
+                                        class="md:pl-14 first:pl-2 w-full flex">{{
                                             label }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(row, index) in tableData" :key="index"
-                                    className="m-6 flex flex-row justify-between text-black text-lg font-semibold leading-loose border border-neutral-200 rounded-2xl [&>*:nth-last-child(1)]:border-none">
-                                    <td v-for="(cell, cellIndex) in row" :key="cellIndex"
-                                        className="w-full border-r border-neutral-300 py-7 md:pl-10 pl-3">
+                                    className="flex flex-row md:mt-9 mt-4 mx-16 mb-4 last:mb-[70px] border border-stone-300 rounded-2xl [&>*:nth-last-child(1)]:border-none">
+                                    <td v-for="(cell, cellIndex) in row" :key="cellIndex" style="border-height: 20px;"
+                                        className="w-full border-r border-neutral-300 md:py-[21px] py-2 md:pl-10 pl-3 first:text-lg first:font-semibold first:leading-loose md:text-2xl text-xl font-normal">
                                         {{ cell }}</td>
                                 </tr>
                             </tbody>
@@ -52,9 +53,9 @@ const tableHeaders = [
 ];
 
 const tableData = [
-    ["Tek Yön", "39TL", "39TL", "39TL"],
-    ["Günü Birlik", "39TL", "39TL", "39TL"],
-    ["Gidiş Dönüş", "39TL", "39TL", "39TL"]
+    ["Tek Yön", "39€", "39€", "39€"],
+    ["Günü Birlik", "39€", "39€", "39€"],
+    ["Gidiş Dönüş", "39€", "39€", "39€"]
 ];
 
 const whichFerry = "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.";
