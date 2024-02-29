@@ -5,6 +5,7 @@
                 <ul class="splide__list">
                     <li class="splide__slide" v-for="(image, index) in images" :key="index">
                         <img :src="image.url" alt="Slide Image" />
+
                         <div>{{ image.title }}</div>
                     </li>
                 </ul>
