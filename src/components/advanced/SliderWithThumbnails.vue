@@ -16,6 +16,7 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide" v-for="(image, index) in images" :key="index">
+                        <div style="font-size:x-small">{{ image.thumbnail }}</div>
                         <img :src="image.thumbnail" alt="Thumbnail" @click="goToSlide(index)" />
                     </li>
                 </ul>
