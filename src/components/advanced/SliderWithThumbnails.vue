@@ -79,10 +79,12 @@ onMounted(() => {
     }).mount();
 
     thumbnails.on('click', (slide: any) => {
+        console.log(slide.index, 'clicked');
         main.go(slide.index);
     });
 
     main.on('moved', (newIndex: number) => {
+        console.log(newIndex, 'moved');
         thumbnails.go(newIndex);
     });
 });
