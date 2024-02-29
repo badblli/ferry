@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Sipariş Özetiniz",
+    "details": [
+      {
+        "name": "Kuşadası - Samos Bileti",
+        "passenger": "Yetişkin Yolcu",
+        "quantity": 2,
+        "departureDate": "2024-03-15",
+        "returnDate": "2024-03-20",
+        "departureTime": "09:00",
+        "arrivalTime": "10:15",
+        "departurePort": "Kuşadası",
+        "arrivalPort": "Samos"
+      },
+      {
+        "name": "Transfer Hizmeti",
+        "price": 50,
+        "quantity": 1,
+        "departureDate": "2024-03-15",
+        "departureTime": "10:30",
+        "from": "Kuşadası Limanı",
+        "to": "Otelden"
+      }
+    ],
+    "passengers": [
+      {
+        "type": "Yetişkin",
+        "price": 1050,
+        "count": 2
+      },
+      {
+        "type": "Bebek",
+        "price": 0,
+        "count": 1
+      },
+      {
+        "type": "Çocuk",
+        "price": 650,
+        "count": 3
+      }
+    ],
+    "paymentSuccess": false
+  }
+]

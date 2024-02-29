@@ -1,0 +1,31 @@
+{
+  "tableHeaders": [["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]],
+  "tableData": [
+    [
+      "4 Kasım - Cumartesi",
+      [
+        "Kuşadası - 09:00",
+        "Kuşadası - 09:00",
+        "Kuşadası - 09:00",
+        "Kuşadası - 09:00",
+        "Kuşadası - 09:00",
+        "Kuşadası - 09:00",
+        "Kuşadası - 09:00"
+      ],
+      "Samos Vathy - 17:00"
+    ],
+
+    [
+      "4 Kasım - Cumartesi",
+      ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"],
+      "Samos Vathy - 17:00"
+    ],
+
+    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"]
+  ],
+  "infoData": [
+    {
+      "whichFerry": "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir."
+    }
+  ]
+}
