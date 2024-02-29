@@ -11,7 +11,7 @@
 import { defineProps, ref } from 'vue';
 // @ts-ignore
 
-const phone = ref(null);
+const phone = ref('');
 
 const props = defineProps({
     type: {

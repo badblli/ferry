@@ -2,7 +2,7 @@
     <!-- <DatePicker /> -->
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8 px-8">
+        <div class="relative top-[-11rem] w-full lg:px-28 md:px-16 sm:px-8">
             <div class="flex flex-col md:flex-row justify-between">
                 <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-14">
                     Feribot Seferleri 2024
@@ -15,7 +15,7 @@
             </div>
             <div className="w-full mx-auto bg-neutral-100 rounded-[20px] md:p-4 p-0">
                 <div className="flex flex-col">
-                    <div className="p-8">
+                    <div className="md:p-8 p-4">
                         <div className="flex flex-col md:flex-row justify-start">
                             <div
                                 class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer hs-dropdown relative">
@@ -64,7 +64,7 @@
                                             {{ label }}</th>
                                     </tr>
                                 </thead>
-                                <tbody class="">
+                                <tbody>
                                     <tr v-for="(row, index) in tableData" :key="index"
                                         class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
                                         <td v-for="(cell, cellIndex) in row" :key="cellIndex"
@@ -99,23 +99,60 @@
 <script setup lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue';
 
-const tableHeaders = [
-    ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
-];
+const tableHeaders = ref([["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]]);
+const tableData = ref([
+    [
+        "4 Kasım - Cumartesi",
+        [
+            "Kuşadası - 09:00",
+            "Kuşadası - 09:00",
+            "Kuşadası - 09:00",
+            "Kuşadası - 09:00",
+            "Kuşadası - 09:00",
+            "Kuşadası - 09:00",
+            "Kuşadası - 09:00"
+        ],
+        "Samos Vathy - 17:00"
+    ],
 
-const tableData = [
-    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
-    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
-    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
-];
+    [
+        "4 Kasım - Cumartesi",
+        ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"],
+        "Samos Vathy - 17:00"
+    ],
 
-
-const infoData = ref([
-    { whichFerry: 'Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.' },
-    { whichFerry: 'Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli bir pasaport ve Schengen vizesi olup vize konusunda dilerseniz firmamız sizlere yardımcıolmaktanmutluluk duyacaktır.' },
+    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"]
 ]);
+const infoData = ref([
+    {
+        "whichFerry": "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir."
+    }
+]);
+
+// const loading = ref(true);
+// const tableHeaders = ref([]);
+// const tableData = ref([]);
+// const infoData = ref<{ whichFerry: string }[]>([]);
+// const whichFerry = ref("");
+
+// onMounted(async () => {
+//     try {
+//         const response = await fetch('/journeyPrice.json');
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
+//         tableHeaders.value = data.tableHeaders;
+//         tableData.value = data.tableData;
+//         infoData.value = data.infoData;
+//         whichFerry.value = data.whichFerry; // whichFerry değerini atama
+//         loading.value = false;
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//         loading.value = false;
+//     }
+// });
 </script>
-  
 <style scoped></style>

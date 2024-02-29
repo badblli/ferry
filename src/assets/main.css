@@ -1011,11 +1011,6 @@ select {
   margin-right: 3.5rem;
 }
 
-.mx-16 {
-  margin-left: 4rem;
-  margin-right: 4rem;
-}
-
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -2771,6 +2766,11 @@ select {
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 62 62 / var(--tw-bg-opacity));
+}
+
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 48 48 / var(--tw-bg-opacity));
 }
 
 .bg-slate-100 {
@@ -4543,6 +4543,10 @@ div.code-toolbar > .toolbar a:hover {
   margin-bottom: 70px;
 }
 
+.last\:pl-24:last-child {
+  padding-left: 6rem;
+}
+
 .checked\:border-blue-600:checked {
   --tw-border-opacity: 1;
   border-color: rgb(49 87 201 / var(--tw-border-opacity));
@@ -5719,9 +5723,9 @@ div.code-toolbar > .toolbar a:hover {
 }
 
 @media (min-width: 768px) {
-  .md\:mx-24 {
-    margin-left: 6rem;
-    margin-right: 6rem;
+  .md\:mx-20 {
+    margin-left: 5rem;
+    margin-right: 5rem;
   }
 
   .md\:mx-6 {
@@ -5765,6 +5769,10 @@ div.code-toolbar > .toolbar a:hover {
 
   .md\:mb-44 {
     margin-bottom: 11rem;
+  }
+
+  .md\:mb-9 {
+    margin-bottom: 2.25rem;
   }
 
   .md\:mb-\[104px\] {
@@ -5825,10 +5833,6 @@ div.code-toolbar > .toolbar a:hover {
 
   .md\:mt-3 {
     margin-top: 0.75rem;
-  }
-
-  .md\:mt-9 {
-    margin-top: 2.25rem;
   }
 
   .md\:mt-\[55px\] {
@@ -5903,6 +5907,10 @@ div.code-toolbar > .toolbar a:hover {
     padding: 1rem;
   }
 
+  .md\:p-8 {
+    padding: 2rem;
+  }
+
   .md\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -5928,11 +5936,6 @@ div.code-toolbar > .toolbar a:hover {
     padding-bottom: 1rem;
   }
 
-  .md\:py-\[21px\] {
-    padding-top: 21px;
-    padding-bottom: 21px;
-  }
-
   .md\:pb-\[100px\] {
     padding-bottom: 100px;
   }
@@ -5941,16 +5944,16 @@ div.code-toolbar > .toolbar a:hover {
     padding-left: 0px;
   }
 
-  .md\:pl-10 {
-    padding-left: 2.5rem;
-  }
-
   .md\:pl-14 {
     padding-left: 3.5rem;
   }
 
   .md\:pl-16 {
     padding-left: 4rem;
+  }
+
+  .md\:pl-20 {
+    padding-left: 5rem;
   }
 
   .md\:pl-\[50px\] {
@@ -6037,6 +6040,16 @@ div.code-toolbar > .toolbar a:hover {
     margin-right: 3rem;
   }
 
+  .lg\:mx-16 {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  .lg\:mx-24 {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+
   .lg\:mb-14 {
     margin-bottom: 3.5rem;
   }
@@ -6112,8 +6125,17 @@ div.code-toolbar > .toolbar a:hover {
     padding-right: 2rem;
   }
 
+  .lg\:py-\[21px\] {
+    padding-top: 21px;
+    padding-bottom: 21px;
+  }
+
   .lg\:pb-\[207px\] {
     padding-bottom: 207px;
+  }
+
+  .lg\:pl-16 {
+    padding-left: 4rem;
   }
 
   .lg\:pl-28 {
@@ -6130,6 +6152,10 @@ div.code-toolbar > .toolbar a:hover {
 
   .lg\:pt-\[67px\] {
     padding-top: 67px;
+  }
+
+  .first\:lg\:pl-10:first-child {
+    padding-left: 2.5rem;
   }
 }
 
@@ -6160,6 +6186,10 @@ div.code-toolbar > .toolbar a:hover {
 
   .xl\:gap-0 {
     gap: 0px;
+  }
+
+  .xl\:pl-24 {
+    padding-left: 6rem;
   }
 }
 

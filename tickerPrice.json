@@ -1,0 +1,11 @@
+{
+  "tableHeaders": [
+    ["Bilet Tipi", "Yetişkin", "Çocuk 6-11", "Çocuk 6-11"]
+  ],
+  "tableData": [
+    ["Tek Yön", "39€", "39€", "39€"],
+    ["Günü Birlik", "39€", "39€", "39€"],
+    ["Gidiş Dönüş", "39€", "39€", "39€"]
+  ],
+  "whichFerry": "Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir."
+}

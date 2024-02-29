@@ -137,8 +137,7 @@
                         </div>
                         <div class="lg:w-2/5 w-full rounded-[20px]">
                             <div>
-                                <div v-for="(item, index) in fakeData" :key="index"
-                                    class="bg-white p-[30px] rounded-[20px]">
+                                <div class="bg-white p-[30px] rounded-[20px]">
                                     <h2
                                         class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[10px] mb-[31px] ml-[10px]">
                                         Sipariş Özetiniz
@@ -146,9 +145,9 @@
                                     <div class="rounded-xl border border-zinc-300">
                                         <div class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px]">
                                             <div class="flex flex-row justify-between">
+                                                <!-- //v-for -->
                                                 <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
-                                                    Kuşadası -
-                                                    Samos Bileti</div>
+                                                    Kuşadası - Samos Bilet</div>
                                                 <div>
                                                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -326,7 +325,7 @@ import PaymentTab from './components/PaymentTab.vue'
 import PaymentSuccess from './PaymentSuccess.vue'
 import { useRouter } from "vue-router";
 import CreditCartTab from './components/CreditCartTab.vue'
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 // interface AgeItem {
 //     title: string;
@@ -359,12 +358,58 @@ const navigateToPassenger = () => {
 };
 
 const paymentSuccess = ref(false);
-
+const loading = ref(true);
 // const ages = ref<AgeItem[]>([
 //     { title: 'Yetişkin Ekle', age: '+12 yaş' },
 //     { title: 'Çocuk Ekle', age: '6-12 yaş' },
 //     { title: 'Bebek Ekle', age: '0-5 yaş' }
 // ]);
+
+interface Order {
+    title: string;
+    details: OrderDetail[];
+    passengers: Passenger[];
+    paymentSuccess: boolean;
+}
+
+interface OrderDetail {
+    name: string;
+    passenger?: string;
+    price?: number;
+    quantity: number;
+    departureDate?: string;
+    returnDate?: string;
+    departureTime?: string;
+    arrivalTime?: string;
+    departurePort?: string;
+    arrivalPort?: string;
+    from?: string;
+    to?: string;
+}
+
+interface Passenger {
+    type: string;
+    price: number;
+    count: number;
+}
+
+const orders = ref<Order[]>([]);
+
+onMounted(async () => {
+    try {
+        const response = await fetch('/orders.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data, 'data')
+        orders.value = data.orders;
+        console.log(data[0].title, 'Sipariş Özetiniz')
+        loading.value = false;
+    } catch (error) {
+        loading.value = false;
+    }
+});
 
 const fakeData: Data = {
     title: "Bireysel Fatura Bilgileri",
