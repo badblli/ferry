@@ -35,7 +35,7 @@
                                     <ul class="splide__list">
                                         <li v-for="(item, index) in items" :key="index" class="splide__slide">
                                             <div class="text-center text-black text-lg font-medium font-display">{{
-                                                item.date }}
+                                            item.date }}
                                             </div>
                                             <div
                                                 class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -63,27 +63,37 @@
                             <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
                             <div class="mt-3 mr-5 lg:mr-[75px]">
                                 <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
-                                <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{
-                                    item.company }}</p>
+                                <p
+                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                    {{
+                                            item.company }}</p>
                             </div>
                             <div class="mt-3 mr-5 lg:mr-[75px]">
                                 <p class="text-black text-base font-medium font-display">Kalkış</p>
-                                <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{
-                                    item.departure }}</p>
-                                <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{
-                                    item.departureLocation }}</p>
+                                <p
+                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                    {{
+                                            item.departure }}</p>
+                                <p
+                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                    {{
+                                            item.departureLocation }}</p>
                             </div>
                             <div class="mt-3 mr-5 lg:mr-[75px]">
                                 <p class="text-black text-base font-medium font-display">Varış</p>
-                                <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{
-                                    item.arrival }}</p>
-                                <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{
-                                    item.arrivalLocation }}</p>
+                                <p
+                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                    {{
+                                            item.arrival }}</p>
+                                <p
+                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                    {{
+                                            item.arrivalLocation }}</p>
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
                             <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
-                                item.price }}</div>
+                                            item.price }}</div>
                             <button @click="logSelectedData(item)"
                                 class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
                         </div>
@@ -211,7 +221,7 @@ onMounted(() => {
     });
 });
 </script>
-  
+
 <style scoped>
 .splide {
     padding: 10px 0;
@@ -262,4 +272,112 @@ onMounted(() => {
     height: 2em;
     width: 4em;
 }
+
+
+.splide.splide__arrow {
+  background: white;
+}
+
+.splide__arrow.splide__arrow--prev:disabled {
+  opacity: 1;
+  background: transparent
+}
+
+.splide__arrow.splide__arrow--prev {
+  height: full;
+  top: 40px;
+  left: -3rem;
+  opacity: 1;
+  background: transparent;
+}
+
+.splide__arrow.splide__arrow--next {
+  height: full;
+  top: 40px;
+  right: -3rem;
+  opacity: 1;
+  background: transparent;
+}
+
+.splide__arrow.splide__arrow--next:disabled {
+  opacity: 1;
+  background: transparent
+}
+
+.splide {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%
+}
+
+.splide__list {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.splide__track {
+  width: 100%;
+}
+
+.splide__slide {
+  height: 81px;
+  display: block;
+  width: 100%;
+  background-color: rgb(248 250 252);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 361px;
+  height: 81px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.splide__slide div {
+  opacity: .6;
+}
+
+.splide__slide.is-active div {
+  opacity: 1;
+}
+
+.splide__slide.is-active {
+  transform: scale(1);
+  filter: grayscale(100%);
+  background-color: white;
+  opacity: 1;
+}
+
+.splide__arrow {
+  transform: none;
+  border-radius: unset;
+  opacity: .9;
+} 
+
+.splide__arrow svg {
+  fill: #000;
+  height: 5em;
+  width: 5rem;
+}
+
+@media (max-width: 1024px) { 
+  .splide__arrow.splide__arrow--prev {
+    height: full;
+    top: 40px;
+    left: -2rem;
+    opacity: 1;
+    background: transparent;
+  }
+  
+  .splide__arrow.splide__arrow--next {
+    height: full;
+    top: 40px;
+    right: -2rem;
+    opacity: 1;
+    background: transparent;
+  }
+ }
 </style>

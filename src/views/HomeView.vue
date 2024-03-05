@@ -4,18 +4,18 @@
       <div class="lg:px-28 md:px-16 sm:px-8">
         <SliderWithThumbnails />
       </div>
-      <section class="lg:px-28 md:px-16 sm:px-8">
 
+      <section class="lg:px-28 md:px-16 sm:px-8 -translate-y-12">
         <div class="relative w-full h-[494px] rounded-xl flex flex-col justify-between mb-10">
           <div
-            class="absolute bottom-0 z-10 bg-white md:max-w-[551px] h-[466px] w-full p-7 md:ml-4 md:mb-4 rounded-xl flex flex-col justify-between">
+            class="absolute bottom-0 z-10 bg-white md:max-w-[551px] md:h-[466px] p-7 md:ml-4 md:mb-4 m-3 rounded-xl flex flex-col justify-between">
             <div class="flex flex-col">
               <div
                 class="text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[18.46px] tracking-[2.96px] mb-[22px]">
                 KAMPANYA
               </div>
               <div
-                class="text-black lg:text-[42px] text-4xl font-bold font-['Plus Jakarta Sans'] leading-[48.47px] tracking-wide flex flex-row">
+                class="text-black lg:text-[42px] text-3xl font-bold font-['Plus Jakarta Sans'] leading-[48.47px] tracking-wide flex flex-row">
                 Kasım’da Kuşadası<br />Samos Feribot Bileti<br />€30! Her Cumartesi<br />ve Pazar.
               </div>
             </div>
@@ -33,7 +33,6 @@
             src="https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="asd" class="object-fill w-full h-full rounded-xl flip-horizontal" />
         </div>
-
         <div class="flex flex-row gap-5 ">
           <div
             class="w-full flex flex-col bg-gradient-to-r from-blue-200 to-blue-400 h-[450px] rounded-xl pl-10 pt-10 overflow-hidden relative">
@@ -45,7 +44,12 @@
               Schengen Vizenizi<br />Biz Alalım
             </div>
             <img src="../assets//embeddedImages//mainPageTicketImage.png" alt="embedded"
-              class="flip-horizontal absolute h-[650px] left-64 -bottom-48 z-auto" />
+              class="flip-horizontal absolute h-[650px] left-72 -bottom-48 z-auto" />
+            <div class="container">
+              <div class="circle">
+                <div class="hole"></div>
+              </div>
+            </div>
           </div>
           <div class="relative w-full h-[450px] rounded-xl flex flex-col justify-between">
             <div class="absolute bottom-0 z-10 bg-white md:w-2/3 w-full p-7 md:ml-4 md:mb-4 rounded-xl">
@@ -85,13 +89,14 @@
             <IconArrowUpRight />
           </div>
         </div>
-
-        <div class="flex flex-row gap-5 md:mb-[120px] mb-20">
+        <div class="flex flex-col md:flex-row gap-5 md:mb-[120px] mb-20">
           <!-- sections -->
           <div class="w-[400px] h-[510px] rounded-xl border border-gray-200 mt-12 first:bg-slate-100">
-            <img
-              src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="asd" class="object-fill w-full max-h-[241px] flip-horizontal p-5" />
+            <div class="rounded-xl m-5  bg-blue-400 ">
+              <img
+                src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="asd" class="object-fill w-full flip-horizontal rounded-xl" />
+            </div>
             <div class="px-5 pt-2">
               <div class="text-black text-[23px] font-semibold font-['Plus Jakarta Sans'] tracking-wide pb-[38px]">1
                 Gece
@@ -100,7 +105,7 @@
               <div class=" text-black text-base font-normal font-display leading-snug tracking-tight">
                 Feribot biletleri, liman vergileri, oda/kahvaltı otel konaklaması, kah..</div>
               <div
-                class="flex flex-row items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
+                class="flex flex-row w-full items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
                 <span>
                   €74’dan başlayan fiyatlar
                 </span>
@@ -114,114 +119,116 @@
           </div>
           <!-- sections -->
           <div class="w-[400px] h-[510px] rounded-xl border border-gray-200 mt-12 first:bg-slate-100">
-            <img
-              src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="asd" class="object-fill w-full max-h-[241px] flip-horizontal p-5 rounded-md" />
+            <div class="rounded-xl m-5  bg-blue-400 ">
+              <img
+                src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="asd" class="object-fill w-full flip-horizontal rounded-xl" />
+            </div>
             <div class="px-5 pt-2">
-              <div class="text-black text-[23px] font-semibold font-['Plus Jakarta Sans'] tracking-wide pb-[38px]">2
+              <div class="text-black text-[23px] font-semibold font-['Plus Jakarta Sans'] tracking-wide pb-[38px]">1
                 Gece
-                3 Gün
+                2 Gün
               </div>
               <div class=" text-black text-base font-normal font-display leading-snug tracking-tight">
                 Feribot biletleri, liman vergileri, oda/kahvaltı otel konaklaması, kah..</div>
               <div
-                class="flex flex-row items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
+                class="flex flex-row w-full items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
                 <span>
-                  €99’dan başlayan fiyatlar
+                  €74’dan başlayan fiyatlar
                 </span>
                 <span>
-                  <div class="w-[61px] h-[61px] bg-white rounded-full"></div>
+                  <div class="flex flex-row items-center justify-center p-5 bg-white rounded-full">
+                    <IconShare2 />
+                  </div>
                 </span>
               </div>
             </div>
           </div>
           <!-- sections -->
           <div class="w-[400px] h-[510px] rounded-xl border border-gray-200 mt-12 first:bg-slate-100">
-            <img
-              src="https://images.unsplash.com/photo-1492979423821-7193e8938424?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="asd" class="object-fill w-full max-h-[241px] flip-horizontal p-5 rounded-md" />
+            <div class="rounded-xl m-5  bg-blue-400 ">
+              <img
+                src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="asd" class="object-fill w-full flip-horizontal rounded-xl max-h-[241px]" />
+            </div>
             <div class="px-5 pt-2">
-              <div class="text-black text-[23px] font-semibold font-['Plus Jakarta Sans'] tracking-wide pb-[38px]">3
+              <div class="text-black text-[23px] font-semibold font-['Plus Jakarta Sans'] tracking-wide pb-[38px]">1
                 Gece
-                4 Gün
+                2 Gün
               </div>
               <div class=" text-black text-base font-normal font-display leading-snug tracking-tight">
                 Feribot biletleri, liman vergileri, oda/kahvaltı otel konaklaması, kah..</div>
               <div
-                class="flex flex-row items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
+                class="flex flex-row w-full items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
                 <span>
-                  €124’dan başlayan fiyatlar
+                  €74’dan başlayan fiyatlar
                 </span>
                 <span>
-                  <div class="w-[61px] h-[61px] bg-white rounded-full"></div>
+                  <div class="flex flex-row items-center justify-center p-5 bg-white rounded-full">
+                    <IconShare2 />
+                  </div>
                 </span>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-
-
-
-
-
+      <HomeCardSplide />
       <section>
-        <div class="w-full h-[935px] bg-slate-200 flex flex-col items-center mb-[120px]">
+        <div class="w-full bg-slate-200 flex flex-col items-center mb-[120px]">
           <div class=" text-black text-[42px] font-medium font-display tracking-wide mt-[100px] mb-7">Samos
             Adasında<br />neler yapabilirim?</div>
           <div
             class="w-[534px] text-center text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
             Marzipan sweet roll gingerbread oat cake cheesecake pie. Pie macaroon sweet liquorice topping.</div>
           <div class="mt-[107px] flex flex-col">
-            <div class="flex flex-row mb-5 flex-wrap justify-center">
+            <div class="flex flex-row flex-wrap justify-center">
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
-
             </div>
-            <div class="flex flex-row  mb-5 flex-wrap justify-center">
+            <div class="flex flex-row flex-wrap justify-center">
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
@@ -229,13 +236,13 @@
             </div>
             <div class="flex flex-row justify-center flex-wrap ">
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
               </div>
               <div
-                class="p-3 pr-5 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white mr-5">
+                class="p-3 pr-5 m-2 flex flex-row  rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
                 <img class="w-[66px] h-[66px] rounded-full ml-[17px]" alt="Slide Image"
                   src="https://via.placeholder.com/66x66" />
                 <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">Macera Turu</div>
@@ -267,13 +274,39 @@ import SliderWithThumbnails from '@/components/advanced/SliderWithThumbnails.vue
 import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
 import IconShare2 from '@/components/icons/IconShare2.vue';
 import IconFooter from '@/components/icons/IconFooter.vue';
-// import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
-// import IconSamosaVector from '@/components/icons/IconSamosaVector.vue';
+import HomeCardSplide from '@/components/advanced/HomeCardSplide.vue';
 </script>
 
-<style scoped></style>
+<style>
+.container {
+  width: 718px;
+  height: 718px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(238, 238, 238, .4);
+  border-radius: 718px;
+  left: 100px;
+}
 
+.circle {
+  width: 450px;
+  height: 450px;
+  border-radius: 100%;
+  background-color: rgba(0, 153, 255, 0.041);
+  position: relative;
+  padding: 00px;
+}
 
-<!-- <div class="lg:w-[551px] lg:h-[466px] w-full bg-white p-[35px] rounded-lg flex flex-col justify-between">
-  
-</div> -->
+.hole {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-20%, -50%);
+}
+</style>

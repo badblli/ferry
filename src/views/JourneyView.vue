@@ -39,10 +39,12 @@
                                 class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
                                 <div class="flex flex-row justify-between items-center mr-[15px]">
                                     <div class="flex flex-col mb-[3px] mr-[100px] ">
-                                        <div class="text-black text-base font-medium font-display tracking-tight ml-[24px]">
+                                        <div
+                                            class="text-black text-base font-medium font-display tracking-tight ml-[24px]">
                                             Rota
                                             Seçin</div>
-                                        <div class="text-black text-base font-light font-display tracking-tight ml-[24px]">
+                                        <div
+                                            class="text-black text-base font-light font-display tracking-tight ml-[24px]">
                                             Kuşadası - Samos</div>
                                     </div>
                                     <div>
@@ -117,5 +119,5 @@ const infoData = ref([
     { whichFerry: 'Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli bir pasaport ve Schengen vizesi olup vize konusunda dilerseniz firmamız sizlere yardımcıolmaktanmutluluk duyacaktır.' },
 ]);
 </script>
-  
+
 <style scoped></style>
