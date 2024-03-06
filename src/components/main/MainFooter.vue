@@ -12,7 +12,7 @@
       <ContactModal />
     </div>
   </div>
-  <footer class="bg-white text-black p-8">
+  <footer class="bg-white text-black p-8 centered-w">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-10 md:gap-0 xl:gap-0">
       <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
         <!-- for first column and space -->

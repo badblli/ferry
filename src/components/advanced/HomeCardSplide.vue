@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-[120px]">
+    <section class="mb-[120px] centered-w">
         <div class="lg:px-28 md:px-16 sm:px-8">
             <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">Her gün
                 farklı<br />Yunan adaları</div>

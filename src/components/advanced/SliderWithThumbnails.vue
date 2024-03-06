@@ -1,5 +1,40 @@
 <template>
     <div>
+        <div
+            class="lg:absolute block lg:flex flex-row lg:w-[502px] w-full lg:p-0 p-1 lg:mt-0 mt-1 z-20 lg:bg-white bg-slate-200 top-9 left-36 rounded-2xl ">
+            <div class="flex flex-col justify-center lg:ml-[35px] ml-5 lg:mt-[32px] mt-3 lg:mb-[31px] mb-3">
+                <p
+                    class="text-black lg:text-base text-sm font-semibold font-['Plus Jakarta Sans'] leading-[18.46px] tracking-[2.96px] lg:mb-[17px] mb-2">
+                    SAMOS TURLARI
+                </p>
+                <div class="flex flex-row justify-between">
+                    <p
+                        class="text-black lg:text-[32px] text-sm lg:font-bold font-sans font-['Plus Jakarta Sans'] lg:leading-[36.93px] leading-4 tracking-wide">
+                        Eşsiz Yunan koyları ile
+                        Samos’a feribot<br />
+                        bileti alın.
+                        <span class="lg:hidden flex flex-row justify-start items-start font-bold mt-1">
+                            €30
+                        </span>
+                    </p>
+                    <div class="items-end flex">
+                        <button
+                            class="flex flex-row justify-evenly items-center mx-2 w-[125px] h-[32px] lg:bg-slate-200 bg-white rounded-lg mr-[33px] text-black text-[15px] font-medium font-display">
+                            Tüm Turlar
+                            <IconArrowUpRight />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="bg-white w-[86px] h-[86px] lg:flex hidden flex-row justify-center items-center rounded-full z-50 lg:absolute lg:right-0 lg:translate-x-10 lg:translate-y-5">
+                    <div
+                        class="text-center text-stone-800 text-2xl font-bold font-['Plus Jakarta Sans'] bg-slate-200 w-[73px] h-[73px]  rounded-full flex flex-row justify-center items-center">
+                        €30</div>
+                </div>
+            </div>
+        </div>
         <div class="flex flex-col">
             <div id="main-slider" class="splide">
                 <div class="splide__track ">
@@ -77,9 +112,12 @@
                 </div>
                 <div v-if="showTrue">
                     <div class="h-20 flex flex-col justify-center items-center">
-                        <div class="m-7 flex flex-row">
-                            <p>Rezervasyon Kodunu Giriniz</p>
-                            <p class="ml-3">Yolcunun Adı Soyadı</p>
+                        <div class="m-7 flex flex-row justify-between">
+                            <Input placeholder="Rezervasyon Sorgula" class="mr-3" />
+                            <Input placeholder="Yolcunun Adı" class="mr-3" />
+                            <div class="bg-slate-200 rounded-full flex flex-row justify-center items-center p-[17px]">
+                                <IconSearchNormal />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,6 +132,8 @@ import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import IconSearchNormal from '../icons/IconSearchNormal.vue';
 import IconArrowsLeftRight from '../icons/IconArrowsLeftRight.vue';
+import IconArrowUpRight from '../icons/IconArrowUpRight.vue';
+// import IconFooter from '../icons/IconFooter.vue';
 
 interface Image {
     url: string;

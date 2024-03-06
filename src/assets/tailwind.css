@@ -570,3 +570,9 @@ div.code-toolbar > .toolbar a:hover {
   filter: FlipH;
   -ms-filter: "FlipH";
 }
+
+.centered-w{
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
