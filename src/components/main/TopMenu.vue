@@ -1,6 +1,7 @@
 <template>
-  <header class="relative  flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
-    <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-28 md:px-16 sm:px-8" aria-label="Global">
+  <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
+    <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-28 md:px-16 sm:px-8"
+      aria-label="Global">
       <div class="lg:flex hidden items-center justify-between">
         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ message }}</a>
         <!-- <div
@@ -20,16 +21,15 @@
             <button id="hs-dropdown-slideup-animation" type="button"
               class=" hs-dropdown-toggle flex flex-row justify-center items-center mr-2">
               <span
-                class="text-white text-sm font-semibold font-['Plus Jakarta Sans'] tracking-tight cursor-pointer mr-[9px]">{{
-                  currentLanguage }}</span>
+                class="text-white text-sm font-semibold font-['Plus Jakarta Sans'] tracking-tight cursor-pointer mr-[9px]">{{ currentLanguage }}</span>
               <IconArrowWhite />
             </button>
             <div
               class="hs-dropdown-menu w-64 bg-white rounded-xl border transition-[opacity,margin] duration hs-dropdown-open:opacity-100 hidden z-10  opacity-0 duration-300 mt-2 min-w-[15rem] p-7"
               aria-labelledby="hs-dropdown-slideup-animation">
-              <a v-for="(language, langIndex) in languages" :key="langIndex" @click="updateCurrentLanguage(language.name)"
-                class="cursor-pointer flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{
-                  language.name }}</a>
+              <a v-for="(language, langIndex) in languages" :key="langIndex"
+                @click="updateCurrentLanguage(language.name)"
+                class="cursor-pointer flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">{{ language.name }}</a>
             </div>
           </div>
         </div>

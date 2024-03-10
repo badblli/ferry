@@ -1294,6 +1294,10 @@ select {
   margin-bottom: 41px;
 }
 
+.mb-\[46px\] {
+  margin-bottom: 46px;
+}
+
 .mb-\[48px\] {
   margin-bottom: 48px;
 }
@@ -2242,12 +2246,20 @@ select {
   width: 33px;
 }
 
+.w-\[353px\] {
+  width: 353px;
+}
+
 .w-\[35px\] {
   width: 35px;
 }
 
 .w-\[378px\] {
   width: 378px;
+}
+
+.w-\[389px\] {
+  width: 389px;
 }
 
 .w-\[38px\] {
@@ -3122,6 +3134,10 @@ select {
   padding: 1px;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -3283,6 +3299,10 @@ select {
 
 .pb-10 {
   padding-bottom: 2.5rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 
 .pb-3 {
@@ -3467,6 +3487,10 @@ select {
 
 .pt-\[74px\] {
   padding-top: 74px;
+}
+
+.pt-\[7px\] {
+  padding-top: 7px;
 }
 
 .pt-\[91px\] {
@@ -3955,6 +3979,10 @@ select {
   transition-delay: 10ms;
 }
 
+.delay-\[5ms\] {
+  transition-delay: 5ms;
+}
+
 .duration-200 {
   transition-duration: 200ms;
 }
@@ -4038,6 +4066,10 @@ select {
 
 .\[--scrollspy-offset\:220\] {
   --scrollspy-offset: 220;
+}
+
+.\[--auto-close\:false\] {
+  --auto-close: false;
 }
 
 /* HS Only  */

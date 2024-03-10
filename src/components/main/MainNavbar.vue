@@ -1,5 +1,6 @@
 <template>
-    <nav class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-28 md:px-16 sm:px-8">
+    <nav
+        class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-28 md:px-16 sm:px-8">
         <div class="hs-dropdown relative inline-flex md:hidden">
             <button id="hs-dropdown-slideup-animation block md:hidden" type="button"
                 class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
@@ -8,11 +9,11 @@
             <div class="hs-dropdown-menu  w-72 p-12  duration hs-dropdown-open:opacity-100 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg"
                 aria-labelledby="hs-dropdsown-slideup-animation">
                 <router-link v-for="(item, index) in navBarItems" :key="index" :to="item.to"
-                    class="flex cursor-pointer items-center gap-x-3.5 py-2 px-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
+                    class="flex cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
                     href="#">
                     {{ item.text }}
                 </router-link>
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
+                <a class="flex items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
                     href="#" data-hs-overlay="#hs-medium-modal">
                     Giriş Yap
                 </a>
@@ -20,7 +21,7 @@
         </div>
         <div className="hidden md:flex">
             <router-link v-for="(item, index) in navBarItems" :key="index" :to="item.to"
-                class="flex flex-row cursor-pointer items-center gap-x-3.5 py-2 px-3 rounded-lg text-md text-gray-800 focus:outline-none">
+                class="flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
                 {{ item.text }}
             </router-link>
         </div>

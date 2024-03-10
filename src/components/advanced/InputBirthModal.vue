@@ -13,13 +13,15 @@
                     </div>
                 </div>
                 <div class="text-center text-black text-lg font-normal font-['Plus Jakarta Sans']">Seçtiğiniz tarihler
-                    doğrultusunda<br />yetişkin yolcu, çocuk olarak<br />değişecek ve fiyatlandırmayı<br />güncelleyecektir.
+                    doğrultusunda<br />yetişkin yolcu, çocuk olarak<br />değişecek ve
+                    fiyatlandırmayı<br />güncelleyecektir.
                 </div>
                 <div
                     class=" cursor-pointer text-center text-black text-base font-medium font-display mb-10 px-11 py-4 bg-slate-100 w-[222px] rounded-lg mx-auto">
                     Değişikliği Onayla
                 </div>
-                <div class=" cursor-pointer text-center text-black text-base font-medium font-display mb-10">Kaydetme, geri
+                <div class=" cursor-pointer text-center text-black text-base font-medium font-display mb-10">Kaydetme,
+                    geri
                     al.
                 </div>
             </div>

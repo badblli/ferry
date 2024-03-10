@@ -21,7 +21,8 @@
                         Blog
                     </li>
                 </ol>
-                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide my-auto flex items-center pl-10 md:pl-0">
+                <h1
+                    class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide my-auto flex items-center pl-10 md:pl-0">
                     Samos'a Blog
                 </h1>
             </div>
@@ -34,7 +35,7 @@
                         class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
                         <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="item.src" alt="Slide Image">
                         <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">{{
-                            item.name }}</div>
+                    item.name }}</div>
                     </SplideSlide>
                 </Splide>
             </div>
@@ -150,4 +151,3 @@ const blogs = [
 </script>
 
 <style scoped></style>
-

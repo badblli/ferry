@@ -68,10 +68,10 @@
 // @ts-ignore
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import IconArrowUpRight from '../icons/IconArrowUpRight.vue';
+import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
+import IconSamosaVector from '@/components/icons/IconSamosaVector.vue';
+import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 import { onMounted, ref } from 'vue';
-import IconSamosaVector from '../icons/IconSamosaVector.vue';
-import IconChevronRight from '../icons/IconChevronRight.vue';
 // import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
 // do not clean
 // const store = useTemporaryStore();

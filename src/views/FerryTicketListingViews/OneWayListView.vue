@@ -65,35 +65,29 @@
                                 <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
                                 <p
                                     class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{
-                                            item.company }}</p>
+                                    {{ item.company }}</p>
                             </div>
                             <div class="mt-3 mr-5 lg:mr-[75px]">
                                 <p class="text-black text-base font-medium font-display">Kalkış</p>
                                 <p
                                     class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{
-                                            item.departure }}</p>
+                                    {{ item.departure }}</p>
                                 <p
                                     class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{
-                                            item.departureLocation }}</p>
+                                    {{ item.departureLocation }}</p>
                             </div>
                             <div class="mt-3 mr-5 lg:mr-[75px]">
                                 <p class="text-black text-base font-medium font-display">Varış</p>
                                 <p
                                     class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{
-                                            item.arrival }}</p>
+                                    {{ item.arrival }}</p>
                                 <p
                                     class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{
-                                            item.arrivalLocation }}</p>
+                                    {{ item.arrivalLocation }}</p>
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
-                            <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
-                                            item.price }}</div>
+                            <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{ item.price }}</div>
                             <button @click="logSelectedData(item)"
                                 class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
                         </div>
