@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4 ">
+  <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4 ">
     <div class="text-center text-black text-lg font-medium lg:m-0 m-2">
       {{ footerContactText }}
     </div>
@@ -12,7 +12,7 @@
       <ContactModal />
     </div>
   </div>
-  <footer class="bg-white text-black p-8 centered-w">
+  <footer class="bg-white text-black p-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-10 md:gap-0 xl:gap-0">
       <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
         <!-- for first column and space -->

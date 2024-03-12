@@ -1,5 +1,5 @@
 <template>
-    <section class="lg:px-28 md:px-16 sm:px-8 -translate-y-12 centered-w">
+    <section class="lg:px-[100px] px-16 md:px-16 sm:px-8 -translate-y-12 centered-w">
         <div class="relative w-full h-[494px] rounded-xl flex flex-col justify-between mb-10">
             <div
                 class="absolute bottom-0 z-10 bg-white md:max-w-[551px] md:h-[466px] p-7 md:ml-4 md:mb-4 m-3 rounded-xl flex flex-col justify-between">
@@ -23,9 +23,10 @@
                     </div>
                 </div>
             </div>
-            <img :src="item && item.campaignImage" alt="asd" class="object-fill w-full h-full rounded-xl flip-horizontal" />
+            <img :src="item && item.campaignImage" alt="asd"
+                class="object-fill w-full h-full rounded-xl flip-horizontal" />
         </div>
-        <div class="flex flex-row gap-5 ">  
+        <div class="flex flex-col md:flex-row gap-5 ">
             <div
                 class="w-full flex flex-col custom-radiel-gradient h-[450px] rounded-xl pl-10 pt-10 overflow-hidden relative cursor-pointer">
                 <div
@@ -40,10 +41,10 @@
                     class="flip-horizontal absolute h-[650px] max-w-[850px] left-[180px] -top-3 -bottom-48 custom-z" />
                 <div class="container">
                     <div class="a"></div>
-                </div>
+                </div>x
             </div>
             <div class="relative w-full rounded-xl flex flex-col justify-between mb-10">
-                <div class="absolute bottom-0 z-10 bg-white md:w-2/3 w-full p-7 md:ml-4 md:mb-4 m-2 rounded-xl">
+                <div class="absolute bottom-0 z-10 bg-white md:w-2/3 w-full p-7 md:ml-4 md:mb-4 rounded-xl">
                     <div class="flex flex-col justify-between h-full">
                         <div
                             class="text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[18.46px] tracking-[2.96px] mb-4">

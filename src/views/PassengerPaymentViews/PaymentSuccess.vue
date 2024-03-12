@@ -3,14 +3,16 @@
         <div class="w-[100px] h-[100px] bg-slate-200 rounded-full mb-[37px] flex flex-row items-center justify-center">
             <IconCheckBlack />
         </div>
-        <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mb-[34px]">Ödemeniz başarıyla
+        <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mb-[34px]">Ödemeniz
+            başarıyla
             alınmıştır.</div>
         <div
             class="w-[417px] text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[51px]">
             Ödemenizi güvenli bir şekilde tamamladınız. Altta yer alan yöntemler ile biletinize ulaşabilirsiniz.</div>
         <div class="flex flex-row items-center">
             <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">Rezervasyon Numaranız : </div>
-            <div class="w-[136px] h-8 bg-slate-200 rounded-lg border ml-[15px] flex flex-row items-center justify-center">
+            <div
+                class="w-[136px] h-8 bg-slate-200 rounded-lg border ml-[15px] flex flex-row items-center justify-center">
                 <div class="text-black text-[15px] font-medium font-display">21GGD31AS</div>
                 <div class="ml-[6px]">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +26,8 @@
         <div class="w-[403px] h-[1px] origin-top-left border border-zinc-300 my-10"></div>
         <div class="flex flex-row items-center">
             <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">Kazandığınız Mil Puanı : </div>
-            <div class="w-[136px] h-8 bg-slate-200 rounded-lg border flex flex-row items-center justify-center ml-[35px]">
+            <div
+                class="w-[136px] h-8 bg-slate-200 rounded-lg border flex flex-row items-center justify-center ml-[35px]">
                 <div class="text-black text-[15px] font-medium font-display">15 Puan</div>
             </div>
         </div>
@@ -32,8 +35,11 @@
             <div class="flex flex-col md:flex-row">
                 <div
                     class="w-[271px] h-[83px] bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mr-3 mb-4">
-                    <IconQR />
-                    <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">Wallet'ıma ekle</div>
+                    <div class="w-10">
+                        <img src="../../assets/EmbeddedImages//AppleWallet.png" />
+                    </div>
+                    <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">Wallet'ıma ekle
+                    </div>
                 </div>
                 <div
                     class="w-[271px] h-[83px] mr-3 bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mb-4">
@@ -43,7 +49,8 @@
                 <div
                     class="w-[271px] h-[83px] bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mb-4">
                     <IconPrinter />
-                    <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">Yazıcıya Gönder</div>
+                    <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">Yazıcıya Gönder
+                    </div>
                 </div>
             </div>
             <div class="mt-[46px]">

@@ -1,13 +1,13 @@
 <template>
-    <div class="flex flex-col justify-center items-center m-auto relative">
+    <div class="flex flex-col justify-center items-center m-auto relative ">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
-                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
+            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex">
                     {{ pageTitle }}
                 </h1>
             </div>
         </div>
-        <div class="w-full md:mb-44 mb-24">
+        <div class="w-full flex flex-col md:mb-44 mb-24 centered-w">
             <div
                 class="w-full max-w-[975px] text-black text-lg font-normal  leading-loose mt-12 mb-20 2xl:ml-28 xl:ml-28 lg:ml-28 md:ml-16 sm:ml-8">
                 {{ privacyPolicyContent }}

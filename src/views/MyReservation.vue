@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-175px] w-full lg:px-28 md:px-16 sm:px-8">
+        <div class="relative top-[-175px] centered-w lg:px-[100px] px-16 md:px-16 sm:px-8">
             <span class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide pl-10 md:pl-0">Merhaba
                 Kevin.</span>
             <div class="mt-[63px]">
@@ -10,42 +10,42 @@
                         aria-label="Tabs" role="tablist">
                         <button type="button"
                             class="mr-[48px] md:text-xl text-lg hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-10 inline-flex items-center gap-x-4 border-b-[1px] border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-30 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 active"
-                            id="tabs-with-icons-item-1" data-hs-tab="#tabs-with-icons-1" aria-controls="tabs-with-icons-1"
-                            role="tab">
+                            id="tabs-with-icons-item-1" data-hs-tab="#tabs-with-icons-1"
+                            aria-controls="tabs-with-icons-1" role="tab">
                             <IconReceipt />
                             Rezervasyon
                         </button>
                         <button type="button"
                             class="mr-[48px] md:text-xl text-lg hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-10 inline-flex items-center gap-x-4 border-b-[1px] border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-30 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-                            id="tabs-with-icons-item-2" data-hs-tab="#tabs-with-icons-2" aria-controls="tabs-with-icons-2"
-                            role="tab">
+                            id="tabs-with-icons-item-2" data-hs-tab="#tabs-with-icons-2"
+                            aria-controls="tabs-with-icons-2" role="tab">
                             <IconUsers />
                             Profilim
                         </button>
                         <button type="button"
                             class="mr-[48px] md:text-xl text-lg hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-10 inline-flex items-center gap-x-4 border-b-[1px] border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-                            id="tabs-with-icons-item-3" data-hs-tab="#tabs-with-icons-3" aria-controls="tabs-with-icons-3"
-                            role="tab">
+                            id="tabs-with-icons-item-3" data-hs-tab="#tabs-with-icons-3"
+                            aria-controls="tabs-with-icons-3" role="tab">
                             <IconGearSix />
                             Hesap Ayarlarım
                         </button>
                         <button type="button"
                             class="mr-[48px] md:text-xl text-lg hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-10 inline-flex items-center gap-x-4 border-b-[1px] border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500"
-                            id="tabs-with-icons-item-4" data-hs-tab="#tabs-with-icons-4" aria-controls="tabs-with-icons-4"
-                            role="tab">
+                            id="tabs-with-icons-item-4" data-hs-tab="#tabs-with-icons-4"
+                            aria-controls="tabs-with-icons-4" role="tab">
                             <IconBellSimple />
                             Bildirimler
                         </button>
                         <button type="button"
                             class="mr-[48px] md:text-xl text-lg hs-tab-active:font-semibold hs-tab-active:border-black hs-tab-active:text-black pb-10 inline-flex items-center gap-x-4 border-b-[1px] border-transparent whitespace-nowrap text-gray-500 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                            id="tabs-with-icons-item-5" data-hs-tab="#tabs-with-icons-5" aria-controls="tabs-with-icons-5"
-                            role="tab">
+                            id="tabs-with-icons-item-5" data-hs-tab="#tabs-with-icons-5"
+                            aria-controls="tabs-with-icons-5" role="tab">
                             <IconMile />
                             Mil Puan
                         </button>
                     </nav>
                 </div>
-                <div class="mt-16 mb-16">
+                <div class="mt-[70px] mb-16">
                     <div id="tabs-with-icons-1" role="tabpanel">
                         <div>
                             <nav class="-mb-0.5 flex space-x-8 pl-10 md:pl-0" aria-label="Tabs" role="tablist">
@@ -62,19 +62,18 @@
                                     Geçmiş Rezervasyon
                                 </button>
                             </nav>
-                            <div class="lg:pt-[67px] md:pt-[61px] pt-10 w-full">
+                            <div class="md:mt-[91px] mt-10 w-full">
                                 <div id="horizontal-alignment-1" role="tabpanel"
                                     aria-labelledby="horizontal-alignment-item-1">
                                     <ReservationTable :reservations="reservations" />
                                 </div>
                                 <div id="horizontal-alignment-2" role="tabpanel"
-                                    aria-labelledby="horizontal-alignment-item-2">
+                                    aria-labelledby="horizontal-alignment-item-2" class="hidden">
                                     <ReservationTable :reservations="pastReservations" />
                                 </div>
                                 <div class="flex flex-row items-center justify-center pt-12 cursor-pointer">
                                     <h1 class="pt-4 text-black text-lg font-medium font-display mb-4 mr-4">
-                                        Daha fazla
-                                        rezervasyon</h1>
+                                        Daha fazla rezervasyon</h1>
                                     <IconArrowDownBlack />
                                 </div>
                             </div>
@@ -171,15 +170,16 @@
                     <div id="tabs-with-icons-4" class="hidden" role="tabpanel" aria-labelledby="tabs-with-icons-item-4">
                         <AccountNotification :notifications="notifications" />
                     </div>
-                    <div id="tabs-with-icons-5" class="hidden " role="tabpanel" aria-labelledby="tabs-with-icons-item-5">
+                    <div id="tabs-with-icons-5" class="hidden " role="tabpanel"
+                        aria-labelledby="tabs-with-icons-item-5">
                         <ReservationMileTab />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</template> 
-  
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import ReservationTable from "../components/ReservationComponent/ReservationTable.vue";
@@ -260,5 +260,5 @@ const reservations = ref([
     },
 ]);
 </script>
-  
+
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-28 md:px-16 sm:px-8">
+        class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-16 md:px-16 sm:px-8">
         <div class="hs-dropdown relative inline-flex md:hidden">
             <button id="hs-dropdown-slideup-animation block md:hidden" type="button"
                 class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">

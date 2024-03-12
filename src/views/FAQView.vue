@@ -1,12 +1,12 @@
 <template>
     <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-        <div class="relative w-full lg:px-28 md:px-16 sm:px-8 pl-10">
+        <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
             <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                 Sıkça Sorulan Sorular
             </h1>
         </div>
     </div>
-    <div class="md:w-4/5 w-full text-black text-lg font-normal leading-loose mt-12 pl-5 md:pl-0">
+    <div class=" text-black text-lg font-normal leading-loose mt-12 pl-5 md:pl-0 centered-w">
         <div class="flex flex-col justify-center items-center m-auto relative">
             <div class="w-full">
                 <div

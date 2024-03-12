@@ -1,5 +1,5 @@
 <template>
-    <section class="lg:px-28 md:px-16 sm:px-8 centered-w">
+    <section class="lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
         <div class="text-black text-[42px] font-medium font-display tracking-wide mt-[76px]">Hergün çıkışlı<br />Samos
             Turları</div>
         <div class="w-full flex flex-row justify-between items-center mt-[37px]">

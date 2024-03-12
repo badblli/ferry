@@ -127,6 +127,7 @@ module.exports = {
       },
       white: '#fff',
       black: '#000000',
+      'regal-blue': '#243c5a',
     },
     extend: {
       fontFamily: {

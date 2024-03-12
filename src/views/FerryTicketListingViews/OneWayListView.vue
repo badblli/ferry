@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
+        <div class="relative top-[-11rem] w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
             <div class="flex lg:flex-row flex-col justify-between">
                 <div class="flex flex-row">
                     <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">

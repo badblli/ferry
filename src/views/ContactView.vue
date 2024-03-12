@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-28 md:px-16 sm:px-8 ">
+            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
                 <h1
                     class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center pl-10 md:pl-0">
                     İletişim
@@ -10,8 +10,8 @@
         </div>
         <div className="w-full">
             <div class="w-full flex flex-col justify-center items-center">
-                <div class="relative w-full lg:px-28 md:px-16 sm:px-8">
-                    <div class="my-auto mt-[50px] flex flex-row justify-center flex-wrap">
+                <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+                    <div class="my-auto mt-[50px] flex md:flex-row flex-col">
                         <div
                             class="w-[400px] h-[179px] bg-white rounded-xl border border-neutral-200 flex items-center justify-between mr-5">
                             <div class="pl-7">

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col lg:px-28 md:px-16 sm:px-8">
+    <div class="flex flex-col lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
         <section>
             <ol class="flex items-center whitespace-nowrap mt-[30px]" aria-label="Breadcrumb">
                 <li class="inline-flex items-center">

@@ -1,14 +1,14 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-10rem] w-full lg:px-28 md:px-16 sm:px-8">
+        <div class="relative top-[-11rem] w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
             <div class="flex lg:flex-row flex-col justify-between items-center mb-10">
                 <div class="flex flex-row justify-center items-center gap-5 ">
                     <div class="w-[52px] h-[52px] origin-top-left opacity-75 bg-white rounded-full flex justify-center items-center cursor-pointer"
                         @click="navigateToPassenger">
                         <IconArrowPaymentL />
                     </div>
-                    <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide ">
+                    <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">
                         Ödeme Adımı
                     </div>
                 </div>
@@ -45,7 +45,8 @@
                                             </div>
                                             <div class="flex flex-row">
                                                 <div class="items-center flex pl-1 mr-6">
-                                                    <IconAccordionActiveArrow class="hs-accordion-active:block hidden" />
+                                                    <IconAccordionActiveArrow
+                                                        class="hs-accordion-active:block hidden" />
                                                     <IconAccordionArrow class="hs-accordion-active:hidden block" />
                                                 </div>
                                             </div>
@@ -68,7 +69,8 @@
                                                 </button>
                                                 <button type="button"
                                                     class="hs-tab-active:font-medium hs-tab-active:border-blue-700 hs-tab-active:text-blue-700 pb-[23px] px-1 border-b border-transparent whitespace-nowrap text-neutral-400 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none"
-                                                    id="horizontal-scroll-tab-item-2" data-hs-tab="#horizontal-scroll-tab-2"
+                                                    id="horizontal-scroll-tab-item-2"
+                                                    data-hs-tab="#horizontal-scroll-tab-2"
                                                     aria-controls="horizontal-scroll-tab-2" role="tab">
                                                     <div class="mx-[46px] ">
                                                         Kurumsal Fatura
@@ -102,7 +104,8 @@
                                             </div>
                                             <div class="flex flex-row">
                                                 <div class="items-center flex pl-1 mr-6">
-                                                    <IconAccordionActiveArrow class="hs-accordion-active:block hidden" />
+                                                    <IconAccordionActiveArrow
+                                                        class="hs-accordion-active:block hidden" />
                                                     <IconAccordionArrow class="hs-accordion-active:hidden block" />
                                                 </div>
                                             </div>
@@ -146,7 +149,8 @@
                                     <div class="rounded-xl border border-zinc-300">
                                         <div class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px]">
                                             <div class="flex flex-row justify-between">
-                                                <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                <div
+                                                    class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
                                                     Kuşadası -
                                                     Samos Bileti</div>
                                                 <div>
@@ -190,7 +194,8 @@
                                         </div>
                                         <div class="flex flex-col justify-between px-[30px] pt-[31px] pb-10">
                                             <div class="flex flex-row justify-between">
-                                                <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                <div
+                                                    class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
                                                     Yolculuk Bilgileri</div>
                                                 <div>
                                                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -273,7 +278,8 @@
                                             </svg>
                                         </div>
                                         <div class="flex flex-col ml-[19px]">
-                                            <div class="text-black text-base font-semibold font-['Plus Jakarta Sans']">İptal
+                                            <div class="text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                İptal
                                                 ve İade İşlemi</div>
                                             <div
                                                 class="w-[326px] text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug tracking-tight">
@@ -283,7 +289,8 @@
                                     </div>
                                     <div v-if="!paymentSuccess"
                                         class="flex flex-row items-center justify-between mt-8 mb-[5px]">
-                                        <div class="text-neutral-700 text-lg font-normal font-['Plus Jakarta Sans']">Toplam
+                                        <div class="text-neutral-700 text-lg font-normal font-['Plus Jakarta Sans']">
+                                            Toplam
                                             Ödenmesi Gereken</div>
                                         <div class="flex flex-col">
                                             <span

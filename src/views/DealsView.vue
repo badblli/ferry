@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-28 md:px-16 sm:px-8 px-6">
+            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
                 <ol class="pb-4 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                     <li class="inline-flex items-center">
                         <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
@@ -28,7 +28,7 @@
                 </h1>
             </div>
         </div>
-        <div class="w-full lg:px-28 md:px-16 sm:px-8">
+        <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
             <div class="w-full flex flex-col">
                 <div class=" flex md:mt-[55px] md:mb-24 mb-6 mt-6">
                     <div class="flex justify-center">
@@ -39,13 +39,13 @@
                     </div>
                 </div>
             </div>
-            <div v-for="(item, index) in fakeData" :key="index" class="flex flex-col md:flex-row md:w-3/4 lg:w-3/5">
-                <div class="md:w-5/12 md:mb-[20px] mb-5">
-                    <img class="h-full rounded-xl"
+            <div v-for="(item, index) in fakeData" :key="index" class="flex flex-col md:flex-row md:w-3/4 lg:w-8/12">
+                <div class="md:w-7/12 md:mb-[20px] mb-5">
+                    <img class="h-[315px] w-[515px] rounded-xl"
                         src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                 </div>
-                <div class="md:w-7/12 mb-5">
-                    <div class="w-11/12">
+                <div class="md:w-full mb-5">
+                    <div class="w-full">
                         <div class=" text-black text-[32px] font-semibold font-['Plus Jakarta Sans'] tracking-wide md:ml-6">
                             {{ item.title }}</div>
                         <div
