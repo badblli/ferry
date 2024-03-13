@@ -55,9 +55,10 @@
                         <div
                             class="flex flex-row w-[125px] bg-slate-200 pb-[7px] pl-3 pt-[6px] pr-[7px] rounded-lg cursor-pointer">
                             <div class="  text-black text-[15px] font-medium font-display rounded-md mr-[14px]">
-                                {{ item && item.toursButton }}
+                                {{ item && item.toursButton }}Tüm Turlar
                             </div>
                             <!-- IconArrowUpRight -->
+                            <IconArrowUpRight/>
                         </div>
                     </div>
                 </div>
@@ -70,6 +71,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
 
 export default defineComponent({
     props: {
