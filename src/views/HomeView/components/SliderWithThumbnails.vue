@@ -150,16 +150,21 @@
                         </div>
                     </div>
                     <div class="w-14 h-[1px] rotate-90 border border-zinc-200"></div>
-                    <div class="hs-dropdown flex flex-row items-center">
-                        <button id="hs-dropdown-with-dividers-4" type="button" class=" cursor-pointer">
-                            <div>Gidiş - Dönüş</div>
-                            <div class="font-light">Tarih Seçin</div>
-                        </button>
-                        <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
-                            aria-labelledby="hs-dropdown-with-dividers-4">
-                            <div class="flex flex-col w-[277px] p-3">
-                                <Datepicker v-model="date" range multi-calendars :disabledDates="isTodayOver"
-                                    locale="tr" cancelText="Kapat" selectText="Seç" />
+                    <div class="flex flex-row items-center">
+                        <div class="detailed-search-calendar cursor-pointer">
+                            <div class="row">
+                                <div class="detailed-search-calendar-body">
+                                    <div class="detailed-search-calendar-body-content">
+                                        <div class="calendar">
+                                            <div id="litepicker">
+                                                Gidiş-Dönüş<br /><span
+                                                    class="text-black text-sm font-thin font-display tracking-tight">
+                                                    {{ formattedDateToShow }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -167,7 +172,7 @@
                     <div class="hs-dropdown flex flex-row items-center [--auto-close:false]">
                         <button id="hs-dropdown-auto-close-false" type="button" class=" cursor-pointer">
                             <div>Kişi Sayısı</div>
-                            <div class="font-light">Kişi Seçin</div>
+                            <div class="font-light">Kişi Seçiniz</div>
                         </button>
                         <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                             aria-labelledby="hs-dropdown-with-dividers-5">
@@ -225,7 +230,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue';
 import Splide from '@splidejs/splide'
 import '@splidejs/splide/dist/css/themes/splide-default.min.css'
 import IconSearchNormal from '@/components/icons/IconSearchNormal.vue'
@@ -235,18 +240,53 @@ import IconFooter from '@/components/icons/IconFooter.vue'
 import SliderReservationInputs from './SliderReservationInputs.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconMinus from '@/components/icons/IconMinus.vue'
-import Datepicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css';
+import Litepicker from 'litepicker';
+
+// const selectedPassengerText = ref('Kişi Seçin');
+
+// watch(passenger, (newPassenger, oldPassenger) => {
+//   let totalSelected = 0;
+//   for (const person of newPassenger) {
+//     totalSelected += person.count;
+//   }
+//   selectedPassengerText.value = totalSelected > 0 ? `${totalSelected} kişi seçildi` : 'Kişi Seçin';
+// });
+
+let date = {
+    formattedDate: ref(''),
+    formattedDate2: ref('')
+};
+
+const formatDate = (dateInstance: string): string => {
+    const date = new Date(dateInstance);
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' };
+    return date.toLocaleDateString('en-US', options);
+};
+
+onMounted(() => {
+    const element = document.getElementById('litepicker');
+    if (element instanceof HTMLElement) {
+        const picker = new Litepicker({
+            element,
+            singleMode: false,
+            numberOfMonths: 2,
+            lang: 'tr-TR',
+        });
+        picker.on('selected', (date1, date2) => {
+            date.formattedDate.value = formatDate(date1.dateInstance);
+            date.formattedDate2.value = formatDate(date2.dateInstance);
+            // console.log('Date selected:', date1, date2);
+        });
+    } else {
+        console.error("Litepicker element not found. Make sure you have an element with id 'litepicker' in your HTML.");
+    }
+});
 
 interface Image {
     url: string
     thumbnail: string
     title: string
 }
-
-const isTodayOver = (date: any) => {
-    return date < new Date();
-};
 
 const showTrue = ref(false)
 const images = ref<Image[]>([
@@ -299,14 +339,6 @@ const passenger = ref<Person[]>([
     { age: 'Çocuk (6 - 12 yaş)', price: '€31', count: 0 },
     { age: 'Bebek (0 - 5 yaş)', price: '€0', count: 0 },
 ]);
-
-// const vdpHoverBgColor = ref("#CCC");
-// const vdpSelectedBgColor = ref("#CCC");
-// const dpPointerBorderRadius = ref("20px");
-// Stil değişkenlerini bir nesne içinde topla
-// const customStyle = {
-//   "--vdp-elem-border-radius": "20px"
-// };
 
 // FAKE OBJECTS
 const _fromWhere = ref<{ name: string; port: string } | null>(null)
@@ -399,7 +431,7 @@ onMounted(() => {
     }).mount()
 
     thumbnails.on('click', (slide: any) => {
-        goToSlide(slide.index) // Bu satırı değiştirdim.
+        goToSlide(slide.index)
     })
 
     main.on('moved', (newIndex: number) => {
@@ -407,16 +439,21 @@ onMounted(() => {
     })
 })
 
-const date = ref<null | Date[]>(null);
+const formattedDateToShow = computed(() => {
+    if (date.formattedDate.value && date.formattedDate2.value) {
+        return `${date.formattedDate.value} - ${date.formattedDate2.value}`;
+    } else if (date.formattedDate.value) {
+        return date.formattedDate.value;
+    } else {
+        return 'Tarih Seçiniz';
+    }
+});
 
-onMounted(() => {
-    const startDate = new Date();
-    const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
-    date.value = [startDate, endDate];
-})
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 .splide {
     padding: 10px 0;
     display: flex;

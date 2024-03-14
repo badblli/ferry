@@ -18,6 +18,7 @@
     "@splidejs/vue-splide": "^0.6.12",
     "@vuepic/vue-datepicker": "^8.2.0",
     "json-server": "^1.0.0-alpha.23",
+    "litepicker": "^2.0.12",
     "pinia": "^2.1.7",
     "preline": "^2.0.1",
     "slider": "^1.0.4",

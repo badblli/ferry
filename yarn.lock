@@ -2448,6 +2448,11 @@ lines-and-columns@^2.0.3:
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-2.0.4.tgz"
   integrity sha512-wM1+Z03eypVAVUCE7QdSqpVIvelbOakn1M0bPDoA4SGWPx3sNDVUiMo3L6To6WWGClB7VyXnhQ4Sn7gxiJbE6A==
 
+litepicker@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/litepicker/-/litepicker-2.0.12.tgz#7b583024ddddbd04849036bda28e3f1b8b4ef8f3"
+  integrity sha512-1N0sZJca/eALvS1hbJsVqKXwJAmp0BsJn73kZKWGGLjZkvjKr7HXGPV+/shu60aEY/JXoOg2XUmo7hbdIOsFpQ==
+
 local-pkg@^0.4.3:
   version "0.4.3"
   resolved "https://registry.npmjs.org/local-pkg/-/local-pkg-0.4.3.tgz"

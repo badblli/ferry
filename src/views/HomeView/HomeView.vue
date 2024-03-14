@@ -145,8 +145,8 @@ const fakeData = [
 }
 
 @media screen and (max-width: 1190px) {
-  /* For screens with a maximum width of 768px */
 
+  /* For screens with a maximum width of 768px */
   /* Set all category items to take full width */
   .category-item {
     flex-basis: 100%;
@@ -159,7 +159,7 @@ const fakeData = [
   .category-item:nth-child(9n+2),
   .category-item:nth-child(9n+3),
   .category-item:nth-child(9n+4) {
-    flex-basis: calc((100%) );
+    flex-basis: calc((100%));
   }
 
   /* 3 ardışık öğe */
@@ -172,7 +172,7 @@ const fakeData = [
   /* 2 ardışık öğe */
   .category-item:nth-child(9n+8),
   .category-item:nth-child(9n+9) {
-    flex-basis: calc((100%) );
+    flex-basis: calc((100%));
   }
 }
 </style>

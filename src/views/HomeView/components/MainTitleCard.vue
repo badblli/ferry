@@ -37,7 +37,7 @@
                     class="text-black w-72 text-[38px] font-bold font-['Plus Jakarta Sans'] leading-[43.85px] tracking-wide">
                     {{ item && item.visaDescription }}
                 </div>
-                <img src="../../../assets/EmbeddedImages//mainPageTicketImage.png" alt="EmbeddedVısaImage"
+                <img src="../../../assets/EmbeddedImages/mainPageTicketImage.png" alt="EmbeddedVısaImage"
                     class="flip-horizontal absolute h-[650px] max-w-[850px] left-[180px] -top-3 -bottom-48 custom-z" />
                 <div class="container">
                     <div class="a"></div>
