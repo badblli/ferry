@@ -163,6 +163,8 @@
                                                 </span>
                                             </div>
                                         </div>
+                                        <div class="detailed-search-calendar-body-content-error">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -272,10 +274,21 @@ onMounted(() => {
             numberOfMonths: 2,
             lang: 'tr-TR',
         });
+
+        picker.on('error:date', () => {
+            console.error('Tarih seçme hatası oluştu');
+        });
+
         picker.on('selected', (date1, date2) => {
-            date.formattedDate.value = formatDate(date1.dateInstance);
-            date.formattedDate2.value = formatDate(date2.dateInstance);
-            // console.log('Date selected:', date1, date2);
+            const selectedDate1 = new Date(date1.dateInstance);
+            const selectedDate2 = new Date(date2.dateInstance);
+            const today = new Date();
+            if (selectedDate1 < today || selectedDate2 < today) {
+                return
+            } else {
+                date.formattedDate.value = formatDate(date1.dateInstance);
+                date.formattedDate2.value = formatDate(date2.dateInstance);
+            }
         });
     } else {
         console.error("Litepicker element not found. Make sure you have an element with id 'litepicker' in your HTML.");

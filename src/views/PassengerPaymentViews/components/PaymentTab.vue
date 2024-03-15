@@ -40,7 +40,8 @@
                 <InputBasic placeholder="İsim *" ariaLabel="Full name" />
                 <InputBasic placeholder="Soyisim *" ariaLabel="Full name" />
                 <InputBasic placeholder="E-Posta Adresiniz" ariaLabel="E-posta" />
-                <InputPhone placeholder="Telefon" ariaLabel="Phone" />
+                <!-- <InputPhone placeholder="Telefon" ariaLabel="Phone" /> -->
+                <vue-tel-input v-model="phone" mode="international"></vue-tel-input>
                 <InputBirth placeholder="Doğum Tarihiniz" ariaLabel="Birth" />
                 <InputBasic placeholder="Uyruğunuzu Seçin" ariaLabel="years" />
                 <InputBasic placeholder="Pasaport numaranızı girin" ariaLabel="Pasaport" />
@@ -61,14 +62,19 @@
 import InputBasic from './InputBasic.vue';
 import InputBirth from './InputBirth.vue';
 import InputPhone from './InputPhone.vue';
+import { VueTelInput } from 'vue-tel-input';
+  import 'vue-tel-input/vue-tel-input.css';
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconCheck from '@/components/icons/IconCheck.vue'
+import { ref } from 'vue'
 
 defineProps<{
     fakeData: {
         title: string;
     };
 }>();
+
+const phone = ref(null);
 </script>
 
 <style scoped></style>

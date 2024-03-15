@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+            <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                 <ol class="pb-4 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                     <li class="inline-flex items-center">
                         <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
@@ -26,12 +26,12 @@
                 </h1>
             </div>
         </div>
-        <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+        <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
             <div class="w-full flex flex-col">
                 <div class=" flex md:mt-[55px] md:mb-24 mb-6 mt-6">
                     <div class="flex justify-center">
                         <div
-                            class="w-[508px] text-black text-2xl font-medium font-['Plus Jakarta Sans'] md:leading-[37.06px] leading-7">
+                            class="max-w-[508px] text-black text-2xl font-medium font-['Plus Jakarta Sans'] md:leading-[37.06px] leading-7">
                             En güncel fırsatları gezginler için sunuyoruz. Alttaki listeden size en uygun olanı
                             değerlendirebilirsiniz.</div>
                     </div>
@@ -50,9 +50,9 @@
                             class=" text-black text-base font-normal font-['Plus Jakarta Sans'] md:leading-[29.03px] leading-5 md:ml-6 md:mt-3 mt-5">
                             {{ item.description }}</div>
                     </div>
-                    <div class="flex flex-row">
+                    <div class="flex flex-col md:flex-row">
                         <div
-                            class="h-[66px] w-[183px] rounded-xl border border-zinc-200 md:ml-6 flex flex-col justify-center pl-6 mt-[20px] bg-slate-50">
+                            class="h-[66px] w-[183px] rounded-xl border border-zinc-200 md:ml-6 ml-0 flex flex-col justify-center pl-6 mt-[20px] bg-slate-50">
                             <div
                                 class="flex text-black text-sm font-light font-display leading-normal justify-start items-start">
                                 Satış Tarihi</div>
@@ -60,7 +60,7 @@
                                 {{ item.schedule }}</div>
                         </div>
                         <div
-                            class="h-[66px] w-[183px] rounded-xl border border-zinc-200 ml-6 flex flex-col justify-center pl-6 mt-[20px] bg-slate-50">
+                            class="h-[66px] w-[183px] rounded-xl border border-zinc-200 md:ml-6 ml-0 flex flex-col justify-center pl-6 mt-[20px] bg-slate-50">
                             <div
                                 class="flex text-black text-sm font-light font-display leading-normal justify-start items-start">
                                 Geçerlilik Tarihi</div>
@@ -68,7 +68,7 @@
                                 {{ item.lastTime }}</div>
                         </div>
                         <div
-                            class="h-[66px] w-[183px] rounded-xl border border-zinc-200 ml-6 flex flex-col justify-center pl-6 mt-[20px]">
+                            class="h-[66px] w-[183px] rounded-xl border border-zinc-200 md:ml-6 ml-0 flex flex-col justify-center pl-6 mt-[20px]">
                             <div class="text-black text-sm font-medium font-display leading-normal">
                                 Kampanyaya Git</div>
                         </div>

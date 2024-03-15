@@ -1352,6 +1352,10 @@ select {
   margin-inline-end: 0.5rem;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -2136,10 +2140,6 @@ select {
   width: 20rem;
 }
 
-.w-96 {
-  width: 24rem;
-}
-
 .w-\[100px\] {
   width: 100px;
 }
@@ -2420,12 +2420,12 @@ select {
   max-width: 223px;
 }
 
-.max-w-\[409px\] {
-  max-width: 409px;
-}
-
 .max-w-\[500px\] {
   max-width: 500px;
+}
+
+.max-w-\[508px\] {
+  max-width: 508px;
 }
 
 .max-w-\[50rem\] {
@@ -3136,6 +3136,11 @@ select {
   padding: 1px;
 }
 
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -3406,6 +3411,10 @@ select {
 
 .pr-1 {
   padding-right: 0.25rem;
+}
+
+.pr-11 {
+  padding-right: 2.75rem;
 }
 
 .pr-2 {
@@ -6693,6 +6702,10 @@ input.focus\:outline-none:focus {
 
   .md\:mr-16 {
     margin-right: 4rem;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
   }
 
   .md\:mt-14 {

@@ -1,88 +1,93 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+            <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                 <h1
-                    class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center pl-10 md:pl-0">
+                    class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center md:pl-0">
                     İletişim
                 </h1>
             </div>
         </div>
         <div className="w-full">
             <div class="w-full flex flex-col justify-center items-center">
-                <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+                <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <div class="my-auto mt-[50px] flex md:flex-row flex-col">
                         <div
-                            class="w-[400px] h-[179px] bg-white rounded-xl border border-neutral-200 flex items-center justify-between mr-5">
+                            class="h-[179px] w-full rounded-xl border border-neutral-200 flex flex-row items-center justify-between mr-5 mb-2">
                             <div class="pl-7">
-                                <div class="w-[77px] h-[77px] bg-slate-200 rounded-full flex justify-center items-center">
+                                <div
+                                    class="w-[77px] h-[77px] bg-slate-200 rounded-full flex justify-center items-center">
                                     <IconPhoneIncoming />
                                 </div>
                             </div>
-                            <div className="pl-[47px]">
-                                <div class="w-[202px] text-black text-2xl font-semibold leading-[31.06px] pb-[22px]">
+                            <div className="pl-[47px] pr-11">
+                                <div class=" text-black text-2xl font-semibold leading-[31.06px] pb-[22px]">
                                     Telefon ile iletişime geçin.
                                 </div>
                                 <div>
                                     <div
-                                        class="w-[142px] h-[39px] rounded-lg border border-stone-300 flex items-center justify-center cursor-pointer">
-                                        <div class="text-center items-center text-black text-base font-medium font-display">
+                                        class="rounded-lg border border-stone-300 flex items-center justify-center cursor-pointer">
+                                        <div
+                                            class="text-center items-center text-black text-base font-medium font-display py-[9px]">
                                             Hemen ara</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div
-                            class="w-[400px] h-[179px] bg-white rounded-xl border border-neutral-200 flex items-center justify-between mr-5">
+                            class="h-[179px] w-full bg-white rounded-xl border border-neutral-200 flex items-center justify-between mr-5 mb-2">
                             <div class="pl-7">
-                                <div class="w-[77px] h-[77px] bg-slate-200 rounded-full flex justify-center items-center">
+                                <div
+                                    class="w-[77px] h-[77px] bg-slate-200 rounded-full flex justify-center items-center">
                                     <IconWhatsapp />
                                 </div>
                             </div>
-                            <div className="pl-[47px]">
-                                <div class="w-[202px] text-black text-2xl font-semibold  leading-[31.06px] pb-[22px]">
+                            <div className="pl-[47px] pr-11">
+                                <div class=" text-black text-2xl font-semibold  leading-[31.06px] pb-[22px]">
                                     Whatsapp ile iletişime geçin.
                                 </div>
                                 <div>
                                     <div
-                                        class="w-[142px] h-[39px] rounded-lg border border-stone-300 flex items-center justify-center">
+                                        class="w-[142px] rounded-lg border border-stone-300 flex items-center justify-center">
                                         <div
-                                            class="text-center items-center text-black text-base font-medium font-display cursor-pointer">
+                                            class="text-center items-center text-black text-base font-medium font-display cursor-pointer py-[9px]">
                                             Tıkla Konuş</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div
-                            class="w-[400px] h-[179px] bg-white rounded-xl border border-neutral-200 flex items-center justify-between mr-5">
+                            class="h-[179px] w-full bg-white rounded-xl border border-neutral-200 flex items-center justify-between mb-2">
                             <div class="pl-7">
-                                <div class="w-[77px] h-[77px] bg-slate-200 rounded-full flex justify-center items-center">
+                                <div
+                                    class="w-[77px] h-[77px] bg-slate-200 rounded-full flex justify-center items-center">
                                     <IconHouseSimple />
                                 </div>
                             </div>
-                            <div className="pl-[47px]">
-                                <div class="w-[202px] text-black text-2xl font-semibold  leading-[31.06px] pb-[22px]">
+                            <div className="pl-[47px] pr-11">
+                                <div class=" text-black text-2xl font-semibold  leading-[31.06px] pb-[22px]">
                                     Doğrudan ofise gelerek.
                                 </div>
                                 <div>
                                     <div
-                                        class="w-[142px] h-[39px] rounded-lg border border-stone-300 flex items-center justify-center">
+                                        class="w-[142px] rounded-lg border border-stone-300 flex items-center justify-center">
                                         <div
-                                            class="text-center items-center text-black text-base font-medium font-display cursor-pointer">
+                                            class="text-center items-center text-black text-base font-medium font-display cursor-pointer py-[9px]">
                                             Adres Tarifi Al</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class=" flex mt-32 md:mt-20 sm:mt-8 lg:px-24 md:px-16 sm:px-8 justify-center mb-24">
-                        <div class="flex justify-center">
-                            <div class="max-w-[409px] text-black text-2xl font-medium  leading-[37.06px] mr-24">
+                    <div
+                        class=" flex md:flex-row mt-32 md:mt-20 sm:mt-8 lg:px-24 md:px-16 sm:px-8 justify-center mb-24">
+                        <div class="flex md:flex-row flex-col justify-center">
+                            <div class=" text-black text-2xl font-medium  leading-[37.06px] mr-24">
                                 Tüm sorularınız, ve işlemleriniz için bizimle iletişime geçin, en kısa <br />sürede size
                                 doğru
                                 çözüm için <br /> yardım edelim.
                             </div>
-                            <div class="w-96">
+                            <div>
                                 <form class="w-full max-w-sm">
                                     <div class="flex items-center border-b border-gray-200 mb-5">
                                         <input
@@ -132,5 +137,5 @@ import IconPhoneIncoming from "../components/icons/IconPhoneIncoming.vue";
 import IconWhatsapp from "../components/icons/IconWhatsapp.vue";
 import IconHouseSimple from "@/components/icons/IconHouseSimple.vue";
 </script>
-  
+
 <style scoped></style>

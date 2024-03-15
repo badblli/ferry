@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+    <div class="flex flex-col lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
         <section>
             <ol class="flex items-center whitespace-nowrap mt-[30px]" aria-label="Breadcrumb">
                 <li class="inline-flex items-center">
@@ -21,10 +21,11 @@
                 </li>
             </ol>
             <div>
-                <div class="mt-[39px] flex flex-row justify-between">
-                    <div class="text-black text-4xl font-semibold font-['Plus Jakarta Sans']">Samos’a gidince
+                <div class="mt-[39px] flex flex-col md:flex-row justify-between">
+                    <div class="text-black text-2xl md:text-4xl font-semibold font-['Plus Jakarta Sans']">Samos’a
+                        gidince
                         yemeniz<br />gereken 10 başlangıç</div>
-                    <div class="flex flex-row">
+                    <div class="flex flex-row mt-4 md:mt-0">
                         <div
                             class="w-[77px] h-[77px] bg-white rounded-full border border-neutral-200 ml-[15px] justify-center items-center flex cursor-pointer">
                             <IconAa />
@@ -322,7 +323,7 @@
                                             class="flex flex-row mb-[23px] justify-between items-center text-black text-lg font-normal rounded-lg">
                                             <th v-for="(label, labelIndex) in header" :key="labelIndex"
                                                 class=" w-full flex">{{
-                                                    label }}</th>
+                            label }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -362,42 +363,40 @@
         </div>
     </div> -->
     <div class="hs-dropdown [--auto-close:outside]">
-                            <div
-                                class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300" aria-labelledby="hs-dropdown-slideup-animation">
-                                <p
-                                    class="text-black text-lg font-medium font-display items-center justify-center mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
-                                    Yeni yolcu ekle
-                                </p>
-                                <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4" aria-labelledby="hs-dropdown-slideup-animation">
-                                    <div class="bg-white space-y-3">
-                                        <div
-                                            class="w-full h-[57px] bg-slate-200 rounded-lg flex flex-row items-center justify-center gap-[60px]">
-                                            <div class="text-black text-base font-medium font-display tracking-tight">
-                                                Yetişkin Ekle</div>
-                                            <div
-                                                class="text-right text-black text-base font-light font-display tracking-tight">
-                                                +12 yaş</div>
-                                        </div>
-                                        <div
-                                            class="w-full h-[57px] bg-slate-200 rounded-lg flex flex-row items-center justify-center gap-[60px]">
-                                            <div class="text-black text-base font-medium font-display tracking-tight">
-                                                Çocuk Ekle</div>
-                                            <div
-                                                class="text-right text-black text-base font-light font-display tracking-tight">
-                                                6-12 yaş</div>
-                                        </div>
-                                        <div
-                                            class="w-full h-[57px] bg-slate-200 rounded-lg flex flex-row items-center justify-center gap-[60px]">
-                                            <div class="text-black text-base font-medium font-display tracking-tight">
-                                                Bebek Ekle</div>
-                                            <div
-                                                class="text-right text-black text-base font-light font-display tracking-tight">
-                                                0-5 yaş</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300"
+            aria-labelledby="hs-dropdown-slideup-animation">
+            <p
+                class="text-black text-lg font-medium font-display items-center justify-center mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
+                Yeni yolcu ekle
+            </p>
+            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4"
+                aria-labelledby="hs-dropdown-slideup-animation">
+                <div class="bg-white space-y-3">
+                    <div
+                        class="w-full h-[57px] bg-slate-200 rounded-lg flex flex-row items-center justify-center gap-[60px]">
+                        <div class="text-black text-base font-medium font-display tracking-tight">
+                            Yetişkin Ekle</div>
+                        <div class="text-right text-black text-base font-light font-display tracking-tight">
+                            +12 yaş</div>
+                    </div>
+                    <div
+                        class="w-full h-[57px] bg-slate-200 rounded-lg flex flex-row items-center justify-center gap-[60px]">
+                        <div class="text-black text-base font-medium font-display tracking-tight">
+                            Çocuk Ekle</div>
+                        <div class="text-right text-black text-base font-light font-display tracking-tight">
+                            6-12 yaş</div>
+                    </div>
+                    <div
+                        class="w-full h-[57px] bg-slate-200 rounded-lg flex flex-row items-center justify-center gap-[60px]">
+                        <div class="text-black text-base font-medium font-display tracking-tight">
+                            Bebek Ekle</div>
+                        <div class="text-right text-black text-base font-light font-display tracking-tight">
+                            0-5 yaş</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -487,4 +486,3 @@ const tableData = [
 </script>
 
 <style scoped></style>
-
