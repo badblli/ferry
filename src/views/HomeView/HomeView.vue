@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center m-auto relative ">
     <div class="w-full ">
-      <div class="lg:px-[100px] px-16 md:px-16 sm:px-8 relative centered-w">
+      <div class="lg:px-[100px] px-2 md:px-16 sm:px-8 relative centered-w">
         <SliderWithThumbnails />
       </div>
       <MainTitleCard :item="item" v-for="(item, index) in fakeData" :key="index" />
@@ -12,9 +12,9 @@
           <div class=" text-black text-[42px] font-medium font-display tracking-wide mt-[100px] mb-7">Samos
             Adasında<br />neler yapabilirim?</div>
           <div
-            class="w-[534px] text-center text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
+            class="w-full] text-center text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
             Marzipan sweet roll gingerbread oat cake cheesecake pie. Pie macaroon sweet liquorice topping.</div>
-          <div class="mt-[107px] flex flex-col lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+          <div class="mt-[107px] flex flex-col lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
             <div class="flex flex-row flex-wrap justify-center ">
               <div v-for="(category, index) in fakeData1" :key="index" class="category-item">
                 <CategorieSlider :title="category.title" />
@@ -22,9 +22,9 @@
             </div>
           </div>
           <div class="mt-[89px] mb-[119px] flex flex-row">
-            <div class="w-[333px] text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
+            <div class="w-full text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
               Ve daha fazlası için blog yazılarımızı okuyun.</div>
-            <div class="flex flex-row">
+            <div class="flex md:flex-row flex-col">
               <div class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-3">
                 Samos’u
                 Keşfet
@@ -48,7 +48,7 @@ import HomeCardSplide from './components/HomeCardSplide.vue';
 import MainTourCard from './components/MainTourCard.vue';
 // import HomeToursCard from './components/HomeToursCard.vue';
 import MainTitleCard from './components/MainTitleCard.vue';
-import CategorieSlider from '@/components/advanced/CategorieSlider.vue';
+import CategorieSlider from '../../components/advanced/CategorieSlider.vue';
 
 const fakeData1 = [
   { id: 1, title: 'Kategori 1' },

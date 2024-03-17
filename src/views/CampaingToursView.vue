@@ -225,7 +225,7 @@
                     <ul>
                         <li v-for="(item, index) in travelItems" :key="index">
                             {{ item }}
-                            <div class="w-full md:w-[567px] mt-[35px] mb-[35px] half-pixel origin-top-left border border-neutral-300"
+                            <div class="w-full md:w-3/4 mt-[35px] mb-[35px] half-pixel origin-top-left border border-neutral-300"
                                 :class="{ 'border-none': index === travelItems.length - 1 }" />
                         </li>
                     </ul>
@@ -270,7 +270,7 @@
                     <ul>
                         <li v-for="(item, index) in travelItems" :key="index">
                             {{ item }}
-                            <div class="w-full md:w-[567px] mt-[35px] mb-[35px] half-pixel origin-top-left border border-neutral-300"
+                            <div class="w-full md:w-3/4 mt-[35px] mb-[35px] half-pixel origin-top-left border border-neutral-300"
                                 :class="{ 'border-none': index === travelItems.length - 1 }" />
                         </li>
                     </ul>

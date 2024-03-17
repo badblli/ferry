@@ -1,6 +1,6 @@
 <template>
   <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
-    <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-[100px] px-16 md:px-16 sm:px-8"
+    <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-[100px] px-2 md:px-16 sm:px-8"
       aria-label="Global">
       <div class="lg:flex hidden items-center justify-between">
         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ message }}</a>

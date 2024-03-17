@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+            <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                 <ol class="pb-4 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                     <li class="inline-flex items-center">
                         <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
@@ -28,12 +28,12 @@
                 </h1>
             </div>
         </div>
-        <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+        <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
             <div class="w-full flex flex-col">
-                <div class=" flex md:mt-[55px] md:mb-24 mb-6 mt-6">
-                    <div class="flex justify-center">
+                <div class="flex md:mt-[55px] md:mb-24 mb-6 mt-6">
+                    <div class="flex">
                         <div
-                            class="w-[508px] text-black text-2xl font-medium font-['Plus Jakarta Sans'] md:leading-[37.06px] leading-7">
+                            class="md:w-1/2 w-full text-black text-2xl font-medium font-['Plus Jakarta Sans'] md:leading-[37.06px] leading-7">
                             En güncel fırsatları gezginler için sunuyoruz. Alttaki listeden size en uygun olanı
                             değerlendirebilirsiniz.</div>
                     </div>
@@ -46,7 +46,8 @@
                 </div>
                 <div class="md:w-full mb-5">
                     <div class="w-full">
-                        <div class=" text-black text-[32px] font-semibold font-['Plus Jakarta Sans'] tracking-wide md:ml-6">
+                        <div
+                            class=" text-black text-[32px] font-semibold font-['Plus Jakarta Sans'] tracking-wide md:ml-6">
                             {{ item.title }}</div>
                         <div
                             class=" text-black text-base font-normal font-['Plus Jakarta Sans'] md:leading-[29.03px] leading-5 md:ml-6 md:mt-3 mt-5">
@@ -110,5 +111,5 @@ const fakeData = ref<FakeDataItem[]>([
     },
 ]);
 </script>
-  
+
 <style scoped></style>

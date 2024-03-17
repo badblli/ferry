@@ -10,7 +10,7 @@
                     <div className="p-8">
                         <div className="flex flex-row items-center">
                             <IconAsteriskSimple />
-                            <h2 className="text-black text-base font-medium leading-[26.88px] h-7 ml-3">
+                            <h2 className="text-black text-base font-medium  h-7 ml-3 md:mb-0 mb-2">
                                 {{ whichFerry }}
                             </h2>
                         </div>

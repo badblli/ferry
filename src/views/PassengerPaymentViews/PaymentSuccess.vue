@@ -7,7 +7,7 @@
             başarıyla
             alınmıştır.</div>
         <div
-            class="w-[417px] text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[51px]">
+            class="w-full text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[51px]">
             Ödemenizi güvenli bir şekilde tamamladınız. Altta yer alan yöntemler ile biletinize ulaşabilirsiniz.</div>
         <div class="flex flex-row items-center">
             <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">Rezervasyon Numaranız : </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-[403px] h-[1px] origin-top-left border border-zinc-300 my-10"></div>
+        <div class="w-full h-[1px] origin-top-left border border-zinc-300 my-10"></div>
         <div class="flex flex-row items-center">
             <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">Kazandığınız Mil Puanı : </div>
             <div
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="mt-[46px]">
-                <div class="flex flex-row">
+                <div class="flex md:flex-row flex-col">
                     <div class="flex flex-row mr-[50px] mb-[48px] cursor-pointer" @click="navigateToHome">
                         <div class="text-black text-base font-semibold font-['Plus Jakarta Sans']">Anasayfaya dön</div>
                         <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex ml-3">

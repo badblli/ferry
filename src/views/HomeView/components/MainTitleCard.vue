@@ -1,5 +1,5 @@
 <template>
-    <section class="lg:px-[100px] px-16 md:px-16 sm:px-8 -translate-y-12 centered-w">
+    <section class="lg:px-[100px] px-2 md:px-16 sm:px-8 md:-translate-y-12 centered-w">
         <div class="relative w-full h-[494px] rounded-xl flex flex-col justify-between mb-10">
             <div
                 class="absolute bottom-0 z-10 bg-white md:max-w-[551px] md:h-[466px] p-7 md:ml-4 md:mb-4 m-3 rounded-xl flex flex-col justify-between">
@@ -58,7 +58,7 @@
                                 {{ item && item.toursButton }}Tüm Turlar
                             </div>
                             <!-- IconArrowUpRight -->
-                            <IconArrowUpRight/>
+                            <IconArrowUpRight />
                         </div>
                     </div>
                 </div>

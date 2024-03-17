@@ -1,9 +1,9 @@
 <template>
     <section class="mb-[120px] centered-w">
-        <div class="lg:px-[100px] px-16 md:px-16 sm:px-8">
+        <div class="lg:px-[100px] px-2 md:px-16 sm:px-8">
             <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">Her gün
                 farklı<br />Yunan adaları</div>
-            <div class="w-[641px] text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-[103px]">
+            <div class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-[103px]">
                 Tatilinizi güzel
                 bir Yunan adasında geçirmeye, küçük bir kaçamak yapmaya ne dersiniz? Yunan adalarına feribot sayfamızı
                 ziyaret

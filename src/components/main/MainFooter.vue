@@ -1,6 +1,6 @@
 <template>
   <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4 ">
-    <div class="text-center text-black text-lg font-medium lg:m-0 m-2">
+    <div class="text-center text-black md:text-lg text-base font-medium lg:m-0 m-2">
       {{ footerContactText }}
     </div>
     <div className="flex flex-row justify-evenly items-center cursor-pointer lg:m-0 m-2"

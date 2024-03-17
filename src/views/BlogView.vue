@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-            <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+            <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                 <ol class="pb-4 flex items-center whitespace-nowrap pl-10 md:pl-0" aria-label="Breadcrumb">
                     <li class="inline-flex items-center">
                         <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
@@ -29,7 +29,7 @@
         </div>
         <!-- CONTENT SWİPER SECTİON -->
         <section class="w-full px-10 md:pl-0">
-            <div class="w-full h-[147px] justify-between relative items-center pt-6 w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+            <div class="w-full h-[147px] justify-between relative items-center pt-6 lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                 <Splide :options="splideOptions">
                     <SplideSlide v-for="(item, index) in images" :key="index"
                         class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
@@ -40,7 +40,7 @@
                 </Splide>
             </div>
         </section>
-        <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+        <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
             <div class="mb-16 md:mb-[204px]">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
                     <div v-for="(blog, index) in blogs" :key="index" class="cursor-pointer mb-[50px]">

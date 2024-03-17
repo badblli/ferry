@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+    <div class="flex flex-col w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
         <ol class="flex items-center whitespace-nowrap mt-[30px] pl-5 md:pl-0" aria-label="Breadcrumb">
             <li class="inline-flex items-center">
                 <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full px-5 md:px-0">
+        <div class="w-full">
             <div class="mb-16 md:mb-[104px] mt-[60px]">
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
                     <div class="space-y-[70px]">

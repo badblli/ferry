@@ -4,7 +4,7 @@
         <div class="w-full h-[223px] bg-slate-200" />
         <div class="relative top-[-11rem] w-full lg:px-[100px] px-0 md:px-16 sm:px-8 centered-w">
             <div class="flex flex-col md:flex-row justify-between">
-                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-14">
+                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
                     Feribot Seferleri 2024
                 </h1>
                 <div
@@ -84,7 +84,6 @@
                             </table>
                             <div class="mt-16 lg:w-4/6 w-full">
                                 <div v-for="(info, index) in infoData" :key="index" class="flex items-center mt-5">
-                                    <IconAsteriskSimple class="min-w-7 min-h-7" />
                                     <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">
                                         {{ info.whichFerry }}
                                     </h2>

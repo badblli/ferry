@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
-        <div class="relative w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+        <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
             <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
                 Sıkça Sorulan Sorular
             </h1>
@@ -11,20 +11,23 @@
             <div class="w-full">
                 <div
                     class="flex flex-col md:flex-row w-full justify-between lg:px-28 md:px-16 sm:px-8 items-center mt-[50px] mb-10 md:mb-40">
-                    <div class="w-[484px] text-black text-2xl font-medium font-['Plus Jakarta Sans'] leading-[37.06px] ">
+                    <div class=" text-black text-2xl font-medium font-['Plus Jakarta Sans'] leading-[37.06px] ">
                         Sadece
-                        soruları okumak yetmez. Samos’a ait tüm bilgilerin yer aldığı kanalımızı inceleyibilirsin.</div>
-                    <div class="flex flex-row justify-center items-center cursor-pointer">
-                        <div class="text-gray-700 text-base font-medium font-display leading-[24.86px] tracking-tight ">
-                            Youtube Kanalımıza Gidin</div>
-                        <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex ml-[13px]">
-                            <div class="w-5 h-5 relative flex-col justify-start items-start flex">
-                                <ArrowUpRightWhite />
+                        soruları okumak yetmez. Samos’a <br /> ait tüm bilgilerin yer aldığı kanalımızı
+                        inceleyibilirsin.</div>
+                    <div class="flex md:flex-row flex-col justify-center md:items-center cursor-pointer">
+                        <div class="flex flex-row md:mr-12 mr-2 md:mt-0 mt-5">
+                            <div
+                                class="text-gray-700 text-base font-medium font-display leading-[24.86px] tracking-tight mr-1">
+                                Youtube Kanalımıza Gidin</div>
+                            <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
+                                <div class="w-5 h-5 relative flex-col justify-start items-start flex">
+                                    <ArrowUpRightWhite />
+                                </div>
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center">
-                            <div
-                                class="w-[178px] h-[121px] bg-gray-500 rounded-2xl ml-[48px] items-center justify-center flex">
+                            <div class="w-[178px] h-[121px] bg-gray-500 rounded-2xl items-center justify-center flex">
                                 <IconPlay />
                             </div>
                             <IconEllips2077 class="-left-36 relative -z-50" />
@@ -50,7 +53,8 @@
                                     class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                                     aria-labelledby="hs-active-bordered-heading-one">
                                     <div class="pb-4 px-5 justify-center items-center flex flex-row">
-                                        <p class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
+                                        <p
+                                            class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
                                             <br />
                                             {{ accordion.body }}
                                             <br />
@@ -89,7 +93,8 @@
                                     class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                                     aria-labelledby="hs-active-bordered-heading-one">
                                     <div class="pb-4 px-5 justify-center items-center flex flex-row">
-                                        <p class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
+                                        <p
+                                            class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
                                             <br />
                                             {{ accordion.body }}
                                             <br />
@@ -128,7 +133,8 @@
                                     class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                                     aria-labelledby="hs-active-bordered-heading-one">
                                     <div class="pb-4 px-5 justify-center items-center flex flex-row">
-                                        <p class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
+                                        <p
+                                            class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
                                             <br />
                                             {{ accordion.body }}
                                             <br />

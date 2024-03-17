@@ -2,7 +2,7 @@
     <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mb-[34px]">
         {{ fakeData.title }}</div>
     <div
-        class="w-[378px] text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[34px]">
+        class="w-full text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[34px]">
         Faturalama işlemi için yetişkin kullanıcılardan altta seçim
         yapabilirsiniz.</div>
     <div class="flex flex-row">
@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import InputBasic from './InputBasic.vue';
 import InputBirth from './InputBirth.vue';
-import InputPhone from './InputPhone.vue';
+// import InputPhone from './InputPhone.vue';
 import { VueTelInput } from 'vue-tel-input';
   import 'vue-tel-input/vue-tel-input.css';
 import IconPlus from '@/components/icons/IconPlus.vue'

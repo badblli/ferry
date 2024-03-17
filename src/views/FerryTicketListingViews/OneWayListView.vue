@@ -1,21 +1,21 @@
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
-        <div class="relative top-[-11rem] w-full lg:px-[100px] px-16 md:px-16 sm:px-8 centered-w">
+        <div class="relative top-[-11rem] w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
             <div class="flex lg:flex-row flex-col justify-between">
                 <div class="flex flex-row">
                     <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">
                         Kuşadası
                     </div>
                     <div
-                        class="w-[52px] h-[52px] opacity-75 bg-white rounded-full flex justify-center items-center mx-[33px]">
+                        class="w-[52px] h-[52px] md:mb-0 mb-5 opacity-75 bg-white rounded-full flex justify-center items-center mx-[33px]">
                         <IconsArrowsLeftRight />
                     </div>
                     <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
                         Samosa
                     </div>
                 </div>
-                <div class="flex flex-row mb-2">
+                <div class="flex flex-row md:mb-0 mb-2">
                     <div class="h-[37px] bg-white rounded-lg border flex justify-center items-center p-1">
                         <div class="text-black text-lg font-medium font-display ml-1">Feribot Bileti Ara</div>
                         <IconArrowDownBlack />
@@ -59,7 +59,7 @@
                     </div>
                     <div v-for="(item, index) in fakeData" :key="index"
                         class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
-                        <div class="flex flex-row justify-between">
+                        <div class="flex sm:flex-row flex-col justify-between">
                             <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
                             <div class="mt-3 mr-5 lg:mr-[75px]">
                                 <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
@@ -87,7 +87,8 @@
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
-                            <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{ item.price }}</div>
+                            <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
+                                            item.price }}</div>
                             <button @click="logSelectedData(item)"
                                 class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
                         </div>
@@ -269,109 +270,109 @@ onMounted(() => {
 
 
 .splide.splide__arrow {
-  background: white;
+    background: white;
 }
 
 .splide__arrow.splide__arrow--prev:disabled {
-  opacity: 1;
-  background: transparent
+    opacity: 1;
+    background: transparent
 }
 
 .splide__arrow.splide__arrow--prev {
-  height: full;
-  top: 40px;
-  left: -3rem;
-  opacity: 1;
-  background: transparent;
+    height: full;
+    top: 40px;
+    left: -3rem;
+    opacity: 1;
+    background: transparent;
 }
 
 .splide__arrow.splide__arrow--next {
-  height: full;
-  top: 40px;
-  right: -3rem;
-  opacity: 1;
-  background: transparent;
+    height: full;
+    top: 40px;
+    right: -3rem;
+    opacity: 1;
+    background: transparent;
 }
 
 .splide__arrow.splide__arrow--next:disabled {
-  opacity: 1;
-  background: transparent
+    opacity: 1;
+    background: transparent
 }
 
 .splide {
-  padding: 10px 0;
-  display: flex;
-  flex-direction: row;
-  width: 100%
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%
 }
 
 .splide__list {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
 }
 
 .splide__track {
-  width: 100%;
+    width: 100%;
 }
 
 .splide__slide {
-  height: 81px;
-  display: block;
-  width: 100%;
-  background-color: rgb(248 250 252);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 361px;
-  height: 81px;
-  flex-shrink: 0;
-  border-radius: 20px;
+    height: 81px;
+    display: block;
+    width: 100%;
+    background-color: rgb(248 250 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 361px;
+    height: 81px;
+    flex-shrink: 0;
+    border-radius: 20px;
 }
 
 .splide__slide div {
-  opacity: .6;
+    opacity: .6;
 }
 
 .splide__slide.is-active div {
-  opacity: 1;
+    opacity: 1;
 }
 
 .splide__slide.is-active {
-  transform: scale(1);
-  filter: grayscale(100%);
-  background-color: white;
-  opacity: 1;
+    transform: scale(1);
+    filter: grayscale(100%);
+    background-color: white;
+    opacity: 1;
 }
 
 .splide__arrow {
-  transform: none;
-  border-radius: unset;
-  opacity: .9;
-} 
-
-.splide__arrow svg {
-  fill: #000;
-  height: 5em;
-  width: 5rem;
+    transform: none;
+    border-radius: unset;
+    opacity: .9;
 }
 
-@media (max-width: 1024px) { 
-  .splide__arrow.splide__arrow--prev {
-    height: full;
-    top: 40px;
-    left: -2rem;
-    opacity: 1;
-    background: transparent;
-  }
-  
-  .splide__arrow.splide__arrow--next {
-    height: full;
-    top: 40px;
-    right: -2rem;
-    opacity: 1;
-    background: transparent;
-  }
- }
+.splide__arrow svg {
+    fill: #000;
+    height: 5em;
+    width: 5rem;
+}
+
+@media (max-width: 1024px) {
+    .splide__arrow.splide__arrow--prev {
+        height: full;
+        top: 40px;
+        left: -2rem;
+        opacity: 1;
+        background: transparent;
+    }
+
+    .splide__arrow.splide__arrow--next {
+        height: full;
+        top: 40px;
+        right: -2rem;
+        opacity: 1;
+        background: transparent;
+    }
+}
 </style>

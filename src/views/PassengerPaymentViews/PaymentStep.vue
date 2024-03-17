@@ -27,7 +27,7 @@
                 <div className=" bg-neutral-100 rounded-[20px] p-5">
                     <div class="flex flex-col md:flex-row gap-5">
                         <div class="lg:w-3/5 w-full">
-                            <div v-if="paymentSuccess" class=" bg-white rounded-2xl p-3 text-blue-900 mb-3">
+                            <div v-if="paymentSuccess" class="bg-white rounded-2xl p-3 text-blue-900 mb-3">
                                 <PaymentSuccess />
                             </div>
                             <div v-else class="hs-accordion-group">
@@ -282,7 +282,7 @@
                                                 İptal
                                                 ve İade İşlemi</div>
                                             <div
-                                                class="w-[326px] text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug tracking-tight">
+                                                class="w-full text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug tracking-tight">
                                                 Faturalama sırasında kaydettiğimiz yolcu bilgilerini seçerek fatura
                                                 bilgilerini otomatik doldurabilirsiniz.</div>
                                         </div>

@@ -28,10 +28,10 @@
             <div>
                 <div
                     class="bg-white w-[86px] h-[86px] lg:flex hidden flex-row justify-center items-center rounded-full z-50 lg:absolute lg:right-0 lg:translate-x-10 lg:translate-y-5">
-                    <div
+                    <p
                         class="text-center text-stone-800 text-2xl font-bold font-['Plus Jakarta Sans'] bg-slate-200 w-[73px] h-[73px] rounded-full flex flex-row justify-center items-center">
                         €30
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <form class="md:relative md:max-w-[798px] mx-auto -translate-y-72 md:z-50 z-40">
+        <form class="md:relative md:max-w-[798px] hidden md:block mx-auto -translate-y-72 md:z-50 z-40">
             <div class="flex flex-row">
                 <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
                     class="bg-slate-200 mr-[5px] py-3 px-8 rounded-t-xl cursor-pointer">
@@ -79,7 +79,8 @@
                         <button id="hs-dropdown-with-dividers" type="button"
                             class="cursor-pointer flex flex-col justify-start">
                             <div>Nereden?</div>
-                            <div class="font-light">{{ _fromWhere?.name }}</div>
+                            <div class="text-black text-base font-light font-display tracking-tight">{{ _fromWhere?.name
+                                }}</div>
                         </button>
                         <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                             aria-labelledby="hs-dropdown-with-dividers">
@@ -115,7 +116,8 @@
                         <button id="hs-dropdown-with-dividers-2" type="button"
                             class="cursor-pointer flex flex-col justify-start">
                             <div>Nereye?</div>
-                            <div class="font-light">{{ _toWhere?.name }}</div>
+                            <div class="text-black text-base font-light font-display tracking-tight">{{ _toWhere?.name
+                                }}</div>
                         </button>
                         <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                             aria-labelledby="hs-dropdown-with-dividers-2">
@@ -131,11 +133,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-14 h-[1px] rotate-90 border border-zinc-200"></div>
+                    <div class="h-14 border border-zinc-200"></div>
                     <div class="hs-dropdown flex flex-row items-center">
                         <button id="hs-dropdown-with-dividers-3" type="button" class=" cursor-pointer">
                             <div>Bilet Tipi</div>
-                            <div class="font-light">{{ _roundTrip?.name }}</div>
+                            <div class="text-black text-base font-light font-display tracking-tight">{{ _roundTrip?.name
+                                }}</div>
                         </button>
                         <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                             aria-labelledby="hs-dropdown-with-dividers-3">
@@ -149,32 +152,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-14 h-[1px] rotate-90 border border-zinc-200"></div>
+                    <div class="h-14 border border-zinc-200"></div>
                     <div class="flex flex-row items-center">
-                        <div class="detailed-search-calendar cursor-pointer">
-                            <div class="row">
-                                <div class="detailed-search-calendar-body">
-                                    <div class="detailed-search-calendar-body-content">
-                                        <div class="calendar">
-                                            <div id="litepicker">
-                                                Gidiş-Dönüş<br /><span
-                                                    class="text-black text-sm font-thin font-display tracking-tight">
-                                                    {{ formattedDateToShow }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="detailed-search-calendar-body-content-error">
-                                        </div>
-                                    </div>
+                        <div class="cursor-pointer flex flex-col">
+                            <span @click="togglePickerModal">{{ _roundTrip?.name }}</span>
+                            <span class="text-black text-base font-light font-display tracking-tight">
+                                {{ formattedDateToShow }}
+                            </span>
+                        </div>
+                        <div v-show="modalVisible" id="container" class="w-full h-full -bottom-32 left-0 absolute">
+                            <div id="litepicker">
+                                <div class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                    <span
+                                        class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                        {{ formattedValue }} <span class="mx-2">
+                                            <IconDateArrowRight />
+                                        </span> {{ formattedValue2 }}
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-14 h-[1px] rotate-90 border border-zinc-200"></div>
+                    <div class="h-14 border border-zinc-200"></div>
                     <div class="hs-dropdown flex flex-row items-center [--auto-close:false]">
                         <button id="hs-dropdown-auto-close-false" type="button" class=" cursor-pointer">
                             <div>Kişi Sayısı</div>
-                            <div class="font-light">Kişi Seçiniz</div>
+                            <div class="text-black text-base font-light font-display tracking-tight">Kişi Seçiniz</div>
                         </button>
                         <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                             aria-labelledby="hs-dropdown-with-dividers-5">
@@ -243,6 +246,18 @@ import SliderReservationInputs from './SliderReservationInputs.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconMinus from '@/components/icons/IconMinus.vue'
 import Litepicker from 'litepicker';
+import IconDateArrowRight from '@/components/icons/IconDateArrowRight.vue';
+// import Datepicker from '@vuepic/vue-datepicker';
+// import '@vuepic/vue-datepicker/dist/main.css';
+
+const modalVisible = ref(false);
+console.log(modalVisible, 'modalVisible');
+
+const togglePickerModal = () => {
+    modalVisible.value = !modalVisible.value
+}
+
+// const date = ref();
 
 // const selectedPassengerText = ref('Kişi Seçin');
 
@@ -254,7 +269,7 @@ import Litepicker from 'litepicker';
 //   selectedPassengerText.value = totalSelected > 0 ? `${totalSelected} kişi seçildi` : 'Kişi Seçin';
 // });
 
-let date = {
+const date = {
     formattedDate: ref(''),
     formattedDate2: ref('')
 };
@@ -273,6 +288,8 @@ onMounted(() => {
             singleMode: false,
             numberOfMonths: 2,
             lang: 'tr-TR',
+            autoRefresh: true,
+            inlineMode: true,
         });
 
         picker.on('error:date', () => {
@@ -458,7 +475,23 @@ const formattedDateToShow = computed(() => {
     } else if (date.formattedDate.value) {
         return date.formattedDate.value;
     } else {
-        return 'Tarih Seçiniz';
+        return 'Tarih Seçin';
+    }
+});
+
+const formattedValue = computed(() => {
+    if (date.formattedDate.value) {
+        return date.formattedDate.value;
+    } else {
+        return 'Tarih Seçin';
+    }
+});
+
+const formattedValue2 = computed(() => {
+    if (date.formattedDate2.value) {
+        return date.formattedDate2.value;
+    } else {
+        return 'Tarih Seçin';
     }
 });
 
@@ -466,6 +499,15 @@ const formattedDateToShow = computed(() => {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.custom-border-color {
+    border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+#litepicker {
+    display: inline-block !important;
+    position: relative !important;
+}
 
 .splide {
     padding: 10px 0;
