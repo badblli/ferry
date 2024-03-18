@@ -11,7 +11,7 @@
                 <div>
                     <!-- Form -->
                     <form class="flex justify-center items-center">
-                        <div class="grid gap-y-4 my-auto justify-between items-center w-[398px]">
+                        <div class="grid gap-y-4 my-auto justify-between items-center w-[298px]">
                             <!-- Form Group -->
                             <div>
                                 <div class="relative">
@@ -39,7 +39,7 @@
                             </div>
                             <!-- End Form Group -->
                             <!-- Form Group -->
-                            <div class="w-[398px]">
+                            <div class="w-[298px]">
                                 <div class="relative mt-2">
                                     <div class="flex items-center border-b border-gray-200">
                                         <input
@@ -77,7 +77,7 @@
                     <div
                         class="text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[21px] tracking-widest mt-5 flex justify-center items-center mb-[20px]">
                         YA DA </div>
-                    <div class="flex justify-center items-center">
+                    <div class="flex flex-col md:flex-row justify-center items-center">
                         <button
                             class="flex p-4 h-14 bg-white rounded-xl border border-stone-300 mr-1 text-zinc-600 text-base font-semibold font-['Plus Jakarta Sans'] leading-normal flex flex-row items-center">
                             <IconGoogle />

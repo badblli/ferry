@@ -57,13 +57,13 @@
         </button>
     </div>
 </template>
-  
+
 <script setup lang="ts">
 import InputBasic from './InputBasic.vue';
 import InputBirth from './InputBirth.vue';
 // import InputPhone from './InputPhone.vue';
 import { VueTelInput } from 'vue-tel-input';
-  import 'vue-tel-input/vue-tel-input.css';
+import 'vue-tel-input/vue-tel-input.css';
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconCheck from '@/components/icons/IconCheck.vue'
 import { ref } from 'vue'

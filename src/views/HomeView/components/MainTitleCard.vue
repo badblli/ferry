@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <img :src="item && item.campaignImage" alt="asd"
+            <img :src="String(item && item.campaignImage)" alt="asd"
                 class="object-fill w-full h-full rounded-xl flip-horizontal" />
         </div>
         <div class="flex flex-col md:flex-row gap-5 ">
@@ -62,20 +62,32 @@
                         </div>
                     </div>
                 </div>
-                <img :src="item && item.toursImage" alt="asd"
-                    class="object-fill w-full h-[450px] rounded-xl flip-horizontal " />
+                <img :src="String(item && item.toursImage)" alt="asd"
+                    class="object-fill w-full h-[450px] rounded-xl flip-horizontal" />
             </div>
         </div>
     </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { defineProps } from 'vue';
 import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
 
-export default defineComponent({
-    props: {
-        item: Object // Tüm özellikleri içeren tek bir nesne
+const props = defineProps({
+    item: {
+        type: Object as () => ({
+            campaignTitle: string;
+            company: string;
+            buttonText: string;
+            campaignImage: string;
+            visaTitle: string;
+            visaDescription: string;
+            toursTitle: string;
+            toursDescription: string;
+            toursImage: string;
+            toursButton: string;
+        }),
+        required: true
     }
 });
 </script>

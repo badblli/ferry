@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="lg:px-[100px] px-2 md:px-16 sm:px-8 relative centered-w">
         <div
             class="lg:absolute block lg:flex flex-row lg:w-[502px] w-full lg:p-0 p-1 lg:mt-0 mt-1 z-20 lg:bg-white bg-slate-200 top-9 left-36 rounded-2xl">
             <div class="flex flex-col justify-center lg:ml-[35px] ml-5 lg:mt-[32px] mt-3 lg:mb-[31px] mb-3">
@@ -79,8 +79,7 @@
                         <button id="hs-dropdown-with-dividers" type="button"
                             class="cursor-pointer flex flex-col justify-start">
                             <div>Nereden?</div>
-                            <div class="text-black text-base font-light font-display tracking-tight">{{ _fromWhere?.name
-                                }}</div>
+                            <div class="text-black text-base font-light font-display tracking-tight">{{ _fromWhere?.name }}</div>
                         </button>
                         <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                             aria-labelledby="hs-dropdown-with-dividers">
@@ -89,8 +88,7 @@
                                     <div @click="updateFromWhere(i)" v-for="(i, index) in fromWhere" :key="index"
                                         :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
                                         class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                        <a class="text-black text-base font-medium font-display tracking-tight">{{
-                            i.name }}</a>
+                                        <a class="text-black text-base font-medium font-display tracking-tight">{{ i.name }}</a>
                                         <a class="text-black text-sm font-light font-display tracking-tight">{{ i.port
                                             }}</a>
                                     </div>
@@ -247,20 +245,21 @@ import IconPlus from '@/components/icons/IconPlus.vue'
 import IconMinus from '@/components/icons/IconMinus.vue'
 import Litepicker from 'litepicker';
 import IconDateArrowRight from '@/components/icons/IconDateArrowRight.vue';
+// import { useFetch } from '@/utils/globalFetch.js';
 // import Datepicker from '@vuepic/vue-datepicker';
 // import '@vuepic/vue-datepicker/dist/main.css';
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const modalVisible = ref(false);
-console.log(modalVisible, 'modalVisible');
+// console.log(modalVisible, 'modalVisible');
+
+const fromWhereData = ref([]);
 
 const togglePickerModal = () => {
     modalVisible.value = !modalVisible.value
 }
 
 // const date = ref();
-
 // const selectedPassengerText = ref('Kişi Seçin');
-
 // watch(passenger, (newPassenger, oldPassenger) => {
 //   let totalSelected = 0;
 //   for (const person of newPassenger) {
@@ -494,7 +493,27 @@ const formattedValue2 = computed(() => {
         return 'Tarih Seçin';
     }
 });
+import { API_BASE_URL } from '../../../utils/constant.js';
 
+// FETCH
+const fetchData = async () => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/Keydefinition/GetSearchTownList?RouteType=1&DepartureTownId=0`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        let fromWhereData = JSON.parse(data.result);
+        console.log(fromWhereData, 'new data is here');
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        return null;
+    }
+};
+
+onMounted(() => {
+    fetchData();
+});
 </script>
 
 <style scoped>
