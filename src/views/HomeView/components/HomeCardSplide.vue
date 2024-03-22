@@ -1,13 +1,10 @@
 <template>
     <section class="mb-[120px] centered-w">
         <div class="lg:px-[100px] px-2 md:px-16 sm:px-8">
-            <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">Her gün
-                farklı<br />Yunan adaları</div>
-            <div class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-[103px]">
-                Tatilinizi güzel
-                bir Yunan adasında geçirmeye, küçük bir kaçamak yapmaya ne dersiniz? Yunan adalarına feribot sayfamızı
-                ziyaret
-                edin en ekonomik tatil paketlerimizden faydalanın.</div>
+            <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">{{ item.title }}</div>
+            <div
+                class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-[103px]">
+                {{ item.description }}</div>
         </div>
         <div>
             <div className="h-full w-full">
@@ -15,7 +12,7 @@
                     <div id="splide" class="splide" ref="splideRef">
                         <div class="splide__track">
                             <ul class="splide__list">
-                                <li v-for="(item, index) in items" :key="index" class="splide__slide">
+                                <li v-for="(item, index) in props.item.Ferry" :key="index" class="splide__slide">
                                     <div class="h-full w-full flex flex-col justify-end mt-9 ">
                                         <div v-if="item.where"
                                             class="text-black text-[25px] font-['Plus Jakarta Sans'] flex flex-col justify-start ml-7">
@@ -34,12 +31,13 @@
                                             </p>
                                             <div class="mt-7 flex flex-row ml-3 text-white">
                                                 <button class="mr-[10px]">
-                                                    Hemen Bilet Al
+                                                    {{ item.price }}
                                                 </button>
                                                 <IconArrowUpRight />
                                             </div>
                                         </div>
-                                        <img :src="item.url"
+
+                                        <img :src="getImage(item.img.url)"
                                             class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" />
                                     </div>
                                 </li>
@@ -72,6 +70,50 @@ import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
 import IconSamosaVector from '@/components/icons/IconSamosaVector.vue';
 import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 import { onMounted, ref } from 'vue';
+import { getImage } from '@/utils/globalHelper'
+
+interface splideImg {
+    id: Number,
+    name: string,
+    alternativeText: string | null,
+    caption: string | null,
+    width: Number,
+    height: Number,
+    formats: any,
+    hash: string,
+    ext: string,
+    mime: string,
+    size: Number,
+    url: string,
+    previewUrl: string | null,
+    provider: string,
+    provider_metadata: any | null,
+    createdAt: string,
+    updatedAt: string
+}
+
+interface ferry {
+    date: string,
+    dateText: string,
+    id: number,
+    img: splideImg[],
+    price: string,
+    title: string,
+    where?: string | null,
+}
+
+const props = defineProps({
+    item: {
+        type: Object as () => ({
+            Ferry: ferry[],
+            description: string,
+            id: number,
+            title: string,
+        }),
+        required: true
+    }
+});
+
 // import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
 // do not clean
 // const store = useTemporaryStore();
@@ -88,23 +130,23 @@ import { onMounted, ref } from 'vue';
 //     console.log(item);
 // };
 
-interface fakeSlidertems {
-    id: number;
-    date: string;
-    price: string;
-    title: string;
-    where?: string
-    url?: string;
-}
+// interface fakeSlidertems {
+//     id: number;
+//     date: string;
+//     price: string;
+//     title: string;
+//     where?: string
+//     url?: string;
+// }
 
-const items: fakeSlidertems[] = [
-    { id: 7, date: "20 Kasım Cumartesi", price: "En Uygun €39", title: "Ekim Ayında yunan adalarına git.", where: "Samosa Bilet", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { id: 2, date: "16 Kasım Cuma", price: "En Uygun €49", title: "Sakız Adasına Feribot", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { id: 3, date: "17 Kasım Cumartesi", price: "En Uygun €59", title: "Rodos Adasına Feribot", url: 'https://images.unsplash.com/photo-1696613496496-1c7b2a55e7d2?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { id: 4, date: "18 Kasım Cumartesi", price: "En Uygun €69", title: "Santoriniye Feribot", url: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { id: 5, date: "19 Kasım Cumartesi", price: "En Uygun €79", title: "Bodruma Feribot", url: 'https://images.unsplash.com/photo-1598114694861-ee40abbdf824?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { id: 6, date: "20 Kasım Cumartesi", price: "En Uygun €89", title: "Güllüğe Feribot", url: 'https://images.unsplash.com/photo-1591078314996-ba61623c7284?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-];
+// const items: fakeSlidertems[] = [
+//     { id: 7, date: "20 Kasım Cumartesi", price: "En Uygun €39", title: "Ekim Ayında yunan adalarına git.", where: "Samosa Bilet", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+//     { id: 2, date: "16 Kasım Cuma", price: "En Uygun €49", title: "Sakız Adasına Feribot", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+//     { id: 3, date: "17 Kasım Cumartesi", price: "En Uygun €59", title: "Rodos Adasına Feribot", url: 'https://images.unsplash.com/photo-1696613496496-1c7b2a55e7d2?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+//     { id: 4, date: "18 Kasım Cumartesi", price: "En Uygun €69", title: "Santoriniye Feribot", url: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+//     { id: 5, date: "19 Kasım Cumartesi", price: "En Uygun €79", title: "Bodruma Feribot", url: 'https://images.unsplash.com/photo-1598114694861-ee40abbdf824?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+//     { id: 6, date: "20 Kasım Cumartesi", price: "En Uygun €89", title: "Güllüğe Feribot", url: 'https://images.unsplash.com/photo-1591078314996-ba61623c7284?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+// ];
 
 const splideRef = ref<string | HTMLElement>('');
 onMounted(() => {

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "prod": "vite preview",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -17,6 +18,7 @@
     "@splidejs/splide": "^4.1.4",
     "@splidejs/vue-splide": "^0.6.12",
     "@vuepic/vue-datepicker": "^8.2.0",
+    "axios": "^1.6.8",
     "json-server": "^1.0.0-alpha.23",
     "litepicker": "^2.0.12",
     "pinia": "^2.1.7",
@@ -24,6 +26,7 @@
     "slider": "^1.0.4",
     "swiper": "^11.0.5",
     "vue": "^3.3.4",
+    "vue-i18n": "9",
     "vue-phone-number-input": "^1.12.13",
     "vue-router": "^4.2.5",
     "vue-tel-input": "^8.3.1",

@@ -206,9 +206,13 @@ import SliderReservationInputs from './SliderReservationInputs.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconMinus from '@/components/icons/IconMinus.vue'
 import Litepicker from 'litepicker'
-import IconDateArrowRight from '@/components/icons/IconDateArrowRight.vue'
-import { API_BASE_URL } from '../../../utils/constant'
+import { getApi } from '@/utils/globalHelper'
+import p from '@/utils/pathConfig'
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const applicationName = ref(p.Product)
+const controllerName = ref('Keydefinition')
+const name = ref('SearchTownList')
 const modalVisible = ref(false)
 const showTrue = ref(false)
 const fromWhereData = ref([])
@@ -217,12 +221,12 @@ const toWhereData = ref([])
 const toWhereObject = ref<any[]>([])
 const departureTownId = ref<string | null>(null)
 const date = {
-     formattedDate: ref(''),
-     formattedDate2: ref('')
+     formattedDate: ref<string | null>(''),
+     formattedDate2: ref<string | null>('')
 }
 const roundTrip = [
-     { name: 'Tek Yön Bilet', id: '1' },
-     { name: 'Gidiş - Dönüş Bilet', id: '2' }
+     { name: 'Tek Yön Bilet', id: 1 },
+     { name: 'Gidiş - Dönüş Bilet', id: 2 }
 ]
 
 interface Person {
@@ -239,7 +243,7 @@ const passenger = ref<Person[]>([
 
 const _fromWhere = ref<{ TownName: string; TownID: string } | null>(null)
 const _toWhere = ref<{ TownName: string; TownID: string } | null>(null)
-const _roundTrip = ref<{ name: string } | null>(null)
+const _roundTrip = ref<{ name: string; id: number } | null>(null)
 
 const togglePickerModal = () => {
      modalVisible.value = !modalVisible.value
@@ -251,37 +255,73 @@ const formatDate = (dateInstance: string): string => {
      return date.toLocaleDateString('en-US', options)
 }
 
-onMounted(() => {
-     const element = document.getElementById('litepicker');
+const numberOfMonths = _roundTrip.value ? _roundTrip.value.id : 2
+console.log(numberOfMonths, 'numberOfMonths!')
+
+let picker: Litepicker | null = null
+let currentSingleMode: boolean | null = null
+
+function createOrUpdateLitepicker(singleMode: boolean) {
+     const element = document.getElementById('litepicker')
      if (element instanceof HTMLElement) {
-          const picker = new Litepicker({
-               element,
-               singleMode: false,
-               numberOfMonths: 2,
-               lang: 'tr-TR',
-               autoRefresh: true,
-               inlineMode: true
-          })
-
-          picker.on('error:date', () => {
-               console.error('Tarih seçme hatası oluştu')
-          })
-
-          picker.on('selected', (date1, date2) => {
-               const selectedDate1 = new Date(date1.dateInstance)
-               const selectedDate2 = new Date(date2.dateInstance)
-               const today = new Date()
-               if (selectedDate1 < today || selectedDate2 < today) {
-                    return
-               } else {
-                    date.formattedDate.value = formatDate(date1.dateInstance)
-                    date.formattedDate2.value = formatDate(date2.dateInstance)
+          if (!picker || currentSingleMode !== singleMode) {
+               currentSingleMode = singleMode
+               if (picker) {
+                    picker.destroy()
                }
-          })
+               picker = new Litepicker({
+                    element,
+                    singleMode: singleMode,
+                    numberOfMonths: 2,
+                    lang: 'tr-TR',
+                    autoRefresh: true,
+                    inlineMode: true
+               })
+
+               picker.on('selected', (date1, date2) => {
+                    const selectedDate1 = new Date(date1.dateInstance)
+                    const today = new Date()
+
+                    if (singleMode) {
+                         date.formattedDate2.value = null
+                    }
+
+                    if (!singleMode) {
+                         const selectedDate2 = new Date(date2.dateInstance)
+                         if (selectedDate1 < today || selectedDate2 < today) {
+                              console.log('!!!singleMode is working right now')
+                              return
+                         } else {
+                              console.log('!!!singleMode is working right now')
+                              date.formattedDate.value = formatDate(date1.dateInstance)
+                              date.formattedDate2.value = formatDate(date2.dateInstance)
+                         }
+                    } else {
+                         if (selectedDate1 < today) {
+                              return
+                         } else {
+                              console.log('singleMode is working right now')
+                              date.formattedDate.value = formatDate(date1.dateInstance)
+                         }
+                    }
+               })
+          } else {
+               picker.setDateRange(null, null)
+               picker.setOptions({ singleMode: singleMode })
+          }
      } else {
           console.error("Litepicker element not found. Make sure you have an element with id 'litepicker' in your HTML.")
      }
-})
+}
+
+function updateToTrip(value: { name: string; id: number }) {
+     _roundTrip.value = value
+     console.log(_roundTrip.value.id, 'roundTrip.VALUE')
+     fetchFromWhere()
+     const singleMode = value.id === 1
+     console.log(singleMode, 'singleMode is here')
+     createOrUpdateLitepicker(singleMode)
+}
 
 interface Image {
      url: string
@@ -323,12 +363,7 @@ function updateFromWhere(value: { TownName: string; TownID: string }) {
 
 function updateToWhere(value: { TownName: string; TownID: string }) {
      _toWhere.value = value
-     console.log(_toWhere.value, 'toWhere.VALUE');
-}
-
-function updateToTrip(value: { name: string }) {
-     _roundTrip.value = value
-     fetchFromWhere()
+     console.log(_toWhere.value, 'toWhere.VALUE')
 }
 
 function isEqual(obj1: { TownName: string; TownID: string }, obj2: { TownName: string; TownID: string }) {
@@ -440,39 +475,52 @@ const formattedValue2 = computed(() => {
 })
 
 const fetchFromWhere = async () => {
-     try {
-          const response = await fetch(`${API_BASE_URL}/Keydefinition/GetSearchTownList?RouteType=1&DepartureTownId=0`)
-          if (!response.ok) {
-               throw new Error('Network response was not ok')
-          }
-          const fetchFromWhereData = await response.json()
-          fromWhereData.value = JSON.parse(fetchFromWhereData.result)
-          fromWhereObject.value = fromWhereData.value
-          console.log(fromWhereObject.value, 'toWhereObject is here')
-          console.log(fromWhereData.value, 'fromWhereData.value')
-          console.log(departureTownId.value, 'DepartureTownId.value is here')
-     } catch (error) {
-          console.error('There was a problem with the fetch operation:', error)
-          return null
+     let params = {
+          RouteType: 1,
+          DepartureTownID: 0
      }
+     getApi(applicationName.value, controllerName.value, name.value, params).then((response: any) => {
+          if (response.data.status == 1) {
+               const fetchFromWhereData = response.data.result
+               fromWhereData.value = JSON.parse(fetchFromWhereData)
+               fromWhereObject.value = fromWhereData.value
+               console.log(fromWhereObject.value, 'toWhereObject is here')
+               console.log(fromWhereData.value, 'fromWhereData.value')
+               console.log(departureTownId.value, 'DepartureTownId.value is here')
+          }
+     })
+
+     // try {
+     //     const response = await fetch(`${API_BASE_URL}/Keydefinition/GetSearchTownList?RouteType=1&DepartureTownId=0`)
+     //     if (!response.ok) {
+     //         throw new Error('Network response was not ok')
+     //     }
+     //     const fetchFromWhereData = await response.json()
+     //     fromWhereData.value = JSON.parse(fetchFromWhereData.result)
+     //     fromWhereObject.value = fromWhereData.value
+     //     console.log(fromWhereObject.value, 'toWhereObject is here')
+     //     console.log(fromWhereData.value, 'fromWhereData.value')
+     //     console.log(departureTownId.value, 'DepartureTownId.value is here')
+     // } catch (error) {
+     //     console.error('There was a problem with the fetch operation:', error)
+     //     return null
+     // }
 }
 
 const fetchToWhere = async (departureTownIdValue: string | null) => {
-     try {
-          const routeType = 2
-          const response = await fetch(`${API_BASE_URL}/Keydefinition/GetSearchTownList?RouteType=${routeType}&DepartureTownId=${departureTownIdValue}`)
-          if (!response.ok) {
-               throw new Error('Network response was not ok')
-          }
-          const fetchtoWhereData = await response.json()
-          toWhereData.value = JSON.parse(fetchtoWhereData.result)
-          toWhereObject.value = toWhereData.value
-          console.log(toWhereData.value, 'toWhereDataValue')
-          console.log(toWhereObject.value, 'toWhereObject')
-     } catch (error) {
-          console.error('There was a problem with the second fetch operation:', error)
-          return null
+     let params = {
+          RouteType: 2,
+          DepartureTownID: departureTownIdValue
      }
+     getApi(applicationName.value, controllerName.value, name.value, params).then((response: any) => {
+          if (response.data.status == 1) {
+               const fetchtoWhereData = response.data.result
+               toWhereData.value = JSON.parse(fetchtoWhereData)
+               toWhereObject.value = toWhereData.value
+               console.log(toWhereData.value, 'toWhereDataValue')
+               console.log(toWhereObject.value, 'toWhereObject')
+          }
+     })
 }
 
 onMounted(() => {
@@ -664,3 +712,4 @@ onMounted(() => {
      }
 }
 </style>
+@/utils/globalHelper

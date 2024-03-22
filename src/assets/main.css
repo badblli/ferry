@@ -2272,6 +2272,10 @@ select {
   width: 39px;
 }
 
+.w-\[400px\] {
+  width: 400px;
+}
+
 .w-\[439px\] {
   width: 439px;
 }
