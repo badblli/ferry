@@ -49,20 +49,20 @@
                <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
                     <!-- for first column and space -->
                </div>
-               <!-- <div v-for="(item, index) in props.item.footerAreas" :key="index"> -->
-                    <!-- <div>
+               <div v-for="(item, index) in props.item.footerAreas" :key="index">
+                    <div>
                          <div class="text-black text-lg font-medium font-display mb-5">{{ item.title }}</div>
                          <div v-for="(sub, index) in item.subItem" :key="index" className="mb-5">
                               <a  class="text-zinc-600 text-sm font-normal font-display">{{ sub.text }}</a>
                          </div>
-                    </div> -->
-                    <!-- <div>
+                    </div>
+                    <div>
                          <div class="text-black text-lg font-medium font-display mb-5">Hakkımızda</div>
                          <div v-for="(item, index) in footerSecCol" :key="index" className="mb-5">
                               <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{ item.text }}</a>
                          </div>
-                    </div> -->
-                    <!-- <div>
+                    </div>
+                    <div>
                          <div class="text-black text-lg font-medium font-display mb-5">Turlar</div>
                          <div v-for="(item, index) in footerThrdCol" :key="index" className="mb-5">
                               <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{ item.text }}</a>
@@ -73,8 +73,8 @@
                                    <IconArrowUpRight />
                               </div>
                          </div>
-                    </div> -->
-               <!-- </div> -->
+                    </div>
+               </div>
 
                <div>
                     <div class="w-[50px] h-[50px] relative">
@@ -129,7 +129,7 @@ interface MainFooterData {
 
 const mainFooter = ref<MainFooterData | any>([]);
 
-const getNavbar = async () => {
+const getFooter = async () => {
     try {
         let filters = {
             saleChannel: 'Samosa',
@@ -138,12 +138,12 @@ const getNavbar = async () => {
 
         const res = await fetchData('pages', 'tr', filters)
 
-        if (res) {
+        if (res) {  
             let data = res.data[0].layout
             console.log(data, 'data')
 
-            mainFooter.value = data.find((x: any) => x.__component === 'global.navbar')
-            console.log(mainFooter.value, 'mainFooter section is here!')
+            mainFooter.value = data.find((x: any) => x.__component === 'global.footer')
+            console.log(mainFooter.value, 'mainFooter section is here!!!!!!!!!')
         }
     } catch (error) {
         console.error('Hata:', error)
@@ -151,7 +151,7 @@ const getNavbar = async () => {
 }
 
 onMounted(() => {
-    getNavbar()
+     getFooter()
 })
 
 
