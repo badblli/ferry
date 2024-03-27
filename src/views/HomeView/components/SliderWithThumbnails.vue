@@ -240,7 +240,7 @@
                                    </div>
                               </div>
                          </div>
-                         <div
+                         <div @click="navigateToSecondPage"
                               class="bg-slate-200 rounded-full flex flex-row justify-center items-center cursor-pointer p-[17px] m-[11px]">
                               <IconSearchNormal />
                          </div>
@@ -283,6 +283,11 @@ import { getImage } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
+
+import { useRouter } from 'vue-router';
+
+// useRouter hook'unu kullanarak Vue Router instance'ını alın
+const router = useRouter();
 
 interface searchReservation {
      id: number
@@ -359,27 +364,36 @@ const toWhereObject = ref<any[]>([])
 const travelData = ref([])
 const travelObject = ref<any[]>([])
 const departureTownId = ref<string | null>(null)
+const arrivalTownId = ref<string | null>(null)
+const queryDate = {
+     formattedDepartureDate: ref<string | null>(null),
+     formattedArrivalDate: ref<string | null>(null),
+}
 const date = {
      formattedDate: ref<string | null>(null),
      formattedDate2: ref<string | null>(null),
      formattedDate3: ref<string | null>(null)
 }
-// const roundTrip = [
-//      { name: 'Tek Yön Bilet', id: 1 },
-//      { name: 'Gidiş - Dönüş Bilet', id: 2 }
-// ]
 
-interface Person {
-     age: string
-     price: string
-     count: number
+// interface Person {
+//      age: string
+//      price: string
+//      count: number
+// }
+
+interface Passenger {
+     age: string;
+     price: string;
+     count: number;
 }
 
-const passenger = ref<Person[]>([
-     { age: 'Yetişkin', price: '€41', count: 0 },
-     { age: 'Çocuk (6 - 12 yaş)', price: '€31', count: 0 },
-     { age: 'Bebek (0 - 5 yaş)', price: '€0', count: 0 }
-])
+const AdultCount: Passenger = { age: 'Yetişkin', price: '€41', count: 0 };
+const ChildCount: Passenger = { age: 'Çocuk (6 - 12 yaş)', price: '€31', count: 0 };
+const InfantCount: Passenger = { age: 'Bebek (0 - 5 yaş)', price: '€0', count: 0 };
+
+const passenger = ref<Passenger[]>([AdultCount, ChildCount, InfantCount]);
+
+console.log(passenger, 'deneme passenger')
 
 const _fromWhere = ref<{ TownName: string; TownID: string } | null>(null)
 const _toWhere = ref<{ TownName: string; TownID: string } | null>(null)
@@ -390,98 +404,116 @@ const togglePickerModal = () => {
 }
 
 const formatDate = (dateInstance: string): string => {
-    const date = new Date(dateInstance);
-    if (isNaN(date.getTime())) {
-        console.error('Invalid date for formatting');
-        return ''; // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
-    }
-    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' };
-    return date.toLocaleDateString('en-US', options);
+     const date = new Date(dateInstance);
+     if (isNaN(date.getTime())) {
+          console.error('Invalid date for formatting');
+          return ''; // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
+     }
+     const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' };
+     return date.toLocaleDateString('en-US', options);
 };
 
-console.log(locale.value.toLowerCase(), 'locale.value.toLowerCase!')
+const queryFormatDate = (dateInstance: string): string => {
+     const date = new Date(dateInstance);
+     if (isNaN(date.getTime())) {
+          console.error('Invalid date for formatting');
+          return ''; // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
+     }
+     const year = date.getFullYear();
+     const month = ('0' + (date.getMonth() + 1)).slice(-2);
+     const day = ('0' + date.getDate()).slice(-2);
+
+     return `${year}-${month}-${day}`;
+};
+
+// console.log(locale.value.toLowerCase(), 'locale.value.toLowerCase!')
 
 let picker: Litepicker | null = null
 let currentSingleMode: boolean | null = null
 
 function createOrUpdateLitepicker(singleMode: boolean) {
-    console.log(singleMode, 'singleMode');  
-    const element = document.getElementById('litepicker');
-    if (element instanceof HTMLElement) {
-        if (!picker || currentSingleMode !== singleMode) {
-            currentSingleMode = singleMode;
-            if (picker) {
-                picker.destroy();
-            }
-            picker = new Litepicker({
-                element: element,
-                singleMode: singleMode,
-                numberOfMonths: 2,
-                lang: locale.value.toLowerCase().toString(),
-                autoRefresh: true,
-                inlineMode: true
-            });
+     console.log(singleMode, 'singleMode');
+     const element = document.getElementById('litepicker');
+     if (element instanceof HTMLElement) {
+          if (!picker || currentSingleMode !== singleMode) {
+               currentSingleMode = singleMode;
+               if (picker) {
+                    picker.destroy();
+               }
+               picker = new Litepicker({
+                    element: element,
+                    singleMode: singleMode,
+                    numberOfMonths: 2,
+                    lang: locale.value.toLowerCase().toString(),
+                    autoRefresh: true,
+                    inlineMode: true
+               });
 
-            picker.on('selected', (date1, date2) => {
-                // Tarih seçimi yapıldığında, tarihleri kontrol edip formatlayalım
-                if (date1.dateInstance && !isNaN(new Date(date1.dateInstance).getTime())) {
-                    const selectedDate1 = new Date(date1.dateInstance);
-                    console.log(selectedDate1, 'selectedDate1 inside picker on');
-                    const today = new Date();
+               picker.on('selected', (date1, date2) => {
+                    // Tarih seçimi yapıldığında, tarihleri kontrol edip formatlayalım
+                    if (date1.dateInstance && !isNaN(new Date(date1.dateInstance).getTime())) {
+                         const selectedDate1 = new Date(date1.dateInstance);
+                         console.log(selectedDate1, 'selectedDate1 inside picker on');
+                         const today = new Date();
 
-                    if (singleMode) {
-                        date.formattedDate2.value = null; // Tekli moddaysa ikinci tarihi sıfırlayalım
-                        console.log('formattedDate2 value is null in singleMode');
+                         if (singleMode) {
+                              date.formattedDate2.value = null; // Tekli moddaysa ikinci tarihi sıfırlayalım
+                              console.log('formattedDate2 value is null in singleMode');
+                         }
+
+                         if (!singleMode && date2.dateInstance && !isNaN(new Date(date2.dateInstance).getTime())) {
+                              const selectedDate2 = new Date(date2.dateInstance);
+                              console.log(selectedDate2, 'selectedDate2 inside picker on');
+
+                              if (selectedDate1 >= today && selectedDate2 >= today) {
+                                   // Her iki tarih de bugün veya gelecekteyse formatlayıp kaydedelim
+                                   date.formattedDate.value = formatDate(date1.dateInstance);
+                                   date.formattedDate2.value = formatDate(date2.dateInstance);
+                                   queryDate.formattedDepartureDate.value = queryFormatDate(date1.dateInstance);
+                                   queryDate.formattedArrivalDate.value = queryFormatDate(date2.dateInstance);
+                                   console.log(queryDate.formattedDepartureDate.value, 'formattedDepartureDate');
+                                   console.log(queryDate.formattedArrivalDate.value, 'formattedArrivalDate');
+                                   console.log('Both dates are set in doubleMode');
+                              }
+                         } else if (singleMode && selectedDate1 >= today) {
+                              // Tekli modda ve seçilen tarih bugün veya gelecekteyse formatlayıp kaydedelim
+                              date.formattedDate.value = formatDate(date1.dateInstance);
+                              queryDate.formattedDepartureDate.value = queryFormatDate(date1.dateInstance);
+                              console.log('Date is set in singleMode');
+                         }
+                    } else {
+                         console.error('Invalid date selection');
+                         // Geçersiz tarih seçimi durumunda, belki bir hata mesajı gösterilebilir
                     }
-
-                    if (!singleMode && date2.dateInstance && !isNaN(new Date(date2.dateInstance).getTime())) {
-                        const selectedDate2 = new Date(date2.dateInstance);
-                        console.log(selectedDate2, 'selectedDate2 inside picker on');
-
-                        if (selectedDate1 >= today && selectedDate2 >= today) {
-                            // Her iki tarih de bugün veya gelecekteyse formatlayıp kaydedelim
-                            date.formattedDate.value = formatDate(date1.dateInstance);
-                            date.formattedDate2.value = formatDate(date2.dateInstance);
-                            console.log('Both dates are set in doubleMode');
-                        }
-                    } else if (singleMode && selectedDate1 >= today) {
-                        // Tekli modda ve seçilen tarih bugün veya gelecekteyse formatlayıp kaydedelim
-                        date.formattedDate.value = formatDate(date1.dateInstance);
-                        console.log('Date is set in singleMode');
-                    }
-                } else {
-                    console.error('Invalid date selection');
-                    // Geçersiz tarih seçimi durumunda, belki bir hata mesajı gösterilebilir
-                }
-            });
-        } else {
-            picker.setDateRange(null, null);
-            picker.setOptions({ singleMode: singleMode });
-        }
-    } else {
-        console.error("Litepicker element not found. Make sure you have an element with id 'litepicker' in your HTML.");
-    }
+               });
+          } else {
+               picker.setDateRange(null, null);
+               picker.setOptions({ singleMode: singleMode });
+          }
+     } else {
+          console.error("Litepicker element not found. Make sure you have an element with id 'litepicker' in your HTML.");
+     }
 }
 
 function updateToTrip(value: { Name: string; ID: number }) {
-    _roundTrip.value = value;
-    console.log(_roundTrip.value.ID, 'roundTrip.VALUE');
-    fetchFromWhere();
+     _roundTrip.value = value;
+     console.log(_roundTrip.value.ID, 'roundTrip.VALUE');
+     fetchFromWhere();
 
-    // Yeni singleMode değerini hesapla
-    const newSingleMode = value.ID !== 1;
-    console.log(newSingleMode, 'newSingleMode is here');
+     // Yeni singleMode değerini hesapla
+     const newSingleMode = value.ID !== 1;
+     console.log(newSingleMode, 'newSingleMode is here');
 
-    // singleMode değeri değiştiyse, Litepicker'ı güncelle
-    if (currentSingleMode !== newSingleMode) {
-        console.log('singleMode has changed. Updating Litepicker...');
-        createOrUpdateLitepicker(newSingleMode);
+     // singleMode değeri değiştiyse, Litepicker'ı güncelle
+     if (currentSingleMode !== newSingleMode) {
+          console.log('singleMode has changed. Updating Litepicker...');
+          createOrUpdateLitepicker(newSingleMode);
 
-        // Güncelleme yapıldıktan sonra, mevcut singleMode değerini yeni değerle güncelle
-        currentSingleMode = newSingleMode;
-    } else {
-        console.log('singleMode has not changed. No need to update Litepicker.');
-    }
+          // Güncelleme yapıldıktan sonra, mevcut singleMode değerini yeni değerle güncelle
+          currentSingleMode = newSingleMode;
+     } else {
+          console.log('singleMode has not changed. No need to update Litepicker.');
+     }
 }
 
 function updateFromWhere(value: { TownName: string; TownID: string }) {
@@ -495,6 +527,8 @@ function updateFromWhere(value: { TownName: string; TownID: string }) {
 
 function updateToWhere(value: { TownName: string; TownID: string }) {
      _toWhere.value = value
+     arrivalTownId.value = value.TownID.toString()
+     console.log(arrivalTownId.value, 'arrivalTownId.VALUE')
      console.log(_toWhere.value, 'toWhere.VALUE')
 }
 
@@ -508,17 +542,17 @@ function isEqualTrip(obj1: { Name: string }, obj2: { Name: string }) {
 
 const increaseCount = (index: number) => {
      if (passenger.value[index]) {
-          passenger.value[index].count++
-          console.log(`Passenger count increased for index ${index}. New count: ${passenger.value[index].count}`)
+          passenger.value[index].count++;
+          console.log(`Passenger count increased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`);
      }
-}
+};
 
 const decreaseCount = (index: number) => {
      if (passenger.value[index] && passenger.value[index].count > 0) {
-          passenger.value[index].count--
-          console.log(`Passenger count decreased for index ${index}. New count: ${passenger.value[index].count}`)
+          passenger.value[index].count--;
+          console.log(`Passenger count decreased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`);
      }
-}
+};
 
 const toggleDataPlacement = () => {
      const temp = _fromWhere.value
@@ -636,17 +670,16 @@ const formattedValue = computed(() => {
           console.log('first formattedValue date is here')
           return date.formattedDate.value
      } else {
-          return  'Date'
+          return 'Date'
      }
 })
 
 const formattedValue2 = computed(() => {
      if (date.formattedDate2.value) {
           console.log('first formattedValue date is here')
-
           return date.formattedDate2.value
      } else {
-          return  'Date'
+          return 'Date'
      }
 })
 
@@ -700,6 +733,27 @@ onMounted(() => {
      fetchFromWhere()
      fetchTravelType()
 })
+
+function navigateToSecondPage() {
+     // router.push metodunu kullanarak belirli bir rota adı ve sorgu parametreleri ile yönlendirme yapın
+     router.push({
+          name: 'tickets', // Yönlendirilecek sayfanın rota adı,
+          query: {
+               FromTownID: departureTownId.value,
+               ToTownID: arrivalTownId.value,
+               DepartureDate: queryDate.formattedDepartureDate.value,
+               ArrivalDate: queryDate.formattedArrivalDate.value,
+               AdultCount: 1,
+               ChildCount: 1,
+               InfantCount: 1,
+               AgencyID: 1,
+               PriceGroupID: 1,
+               FerryTravelType: 1,
+               SaleChannelID: 1,
+               LanguageID: 1
+          }
+     });
+}
 </script>
 
 <style scoped>
