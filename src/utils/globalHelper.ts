@@ -369,8 +369,6 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
   }
   
 
-
-
 // const postData =  (endpoint: string, data: any) => {
 //   try {
 //     const response: AxiosResponse =  axios.post(`${API_BASE_URL}/${endpoint}`, data, {
@@ -385,21 +383,21 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
 //   }
 // }
 
-const postData = async (endpoint: string, data: any): Promise<AxiosResponse<any, any>> => {
-    try {
-      // Use await to wait for the Promise to resolve and get the actual AxiosResponse
-      const response: AxiosResponse<any, any> = await axios.post(`${envConfig.API_BASE_URL}/${endpoint}`, data, {
-        headers: {
-          Authorization: `Bearer ${envConfig.BEARER_TOKEN}`
-        }
-      });
-      return response; // If you want the whole AxiosResponse object
-      // return response.data; // If you only want the data from the AxiosResponse
-    } catch (error) {
-      console.error('Hata:', error);
-      return null;
-    }
-  }
+// const postData = async (endpoint: string, data: any): Promise<AxiosResponse<any, any>> => {
+//     try {
+//       // Use await to wait for the Promise to resolve and get the actual AxiosResponse
+//       const response: AxiosResponse<any, any> = await axios.post(`${envConfig.API_BASE_URL}/${endpoint}`, data, {
+//         headers: {
+//           Authorization: `Bearer ${.BEARER_TOKEN}`
+//         }
+//       });
+//       return response; // If you want the whole AxiosResponse object
+//       // return response.data; // If you only want the data from the AxiosResponse
+//     } catch (error) {
+//       console.error('Hata:', error);
+//       return null;
+//     }
+//   }
 
 
 const groupByLocale = (data: any[]) => {
@@ -465,6 +463,6 @@ export {
 getLang,
     formatDate,
     fetchData,
-    postData,
+    // postData,
     groupByLocale
 };

@@ -22,7 +22,7 @@ import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
 
-const firstSectionData = ref([])
+// const firstSectionData = ref([])
 const secondSectionData = ref([])
 const thirdSectionData = ref([])
 const fourthSectionData = ref([])
@@ -40,7 +40,7 @@ const getHome = async () => {
 
     if (res) {
       let data = res.data[0].layout
-      firstSectionData.value = data.filter((x: any) => x.__component === 'home-page.home-page')
+      // firstSectionData.value = data.filter((x: any) => x.__component === 'home-page.home-page')
       secondSectionData.value = data.filter((x: any) => x.__component === 'home-page.title-card')
       thirdSectionData.value = data.filter((x: any) => x.__component === 'home-page.tour-card')
       fourthSectionData.value = data.filter((x: any) => x.__component === 'home-page.card-splide')

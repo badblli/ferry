@@ -72,47 +72,47 @@ import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 import { onMounted, ref } from 'vue';
 import { getImage } from '@/utils/globalHelper'
 
-interface splideImg {
-    id: Number,
-    name: string,
-    alternativeText: string | null,
-    caption: string | null,
-    width: Number,
-    height: Number,
-    formats: any,
-    hash: string,
-    ext: string,
-    mime: string,
-    size: Number,
-    url: string,
-    previewUrl: string | null,
-    provider: string,
-    provider_metadata: any | null,
-    createdAt: string,
-    updatedAt: string
-}
-
-interface ferry {
-    date: string,
-    dateText: string,
-    id: number,
-    img: splideImg[],
-    price: string,
-    title: string,
-    where?: string | null,
-}
-
-const props = defineProps({
-    item: {
-        type: Object as () => ({
-            Ferry: ferry[],
-            description: string,
-            id: number,
-            title: string,
-        }),
-        required: true
+    interface splideImg {
+        id: Number,
+        name: string,
+        alternativeText: string | null,
+        caption: string | null,
+        width: Number,
+        height: Number,
+        formats: any,
+        hash: string,
+        ext: string,
+        mime: string,
+        size: Number,
+        url: string,
+        previewUrl: string | null,
+        provider: string,
+        provider_metadata: any | null,
+        createdAt: string,
+        updatedAt: string
     }
-});
+
+    interface ferry {
+        date: string,
+        dateText: string,
+        id: number,
+        img: splideImg[],
+        price: string,
+        title: string,
+        where?: string | null,
+    }
+
+    const props = defineProps({
+        item: {
+            type: Object as () => ({
+                Ferry: ferry[],
+                description: string,
+                id: number,
+                title: string,
+            }),
+            required: true
+        }
+    });
 
 // import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
 // do not clean

@@ -372,28 +372,22 @@ const queryDate = {
 const date = {
      formattedDate: ref<string | null>(null),
      formattedDate2: ref<string | null>(null),
-     formattedDate3: ref<string | null>(null)
 }
-
-// interface Person {
-//      age: string
-//      price: string
-//      count: number
-// }
 
 interface Passenger {
      age: string;
      price: string;
      count: number;
+     id: string;
 }
 
-const AdultCount: Passenger = { age: 'Yetişkin', price: '€41', count: 0 };
-const ChildCount: Passenger = { age: 'Çocuk (6 - 12 yaş)', price: '€31', count: 0 };
-const InfantCount: Passenger = { age: 'Bebek (0 - 5 yaş)', price: '€0', count: 0 };
+const AdultCount: Passenger = { id: 'adult', age: 'Yetişkin', price: '€41', count: 0 };
+const ChildCount: Passenger = { id: 'child', age: 'Çocuk (6 - 12 yaş)', price: '€31', count: 0 };
+const InfantCount: Passenger = { id: 'infant', age: 'Bebek (0 - 5 yaş)', price: '€0', count: 0 };
 
 const passenger = ref<Passenger[]>([AdultCount, ChildCount, InfantCount]);
 
-console.log(passenger, 'deneme passenger')
+console.log(passenger.value, 'Passenger is here btw')
 
 const _fromWhere = ref<{ TownName: string; TownID: string } | null>(null)
 const _toWhere = ref<{ TownName: string; TownID: string } | null>(null)
@@ -580,7 +574,6 @@ const getHomeSpide = async () => {
                let data = res.data[0].layout
                mainHomeSplide.value = data.find((x: any) => x.__component === 'home-page.home-page')
 
-               // Veri geldikten sonra Splide başlat
                initializeSplide()
           }
      } catch (error) {
@@ -736,6 +729,9 @@ onMounted(() => {
 
 function navigateToSecondPage() {
      // router.push metodunu kullanarak belirli bir rota adı ve sorgu parametreleri ile yönlendirme yapın
+     const adultCount = passenger.value.find((p: any) => p.id === 'adult')?.count || 0;
+     const childCount = passenger.value.find((p: any) => p.id === 'child')?.count || 0;
+     const infantCount = passenger.value.find((p: any) => p.id === 'infant')?.count || 0;
      router.push({
           name: 'tickets', // Yönlendirilecek sayfanın rota adı,
           query: {
@@ -743,14 +739,14 @@ function navigateToSecondPage() {
                ToTownID: arrivalTownId.value,
                DepartureDate: queryDate.formattedDepartureDate.value,
                ArrivalDate: queryDate.formattedArrivalDate.value,
-               AdultCount: 1,
-               ChildCount: 1,
-               InfantCount: 1,
-               AgencyID: 1,
-               PriceGroupID: 1,
-               FerryTravelType: 1,
-               SaleChannelID: 1,
-               LanguageID: 1
+               AdultCount: adultCount,
+               ChildCount: childCount,
+               InfantCount: infantCount,
+               // AgencyID: 1,
+               // PriceGroupID: 1,
+               // FerryTravelType: 1,
+               // SaleChannelID: 1,
+               // LanguageID: 1
           }
      });
 }
