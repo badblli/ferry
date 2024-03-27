@@ -2,10 +2,10 @@
      
      <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4">
           <div class="text-center text-black md:text-lg text-base font-medium lg:m-0 m-2">
-            {{ mainFooter.ContactBar.title }}
+            {{ mainFooter.ContactBar?.title }}
           </div>
           <div className="flex flex-row justify-evenly items-center cursor-pointer lg:m-0 m-2" data-hs-overlay="#hs-vertically-centered-modal">
-               <span className="mr-3">{{ mainFooter.ContactBar.btnLabel }}</span>
+               <span className="mr-3">{{ mainFooter.ContactBar?.btnLabel }}</span>
                <div class="flex items-center justify-center w-7 h-7 p-1 flex-shrink-0 rounded-full bg-gray-800">
                     <IconFooter />
                </div>
@@ -22,17 +22,17 @@
                     <div class="text-lg font-bold mb-4 flex">
                          <IconMainSamosa />
                          <div>
-                              <span className="text-black text-2xl font-bold font-display tracking-wide">{{ mainFooter.footerBrand.title }}</span>
+                              <span className="text-black text-2xl font-bold font-display tracking-wide">{{ mainFooter.footerBrand?.title }}</span>
                          </div>
                     </div>
                     <ul>
                          <li>
                               <div className="mb-8">
-                                   <div className="text-black text-sm font-normal font-display">{{ mainFooter.footerBrand.copyright }}</div>
+                                   <div className="text-black text-sm font-normal font-display">{{ mainFooter.footerBrand?.copyright }}</div>
                               </div>
                          </li>
                          <li>
-                              <div class="text-black text-2xl font-normal font-display leading-loose mb-2">Abone ol, kampanya<br />kaçırma!</div>
+                              <div class="text-black text-2xl font-normal font-display leading-loose mb-2">{{ mainFooter.footerBrand?.slogan }}</div>
                          </li>
                          <li>
                               <form class="w-full max-w-sm">
@@ -49,29 +49,11 @@
                <div className="sm:hidden md:hidden lg:hidden xl:block 2xl:block">
                     <!-- for first column and space -->
                </div>
-               <div v-for="(item, index) in props.item.footerAreas" :key="index">
+               <div v-for="(item, index) in mainFooter.footerAreas" :key="index">
                     <div>
                          <div class="text-black text-lg font-medium font-display mb-5">{{ item.title }}</div>
                          <div v-for="(sub, index) in item.subItem" :key="index" className="mb-5">
                               <a  class="text-zinc-600 text-sm font-normal font-display">{{ sub.text }}</a>
-                         </div>
-                    </div>
-                    <div>
-                         <div class="text-black text-lg font-medium font-display mb-5">Hakkımızda</div>
-                         <div v-for="(item, index) in footerSecCol" :key="index" className="mb-5">
-                              <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{ item.text }}</a>
-                         </div>
-                    </div>
-                    <div>
-                         <div class="text-black text-lg font-medium font-display mb-5">Turlar</div>
-                         <div v-for="(item, index) in footerThrdCol" :key="index" className="mb-5">
-                              <a :href="item.link" class="text-zinc-600 text-sm font-normal font-display">{{ item.text }}</a>
-                         </div>
-                         <div className="flex cursor-pointer">
-                              <a className="mb-5 mr-3 text-black text-base font-medium  tracking-tight"> Diğer Turlar </a>
-                              <div className="pt-1">
-                                   <IconArrowUpRight />
-                              </div>
                          </div>
                     </div>
                </div>
@@ -97,9 +79,11 @@ import IconFooter from '../icons/IconFooter.vue'
 import IconMainSamosa from '../icons/IconMainSamosa.vue'
 import IconArrowTop from '../icons/IconArrowTop.vue'
 import IconArrow from '../icons/IconArrow.vue'
-// import IconArrowUpRight from '../icons/IconArrowUpRight.vue'
 import ContactModal from '../advanced/ContactModal.vue'
 import { fetchData } from '@/utils/globalHelper'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 interface SubItem {
      id: number;
@@ -118,11 +102,17 @@ interface FooterBrand {
      id: number
      slogan: string
      title: string
-     // logo: Logo[]
+}
+
+interface ContactBar {
+     btnHref: string,
+     btnLabel: string,
+     id: number,
+     title: string
 }
 
 interface MainFooterData {
-     ContactBar: string;
+     ContactBar: ContactBar;
      footerAreas: FooterAreas[];
      footerBrand: FooterBrand;
 }
@@ -130,24 +120,28 @@ interface MainFooterData {
 const mainFooter = ref<MainFooterData | any>([]);
 
 const getFooter = async () => {
-    try {
-        let filters = {
-            saleChannel: 'Samosa',
-            pageName: 'Home'
-        }
+     try {
+          let filters = {
+               saleChannel: 'Samosa',
+               pageName: 'Home'
+          }
 
-        const res = await fetchData('pages', 'tr', filters)
+          const res = await fetchData('pages', locale.value.toLowerCase(), filters);
+          console.log(res, 'res')
 
-        if (res) {  
-            let data = res.data[0].layout
-            console.log(data, 'data')
+          console.log(locale.value.toLowerCase(), 'locale value to lowercase');
+          console.log()
 
-            mainFooter.value = data.find((x: any) => x.__component === 'global.footer')
-            console.log(mainFooter.value, 'mainFooter section is here!!!!!!!!!')
-        }
-    } catch (error) {
-        console.error('Hata:', error)
-    }
+          if (res) {
+               let data = res.data[0].layout
+               console.log(data, 'im in mainfooter compos')
+
+               mainFooter.value = data.find((x: any) => x.__component === 'global.footer');
+               console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
+          }
+     } catch (error) {
+          console.error('Hata:', error)
+     }
 }
 
 onMounted(() => {

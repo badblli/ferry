@@ -7,7 +7,7 @@
                 class="w-full text-center text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
                 {{ item.subtitle }}</div>
             <div class="mt-[107px] flex flex-col lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-                <div class="flex flex-row flex-wrap justify-center ">
+                <div class="flex flex-row flex-wrap justify-center">
                     <div v-for="(category, index) in props.item.items" :key="index" class="category-item">
                         <!-- <CategorieSlider :title="category.title" :imageUrl="category.imageUrl" /> -->
                         <div
@@ -40,7 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import CategorieSlider from '../../../components/advanced/CategorieSlider.vue';
 import IconFooter from '@/components/icons/IconFooter.vue';
 import { getImage } from '@/utils/globalHelper'
 

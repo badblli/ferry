@@ -1,7 +1,7 @@
 // globalHelper.ts dosyası
 import type { AxiosResponse } from 'axios';
-import envConfig from './config'; // config dosyasını import et
-import api from './axios'; // axios dosyasını import et
+import envConfig from './config';
+import api from './axios';
 import axios from "axios";
 
 //STORES
@@ -371,19 +371,35 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
 
 
 
-const postData =  (endpoint: string, data: any) => {
-  try {
-    const response: AxiosResponse =  axios.post(`${API_BASE_URL}/${endpoint}`, data, {
-      headers: {
-        Authorization: `Bearer ${BEARER_TOKEN}`
-      }
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Hata:', error);
-    return null;
+// const postData =  (endpoint: string, data: any) => {
+//   try {
+//     const response: AxiosResponse =  axios.post(`${API_BASE_URL}/${endpoint}`, data, {
+//       headers: {
+//         Authorization: `Bearer ${BEARER_TOKEN}`
+//       }
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error('Hata:', error);
+//     return null;
+//   }
+// }
+
+const postData = async (endpoint: string, data: any): Promise<AxiosResponse<any, any>> => {
+    try {
+      // Use await to wait for the Promise to resolve and get the actual AxiosResponse
+      const response: AxiosResponse<any, any> = await axios.post(`${envConfig.API_BASE_URL}/${endpoint}`, data, {
+        headers: {
+          Authorization: `Bearer ${envConfig.BEARER_TOKEN}`
+        }
+      });
+      return response; // If you want the whole AxiosResponse object
+      // return response.data; // If you only want the data from the AxiosResponse
+    } catch (error) {
+      console.error('Hata:', error);
+      return null;
+    }
   }
-}
 
 
 const groupByLocale = (data: any[]) => {
@@ -406,7 +422,7 @@ const groupByLocale = (data: any[]) => {
 const getImage = (url:any) => {
     const API_IMG_URL = import.meta.env.VITE_STRAPI_IMG_URL ;
     const src =  `${API_IMG_URL}${url}`
-    console.log(src)
+    // console.log(src)
 return src
 }
 
@@ -414,7 +430,6 @@ const getLang = () => {
 
    
     try {
-      
         const url = `${API_BASE_URL}/i18n/locales`;
         return axios.get(url, {
           headers: {
