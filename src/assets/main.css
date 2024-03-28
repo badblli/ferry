@@ -1156,6 +1156,16 @@ select {
   margin-bottom: auto;
 }
 
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
 .-mb-0 {
   margin-bottom: -0px;
 }
@@ -3854,6 +3864,10 @@ select {
 
 .opacity-80 {
   opacity: 0.8;
+}
+
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .shadow-md {

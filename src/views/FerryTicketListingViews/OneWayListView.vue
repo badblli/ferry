@@ -112,6 +112,8 @@
                               </div>
                          </div>
                          <div v-else>
+                              <div class="text-black text-2xl font-medium font-display tracking-wide mx-12 mt-8 mb-8">
+                                   Samos to Vathy, November 22</div>
                               <div className="pt-1">
                                    <div className="flex flex-row items-center gap-5 lg:mx-12 md:mx-6 mx-3 mb-[22px]">
                                         <div id="splide" class="splide" ref="splideRef">
@@ -272,6 +274,8 @@
                               </div>
                          </div>
                          <div v-else>
+                              <div class="text-black text-2xl font-medium font-display tracking-wide mx-12 mt-8 mb-8">
+                                   Samos to Vathy, November 22</div>
                               <div v-if="tripReverseArData.length > 0">
                                    <div className="pt-1">
                                         <div
@@ -370,6 +374,12 @@
                                    </div>
                               </div>
                          </div>
+                    </div>
+               </div>
+               <div class="mt-20 flex flex-row justify-end cursor-pointer" >
+                    <div class="w-[222px] h-[53px] bg-blue-700 rounded-lg border opacity-25 flex flex-row items-center justify-center">
+                         <div class="text-center text-white text-base font-medium font-display">Devam
+                              et</div>
                     </div>
                </div>
           </div>
