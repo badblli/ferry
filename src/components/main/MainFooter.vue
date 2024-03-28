@@ -127,17 +127,16 @@ const getFooter = async () => {
           }
 
           const res = await fetchData('pages', locale.value.toLowerCase(), filters);
-          console.log(res, 'res')
+          // console.log(res, 'res')
 
-          console.log(locale.value.toLowerCase(), 'locale value to lowercase');
-          console.log()
+          // console.log(locale.value.toLowerCase(), 'locale value to lowercase');
 
           if (res) {
                let data = res.data[0].layout
-               console.log(data, 'im in mainfooter compos')
+               // console.log(data, 'im in mainfooter compos')
 
                mainFooter.value = data.find((x: any) => x.__component === 'global.footer');
-               console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
+               // console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
           }
      } catch (error) {
           console.error('Hata:', error)

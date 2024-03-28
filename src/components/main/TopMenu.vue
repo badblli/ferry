@@ -75,20 +75,20 @@ const getTopMenu = async () => {
 
           const res = await fetchData('pages', locale.value.toLowerCase(), filters)
 
-          console.log(locale.value.toLowerCase(), 'locale value to lowercase')
+          // console.log(locale.value.toLowerCase(), 'locale value to lowercase')
 
           if (res) {
                let data = res.data[0].layout
-               console.log(data, 'dataaaaaaaaaaaaaaaaa')
+               // console.log(data, 'dataaaaaaaaaaaaaaaaa')
 
                topMenu.value = data.find((x: any) => x.__component === 'global.top-menu')
                languages.value = langStore.languages.map((item: { code: string; name: string }) => ({
                     code: item.code.toUpperCase(),
                     name: item.name.replace(/ \([^)]*\)/, '')
                }))
-               console.log(topMenu.value, 'topMenu section is here!!!!!')
-               console.log(languages.value, 'languages section is here!!!!!')
-               console.log(langStore.languages, 'langstore language section is here!!!!!')
+               // console.log(topMenu.value, 'topMenu section is here!!!!!')
+               // console.log(languages.value, 'languages section is here!!!!!')
+               // console.log(langStore.languages, 'langstore language section is here!!!!!')
           }
      } catch (error) {
           console.error('Hata:', error)
@@ -97,7 +97,7 @@ const getTopMenu = async () => {
 
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
-          console.log(newLocale, 'new', oldLocale, 'old')
+          // console.log(newLocale, 'new', oldLocale, 'old')
           getTopMenu()
      }
 })
@@ -107,15 +107,15 @@ onMounted(() => {
      const userLangCode = storedLanguage ? JSON.parse(storedLanguage).code : 'TR'
      selectedLanguage.value = userLangCode
      locale.value = userLangCode // Set the locale to the language code as well
-     console.log(selectedLanguage.value, 'current language code: ')
+     // console.log(selectedLanguage.value, 'current language code: ')
      selectedLanguage.value = storedLanguage ? JSON.parse(storedLanguage).name : 'Turkish'
-     console.log(selectedLanguage.value, 'current language: ')
+     // console.log(selectedLanguage.value, 'current language: ')
 })
 
 const userStore = useUserStore()
 const selectedLanguage = ref(userStore.selectedLanguage)
 
-console.log(selectedLanguage, 'selected!!!!!!!!!!!')
+// console.log(selectedLanguage, 'selected!!!!!!!!!!!')
 
 const updateCurrentLanguage = (language: Language) => {
      selectedLanguage.value = language.name

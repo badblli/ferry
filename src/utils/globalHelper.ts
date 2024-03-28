@@ -75,6 +75,44 @@ const getApi = async <T>(
     }
 };
 
+const getQueryApi = async <T>(
+    applicationName: string,
+    controllerName: string,
+    name: string,
+    params: Record<string, any> | null = null,
+    dontUseGet = false,
+    formatDate: string[] = [],
+    baseURLLink = false
+): Promise<AxiosResponse<T>> => {
+    try {
+        if (params !== null && formatDate.length > 0) {
+            params = beforeSubmitData(params, formatDate);
+        }
+
+        api.defaults.headers.common.Authorization = localStorage.getItem('Token') 
+
+        api.defaults.headers.common.CorrelationID = uid();
+        api.defaults.headers.common.ClientIP = localStorage.getItem('ClientIP') || '';
+        api.defaults.headers.common.GlobalCompanyID = 'ProtalyaOfisTest';
+
+        const actionName = dontUseGet ? '/' + name : '/' + name;
+        const mainUrl = baseURLLink ? 'http://' + applicationName : envConfig.basePath(applicationName);
+
+        const response = await api.get<T>(controllerName + actionName, {
+            params,
+            baseURL: mainUrl
+        });
+
+        return response;
+    } catch (error: any) {
+        if (error && error.Status === 4) {
+          console.error(error)
+        }
+
+        throw error; // Hata tekrar fırlatılır
+    }
+};
+
 const callPostApi = async (
     applicationName: string,
     controllerName: string,
@@ -434,7 +472,7 @@ const getLang = () => {
             Authorization: `Bearer ${BEARER_TOKEN}`
           }
         }).then((response: AxiosResponse) => {
-console.log(response.data,"language");
+// console.log(response.data,"language");
 useLanguageStore().setAllLanguage(response.data)
           return response.data;
         }).catch(error => {
@@ -464,5 +502,6 @@ getLang,
     formatDate,
     fetchData,
     // postData,
-    groupByLocale
+    groupByLocale,
+    getQueryApi
 };

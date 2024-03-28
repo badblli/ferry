@@ -28,77 +28,284 @@
             </div>
             <div>
                 <div className=" bg-neutral-100 rounded-[20px] p-4 ">
-                    <div className="pt-1">
-                        <div className="flex flex-row items-center gap-5 lg:mx-12 md:mx-6 mx-3 mb-[22px]">
-                            <div id="splide" class="splide" ref="splideRef">
-                                <div class="splide__track">
-                                    <ul class="splide__list">
-                                        <li v-for="(item, index) in items" :key="index" class="splide__slide">
-                                            <div class="text-center text-black text-lg font-medium font-display">{{
-                                            item.date }}
-                                            </div>
-                                            <div
+                    <div v-if="selectedDepartureData.length > 0">
+                        <div v-for="(item, index) in selectedDepartureData" :key="index">
+                            <div
+                                class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
+                                <div class="flex sm:flex-row flex-col justify-between">
+                                    <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                    <div class="mt-3 mr-5 lg:mr-[75px]">
+                                        <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ item.CompanyName }}</p>
+                                    </div>
+                                    <div class="mt-3 mr-5 lg:mr-[75px]">
+                                        <p class="text-black text-base font-medium font-display">Kalkış</p>
+                                        <div class="flex flex-row">
+                                            <p
                                                 class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                {{ item.price }}
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                {{ queryFormatDate(item.DepartureDetail.JourneyDate) }}</p>
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                                {{ item.DepartureDetail.JourneyTime }}</p>
+                                        </div>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ item.DepartureDetail.SeaportName }}</p>
+                                    </div>
+                                    <div class="mt-3 mr-5 lg:mr-[75px]">
+                                        <p class="text-black text-base font-medium font-display">Varış</p>
+                                        <div class="flex flex-row">
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                                {{ queryFormatDate(item.ArrivalDetail.JourneyDate) }}</p>
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                                {{ item.ArrivalDetail.JourneyTime }}</p>
+                                        </div>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ item.ArrivalDetail.SeaportName }}</p>
+                                    </div>
                                 </div>
-                                <div class="splide__arrows">
-                                    <button class="splide__arrow splide__arrow--prev" type="button"
-                                        aria-controls="mobile-testim-carousel-track" aria-label="Go to last slide">
-                                        <IconArrowRight />
-                                    </button>
-                                    <button class="splide__arrow splide__arrow--next" type="button"
-                                        aria-controls="mobile-testim-carousel-track" aria-label="Next slide">
-                                        <IconArrowRight />
-                                    </button>
+                                <div v-if="!selectedDepartureData" class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
+                                    <div
+                                        class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">
+                                        {{
+                        item.Price }}</div>
+                                    <button @click="logSelectedData(item)"
+                                        class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div v-for="(item, index) in fakeData" :key="index"
-                        class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
-                        <div class="flex sm:flex-row flex-col justify-between">
-                            <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
-                            <div class="mt-3 mr-5 lg:mr-[75px]">
-                                <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
-                                <p
-                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{ item.company }}</p>
-                            </div>
-                            <div class="mt-3 mr-5 lg:mr-[75px]">
-                                <p class="text-black text-base font-medium font-display">Kalkış</p>
-                                <p
-                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{ item.departure }}</p>
-                                <p
-                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{ item.departureLocation }}</p>
-                            </div>
-                            <div class="mt-3 mr-5 lg:mr-[75px]">
-                                <p class="text-black text-base font-medium font-display">Varış</p>
-                                <p
-                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{ item.arrival }}</p>
-                                <p
-                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                    {{ item.arrivalLocation }}</p>
+                    <div v-else>
+                        <div className="pt-1">
+                            <div className="flex flex-row items-center gap-5 lg:mx-12 md:mx-6 mx-3 mb-[22px]">
+                                <div id="splide" class="splide" ref="splideRef">
+                                    <div class="splide__track">
+                                        <ul class="splide__list">
+                                            <li v-for="(item, index) in tripReverseData" :key="index"
+                                                class="splide__slide">
+                                                <div class="text-center text-black text-lg font-medium font-display">{{
+                        item.TravelDateString }}
+                                                </div>
+                                                <div
+                                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                                    {{ item.BestPrice }}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="splide__arrows">
+                                        <button class="splide__arrow splide__arrow--prev" type="button"
+                                            aria-controls="mobile-testim-carousel-track" aria-label="Go to last slide">
+                                            <IconArrowRight />
+                                        </button>
+                                        <button class="splide__arrow splide__arrow--next" type="button"
+                                            aria-controls="mobile-testim-carousel-track" aria-label="Next slide">
+                                            <IconArrowRight />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
-                            <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
-                                            item.price }}</div>
-                            <button @click="logSelectedData(item)"
-                                class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
+                        <div v-for="(item, index) in tripFilterReverseData" :key="index"
+                            class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
+                            <div class="flex sm:flex-row flex-col justify-between">
+                                <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                <div class="mt-3 mr-5 lg:mr-[75px]">
+                                    <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
+                                    <p
+                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                        {{ item.CompanyName }}</p>
+                                </div>
+                                <div class="mt-3 mr-5 lg:mr-[75px]">
+                                    <p class="text-black text-base font-medium font-display">Kalkış</p>
+                                    <div class="flex flex-row">
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ queryFormatDate(item.DepartureDetail.JourneyDate) }}</p>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                            {{ item.DepartureDetail.JourneyTime }}</p>
+                                    </div>
+                                    <p
+                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                        {{ item.DepartureDetail.SeaportName }}</p>
+                                </div>
+                                <div class="mt-3 mr-5 lg:mr-[75px]">
+                                    <p class="text-black text-base font-medium font-display">Varış</p>
+                                    <div class="flex flex-row">
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ queryFormatDate(item.ArrivalDetail.JourneyDate) }}</p>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                            {{ item.ArrivalDetail.JourneyTime }}</p>
+                                    </div>
+                                    <p
+                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                        {{ item.ArrivalDetail.SeaportName }}</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
+                                <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
+                        item.Price }}</div>
+                                <button @click="logSelectedData(item)"
+                                    class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
+                            </div>
+                        </div>
+                        <div
+                            class="md:mt-14 mt-7 md:mb-20 mb-10 flex flex-row justify-center items-center text-black text-base font-medium font-display bg-white p-3 w-48 rounded-full m-auto">
+                            Daha fazla
+                            <div class="ml-2">
+                                <IconArrowDownBlack />
+                            </div>
                         </div>
                     </div>
-                    <div
-                        class="md:mt-14 mt-7 md:mb-20 mb-10 flex flex-row justify-center items-center text-black text-base font-medium font-display bg-white p-3 w-48 rounded-full m-auto">
-                        Daha fazla
-                        <div class="ml-2">
-                            <IconArrowDownBlack />
+                    <!-- Arrival Date -->
+                    <!-- Arrival Date -->
+                    <!-- Arrival Date -->
+                    <!-- Arrival Date -->
+                    <div v-if="selectedArrivalData.length > 0">
+                        <div v-for="(item, index) in selectedArrivalData" :key="index">
+                            <div
+                                class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
+                                <div class="flex sm:flex-row flex-col justify-between">
+                                    <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                    <div class="mt-3 mr-5 lg:mr-[75px]">
+                                        <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ item.CompanyName }}</p>
+                                    </div>
+                                    <div class="mt-3 mr-5 lg:mr-[75px]">
+                                        <p class="text-black text-base font-medium font-display">Kalkış</p>
+                                        <div class="flex flex-row">
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                                {{ queryFormatDate(item.DepartureDetail.JourneyDate) }}</p>
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                                {{ item.DepartureDetail.JourneyTime }}</p>
+                                        </div>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ item.DepartureDetail.SeaportName }}</p>
+                                    </div>
+                                    <div class="mt-3 mr-5 lg:mr-[75px]">
+                                        <p class="text-black text-base font-medium font-display">Varış</p>
+                                        <div class="flex flex-row">
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                                {{ queryFormatDate(item.ArrivalDetail.JourneyDate) }}</p>
+                                            <p
+                                                class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                                {{ item.ArrivalDetail.JourneyTime }}</p>
+                                        </div>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ item.ArrivalDetail.SeaportName }}</p>
+                                    </div>
+                                </div>
+                                <div v-if="!selectedDepartureData" class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
+                                    <div
+                                        class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">
+                                        {{
+                        item.Price }}</div>
+                                    <button @click="logSelectedData(item)"
+                                        class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div v-else>
+                        <div v-if="tripReverseArData.length > 0">
+                        <div className="pt-1">
+                            <div className="flex flex-row items-center gap-5 lg:mx-12 md:mx-6 mx-3 mb-[22px]">
+                                <div id="splide" class="splide" ref="splideRef2">
+                                    <div class="splide__track">
+                                        <ul class="splide__list">
+                                            <li v-for="(item, index) in tripReverseArData" :key="index"
+                                                class="splide__slide">
+                                                <div class="text-center text-black text-lg font-medium font-display">{{ item.TravelDateString }}
+                                                </div>
+                                                <div
+                                                    class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                                    {{ item.BestPrice }}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="splide__arrows">
+                                        <button class="splide__arrow splide__arrow--prev" type="button"
+                                            aria-controls="mobile-testim-carousel-track" aria-label="Go to last slide">
+                                            <IconArrowRight />
+                                        </button>
+                                        <button class="splide__arrow splide__arrow--next" type="button"
+                                            aria-controls="mobile-testim-carousel-track" aria-label="Next slide">
+                                            <IconArrowRight />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-for="(item, index) in tripFilterReverseArData" :key="index"
+                            class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
+                            <div class="flex sm:flex-row flex-col justify-between">
+                                <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                <div class="mt-3 mr-5 lg:mr-[75px]">
+                                    <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
+                                    <p
+                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                        {{ item.CompanyName }}</p>
+                                </div>
+                                <div class="mt-3 mr-5 lg:mr-[75px]">
+                                    <p class="text-black text-base font-medium font-display">Kalkış</p>
+                                    <div class="flex flex-row">
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ queryFormatDate(item.DepartureDetail.JourneyDate) }}</p>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                            {{ item.DepartureDetail.JourneyTime }}</p>
+                                    </div>
+                                    <p
+                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                        {{ item.DepartureDetail.SeaportName }}</p>
+                                </div>
+                                <div class="mt-3 mr-5 lg:mr-[75px]">
+                                    <p class="text-black text-base font-medium font-display">Varış</p>
+                                    <div class="flex flex-row">
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                            {{ queryFormatDate(item.ArrivalDetail.JourneyDate) }}</p>
+                                        <p
+                                            class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
+                                            {{ item.ArrivalDetail.JourneyTime }}</p>
+                                    </div>
+                                    <p
+                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
+                                        {{ item.ArrivalDetail.SeaportName }}</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-row justify-center items-center mr-2 md:my-0 my-5">
+                                <div class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">{{
+                        item.Price }}</div>
+                                <button @click="logSelectedArrivalData(item)"
+                                    class="bg-slate-200 rounded-lg border py-2 px-7 ml-8 text-center text-black text-base font-medium font-display hover:bg-neutral-200">Seç</button>
+                            </div>
+                        </div>
+                        <div
+                            class="md:mt-14 mt-7 md:mb-20 mb-10 flex flex-row justify-center items-center text-black text-base font-medium font-display bg-white p-3 w-48 rounded-full m-auto">
+                            Daha fazla
+                            <div class="ml-2">
+                                <IconArrowDownBlack />
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -113,8 +320,16 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import IconsArrowsLeftRight from '@/components/icons/IconsArrowsLeftRight.vue';
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
 import IconArrowRight from "@/components/icons/IconArrowRight.vue";
-
-import { onMounted, ref } from 'vue';
+import { getQueryApi } from '@/utils/globalHelper'
+import { useRoute } from 'vue-router';
+import p from '@/utils/pathConfig'
+import { onMounted, ref, watch, nextTick } from 'vue';
+import { useI18n } from 'vue-i18n'
+const applicationName = ref(p.Product)
+const controllerName = ref('Product')
+const name = ref('SearchFerry')
+const { locale } = useI18n()
+const route = useRoute();
 // import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
 // do not clean
 // const store = useTemporaryStore();
@@ -126,95 +341,254 @@ import { onMounted, ref } from 'vue';
 //     localStorage.setItem('selectedItem', JSON.stringify(item));
 // };
 // do not clean
+const tripData = ref<TripDataItem[] | any>([]);
+const tripReverseData = ref<TripDataItem[] | any>([]);
+const tripReverseDepartureData = ref<TripDataItem[] | any>([]);
+const tripReverseArData = ref<TripDataItem[] | any>([]);
+const tripReverseArrivalData = ref<TripDataItem[] | any>([]);
+// filtered
+const tripFilterReverseData = ref<TripDataItem[] | any>([]);
+const tripFilterReverseArData = ref<TripDataItem[] | any>([]);
+const selectedDepartureData = ref<TripDataItem[] | any>([]);
+const selectedArrivalData = ref<TripDataItem[] | any>([]);
+
+// filtered
 const logSelectedData = (item: any) => {
     console.log("Tıklanan Butondaki Veriler:");
     console.log(item);
+    selectedDepartureData.value.push(item);
+    console.log(selectedDepartureData, 'Tıklanan Butondaki Veriler objesi array')
 };
 
-const fakeData = [
-    {
-        image: 'https://via.placeholder.com/100x100',
-        company: 'Meander Travel',
-        departure: '5 Kasım 2023 Pazar 17.00',
-        departureLocation: 'Kuşadası Limanı',
-        arrival: '5 Kasım 2023 Pazar 18:15',
-        arrivalLocation: 'Vathy Limanı',
-        price: '€39'
-    },
-    {
-        image: 'https://via.placeholder.com/100x100',
-        company: 'Meander Travel',
-        departure: '6 Kasım 2023 Pazar 17.00',
-        departureLocation: 'Kuşadası Limanı',
-        arrival: '6 Kasım 2023 Pazar 18:15',
-        arrivalLocation: 'Vathy Limanı',
-        price: '€39'
-    },
-    {
-        image: 'https://via.placeholder.com/100x100',
-        company: 'Meander Travel',
-        departure: '7 Kasım 2023 Pazar 17.00',
-        departureLocation: 'Kuşadası Limanı',
-        arrival: '7 Kasım 2023 Pazar 18:15',
-        arrivalLocation: 'Vathy Limanı',
-        price: '€39'
-    },
-];
+const logSelectedArrivalData = (item: any) => {
+    console.log("Tıklanan Butondaki Veriler:");
+    console.log(item);
+    selectedArrivalData.value.push(item);
+    console.log(selectedArrivalData, 'Tıklanan Butondaki Veriler objesi array')
+};
 
-interface fakeSlidertems {
-    id: number;
-    date: string;
-    price: string;
+const queryFormatDate = (dateInstance: string): string => {
+    const date = new Date(dateInstance);
+    if (isNaN(date.getTime())) {
+        console.error('Invalid date for formatting');
+        return ''; // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
+    }
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}`;
+};
+
+interface DepartureValidDates {
+    TravelDate: string,
+    TravelDateString: string,
+    BestPrice: number
 }
 
-const items: fakeSlidertems[] = [
-    { id: 1, date: "15 Kasım Perşembe", price: "En Uygun €39" },
-    { id: 2, date: "16 Kasım Cuma", price: "En Uygun €49" },
-    { id: 3, date: "17 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 4, date: "18 Kasım Cumartesi", price: "En Uygun €69" },
-    { id: 5, date: "19 Kasım Cumartesi", price: "En Uygun €79" },
-    { id: 6, date: "20 Kasım Cumartesi", price: "En Uygun €89" },
-    { id: 7, date: "21 Kasım Cumartesi", price: "En Uygun €19" },
-    { id: 8, date: "22 Kasım Cumartesi", price: "En Uygun €29" },
-    { id: 9, date: "23 Kasım Cumartesi", price: "En Uygun €39" },
-    { id: 10, date: "24 Kasım Cumartesi", price: "En Uygun €49" },
-    { id: 11, date: "25 Kasım Cumartesi", price: "En Uygun €59" },
-    { id: 12, date: "26 Kasım Cumartesi", price: "En Uygun €69" },
-];
+interface ArrivalDate {
+    JourneyDate: string,
+    JourneyTime: string,
+    SeaportID: number,
+    SeaportName: string
+}
+
+interface DepartureDetail {
+    JourneyDate: string,
+    JourneyTime: string,
+    SeaportID: number,
+    SeaportName: string
+}
+
+interface Departures {
+    Allotment: number,
+    ArrivalDate: ArrivalDate,
+    CompanyID: number,
+    CompanyName: string,
+    CurrencyID: number,
+    CurrencyName: null,
+    Departure: string,
+    DepartureDetail: DepartureDetail,
+    FerryID: number,
+    FerryName: string,
+    FerryTravelType: number,
+    FerryTravelTypeName: null,
+    JourneyID: number,
+    JourneyNumber: string,
+    Price: number,
+    RouteId: number,
+    RouteName: string,
+}
+
+interface ReturnValidDates {
+    TravelDate: string,
+    TravelDateString: string,
+    BestPrice: number
+}
+
+interface Return {
+    Allotment: number,
+    ArrivalDate: ArrivalDate,
+    CompanyID: number,
+    CompanyName: string,
+    CurrencyID: number,
+    CurrencyName: null,
+    Departure: string,
+    DepartureDetail: DepartureDetail,
+    FerryID: number,
+    FerryName: string,
+    FerryTravelType: number,
+    FerryTravelTypeName: null,
+    JourneyID: number,
+    JourneyNumber: string,
+    Price: number,
+    RouteId: number,
+    RouteName: string,
+}
+
+interface TripDataItem {
+    DepartureValidDates: DepartureValidDates[];
+    Departures: Departures[];
+    ReturnValidDates: ReturnValidDates[];
+    Return: Return[];
+}
 
 const splideRef = ref<string | HTMLElement>('');
-onMounted(() => {
-    const splide = new Splide(splideRef.value, {
-        type: 'slide',
-        perPage: 3,
-        perMove: 1,
-        arrows: true,
-        pagination: false,
-        gap: '1rem',
-        focus: 0,
-        interval: 3000,
-        breakpoints: {
-            1380: {
-                perPage: 4,
-            },
-            1140: {
+const splideRef2 = ref<string | HTMLElement>('');
+const initializeSplide = () => {
+    nextTick(() => {
+        if (splideRef.value) { // splideRef'in bir değeri olduğundan emin ol
+            const splide = new Splide(splideRef.value, {
+                type: 'slide',
                 perPage: 3,
-            },
-            840: {
-                perPage: 2,
-            },
-            580: {
-                perPage: 1,
-            },
-        },
-    }).mount();
-    splide.on('moved', () => {
-        const activeSlideIndex = splide.index;
-        const activeSlideContent = items[activeSlideIndex];
-        console.log(activeSlideContent);
-        console.log(activeSlideIndex);
+                perMove: 1,
+                arrows: true,
+                pagination: false,
+                gap: '1rem',
+                focus: 'center',
+                interval: 3000,
+                breakpoints: {
+                    1380: {
+                        perPage: 4,
+                    },
+                    1140: {
+                        perPage: 3,
+                    },
+                    840: {
+                        perPage: 2,
+                    },
+                    580: {
+                        perPage: 1,
+                    },
+                },
+            }).mount();
+
+            const processActiveSlide = () => {
+                const activeSlideIndex = splide.index;
+                const activeSlideContent = tripReverseDepartureData.value[activeSlideIndex].DepartureDetail.JourneyDate;
+                console.log(activeSlideContent, 'activeSlideContent is here!');
+                console.log(activeSlideIndex, 'activeSlideIndex');
+                tripFilterReverseData.value = tripReverseDepartureData.value.filter((x: any) => {
+                    return x.DepartureDetail.JourneyDate === activeSlideContent;
+                });
+                console.log(tripFilterReverseData.value, 'Filtered Data!');
+            };
+
+            // İlk render'da işlemi manuel olarak çağır
+            processActiveSlide();
+
+            // Slayt değişikliğinde işlemi tekrar çağır
+            splide.on('moved', processActiveSlide);
+        }
     });
-});
+};
+const initializeSplide2 = () => {
+    nextTick(() => {
+        if (splideRef2.value) { // splideRef'in bir değeri olduğundan emin ol
+            const splide = new Splide(splideRef2.value, {
+                type: 'slide',
+                perPage: 3,
+                perMove: 1,
+                arrows: true,
+                pagination: false,
+                gap: '1rem',
+                focus: 'center',
+                interval: 3000,
+                breakpoints: {
+                    1380: {
+                        perPage: 4,
+                    },
+                    1140: {
+                        perPage: 3,
+                    },
+                    840: {
+                        perPage: 2,
+                    },
+                    580: {
+                        perPage: 1,
+                    },
+                },
+            }).mount();
+
+            const processActiveSlide = () => {
+                const activeSlideIndex = splide.index;
+                const activeSlideContent = tripReverseArrivalData.value[activeSlideIndex].ArrivalDetail.JourneyDate;
+                console.log(activeSlideContent, 'activeSlideContent is here!');
+                console.log(activeSlideIndex, 'activeSlideIndex');
+                tripFilterReverseArData.value = tripReverseArrivalData.value.filter(x => {
+                    return x.ArrivalDetail.JourneyDate === activeSlideContent;
+                });
+                console.log(tripFilterReverseArData.value, 'Filtered Data!');
+            };
+            processActiveSlide();
+            splide.on('moved', processActiveSlide);
+        }
+    });
+};
+
+const fetchData = async () => {
+    let params = {
+        FromTownID: route.query.FromTownID,
+        ToTownID: route.query.ToTownID,
+        DepartureDate: route.query.DepartureDate,
+        ArrivalDate: route.query.ArrivalDate,
+        AdultCount: route.query.AdultCount,
+        ChildCount: route.query.ChildCount,
+        InfantCount: route.query.InfantCount,
+    };
+    getQueryApi(applicationName.value, controllerName.value, name.value, params).then((response: any) => {
+        if (response.data.status == 1) {
+            const fetchTripDatas = response.data.result;
+            tripData.value = JSON.parse(fetchTripDatas);
+            tripReverseData.value = tripData.value.DepartureValidDates ? tripData.value.DepartureValidDates.reverse() : [];
+            tripReverseDepartureData.value = tripData.value.Departures ? tripData.value.Departures.reverse() : [];
+            tripReverseArData.value = tripData.value.ReturnValidDates ? tripData.value.ReturnValidDates.reverse() : [];
+            tripReverseArrivalData.value = tripData.value.Returns ? tripData.value.Returns.reverse() : [];
+
+            console.log(tripReverseData, 'tripReverseDatatrip is here');
+            console.log(tripReverseDepartureData, 'tripReverse departure 2');
+            console.log(tripReverseArrivalData, 'tripReverseArrival 2');
+
+            initializeSplide();
+            initializeSplide2();
+        }
+    }).catch(error => {
+        console.error('An error occurred:', error);
+    });
+};
+
+watch(locale, (newLocale, oldLocale) => {
+    if (newLocale !== oldLocale) {
+        // console.log(newLocale, 'new', oldLocale, 'old')
+        fetchData()
+    }
+})
+
+onMounted(async () => {
+    await fetchData()
+    initializeSplide();
+    initializeSplide2();
+})
 </script>
 
 <style scoped>
