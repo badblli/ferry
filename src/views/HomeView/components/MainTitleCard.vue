@@ -19,7 +19,7 @@
                          </div>
                     </div>
                </div>
-               <img :src="getImage(item.campaignImage.url)" alt="asd" class="object-fill w-full h-full rounded-xl flip-horizontal" />
+               <img :src="getImage(item.toursImage.url)" alt="asd" class="object-fill w-full h-full rounded-xl flip-horizontal" />
           </div>
           <div class="flex flex-col md:flex-row gap-5">
                <div class="w-full flex flex-col custom-radiel-gradient h-[450px] rounded-xl pl-10 pt-10 overflow-hidden relative cursor-pointer">
@@ -51,7 +51,7 @@
                          </div>
                     </div>
           
-                    <img :src="getImage(item.toursImage.url)" :alt="item.toursImage.name" class="object-fill w-full h-[450px] rounded-xl flip-horizontal" />
+                    <img :src="getImage(item.toursImage.url)" alt="item-image" class="object-fill w-full h-[450px] rounded-xl flip-horizontal" />
                </div>
           </div>
      </section>

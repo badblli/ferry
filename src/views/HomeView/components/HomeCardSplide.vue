@@ -72,7 +72,12 @@ import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 import { onMounted, ref } from 'vue';
 import { getImage } from '@/utils/globalHelper'
 
-    interface splideImg {
+
+interface ferry {
+    date: string,
+    dateText: string,
+    id: number,
+    img: {
         id: Number,
         name: string,
         alternativeText: string | null,
@@ -90,29 +95,23 @@ import { getImage } from '@/utils/globalHelper'
         provider_metadata: any | null,
         createdAt: string,
         updatedAt: string
-    }
+    },
+    price: string,
+    title: string,
+    where?: string | null,
+}
 
-    interface ferry {
-        date: string,
-        dateText: string,
-        id: number,
-        img: splideImg[],
-        price: string,
-        title: string,
-        where?: string | null,
+const props = defineProps({
+    item: {
+        type: Object as () => ({
+            Ferry: ferry[],
+            description: string,
+            id: number,
+            title: string,
+        }),
+        required: true
     }
-
-    const props = defineProps({
-        item: {
-            type: Object as () => ({
-                Ferry: ferry[],
-                description: string,
-                id: number,
-                title: string,
-            }),
-            required: true
-        }
-    });
+});
 
 // import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
 // do not clean
@@ -174,10 +173,10 @@ onMounted(() => {
         },
     }).mount();
     splide.on('moved', () => {
-        const activeSlideIndex = splide.index;
-        const activeSlideContent = items[activeSlideIndex];
-        console.log(activeSlideContent);
-        console.log(activeSlideIndex);
+        // const activeSlideIndex = splide.index;
+        // const activeSlideContent = items[activeSlideIndex];
+        // console.log(activeSlideContent);
+        // console.log(activeSlideIndex);
     });
 });
 </script>
