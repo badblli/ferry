@@ -36,7 +36,7 @@
                 <div
                     class="w-[271px] h-[83px] bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mr-3 mb-4">
                     <div class="w-10">
-                        <img src="../../assets/EmbeddedImages//AppleWallet.png" />
+                        <!-- <img src="../../assets/EmbeddedImages//AppleWallet.png" /> -->
                     </div>
                     <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">Wallet'ıma ekle
                     </div>

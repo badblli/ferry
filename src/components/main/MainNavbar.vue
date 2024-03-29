@@ -30,7 +30,7 @@
         <div class="flex flex-row">
             <div v-for="(item, index) in mainNavbar.links" :key="index">
                 <router-link :to="{ path: item.href }"
-                    class="flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
+                    class="hidden md:flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
                     {{ item.label }}
                 </router-link>
             </div>
