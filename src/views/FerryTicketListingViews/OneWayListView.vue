@@ -65,7 +65,7 @@
                                         class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
                                              <img class="w-[100px] h-[100px] rounded-xl mr-6"
-                                                  src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
+                                                  src="/assets/EmbeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">Firma
                                                        adı</p>
