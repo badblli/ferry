@@ -147,7 +147,7 @@
                               i.TownName }}</a>
                                                        <a
                                                             class="text-black text-sm font-light font-display tracking-tight">{{
-                              i.TownID }}</a>
+i.TownID }}</a>
                                                   </div>
                                              </div>
                                         </div>
@@ -157,7 +157,7 @@
                          <div class="h-14 border border-zinc-200"></div>
                          <div class="hs-dropdown flex flex-row items-center">
                               <button id="hs-dropdown-with-dividers-3" type="button" class="cursor-pointer">
-                                   <div>{{ mainHomeSplide.search?.SearchFerryTicket.roundtrip }}</div>
+                                   <div>{{ mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
                                    <div class="text-black text-base font-light font-display tracking-tight">{{
                               _roundTrip?.Name }}</div>
                               </button>
@@ -573,7 +573,7 @@ const getHomeSpide = async () => {
           if (res) {
                let data = res.data[0].layout
                mainHomeSplide.value = data.find((x: any) => x.__component === 'home-page.home-page')
-
+               console.log(mainHomeSplide, 'mainHomeSplidemainHomeSplidemainHomeSplidemainHomeSplidemainHomeSplide')
                initializeSplide()
           }
      } catch (error) {
@@ -653,7 +653,7 @@ const formattedDateToShow = computed(() => {
      }
      else {
           console.log('last if')
-          return 'Date';
+          return 'Tarih Seçiniz';
      }
 });
 
@@ -663,7 +663,7 @@ const formattedValue = computed(() => {
           console.log('first formattedValue date is here')
           return date.formattedDate.value
      } else {
-          return 'Date'
+          return 'Tarih Seçiniz'
      }
 })
 
@@ -672,7 +672,7 @@ const formattedValue2 = computed(() => {
           console.log('first formattedValue date is here')
           return date.formattedDate2.value
      } else {
-          return 'Date'
+          return 'Tarih Seçiniz'
      }
 })
 

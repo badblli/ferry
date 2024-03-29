@@ -16,11 +16,6 @@
                               <div class="text-black text-lg font-medium font-display ml-1">Feribot Bileti Ara</div>
                               <IconArrowDownBlack />
                          </div>
-                         <div
-                              class="h-[37px] bg-white rounded-lg border flex justify-center items-center p-1 ml-[10px]">
-                              <div class="text-black text-lg font-medium font-display ml-1">Sırala</div>
-                              <IconArrowDownBlack />
-                         </div>
                     </div>
                </div>
                <div v-else class="flex lg:flex-row flex-col justify-between">
@@ -50,12 +45,27 @@
                </div>
                <div>
                     <div className=" bg-neutral-100 rounded-[20px] p-4 ">
+                         <div class=" mx-12 mt-8 mb-8 flex flex-row items-center justify-between">
+                              <div class="flex flex-row items-center">
+                                   <div class="w-[63px] h-[63px] bg-white rounded-full">
+                                        <IconGroupFerrry />
+                                   </div>
+                                   <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">
+                                        Samos to Vathy, November 22</div>
+                              </div>
+                              <div
+                                   class="h-[37px] w-32 bg-white rounded-lg border flex justify-start items-center p-1 ml-[10px]">
+                                   <div class="text-black text-lg font-medium font-display ml-4 mr-5">Sırala</div>
+                                   <IconArrowDownBlack />
+                              </div>
+                         </div>
                          <div v-if="selectedDepartureData.length > 0">
                               <div v-for="(item, index) in selectedDepartureData" :key="index">
                                    <div
                                         class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
-                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                             <img class="w-[100px] h-[100px] rounded-xl mr-6"
+                                                  src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">Firma
                                                        adı</p>
@@ -112,8 +122,7 @@
                               </div>
                          </div>
                          <div v-else>
-                              <div class="text-black text-2xl font-medium font-display tracking-wide mx-12 mt-8 mb-8">
-                                   Samos to Vathy, November 22</div>
+
                               <div className="pt-1">
                                    <div className="flex flex-row items-center gap-5 lg:mx-12 md:mx-6 mx-3 mb-[22px]">
                                         <div id="splide" class="splide" ref="splideRef">
@@ -149,7 +158,8 @@
                               <div v-for="(item, index) in tripFilterReverseData" :key="index"
                                    class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                    <div class="flex sm:flex-row flex-col justify-between">
-                                        <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                        <img class="w-[100px] h-[100px] rounded-xl mr-6"
+                                             src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
                                         <div class="mt-3 mr-5 lg:mr-[75px]">
                                              <p class="text-black text-base font-medium font-display mb-2">Firma adı</p>
                                              <p
@@ -213,11 +223,19 @@
                          <!-- Arrival Date -->
                          <!-- Arrival Date -->
                          <div v-if="selectedArrivalData.length > 0">
+                              <div class=" mx-12 mt-8 mb-8 flex flex-row items-center ">
+                                   <div class="w-[63px] h-[63px] bg-white rounded-full">
+                                        <IconGroupFerrry />
+                                   </div>
+                                   <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">
+                                        Samos to Vathy, November 27</div>
+                              </div>
                               <div v-for="(item, index) in selectedArrivalData" :key="index">
                                    <div
                                         class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
-                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                             <img class="w-[100px] h-[100px] rounded-xl mr-6"
+                                                  src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">Firma
                                                        adı</p>
@@ -274,8 +292,13 @@
                               </div>
                          </div>
                          <div v-else>
-                              <div class="text-black text-2xl font-medium font-display tracking-wide mx-12 mt-8 mb-8">
-                                   Samos to Vathy, November 22</div>
+                              <div class="mx-12 mt-8 mb-8 flex flex-row items-center">
+                                   <div class="w-[63px] h-[63px] bg-white rounded-full">
+                                        <IconGroupFerrry />
+                                   </div>
+                                   <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">
+                                        Samos to Vathy, November 27</div>
+                              </div>
                               <div v-if="tripReverseArData.length > 0">
                                    <div className="pt-1">
                                         <div
@@ -313,7 +336,8 @@
                                    <div v-for="(item, index) in tripFilterReverseArData" :key="index"
                                         class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
-                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" :src="item.image" />
+                                             <img class="w-[100px] h-[100px] rounded-xl mr-6"
+                                                  src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">Firma
                                                        adı</p>
@@ -376,8 +400,9 @@
                          </div>
                     </div>
                </div>
-               <div class="mt-20 flex flex-row justify-end cursor-pointer" >
-                    <div class="w-[222px] h-[53px] bg-blue-700 rounded-lg border opacity-25 flex flex-row items-center justify-center">
+               <div class="mt-20 flex flex-row justify-end cursor-pointer">
+                    <div
+                         class="w-[222px] h-[53px] bg-blue-700 rounded-lg border opacity-25 flex flex-row items-center justify-center">
                          <div class="text-center text-white text-base font-medium font-display">Devam
                               et</div>
                     </div>
@@ -393,6 +418,8 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css'
 import IconsArrowsLeftRight from '@/components/icons/IconsArrowsLeftRight.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import IconArrowRight from '@/components/icons/IconArrowRight.vue'
+import IconGroupFerrry from '@/components/icons/IconGroupFerrry.vue'
+
 import { getQueryApi } from '@/utils/globalHelper'
 import { useRoute } from 'vue-router'
 import p from '@/utils/pathConfig'

@@ -33,10 +33,15 @@
                                                 <button class="mr-[10px]">
                                                     {{ item.price }}
                                                 </button>
-                                                <IconArrowUpRight />
+                                                <div v-if="index === 0">
+                                                    <IconArrowUpRight />
+                                                </div>
+                                                <div v-else>
+                                                    <IconArrowUpRightWhite />
+                                                </div>
                                             </div>
+                                            <div></div>
                                         </div>
-
                                         <img :src="getImage(item.img.url)"
                                             class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" />
                                     </div>
@@ -67,6 +72,7 @@
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue';
+import IconArrowUpRightWhite from '@/components/icons/IconArrowUpRightWhite.vue';
 import IconSamosaVector from '@/components/icons/IconSamosaVector.vue';
 import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 import { onMounted, ref } from 'vue';

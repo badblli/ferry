@@ -12,7 +12,8 @@
                         <!-- <CategorieSlider :title="category.title" :imageUrl="category.imageUrl" /> -->
                         <div
                             class="p-3 pr-5 m-2 flex flex-row rounded-[128px] border border-neutral-200 items-center cursor-pointer bg-white">
-                            <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="getImage(category.img.url)" alt="Slide Image" />
+                            <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="getImage(category.img.url)"
+                                alt="Slide Image" />
                             <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">{{ category.title }}
                             </div>
                         </div>
@@ -25,12 +26,14 @@
                     {{ item.subElement }}</div>
                 <div class="flex md:flex-row flex-col">
                     <router-link :to="{ path: item.subRouterUrl }">
-                        <div
-                            class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-3">
-                            {{ item.subRouter }}</div>
-                        <div
-                            class="flex items-center justify-center w-7 h-7 p-1 flex-shrink-0 rounded-full bg-gray-800 cursor-pointer">
-                            <IconFooter />
+                        <div class="flex flex-row">
+                            <div
+                                class="text-gray-800 flex flex-row w-36 ml-5 text-base font-medium font-display leading-[24.86px] tracking-tight">
+                                {{ item.subRouter }}</div>
+                            <div
+                                class="flex items-center justify-center w-7 h-7 p-1 flex-shrink-0 rounded-full bg-gray-800 cursor-pointer">
+                                <IconFooter />
+                            </div>
                         </div>
                     </router-link>
                 </div>
