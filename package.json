@@ -24,6 +24,7 @@
     "litepicker": "^2.0.12",
     "pinia": "^2.1.7",
     "preline": "^2.0.1",
+    "skeleton-loader-vue": "^1.0.10",
     "slider": "^1.0.4",
     "swiper": "^11.0.5",
     "vue": "^3.3.4",

@@ -117,6 +117,8 @@ input.focus\:outline-none:focus {
   right: -3rem;
 }
 
-
+.letter-spacing-new{
+  letter-spacing: 0.32px;
+}
 
 

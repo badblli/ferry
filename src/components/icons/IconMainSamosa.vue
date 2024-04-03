@@ -5,7 +5,7 @@ export default {
   props: {
     iconClass: {
       type: String,
-      default: "w-14 h-9",
+      default: "w-[64px] h-[38px]",
     },
   },
 };

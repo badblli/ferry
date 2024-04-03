@@ -29,7 +29,7 @@
                     <div class="text-black w-72 text-[38px] font-bold font-['Plus Jakarta Sans'] leading-[43.85px] tracking-wide">
                          {{ item && item.visaDescription }}
                     </div>
-                    <img :src="mainPageTicketImage" alt="Visa" class="flip-horizontal absolute h-[650px] max-w-[850px] left-[180px] -top-3 -bottom-48 custom-z" />
+                    <img src="../../../assets/EmbeddedImages/mainPageTicketImage.png" alt="Visa" class="flip-horizontal absolute h-[650px] max-w-[850px] left-[180px] -top-3 -bottom-48 custom-z" />
                     <div class="container">
                          <div class="a"></div>
                     </div>
@@ -63,8 +63,7 @@ import { defineProps } from 'vue'
 import {getImage} from '@/utils/globalHelper'
 import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue'
 import IconFooter from '@/components/icons/IconFooter.vue';
-import mainPageTicketImage from '../../../assets/EmbeddedImages/mainPageTicketImage.png';
-
+// import mainPageTicketImage from '../../../assets/EmbeddedImages/mainPageTicketImage.png';
 
 const props = defineProps({
      item: {
