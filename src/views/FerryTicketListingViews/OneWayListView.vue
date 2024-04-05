@@ -48,7 +48,7 @@
                                    <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}&nbsp;to&nbsp;{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}, {{ queryFormatShortDateTR(tripFilterReverseData[0]?.DepartureDetail.JourneyDate) }}</div>
                               </div>
                               <div v-if="selectedDepartureData.length > 0">
-                                   <div class=" bg-white rounded-lg border px-4 py-2 text-black text-[15px] font-medium font-display cursor-pointer">Seçimi Değiştir</div>
+                                   <div class="bg-white rounded-lg border px-4 py-2 text-black text-[15px] font-medium font-display cursor-pointer">Seçimi Değiştir</div>
                               </div>
                          </div>
                          <div v-if="selectedDepartureData.length > 0">
@@ -308,8 +308,8 @@
                     </div>
                </div>
                <div class="mt-20 flex flex-row justify-end cursor-pointer">
-                    <div class="w-[222px] h-[53px] bg-blue-700 rounded-lg border opacity-25 flex flex-row items-center justify-center">
-                         <div  class="text-center text-white text-base font-medium font-display">Devam et</div>
+                    <div :class="navigateStyleClass" @click="navigateToPaymentPage" class="w-[222px] h-[53px] bg-blue-700 rounded-lg border flex flex-row items-center justify-center">
+                         <div class="text-center text-white text-base font-medium font-display">Devam et</div>
                     </div>
                </div>
           </div>
@@ -328,25 +328,13 @@ import IconGroupFerrry from '@/components/icons/IconGroupFerrry.vue'
 import { getQueryApi } from '@/utils/globalHelper'
 import { useRoute } from 'vue-router'
 import p from '@/utils/pathConfig'
-import { onMounted, ref, watch, nextTick } from 'vue'
+import { onMounted, ref, watch, nextTick, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 const applicationName = ref(p.Product)
 const controllerName = ref('Product')
 const name = ref('SearchFerry')
 const { locale } = useI18n()
 const route = useRoute()
-// import image from '../../assets/EmbeddedImages/mainPageTicketImage.png'
-// import { useTemporaryStore } from '../../stores/temporaryTicket.ts';
-// do not clean
-// const store = useTemporaryStore();
-// const selectedItem = ref(null);
-// do not clean
-// const selectItem = (item: any) => {
-//     selectedItem.value = item;
-//     store.setSelectedItem(item);
-//     localStorage.setItem('selectedItem', JSON.stringify(item));
-// };
-// do not clean
 const tripData = ref<TripDataItem[] | any>([])
 const tripReverseData = ref<TripDataItem[] | any>([])
 const tripReverseDepartureData = ref<TripDataItem[] | any>([])
@@ -363,14 +351,16 @@ const logSelectedData = (item: any) => {
      console.log('Tıklanan Butondaki Veriler:')
      console.log(item)
      selectedDepartureData.value.push(item)
-     console.log(selectedDepartureData, 'Tıklanan Butondaki Veriler objesi array')
+     tripStore.setSelectedDepartureData(item);
+     console.log(selectedDepartureData, 'Tıklanan Butondaki Veriler objesi array!')
 }
 
 const logSelectedArrivalData = (item: any) => {
      console.log('Tıklanan Butondaki Veriler:')
      console.log(item)
      selectedArrivalData.value.push(item)
-     console.log(selectedArrivalData, 'Tıklanan Butondaki Veriler objesi array')
+     tripStore.setSelectedArrivalData(item);
+     console.log(selectedArrivalData, 'Tıklanan Butondaki Veriler objesi array!')
 }
 
 // const queryFormatDate = (dateInstance: string): string => {
@@ -403,7 +393,7 @@ const queryFormatDateTR = (dateInstance: string): string => {
 const queryFormatShortDateTR = (dateInstance: string): string => {
      const date = new Date(dateInstance)
      if (isNaN(date.getTime())) {
-          console.error('Invalid date for formatting')
+          // console.error('Invalid date for formatting')
           return '' // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
      }
      const day = date.getDate() // Günü al
@@ -416,12 +406,12 @@ const queryFormatShortDateTR = (dateInstance: string): string => {
 }
 
 const qq = (dateStr: string): string => {
-  const dateParts = dateStr.split(', '); // "Monday, April 29, 2024" -> ["Monday", "April 29", "2024"]
-  const dayOfWeek = dateParts[0]; // "Monday"
-  const monthDay = dateParts[1]; // "April 29"
+     const dateParts = dateStr.split(', ') // "Monday, April 29, 2024" -> ["Monday", "April 29", "2024"]
+     const dayOfWeek = dateParts[0] // "Monday"
+     const monthDay = dateParts[1] // "April 29"
 
-  return `${monthDay} ${dayOfWeek}`; // "April 29 Monday"
-};
+     return `${monthDay} ${dayOfWeek}` // "April 29 Monday"
+}
 
 interface DepartureValidDates {
      TravelDate: string
@@ -511,6 +501,7 @@ const initializeSplide = () => {
                     gap: '1rem',
                     focus: 'center',
                     interval: 3000,
+                    isNavigation: true,
                     breakpoints: {
                          1380: {
                               perPage: 4
@@ -539,7 +530,6 @@ const initializeSplide = () => {
                          // console.log(x.DepartureDetail.JourneyDate, 'is gonna be filtered')
                          return x.DepartureDetail.JourneyDate === activeSlideContent
                     })
-                    console.log(tripFilterReverseData.value[0].DepartureDetail.JourneyDate, 'Filtered Data! is ERROR BTW BTW')
                }
                // İlk render'da işlemi manuel olarak çağır
                processActiveSlide()
@@ -562,6 +552,7 @@ const initializeSplide2 = () => {
                     gap: '1rem',
                     focus: 'center',
                     interval: 3000,
+                    isNavigation: true,
                     breakpoints: {
                          1380: {
                               perPage: 4
@@ -622,7 +613,7 @@ const fetchData = async () => {
                     tripReverseArrivalData.value = tripData.value.Returns ? tripData.value.Returns.reverse() : []
                     // console.log(tripReverseArData, 'tripReverse arrival is here new xxxxxxxxxxxxxxxxx');
                     // console.log(tripReverseDepartureData, 'tripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureData')
-                    // console.log(tripData, 'tripDatatripDatatripDatatripDatatripDatatripDatatripData')
+                    console.log(tripData, 'tripDatatripDatatripDatatripDatatripDatatripDatatripData')
                     // console.log(tripReverseArrivalData, 'tripReverseArrival2tripReverseArrival2tripReverseArrival2tripReverseArrival2tripReverseArrival2tripReverseArrival2')
                     initializeSplide()
                     initializeSplide2()
@@ -647,15 +638,56 @@ onMounted(async () => {
      initializeSplide2()
 })
 
-
 // const isClickable = computed(() => {
 //      return route.query.FromTownID && route.query.ToTownID && route.query.DepartureDate && route.query.ArrivalDate && route.query.AdultCount && route.query.ChildCount && route.query.InfantCount
 // })
 
-// function navigateToPaymentPage(){
-//      if (!isClickable.value) return
-// }
+const isClickable = computed(() => {
+     if (tripReverseArData.value.length === 0 && selectedDepartureData.value.length > 0) {
+          return true
+     }
+     else if ((tripReverseArData.value.length > 0 || tripReverseData.value.length > 0) && selectedArrivalData.value.length > 0 && selectedDepartureData.value.length > 0) {
+          return true
+     }
+     else {
+          return false
+     }
+})
 
+const navigateStyleClass = computed(() => {
+     if (tripReverseArData.value.length === 0 && selectedDepartureData.value.length > 0) {
+          return 'opacity-100'
+     }
+     else if ((tripReverseArData.value.length > 0 || tripReverseData.value.length > 0) && selectedArrivalData.value.length > 0 && selectedDepartureData.value.length > 0) {
+          return 'opacity-100'
+     }
+     else {
+          return 'opacity-25'
+     }
+})
+
+const tripStore = useTripStore();
+import { useTripStore } from '@/stores/tripStore'
+import { useRouter } from 'vue-router'
+const router = useRouter();
+
+function navigateToPaymentPage() {
+  if (!isClickable.value) return;
+
+  const params = {
+    FromTownID: route.query.FromTownID as string,
+    ToTownID: route.query.ToTownID as string,
+    DepartureDate: route.query.DepartureDate as string,
+    ArrivalDate: route.query.ArrivalDate as string,
+    AdultCount: Number(route.query.AdultCount),
+    ChildCount: Number(route.query.ChildCount),
+    InfantCount: Number(route.query.InfantCount),
+  };
+
+  tripStore.setTripParams(params);
+
+  router.push({ name: 'passenger' });
+}
 </script>
 
 <style scoped>
@@ -674,6 +706,10 @@ onMounted(async () => {
 
 .splide__track {
      width: 100%;
+}
+
+.splide__track--nav > .splide__list > .splide__slide.is-active {
+     border: none !important;
 }
 
 .splide__slide {

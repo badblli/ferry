@@ -36,6 +36,7 @@ const borderClass = computed(() => ({
 <style scoped></style> -->
 
 <template>
+
     <div class="flex border-b border-neutral-200 mb-10">
         <input
             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder "
@@ -45,7 +46,7 @@ const borderClass = computed(() => ({
 </template>
   
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps,defineEmits, ref } from 'vue';
 
 const props = defineProps({
     type: {
@@ -61,7 +62,16 @@ const props = defineProps({
         required: true
     }
 });
-    
+
+
+// let model = ref("")
+
+// const emit = defineEmits(['change'])
+
+// const handleChange = () => {
+//     emit('change', model.value)
+// }
+
 </script>
   
 <style scoped></style>

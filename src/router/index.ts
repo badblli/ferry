@@ -74,15 +74,20 @@ const router = createRouter({
           component: () => import('../views/FerryTicketListingViews/OneWayListView.vue')
         },
         {
+          path: '/tickets/passenger',
+          name: 'passenger',
+          component: () => import('../views/PassengerPaymentViews/PassengerDetails.vue')
+        },
+        {
           path: '/slider',
           name: 'slider',
           component: () => import('../views/SplideExample.vue')
         },
-        {
-          path: '/passenger',
-          name: 'passenger',
-          component: () => import('../views/PassengerPaymentViews/PassengerDetails.vue')
-        },
+        // {
+        //   path: '/passenger',
+        //   name: 'passenger',
+        //   component: () => import('../views/PassengerPaymentViews/PassengerDetails.vue')
+        // },
         {
           path: '/payment',
           name: 'payment',

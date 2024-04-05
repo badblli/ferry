@@ -262,7 +262,7 @@
                                    </div>
                               </div>
                               <div :class="cursorClass" @click="navigateToSecondPage"
-                                   class="bg-slate-200 rounded-full justify-center items-center cursor-pointer p-[17px] m-[11px] ml-10">
+                                   class="bg-slate-200 rounded-full justify-center items-center p-[17px] m-[11px] ml-10">
                                    <IconSearchNormal />
                               </div>
                          </div>
@@ -760,6 +760,8 @@ onMounted(() => {
      fetchFromWhere()
      fetchTravelType()
 })
+
+import { useTripStore } from '@/stores/tripStore'
 
 function navigateToSecondPage() {
      if (!isClickable.value) return
