@@ -59,7 +59,7 @@
                               </div>
                          </div>
                          <div class="hs-accordion-group">
-                              <div v-for="accordion in accordions" :key="accordion.id"
+                              <div v-for="accordion in accordions" :key="accordion"
                                    class="hs-accordion items-centers rounded-xl mb-5 bg-white first:mt-8"
                                    id="hs-active-bordered-heading-one">
                                    <button
@@ -118,7 +118,7 @@
                                                                  type="button"></div>
                                                        </div>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input :class="accordion.email"
+                                                            <input v-model="accordion.email"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
                                                                  type="type" placeholder="E-mail" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
@@ -131,46 +131,43 @@
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div> -->
-                                                       <vue-tel-input v-model="phonee" mode="international"></vue-tel-input>
+                                                       <vue-tel-input v-model="accordion.tel" mode="international"></vue-tel-input>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="formattedDate" :class="accordion.birth"
+                                                            <input v-model="accordion.birth"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Birth" />
+                                                                 type="type" placeholder="01/12/2000" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input :class="accordion.nation"
+                                                            <input v-model="accordion.nation"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
                                                                  type="type" placeholder="Nationality" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input :class="accordion.passport"
+                                                            <input v-model="accordion.passport"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
                                                                  type="type" placeholder="Passport" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input :class="accordion.id"
+                                                            <input v-model="accordion.id"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="ID Number" />
+                                                                 type="type" placeholder="id" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
-                                                       <!-- <InputBasic v-model="form.name" placeholder="İsim *"
-                                                ariaLabel="Full name" /> -->
-                                                       <!-- <InputBasic v-model="form.name" @change="handleInputChange" placeholder="İsim *" ariaLabel="Full name" /> -->
                                                   </form>
                                              </div>
                                              <div class="px-5 flex flex-row items-center justify-end">
                                                   <div
                                                        class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
                                                        <div class="mr-4">Ana Yolcu Olarak Ayarla</div>
-                                                       <div>
-                                                            <input type="checkbox" id="hs-xs-switch"
+                                                       <div @click="setPrimary(index)"> 
+                                                            <input v-model="accordion.isPrimary" type="checkbox" id="hs-xs-switch"
                                                                  class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200" />
                                                        </div>
                                                   </div>
@@ -239,11 +236,18 @@ import InputPhone from '../PassengerPaymentViews/components/InputPhone.vue'
 import IconBaby from '@/components/icons/IconBaby.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import { useRouter } from 'vue-router'
-import { ref, watchEffect, reactive, computed, watch } from 'vue'
+import { ref, watchEffect, computed, watch } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
 const showWarning = ref(false)
+
+function setPrimary(index) {
+  accordions.value.forEach((accordion, i) => {
+    return accordion.isPrimary = i === index
+  })
+}
+
 const buttonText = computed(() => {
      if (isLoading.value) return 'Loading...'
      if (isComplete.value) return 'OK'
@@ -259,9 +263,10 @@ const buttonClass = computed(() => {
      }
      return baseClass
 })
+
 const phonee = ref(null);
 const store = useAccordionsStore()
-const tempAccordions = ref<Accordion[]>([])
+const tempAccordions = ref([])
 const isLoading = ref(false)
 const isComplete = ref(false)
 
@@ -272,12 +277,9 @@ const savePassenger = async (accordionId: number) => {
      await new Promise((resolve) => setTimeout(resolve, 1000))
 
      const accordion = tempAccordions.value.find((a) => a.id === accordionId)
+     console.log(accordion, 'accordion');
      if (accordion) {
-          store.setAccordionData(accordionId, {
-               name: accordion.name,
-               surname: accordion.surname,
-               email: accordion.email
-          })
+          store.setAccordionData(accordionId, {})
      }
 
      isLoading.value = false
@@ -289,28 +291,6 @@ const savePassenger = async (accordionId: number) => {
 
      console.log(store, 'store')
      console.log(accordions, 'accordions')
-}
-
-const formattedDate = ref('')
-const phone = ref(null);
-
-watch(formattedDate, (newValue, oldValue) => {
-     if (newValue.length === 2 || newValue.length === 5) {
-          if (newValue.length > oldValue.length) {
-               formattedDate.value += '/'
-          } else {
-               formattedDate.value = newValue.substring(0, newValue.length - 1)
-          }
-     }
-})
-
-interface Accordion {
-     title: string
-     age: string
-     name: string
-     surname: string
-     email: string
-     id: Number
 }
 
 const tripStore = useTripStore()
@@ -332,12 +312,6 @@ interface AgeItem {
      age: string
 }
 
-const name = ref('')
-
-const handleInputChange = (newValue: any) => {
-     name.value = newValue
-}
-
 const ages = ref<AgeItem[]>([
      { title: 'Yetişkin Ekle', age: '+12 yaş' },
      { title: 'Çocuk Ekle', age: '6-12 yaş' },
@@ -346,8 +320,12 @@ const ages = ref<AgeItem[]>([
 
 const router = useRouter()
 
+const navigateToNewAccordion = () => {
+
+}
+
 const navigateToPassenger = () => {
-     const isAllFieldsFilled = accordions.value.every((accordion: any) => accordion.name && accordion.surname && accordion.age)
+     const isAllFieldsFilled = accordions.value.every((accordion: any) => accordion.name && accordion.surname && accordion.email && accordion.tel && accordion.nation && accordion.passport && accordion.id)
 
      if (isAllFieldsFilled) {
           showWarning.value = false
@@ -379,9 +357,6 @@ watchEffect(() => {
      }
 })
 const accordions = ref()
-console.log(accordions, 'accordionsaccordionsaccordionsaccordionsaccordionsaccordionsaccordions')
-// // Akordeonları içeren dinamik bir dizi
-// const accordions = ref(createAccordions());
 </script>
 
 <style scoped></style>
