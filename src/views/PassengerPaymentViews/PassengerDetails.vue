@@ -42,7 +42,7 @@
                                         Yeni yolcu ekle</p>
                                    <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4"
                                         aria-labelledby="hs-dropdown-slideup-animation">
-                                        <div class="bg-white space-y-3">
+                                        <div @click="addNewPassenger" class="bg-white space-y-3">
                                              <div v-for="(item, index) in ages" :key="index"
                                                   class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
                                                   <div
@@ -124,14 +124,8 @@
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
-                                                       <!-- <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input :class="accordion.phone"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Phone" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div> -->
-                                                       <vue-tel-input v-model="accordion.tel" mode="international"></vue-tel-input>
+                                                       <vue-tel-input v-model="accordion.tel"
+                                                            mode="international"></vue-tel-input>
                                                        <div class="flex border-b border-neutral-200 mb-10">
                                                             <input v-model="accordion.birth"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
@@ -142,7 +136,7 @@
                                                        <div class="flex border-b border-neutral-200 mb-10">
                                                             <input v-model="accordion.nation"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Nationality" />
+                                                                 type="type" placeholder="Nation" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
@@ -166,18 +160,25 @@
                                                   <div
                                                        class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
                                                        <div class="mr-4">Ana Yolcu Olarak Ayarla</div>
-                                                       <div @click="setPrimary(index)"> 
-                                                            <input v-model="accordion.isPrimary" type="checkbox" id="hs-xs-switch"
+                                                       <div @click="setPrimary(index)">
+                                                            <input v-model="accordion.isPrimary" type="checkbox"
+                                                                 id="hs-xs-switch"
                                                                  class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200" />
                                                        </div>
                                                   </div>
                                                   <div
                                                        class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                        Temizle</div>
-                                                  <button :class="buttonClass" @click="savePassenger(accordion.id)"
+                                                 <div class="flex flex-col">
+                                                  <button :class="buttonClass(accordion)" @click="saveAllPassenger(accordion)"
                                                        class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
-                                                       {{ buttonText }}
+                                                       {{ buttonText(accordion) }}
                                                   </button>
+                                                  <div class="ml-8 mt-2 text-gray-500" v-if="accordion.showBtnWarning">
+                                                       *Alanlar
+                                             doldurulmalıdır.
+                                                  </div>
+                                                 </div>
                                              </div>
                                         </div>
                                    </div>
@@ -209,7 +210,7 @@
                                                   class="flex items-center justify-center text-center text-white text-base font-medium font-display">
                                                   Faturanlandırmaya Git</div>
                                         </div>
-                                        <p v-if="showWarning" class="ml-6 mt-2 text-gray-500">*Tüm alanlar
+                                        <p v-if="showWarning" class="ml-6 mt-2 text-gray-500">*Alanlar
                                              doldurulmalıdır.</p>
                                    </div>
                               </div>
@@ -230,81 +231,88 @@ import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue'
 import IconPersonSimpleRun from '@/components/icons/IconPersonSimpleRun.vue'
 import IconAsteriskSimple from '@/components/icons/IconAsteriskSimple.vue'
 import IconArrowUpRight2 from '@/components/icons/IconArrowUpRight2.vue'
-// import InputBasic from '../PassengerPaymentViews/components/InputBasic.vue'
-import InputBirth from '../PassengerPaymentViews/components/InputBirth.vue'
-import InputPhone from '../PassengerPaymentViews/components/InputPhone.vue'
+// // import InputBasic from '../PassengerPaymentViews/components/InputBasic.vue'
+// import InputBirth from '../PassengerPaymentViews/components/InputBirth.vue'
+// import InputPhone from '../PassengerPaymentViews/components/InputPhone.vue'
 import IconBaby from '@/components/icons/IconBaby.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import { useRouter } from 'vue-router'
-import { ref, watchEffect, computed, watch } from 'vue'
+import { ref, watchEffect, computed } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
 const showWarning = ref(false)
 
-function setPrimary(index) {
-  accordions.value.forEach((accordion, i) => {
-    return accordion.isPrimary = i === index
-  })
+const setPrimary = (index: any) => {
+     accordions.value.forEach((accordion: any, i: any) => {
+          return accordion.isPrimary = i === index
+     })
 }
 
-const buttonText = computed(() => {
-     if (isLoading.value) return 'Loading...'
-     if (isComplete.value) return 'OK'
-     return 'Yolcuyu Kaydet'
-})
+const buttonText = (accordion: any) => {
+  if (accordion.isLoading) return 'Loading...';
+  if (accordion.isComplete) return 'OK';
+  return 'Yolcuyu Kaydet';
+};
 
-const buttonClass = computed(() => {
-     let baseClass = 'rounded-lg border py-4 px-12 text-center text-base font-medium font-display ml-8 cursor-pointer'
-     if (isComplete.value) {
-          baseClass += ' bg-green-500' // TailwindCSS green color for example
-     } else {
-          baseClass += ' bg-slate-200' // Original color
-     }
-     return baseClass
-})
+const buttonClass = (accordion: any) => {
+  let baseClass = 'rounded-lg border py-4 px-12 text-center text-base font-medium font-display ml-8 cursor-pointer';
+  if (accordion.isComplete) {
+    baseClass += ' bg-green-500'; // Başarılı kayıt sonrası yeşil
+  } else {
+    baseClass += ' bg-slate-200'; // Normal durum
+  }
+  return baseClass;
+};
 
-const phonee = ref(null);
 const store = useAccordionsStore()
-const tempAccordions = ref([])
-const isLoading = ref(false)
-const isComplete = ref(false)
 
-const savePassenger = async (accordionId: number) => {
-     isLoading.value = true
-     isComplete.value = false
+const saveAllPassenger = async (accordion: any) => {
+    console.log(accordion, 'accordion');
+    accordion.isLoading = true;
+    accordion.isComplete = false;
+    accordion.showBtnWarning = false; // Uyarı durumu başlangıçta false olarak ayarlanır
 
-     await new Promise((resolve) => setTimeout(resolve, 1000))
+    // İlgili accordion için tüm alanların kontrolü
+    const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
+                              accordion.tel && accordion.nation && accordion.passport && accordion.id;
 
-     const accordion = tempAccordions.value.find((a) => a.id === accordionId)
-     console.log(accordion, 'accordion');
-     if (accordion) {
-          store.setAccordionData(accordionId, {})
-     }
+    if (!isAllFieldsFilled) {
+        accordion.showBtnWarning = true; // Eksik alan varsa yalnızca bu accordion için uyarı göster
+        console.log('Tüm gerekli alanlar doldurulmalıdır.');
+        accordion.isLoading = false;
+        return; // Eksik alanlar varsa işlemi durdur
+    }
 
-     isLoading.value = false
-     isComplete.value = true
-
-     setTimeout(() => {
-          isComplete.value = false
-     }, 3000)
-
-     console.log(store, 'store')
-     console.log(accordions, 'accordions')
-}
+    try {
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Simülasyon için bekleme
+        store.setAccordionData(accordion.id, accordion);
+        console.log("setAdultPassenger çağrılıyor:", accordion);
+        store.setAdultPassenger(accordion.id, accordion);
+        accordion.isComplete = true;
+        console.log("Kayıt işlemi gerçekleştirildi");
+    } catch (error) {
+        console.error("Kaydetme hatası:", error);
+    } finally {
+        accordion.isLoading = false;
+    }
+};
 
 const tripStore = useTripStore()
 const storedTripParams = ref<any>([])
 const storedDepartureData = ref<any>([])
 const storedArrivalData = ref<any>([])
+const storedGetterAccordions = ref<any>([])
 
 onMounted(() => {
      storedTripParams.value = tripStore.getTripParams
      storedDepartureData.value = tripStore.getDepartureData
      storedArrivalData.value = tripStore.getArrivalData
+     storedGetterAccordions.value = store.getTripParams
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
-     console.log(storedArrivalData.value, 'tripStore.getArrivalData')
+     console.log(storedArrivalData.value, 'tripStore.getArrivalData'),
+     console.log(storedGetterAccordions.value, 'tripStore.getTripParams');
 })
 
 interface AgeItem {
@@ -320,20 +328,29 @@ const ages = ref<AgeItem[]>([
 
 const router = useRouter()
 
-const navigateToNewAccordion = () => {
+const navigateToPassenger = () => {
+    // Tüm accordion'lar için gerekli alanların doldurulmuş ve kaydedilmiş olduğunu kontrol et
+    const isAllCompleteAndSaved = accordions.value.every((accordion: any) =>
+        accordion.isComplete && 
+        accordion.name && accordion.surname && accordion.email &&
+        accordion.tel && accordion.nation && accordion.passport && accordion.id
+    );
 
+    if (isAllCompleteAndSaved) {
+        showWarning.value = false; // Eğer her şey tamamsa, uyarı gösterme
+        router.push('/payment'); // Tüm accordionlar uygun şekilde tamamlandıysa ödeme sayfasına yönlendir
+    } else {
+        showWarning.value = true; // Eğer tüm accordionlar uygun şekilde tamamlanmamışsa uyarı göster
+        console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
+    }
 }
 
-const navigateToPassenger = () => {
-     const isAllFieldsFilled = accordions.value.every((accordion: any) => accordion.name && accordion.surname && accordion.email && accordion.tel && accordion.nation && accordion.passport && accordion.id)
-
-     if (isAllFieldsFilled) {
-          showWarning.value = false
-          router.push('/payment')
-     } else {
-          showWarning.value = true
-          console.log('Tüm gerekli alanlar doldurulmalıdır.')
-     }
+const addNewPassenger = () => {
+  // Assuming a basic example where you just add generic passenger details
+  accordions.value.push({
+    title: 'Bilinmiyor',
+    age: 'Bilinmiyor' // or you can dynamically set age based on input or other criteria
+  });
 }
 
 // storedTripParams'da bir değişiklik olduğunda accordions'u güncelle

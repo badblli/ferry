@@ -104,7 +104,7 @@
                                                   <ul class="splide__list">
                                                        <li v-for="(item, index) in tripReverseData" :key="index" class="splide__slide">
                                                             <div class="text-center text-black text-lg font-medium font-display">
-                                                                 {{ qq(item.TravelDateString) }}
+                                                                 {{ qq(item.TravelDateString) }}xx
                                                             </div>
                                                             <div class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{ item.BestPrice }}€</div>
                                                        </li>
@@ -134,7 +134,7 @@
                                              <p class="text-black text-base font-medium font-display">Kalkış</p>
                                              <div class="flex flex-row">
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                       {{ queryFormatDateTR(item.DepartureDetail.JourneyDate) }}
+                                                       {{ queryFormatDate(item.DepartureDetail.JourneyDate) }}     
                                                   </p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">{{ item.DepartureDetail.JourneyTime }} Pazar</p>
                                              </div>
@@ -241,7 +241,7 @@
                                                        <ul class="splide__list">
                                                             <li v-for="(item, index) in tripReverseArData" :key="index" class="splide__slide">
                                                                  <div class="text-center text-black text-lg font-medium font-display">
-                                                                      {{ item.TravelDateString }}
+                                                                      {{ qq(item.TravelDateString) }}
                                                                  </div>
                                                                  <div class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">{{ item.BestPrice }}€</div>
                                                             </li>
@@ -363,6 +363,7 @@ const logSelectedArrivalData = (item: any) => {
      console.log(selectedArrivalData, 'Tıklanan Butondaki Veriler objesi array!')
 }
 
+const lang = locale.value.toLowerCase().toString()
 // const queryFormatDate = (dateInstance: string): string => {
 //      const date = new Date(dateInstance)
 //      if (isNaN(date.getTime())) {
@@ -375,13 +376,29 @@ const logSelectedArrivalData = (item: any) => {
 
 //      return `${year}-${month}-${day}`
 // }
+// locale.value.toLowerCase().toString()
+const queryFormatDate = (dateInstance: string, locale = 'en') => {
+    const date = new Date(dateInstance);
+    if (isNaN(date.getTime())) {
+        console.error('Invalid date for formatting');
+        return ''; // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
+    }
 
+    const formatter = new Intl.DateTimeFormat(locale, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    return formatter.format(date);
+};
 const queryFormatDateTR = (dateInstance: string): string => {
      const date = new Date(dateInstance)
      if (isNaN(date.getTime())) {
           console.error('Invalid date for formatting')
           return '' // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
      }
+     console.log(lang, 'locale.value.toLowerCase().toString()')
      const year = date.getFullYear()
      const month = date.getMonth()
      const day = date.getDate()
@@ -617,7 +634,7 @@ const fetchData = async () => {
                     // console.log(tripReverseArrivalData, 'tripReverseArrival2tripReverseArrival2tripReverseArrival2tripReverseArrival2tripReverseArrival2tripReverseArrival2')
                     initializeSplide()
                     initializeSplide2()
-                    console.log(tripReverseData.value, 'ASD')
+                    // console.log(tripReverseData.value, 'ASD')
                }
           })
           .catch((error) => {
@@ -625,9 +642,16 @@ const fetchData = async () => {
           })
 }
 
+// watch(locale, (newLocale, oldLocale) => {
+//      if (newLocale !== oldLocale) {
+//           // console.log(newLocale, 'new', oldLocale, 'old')
+//           fetchData()
+//      }
+// })
+
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
-          // console.log(newLocale, 'new', oldLocale, 'old')
+          console.log(newLocale, 'new', oldLocale, 'old')
           fetchData()
      }
 })

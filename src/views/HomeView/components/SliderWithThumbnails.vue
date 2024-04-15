@@ -422,7 +422,7 @@ const formatDate = (dateInstance: string): string => {
           return '' // Geçersiz tarih için boş string döndür veya başka bir hata yönetimi yap
      }
      const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' }
-     return date.toLocaleDateString('en-US', options)
+     return date.toLocaleDateString(locale.value.toLowerCase().toString(), options)
 }
 
 const queryFormatDate = (dateInstance: string): string => {
@@ -439,6 +439,8 @@ const queryFormatDate = (dateInstance: string): string => {
 
 let picker: Litepicker | null = null
 let currentSingleMode: boolean | null = null
+
+console.log(locale.value.toLowerCase().toString(), 'locale.value.toLowerCase().toString()')
 
 function createOrUpdateLitepicker(singleMode: boolean) {
      console.log(singleMode, 'singleMode')
