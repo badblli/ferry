@@ -92,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import IconFooter from '../icons/IconFooter.vue'
 import IconMainSamosa from '../icons/IconMainSamosa.vue'
 import IconArrowTop from '../icons/IconArrowTop.vue'
@@ -153,10 +153,10 @@ const getFooter = async () => {
 
           if (res) {
                let data = res.data[0].layout
-               // console.log(data, 'im in mainfooter compos')
+               console.log(data, 'im in mainfooter compos')
 
                mainFooter.value = data.find((x: any) => x.__component === 'global.footer');
-               // console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
+               console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
           }
      } catch (error) {
           console.error('Hata:', error)
@@ -164,7 +164,12 @@ const getFooter = async () => {
           isLoading.value = false;
      }
 }
-
+watch(locale, (newLocale, oldLocale) => {
+     if (newLocale !== oldLocale) {
+          console.log(newLocale, 'new', oldLocale, 'old')
+          getFooter()
+     }
+})
 onMounted(() => {
      getFooter()
 })

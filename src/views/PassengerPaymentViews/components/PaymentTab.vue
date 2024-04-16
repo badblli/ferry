@@ -17,8 +17,8 @@
                </div>
           </div>
 
-          <div v-for="passenger in storedPassengers" :key="passenger.id || `temp-${index}`" @click="selectPassenger(passenger, index)"
-               class="flex flex-row flex-wrap">
+          <div v-for="passenger in storedInvoices" :key="passenger.id || `temp-${index}`"
+               @click="selectPassenger(passenger, index)" class="flex flex-row flex-wrap">
                <div :class="isSelectedClass(passenger)"
                     class="mr-[10px] m-1 py-[13px] pl-[14px] pr-[14px] rounded-lg border flex flex-row items-center justify-center cursor-pointer">
                     <div class=" text-base font-medium font-['Plus Jakarta Sans'] mr-[17px]">{{ passenger.name
@@ -28,6 +28,25 @@
                     </div>
                </div>
           </div>
+          <!-- <div v-for="passenger in newInvoices" :key="passenger.id || `temp-${index}`"
+          @click="selectPassenger(passenger, index)" class="flex flex-row flex-wrap">
+               <div :class="isSelectedClass(passenger)"
+                    class="mr-[10px] m-1 py-[13px] pl-[14px] pr-[14px] rounded-lg border flex flex-row items-center justify-center cursor-pointer">
+                    <div class=" text-base font-medium font-['Plus Jakarta Sans'] mr-[17px]">{{ passenger.name
+                         }}&nbsp;{{ passenger.surname }}</div>
+                    <div>
+                         <IconCheck />
+                    </div>
+               </div>
+          </div> -->
+          <!-- <div :class="isSelectedClass(passenger)"
+                    class="mr-[10px] m-1 py-[13px] pl-[14px] pr-[14px] rounded-lg border flex flex-row items-center justify-center cursor-pointer">
+                    <div class=" text-base font-medium font-['Plus Jakarta Sans'] mr-[17px]">{{ passenger.name
+                         }}&nbsp;{{ passenger.surname }}</div>
+                    <div>
+                         <IconCheck />
+                    </div>
+               </div> -->
      </div>
      <div class="mt-[70px]">
           <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 mt-[67px]">
@@ -86,12 +105,12 @@
           </div>
      </div>
      <div class="flex flex-row justify-end mr-9 mb-[34px]">
-         <div class="flex flex-col">
-          <button @click="saveInvoice" class="w-[222px] h-[53px] bg-blue-700 rounded-lg border">
-               <div class="text-center text-white text-lg font-medium font-display">Bilgileri Kaydet</div>
-          </button>
+          <div class="flex flex-col">
+               <button @click="saveInvoice" class="w-[222px] h-[53px] bg-blue-700 rounded-lg border">
+                    <div class="text-center text-white text-lg font-medium font-display">Bilgileri Kaydet</div>
+               </button>
                <div class="ml-8 mt-2 text-gray-500" v-if="invoice.showBtnWarning">*Alanlardoldurulmalıdır.</div>
-         </div>
+          </div>
      </div>
 </template>
 
@@ -108,7 +127,7 @@ import { useAccordionsStore } from '@/stores/accordions'
 // import { useTripStore } from '@/stores/tripStore'
 // const tripStore = useTripStore()
 const stored = useAccordionsStore()
-const storedPassengers = ref<any>([])
+const storedInvoices = ref<any>([])
 
 interface Passenger {
      id: string;
@@ -129,7 +148,7 @@ interface Passenger {
 // })
 
 onMounted(() => {
-     storedPassengers.value = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
+     storedInvoices.value = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
      console.log(stored.getAccordionData, 'Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!Filtered accordion data is here!');
 });
 
@@ -140,51 +159,52 @@ onMounted(() => {
 // });
 
 const invoice = ref({
-  isLoading: false,
-  isComplete: false,
-  showBtnWarning: false
+     isLoading: false,
+     isComplete: false,
+     showBtnWarning: false
 });
 
 const saveInvoice = async () => {
-  invoice.value.isLoading = true;
-  invoice.value.isComplete = false;
-  invoice.value.showBtnWarning = false;
+     invoice.value.isLoading = true;
+     invoice.value.isComplete = false;
+     invoice.value.showBtnWarning = false;
 
-  const isAllFieldsFilled = nameModel.value && surnameModel.value && emailModel.value && telModel.value && nationModel.value && passportModel.value && idModel.value;
-  console.log(isAllFieldsFilled, 'isAllFieldsFilled is here btw')
-  if (!isAllFieldsFilled) {
-    invoice.value.showBtnWarning = true;
-    console.log('Tüm gerekli alanlar doldurulmalıdır.');
-    invoice.value.isLoading = false;
-    return;
-  }
+     const isAllFieldsFilled = nameModel.value && surnameModel.value && emailModel.value && telModel.value && nationModel.value && passportModel.value && idModel.value;
+     console.log(isAllFieldsFilled, 'isAllFieldsFilled is here btw')
+     if (!isAllFieldsFilled) {
+          invoice.value.showBtnWarning = true;
+          console.log('Tüm gerekli alanlar doldurulmalıdır.');
+          invoice.value.isLoading = false;
+          return;
+     }
 
-  try {
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate a delay
-    // Convert id to number as expected by the store functions
-    let defaultAge = "yetişkin"
-    const invoiceData = {
-      name: nameModel.value,
-      surname: surnameModel.value,
-      email: emailModel.value,
-      tel: telModel.value,
-      nation: nationModel.value,
-      passport: passportModel.value,
-      id: parseInt(idModel.value, 10),
-      age: defaultAge,
-    };
-    //stored.setAccordionData(invoiceData.id, invoiceData);
-    console.log("setAdultPassenger çağrılıyor:", invoiceData);
-    stored.setAdultPassenger(invoiceData.id, invoiceData);
-    invoice.value.isComplete = true;
-    console.log("Kayıt işlemi gerçekleştirildi");
-  } catch (error) {
-    console.error("Kaydetme hatası:", error);
-  } finally {
-    invoice.value.isLoading = false;
-  }
-  const deneme = stored.getPassengerData;
-  console.log(deneme, 'deneme');
+     try {
+          await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate a delay
+          // Convert id to number as expected by the store functions
+          let defaultAge = "yetişkin"
+          const invoiceData = {
+               name: nameModel.value,
+               surname: surnameModel.value,
+               email: emailModel.value,
+               tel: telModel.value,
+               nation: nationModel.value,
+               passport: passportModel.value,
+               id: parseInt(idModel.value, 10),
+               age: defaultAge,
+          };
+          //stored.setAccordionData(invoiceData.id, invoiceData);
+          console.log("setAdultPassenger çağrılıyor:", invoiceData);
+          stored.setAdultPassenger(invoiceData.id, invoiceData);
+          storedInvoices.value.push(invoiceData);  // Assuming this is where you want to add the new invoice
+          invoice.value.isComplete = true;
+          console.log("Kayıt işlemi gerçekleştirildi");
+     } catch (error) {
+          console.error("Kaydetme hatası:", error);
+     } finally {
+          invoice.value.isLoading = false;
+     }
+     const deneme = stored.getPassengerData;
+     console.log(deneme, 'deneme');
 }
 
 const clearForm = () => {
@@ -270,8 +290,6 @@ const selectPassenger = (passenger: Passenger, index: any) => {
 //     storedData.value = store.getAccordionData;
 //     console.log(storedData.value, 'stored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetchingtored data after fetching');
 // });
-
-const phone = ref(null)
 </script>
 
 <style scoped></style>

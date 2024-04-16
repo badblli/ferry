@@ -5,7 +5,7 @@
         <div class="relative top-[-11rem] w-full lg:px-[100px] px-0 md:px-16 sm:px-8 centered-w">
             <div class="flex flex-col md:flex-row justify-between">
                 <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
-                    Feribot Seferleri 2024
+           {{ pageTitle }}
                 </h1>
                 <div
                     class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
@@ -56,8 +56,7 @@
                         <div class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
                             <div
                                 class="bg-white pt-10 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
-                                Kuşadası -
-                                Samos Feribot Seferleri</div>
+                               {{ tableTitle }}</div>
                             <table className="relative w-full bg-white">
                                 <thead>
                                     <tr v-for="(header, index) in tableHeaders" :key="index"
@@ -85,7 +84,7 @@
                             <div class="mt-16 lg:w-4/6 w-full">
                                 <div v-for="(info, index) in infoData" :key="index" class="flex items-center mt-5">
                                     <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">
-                                        {{ info.whichFerry }}
+                                        {{ info }}
                                     </h2>
                                 </div>
                             </div>
@@ -100,23 +99,83 @@
 <script setup lang="ts">
 import IconAsteriskSimple from "../components/icons/IconAsteriskSimple.vue";
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue';
-import { ref } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
+import { fetchData } from '@/utils/globalHelper'
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+const tableHeaders = ref([])
+const journey = ref([])
+const tableData =ref([])
+const pageTitle = ref("")
+const tableTitle = ref("")
+// const tableHeaders = [
+//     ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
+// ];
 
-const tableHeaders = [
-    ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
-];
-
-const tableData = [
-    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
-    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
-    ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
-];
+// const tableData = [
+//     ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
+//     ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
+//     ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
+// ];
 
 
-const infoData = ref([
-    { whichFerry: 'Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.' },
-    { whichFerry: 'Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli bir pasaport ve Schengen vizesi olup vize konusunda dilerseniz firmamız sizlere yardımcıolmaktanmutluluk duyacaktır.' },
-]);
+const infoData = ref([]);
+
+
+const getJourney = async () => {
+     try {
+          let filters = {
+               saleChannel: 'Samosa',
+               pageName: 'Journey'
+          }
+
+          const res = await fetchData('pages', locale.value.toLowerCase(), filters)
+          if (res) {
+            let data = res.data[0].layout
+               journey.value = data.find((x: any) => x.__component === 'journey-page.journey-page')
+               console.log(journey.value.journeyTable,"JOURNEY")
+               infoData.value = journey.value.notes.map(x => x.text)
+               pageTitle.value = res.data[0].pageTitle;
+               initilizaTableData(journey.value.journeyTable);
+               console.log(journey.value, 'journeyjourneyjourneyjourneyjourney')
+          }
+     } catch (error) {
+          console.error('Hata:', error)
+     }
+}
+
+const initilizaTableData = (data:any) => {
+    let table = data
+    console.log(table, "tableeeeee")
+  tableTitle.value = table.tableTitle
+     tableHeaders.value = [(table.headers.map(header => header.text))];
+     console.log(tableHeaders.value,"TABLE HEADERS")
+     let rows = table.rows.map(row => 
+    row.row.map(item => {
+        console.log(item,"ıtemla")
+        if (item.text.includes(',')) {
+            return item.text.split(', ').map(s => s.trim());
+        }
+        return item.text;
+    })
+);
+
+     console.log(rows, "ROWS")  
+     tableData.value = rows
+     console.log(tableData.value,"TABLE DATA")  
+
+
+}
+watch(locale, (newLocale, oldLocale) => {
+     if (newLocale !== oldLocale) {
+          console.log(newLocale, 'new', oldLocale, 'old')
+          getJourney()
+     }
+})
+onMounted(async () => {
+     await getJourney() // Veriyi asenkron bir şekilde yükleyin
+
+})
 </script>
 
 <style scoped></style>
