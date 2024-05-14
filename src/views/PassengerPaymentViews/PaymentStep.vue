@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div id="horizontal-scroll-tab-2" class="hidden" role="tabpanel"
                                                     aria-labelledby="horizontal-scroll-tab-item-2">
-                                                    <PaymentTab :fakeData="fakeData2" />
+                                                    <PaymentTab2 :fakeData="fakeData2" />
                                                 </div>
                                             </div>
                                         </div>
@@ -306,13 +306,35 @@
                             </div>
                             <div v-if="!paymentSuccess">
                                 <div class="flex flex-row items-center justify-end mt-7 opacity-40">
-                                    <button class="] bg-white rounded-lg border px-4 py-4">
+                                    <span
+                                        class="] bg-white rounded-lg border px-4 py-4 flex flex-row just items-center">
                                         Hesabımı Oluştur
-                                    </button>
+                                        <div class="flex">
+                                            <input v-model="accountState" @change="handleAccountState" type="checkbox"
+                                                class="cursor-pointer ml-3 shrink-0 mt-0.5 border-gray-400 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                                                id="hs-default-checkbox">
+                                        </div>
+                                    </span>
                                     <button @click="paymentSuccess = true"
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
                                         3260 TL Şimdi Öde
                                     </button>
+                                    <div class="cursor-pointer" @click="showModal">
+                                        deneme
+                                    </div>
+                                    <div>
+                                        <!-- {{ modal.showModalState.value }} -->
+                                        <Teleport to="#target">
+                                            <div v-if="showModalState" class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36  m-auto overflow-y-hidden">
+                                                <div class=" bg-gray-100 z-60" >
+                                                    MODAL AÇ MODAL AÇ
+                                                </div>
+                                                <div @click="closeModal">
+                                                    CLOSE MODAL MODAL
+                                                </div>
+                                            </div>
+                                        </Teleport>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -321,6 +343,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script setup lang="ts">
@@ -333,45 +356,50 @@ import PaymentTab from './components/PaymentTab.vue'
 import PaymentSuccess from './PaymentSuccess.vue'
 import { useRouter } from "vue-router";
 import CreditCartTab from './components/CreditCartTab.vue'
-import { ref } from "vue";
+import { computed, ref, Teleport } from "vue";
+import { useModal } from '../../compasable/useModal'
+import PaymentTab2 from './components/PaymentTab2.vue'
 
-// interface AgeItem {
-//     title: string;
-//     age: string;
-// }
+const { showModalState, showModal, closeModal } = useModal();
+import { useAccordionsStore } from '@/stores/accordions'
+import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue';
+// import { useModal } from '@/compasable/useModal'
 
-// interface Accordion {
-//     title: string;
-//     active: boolean;
-// }
+// const modal = useModal();
+
+const show = ref(false);
+
+const closeConfirm = () => {
+    show.value = false;
+};
+
+const openConfirm = () => {
+    show.value = !show.value;
+};
+
+const accountState = ref<boolean>(false);
+const accountStateArray = ref<any>([]);
+const store = useAccordionsStore()
+
+const handleAccountState = () => {
+    const obj = JSON.stringify(accountState.value)
+    accountStateArray.value = [obj];
+    console.log(accountStateArray.value, 'OBJ')
+    store.setAccountState(obj)
+    const deneme = store.getAccountState
+    console.log(deneme, 'DENEME');
+}
 
 interface Data {
     title: string;
 }
 
-// const accordions = ref<Accordion[]>([
-//     {
-//         title: 'Faturalandırma',
-//         active: true,
-//     },
-//     {
-//         title: 'Ödeme',
-//         active: true,
-//     },
-// ]);
-
 const router = useRouter();
 const navigateToPassenger = () => {
-    router.push('/passenger');
+    router.push('/tickets/passenger');
 };
 
 const paymentSuccess = ref(false);
-
-// const ages = ref<AgeItem[]>([
-//     { title: 'Yetişkin Ekle', age: '+12 yaş' },
-//     { title: 'Çocuk Ekle', age: '6-12 yaş' },
-//     { title: 'Bebek Ekle', age: '0-5 yaş' }
-// ]);
 
 const fakeData: Data = {
     title: "Bireysel Fatura Bilgileri",

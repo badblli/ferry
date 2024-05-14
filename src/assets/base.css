@@ -121,4 +121,6 @@ input.focus\:outline-none:focus {
   letter-spacing: 0.32px;
 }
 
-
+/* .vue-tel-input {
+  border: none;
+} */

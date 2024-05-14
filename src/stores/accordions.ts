@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 interface Accordion {
-     id: number
+     id: string
      title: string
      age: string
      name: string
@@ -13,12 +13,14 @@ interface Accordion {
 interface AccordionsState {
      accordions: Accordion[]
      adultPassenger: Accordion[]
+     accountState: any
 }
 
 export const useAccordionsStore = defineStore('accordions', {
      state: (): AccordionsState => ({
           accordions: [],
-          adultPassenger: []
+          adultPassenger: [],
+          accountState: false
      }),
      actions: {
           updateAccordion(accordion: Accordion) {
@@ -58,7 +60,11 @@ export const useAccordionsStore = defineStore('accordions', {
                    // If no element with the specified ID is found, add the new element to the array
                    this.adultPassenger.push(data as Accordion);
                }
-           }
+           },
+           setAccountState(state: any) {
+               console.log("setAccountState")
+               this.accountState = state
+             }
      },
      getters: {
           getTripParams: (state) => state.accordions,
@@ -66,6 +72,8 @@ export const useAccordionsStore = defineStore('accordions', {
           //   return state.tripParams.AdultCount + state.tripParams.ChildCount + state.tripParams.InfantCount;
           // },
           getAccordionData: (state) => state.accordions,
-          getPassengerData: (state) => state.adultPassenger
+          getPassengerData: (state) => state.adultPassenger,
+          // getAccountState: (state) => state.accountState
+          getAccountState: (state) => state.accountState
      }
 })

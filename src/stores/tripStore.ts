@@ -16,10 +16,12 @@ export const useTripStore = defineStore('trip', {
     tripParams: TripParams; 
     selectedDepartureData: any[]; 
     selectedArrivalData: any[]; 
+    ferryList: any[];
   } => ({
     tripParams: {} as TripParams,
     selectedDepartureData: [],
     selectedArrivalData: [],
+    ferryList: [],
   }),
   getters: {
     getTripParams: (state) => state.tripParams,
@@ -28,6 +30,7 @@ export const useTripStore = defineStore('trip', {
     // },
     getDepartureData: (state) => state.selectedDepartureData,
     getArrivalData: (state) => state.selectedArrivalData,
+    getFerryList: (state) => state.ferryList,
   },
   actions: {
     setTripParams(params: TripParams) {
@@ -38,6 +41,9 @@ export const useTripStore = defineStore('trip', {
     },
     setSelectedArrivalData(item: any) {
       this.selectedArrivalData = [item];
+    },
+    setFerryList: function(item: any) {
+      this.ferryList = item;
     },
   },
 });

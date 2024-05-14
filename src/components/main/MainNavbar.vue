@@ -1,17 +1,23 @@
 <template>
      <div>
-          <nav class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
+          <nav
+               class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="hs-dropdown relative inline-flex md:hidden">
-                    <button id="hs-dropdown-slideup-animation block md:hidden" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                    <button id="hs-dropdown-slideup-animation block md:hidden" type="button"
+                         class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                          <IconRwpNavbar />
                     </button>
-                    <div class="hs-dropdown-menu w-72 p-12 duration hs-dropdown-open:opacity-100 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg" aria-labelledby="hs-dropdsown-slideup-animation">
+                    <div class="hs-dropdown-menu w-72 p-12 duration hs-dropdown-open:opacity-100 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg"
+                         aria-labelledby="hs-dropdsown-slideup-animation">
                          <div v-for="(item, index) in mainNavbar.links" :key="index">
-                              <router-link :to="{ path: item.href }" class="flex cursor-pointer items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none" href="#">
+                              <router-link :to="{ path: item.href }"
+                                   class="flex cursor-pointer items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
+                                   href="#">
                                    {{ item.label }}
                               </router-link>
                          </div>
-                         <a class="flex items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none" href="#" data-hs-overlay="#hs-medium-modal">
+                         <a class="flex items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
+                              href="#" data-hs-overlay="#hs-medium-modal">
                               {{ mainNavbar.LoginTitle }}
                          </a>
                     </div>
@@ -24,26 +30,37 @@
         </div> -->
                <div class="flex flex-row">
                     <div v-for="(item, index) in mainNavbar.links" :key="index">
-                         <router-link :to="{ path: item.href }" class="hidden md:flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
+                         <router-link :to="{ path: item.href }"
+                              class="hidden md:flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
                               {{ item.label }}
                          </router-link>
                     </div>
                </div>
-               <div class="flex flex-row justify-center items-center cursor-pointer lg:mr-16 mr-0" @click="navigateToHome">
+               <div class="flex flex-row justify-center items-center cursor-pointer lg:mr-16 mr-0"
+                    @click="navigateToHome">
                     <IconMainSamosa />
                     <div class="ml-[10px]">
-                         <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{ mainNavbar.NavTitle }}</span>
-                         <span class="text-black text-xl md:text-2xl font-thin font-display tracking-wide">{{ mainNavbar.SecNavTitle }}</span>
+                         <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{
+                              mainNavbar.NavTitle }}</span>
+                         <span class="text-black text-xl md:text-2xl font-thin font-display tracking-wide">{{
+                              mainNavbar.SecNavTitle }}</span>
                     </div>
                </div>
                <div>
                     <div class="text-center cursor-pointer hidden md:flex">
-                         <button type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">
+                         <button @click="showModal" type="button"
+                              class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1"
+                              data-hs-overlay="#hs-medium-modal">
                               {{ mainNavbar.LoginTitle }}
                          </button>
                          <IconChevronDown />
                     </div>
-                    <SignInModal />
+
+                    <Teleport to="#target">
+                         <Transition name="custom-classes">
+                              <newSıgnInModal v-if="showModalState" @closeModal="handleCloseModal" />
+                         </Transition>
+                    </Teleport>
                </div>
           </nav>
           <!-- <div class="w-full h-[1px] border border-gray-200"></div> -->
@@ -59,8 +76,16 @@ import { onMounted, ref, watch } from 'vue'
 import IconMainSamosa from '../icons/IconMainSamosa.vue'
 import { fetchData } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
-
+import newSıgnInModal from '../advanced/newSıgnInModal.vue'
 const { locale } = useI18n()
+import { computed, Teleport } from "vue";
+import { useModal } from '../../compasable/useModal'
+
+const { showModalState, showModal, closeModal } = useModal();
+
+const handleCloseModal = () => {
+     closeModal(); // Call the closeModal function when the modal is closed
+};
 
 interface Links {
      href: string
@@ -157,5 +182,17 @@ const navigateToHome = () => {
      100% {
           background-color: #f1f1f1;
      }
+}
+
+/* we will explain what these classes do next! */
+
+.custom-classes-enter-active,
+.custom-classes-leave-active {
+     transition: opacity 0.5s ease;
+}
+
+.custom-classes-enter-from,
+.custom-classes-leave-to {
+     opacity: 0;
 }
 </style>

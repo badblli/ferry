@@ -124,8 +124,7 @@
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
-                                                       <vue-tel-input v-model="accordion.tel"
-                                                            mode="international"></vue-tel-input>
+                                                       <vue-tel-input v-model="accordion.tel" v-bind="bindProps"></vue-tel-input>
                                                        <div class="flex border-b border-neutral-200 mb-10">
                                                             <input v-model="accordion.birth"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
@@ -169,16 +168,18 @@
                                                   <div
                                                        class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                        Temizle</div>
-                                                 <div class="flex flex-col">
-                                                  <button :class="buttonClass(accordion)" @click="saveAllPassenger(accordion)"
-                                                       class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
-                                                       {{ buttonText(accordion) }}
-                                                  </button>
-                                                  <div class="ml-8 mt-2 text-gray-500" v-if="accordion.showBtnWarning">
-                                                       *Alanlar
-                                             doldurulmalıdır.
+                                                  <div class="flex flex-col">
+                                                       <button :class="buttonClass(accordion)"
+                                                            @click="saveAllPassenger(accordion)"
+                                                            class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
+                                                            {{ buttonText(accordion) }}
+                                                       </button>
+                                                       <div class="ml-8 mt-2 text-gray-500"
+                                                            v-if="accordion.showBtnWarning">
+                                                            *Alanlar
+                                                            doldurulmalıdır.
+                                                       </div>
                                                   </div>
-                                                 </div>
                                              </div>
                                         </div>
                                    </div>
@@ -212,6 +213,7 @@
                                         </div>
                                         <p v-if="showWarning" class="ml-6 mt-2 text-gray-500">*Alanlar
                                              doldurulmalıdır.</p>
+                                             <p v-if="showEmptyAccordionError" class="ml-6 mt-2 text-gray-500">*Alan Eklenmelidir.</p>
                                    </div>
                               </div>
                          </div>
@@ -242,6 +244,24 @@ import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
 const showWarning = ref(false)
+const showEmptyAccordionError = ref(false)
+
+const bindProps = {
+  autoFormat: false,
+  disabledFetchingCountry: false,
+  enabledFlags: true,
+  dropdownOptions: {
+    showDialCodeInSelection: true,
+    showDialCodeInList: true,
+    showFlags: true,
+  },
+  inputOptions: {
+    maxlength: 16,
+    placeholder: "Tel",
+  },
+  mode: "international",
+  validCharactersOnly: true,
+};
 
 const setPrimary = (index: any) => {
      accordions.value.forEach((accordion: any, i: any) => {
@@ -250,52 +270,52 @@ const setPrimary = (index: any) => {
 }
 
 const buttonText = (accordion: any) => {
-  if (accordion.isLoading) return 'Loading...';
-  if (accordion.isComplete) return 'OK';
-  return 'Yolcuyu Kaydet';
+     if (accordion.isLoading) return 'Loading...';
+     if (accordion.isComplete) return 'OK';
+     return 'Yolcuyu Kaydet';
 };
 
 const buttonClass = (accordion: any) => {
-  let baseClass = 'rounded-lg border py-4 px-12 text-center text-base font-medium font-display ml-8 cursor-pointer';
-  if (accordion.isComplete) {
-    baseClass += ' bg-green-500'; // Başarılı kayıt sonrası yeşil
-  } else {
-    baseClass += ' bg-slate-200'; // Normal durum
-  }
-  return baseClass;
+     let baseClass = 'rounded-lg border py-4 px-12 text-center text-base font-medium font-display ml-8 cursor-pointer';
+     if (accordion.isComplete) {
+          baseClass += ' bg-green-500'; // Başarılı kayıt sonrası yeşil
+     } else {
+          baseClass += ' bg-slate-200'; // Normal durum
+     }
+     return baseClass;
 };
 
 const store = useAccordionsStore()
 
 const saveAllPassenger = async (accordion: any) => {
-    console.log(accordion, 'accordion');
-    accordion.isLoading = true;
-    accordion.isComplete = false;
-    accordion.showBtnWarning = false; // Uyarı durumu başlangıçta false olarak ayarlanır
+     console.log(accordion, 'accordion');
+     accordion.isLoading = true;
+     accordion.isComplete = false;
+     accordion.showBtnWarning = false; // Uyarı durumu başlangıçta false olarak ayarlanır
 
-    // İlgili accordion için tüm alanların kontrolü
-    const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
-                              accordion.tel && accordion.nation && accordion.passport && accordion.id;
+     // İlgili accordion için tüm alanların kontrolü
+     const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
+          accordion.tel && accordion.nation && accordion.passport && accordion.id;
 
-    if (!isAllFieldsFilled) {
-        accordion.showBtnWarning = true; // Eksik alan varsa yalnızca bu accordion için uyarı göster
-        console.log('Tüm gerekli alanlar doldurulmalıdır.');
-        accordion.isLoading = false;
-        return; // Eksik alanlar varsa işlemi durdur
-    }
+     if (!isAllFieldsFilled) {
+          accordion.showBtnWarning = true; // Eksik alan varsa yalnızca bu accordion için uyarı göster
+          console.log('Tüm gerekli alanlar doldurulmalıdır.');
+          accordion.isLoading = false;
+          return; // Eksik alanlar varsa işlemi durdur
+     }
 
-    try {
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Simülasyon için bekleme
-        store.setAccordionData(accordion.id, accordion);
-        console.log("setAdultPassenger çağrılıyor:", accordion);
-        store.setAdultPassenger(accordion.id, accordion);
-        accordion.isComplete = true;
-        console.log("Kayıt işlemi gerçekleştirildi");
-    } catch (error) {
-        console.error("Kaydetme hatası:", error);
-    } finally {
-        accordion.isLoading = false;
-    }
+     try {
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Simülasyon için bekleme
+          store.setAccordionData(accordion.id, accordion);
+          console.log("setAdultPassenger çağrılıyor:", accordion);
+          store.setAdultPassenger(accordion.id, accordion);
+          accordion.isComplete = true;
+          console.log("Kayıt işlemi gerçekleştirildi");
+     } catch (error) {
+          console.error("Kaydetme hatası:", error);
+     } finally {
+          accordion.isLoading = false;
+     }
 };
 
 const tripStore = useTripStore()
@@ -312,7 +332,7 @@ onMounted(() => {
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'),
-     console.log(storedGetterAccordions.value, 'tripStore.getTripParams');
+          console.log(storedGetterAccordions.value, 'tripStore.getTripParams');
 })
 
 interface AgeItem {
@@ -329,30 +349,35 @@ const ages = ref<AgeItem[]>([
 const router = useRouter()
 
 const navigateToPassenger = () => {
-    // Tüm accordion'lar için gerekli alanların doldurulmuş ve kaydedilmiş olduğunu kontrol et
-    const isAllCompleteAndSaved = accordions.value.every((accordion: any) =>
-        accordion.isComplete && 
-        accordion.name && accordion.surname && accordion.email &&
-        accordion.tel && accordion.nation && accordion.passport && accordion.id
-    );
+     // Tüm accordion'lar için gerekli alanların doldurulmuş ve kaydedilmiş olduğunu kontrol et
+   if(accordions.value.length > 0) {
+     const isAllCompleteAndSaved = accordions.value.every((accordion: any) =>
+          accordion.isComplete &&
+          accordion.name && accordion.surname && accordion.email &&
+          accordion.tel && accordion.nation && accordion.passport && accordion.id
+     );
 
-    if (isAllCompleteAndSaved) {
-        showWarning.value = false; // Eğer her şey tamamsa, uyarı gösterme
-        router.push('/payment'); // Tüm accordionlar uygun şekilde tamamlandıysa ödeme sayfasına yönlendir
-    } else {
-        showWarning.value = true; // Eğer tüm accordionlar uygun şekilde tamamlanmamışsa uyarı göster
-        console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
-    }
+     if (isAllCompleteAndSaved) {
+          showWarning.value = false; // Eğer her şey tamamsa, uyarı gösterme
+          router.push('/payment'); // Tüm accordionlar uygun şekilde tamamlandıysa ödeme sayfasına yönlendir
+     } else {
+          showWarning.value = true; // Eğer tüm accordionlar uygun şekilde tamamlanmamışsa uyarı göster
+          console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
+     }
+   } else {
+     showEmptyAccordionError.value = true;
+   }
 }
 
 const addNewPassenger = () => {
-  // Assuming a basic example where you just add generic passenger details
-  accordions.value.push({
-    title: 'Bilinmiyor',
-    age: 'Bilinmiyor' // or you can dynamically set age based on input or other criteria
-  });
+     // Assuming a basic example where you just add generic passenger details
+     accordions.value.push({
+          title: 'Bilinmiyor',
+          age: 'Bilinmiyor' // or you can dynamically set age based on input or other criteria
+     });
 }
 
+const accordions = ref<any[]>([]);
 // storedTripParams'da bir değişiklik olduğunda accordions'u güncelle
 watchEffect(() => {
      if (storedTripParams.value.AdultCount !== undefined) {
@@ -373,7 +398,49 @@ watchEffect(() => {
           accordions.value = newAccordions
      }
 })
-const accordions = ref()
+
+window.onbeforeunload = function() {
+  return "Data will be lost if you leave the page, are you sure?";
+};
+
+// let timeout = null;
+
+// const redirecting = ref(false);
+
+// window.addEventListener('beforeunload', (event) => {
+//      if (!redirecting.value) {
+//           event.preventDefault();
+//           redirecting.value = true;
+//           setTimeout(() => {
+//                window.location.href = '/';
+//           }, 0);
+//           event.returnValue = 'You have unsaved data. Are you sure you want to leave?';
+//      }
+// });
+
+// window.addEventListener('unload', () => {
+//   if (performance.navigation.type === 1) {
+//     // Yeniden yükleme tıklanırsa
+//     redirecting.value = true;
+//     window.location.href = '/';
+//   }
+// });
+
+// window.addEventListener('load', () => {
+//   if (performance.navigation.type === 1) {
+//     // Yeniden yükleme tıklanırsa
+//     redirecting.value = true;
+//     window.location.href = '/';
+//   }
+// });
 </script>
 
-<style scoped></style>
+<style >
+
+
+/* .vue-tel-input {
+     border: none,
+
+} */
+
+</style>

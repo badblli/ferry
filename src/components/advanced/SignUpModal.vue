@@ -74,6 +74,9 @@
                             </button>
                         </div>
                     </form>
+                    <div>
+                        DENEME DENEME DENEME
+                    </div>
                     <div
                         class="text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[21px] tracking-widest mt-5 flex justify-center items-center mb-[20px]">
                         YA DA </div>
@@ -92,7 +95,7 @@
                     <p class="mt-8 text-sm h-14 flex justify-center">
                         Üyeliğin yok mu?
                         <a class="text-blue-600 decoration-2 hover:underline font-medium"
-                            href="./SignUpModal.vue">
+                            href="../examples/html/modal-signup.html">
                             &nbsp;Kayıt Ol
                         </a>
                     </p>
@@ -106,8 +109,6 @@
 <script setup lang="ts">
 import IconFacebook from "../icons/IconFacebook.vue";
 import IconGoogle from "../icons/IconGoogle.vue"
-import SignUpModal from "./SignUpModal.vue";
-
 </script>
 
 <style></style>

@@ -169,13 +169,13 @@
                                    <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                                         aria-labelledby="hs-dropdown-with-dividers-3">
                                         <div class="flex flex-col w-[277px] p-5">
+                                             <span>here!</span>
                                              <div @click="updateToTrip(i)" v-for="(i, index) in travelObject"
                                                   :key="index"
                                                   :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
                                                   class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                   <a
-                                                       class="text-black text-base font-medium font-display tracking-tight">{{
-                                   i.Name }}</a>
+                                                       class="text-black text-base font-medium font-display tracking-tight">{{i.Name }}</a>
                                              </div>
                                         </div>
                                    </div>
@@ -305,6 +305,7 @@ import { fetchData } from '@/utils/globalHelper'
 import { getImage } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { useTripStore } from '@/stores/tripStore'
 
 interface searchReservation {
      id: number
@@ -390,6 +391,7 @@ const travelData = ref([])
 const travelObject = ref<any[]>([])
 const departureTownId = ref<string | null>(null)
 const arrivalTownId = ref<string | null>(null)
+// const ferryTravelId = ref<string | null>(null)
 const queryDate = {
      formattedDepartureDate: ref<string | null>(null),
      formattedArrivalDate: ref<string | null>(null)
@@ -596,7 +598,7 @@ const getHomeSpide = async () => {
           if (res) {
                let data = res.data[0].layout
                mainHomeSplide.value = data.find((x: any) => x.__component === 'home-page.home-page')
-               console.log(mainHomeSplide, 'mainHomeSplidemainHomeSplidemainHomeSplidemainHomeSplidemainHomeSplide')
+               console.log(mainHomeSplide, 'mainHomeSplide')
                initializeSplide()
           }
      } catch (error) {
@@ -658,8 +660,8 @@ watch(locale, (newLocale, oldLocale) => {
 })
 
 onMounted(async () => {
-     await getHomeSpide() // Veriyi asenkron bir şekilde yükleyin
-     initializeSplide() // Sonra Splide'ı başlatın
+     await getHomeSpide()
+     initializeSplide()
 })
 
 const formattedDateToShow = computed(() => {
@@ -681,7 +683,7 @@ const formattedDateToShow = computed(() => {
 
 const formattedValue = computed(() => {
      if (date.formattedDate.value) {
-          console.log('first formattedValue date is here')
+          // console.log('first formattedValue date is here')
           return date.formattedDate.value
      } else {
           return 'Tarih Seçiniz'
@@ -690,7 +692,7 @@ const formattedValue = computed(() => {
 
 const formattedValue2 = computed(() => {
      if (date.formattedDate2.value) {
-          console.log('first formattedValue date is here')
+          // console.log('first formattedValue date is here')
           return date.formattedDate2.value
      } else {
           return 'Tarih Seçiniz'
@@ -706,9 +708,7 @@ const isClickable = computed(() => {
 })
 
 const totalPassengerCount = computed(() => {
-     // totalCount fonksiyonunu çağır ve sonucunu bir değişkene ata.
      const count = totalCount();
-     // count değeri sıfırdan büyükse, bu değeri döndür.
      return count > 0 ? count : null;
 });
 
@@ -722,9 +722,9 @@ const fetchFromWhere = async () => {
                const fetchFromWhereData = response.data.result
                fromWhereData.value = JSON.parse(fetchFromWhereData)
                fromWhereObject.value = fromWhereData.value
-               console.log(fromWhereObject.value, 'toWhereObject is here')
-               console.log(fromWhereData.value, 'fromWhereData.value')
-               console.log(departureTownId.value, 'DepartureTownId.value is here')
+               // console.log(fromWhereObject.value, 'toWhereObject is here')
+               // console.log(fromWhereData.value, 'fromWhereData.value')
+               // console.log(departureTownId.value, 'DepartureTownId.value is here')
           }
      })
 }
@@ -739,8 +739,8 @@ const fetchToWhere = async (departureTownIdValue: string | null) => {
                const fetchtoWhereData = response.data.result
                toWhereData.value = JSON.parse(fetchtoWhereData)
                toWhereObject.value = toWhereData.value
-               console.log(toWhereData.value, 'toWhereDataValue')
-               console.log(toWhereObject.value, 'toWhereObject')
+               // console.log(toWhereData.value, 'toWhereDataValue')
+               // console.log(toWhereObject.value, 'toWhereObject')
           }
      })
 }
@@ -749,11 +749,11 @@ const fetchTravelType = async () => {
      getApi(applicationName.value, controllerName.value, travelName.value).then((response: any) => {
           if (response.data.status == 1) {
                const travelTypeData = response.data.result
-               console.log(travelTypeData, 'travelTypeData')
+               // console.log(travelTypeData, 'travelTypeData')
                travelData.value = JSON.parse(travelTypeData)
                travelObject.value = travelData.value
-               console.log(travelData.value, 'travelDatatravelOjecttravelOjecttravelOject')
-               console.log(travelObject.value, 'travelOjecttravelOjecttravelOject')
+               // console.log(travelData.value, 'travelObject')
+               // console.log(travelObject.value, 'travelObject')
           }
      })
 }
@@ -763,8 +763,6 @@ onMounted(() => {
      fetchTravelType()
 })
 
-import { useTripStore } from '@/stores/tripStore'
-
 function navigateToSecondPage() {
      if (!isClickable.value) return
      // router.push metodunu kullanarak belirli bir rota adı ve sorgu parametreleri ile yönlendirme yapın
@@ -772,7 +770,7 @@ function navigateToSecondPage() {
      const childCount = passenger.value.find((p: any) => p.id === 'child')?.count || 0
      const infantCount = passenger.value.find((p: any) => p.id === 'infant')?.count || 0
      router.push({
-          name: 'tickets', // Yönlendirilecek sayfanın rota adı,
+          name: 'tickets',
           query: {
                FromTownID: departureTownId.value,
                ToTownID: arrivalTownId.value,
@@ -780,10 +778,10 @@ function navigateToSecondPage() {
                ArrivalDate: queryDate.formattedArrivalDate.value,
                AdultCount: adultCount,
                ChildCount: childCount,
-               InfantCount: infantCount
-               // AgencyID: 1,
-               // PriceGroupID: 1,
-               // FerryTravelType: 1,
+               InfantCount: infantCount,
+               AgencyID: 1,
+               PriceGroupID: 1,
+               FerryTravelType: _roundTrip.value!.ID,
                // SaleChannelID: 1,
                // LanguageID: 1
           }

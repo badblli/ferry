@@ -95,11 +95,19 @@
 </template>
 
 <script setup lang="ts">
-import IconQR from '@/components/icons/IconQR.vue';
+// import IconQR from '@/components/icons/IconQR.vue';
 import IconDownloadSimple from '@/components/icons/IconDownloadSİmple.vue'
 import IconPrinter from '@/components/icons/IconPrinter.vue'
 import IconCheckBlack from '@/components/icons/IconCheckBlack.vue'
 import { useRouter } from "vue-router";
+import { useAccordionsStore } from '@/stores/accordions'
+import { onMounted } from 'vue';
+const store = useAccordionsStore()
+
+const handleAccountState = () => {
+    const deneme = store.getAccountState
+    console.log(deneme, 'DENEME PAYMENT SUCCESS');
+}
 
 const router = useRouter();
 const navigateToHome = () => {
@@ -109,6 +117,8 @@ const navigateToHome = () => {
 const navigateToReservation = () => {
     router.push('/reservation');
 };
+
+onMounted(() => handleAccountState())
 </script>
 
 <style></style>
