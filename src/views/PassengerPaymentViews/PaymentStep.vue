@@ -315,13 +315,16 @@
                                                 id="hs-default-checkbox">
                                         </div>
                                     </span>
-                                    <button @click="paymentSuccess = true"
+                                    <button @click="paymentSuccess = true" 
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
                                         3260 TL Şimdi Öde
                                     </button>
-                                    <div class="cursor-pointer" @click="showModal">
+                                    <div class="cursor-pointer" @click="postData">
                                         deneme
                                     </div>
+                                    <!-- <div class="cursor-pointer" @click="showModal">
+                                        deneme
+                                    </div> -->
                                     <div>
                                         <!-- {{ modal.showModalState.value }} -->
                                         <Teleport to="#target">
@@ -343,7 +346,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup lang="ts">
@@ -356,16 +358,82 @@ import PaymentTab from './components/PaymentTab.vue'
 import PaymentSuccess from './PaymentSuccess.vue'
 import { useRouter } from "vue-router";
 import CreditCartTab from './components/CreditCartTab.vue'
-import { computed, ref, Teleport } from "vue";
+import { computed, ref, Teleport, onMounted } from "vue";
 import { useModal } from '../../compasable/useModal'
 import PaymentTab2 from './components/PaymentTab2.vue'
-
-const { showModalState, showModal, closeModal } = useModal();
+import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
+
 import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue';
 // import { useModal } from '@/compasable/useModal'
-
 // const modal = useModal();
+
+///
+import { callPostApi } from '@/utils/globalHelper'
+import p from '@/utils/pathConfig'
+import envConfig from '../../utils/config'
+
+const allTurist = ref<any>([])
+    const companyID = ref<string | null>(null);
+
+const SaleChannelName = envConfig.SaleChannelName || ''
+console.log(SaleChannelName, 'SaleChannelName')
+const tripStore = useTripStore()
+const stored = useAccordionsStore()
+const applicationName = ref(p.Product)
+const controllerName = ref('Product')
+const name = ref('NewReservation')
+const { showModalState, showModal, closeModal } = useModal();
+// const storedInvoices = ref<any>([])
+// const accountState = ref<boolean>(false);
+const ferryTravelType = ref(0);
+// const priceGroup = ref(0);
+const agencyID = ref(0);
+// const saleChannelID = ref(0);
+const priceGroupID = ref(0);
+// const postArrivalData = ref<any>(null);
+// const journeyID = ref<any>(null);
+////////////////
+
+interface TripParams {
+    FerryTravelType?: number;
+    PriceGroupID?: number;
+    AgencyID?: number;
+}
+
+const ferryList = ref([
+    {
+         journeyID: null,
+         journeyTravelDirection: null,
+         price: null,
+         currencyID: null
+    }
+]);
+
+const postData = async () => {
+     // console.log(applicationName.value, 'applicationName', controllerName.value, 'controllerName', name.value, 'nameValue', params, 'params')
+     let params;
+     params = {
+          ferryTravelType: ferryTravelType.value,
+          agencyID: agencyID.value,
+          saleChannelID: 1,
+          priceGroupID: priceGroupID.value,
+          touristList: allTurist.value,
+          ferryList: ferryList.value,
+        //   invoiceDetail: selectedPassenger.value //PROP DRİLLİNG HERE!
+        invoiceDetail: 0
+     }
+     console.log(params, 'params from payment step');
+     callPostApi(applicationName.value, controllerName.value, name.value, params)
+          .then((response: any) => {
+               if (response.status === 1) {
+                    console && console.log(response.data);
+               }
+          })
+          .catch((error) => {
+               console.error('An error occurred:', error)
+          })
+}
 
 const show = ref(false);
 
@@ -412,6 +480,54 @@ const fakeData2: Data = {
 const fakeCreditCart: Data = {
     title: "Ödemenizi bu sayfa üzerinden güvenli bir şekilde yapabilirsiniz. 3D Secure aktif olarak kullanabilirisiniz.",
 }
+
+onMounted(() => {
+    if (stored.getPassengerData.length === 0) {
+         router.push('/')
+    } else {
+        //  const adults = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
+         allTurist.value = stored.getPassengerData;
+         allTurist.value = stored.getPassengerData.map((passenger: any) => ({
+               name: passenger.name,
+               surname: passenger.surname,
+               birthDate: passenger.birth, //birhdate eklememişim ekleyeceğim.
+               // gender: passenger.gender, //title ile aynı isim olabilir?
+               genderName: passenger.title,
+               nationalityID: passenger.id,
+               nationalityName: passenger.nation,
+               // identityNumber: passenger.identityNumber, //identityNumber bende yok
+               passportNumber: passenger.passport, //pasaport var
+               email: passenger.email,
+               phone: passenger.tel, //phone eklememişim ekleyeceğim
+               // passportValidDate: passenger.passportValidDate, //bende passaport girişi yok
+               // visaValidDate: passenger.visaValidDate, //bende vize girişi yok
+         }));
+         const departureDat2a = tripStore.getDepartureData;
+         ferryList.value = departureDat2a.map((ferryList: any) => ({
+              journeyID: ferryList.JourneyID,
+              journeyTravelDirection: ferryList.RouteName,
+              price: ferryList.Price,
+              currencyID: ferryList.CurrencyID,
+         }));
+         console.log(ferryList.value, 'ferryList.value')
+        //  const filteredAdults = adults.map((adult: any) => ({
+        //       invoiceType: 0,
+        //       invoiceName: adult.name,
+        //       invoiceSurname: adult.surname,
+        //       invoiceCompanyName: adult.company,
+        //       invoiceTaxNumber: adult.taxNumber,
+        //       invoiceTaxOffice: adult.taxOffice,
+        //       invoiceAddress: adult.address,
+        //  }));
+        //  newInvoices.value.push(...filteredAdults);
+         const arrivalData = tripStore.getArrivalData;
+         const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
+         ferryTravelType.value = FerryTravelType ?? 0;
+         priceGroupID.value = PriceGroupID ?? 0;
+         agencyID.value = AgencyID ?? 0;
+         companyID.value = arrivalData[0].CompanyID;
+    }
+})
 
 </script>
 

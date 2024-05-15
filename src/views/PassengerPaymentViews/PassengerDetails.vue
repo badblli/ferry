@@ -124,11 +124,13 @@
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
-                                                       <vue-tel-input v-model="accordion.tel" v-bind="bindProps"></vue-tel-input>
+                                                       <vue-tel-input v-model="accordion.tel"
+                                                            v-bind="bindProps"></vue-tel-input>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.birth"
+                                                            <input v-model="formattedBirth"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="01/12/2000" />
+                                                                 type="text" placeholder="gg/aa/yyyy"
+                                                                 @input="formatDate" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
@@ -213,7 +215,8 @@
                                         </div>
                                         <p v-if="showWarning" class="ml-6 mt-2 text-gray-500">*Alanlar
                                              doldurulmalıdır.</p>
-                                             <p v-if="showEmptyAccordionError" class="ml-6 mt-2 text-gray-500">*Alan Eklenmelidir.</p>
+                                        <p v-if="showEmptyAccordionError" class="ml-6 mt-2 text-gray-500">*Alan
+                                             Eklenmelidir.</p>
                                    </div>
                               </div>
                          </div>
@@ -247,20 +250,20 @@ const showWarning = ref(false)
 const showEmptyAccordionError = ref(false)
 
 const bindProps = {
-  autoFormat: false,
-  disabledFetchingCountry: false,
-  enabledFlags: true,
-  dropdownOptions: {
-    showDialCodeInSelection: true,
-    showDialCodeInList: true,
-    showFlags: true,
-  },
-  inputOptions: {
-    maxlength: 16,
-    placeholder: "Tel",
-  },
-  mode: "international",
-  validCharactersOnly: true,
+     autoFormat: false,
+     disabledFetchingCountry: false,
+     enabledFlags: true,
+     dropdownOptions: {
+          showDialCodeInSelection: true,
+          showDialCodeInList: true,
+          showFlags: true,
+     },
+     inputOptions: {
+          maxlength: 16,
+          placeholder: "Tel",
+     },
+     mode: "international",
+     validCharactersOnly: true,
 };
 
 const setPrimary = (index: any) => {
@@ -350,23 +353,23 @@ const router = useRouter()
 
 const navigateToPassenger = () => {
      // Tüm accordion'lar için gerekli alanların doldurulmuş ve kaydedilmiş olduğunu kontrol et
-   if(accordions.value.length > 0) {
-     const isAllCompleteAndSaved = accordions.value.every((accordion: any) =>
-          accordion.isComplete &&
-          accordion.name && accordion.surname && accordion.email &&
-          accordion.tel && accordion.nation && accordion.passport && accordion.id
-     );
+     if (accordions.value.length > 0) {
+          const isAllCompleteAndSaved = accordions.value.every((accordion: any) =>
+               accordion.isComplete &&
+               accordion.name && accordion.surname && accordion.email &&
+               accordion.tel && accordion.nation && accordion.passport && accordion.id
+          );
 
-     if (isAllCompleteAndSaved) {
-          showWarning.value = false; // Eğer her şey tamamsa, uyarı gösterme
-          router.push('/payment'); // Tüm accordionlar uygun şekilde tamamlandıysa ödeme sayfasına yönlendir
+          if (isAllCompleteAndSaved) {
+               showWarning.value = false; // Eğer her şey tamamsa, uyarı gösterme
+               router.push('/payment'); // Tüm accordionlar uygun şekilde tamamlandıysa ödeme sayfasına yönlendir
+          } else {
+               showWarning.value = true; // Eğer tüm accordionlar uygun şekilde tamamlanmamışsa uyarı göster
+               console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
+          }
      } else {
-          showWarning.value = true; // Eğer tüm accordionlar uygun şekilde tamamlanmamışsa uyarı göster
-          console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
+          showEmptyAccordionError.value = true;
      }
-   } else {
-     showEmptyAccordionError.value = true;
-   }
 }
 
 const addNewPassenger = () => {
@@ -399,8 +402,25 @@ watchEffect(() => {
      }
 })
 
-window.onbeforeunload = function() {
-  return "Data will be lost if you leave the page, are you sure?";
+window.onbeforeunload = function () {
+     return "Data will be lost if you leave the page, are you sure?";
+};
+
+const formattedBirth = ref('');
+
+// const formatDate = () => {
+//   formattedBirth.value = formattedBirth.value.replace(/\D/g, '').replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+// };
+
+const formatDate = () => {
+     let birth = formattedBirth.value.replace(/\D/g, '');
+     if (birth.length > 2) {
+          birth = birth.substring(0, 2) + '/' + birth.substring(2);
+     }
+     if (birth.length > 5) {
+          birth = birth.substring(0, 5) + '/' + birth.substring(5);
+     }
+     formattedBirth.value = birth;
 };
 
 // let timeout = null;
@@ -433,14 +453,13 @@ window.onbeforeunload = function() {
 //     window.location.href = '/';
 //   }
 // });
+
+
 </script>
 
-<style >
-
-
+<style>
 /* .vue-tel-input {
      border: none,
 
 } */
-
 </style>

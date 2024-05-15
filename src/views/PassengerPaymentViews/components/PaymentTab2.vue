@@ -79,7 +79,7 @@
     <div class="flex flex-row justify-end mr-9 mb-[34px]">
          <div class="flex flex-col">
               <button @click="saveInvoice" class="w-[222px] h-[53px] rounded-lg bg-blue-500 border ">
-                   <div class="text-center text-white text-lg font-medium font-display"> {{ buttonText }} </div>
+                   <div class="text-center text-white text-lg font-medium font-display">{{ buttonText }}</div>
               </button>
               <div class="ml-8 mt-2 text-gray-500" v-if="invoice.showBtnWarning">*Alanlar doldurulmalıdır.</div>
          </div>
@@ -113,16 +113,16 @@ const name = ref('NewReservation')
 
 const tripStore = useTripStore()
 const stored = useAccordionsStore()
-const storedInvoices = ref<any>([])
+// const storedInvoices = ref<any>([])
 const newInvoices = ref<any>([])
-const accountState = ref<boolean>(false);
+// const accountState = ref<boolean>(false);
 const ferryTravelType = ref(0);
-const priceGroup = ref(0);
+// const priceGroup = ref(0);
 const agencyID = ref(0);
-const saleChannelID = ref(0);
+// const saleChannelID = ref(0);
 const priceGroupID = ref(0);
 // const postArrivalData = ref<any>(null);
-const journeyID = ref<any>(null);
+// const journeyID = ref<any>(null);
 
 const touristList = ref([
     {
@@ -152,14 +152,9 @@ const ferryList = ref([
 
 const router = useRouter();
 onBeforeRouteLeave((to, from, next) => {
-    // Reset the Pinia store when the route changes
     stored.$reset();
     next();
 });
-
-// const props = defineProps({
-//     paymentSuccess: Boolean // props for receiving paymentSuccess from parent component
-// })
 
 defineProps<{
     fakeData: {
@@ -186,12 +181,6 @@ interface TripParams {
     PriceGroupID?: number;
     AgencyID?: number;
 }
-
-// onMounted(() => {
-//      console.log('page is onmounted')
-//      storedPassengers.value = stored.getAccordionData
-//      console.log(storedPassengers.value, 'accordion data is here!')
-// })
 
 onMounted(() => {
     if (stored.getPassengerData.length === 0) {
@@ -222,55 +211,26 @@ onMounted(() => {
               currencyID: ferryList.currencyID,
          }));
          console.log(ferryList.value, 'ferryList.value')
-         // console.log(stored.getPassengerData, 'allturistallturistallturistallturist')
-         // console.log(adults, 'adults')
          const filteredAdults = adults.map((adult) => ({
+              invoiceType: 0,
               invoiceName: adult.name,
               invoiceSurname: adult.surname,
               invoiceCompanyName: adult.company,
               invoiceTaxNumber: adult.taxNumber,
               invoiceTaxOffice: adult.taxOffice,
               invoiceAddress: adult.address,
-          //      age: adult.age,
-          //      passport: adult.passport,
-          //      tel: adult.tel,
-          //      birth: adult.birth
-          //      invoiceName: adult.name,
-          //      invoiceSurname: adult.surname,
-          //      invoiceMailAddress: adult.email,
-          //      invoicePhoneNumber: adult.tel,
-          //      invoiceTCKNo: adult.id,
-          //      invoiceAddress: adult.address,
          }));
-         console.log(filteredAdults, 'filteredAdults')
          newInvoices.value.push(...filteredAdults);
-         console.log(...filteredAdults, '...filteredAdults');
-         const departureData = tripStore.getDepartureData;
          const arrivalData = tripStore.getArrivalData;
-         const postArrivalData = tripStore.getArrivalData;
-         const allTrip = tripStore.getFerryList
-         console.log(allTrip, 'allTrip')
-         console.log(postArrivalData, 'postArrivalData')
-         console.log(departureData, 'departureData')
-         const getTripParams = tripStore.getTripParams;
-         console.log(getTripParams, 'getTripParams');
          const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
          ferryTravelType.value = FerryTravelType ?? 0;
          priceGroupID.value = PriceGroupID ?? 0;
          agencyID.value = AgencyID ?? 0;
          companyID.value = arrivalData[0].CompanyID;
-         console.log(stored.getPassengerData, 'stored.getPassengerData')
-         // console.log(stored.getAccordionData, 'Filtered accordion data is here!');
-         // console.log(agencyID.value, 'agencyID.value')
-         // console.log(FerryTravelType, 'FerryTravelType')
-         // console.log(getTripParams, 'getTripParamsgetTripParamsgetTripParams');
-         // console.log(FerryTravelType, 'FerryTravelType', PriceGroup, 'PriceGroup', AgencyID, 'AgencyID')
-         // console.log(arrivalData[0].CompanyID, 'arrivalData');
     }
 })
 
 const postData = async () => {
-    // console.log(applicationName.value, 'applicationName', controllerName.value, 'controllerName', name.value, 'nameValue', params, 'params')
     let params;
     params = {
          ferryTravelType: ferryTravelType.value,
@@ -291,20 +251,6 @@ const postData = async () => {
               console.error('An error occurred:', error)
          })
 }
-
-// const buttonStyleClass = computed((any:any) => {
-//     if (invoice.value.isComplete) {
-//         return 'bg-yellow-500'; // Kayıt başarılı ise sarı renk
-//     } else {
-//         return 'bg-blue-700'; // Diğer durumlarda mavi renk
-//     }
-// });
-
-// onMounted(() => {
-// console.log(stored.getPassengerData, 'STORED GET PASSENGER DATA');
-//     storedPassengers.value = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
-//     console.log(storedPassengers.value, 'Filtered accordion data is here!');
-// });
 
 const invoice = ref({
     isLoading: false,
