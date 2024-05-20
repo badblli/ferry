@@ -127,10 +127,7 @@
                                                        <vue-tel-input v-model="accordion.tel"
                                                             v-bind="bindProps"></vue-tel-input>
                                                        <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="formattedBirth"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="text" placeholder="gg/aa/yyyy"
-                                                                 @input="formatDate" />
+                                                            <input v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="text" placeholder="gg/aa/yyyy" @input="formatDate(accordion)" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
                                                        </div>
@@ -248,6 +245,8 @@ import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
 const showWarning = ref(false)
 const showEmptyAccordionError = ref(false)
+const formattedBirthValue = ref('')
+import AccordionPanel from '@/components/advanced/AccordionPanel.vue';
 
 const bindProps = {
      autoFormat: false,
@@ -412,15 +411,15 @@ const formattedBirth = ref('');
 //   formattedBirth.value = formattedBirth.value.replace(/\D/g, '').replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
 // };
 
-const formatDate = () => {
-     let birth = formattedBirth.value.replace(/\D/g, '');
+const formatDate = (accordion) => {
+     let birth = accordion.birthDate.replace(/\D/g, '');
      if (birth.length > 2) {
           birth = birth.substring(0, 2) + '/' + birth.substring(2);
      }
      if (birth.length > 5) {
           birth = birth.substring(0, 5) + '/' + birth.substring(5);
      }
-     formattedBirth.value = birth;
+     accordion.birthDate = birth;
 };
 
 // let timeout = null;

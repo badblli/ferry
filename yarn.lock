@@ -3209,10 +3209,10 @@ postcss@^8.4.35:
     picocolors "^1.0.0"
     source-map-js "^1.2.0"
 
-preline@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/preline/-/preline-2.0.3.tgz"
-  integrity sha512-V/sLmRIHd23UCdvJNRKKszntgUqA0381erVzRpQ48NjjMOgI7DyFW4mr+lg387V0oeBc5Dx9Jxa5voppVoH9GA==
+preline@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/preline/-/preline-2.1.0.tgz#6ab006c11379a03b380d341b7b5b6f827baebc40"
+  integrity sha512-7pwrGNPVfGYUv1XHW9i49ejowIVHCDTx8JvbM43hapLi1GCjj9NnAZmTKupxaROboB4Nvp2x0ADBVKAhpmZppA==
   dependencies:
     "@popperjs/core" "^2.11.2"
 

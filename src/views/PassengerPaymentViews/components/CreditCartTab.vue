@@ -12,12 +12,12 @@
             </form>
         </div>
     </div>
-    <div class="flex flex-row justify-end mr-9 mb-[34px]">
+    <!-- <div class="flex flex-row justify-end mr-9 mb-[34px]">
         <button class="w-[222px] h-[53px] bg-blue-700 rounded-lg border">
             <div class="text-center text-white text-lg font-medium font-['Plus Jakarta Display']">
                 Bilgileri Kaydet</div>
         </button>
-    </div>
+    </div> -->
 </template>
   
 <script setup lang="ts">

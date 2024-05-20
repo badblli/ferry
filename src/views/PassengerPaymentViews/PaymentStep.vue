@@ -80,7 +80,7 @@
                                             <div class="mt-[65px] ml-10">
                                                 <div id="horizontal-scroll-tab-preview" role="tabpanel"
                                                     aria-labelledby="horizontal-scroll-tab-item-1">
-                                                    <PaymentTab :fakeData="fakeData" />
+                                                    <PaymentTab :fakeData="fakeData" @passengerSelected="handlePassengerSelected"  />
                                                 </div>
                                                 <div id="horizontal-scroll-tab-2" class="hidden" role="tabpanel"
                                                     aria-labelledby="horizontal-scroll-tab-item-2">
@@ -368,14 +368,33 @@ import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue';
 // import { useModal } from '@/compasable/useModal'
 // const modal = useModal();
 
+const selectedPassengerFromChild = ref(null);
+
+// Method to handle the passenger selected event
+const handlePassengerSelected = (passenger: any) => {
+  selectedPassengerFromChild.value = passenger;
+  console.log('Passenger selected in parent:', passenger);
+};
+
+interface Passenger {
+     id?: string;
+     invoiceType?: null,
+     invoiceName: string;
+     invoiceSurname: string;
+     invoiceCompanyName?: string;
+     invoiceTCKNo?: string;
+     invoiceAddress?: string;
+     invoiceTaxOffice?: string;
+     invoiceTaxNumber?: string;
+}
+
 ///
 import { callPostApi } from '@/utils/globalHelper'
 import p from '@/utils/pathConfig'
 import envConfig from '../../utils/config'
 
 const allTurist = ref<any>([])
-    const companyID = ref<string | null>(null);
-
+const companyID = ref<string | null>(null);
 const SaleChannelName = envConfig.SaleChannelName || ''
 console.log(SaleChannelName, 'SaleChannelName')
 const tripStore = useTripStore()
@@ -420,8 +439,9 @@ const postData = async () => {
           priceGroupID: priceGroupID.value,
           touristList: allTurist.value,
           ferryList: ferryList.value,
-        //   invoiceDetail: selectedPassenger.value //PROP DRİLLİNG HERE!
-        invoiceDetail: 0
+        // invoiceDetail: selectedPassenger.value //PROP DRİLLİNG HERE!
+        // invoiceDetail: 0
+        invoiceDetail: getSelected
      }
      console.log(params, 'params from payment step');
      callPostApi(applicationName.value, controllerName.value, name.value, params)
@@ -434,6 +454,9 @@ const postData = async () => {
                console.error('An error occurred:', error)
           })
 }
+
+const getSelected = tripStore.getSelected;
+console.log(getSelected, 'params from payment step');
 
 const show = ref(false);
 
@@ -487,12 +510,14 @@ onMounted(() => {
     } else {
         //  const adults = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
          allTurist.value = stored.getPassengerData;
+         console.log(stored.getPassengerData, 'stored get passenger data');
          allTurist.value = stored.getPassengerData.map((passenger: any) => ({
                name: passenger.name,
                surname: passenger.surname,
                birthDate: passenger.birth, //birhdate eklememişim ekleyeceğim.
                // gender: passenger.gender, //title ile aynı isim olabilir?
                genderName: passenger.title,
+               //identity olmalıdır
                nationalityID: passenger.id,
                nationalityName: passenger.nation,
                // identityNumber: passenger.identityNumber, //identityNumber bende yok
@@ -502,10 +527,10 @@ onMounted(() => {
                // passportValidDate: passenger.passportValidDate, //bende passaport girişi yok
                // visaValidDate: passenger.visaValidDate, //bende vize girişi yok
          }));
-         const departureDat2a = tripStore.getDepartureData;
-         ferryList.value = departureDat2a.map((ferryList: any) => ({
+         const departureData = tripStore.getDepartureData;
+         ferryList.value = departureData.map((ferryList: any) => ({
               journeyID: ferryList.JourneyID,
-              journeyTravelDirection: ferryList.RouteName,
+              journeyTravelDirection: ferryList.FerryTravelType,
               price: ferryList.Price,
               currencyID: ferryList.CurrencyID,
          }));
@@ -528,7 +553,16 @@ onMounted(() => {
          companyID.value = arrivalData[0].CompanyID;
     }
 })
+// const invoiceDetail = ref<Passenger | null>(null);
 
+// console.log(invoiceDetail.value, 'invoiceDetail emit')
+
+// const handlePassengerSelected = (passenger: Passenger) => {
+//   console.log(passenger, 'passenger')
+//   invoiceDetail.value = passenger;
+//   console.log(invoiceDetail.value, 'invoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetail')
+//   console.log("Passenger selected:", passenger);
+// }
 </script>
 
 <style scoped></style>

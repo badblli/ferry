@@ -17,20 +17,23 @@ export const useTripStore = defineStore('trip', {
     selectedDepartureData: any[]; 
     selectedArrivalData: any[]; 
     ferryList: any[];
+    selected: any[];
   } => ({
     tripParams: {} as TripParams,
     selectedDepartureData: [],
     selectedArrivalData: [],
     ferryList: [],
+    selected: []
   }),
   getters: {
-    getTripParams: (state) => state.tripParams,
+    getTripParams: (state: any) => state.tripParams,
     // getTotalPassengerCount: (state) => {
     //   return state.tripParams.AdultCount + state.tripParams.ChildCount + state.tripParams.InfantCount;
     // },
-    getDepartureData: (state) => state.selectedDepartureData,
-    getArrivalData: (state) => state.selectedArrivalData,
-    getFerryList: (state) => state.ferryList,
+    getDepartureData: (state: any) => state.selectedDepartureData,
+    getArrivalData: (state: any) => state.selectedArrivalData,
+    getFerryList: (state: any) => state.ferryList,
+    getSelected: (state: any) => state.selected,
   },
   actions: {
     setTripParams(params: TripParams) {
@@ -44,6 +47,9 @@ export const useTripStore = defineStore('trip', {
     },
     setFerryList: function(item: any) {
       this.ferryList = item;
+    },
+    setSelected(item: any) {
+      this.selected = item;
     },
   },
 });

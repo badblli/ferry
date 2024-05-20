@@ -70,6 +70,7 @@
                </form>
           </div>
      </div>
+     
      <div class="flex flex-row justify-end mr-9 mb-[34px]">
           <div class="flex flex-col">
                <button @click="saveInvoice" class="w-[222px] h-[53px] rounded-lg bg-blue-500 border ">
@@ -80,7 +81,7 @@
      </div>
      <div class="flex flex-row justify-end mr-9 mb-[34px]" @click="postData">
           POST DATA USAGE
-     </div>
+     </div>    
 </template>
 
 <script setup lang="ts">
@@ -98,6 +99,9 @@ import { useTripStore } from '@/stores/tripStore'
 import { callPostApi } from '@/utils/globalHelper'
 import p from '@/utils/pathConfig'
 import envConfig from '../../../utils/config'
+import { defineEmits } from 'vue';
+
+const emit = defineEmits(['passengerSelected']);
 
 const companyID = ref<string | null>(null);
 const allTurist = ref<any>([])
@@ -167,8 +171,8 @@ defineProps<{
 }>()
 
 interface Passenger {
-     id: string;
-     invoiceType: 0,
+     id?: string;
+     invoiceType: null,
      invoiceName: string;
      invoiceSurname: string;
      invoiceMailAddress: string;
@@ -192,40 +196,47 @@ interface TripParams {
 //      console.log(storedPassengers.value, 'accordion data is here!')
 // })
 
+const formatDateForBackend = (date: any) => {
+    const d = new Date(date);
+    const year = d.getFullYear().toString();
+    const month = ('0' + (d.getMonth() + 1)).slice(-2);
+    const day = ('0' + d.getDate()).slice(-2);
+    return `${year}-${day}-${month}`;
+};
+
 onMounted(() => {
      if (stored.getPassengerData.length === 0) {
           router.push('/')
      } else {
           const adults = stored.getPassengerData.filter((passenger) => passenger.age === 'yetişkin');
+          console.log(adults, 'adults!!!!!!!!')
           allTurist.value = stored.getPassengerData;
+          console.log(stored.getPassengerData, 'stored get passenger data')
           allTurist.value = stored.getPassengerData.map(passenger => ({
                name: passenger.name,
                surname: passenger.surname,
-               birthDate: passenger.birth, //birhdate eklememişim ekleyeceğim.
+               birthDate: formatDateForBackend(passenger.birthDate), //birhdate eklememişim ekleyeceğim.
                // gender: passenger.gender, //title ile aynı isim olabilir?
-               genderName: passenger.title,
-               nationalityID: passenger.id,
+               // genderName: passenger.title,
+               identityNumber: passenger.id,
                nationalityName: passenger.nation,
                // identityNumber: passenger.identityNumber, //identityNumber bende yok
                passportNumber: passenger.passport, //pasaport var
                email: passenger.email,
-               phone: passenger.tel, //phone eklememişim ekleyeceğim
+               phone: passenger.tel, //phone eklememişim ekleyeceğim,
+               gender: 0,
                // passportValidDate: passenger.passportValidDate, //bende passaport girişi yok
                // visaValidDate: passenger.visaValidDate, //bende vize girişi yok
           }));
-          const departureDat2a = tripStore.getDepartureData;
-          console.log(departureDat2a, 'departure dataaaaaaaaaaaaaaaaaaaaa');
-          ferryList.value = departureDat2a.map((ferryList: any) => ({
+          const departureData = tripStore.getDepartureData;
+          ferryList.value = departureData.map((ferryList: any) => ({
                journeyID: ferryList.JourneyID,
                journeyTravelDirection: ferryList.FerryTravelType,
                price: ferryList.Price,
                currencyID: ferryList.CurrencyID,
           }));
-          console.log(ferryList.value, 'ferryList.value')
-          // console.log(stored.getPassengerData, 'allturistallturistallturistallturist')
-          // console.log(adults, 'adults')
           const filteredAdults = adults.map((adult) => ({
-               invoiceType: 0,
+               invoiceType: 1,
                invoiceName: adult.name,
                invoiceSurname: adult.surname,
                invoiceMailAddress: adult.email,
@@ -233,35 +244,18 @@ onMounted(() => {
                invoiceTCKNo: adult.id,
                invoiceAddress: adult.address,
           }));
-          console.log(filteredAdults, 'filteredAdults')
           newInvoices.value.push(...filteredAdults);
-          console.log(...filteredAdults, '...filteredAdults');
-          const departureData = tripStore.getDepartureData;
           const arrivalData = tripStore.getArrivalData;
-          const postArrivalData = tripStore.getArrivalData;
-          const allTrip = tripStore.getFerryList
-          console.log(allTrip, 'allTrip')
-          console.log(postArrivalData, 'postArrivalData')
-          console.log(departureData, 'departureData')
-          const getTripParams = tripStore.getTripParams;
-          console.log(getTripParams, 'getTripParams');
           const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
           ferryTravelType.value = FerryTravelType ?? 0;
           priceGroupID.value = PriceGroupID ?? 0;
           agencyID.value = AgencyID ?? 0;
           companyID.value = arrivalData[0].CompanyID;
-          console.log(stored.getPassengerData, 'stored.getPassengerData')
-          // console.log(stored.getAccordionData, 'Filtered accordion data is here!');
-          // console.log(agencyID.value, 'agencyID.value')
-          // console.log(FerryTravelType, 'FerryTravelType')
-          // console.log(getTripParams, 'getTripParamsgetTripParamsgetTripParams');
-          // console.log(FerryTravelType, 'FerryTravelType', PriceGroup, 'PriceGroup', AgencyID, 'AgencyID')
-          // console.log(arrivalData[0].CompanyID, 'arrivalData');
      }
 })
 
+
 const postData = async () => {
-     // console.log(applicationName.value, 'applicationName', controllerName.value, 'controllerName', name.value, 'nameValue', params, 'params')
      let params;
      params = {
           ferryTravelType: ferryTravelType.value,
@@ -282,20 +276,6 @@ const postData = async () => {
                console.error('An error occurred:', error)
           })
 }
-
-// const buttonStyleClass = computed((any:any) => {
-//     if (invoice.value.isComplete) {
-//         return 'bg-yellow-500'; // Kayıt başarılı ise sarı renk
-//     } else {
-//         return 'bg-blue-700'; // Diğer durumlarda mavi renk
-//     }
-// });
-
-// onMounted(() => {
-// console.log(stored.getPassengerData, 'STORED GET PASSENGER DATA');
-//     storedPassengers.value = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
-//     console.log(storedPassengers.value, 'Filtered accordion data is here!');
-// });
 
 const invoice = ref({
      isLoading: false,
@@ -366,8 +346,17 @@ const buttonText = computed(() => {
 });
 
 const clearForm = () => {
-     selectedPassenger.value = { id: null, name: '', surname: '', email: '', birthdate: '', nation: '', passport: '' };
+    selectedPassenger.value = {
+        invoiceType: 1, // invoiceType özelliğini 0 olarak ata
+        invoiceName: '',
+        invoiceSurname: '',
+        invoiceMailAddress: '',
+        invoicePhoneNumber: '', // İsteğe bağlı diğer özellikler
+        invoiceTCKNo: '',
+        invoiceAddress: '',
+    };
 };
+
 
 const nameModel = computed({
      get: () => selectedPassenger.value?.invoiceName || '',  // Fallback to an empty string if null
@@ -473,10 +462,15 @@ const isSelectedClass = (passenger: any) => {
 //      return selectedPassenger.value && passenger.id === selectedPassenger.value.id ? 'bg-blue-500 text-white' : 'bg-white';
 // };
 const selectedPassenger = ref<Passenger | null>(null);
-const selectPassenger = (passenger: Passenger, index: any) => {
-     selectedPassenger.value = passenger;
-     console.log(`Passenger selected at index ${index}:`, passenger);
+
+const selectPassenger = (passenger, index) => {
+  selectedPassenger.value = passenger;
+  console.log(`Passenger selected at index ${index}:`, passenger);
+
+  // Emit the selected passenger to the parent component
+  emit('passengerSelected', selectedPassenger.value);
 };
+console.log(selectedPassenger.value, 'selected passenger value')
 </script>
 
 <style scoped>
