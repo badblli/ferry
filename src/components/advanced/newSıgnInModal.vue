@@ -98,10 +98,10 @@
                          Koşullarımızı ve Gizlilik Politikamızı</span><span
                          class="text-slate-500 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug"> kabul
                          ettiğiniz anlamına gelir</span></div>
-               <div class="text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[21px] tracking-widest">
-                    YA DA</div>
+               <!-- <div class="text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[21px] tracking-widest">
+                    YA DA</div> -->
 
-               <div class="mt-7">
+               <!-- <div class="mt-7">
                     <div class="flex flex-col md:flex-row justify-center items-center">
                          <button
                               class="flex p-4 h-14 bg-white rounded-xl border border-stone-300 mr-1 text-zinc-600 text-base font-semibold font-['Plus Jakarta Sans'] leading-normal flex flex-row items-center">
@@ -120,7 +120,7 @@
                               &nbsp;Kayıt Ol
                          </a>
                     </p>
-               </div>
+               </div> -->
           </div>
      </div>
 </template>

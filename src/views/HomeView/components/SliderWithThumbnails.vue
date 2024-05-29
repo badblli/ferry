@@ -1,5 +1,5 @@
 <template>
-     <div>
+     <div v-show="mainHomeSplide.img?.length > 0">
           <div class="lg:px-[100px] px-2 md:px-16 sm:px-8 relative centered-w">
                <div
                     class="lg:absolute block lg:flex flex-row lg:w-[502px] w-full lg:p-0 p-1 lg:mt-0 mt-1 z-20 lg:bg-white bg-slate-200 top-9 left-36 rounded-2xl">
@@ -64,12 +64,13 @@
                     </div>
                </div>
                <form class="md:relative md:max-w-[798px] hidden md:block mx-auto -translate-y-72 md:z-50 z-40">
+
                     <div class="flex flex-row">
                          <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
                               class="bg-slate-200 mr-[5px] py-3 px-9 rounded-t-xl cursor-pointer">
                               <span @click="showTrue = false"
                                    class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug">{{
-                                   mainHomeSplide.search?.SearchFerryTicket?.title }}</span>
+                                        mainHomeSplide.search?.SearchFerryTicket?.title }}</span>
                          </div>
                          <div :class="{ 'bg-slate-200': !showTrue, 'bg-white': showTrue }"
                               class="mr-4 bg-slate-200 py-3 px-9 rounded-t-xl text-white cursor-pointer">
@@ -78,18 +79,22 @@
                                    {{ mainHomeSplide.search?.SearchReservation?.reservationNo }} </span>
                          </div>
                     </div>
+
                     <div class="bg-white rounded-b-xl rounded-tr-xl flex items-center">
                          <div class="flex flex-row items-center w-full" v-show="!showTrue">
+
                               <div class="hs-dropdown flex flex-row items-center ml-7">
+
                                    <button id="hs-dropdown-with-dividers" type="button"
                                         class="cursor-pointer flex flex-col justify-start">
                                         <div class="text-black text-base font-medium font-display tracking-tight">{{
-                                   mainHomeSplide.search?.SearchFerryTicket?.from }}</div>
+                                             mainHomeSplide.search?.SearchFerryTicket?.from }}</div>
                                         <div
                                              class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
                                              {{ _fromWhere?.TownName }}
                                         </div>
                                    </button>
+
                                    <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                                         aria-labelledby="hs-dropdown-with-dividers">
                                         <div class="flex flex-col w-[277px] p-5">
@@ -100,7 +105,7 @@
                                                        class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                        <a
                                                             class="text-black text-base font-medium font-display tracking-tight">{{
-                                   i.TownName }}</a>
+                                                                 i.TownName }}</a>
                                                   </div>
                                              </div>
                                         </div>
@@ -115,15 +120,17 @@
                                         </div>
                                    </div>
                               </div>
+
                               <div @click="toggleDataPlacement"
                                    class="bg-gray-200 rounded-full flex flex-row justify-center items-center p-[7px] ml-[26px] cursor-pointer">
                                    <IconArrowsLeftRight />
                               </div>
+
                               <div class="hs-dropdown flex flex-row items-center">
                                    <button id="hs-dropdown-with-dividers-2" type="button"
                                         class="cursor-pointer flex flex-col justify-start ml-[21px]">
                                         <div class="text-black text-base font-medium font-display tracking-tight">{{
-                                   mainHomeSplide.search?.SearchFerryTicket?.to }}</div>
+                                             mainHomeSplide.search?.SearchFerryTicket?.to }}</div>
                                         <div
                                              class="w-24 overflow-hidden whitespace-nowrap truncate text-black text-base font-light font-display tracking-tight text-start">
                                              {{ _toWhere?.TownName }}
@@ -148,19 +155,22 @@
                                                             :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
                                                             class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                             <a
-                                                                 class="text-black text-base font-medium font-display tracking-tight">{{ i.TownName }}</a>
+                                                                 class="text-black text-base font-medium font-display tracking-tight">{{
+                                                                      i.TownName }}</a>
                                                        </div>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
+
                               <div class="h-14 border-l border-zinc-300 ml-3"></div>
+
                               <div class="hs-dropdown flex flex-row items-center">
                                    <button id="hs-dropdown-with-dividers-3" type="button"
                                         class="cursor-pointer text-start ml-7">
                                         <div class="text-black text-base font-medium font-display tracking-tight">{{
-                                   mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
+                                             mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
                                         <div
                                              class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
                                              {{ _roundTrip?.Name }}
@@ -175,17 +185,21 @@
                                                   :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
                                                   class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                   <a
-                                                       class="text-black text-base font-medium font-display tracking-tight">{{i.Name }}</a>
+                                                       class="text-black text-base font-medium font-display tracking-tight">{{
+                                                            i.Name
+                                                       }}</a>
                                              </div>
                                         </div>
                                    </div>
                               </div>
+
                               <div class="h-14 border-l border-zinc-300 ml-3"></div>
+
                               <div class="flex flex-row items-center ml-7">
                                    <div class="cursor-pointer flex flex-col">
                                         <span @click="togglePickerModal"
                                              class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">{{
-                                   _roundTrip?.Name }}</span>
+                                                  _roundTrip?.Name }}</span>
                                         <span class="text-black text-base font-light font-display tracking-tight">
                                              {{ formattedDateToShow }}
                                         </span>
@@ -212,23 +226,22 @@
                                    </div>
                               </div>
                               <div class="h-14 border-l border-zinc-300"></div>
-                              <div class="hs-dropdown flex flex-row items-center [--auto-close:false] ml-7">
-                                   <button type="button" class="cursor-pointer">
+                              <div class="dropdown ml-7">
+                                   <button @click="toggleDropdown" type="button" class="cursor-pointer">
                                         <div
                                              class="text-start text-black text-base font-medium font-display tracking-tight">
                                              {{ mainHomeSplide.search?.SearchFerryTicket.passengers }}
                                         </div>
                                         <div class="text-black text-base font-light font-display tracking-tight">{{
-                                   mainHomeSplide.search?.SearchFerryTicket.choosePerson }}:
+                                             mainHomeSplide.search?.SearchFerryTicket.choosePerson }}:
 
                                              <span class="ml-1 justify-end fixed font-thin text-base">
                                                   {{ totalPassengerCount }}
                                              </span>
-
                                         </div>
                                    </button>
-                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
-                                        aria-labelledby="hs-dropdown-with-dividers-5">
+                                   <div v-show="isOpen"
+                                        class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                         <div class="flex flex-col mt-[37px] ml-6">
                                              <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
                                              <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
@@ -417,6 +430,11 @@ const togglePickerModal = () => {
 //      passengerModalVisible.value = !passengerModalVisible.value
 // }
 
+const isOpen = ref(false);
+const toggleDropdown = () => {
+     isOpen.value = !isOpen.value;
+};
+
 const formatDate = (dateInstance: string): string => {
      const date = new Date(dateInstance)
      if (isNaN(date.getTime())) {
@@ -569,7 +587,7 @@ const decreaseCount = (index: number) => {
      }
 }
 
-const totalCount = () => {    
+const totalCount = () => {
      return passenger.value.reduce((total, current) => total + current.count, 0);
 }
 
@@ -598,11 +616,11 @@ const getHomeSpide = async () => {
           if (res) {
                let data = res.data[0].layout
                mainHomeSplide.value = data.find((x: any) => x.__component === 'home-page.home-page')
-               console.log(mainHomeSplide, 'mainHomeSplide')
+               console.log(mainHomeSplide, 'mainHomeSplidemainHomeSplidemainHomeSplide')
                initializeSplide()
           }
      } catch (error) {
-          console.error('Hata:', error)
+          return 
      }
 }
 
@@ -775,7 +793,7 @@ function navigateToSecondPage() {
                FromTownID: departureTownId.value,
                ToTownID: arrivalTownId.value,
                DepartureDate: queryDate.formattedDepartureDate.value,
-               ArrivalDate: queryDate.formattedArrivalDate.value,
+               ReturnDate: queryDate.formattedArrivalDate.value,
                AdultCount: adultCount,
                ChildCount: childCount,
                InfantCount: infantCount,

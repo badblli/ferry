@@ -1,5 +1,5 @@
 <template>
-     <div>
+     <div v-if="mainNavbar.links?.length > 0">
           <nav
                class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="hs-dropdown relative inline-flex md:hidden">
@@ -141,7 +141,7 @@ const getNavbar = async () => {
                // console.log(data, 'im in mainNavbar compos')
 
                mainNavbar.value = data.find((x: any) => x.__component === 'global.navbar')
-               // console.log(mainNavbar.value, 'global.navbarnavbarnavbarnavbarnavbarnavbarnavbarnavbar')
+               console.log(mainNavbar.value, 'global.navbarnavbarnavbarnavbarnavbarnavbarnavbarnavbar')
           }
      } catch (error) {
           return

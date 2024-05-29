@@ -1,5 +1,4 @@
 import './assets/main.css'
-import 'preline/preline' // Assuming a pre-line library
 import 'vue-tel-input/vue-tel-input.css'; // Assuming a phone input library
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

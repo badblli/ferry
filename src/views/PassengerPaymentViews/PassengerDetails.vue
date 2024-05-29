@@ -36,14 +36,15 @@
                               <div
                                    class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
                                    Yolcu ve İletişim Bilgileri</div>
-                              <div class="hs-dropdown relative inline-flex [--auto-close:outside]">
-                                   <p
+                              <div class="relative inline-flex">
+                                   <p @click="toggleDropdown"
                                         class="text-black text-lg font-medium font-display items-center justify-center mt-4 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
                                         Yeni yolcu ekle</p>
-                                   <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 duration hidden z-10 transition-[margin,opacity] opacity-0 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4"
-                                        aria-labelledby="hs-dropdown-slideup-animation">
-                                        <div @click="addNewPassenger" class="bg-white space-y-3">
+                                   <div v-show="isOpen"
+                                        class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
+                                        <div class="bg-white space-y-3">
                                              <div v-for="(item, index) in ages" :key="index"
+                                                  @click="handleClick(item._id)"
                                                   class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
                                                   <div
                                                        class="text-black text-base font-medium font-display tracking-tight">
@@ -52,134 +53,120 @@
                                                   <div
                                                        class="text-right text-black text-base font-light font-display tracking-tight">
                                                        {{ item.age }}
+                                                       {{ item._id }}
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
                          </div>
-                         <div class="hs-accordion-group">
-                              <div v-for="accordion in accordions" :key="accordion"
-                                   class="hs-accordion items-centers rounded-xl mb-5 bg-white first:mt-8"
-                                   id="hs-active-bordered-heading-one">
-                                   <button
-                                        class="hs-accordion-toggle inline-flex flex-row justify-between py-3 md:px-[25px] px-1 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-black disabled:opacity-50 disabled:pointer-events-none"
-                                        aria-controls="hs-basic-active-bordered-collapse-one">
-                                        <div class="flex flex-row items-center justify-between w-full">
-                                             <div class="flex flex-row items-center">
-                                                  <div v-if="accordion.age === 'yetişkin'"
-                                                       class="w-[60px] h-[60px] bg-neutral-100 rounded-full flex justify-center items-center">
-                                                       <IconPersonSimpleRun />
-                                                  </div>
-                                                  <div v-else
-                                                       class="w-[60px] h-[60px] bg-neutral-100 rounded-full flex justify-center items-center">
-                                                       <IconBaby />
-                                                  </div>
+                         <div>
+                              <div v-for="(accordion, index) in accordions" :key="index"
+                                   class="items-centers rounded-xl bg-white first:mt-8">
+                                   <div class="w-full overflow-hidden transition-[height] duration-300">
+                                        <div class="flex flex-col">
+                                             <AccordionPanel aria-title="contact" :title2="getTitle2(accordion)"
+                                                  :title="getTitle(accordion)" :name="accordion.name"
+                                                  :surname="accordion.surname">
                                                   <div
-                                                       class="text-black sm:text-lg text-base font-semibold font-['Plus Jakarta Sans'] ml-[20px]">
-                                                       {{ accordion.title }}
-                                                  </div>
-                                             </div>
-                                             <div class="flex flex-row">
-                                                  <span
-                                                       class="hs-accordion-active:hidden mr-2 text-right items-center justify-center flex text-black text-base font-normal font-display tracking-tight">
-                                                       {{ accordion.name }}&nbsp;{{ accordion.surname }} </span>
-                                                  <span
-                                                       class="hs-accordion-active:hidden hidden md:block px-[6px] text-black text-[15px] font-medium font-display md:mx-7 mx-0 bg-slate-200 rounded-lg">
-                                                       Bilgileri Güncelle </span>
-                                                  <div class="items-center flex pl-1 md:mr-7 mr-1">
-                                                       <IconAccordionActiveArrow
-                                                            class="hs-accordion-active:block hidden" />
-                                                       <IconAccordionArrow class="hs-accordion-active:hidden block" />
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </button>
-                                   <div id="hs-basic-active-bordered-collapse-one"
-                                        class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                                        aria-labelledby="hs-active-bordered-heading-one">
-                                        <div class="pb-4 mb-10 flex flex-col">
-                                             <div class="w-full h-[1px] border border-gray-200"></div>
-                                             <div
-                                                  class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 px-5 mt-[67px] mb-24">
-                                                  <form class="w-full max-w-sm md:ml-[83px] ml-2">
-                                                       <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.name"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Name" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div>
-                                                       <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.surname"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Surname" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div>
-                                                       <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.email"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="E-mail" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div>
-                                                       <vue-tel-input v-model="accordion.tel"
-                                                            v-bind="bindProps"></vue-tel-input>
-                                                       <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="text" placeholder="gg/aa/yyyy" @input="formatDate(accordion)" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div>
-                                                       <div class="flex border-b border-neutral-200 mb-10">
+                                                       class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 px-5 mt-[67px] mb-24">
+                                                       <form class="w-full max-w-sm md:ml-[83px] ml-2">
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <input v-model="accordion.name"
+                                                                      @input="logValue('Name:', accordion.name)"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type" placeholder="Name" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
+                                                            </div>
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <input v-model="accordion.surname"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type" placeholder="Surname" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
+                                                            </div>
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <input v-model="accordion.email"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type" placeholder="E-mail" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
+                                                            </div>
+                                                            <vue-tel-input v-model="accordion.tel"
+                                                                 v-bind="bindProps"></vue-tel-input>
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <input v-model="accordion.birthDate"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="text" placeholder="gg/aa/yyyy"
+                                                                      @input="formatDate(accordion)" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
+                                                            </div>
+                                                            <!-- <div class="flex border-b border-neutral-200 mb-10">
                                                             <input v-model="accordion.nation"
                                                                  class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Nation" />
+                                                                 type="text" placeholder="nation" />
                                                             <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                  type="button"></div>
+                                                       </div> -->
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <select v-model="accordion.nation" name="nation"
+                                                                      :id="'nation-' + index"
+                                                                      class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4"
+                                                                      @change="logValue('Selected Nation:', accordion.nation)">
+                                                                      <option value="" disabled>
+                                                                           Nation
+                                                                      </option>
+                                                                      <option v-for="(data, idx) in countryList"
+                                                                           :key="idx" :value="data.Name"
+                                                                           class="option-style">
+                                                                           {{ data.Name }}
+                                                                      </option>
+                                                                 </select>
+                                                            </div>
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <input v-model="accordion.passport"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type" placeholder="Passport" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
+                                                            </div>
+                                                            <div class="flex border-b border-neutral-200 mb-10">
+                                                                 <input v-model="accordion.id"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type" placeholder="id" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
+                                                            </div>
+                                                       </form>
+                                                  </div>
+                                                  <div class="px-5 flex flex-row items-center justify-end">
+                                                       <div
+                                                            class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
+                                                            <div class="mr-4">Ana Yolcu Olarak Ayarla</div>
+                                                            <div @click="setPrimary(index)">
+                                                                 <input v-model="accordion.isPrimary" type="checkbox"
+                                                                      class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200" />
+                                                            </div>
                                                        </div>
-                                                       <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.passport"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="Passport" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div>
-                                                       <div class="flex border-b border-neutral-200 mb-10">
-                                                            <input v-model="accordion.id"
-                                                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                 type="type" placeholder="id" />
-                                                            <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                 type="button"></div>
-                                                       </div>
-                                                  </form>
-                                             </div>
-                                             <div class="px-5 flex flex-row items-center justify-end">
-                                                  <div
-                                                       class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
-                                                       <div class="mr-4">Ana Yolcu Olarak Ayarla</div>
-                                                       <div @click="setPrimary(index)">
-                                                            <input v-model="accordion.isPrimary" type="checkbox"
-                                                                 id="hs-xs-switch"
-                                                                 class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200" />
+                                                       <div
+                                                            class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
+                                                            Temizle</div>
+                                                       <div class="flex flex-col">
+                                                            <button :class="buttonClass(accordion)"
+                                                                 @click="saveAllPassenger(accordion)"
+                                                                 class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
+                                                                 {{ buttonText(accordion) }}
+                                                            </button>
+                                                            <div class="ml-8 mt-2 text-gray-500"
+                                                                 v-if="accordion.showBtnWarning">
+                                                                 *Alanlar
+                                                                 doldurulmalıdır.
+                                                            </div>
                                                        </div>
                                                   </div>
-                                                  <div
-                                                       class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
-                                                       Temizle</div>
-                                                  <div class="flex flex-col">
-                                                       <button :class="buttonClass(accordion)"
-                                                            @click="saveAllPassenger(accordion)"
-                                                            class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
-                                                            {{ buttonText(accordion) }}
-                                                       </button>
-                                                       <div class="ml-8 mt-2 text-gray-500"
-                                                            v-if="accordion.showBtnWarning">
-                                                            *Alanlar
-                                                            doldurulmalıdır.
-                                                       </div>
-                                                  </div>
-                                             </div>
+                                             </AccordionPanel>
                                         </div>
                                    </div>
                               </div>
@@ -228,9 +215,9 @@
 import { VueTelInput } from 'vue-tel-input';
 import 'vue-tel-input/vue-tel-input.css';
 import IconsArrowsLeftRight from '@/components/icons/IconsArrowsLeftRight.vue'
-import IconAccordionActiveArrow from '@/components/icons/IconAccordionActiveArrow.vue'
-import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue'
-import IconPersonSimpleRun from '@/components/icons/IconPersonSimpleRun.vue'
+// import IconAccordionActiveArrow from '@/components/icons/IconAccordionActiveArrow.vue'
+// import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue'
+// import IconPersonSimpleRun from '@/components/icons/IconPersonSimpleRun.vue'
 import IconAsteriskSimple from '@/components/icons/IconAsteriskSimple.vue'
 import IconArrowUpRight2 from '@/components/icons/IconArrowUpRight2.vue'
 // // import InputBasic from '../PassengerPaymentViews/components/InputBasic.vue'
@@ -239,14 +226,72 @@ import IconArrowUpRight2 from '@/components/icons/IconArrowUpRight2.vue'
 import IconBaby from '@/components/icons/IconBaby.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import { useRouter } from 'vue-router'
-import { ref, watchEffect, computed } from 'vue'
+import { ref, watchEffect, computed, reactive } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
 const showWarning = ref(false)
 const showEmptyAccordionError = ref(false)
+
+import IconPersonSimpleRun from '@/components/icons/IconPersonSimpleRun.vue';
+import IconArrowPaymentL from '@/components/icons/IconArrowPaymentL.vue'
 const formattedBirthValue = ref('')
 import AccordionPanel from '@/components/advanced/AccordionPanel.vue';
+import { getApi } from '@/utils/globalHelper'
+const applicationName = ref(p.Product)
+const controllerName = ref('Keydefinition')
+const name = ref('CountryList')
+
+import p from '@/utils/pathConfig'
+
+const getTitle = (accordion: any) => {
+     switch (accordion._id) {
+          case 1:
+               return 'Yetişkin Yolcu';
+          case 2:
+               return 'Çocuk Yolcu';
+          case 3:
+               return 'Bebek Yolcu';
+          default:
+               return 'Passenger';
+     }
+};
+
+const handleClick = (_id: any) => {
+  console.log('Clicked item ID:', _id);
+
+  // Add the new accordion item
+  accordions.value.push({
+    title: 'Passenger',
+    age: 'Passenger',
+    _id: _id
+  });
+};
+
+const getTitle2 = (accordion: any) => {
+     switch (accordion._id) {
+          case 1:
+               return IconPersonSimpleRun;
+          case 2:
+               return IconPersonSimpleRun;
+          case 3:
+               return IconBaby;
+          default:
+               return IconArrowPaymentL;
+     }
+};
+
+const isOpen = ref(false);
+const toggleDropdown = () => {
+     isOpen.value = !isOpen.value;
+};
+
+const accordions = ref<any[]>([]);
+const countryList = ref<string | null>(null)
+
+const logValue = (label, value) => {
+     console.log(label, value);
+};
 
 const bindProps = {
      autoFormat: false,
@@ -289,35 +334,44 @@ const buttonClass = (accordion: any) => {
 
 const store = useAccordionsStore()
 
-const saveAllPassenger = async (accordion: any) => {
-     console.log(accordion, 'accordion');
-     accordion.isLoading = true;
-     accordion.isComplete = false;
-     accordion.showBtnWarning = false; // Uyarı durumu başlangıçta false olarak ayarlanır
+const saveAllPassenger = async (accordion) => {
+    console.log(accordion, 'accordion');
+    accordion.isLoading = true;
+    accordion.isComplete = false;
+    accordion.showBtnWarning = false; // Uyarı durumu başlangıçta false olarak ayarlanır
 
-     // İlgili accordion için tüm alanların kontrolü
-     const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
-          accordion.tel && accordion.nation && accordion.passport && accordion.id;
+    // İlgili accordion için tüm alanların kontrolü
+    const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
+        accordion.tel && accordion.nation && accordion.passport && accordion.id && accordion.birthDate;
 
-     if (!isAllFieldsFilled) {
-          accordion.showBtnWarning = true; // Eksik alan varsa yalnızca bu accordion için uyarı göster
-          console.log('Tüm gerekli alanlar doldurulmalıdır.');
-          accordion.isLoading = false;
-          return; // Eksik alanlar varsa işlemi durdur
-     }
+    if (!isAllFieldsFilled) {
+        accordion.showBtnWarning = true; // Eksik alan varsa yalnızca bu accordion için uyarı göster
+        console.log('Tüm gerekli alanlar doldurulmalıdır.');
+        accordion.isLoading = false;
+        return; // Eksik alanlar varsa işlemi durdur
+    }
 
-     try {
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Simülasyon için bekleme
-          store.setAccordionData(accordion.id, accordion);
-          console.log("setAdultPassenger çağrılıyor:", accordion);
-          store.setAdultPassenger(accordion.id, accordion);
-          accordion.isComplete = true;
-          console.log("Kayıt işlemi gerçekleştirildi");
-     } catch (error) {
-          console.error("Kaydetme hatası:", error);
-     } finally {
-          accordion.isLoading = false;
-     }
+    try {
+        const calculatedId = formatDate(accordion);
+        console.log(calculatedId, 'calculatedId');
+
+        if (accordion._id !== calculatedId) {
+            alert(`Hata: _id ve yaş uyuşmazlığı. Beklenen _id: ${calculatedId}, Mevcut _id: ${accordion._id}`);
+            accordion.isLoading = false;
+            return;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Simülasyon için bekleme
+        store.setAccordionData(accordion.id, accordion);
+        console.log("setAdultPassenger çağrılıyor:", accordion);
+        store.setAdultPassenger(accordion.id, accordion);
+        accordion.isComplete = true;
+        console.log("Kayıt işlemi gerçekleştirildi");
+    } catch (error) {
+        console.error("Kaydetme hatası:", error);
+    } finally {
+        accordion.isLoading = false;
+    }
 };
 
 const tripStore = useTripStore()
@@ -325,6 +379,20 @@ const storedTripParams = ref<any>([])
 const storedDepartureData = ref<any>([])
 const storedArrivalData = ref<any>([])
 const storedGetterAccordions = ref<any>([])
+
+const fetchSelectOptions = async () => {
+     getApi(applicationName.value, controllerName.value, name.value).then((response: any) => {
+          if (response.data.status == 1) {
+               const countryData = response.data.result
+               // console.log(travelTypeData, 'travelTypeData')
+               countryList.value = JSON.parse(countryData)
+               console.log(countryList, 'countryList');
+               // travelObject.value = travelData.value
+               // console.log(travelData.value, 'travelObject')
+               // console.log(travelObject.value, 'travelObject')
+          }
+     })
+}
 
 onMounted(() => {
      storedTripParams.value = tripStore.getTripParams
@@ -334,67 +402,65 @@ onMounted(() => {
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'),
-          console.log(storedGetterAccordions.value, 'tripStore.getTripParams');
+          console.log(storedGetterAccordions.value, 'tripStore.getTripParams'),
+          fetchSelectOptions();
+     const logValue = (label, value) => {
+          console.log(label, value);
+     };
+     console.log(logValue, 'logValue')
 })
+
 
 interface AgeItem {
      title: string
      age: string
+     _id: number
 }
 
 const ages = ref<AgeItem[]>([
-     { title: 'Yetişkin Ekle', age: '+12 yaş' },
-     { title: 'Çocuk Ekle', age: '6-12 yaş' },
-     { title: 'Bebek Ekle', age: '0-5 yaş' }
+     { title: 'Yetişkin Ekle', age: '+12 yaş', _id: 1 },
+     { title: 'Çocuk Ekle', age: '6-12 yaş', _id: 2 },
+     { title: 'Bebek Ekle', age: '0-5 yaş', _id: 3 }
 ])
 
 const router = useRouter()
 
 const navigateToPassenger = () => {
-     // Tüm accordion'lar için gerekli alanların doldurulmuş ve kaydedilmiş olduğunu kontrol et
-     if (accordions.value.length > 0) {
-          const isAllCompleteAndSaved = accordions.value.every((accordion: any) =>
-               accordion.isComplete &&
-               accordion.name && accordion.surname && accordion.email &&
-               accordion.tel && accordion.nation && accordion.passport && accordion.id
-          );
+    if (accordions.value.length > 0) {
+        const isAllCompleteAndSaved = accordions.value.every((accordion) => {
+          //   formatDate(accordion); // Yaşı ve _id'yi güncelle
+            return accordion.isComplete &&
+                accordion.name && accordion.surname && accordion.email &&
+                accordion.tel && accordion.nation && accordion.passport && accordion.id;
+        });
 
-          if (isAllCompleteAndSaved) {
-               showWarning.value = false; // Eğer her şey tamamsa, uyarı gösterme
-               router.push('/payment'); // Tüm accordionlar uygun şekilde tamamlandıysa ödeme sayfasına yönlendir
-          } else {
-               showWarning.value = true; // Eğer tüm accordionlar uygun şekilde tamamlanmamışsa uyarı göster
-               console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
-          }
-     } else {
-          showEmptyAccordionError.value = true;
-     }
-}
+        if (isAllCompleteAndSaved) {
+            showWarning.value = false; 
+            router.push('/payment');
+        } else {
+            showWarning.value = true;
+            console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
+        }
+    } else {
+        showEmptyAccordionError.value = true;
+    }
+};
 
-const addNewPassenger = () => {
-     // Assuming a basic example where you just add generic passenger details
-     accordions.value.push({
-          title: 'Bilinmiyor',
-          age: 'Bilinmiyor' // or you can dynamically set age based on input or other criteria
-     });
-}
 
-const accordions = ref<any[]>([]);
-// storedTripParams'da bir değişiklik olduğunda accordions'u güncelle
 watchEffect(() => {
      if (storedTripParams.value.AdultCount !== undefined) {
           const newAccordions = []
 
           for (let i = 0; i < storedTripParams.value.AdultCount; i++) {
-               newAccordions.push({ title: `Yetişkin ${i + 1}`, age: 'yetişkin' })
+               newAccordions.push({ title: `Yetişkin ${i + 1}`, age: 'yetişkin', _id: 1 })
           }
 
           for (let i = 0; i < storedTripParams.value.ChildCount; i++) {
-               newAccordions.push({ title: `Çocuk ${i + 1}`, age: 'çocuk' })
+               newAccordions.push({ title: `Çocuk ${i + 1}`, age: 'çocuk', _id: 2 })
           }
 
           for (let i = 0; i < storedTripParams.value.InfantCount; i++) {
-               newAccordions.push({ title: `Bebek ${i + 1}`, age: 'bebek' })
+               newAccordions.push({ title: `Bebek ${i + 1}`, age: 'bebek', _id: 3 })
           }
 
           accordions.value = newAccordions
@@ -405,21 +471,36 @@ window.onbeforeunload = function () {
      return "Data will be lost if you leave the page, are you sure?";
 };
 
-const formattedBirth = ref('');
-
-// const formatDate = () => {
-//   formattedBirth.value = formattedBirth.value.replace(/\D/g, '').replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
-// };
-
 const formatDate = (accordion) => {
-     let birth = accordion.birthDate.replace(/\D/g, '');
-     if (birth.length > 2) {
-          birth = birth.substring(0, 2) + '/' + birth.substring(2);
-     }
-     if (birth.length > 5) {
-          birth = birth.substring(0, 5) + '/' + birth.substring(5);
-     }
-     accordion.birthDate = birth;
+    let birth = accordion.birthDate.replace(/\D/g, '');
+    if (birth.length > 2) {
+        birth = birth.substring(0, 2) + '/' + birth.substring(2);
+    }
+    if (birth.length > 5) {
+        birth = birth.substring(0, 5) + '/' + birth.substring(5, 9); // Yılı 4 karakterle sınırlıyoruz
+    }
+    accordion.birthDate = birth;
+
+    // Yaşı hesapla
+    const birthDate = new Date(birth.split('/').reverse().join('-'));
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    // _id'yi ata
+    let calculatedId;
+    if (age > 12) {
+        calculatedId = 1;
+    } else if (age > 5) {
+        calculatedId = 2;
+    } else {
+        calculatedId = 3;
+    }
+
+    return calculatedId; // Hesaplanan _id'yi döndür
 };
 
 // let timeout = null;
@@ -453,12 +534,17 @@ const formatDate = (accordion) => {
 //   }
 // });
 
-
 </script>
 
 <style>
-/* .vue-tel-input {
-     border: none,
-
-} */
+select option {
+     border: 1px solid #d1d5db;
+     /* Tailwind's neutral-200 color for the border */
+     background: transparent;
+     /* No background color */
+     color: #000000;
+     /* Black text color */
+     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+     /* Optional text shadow */
+}
 </style>

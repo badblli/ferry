@@ -25,7 +25,7 @@
                     <div>
                          <IconCheck />
                     </div>
-               </div>
+               </div> 
           </div>
      </div>
      <div class="mt-[70px]">
@@ -208,7 +208,7 @@ onMounted(() => {
      if (stored.getPassengerData.length === 0) {
           router.push('/')
      } else {
-          const adults = stored.getPassengerData.filter((passenger) => passenger.age === 'yetişkin');
+          const adults = stored.getPassengerData.filter((passenger) => passenger._id === 1);
           console.log(adults, 'adults!!!!!!!!')
           allTurist.value = stored.getPassengerData;
           console.log(stored.getPassengerData, 'stored get passenger data')
@@ -246,6 +246,7 @@ onMounted(() => {
           }));
           newInvoices.value.push(...filteredAdults);
           const arrivalData = tripStore.getArrivalData;
+          console.log(arrivalData, 'arrivalData')
           const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
           ferryTravelType.value = FerryTravelType ?? 0;
           priceGroupID.value = PriceGroupID ?? 0;
@@ -253,7 +254,6 @@ onMounted(() => {
           companyID.value = arrivalData[0].CompanyID;
      }
 })
-
 
 const postData = async () => {
      let params;
@@ -356,7 +356,6 @@ const clearForm = () => {
         invoiceAddress: '',
     };
 };
-
 
 const nameModel = computed({
      get: () => selectedPassenger.value?.invoiceName || '',  // Fallback to an empty string if null

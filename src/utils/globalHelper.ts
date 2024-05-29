@@ -43,6 +43,9 @@ const getApi = async <T>(applicationName: string, controllerName: string, name: 
                params = beforeSubmitData(params, formatDate)
           }
 
+          // if(stored.getUser){
+          //      api.defaults.headers.common.Member = stored.getUser
+          // }
           api.defaults.headers.common.Authorization = localStorage.getItem('Token')
           api.defaults.headers.common.CorrelationID = uid()
           api.defaults.headers.common.ClientIP = localStorage.getItem('ClientIP') || ''

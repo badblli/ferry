@@ -1,5 +1,8 @@
-module.exports = {
-  content: ['./src/**/*.{html,vue,js,tsx}', 'node_modules/preline/dist/*.js',],
+import forms from '@tailwindcss/forms';
+import prelinePlugin from 'preline/plugin';
+
+export default {
+  content: ['./src/**/*.{html,vue,js,ts}', 'node_modules/preline/dist/*.js'],
   darkMode: 'class',
   theme: {
     colors: {
@@ -27,7 +30,7 @@ module.exports = {
       slate: {
         50: '#f2f4f8',
         100: '#e1e6eb',
-        200: '#E4EEF3 ',
+        200: '#E4EEF3',
         300: '#a3b5c9',
         400: '#758fac',
         500: '#4f6d89',
@@ -38,7 +41,7 @@ module.exports = {
       },
       neutral: {
         50: '#f9fafb',
-        100: '#F5F5F5 ',
+        100: '#F5F5F5',
         200: '#DEDEDE',
         300: '#d2d6dc',
         400: '#A8A8A8',
@@ -176,5 +179,5 @@ module.exports = {
     //   // => @media (max-width: 639px) { ... }
     // }
   },
-  plugins: [require('@tailwindcss/forms'), require('preline/plugin')]
+  plugins: [forms, prelinePlugin]
 }

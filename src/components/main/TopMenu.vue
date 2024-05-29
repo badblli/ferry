@@ -1,5 +1,5 @@
 <template>
-     <div>
+     <div v-if="topMenu.links?.length > 0">
           <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
                <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-[100px] px-2 md:px-16 sm:px-8" aria-label="Global">
                     <div class="lg:flex hidden items-center justify-between">
@@ -85,7 +85,7 @@ const getTopMenu = async () => {
                     code: item.code.toUpperCase(),
                     name: item.name.replace(/ \([^)]*\)/, '')
                }))
-               // console.log(topMenu.value, 'topMenu section is here!!!!!')
+               console.log(topMenu.value, 'topMenu section is here!!!!!')
                // console.log(languages.value, 'languages section is here!!!!!')
                // console.log(langStore.languages, 'langstore language section is here!!!!!')
           }

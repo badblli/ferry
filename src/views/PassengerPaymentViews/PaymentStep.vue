@@ -80,7 +80,8 @@
                                             <div class="mt-[65px] ml-10">
                                                 <div id="horizontal-scroll-tab-preview" role="tabpanel"
                                                     aria-labelledby="horizontal-scroll-tab-item-1">
-                                                    <PaymentTab :fakeData="fakeData" @passengerSelected="handlePassengerSelected"  />
+                                                    <PaymentTab :fakeData="fakeData"
+                                                        @passengerSelected="handlePassengerSelected" />
                                                 </div>
                                                 <div id="horizontal-scroll-tab-2" class="hidden" role="tabpanel"
                                                     aria-labelledby="horizontal-scroll-tab-item-2">
@@ -162,33 +163,33 @@
                                                     </svg>
                                                 </div>
                                             </div>
-                                            <div class="flex flex-row justify-between mb-[31px] mt-10">
+                                            <div v-if="newData.Departure?.AdultSummary !== null" class="flex flex-row justify-between mb-[31px] mt-10">
                                                 <p
                                                     class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                     Yetişkin Yolcu
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    ( 1,069 ₺ x 2 )</p>
+                                                    {{ newData.Departure?.AdultSummary }}</p>
                                             </div>
-                                            <div class="flex flex-row justify-between mb-[31px]">
+                                            <div v-if="newData.Departure?.ChildSummary !== null" class="flex flex-row justify-between mb-[31px]">
                                                 <p
                                                     class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                     Çocuk Yolcu
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    ( 650 ₺ x 2 )</p>
+                                                    {{ newData.Departure?.ChildSummary }}</p>
                                             </div>
-                                            <d iv class="flex flex-row justify-between mb-[41px]">
+                                            <div v-if="newData.Departure?.InfantSummary !== null" class="flex flex-row justify-between mb-[41px]">
                                                 <p
                                                     class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                     Bebek Yolcu
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    ( 0 ₺ x 2 )</p>
-                                            </d>
+                                                    {{ newData.Departure?.InfantSummary }}</p>
+                                            </div>
                                         </div>
                                         <div class="w-full h-[1px] origin-top-left border border-zinc-300">
                                         </div>
@@ -213,7 +214,7 @@
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    31.10.2024</p>
+                                                    {{ formatDate(newData.Departure?.DepartureDate) }}</p>
                                             </div>
                                             <div class="flex flex-row justify-between mb-[31px]">
                                                 <p
@@ -222,7 +223,7 @@
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    02.11.2024</p>
+                                                    {{ formatDate(newData.Return?.DepartureDate) }}</p>
                                             </div>
                                             <div class="flex flex-row justify-between mb-[41px]">
                                                 <p
@@ -231,7 +232,7 @@
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    Kuşadası - 09:00</p>
+                                                    {{ departureDataRef }}</p>
                                             </div>
                                             <div class="flex flex-row justify-between mb-[41px]">
                                                 <p
@@ -240,7 +241,7 @@
                                                 </p>
                                                 <p
                                                     class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    Vathy - 10:15</p>
+                                                    {{ returnDataRef }}</p>
                                             </div>
                                         </div>
                                         <div v-if="!paymentSuccess"
@@ -315,7 +316,7 @@
                                                 id="hs-default-checkbox">
                                         </div>
                                     </span>
-                                    <button @click="paymentSuccess = true" 
+                                    <button @click="paymentSuccess = true"
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
                                         3260 TL Şimdi Öde
                                     </button>
@@ -328,8 +329,9 @@
                                     <div>
                                         <!-- {{ modal.showModalState.value }} -->
                                         <Teleport to="#target">
-                                            <div v-if="showModalState" class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36  m-auto overflow-y-hidden">
-                                                <div class=" bg-gray-100 z-60" >
+                                            <div v-if="showModalState"
+                                                class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36  m-auto overflow-y-hidden">
+                                                <div class=" bg-gray-100 z-60">
                                                     MODAL AÇ MODAL AÇ
                                                 </div>
                                                 <div @click="closeModal">
@@ -364,6 +366,10 @@ import PaymentTab2 from './components/PaymentTab2.vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
 
+
+const departureDataRef = ref(null);
+const returnDataRef = ref(null);
+
 import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue';
 // import { useModal } from '@/compasable/useModal'
 // const modal = useModal();
@@ -372,20 +378,22 @@ const selectedPassengerFromChild = ref(null);
 
 // Method to handle the passenger selected event
 const handlePassengerSelected = (passenger: any) => {
-  selectedPassengerFromChild.value = passenger;
-  console.log('Passenger selected in parent:', passenger);
+    selectedPassengerFromChild.value = passenger;
+    console.log('Passenger selected in parent:', passenger);
 };
 
+import { getQueryApi } from '@/utils/globalHelper'
+
 interface Passenger {
-     id?: string;
-     invoiceType?: null,
-     invoiceName: string;
-     invoiceSurname: string;
-     invoiceCompanyName?: string;
-     invoiceTCKNo?: string;
-     invoiceAddress?: string;
-     invoiceTaxOffice?: string;
-     invoiceTaxNumber?: string;
+    id?: string;
+    invoiceType?: null,
+    invoiceName: string;
+    invoiceSurname: string;
+    invoiceCompanyName?: string;
+    invoiceTCKNo?: string;
+    invoiceAddress?: string;
+    invoiceTaxOffice?: string;
+    invoiceTaxNumber?: string;
 }
 
 ///
@@ -394,6 +402,9 @@ import p from '@/utils/pathConfig'
 import envConfig from '../../utils/config'
 
 const allTurist = ref<any>([])
+const calculateReservationDeparture = ref<any>([])
+const calculateReservationArrival = ref<any>([])
+const calculateReservationTripParams = ref<any>([])
 const companyID = ref<string | null>(null);
 const SaleChannelName = envConfig.SaleChannelName || ''
 console.log(SaleChannelName, 'SaleChannelName')
@@ -401,7 +412,7 @@ const tripStore = useTripStore()
 const stored = useAccordionsStore()
 const applicationName = ref(p.Product)
 const controllerName = ref('Product')
-const name = ref('NewReservation')
+const name = ref('CalculateReservationFerryPrice')
 const { showModalState, showModal, closeModal } = useModal();
 // const storedInvoices = ref<any>([])
 // const accountState = ref<boolean>(false);
@@ -410,9 +421,11 @@ const ferryTravelType = ref(0);
 const agencyID = ref(0);
 // const saleChannelID = ref(0);
 const priceGroupID = ref(0);
-// const postArrivalData = ref<any>(null);
+
+const combinedData = ref([]);
+const newData = ref([]);
+const paxListJSON = ref([]);// const postArrivalData = ref<any>(null);
 // const journeyID = ref<any>(null);
-////////////////
 
 interface TripParams {
     FerryTravelType?: number;
@@ -422,52 +435,40 @@ interface TripParams {
 
 const ferryList = ref([
     {
-         journeyID: null,
-         journeyTravelDirection: null,
-         price: null,
-         currencyID: null
+        journeyID: null,
+        journeyTravelDirection: null,
+        price: null,
+        currencyID: null
     }
 ]);
 
 const postData = async () => {
-     // console.log(applicationName.value, 'applicationName', controllerName.value, 'controllerName', name.value, 'nameValue', params, 'params')
-     let params;
-     params = {
-          ferryTravelType: ferryTravelType.value,
-          agencyID: agencyID.value,
-          saleChannelID: 1,
-          priceGroupID: priceGroupID.value,
-          touristList: allTurist.value,
-          ferryList: ferryList.value,
+    let params;
+    params = {
+        ferryTravelType: ferryTravelType.value,
+        agencyID: agencyID.value,
+        saleChannelID: 1,
+        priceGroupID: priceGroupID.value,
+        touristList: allTurist.value,
+        ferryList: ferryList.value,
         // invoiceDetail: selectedPassenger.value //PROP DRİLLİNG HERE!
         // invoiceDetail: 0
         invoiceDetail: getSelected
-     }
-     console.log(params, 'params from payment step');
-     callPostApi(applicationName.value, controllerName.value, name.value, params)
-          .then((response: any) => {
-               if (response.status === 1) {
-                    console && console.log(response.data);
-               }
-          })
-          .catch((error) => {
-               console.error('An error occurred:', error)
-          })
+    }
+    console.log(params, 'params from payment step');
+    callPostApi(applicationName.value, controllerName.value, name.value, params)
+        .then((response: any) => {
+            if (response.status === 1) {
+                console && console.log(response.data);
+            }
+        })
+        .catch((error) => {
+            console.error('An error occurred:', error)
+        })
 }
 
 const getSelected = tripStore.getSelected;
 console.log(getSelected, 'params from payment step');
-
-const show = ref(false);
-
-const closeConfirm = () => {
-    show.value = false;
-};
-
-const openConfirm = () => {
-    show.value = !show.value;
-};
-
 const accountState = ref<boolean>(false);
 const accountStateArray = ref<any>([]);
 const store = useAccordionsStore()
@@ -504,65 +505,106 @@ const fakeCreditCart: Data = {
     title: "Ödemenizi bu sayfa üzerinden güvenli bir şekilde yapabilirsiniz. 3D Secure aktif olarak kullanabilirisiniz.",
 }
 
+function formatDate(dateString: any) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${day}.${month}.${year}`
+}
+
+function formatDate2(dateString: any) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 onMounted(() => {
     if (stored.getPassengerData.length === 0) {
-         router.push('/')
+        router.push('/')
     } else {
-        //  const adults = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin');
-         allTurist.value = stored.getPassengerData;
-         console.log(stored.getPassengerData, 'stored get passenger data');
-         allTurist.value = stored.getPassengerData.map((passenger: any) => ({
-               name: passenger.name,
-               surname: passenger.surname,
-               birthDate: passenger.birth, //birhdate eklememişim ekleyeceğim.
-               // gender: passenger.gender, //title ile aynı isim olabilir?
-               genderName: passenger.title,
-               //identity olmalıdır
-               nationalityID: passenger.id,
-               nationalityName: passenger.nation,
-               // identityNumber: passenger.identityNumber, //identityNumber bende yok
-               passportNumber: passenger.passport, //pasaport var
-               email: passenger.email,
-               phone: passenger.tel, //phone eklememişim ekleyeceğim
-               // passportValidDate: passenger.passportValidDate, //bende passaport girişi yok
-               // visaValidDate: passenger.visaValidDate, //bende vize girişi yok
-         }));
-         const departureData = tripStore.getDepartureData;
-         ferryList.value = departureData.map((ferryList: any) => ({
-              journeyID: ferryList.JourneyID,
-              journeyTravelDirection: ferryList.FerryTravelType,
-              price: ferryList.Price,
-              currencyID: ferryList.CurrencyID,
-         }));
-         console.log(ferryList.value, 'ferryList.value')
-        //  const filteredAdults = adults.map((adult: any) => ({
-        //       invoiceType: 0,
-        //       invoiceName: adult.name,
-        //       invoiceSurname: adult.surname,
-        //       invoiceCompanyName: adult.company,
-        //       invoiceTaxNumber: adult.taxNumber,
-        //       invoiceTaxOffice: adult.taxOffice,
-        //       invoiceAddress: adult.address,
-        //  }));
-        //  newInvoices.value.push(...filteredAdults);
-         const arrivalData = tripStore.getArrivalData;
-         const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
-         ferryTravelType.value = FerryTravelType ?? 0;
-         priceGroupID.value = PriceGroupID ?? 0;
-         agencyID.value = AgencyID ?? 0;
-         companyID.value = arrivalData[0].CompanyID;
+        const departureData = tripStore.getDepartureData;
+        console.log(departureData, 'departureDatadepartureDatadepartureData');
+        const arrivalData = tripStore.getArrivalData;
+        console.log(arrivalData, 'arrivalData');
+
+        const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}');
+        console.log(selectedLanguage, 'selectedLanguage');
+
+        const LanguageID = selectedLanguage.code || '';
+
+        calculateReservationArrival.value = arrivalData.map((arrival: any) => ({
+            ReturnDate: formatDate2(arrival.DepartureDetail.JourneyDate),
+            ArrivalSeaportID: arrival.DepartureDetail.SeaportID,
+            ReturnJourneyID: arrival.JourneyID
+        }));
+
+        calculateReservationDeparture.value = departureData.map((departure: any) => ({
+            FerryID: departure.FerryID,
+            DepartureDate: formatDate2(departure.DepartureDetail.JourneyDate),
+            DepartureJourneyID: departure.JourneyID,
+            RouteID: departure.RouteID,
+            CurrencyID: departure.CurrencyID,
+            DepartureSeaportID: departure.DepartureDetail.SeaportID,
+        }));
+
+        const tripStoreParams = tripStore.getTripParams;
+        console.log(tripStoreParams, 'tripStoreParamstripStoreParams');
+
+        const storeAccordiong = store.getAccordionData;
+        console.log(storeAccordiong, 'storeAccordionstoreAccordionstoreAccordion')
+
+        calculateReservationTripParams.value = [{
+            AdultCount: tripStoreParams.AdultCount,
+            InfantCount: tripStoreParams.InfantCount,
+            ChildCount: tripStoreParams.ChildCount,
+            AgencyID: tripStoreParams.AgencyID,
+            FerryTravelType: tripStoreParams.FerryTravelType,
+            PriceGroupID: tripStoreParams.PriceGroupID,
+            SaleChannelID: 1,
+        }];
+
+        paxListJSON.value = storeAccordiong.map((stored: any, index) => ({
+            ID: index + 1,
+            birthDate: formatDate2(stored.birthDate),
+        }));
+
+        const paxList = JSON.stringify(paxListJSON.value);
+        console.log(paxList, 'paxList');
+
+        const combinedObject = {
+            LanguageID,
+            paxList,
+            ...calculateReservationArrival.value[0],
+            ...calculateReservationDeparture.value[0],
+            ...calculateReservationTripParams.value[0]
+        };
+
+        combinedData.value = combinedObject;
+
+        console.log(combinedData.value, 'combinedData');
+        console.log(calculateReservationArrival.value, 'calculateReservationArrival.value');
+        console.log(calculateReservationDeparture.value, 'calculateReservationDeparture.value');
+        console.log(calculateReservationTripParams.value, 'calculateReservationTripParams');
+
+        const fetchApi = async () => {
+            let params = combinedData.value
+            getQueryApi(applicationName.value, controllerName.value, name.value, params).then((response: any) => {
+                if (response.data.status == 1) {
+                    const fetchFromWhereData = response.data.result
+                    newData.value = JSON.parse(fetchFromWhereData)
+                    console.log(newData.value, 'newValue.value');
+                    departureDataRef.value = newData.value.Departure.DeparturePortName;
+                    returnDataRef.value = newData.value.Return.DeparturePortName;
+                }
+            })
+        }
+        fetchApi();
     }
-})
-// const invoiceDetail = ref<Passenger | null>(null);
+});
 
-// console.log(invoiceDetail.value, 'invoiceDetail emit')
-
-// const handlePassengerSelected = (passenger: Passenger) => {
-//   console.log(passenger, 'passenger')
-//   invoiceDetail.value = passenger;
-//   console.log(invoiceDetail.value, 'invoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetailinvoiceDetail')
-//   console.log("Passenger selected:", passenger);
-// }
 </script>
 
 <style scoped></style>

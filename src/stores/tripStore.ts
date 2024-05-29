@@ -4,7 +4,7 @@ interface TripParams {
   FromTownID: string;
   ToTownID: string;
   DepartureDate: string;
-  ArrivalDate: string;
+  ReturnDate: string;
   AdultCount: number;
   ChildCount: number;
   InfantCount: number;

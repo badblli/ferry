@@ -9,7 +9,7 @@
                               {{ tripReverseDepartureData[0].DepartureDetail.SeaportName }}&nbsp;</div>
                          <div
                               class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">
-                              to&nbsp;</div>
+                              -&nbsp;</div>
                          <div
                               class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
                               {{ tripReverseDepartureData[0].ArrivalDetail.SeaportName }},&nbsp;</div>
@@ -57,7 +57,7 @@
                                         <IconGroupFerrry />
                                    </div>
                                    <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{
-                                        tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}&nbsp;to&nbsp;{{
+                                        tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}&nbsp;-&nbsp;{{
                                              tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}, {{
                                              queryFormatShortDateTR(tripFilterReverseData[0]?.DepartureDetail.JourneyDate) }}
                                    </div>
@@ -233,7 +233,7 @@
                                              <IconGroupFerrry />
                                         </div>
                                         <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{
-                                             tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;to&nbsp;{{
+                                             tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{
                                                   tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}, {{
                                                   queryFormatShortDateTR(tripFilterReverseArData[0]?.DepartureDetail.JourneyDate)
                                              }}</div>
@@ -310,7 +310,7 @@
                                              <IconGroupFerrry />
                                         </div>
                                         <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{
-                                             tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;to&nbsp;{{
+                                             tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{
                                                   tripReverseDepartureData[0]?.DepartureDetail.SeaportName }},&nbsp;{{
                                                   queryFormatShortDateTR(tripFilterReverseArData[0]?.DepartureDetail.JourneyDate)
                                              }}</div>
@@ -458,12 +458,12 @@ const selectedArrivalData = ref<TripDataItem[] | any>([])
 // filtered
 
 const resetSelectedDepartureData = () => {
-     selectedDepartureData.value = []; // İlk haline geri getir
+     selectedDepartureData.value = []; 
      initializeSplide();
 };
 
 const resetSelectedArrivalData = () => {
-     selectedArrivalData.value = []; // İlk haline geri getir
+     selectedArrivalData.value = [];
      initializeSplide2();
 };
 
@@ -559,7 +559,7 @@ interface DepartureValidDates {
      BestPrice: number
 }
 
-interface ArrivalDate {
+interface ReturnDate {
      JourneyDate: string
      JourneyTime: string
      SeaportID: number
@@ -575,7 +575,7 @@ interface DepartureDetail {
 
 interface Departures {
      Allotment: number
-     ArrivalDate: ArrivalDate
+     ReturnDate: ReturnDate
      CompanyID: number
      CompanyName: string
      CurrencyID: number
@@ -601,7 +601,7 @@ interface ReturnValidDates {
 
 interface Return {
      Allotment: number
-     ArrivalDate: ArrivalDate
+     ReturnDate: ReturnDate
      CompanyID: number
      CompanyName: string
      CurrencyID: number
@@ -631,7 +631,6 @@ const splideRef2 = ref<string | HTMLElement>('')
 const initializeSplide = () => {
      nextTick(() => {
           if (splideRef.value) {
-               // splideRef'in bir değeri olduğundan emin ol
                const splide = new Splide(splideRef.value, {
                     type: 'slide',
                     perPage: 3,
@@ -644,7 +643,7 @@ const initializeSplide = () => {
                     isNavigation: true,
                     breakpoints: {
                          1380: {
-                              perPage: 4
+                              perPage: 3
                          },
                          1140: {
                               perPage: 3
@@ -660,7 +659,7 @@ const initializeSplide = () => {
 
                const processActiveSlide = () => {
                     const activeSlideIndex = splide.index
-                    console.log(tripReverseDepartureData, 'tripReverseDepartureDatatripReverseDepartureDatatripReverseDepartureData')
+                    console.log(tripReverseDepartureData, 'tripReverseDeparture')
                     const activeSlideContent = tripReverseData.value[activeSlideIndex]?.TravelDate
                     console.log(activeSlideContent, 'activeSlideContent here!')
                     console.log(activeSlideIndex, 'activeSlideIndex')
@@ -679,6 +678,12 @@ const initializeSplide = () => {
           }
      })
 }
+const getSlideClass = (index: number) => {
+  if (slideCount.value < 3) {
+    return 'w-full';
+  }
+  return '';
+};
 const initializeSplide2 = () => {
      nextTick(() => {
           if (splideRef2.value) {
@@ -695,7 +700,7 @@ const initializeSplide2 = () => {
                     isNavigation: true,
                     breakpoints: {
                          1380: {
-                              perPage: 4
+                              perPage: 3
                          },
                          1140: {
                               perPage: 3
@@ -735,7 +740,7 @@ const fetchData = async () => {
           FromTownID: route.query.FromTownID,
           ToTownID: route.query.ToTownID,
           DepartureDate: route.query.DepartureDate,
-          ArrivalDate: route.query.ArrivalDate,
+          ReturnDate: route.query.ReturnDate,
           AdultCount: route.query.AdultCount,
           ChildCount: route.query.ChildCount,
           InfantCount: route.query.InfantCount,
@@ -748,7 +753,7 @@ const fetchData = async () => {
           .then((response: any) => {
                if (response.data.status == 1) {
                     const fetchTripDatas = response.data.result
-                    tripData.value = JSON.parse(fetchTripDatas)
+                    tripData.value = JSON.parse(fetchTripDatas)  
                     // console.log(tripReverseData.value, 'ASD')s
                     tripReverseData.value = tripData.value.DepartureValidDates ? tripData.value.DepartureValidDates.reverse() : []
                     // console.log(tripReverseData, 'tripReverseData for slider v-for')
@@ -827,7 +832,7 @@ function navigateToPaymentPage() {
           FromTownID: route.query.FromTownID as string,
           ToTownID: route.query.ToTownID as string,
           DepartureDate: route.query.DepartureDate as string,
-          ArrivalDate: route.query.ArrivalDate as string,
+          ReturnDate: route.query.ReturnDate as string,
           AdultCount: Number(route.query.AdultCount),
           ChildCount: Number(route.query.ChildCount),
           InfantCount: Number(route.query.InfantCount),
