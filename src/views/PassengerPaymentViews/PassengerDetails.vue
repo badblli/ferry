@@ -61,8 +61,39 @@
                               </div>
                          </div>
                          <div>
+                              <div v-show="isOpen2">
+                                        <div
+                                             class="w-[458px] h-[443px] bg-white rounded-xl border absolute inset-0 m-auto  z-[999] flex flex-col">
+                                             <div class="flex flex-row justify-center mx-auto mt-14">
+                                                  <div
+                                                       class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
+                                                       <IconPersonSimpleRun />
+                                                  </div>
+                                                  <div
+                                                       class="w-[95px] h-[95px] bg-slate-300 rounded-full flex justify-center items-center -translate-x-9">
+                                                       <IconPersonSimpleRun />
+                                                  </div>
+                                             </div>
+                                             <div>
+                                                  <span class="flex flex-row justify-center mt-7">
+                                                       Seçtiğiniz tarihler doğrultusunda<br />yetişkin yolcu, çocuk
+                                                       olarak<br />değişecek ve
+                                                       fiyatlandırmayı<br />güncelleyecektir.
+                                                  </span>
+                                             </div>
+                                             <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12"
+                                                  @click="confirmChange(accordion_idchange)">
+                                                  Değişikliği Onayla
+                                             </div>
+                                             <div class="text-center text-black text-base font-medium font-display mt-7"
+                                                  @click="cancelChange">
+                                                  Kaydetme, geri al.
+                                             </div>
+                                        </div>
+                                   </div>
                               <div v-for="(accordion, index) in accordions" :key="index"
                                    class="items-centers rounded-xl bg-white first:mt-8">
+                                 
                                    <div class="w-full overflow-hidden transition-[height] duration-300">
                                         <div class="flex flex-col">
                                              <AccordionPanel aria-title="contact" :title2="getTitle2(accordion)"
@@ -258,14 +289,14 @@ const getTitle = (accordion: any) => {
 };
 
 const handleClick = (_id: any) => {
-  console.log('Clicked item ID:', _id);
+     console.log('Clicked item ID:', _id);
 
-  // Add the new accordion item
-  accordions.value.push({
-    title: 'Passenger',
-    age: 'Passenger',
-    _id: _id
-  });
+     // Add the new accordion item
+     accordions.value.push({
+          title: 'Passenger',
+          age: 'Passenger',
+          _id: _id
+     });
 };
 
 const getTitle2 = (accordion: any) => {
@@ -325,43 +356,53 @@ const buttonText = (accordion: any) => {
 const buttonClass = (accordion: any) => {
      let baseClass = 'rounded-lg border py-4 px-12 text-center text-base font-medium font-display ml-8 cursor-pointer';
      if (accordion.isComplete) {
-          baseClass += ' bg-green-500'; // Başarılı kayıt sonrası yeşil
+          baseClass += ' bg-green-500';
      } else {
-          baseClass += ' bg-slate-200'; // Normal durum
+          baseClass += ' bg-slate-200';
      }
      return baseClass;
 };
 
 const store = useAccordionsStore()
+const isOpen2 = ref(false);
+
+const accordion_idchange = ref();
 
 const saveAllPassenger = async (accordion) => {
-    console.log(accordion, 'accordion');
+     accordion_idchange.value = accordion
+    console.log(accordion, 'saveallpassenger accordion');
     accordion.isLoading = true;
     accordion.isComplete = false;
-    accordion.showBtnWarning = false; // Uyarı durumu başlangıçta false olarak ayarlanır
+    accordion.showBtnWarning = false;
 
-    // İlgili accordion için tüm alanların kontrolü
     const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
         accordion.tel && accordion.nation && accordion.passport && accordion.id && accordion.birthDate;
 
     if (!isAllFieldsFilled) {
-        accordion.showBtnWarning = true; // Eksik alan varsa yalnızca bu accordion için uyarı göster
+        accordion.showBtnWarning = true;
         console.log('Tüm gerekli alanlar doldurulmalıdır.');
         accordion.isLoading = false;
-        return; // Eksik alanlar varsa işlemi durdur
+        return;
     }
 
     try {
         const calculatedId = formatDate(accordion);
-        console.log(calculatedId, 'calculatedId');
-
-        if (accordion._id !== calculatedId) {
-            alert(`Hata: _id ve yaş uyuşmazlığı. Beklenen _id: ${calculatedId}, Mevcut _id: ${accordion._id}`);
+        if (calculatedId === null) {
+            console.error('Failed to calculate new _id due to invalid birthDate');
             accordion.isLoading = false;
             return;
         }
 
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simülasyon için bekleme
+        console.log(calculatedId, 'calculatedId');
+
+        if (accordion._id !== calculatedId) {
+            isOpen2.value = true; // Show confirmation prompt
+            console.log("isopen2 value 2 inside save all passenger")
+            accordion.isLoading = false;
+            return;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
         store.setAccordionData(accordion.id, accordion);
         console.log("setAdultPassenger çağrılıyor:", accordion);
         store.setAdultPassenger(accordion.id, accordion);
@@ -372,6 +413,63 @@ const saveAllPassenger = async (accordion) => {
     } finally {
         accordion.isLoading = false;
     }
+};
+
+const confirmChange = (accordion) => {
+    try {
+     const countId1 = accordions.value.filter(item => item._id === 1).length;
+
+// Eğer accordion'ın _id değeri 1 ise ve sadece bir adet varsa uyarı ver
+if (accordion._id === 1 && countId1 === 1) {
+  alert("Tek yetişkin silinemez");
+  isOpen2.value = false;
+}else{
+     if (!accordion) {
+            console.error('Accordion object is undefined');
+            return;
+        }
+
+        console.log(accordion, 'confirmChange accordion')
+
+        if (!accordion.birthDate) {
+            console.error('Accordion birthDate is undefined');
+            return;
+        }
+
+        console.log('Accordion before formatting:', JSON.stringify(accordion));
+        console.log('Before formatting date:', accordion.birthDate);
+
+        const calculatedId = formatDate(accordion);
+
+        if (calculatedId === null) {
+            console.error('Failed to calculate new _id due to invalid birthDate');
+            return;
+        }
+
+        console.log('Calculated ID:', calculatedId);
+        console.log('Current accordion._id:', accordion._id);
+
+        if (accordion._id != calculatedId) {
+            console.log(`Updating accordion._id from ${accordion._id} to ${calculatedId}`);
+            accordion._id = calculatedId; // Update _id with the new calculatedId
+            store.setAccordionData(accordion.id, accordion); // Update the accordion data
+            console.log("Accordion data updated with new _id:", JSON.stringify(accordion));
+        } else {
+            console.log('No update needed, calculatedId matches current _id');
+        }
+
+        isOpen2.value = false;
+        console.log('Accordion data processed successfully.');
+}
+    } catch (error) {
+        console.error("Error in confirmChange:", error);
+    }
+};
+
+
+
+const cancelChange = () => {
+     isOpen2.value = false;
 };
 
 const tripStore = useTripStore()
@@ -402,8 +500,8 @@ onMounted(() => {
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'),
-          console.log(storedGetterAccordions.value, 'tripStore.getTripParams'),
-          fetchSelectOptions();
+     console.log(storedGetterAccordions.value, 'tripStore.getTripParams'),
+     fetchSelectOptions();
      const logValue = (label, value) => {
           console.log(label, value);
      };
@@ -426,114 +524,109 @@ const ages = ref<AgeItem[]>([
 const router = useRouter()
 
 const navigateToPassenger = () => {
-    if (accordions.value.length > 0) {
-        const isAllCompleteAndSaved = accordions.value.every((accordion) => {
-          //   formatDate(accordion); // Yaşı ve _id'yi güncelle
-            return accordion.isComplete &&
-                accordion.name && accordion.surname && accordion.email &&
-                accordion.tel && accordion.nation && accordion.passport && accordion.id;
-        });
+     if (accordions.value.length > 0) {
+          const isAllCompleteAndSaved = accordions.value.every((accordion) => {
+               //   formatDate(accordion); // Yaşı ve _id'yi güncelle
+               return accordion.isComplete &&
+                    accordion.name && accordion.surname && accordion.email &&
+                    accordion.tel && accordion.nation && accordion.passport && accordion.id;
+          });
 
-        if (isAllCompleteAndSaved) {
-            showWarning.value = false; 
-            router.push('/payment');
-        } else {
-            showWarning.value = true;
-            console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
-        }
-    } else {
-        showEmptyAccordionError.value = true;
-    }
+          if (isAllCompleteAndSaved) {
+               showWarning.value = false;
+               router.push('/payment');
+          } else {
+               showWarning.value = true;
+               console.log('Tüm yolcuların bilgileri tam olarak doldurulmalı ve kaydedilmelidir.');
+          }
+     } else {
+          showEmptyAccordionError.value = true;
+     }
 };
-
 
 watchEffect(() => {
      if (storedTripParams.value.AdultCount !== undefined) {
           const newAccordions = []
 
           for (let i = 0; i < storedTripParams.value.AdultCount; i++) {
-               newAccordions.push({ title: `Yetişkin ${i + 1}`, age: 'yetişkin', _id: 1 })
+               newAccordions.push({  _id: 1 })
           }
 
           for (let i = 0; i < storedTripParams.value.ChildCount; i++) {
-               newAccordions.push({ title: `Çocuk ${i + 1}`, age: 'çocuk', _id: 2 })
+               newAccordions.push({  _id: 2 })
           }
 
           for (let i = 0; i < storedTripParams.value.InfantCount; i++) {
-               newAccordions.push({ title: `Bebek ${i + 1}`, age: 'bebek', _id: 3 })
+               newAccordions.push({ _id: 3 })
           }
 
           accordions.value = newAccordions
      }
 })
 
+const formatDate = (accordion) => {
+    try {
+        if (!accordion.birthDate) {
+            console.error('birthDate is undefined');
+            return null;
+        }
+
+        console.log('Initial birthDate:', accordion.birthDate);
+
+        let birth = accordion.birthDate ? accordion.birthDate.replace(/\D/g, '') : '';
+        console.log('After removing non-digits:', birth);
+
+        if (birth.length > 2) {
+            birth = birth.substring(0, 2) + '/' + birth.substring(2);
+            console.log('After adding first slash:', birth);
+        }
+        if (birth.length > 5) {
+            birth = birth.substring(0, 5) + '/' + birth.substring(5, 9);
+            console.log('After adding second slash:', birth);
+        }
+        accordion.birthDate = birth;
+
+        // Ensure birth date string is in the format 'DD/MM/YYYY'
+        const parts = birth.split('/');
+        if (parts.length !== 3 || parts[0].length !== 2 || parts[1].length !== 2 || parts[2].length !== 4) {
+            throw new Error(`Invalid birthDate format: ${birth}`);
+        }
+
+        const birthDate = new Date(parts.reverse().join('-'));
+        console.log('Birth date object:', birthDate);
+
+        if (isNaN(birthDate.getTime())) {
+            throw new Error(`Invalid birthDate after conversion: ${birth}`);
+        }
+
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        console.log('Calculated age:', age);
+
+        let calculatedId;
+        if (age > 12) {
+            calculatedId = 1;
+        } else if (age > 5) {
+            calculatedId = 2;
+        } else {
+            calculatedId = 3;
+        }
+        console.log('Calculated ID:', calculatedId);
+
+        return calculatedId;
+    } catch (error) {
+        console.error('Error in formatDate:', error.message);
+        return null;
+    }
+};
+
 window.onbeforeunload = function () {
      return "Data will be lost if you leave the page, are you sure?";
 };
-
-const formatDate = (accordion) => {
-    let birth = accordion.birthDate.replace(/\D/g, '');
-    if (birth.length > 2) {
-        birth = birth.substring(0, 2) + '/' + birth.substring(2);
-    }
-    if (birth.length > 5) {
-        birth = birth.substring(0, 5) + '/' + birth.substring(5, 9); // Yılı 4 karakterle sınırlıyoruz
-    }
-    accordion.birthDate = birth;
-
-    // Yaşı hesapla
-    const birthDate = new Date(birth.split('/').reverse().join('-'));
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-
-    // _id'yi ata
-    let calculatedId;
-    if (age > 12) {
-        calculatedId = 1;
-    } else if (age > 5) {
-        calculatedId = 2;
-    } else {
-        calculatedId = 3;
-    }
-
-    return calculatedId; // Hesaplanan _id'yi döndür
-};
-
-// let timeout = null;
-
-// const redirecting = ref(false);
-
-// window.addEventListener('beforeunload', (event) => {
-//      if (!redirecting.value) {
-//           event.preventDefault();
-//           redirecting.value = true;
-//           setTimeout(() => {
-//                window.location.href = '/';
-//           }, 0);
-//           event.returnValue = 'You have unsaved data. Are you sure you want to leave?';
-//      }
-// });
-
-// window.addEventListener('unload', () => {
-//   if (performance.navigation.type === 1) {
-//     // Yeniden yükleme tıklanırsa
-//     redirecting.value = true;
-//     window.location.href = '/';
-//   }
-// });
-
-// window.addEventListener('load', () => {
-//   if (performance.navigation.type === 1) {
-//     // Yeniden yükleme tıklanırsa
-//     redirecting.value = true;
-//     window.location.href = '/';
-//   }
-// });
-
 </script>
 
 <style>

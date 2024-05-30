@@ -736,6 +736,16 @@ const initializeSplide2 = () => {
 }
 
 const fetchData = async () => {
+
+     let adultCountString = route.query.AdultCount as string;
+     let adultCount = parseInt(adultCountString);
+     
+     // AdultCount değeri 1'den küçükse ana sayfaya yönlendir
+     if (isNaN(adultCount) || adultCount < 1) {
+          router.push('/');
+          return;
+     }
+
      let params = {
           FromTownID: route.query.FromTownID,
           ToTownID: route.query.ToTownID,

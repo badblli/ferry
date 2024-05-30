@@ -1025,6 +1025,10 @@ select {
   z-index: 80;
 }
 
+.z-\[999\] {
+  z-index: 999;
+}
+
 .col-start-1 {
   grid-column-start: 1;
 }
@@ -1113,6 +1117,11 @@ select {
   margin-right: 1rem;
 }
 
+.mx-7 {
+  margin-left: 1.75rem;
+  margin-right: 1.75rem;
+}
+
 .mx-8 {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -1166,11 +1175,6 @@ select {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.mx-7 {
-  margin-left: 1.75rem;
-  margin-right: 1.75rem;
 }
 
 .-mb-0 {
@@ -1993,6 +1997,10 @@ select {
   height: 39px;
 }
 
+.h-\[443px\] {
+  height: 443px;
+}
+
 .h-\[450px\] {
   height: 450px;
 }
@@ -2361,6 +2369,10 @@ select {
   width: 439px;
 }
 
+.w-\[458px\] {
+  width: 458px;
+}
+
 .w-\[46px\] {
   width: 46px;
 }
@@ -2457,10 +2469,6 @@ select {
   width: 100%;
 }
 
-.w-2 {
-  width: 0.5rem;
-}
-
 .min-w-\[15rem\] {
   min-width: 15rem;
 }
@@ -2555,6 +2563,11 @@ select {
 
 .origin-top-left {
   transform-origin: top left;
+}
+
+.-translate-x-9 {
+  --tw-translate-x: -2.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-translate-x-full {
@@ -3116,6 +3129,11 @@ select {
   background-color: rgb(228 238 243 / var(--tw-bg-opacity));
 }
 
+.bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 181 201 / var(--tw-bg-opacity));
+}
+
 .bg-slate-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(242 244 248 / var(--tw-bg-opacity));
@@ -3144,11 +3162,6 @@ select {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-blue-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(151 179 247 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -3380,6 +3393,11 @@ select {
   padding-bottom: 35px;
 }
 
+.py-\[3px\] {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 .py-\[6px\] {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -3393,16 +3411,6 @@ select {
 .py-\[9px\] {
   padding-top: 9px;
   padding-bottom: 9px;
-}
-
-.px-\[6px\] {
-  padding-left: 6px;
-  padding-right: 6px;
-}
-
-.py-\[3px\] {
-  padding-top: 3px;
-  padding-bottom: 3px;
 }
 
 .pb-1 {

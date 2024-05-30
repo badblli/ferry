@@ -584,6 +584,7 @@ const decreaseCount = (index: number) => {
           passenger.value[index].count--;
           console.log(`Passenger count decreased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`);
           console.log(`Total passenger count: ${totalCount()}`);
+          console.log(passenger.value[index], 'index');
      }
 }
 
@@ -718,11 +719,11 @@ const formattedValue2 = computed(() => {
 })
 
 const cursorClass = computed(() => {
-     return _fromWhere.value && _toWhere.value && _roundTrip.value && date.formattedDate.value ? 'cursor-pointer' : 'cursor-not-allowed bg-slate-50'
+     return _fromWhere.value && _toWhere.value && _roundTrip.value && date.formattedDate.value && passenger.value[0]?.count > 0 ? 'cursor-pointer' : 'cursor-not-allowed bg-slate-50'
 })
 
 const isClickable = computed(() => {
-     return _fromWhere.value && _toWhere.value && _roundTrip.value && date.formattedDate.value
+     return _fromWhere.value && _toWhere.value && _roundTrip.value && date.formattedDate.value && passenger.value[0]?.count > 0
 })
 
 const totalPassengerCount = computed(() => {

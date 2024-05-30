@@ -316,13 +316,11 @@
                                                 id="hs-default-checkbox">
                                         </div>
                                     </span>
-                                    <button @click="paymentSuccess = true"
+                                    <button @click="postData"
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
                                         3260 TL Şimdi Öde
                                     </button>
-                                    <div class="cursor-pointer" @click="postData">
-                                        deneme
-                                    </div>
+                              
                                     <!-- <div class="cursor-pointer" @click="showModal">
                                         deneme
                                     </div> -->
@@ -413,6 +411,7 @@ const stored = useAccordionsStore()
 const applicationName = ref(p.Product)
 const controllerName = ref('Product')
 const name = ref('CalculateReservationFerryPrice')
+const name2 = ref('NewReservation')
 const { showModalState, showModal, closeModal } = useModal();
 // const storedInvoices = ref<any>([])
 // const accountState = ref<boolean>(false);
@@ -442,21 +441,24 @@ const ferryList = ref([
     }
 ]);
 
+
+
 const postData = async () => {
     let params;
+    const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
     params = {
-        ferryTravelType: ferryTravelType.value,
-        agencyID: agencyID.value,
+        ferryTravelType: FerryTravelType,
+        agencyID: AgencyID,
         saleChannelID: 1,
-        priceGroupID: priceGroupID.value,
-        touristList: allTurist.value,
-        ferryList: ferryList.value,
+        priceGroupID: PriceGroupID,
+        touristList: tripStore.touristList,
+        ferryList: tripStore.ferryList2,
         // invoiceDetail: selectedPassenger.value //PROP DRİLLİNG HERE!
         // invoiceDetail: 0
-        invoiceDetail: getSelected
+        invoiceDetail: tripStore.invoiceDetail
     }
-    console.log(params, 'params from payment step');
-    callPostApi(applicationName.value, controllerName.value, name.value, params)
+    console.log(params, 'params from payment stepparams from payment step OLDU LA');
+    callPostApi(applicationName.value, controllerName.value, name2.value, params)
         .then((response: any) => {
             if (response.status === 1) {
                 console && console.log(response.data);
@@ -551,7 +553,7 @@ onMounted(() => {
         }));
 
         const tripStoreParams = tripStore.getTripParams;
-        console.log(tripStoreParams, 'tripStoreParamstripStoreParams');
+        console.log(tripStoreParams, 'tripStoreParamstripStoreParamstripStoreParamstripStoreParams');
 
         const storeAccordiong = store.getAccordionData;
         console.log(storeAccordiong, 'storeAccordionstoreAccordionstoreAccordion')

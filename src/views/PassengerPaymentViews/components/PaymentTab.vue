@@ -209,7 +209,7 @@ onMounted(() => {
           router.push('/')
      } else {
           const adults = stored.getPassengerData.filter((passenger) => passenger._id === 1);
-          console.log(adults, 'adults!!!!!!!!')
+          console.log(adults, 'adults!!!!!!!!') 
           allTurist.value = stored.getPassengerData;
           console.log(stored.getPassengerData, 'stored get passenger data')
           allTurist.value = stored.getPassengerData.map(passenger => ({
@@ -228,6 +228,7 @@ onMounted(() => {
                // passportValidDate: passenger.passportValidDate, //bende passaport girişi yok
                // visaValidDate: passenger.visaValidDate, //bende vize girişi yok
           }));
+          tripStore.setTouristList(allTurist.value)
           const departureData = tripStore.getDepartureData;
           ferryList.value = departureData.map((ferryList: any) => ({
                journeyID: ferryList.JourneyID,
@@ -235,6 +236,7 @@ onMounted(() => {
                price: ferryList.Price,
                currencyID: ferryList.CurrencyID,
           }));
+          tripStore.setFerryList2(ferryList.value)
           const filteredAdults = adults.map((adult) => ({
                invoiceType: 1,
                invoiceName: adult.name,
@@ -464,6 +466,7 @@ const selectedPassenger = ref<Passenger | null>(null);
 
 const selectPassenger = (passenger, index) => {
   selectedPassenger.value = passenger;
+  tripStore.setInvoiceDetail(selectedPassenger.value)
   console.log(`Passenger selected at index ${index}:`, passenger);
 
   // Emit the selected passenger to the parent component
