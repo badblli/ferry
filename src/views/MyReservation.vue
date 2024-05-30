@@ -2,7 +2,7 @@
      <div>
           <div class="w-full h-[223px] bg-slate-200" />
           <div class="relative top-[-175px] centered-w lg:px-[100px] px-16 md:px-16 sm:px-8">
-               <span class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide pl-10 md:pl-0">Merhaba Kevin.</span>
+               <span class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide pl-10 md:pl-0">Merhaba {{ userName }}.</span>
                <div class="mt-[63px]">
                     <div class="border-b border-gray-200 pl-10 md:pl-0">
                          <nav class="flex overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500" aria-label="Tabs" role="tablist">
@@ -149,7 +149,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import ReservationTable from '../components/ReservationComponent/ReservationTable.vue'
 import MyProfile from '../components/ReservationComponent/MyProfile.vue'
 import ReservationMileTab from '@/components/ReservationComponent/ReservationMileTab.vue'
@@ -166,6 +166,10 @@ import IconGearSix from '../components/icons/IconGearSix.vue'
 import IconBellSimple from '../components/icons/IconBellSimple.vue'
 import IconMile from '../components/icons/IconMile.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
+import { useUserStore } from '@/stores/auth'
+
+const userStore = useUserStore()
+const userName = computed(() => userStore.user?.Name)
 
 const pastReservations = ref([
      {

@@ -58,6 +58,11 @@ export const useUserStore = defineStore({
                this.user = userInfo
                this.returnUrl = '/'
           },
+          saveMember(userInfo: UserInfo): void {
+               console.log('saveMember', userInfo)
+
+               this.user = userInfo
+          },
           logout(): void {
                this.isAuthenticated = false
                this.user = null
