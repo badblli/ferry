@@ -318,7 +318,7 @@
                                     </span>
                                     <button @click="postData"
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
-                                        3260 TL Şimdi Öde
+                                        x TL Şimdi Öde
                                     </button>
                               
                                     <!-- <div class="cursor-pointer" @click="showModal">
@@ -441,8 +441,6 @@ const ferryList = ref([
     }
 ]);
 
-
-
 const postData = async () => {
     let params;
     const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams;
@@ -458,15 +456,17 @@ const postData = async () => {
         invoiceDetail: tripStore.invoiceDetail
     }
     console.log(params, 'params from payment stepparams from payment step OLDU LA');
-    callPostApi(applicationName.value, controllerName.value, name2.value, params)
-        .then((response: any) => {
-            if (response.status === 1) {
-                console && console.log(response.data);
-            }
-        })
-        .catch((error) => {
-            console.error('An error occurred:', error)
-        })
+    try {
+          const response = await callPostApi(applicationName.value, controllerName.value, name2.value, params)
+          console.log(response, 'responseVARMI')
+          if (response && response.data.status === 1) {
+              paymentSuccess.value = true;
+          } else {
+               console.error('Unexpected response status:', response?.data?.status)
+          }
+     } catch (error) {
+          console.error('An error occurred:', error)
+     }
 }
 
 const getSelected = tripStore.getSelected;
