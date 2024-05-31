@@ -1981,6 +1981,10 @@ select {
   height: 340px;
 }
 
+.h-\[343px\] {
+  height: 343px;
+}
+
 .h-\[35px\] {
   height: 35px;
 }
@@ -2147,6 +2151,10 @@ select {
 
 .w-14 {
   width: 3.5rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .w-20 {
@@ -5474,10 +5482,6 @@ input.focus\:outline-none:focus {
 .after\:w-full::after {
   content: var(--tw-content);
   width: 100%;
-}
-
-.first\:mt-8:first-child {
-  margin-top: 2rem;
 }
 
 .first\:pl-2:first-child {

@@ -1,3 +1,4 @@
+
 <template>
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full h-[223px] bg-slate-200" />
@@ -38,7 +39,7 @@
                                    Yolcu ve İletişim Bilgileri</div>
                               <div class="relative inline-flex">
                                    <p @click="toggleDropdown"
-                                        class="text-black text-lg font-medium font-display items-center justify-center mt-4 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
+                                        class="text-black text-lg font-medium font-display items-center justify-center mt-4 mb-8 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
                                         Yeni yolcu ekle</p>
                                    <div v-show="isOpen"
                                         class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
@@ -53,7 +54,6 @@
                                                   <div
                                                        class="text-right text-black text-base font-light font-display tracking-tight">
                                                        {{ item.age }}
-                                                       {{ item._id }}
                                                   </div>
                                              </div>
                                         </div>
@@ -61,7 +61,8 @@
                               </div>
                          </div>
                          <div>
-                              <div v-show="isOpen2">
+                              <transition name="fade">
+                                   <div v-show="isOpen2">
                                         <div
                                              class="w-[458px] h-[443px] bg-white rounded-xl border absolute inset-0 m-auto  z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
@@ -81,19 +82,45 @@
                                                        fiyatlandırmayı<br />güncelleyecektir.
                                                   </span>
                                              </div>
-                                             <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12"
+                                             <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12 cursor-pointer"
                                                   @click="confirmChange(accordion_idchange)">
                                                   Değişikliği Onayla
                                              </div>
-                                             <div class="text-center text-black text-base font-medium font-display mt-7"
+                                             <div class="w-[200px] mx-auto text-center text-black text-base font-medium font-display mt-7 cursor-pointer"
                                                   @click="cancelChange">
                                                   Kaydetme, geri al.
                                              </div>
                                         </div>
                                    </div>
+                              </transition>
+                              <transition name="fade">
+                                   <div v-show="isOpen3">
+                                   <div
+                                        class="w-[458px] h-[343px] bg-white rounded-xl border absolute inset-0 m-auto  z-[999] flex flex-col">
+                                        <div class="flex flex-row justify-center mx-auto mt-14">
+                                             <div
+                                                  class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
+                                                  <IconPersonSimpleRun />
+                                             </div>
+                                             <div
+                                                  class="w-[95px] h-[95px] bg-slate-300 rounded-full flex justify-center items-center -translate-x-9">
+                                                  <IconPersonSimpleRun />
+                                             </div>
+                                        </div>
+                                        <div>
+                                             <span class="flex flex-row justify-center mt-7">
+                                                  En az bir<br />yetişkin yolcu gerekir.<br />
+                                             </span>
+                                        </div>
+                                        <div class="text-center text-black text-base font-medium font-display mt-7 bg-blue-100 w-16 mx-auto p-2 cursor-pointer bo"
+                                             @click="cancelChange2">
+                                             Geri
+                                        </div>
+                                   </div>
+                              </div>
+                              </transition>
                               <div v-for="(accordion, index) in accordions" :key="index"
-                                   class="items-centers rounded-xl bg-white first:mt-8">
-                                 
+                                   class="items-centers rounded-xl bg-white mb-2">
                                    <div class="w-full overflow-hidden transition-[height] duration-300">
                                         <div class="flex flex-col">
                                              <AccordionPanel aria-title="contact" :title2="getTitle2(accordion)"
@@ -365,111 +392,116 @@ const buttonClass = (accordion: any) => {
 
 const store = useAccordionsStore()
 const isOpen2 = ref(false);
+const isOpen3 = ref(false);
 
 const accordion_idchange = ref();
 
 const saveAllPassenger = async (accordion) => {
      accordion_idchange.value = accordion
-    console.log(accordion, 'saveallpassenger accordion');
-    accordion.isLoading = true;
-    accordion.isComplete = false;
-    accordion.showBtnWarning = false;
+     console.log(accordion, 'saveallpassenger accordion');
+     accordion.isLoading = true;
+     accordion.isComplete = false;
+     accordion.showBtnWarning = false;
 
-    const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
-        accordion.tel && accordion.nation && accordion.passport && accordion.id && accordion.birthDate;
+     const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email &&
+          accordion.tel && accordion.nation && accordion.passport && accordion.id && accordion.birthDate;
 
-    if (!isAllFieldsFilled) {
-        accordion.showBtnWarning = true;
-        console.log('Tüm gerekli alanlar doldurulmalıdır.');
-        accordion.isLoading = false;
-        return;
-    }
+     if (!isAllFieldsFilled) {
+          accordion.showBtnWarning = true;
+          console.log('Tüm gerekli alanlar doldurulmalıdır.');
+          accordion.isLoading = false;
+          return;
+     }
 
-    try {
-        const calculatedId = formatDate(accordion);
-        if (calculatedId === null) {
-            console.error('Failed to calculate new _id due to invalid birthDate');
-            accordion.isLoading = false;
-            return;
-        }
+     try {
+          const calculatedId = formatDate(accordion);
+          if (calculatedId === null) {
+               console.error('Failed to calculate new _id due to invalid birthDate');
+               accordion.isLoading = false;
+               return;
+          }
 
-        console.log(calculatedId, 'calculatedId');
+          console.log(calculatedId, 'calculatedId');
 
-        if (accordion._id !== calculatedId) {
-            isOpen2.value = true; // Show confirmation prompt
-            console.log("isopen2 value 2 inside save all passenger")
-            accordion.isLoading = false;
-            return;
-        }
+          if (accordion._id !== calculatedId) {
+               isOpen2.value = true; // Show confirmation prompt
+               console.log("isopen2 value 2 inside save all passenger")
+               accordion.isLoading = false;
+               return;
+          }
 
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        store.setAccordionData(accordion.id, accordion);
-        console.log("setAdultPassenger çağrılıyor:", accordion);
-        store.setAdultPassenger(accordion.id, accordion);
-        accordion.isComplete = true;
-        console.log("Kayıt işlemi gerçekleştirildi");
-    } catch (error) {
-        console.error("Kaydetme hatası:", error);
-    } finally {
-        accordion.isLoading = false;
-    }
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          store.setAccordionData(accordion.id, accordion);
+          console.log("setAdultPassenger çağrılıyor:", accordion);
+          store.setAdultPassenger(accordion.id, accordion);
+          accordion.isComplete = true;
+          console.log("Kayıt işlemi gerçekleştirildi");
+     } catch (error) {
+          console.error("Kaydetme hatası:", error);
+     } finally {
+          accordion.isLoading = false;
+     }
 };
 
-const confirmChange = (accordion) => {
-    try {
-     const countId1 = accordions.value.filter(item => item._id === 1).length;
+const confirmChange = (accordion: any) => {
+     try {
+          const countId1 = accordions.value.filter(item => item._id === 1).length;
 
-// Eğer accordion'ın _id değeri 1 ise ve sadece bir adet varsa uyarı ver
-if (accordion._id === 1 && countId1 === 1) {
-  alert("Tek yetişkin silinemez");
-  isOpen2.value = false;
-}else{
-     if (!accordion) {
-            console.error('Accordion object is undefined');
-            return;
-        }
+          // Eğer accordion'ın _id değeri 1 ise ve sadece bir adet varsa uyarı ver
+          if (accordion._id === 1 && countId1 === 1) {
+               isOpen3.value = true;
+               isOpen2.value = false;
+          } else {
+               if (!accordion) {
+                    console.error('Accordion object is undefined');
+                    return;
+               }
 
-        console.log(accordion, 'confirmChange accordion')
+               console.log(accordion, 'confirmChange accordion')
 
-        if (!accordion.birthDate) {
-            console.error('Accordion birthDate is undefined');
-            return;
-        }
+               if (!accordion.birthDate) {
+                    console.error('Accordion birthDate is undefined');
+                    return;
+               }
 
-        console.log('Accordion before formatting:', JSON.stringify(accordion));
-        console.log('Before formatting date:', accordion.birthDate);
+               console.log('Accordion before formatting:', JSON.stringify(accordion));
+               console.log('Before formatting date:', accordion.birthDate);
 
-        const calculatedId = formatDate(accordion);
+               const calculatedId = formatDate(accordion);
 
-        if (calculatedId === null) {
-            console.error('Failed to calculate new _id due to invalid birthDate');
-            return;
-        }
+               if (calculatedId === null) {
+                    console.error('Failed to calculate new _id due to invalid birthDate');
+                    return;
+               }
 
-        console.log('Calculated ID:', calculatedId);
-        console.log('Current accordion._id:', accordion._id);
+               console.log('Calculated ID:', calculatedId);
+               console.log('Current accordion._id:', accordion._id);
 
-        if (accordion._id != calculatedId) {
-            console.log(`Updating accordion._id from ${accordion._id} to ${calculatedId}`);
-            accordion._id = calculatedId; // Update _id with the new calculatedId
-            store.setAccordionData(accordion.id, accordion); // Update the accordion data
-            console.log("Accordion data updated with new _id:", JSON.stringify(accordion));
-        } else {
-            console.log('No update needed, calculatedId matches current _id');
-        }
+               if (accordion._id != calculatedId) {
+                    console.log(`Updating accordion._id from ${accordion._id} to ${calculatedId}`);
+                    accordion._id = calculatedId; // Update _id with the new calculatedId
+                    store.setAccordionData(accordion.id, accordion); // Update the accordion data
+                    console.log("Accordion data updated with new _id:", JSON.stringify(accordion));
+               } else {
+                    console.log('No update needed, calculatedId matches current _id');
+               }
 
-        isOpen2.value = false;
-        console.log('Accordion data processed successfully.');
-}
-    } catch (error) {
-        console.error("Error in confirmChange:", error);
-    }
+               isOpen2.value = false;
+               console.log('Accordion data processed successfully.');
+          }
+     } catch (error) {
+          console.error("Error in confirmChange:", error);
+     }
 };
 
 
 
 const cancelChange = () => {
      isOpen2.value = false;
+};
+
+const cancelChange2 = () => {
+     isOpen3.value = false;
 };
 
 const tripStore = useTripStore()
@@ -500,8 +532,8 @@ onMounted(() => {
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'),
-     console.log(storedGetterAccordions.value, 'tripStore.getTripParams'),
-     fetchSelectOptions();
+          console.log(storedGetterAccordions.value, 'tripStore.getTripParams'),
+          fetchSelectOptions();
      const logValue = (label, value) => {
           console.log(label, value);
      };
@@ -549,11 +581,11 @@ watchEffect(() => {
           const newAccordions = []
 
           for (let i = 0; i < storedTripParams.value.AdultCount; i++) {
-               newAccordions.push({  _id: 1 })
+               newAccordions.push({ _id: 1 })
           }
 
           for (let i = 0; i < storedTripParams.value.ChildCount; i++) {
-               newAccordions.push({  _id: 2 })
+               newAccordions.push({ _id: 2 })
           }
 
           for (let i = 0; i < storedTripParams.value.InfantCount; i++) {
@@ -565,63 +597,63 @@ watchEffect(() => {
 })
 
 const formatDate = (accordion) => {
-    try {
-        if (!accordion.birthDate) {
-            console.error('birthDate is undefined');
-            return null;
-        }
+     try {
+          if (!accordion.birthDate) {
+               console.error('birthDate is undefined');
+               return null;
+          }
 
-        console.log('Initial birthDate:', accordion.birthDate);
+          console.log('Initial birthDate:', accordion.birthDate);
 
-        let birth = accordion.birthDate ? accordion.birthDate.replace(/\D/g, '') : '';
-        console.log('After removing non-digits:', birth);
+          let birth = accordion.birthDate ? accordion.birthDate.replace(/\D/g, '') : '';
+          console.log('After removing non-digits:', birth);
 
-        if (birth.length > 2) {
-            birth = birth.substring(0, 2) + '/' + birth.substring(2);
-            console.log('After adding first slash:', birth);
-        }
-        if (birth.length > 5) {
-            birth = birth.substring(0, 5) + '/' + birth.substring(5, 9);
-            console.log('After adding second slash:', birth);
-        }
-        accordion.birthDate = birth;
+          if (birth.length > 2) {
+               birth = birth.substring(0, 2) + '/' + birth.substring(2);
+               console.log('After adding first slash:', birth);
+          }
+          if (birth.length > 5) {
+               birth = birth.substring(0, 5) + '/' + birth.substring(5, 9);
+               console.log('After adding second slash:', birth);
+          }
+          accordion.birthDate = birth;
 
-        // Ensure birth date string is in the format 'DD/MM/YYYY'
-        const parts = birth.split('/');
-        if (parts.length !== 3 || parts[0].length !== 2 || parts[1].length !== 2 || parts[2].length !== 4) {
-            throw new Error(`Invalid birthDate format: ${birth}`);
-        }
+          // Ensure birth date string is in the format 'DD/MM/YYYY'
+          const parts = birth.split('/');
+          if (parts.length !== 3 || parts[0].length !== 2 || parts[1].length !== 2 || parts[2].length !== 4) {
+               throw new Error(`Invalid birthDate format: ${birth}`);
+          }
 
-        const birthDate = new Date(parts.reverse().join('-'));
-        console.log('Birth date object:', birthDate);
+          const birthDate = new Date(parts.reverse().join('-'));
+          console.log('Birth date object:', birthDate);
 
-        if (isNaN(birthDate.getTime())) {
-            throw new Error(`Invalid birthDate after conversion: ${birth}`);
-        }
+          if (isNaN(birthDate.getTime())) {
+               throw new Error(`Invalid birthDate after conversion: ${birth}`);
+          }
 
-        const today = new Date();
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        console.log('Calculated age:', age);
+          const today = new Date();
+          let age = today.getFullYear() - birthDate.getFullYear();
+          const monthDiff = today.getMonth() - birthDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+               age--;
+          }
+          console.log('Calculated age:', age);
 
-        let calculatedId;
-        if (age > 12) {
-            calculatedId = 1;
-        } else if (age > 5) {
-            calculatedId = 2;
-        } else {
-            calculatedId = 3;
-        }
-        console.log('Calculated ID:', calculatedId);
+          let calculatedId;
+          if (age > 12) {
+               calculatedId = 1;
+          } else if (age > 5) {
+               calculatedId = 2;
+          } else {
+               calculatedId = 3;
+          }
+          console.log('Calculated ID:', calculatedId);
 
-        return calculatedId;
-    } catch (error) {
-        console.error('Error in formatDate:', error.message);
-        return null;
-    }
+          return calculatedId;
+     } catch (error) {
+          console.error('Error in formatDate:', error.message);
+          return null;
+     }
 };
 
 window.onbeforeunload = function () {
@@ -639,5 +671,12 @@ select option {
      /* Black text color */
      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
      /* Optional text shadow */
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>

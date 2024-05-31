@@ -1,3 +1,4 @@
+
 <template>
     <div class="flex flex-col justify-center items-center m-auto relative">
         <div class="w-full h-[223px] bg-slate-200" />
@@ -147,101 +148,110 @@
                                         class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[10px] mb-[31px] ml-[10px]">
                                         Sipariş Özetiniz
                                     </h2>
+
                                     <div class="rounded-xl border border-zinc-300">
-                                        <div class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px]">
-                                            <div class="flex flex-row justify-between">
-                                                <div
-                                                    class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
-                                                    Kuşadası -
-                                                    Samos Bileti</div>
-                                                <div>
-                                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
-                                                            fill="black" />
-                                                    </svg>
+                                        <div v-if="isLoading">
+                                            Loading...
+                                        </div>
+                                        <div else>
+                                            <div class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px]">
+                                                <div class="flex flex-row justify-between">
+                                                    <div
+                                                        class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                        Kuşadası -
+                                                        Samos Bileti</div>
+                                                    <div>
+                                                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
+                                                                fill="black" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div v-if="newData.Departure?.AdultSummary !== null"
+                                                    class="flex flex-row justify-between mb-[31px] mt-10">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Yetişkin Yolcu
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ newData.Departure?.AdultSummary }}</p>
+                                                </div>
+                                                <div v-if="newData.Departure?.ChildSummary !== null"
+                                                    class="flex flex-row justify-between mb-[31px]">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Çocuk Yolcu
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ newData.Departure?.ChildSummary }}</p>
+                                                </div>
+                                                <div v-if="newData.Departure?.InfantSummary !== null"
+                                                    class="flex flex-row justify-between mb-[41px]">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Bebek Yolcu
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ newData.Departure?.InfantSummary }}</p>
                                                 </div>
                                             </div>
-                                            <div v-if="newData.Departure?.AdultSummary !== null" class="flex flex-row justify-between mb-[31px] mt-10">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Yetişkin Yolcu
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ newData.Departure?.AdultSummary }}</p>
+                                            <div class="w-full h-[1px] origin-top-left border border-zinc-300">
                                             </div>
-                                            <div v-if="newData.Departure?.ChildSummary !== null" class="flex flex-row justify-between mb-[31px]">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Çocuk Yolcu
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ newData.Departure?.ChildSummary }}</p>
-                                            </div>
-                                            <div v-if="newData.Departure?.InfantSummary !== null" class="flex flex-row justify-between mb-[41px]">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Bebek Yolcu
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ newData.Departure?.InfantSummary }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="w-full h-[1px] origin-top-left border border-zinc-300">
-                                        </div>
-                                        <div class="flex flex-col justify-between px-[30px] pt-[31px] pb-10">
-                                            <div class="flex flex-row justify-between">
-                                                <div
-                                                    class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
-                                                    Yolculuk Bilgileri</div>
-                                                <div>
-                                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
-                                                            fill="black" />
-                                                    </svg>
+                                            <div class="flex flex-col justify-between px-[30px] pt-[31px] pb-10">
+                                                <div class="flex flex-row justify-between">
+                                                    <div
+                                                        class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                        Yolculuk Bilgileri</div>
+                                                    <div>
+                                                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
+                                                                fill="black" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex flex-row justify-between mb-[31px] mt-10">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Gidiş Tarihi
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ formatDate(newData.Departure?.DepartureDate) }}</p>
-                                            </div>
-                                            <div class="flex flex-row justify-between mb-[31px]">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Dönüş Tarihi
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ formatDate(newData.Return?.DepartureDate) }}</p>
-                                            </div>
-                                            <div class="flex flex-row justify-between mb-[41px]">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Kalkış Limanı
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ departureDataRef }}</p>
-                                            </div>
-                                            <div class="flex flex-row justify-between mb-[41px]">
-                                                <p
-                                                    class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                    Varış Limanı
-                                                </p>
-                                                <p
-                                                    class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
-                                                    {{ returnDataRef }}</p>
+                                                <div class="flex flex-row justify-between mb-[31px] mt-10">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Gidiş Tarihi
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ formatDate(newData.Departure?.DepartureDate) }}</p>
+                                                </div>
+                                                <div class="flex flex-row justify-between mb-[31px]">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Dönüş Tarihi
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ formatDate(newData.Return?.DepartureDate) }}</p>
+                                                </div>
+                                                <div class="flex flex-row justify-between mb-[41px]">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Kalkış Limanı
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ departureDataRef }}</p>
+                                                </div>
+                                                <div class="flex flex-row justify-between mb-[41px]">
+                                                    <p
+                                                        class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                        Varış Limanı
+                                                    </p>
+                                                    <p
+                                                        class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                        {{ returnDataRef }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div v-if="!paymentSuccess"
@@ -320,7 +330,6 @@
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
                                         x TL Şimdi Öde
                                     </button>
-                              
                                     <!-- <div class="cursor-pointer" @click="showModal">
                                         deneme
                                     </div> -->
@@ -329,12 +338,12 @@
                                         <Teleport to="#target">
                                             <div v-if="showModalState"
                                                 class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36  m-auto overflow-y-hidden">
-                                                <div class=" bg-gray-100 z-60">
+                                                <!-- <div class=" bg-gray-100 z-60">
                                                     MODAL AÇ MODAL AÇ
                                                 </div>
                                                 <div @click="closeModal">
                                                     CLOSE MODAL MODAL
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </Teleport>
                                     </div>
@@ -420,7 +429,7 @@ const ferryTravelType = ref(0);
 const agencyID = ref(0);
 // const saleChannelID = ref(0);
 const priceGroupID = ref(0);
-
+const isLoading = ref(true);
 const combinedData = ref([]);
 const newData = ref([]);
 const paxListJSON = ref([]);// const postArrivalData = ref<any>(null);
@@ -457,16 +466,16 @@ const postData = async () => {
     }
     console.log(params, 'params from payment stepparams from payment step OLDU LA');
     try {
-          const response = await callPostApi(applicationName.value, controllerName.value, name2.value, params)
-          console.log(response, 'responseVARMI')
-          if (response && response.data.status === 1) {
-              paymentSuccess.value = true;
-          } else {
-               console.error('Unexpected response status:', response?.data?.status)
-          }
-     } catch (error) {
-          console.error('An error occurred:', error)
-     }
+        const response = await callPostApi(applicationName.value, controllerName.value, name2.value, params)
+        console.log(response, 'responseVARMI')
+        if (response && response.data.status === 1) {
+            paymentSuccess.value = true;
+        } else {
+            console.error('Unexpected response status:', response?.data?.status)
+        }
+    } catch (error) {
+        console.error('An error occurred:', error)
+    }
 }
 
 const getSelected = tripStore.getSelected;
@@ -523,9 +532,9 @@ function formatDate2(dateString: any) {
     return `${year}-${month}-${day}`;
 }
 
-onMounted(() => {
+onMounted(async () => {
     if (stored.getPassengerData.length === 0) {
-        router.push('/')
+        router.push('/');
     } else {
         const departureData = tripStore.getDepartureData;
         console.log(departureData, 'departureDatadepartureDatadepartureData');
@@ -537,13 +546,13 @@ onMounted(() => {
 
         const LanguageID = selectedLanguage.code || '';
 
-        calculateReservationArrival.value = arrivalData.map((arrival: any) => ({
+        calculateReservationArrival.value = arrivalData.map((arrival) => ({
             ReturnDate: formatDate2(arrival.DepartureDetail.JourneyDate),
             ArrivalSeaportID: arrival.DepartureDetail.SeaportID,
             ReturnJourneyID: arrival.JourneyID
         }));
 
-        calculateReservationDeparture.value = departureData.map((departure: any) => ({
+        calculateReservationDeparture.value = departureData.map((departure) => ({
             FerryID: departure.FerryID,
             DepartureDate: formatDate2(departure.DepartureDetail.JourneyDate),
             DepartureJourneyID: departure.JourneyID,
@@ -568,7 +577,7 @@ onMounted(() => {
             SaleChannelID: 1,
         }];
 
-        paxListJSON.value = storeAccordiong.map((stored: any, index) => ({
+        paxListJSON.value = storeAccordiong.map((stored, index) => ({
             ID: index + 1,
             birthDate: formatDate2(stored.birthDate),
         }));
@@ -592,18 +601,19 @@ onMounted(() => {
         console.log(calculateReservationTripParams.value, 'calculateReservationTripParams');
 
         const fetchApi = async () => {
-            let params = combinedData.value
-            getQueryApi(applicationName.value, controllerName.value, name.value, params).then((response: any) => {
-                if (response.data.status == 1) {
-                    const fetchFromWhereData = response.data.result
-                    newData.value = JSON.parse(fetchFromWhereData)
-                    console.log(newData.value, 'newValue.value');
-                    departureDataRef.value = newData.value.Departure.DeparturePortName;
-                    returnDataRef.value = newData.value.Return.DeparturePortName;
-                }
-            })
+            let params = combinedData.value;
+            const response = await getQueryApi(applicationName.value, controllerName.value, name.value, params);
+            if (response.data.status == 1) {
+                const fetchFromWhereData = response.data.result;
+                newData.value = JSON.parse(fetchFromWhereData);
+                console.log(newData.value, 'newValue.value');
+                departureDataRef.value = newData.value.Departure.DeparturePortName;
+                returnDataRef.value = newData.value.Return.DeparturePortName;
+            }
         }
-        fetchApi();
+
+        await fetchApi();
+        isLoading.value = false;
     }
 });
 
