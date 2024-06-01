@@ -49,6 +49,7 @@ const getApi = async <T>(applicationName: string, controllerName: string, name: 
           api.defaults.headers.common.Authorization = localStorage.getItem('Token')
           api.defaults.headers.common.CorrelationID = uid()
           api.defaults.headers.common.ClientIP = localStorage.getItem('ClientIP') || ''
+          api.defaults.headers.common.ApiKey = envConfig.apiKey || ''
           // api.defaults.headers.common.GlobalCompanyID = 'ProtalyaOfisTest'
 
           const actionName = dontUseGet ? '/' + name : '/Get' + name
