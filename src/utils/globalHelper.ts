@@ -45,12 +45,16 @@ const getApi = async <T>(applicationName: string, controllerName: string, name: 
 
           // if(stored.getUser){
           //      api.defaults.headers.common.Member = stored.getUser
-          // }
+          // }    const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
+          const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
+          const languageName = selectedLanguage.code || ''
+
           api.defaults.headers.common.Authorization = localStorage.getItem('Token')
           api.defaults.headers.common.CorrelationID = uid()
           api.defaults.headers.common.ClientIP = localStorage.getItem('ClientIP') || ''
           api.defaults.headers.common.ApiKey = envConfig.apiKey || ''
-          // api.defaults.headers.common.GlobalCompanyID = 'ProtalyaOfisTest'
+          api.defaults.headers.common.SaleChannelName = envConfig.SaleChannelName || ''
+          api.defaults.headers.common.LanguageID = languageName || ''
 
           const actionName = dontUseGet ? '/' + name : '/Get' + name
           const mainUrl = baseURLLink ? 'http://' + applicationName : envConfig.basePath(applicationName)
@@ -163,64 +167,6 @@ const callPostApi = async (applicationName: string, controllerName: string, name
      }
 
      return false // In case no condition is met, for example, if the response status is not handled.
-}
-const saveRow = function (applicationName: string, controllerName: string, name: string, data: any, formatDate: any[] = [], backResponse: number = 1, secondFormatDate: any[] = [], baseURLLink: boolean = false): Promise<boolean | any> {
-     if (formatDate.length > 0) {
-          data = beforeSubmitData(data, formatDate)
-     }
-
-     if (secondFormatDate.length > 0) {
-          data[secondFormatDate[0]].filter(function (e: any) {
-               return beforeSubmitData(e, formatDate)
-          })
-     }
-
-     let mainUrl = ''
-     if (baseURLLink) {
-          mainUrl = 'http://' + applicationName
-     } else {
-          mainUrl = envConfig.basePath(applicationName)
-     }
-
-     api.defaults.headers.common.Authorization = localStorage.getItem('Token')
-     // api.defaults.headers.common.GlobalCompanyID = 'ProtalyaOfisTest'
-
-     return api
-          .post(`${controllerName}/Save${name}`, data, {
-               baseURL: mainUrl
-          })
-          .then((response) => {
-               if (response.data.status === 1) {
-                    localStorage.setItem('success', 'true')
-                    console.log('SUCCESS, TRUE')
-                    if (backResponse === 1) {
-                         // getTable(applicationName, controllerName, name, null, false, [], false, baseURLLink);
-                    } else {
-                         // return response.data.result;
-                         return response.data.status
-                    }
-                    return true
-               } else if (response.data.status === 3) {
-                    localStorage.setItem('success', 'false')
-
-                    return false
-               } else if (response.data.status === 2) {
-                    localStorage.setItem('success', 'false')
-
-                    return false
-               } else {
-                    localStorage.setItem('success', 'false')
-               }
-          })
-          .catch(function (error) {
-               console.log(error.Status, 'error.response.status')
-               if (error && error.Status === 4) {
-                    localStorage.setItem('loginModal', 'true')
-               } else if (error.response && error.response.status === 400) {
-                    console.log(error.response)
-                    console.log('error.response.status')
-               }
-          })
 }
 
 const checkEmptyValue = function (fields: any, status: boolean): boolean {
@@ -470,7 +416,6 @@ export {
      getApi,
      callPostApi,
      getImage,
-     saveRow,
      parse,
      checkEmptyValue,
      checkDate,
