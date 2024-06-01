@@ -12,8 +12,8 @@ console.log('environment', environment)
 const config: Record<string, EnvironmentConfig> = {
      development: {
           mode: 'test',
-          apiKey: '115f70e1-9d84-4d3e-b3a4-fbf0a48c0399',
-          SaleChannelName: 'Samosa',
+          apiKey: import.meta.env.VITE_API_KEY,
+          SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
           basePath: function (path: string) {
                return 'http://' + this.mode + path + '.meanderservices.com'
           }
@@ -21,8 +21,8 @@ const config: Record<string, EnvironmentConfig> = {
      },
      production: {
           mode: 'prod',
-          apiKey: '115f70e1-9d84-4d3e-b3a4-fbf0a48c0399',
-          SaleChannelName: 'Samosa',
+          apiKey: import.meta.env.VITE_API_KEY,
+          SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
           basePath: function (path: string) {
                return 'http://' + path + '.meanderservices.com'
           }
