@@ -123,7 +123,6 @@ const mainNavbar = ref<MainNavbarData | any>([])
 const getNavbar = async () => {
      try {
           let filters = {
-               saleChannel: 'Samosa',
                pageName: 'Home'
           }
 

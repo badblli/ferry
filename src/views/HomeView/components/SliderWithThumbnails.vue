@@ -1,23 +1,18 @@
 <template>
      <div v-show="mainHomeSplide.img?.length > 0">
           <div class="lg:px-[100px] px-2 md:px-16 sm:px-8 relative centered-w">
-               <div
-                    class="lg:absolute block lg:flex flex-row lg:w-[502px] w-full lg:p-0 p-1 lg:mt-0 mt-1 z-20 lg:bg-white bg-slate-200 top-9 left-36 rounded-2xl">
+               <div class="lg:absolute block lg:flex flex-row lg:w-[502px] w-full lg:p-0 p-1 lg:mt-0 mt-1 z-20 lg:bg-white bg-slate-200 top-9 left-36 rounded-2xl">
                     <div class="flex flex-col justify-center lg:ml-[35px] ml-5 lg:mt-[32px] mt-3 lg:mb-[31px] mb-3">
-                         <p
-                              class="text-black lg:text-base text-sm font-semibold font-['Plus Jakarta Sans'] leading-[18.46px] tracking-[2.96px] lg:mb-[17px] mb-2">
+                         <p class="text-black lg:text-base text-sm font-semibold font-['Plus Jakarta Sans'] leading-[18.46px] tracking-[2.96px] lg:mb-[17px] mb-2">
                               {{ mainHomeSplide.title }}
                          </p>
                          <div class="flex flex-row justify-between">
-                              <p
-                                   class="text-black lg:text-[32px] text-sm lg:font-bold font-sans font-['Plus Jakarta Sans'] lg:leading-[36.93px] leading-4 tracking-wide">
+                              <p class="text-black lg:text-[32px] text-sm lg:font-bold font-sans font-['Plus Jakarta Sans'] lg:leading-[36.93px] leading-4 tracking-wide">
                                    {{ mainHomeSplide.subtitle }}
-                                   <span class="lg:hidden flex flex-row justify-start items-start font-bold mt-1"> €30
-                                   </span>
+                                   <span class="lg:hidden flex flex-row justify-start items-start font-bold mt-1"> €30 </span>
                               </p>
                               <div class="items-end flex">
-                                   <button
-                                        class="flex flex-row justify-evenly items-center mx-2 w-[125px] h-[32px] lg:bg-slate-200 bg-white rounded-lg mr-[33px] text-black text-[15px] font-medium font-display">
+                                   <button class="flex flex-row justify-evenly items-center mx-2 w-[125px] h-[32px] lg:bg-slate-200 bg-white rounded-lg mr-[33px] text-black text-[15px] font-medium font-display">
                                         {{ mainHomeSplide.btnText }}
                                         <IconArrowUpRight />
                                    </button>
@@ -25,10 +20,8 @@
                          </div>
                     </div>
                     <div>
-                         <div
-                              class="bg-white w-[86px] h-[86px] lg:flex hidden flex-row justify-center items-center rounded-full z-50 lg:absolute lg:right-0 lg:translate-x-10 lg:translate-y-5">
-                              <p
-                                   class="text-center text-stone-800 text-2xl font-bold font-['Plus Jakarta Sans'] bg-slate-200 w-[73px] h-[73px] rounded-full flex flex-row justify-center items-center">
+                         <div class="bg-white w-[86px] h-[86px] lg:flex hidden flex-row justify-center items-center rounded-full z-50 lg:absolute lg:right-0 lg:translate-x-10 lg:translate-y-5">
+                              <p class="text-center text-stone-800 text-2xl font-bold font-['Plus Jakarta Sans'] bg-slate-200 w-[73px] h-[73px] rounded-full flex flex-row justify-center items-center">
                                    {{ mainHomeSplide.price }}
                               </p>
                          </div>
@@ -38,13 +31,11 @@
                     <div id="main-slider" class="splide">
                          <div class="splide__track">
                               <ul class="splide__list">
-                                   <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img"
-                                        :key="`image-${index}`">
+                                   <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img" :key="`image-${index}`">
                                         <img :src="getImage(image.url)" alt="Slide Image" />
                                         <div>{{ image.title }}</div>
                                    </li>
-                                   <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img"
-                                        :key="`image-${index}`">
+                                   <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img" :key="`image-${index}`">
                                         <img :src="getImage(image.url)" alt="Slide Image" />
                                         <div>{{ image.title }}</div>
                                    </li>
@@ -54,8 +45,7 @@
                     <div id="thumbnail-slider" class="splide">
                          <div class="splide__track">
                               <ul class="splide__list">
-                                   <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img"
-                                        :key="`image-${index}`">
+                                   <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img" :key="`image-${index}`">
                                         <img :src="getImage(image.url)" alt="Slide Image" />
                                         <div>{{ image.title }}</div>
                                    </li>
@@ -64,99 +54,66 @@
                     </div>
                </div>
                <form class="md:relative md:max-w-[798px] hidden md:block mx-auto -translate-y-72 md:z-50 z-40">
-
                     <div class="flex flex-row">
-                         <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
-                              class="bg-slate-200 mr-[5px] py-3 px-9 rounded-t-xl cursor-pointer">
-                              <span @click="showTrue = false"
-                                   class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug">{{
-                                        mainHomeSplide.search?.SearchFerryTicket?.title }}</span>
+                         <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }" class="bg-slate-200 mr-[5px] py-3 px-9 rounded-t-xl cursor-pointer">
+                              <span @click="showTrue = false" class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug">{{ mainHomeSplide.search?.SearchFerryTicket?.title }}</span>
                          </div>
-                         <div :class="{ 'bg-slate-200': !showTrue, 'bg-white': showTrue }"
-                              class="mr-4 bg-slate-200 py-3 px-9 rounded-t-xl text-white cursor-pointer">
-                              <span @click="showTrue = true"
-                                   class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug">
-                                   {{ mainHomeSplide.search?.SearchReservation?.reservationNo }} </span>
+                         <div :class="{ 'bg-slate-200': !showTrue, 'bg-white': showTrue }" class="mr-4 bg-slate-200 py-3 px-9 rounded-t-xl text-white cursor-pointer">
+                              <span @click="showTrue = true" class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"> {{ mainHomeSplide.search?.SearchReservation?.reservationNo }} </span>
                          </div>
                     </div>
 
                     <div class="bg-white rounded-b-xl rounded-tr-xl flex items-center">
                          <div class="flex flex-row items-center w-full" v-show="!showTrue">
-
                               <div class="hs-dropdown flex flex-row items-center ml-7">
-
-                                   <button id="hs-dropdown-with-dividers" type="button"
-                                        class="cursor-pointer flex flex-col justify-start">
-                                        <div class="text-black text-base font-medium font-display tracking-tight">{{
-                                             mainHomeSplide.search?.SearchFerryTicket?.from }}</div>
-                                        <div
-                                             class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                   <button id="hs-dropdown-with-dividers" type="button" class="cursor-pointer flex flex-col justify-start">
+                                        <div class="text-black text-base font-medium font-display tracking-tight">{{ mainHomeSplide.search?.SearchFerryTicket?.from }}</div>
+                                        <div class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
                                              {{ _fromWhere?.TownName }}
                                         </div>
                                    </button>
 
-                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
-                                        aria-labelledby="hs-dropdown-with-dividers">
+                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700" aria-labelledby="hs-dropdown-with-dividers">
                                         <div class="flex flex-col w-[277px] p-5">
                                              <div class="flex flex-col">
-                                                  <div @click="updateFromWhere(i)" v-for="(i, index) in fromWhereObject"
-                                                       :key="index"
-                                                       :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
-                                                       class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                       <a
-                                                            class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                 i.TownName }}</a>
+                                                  <div @click="updateFromWhere(i)" v-for="(i, index) in fromWhereObject" :key="index" :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                       <a class="text-black text-base font-medium font-display tracking-tight">{{ i.TownName }}</a>
                                                   </div>
                                              </div>
                                         </div>
                                         <div class="pl-7 py-6 flex flex-row cursor-pointer">
-                                             <div
-                                                  class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">
-                                                  Samos Turlarını Keşfet</div>
-                                             <div
-                                                  class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
+                                             <div class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">Samos Turlarını Keşfet</div>
+                                             <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
                                                   <IconFooter />
                                              </div>
                                         </div>
                                    </div>
                               </div>
 
-                              <div @click="toggleDataPlacement"
-                                   class="bg-gray-200 rounded-full flex flex-row justify-center items-center p-[7px] ml-[26px] cursor-pointer">
+                              <div @click="toggleDataPlacement" class="bg-gray-200 rounded-full flex flex-row justify-center items-center p-[7px] ml-[26px] cursor-pointer">
                                    <IconArrowsLeftRight />
                               </div>
 
                               <div class="hs-dropdown flex flex-row items-center">
-                                   <button id="hs-dropdown-with-dividers-2" type="button"
-                                        class="cursor-pointer flex flex-col justify-start ml-[21px]">
-                                        <div class="text-black text-base font-medium font-display tracking-tight">{{
-                                             mainHomeSplide.search?.SearchFerryTicket?.to }}</div>
-                                        <div
-                                             class="w-24 overflow-hidden whitespace-nowrap truncate text-black text-base font-light font-display tracking-tight text-start">
+                                   <button id="hs-dropdown-with-dividers-2" type="button" class="cursor-pointer flex flex-col justify-start ml-[21px]">
+                                        <div class="text-black text-base font-medium font-display tracking-tight">{{ mainHomeSplide.search?.SearchFerryTicket?.to }}</div>
+                                        <div class="w-24 overflow-hidden whitespace-nowrap truncate text-black text-base font-light font-display tracking-tight text-start">
                                              {{ _toWhere?.TownName }}
                                         </div>
                                    </button>
-                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
-                                        aria-labelledby="hs-dropdown-with-dividers-2">
+                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700" aria-labelledby="hs-dropdown-with-dividers-2">
                                         <div class="flex flex-col w-[277px] p-5">
                                              <div class="flex flex-col" v-if="toWhereObject.length === 0">
                                                   <div class="flex flex-col">
                                                        <div class="flex flex-col">
-                                                            <div
-                                                                 class="text-black text-base font-medium font-display tracking-tight">
-                                                                 Gidiş Seçiniz</div>
+                                                            <div class="text-black text-base font-medium font-display tracking-tight">Gidiş Seçiniz</div>
                                                        </div>
                                                   </div>
                                              </div>
                                              <div class="flex flex-col" v-else>
                                                   <div class="flex flex-col">
-                                                       <div @click="updateToWhere(i)"
-                                                            v-for="(i, index) in toWhereObject" :key="index"
-                                                            :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
-                                                            class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                            <a
-                                                                 class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                      i.TownName }}</a>
+                                                       <div @click="updateToWhere(i)" v-for="(i, index) in toWhereObject" :key="index" :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                            <a class="text-black text-base font-medium font-display tracking-tight">{{ i.TownName }}</a>
                                                        </div>
                                                   </div>
                                              </div>
@@ -167,27 +124,17 @@
                               <div class="h-14 border-l border-zinc-300 ml-3"></div>
 
                               <div class="hs-dropdown flex flex-row items-center">
-                                   <button id="hs-dropdown-with-dividers-3" type="button"
-                                        class="cursor-pointer text-start ml-7">
-                                        <div class="text-black text-base font-medium font-display tracking-tight">{{
-                                             mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
-                                        <div
-                                             class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
+                                   <button id="hs-dropdown-with-dividers-3" type="button" class="cursor-pointer text-start ml-7">
+                                        <div class="text-black text-base font-medium font-display tracking-tight">{{ mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
+                                        <div class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
                                              {{ _roundTrip?.Name }}
                                         </div>
                                    </button>
-                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
-                                        aria-labelledby="hs-dropdown-with-dividers-3">
+                                   <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700" aria-labelledby="hs-dropdown-with-dividers-3">
                                         <div class="flex flex-col w-[277px] p-5">
                                              <span>here!</span>
-                                             <div @click="updateToTrip(i)" v-for="(i, index) in travelObject"
-                                                  :key="index"
-                                                  :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
-                                                  class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                  <a
-                                                       class="text-black text-base font-medium font-display tracking-tight">{{
-                                                            i.Name
-                                                       }}</a>
+                                             <div @click="updateToTrip(i)" v-for="(i, index) in travelObject" :key="index" :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                  <a class="text-black text-base font-medium font-display tracking-tight">{{ i.Name }}</a>
                                              </div>
                                         </div>
                                    </div>
@@ -197,30 +144,22 @@
 
                               <div class="flex flex-row items-center ml-7">
                                    <div class="cursor-pointer flex flex-col">
-                                        <span @click="togglePickerModal"
-                                             class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">{{
-                                                  _roundTrip?.Name }}</span>
+                                        <span @click="togglePickerModal" class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">{{ _roundTrip?.Name }}</span>
                                         <span class="text-black text-base font-light font-display tracking-tight">
                                              {{ formattedDateToShow }}
                                         </span>
                                    </div>
-                                   <div v-show="litepickerModalVisible" id="container"
-                                        class="w-full h-full -bottom-32 left-0 absolute">
+                                   <div v-show="litepickerModalVisible" id="container" class="w-full h-full -bottom-32 left-0 absolute">
                                         <div id="litepicker">
-                                             <div
-                                                  class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                  <span
-                                                  class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                                  {{ formattedValue }}
-                                                  <span v-if="formattedValue2" class="mx-2">
-                                                       -
+                                             <div class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                                  <span class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                       {{ formattedValue }}
+                                                       <span v-if="formattedValue2" class="mx-2"> - </span>
+                                                       {{ formattedValue2 }}
                                                   </span>
-                                                  {{ formattedValue2 }}
-                                             </span>
                                              </div>
                                         </div>
-                                        <div @click="togglePickerModal"
-                                             class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                        <div @click="togglePickerModal" class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
                                              <p class="text-stone-800">Seç</p>
                                         </div>
                                    </div>
@@ -228,28 +167,23 @@
                               <div class="h-14 border-l border-zinc-300"></div>
                               <div class="dropdown ml-7">
                                    <button @click="toggleDropdown" type="button" class="cursor-pointer">
-                                        <div
-                                             class="text-start text-black text-base font-medium font-display tracking-tight">
+                                        <div class="text-start text-black text-base font-medium font-display tracking-tight">
                                              {{ mainHomeSplide.search?.SearchFerryTicket.passengers }}
                                         </div>
-                                        <div class="text-black text-base font-light font-display tracking-tight">{{
-                                             mainHomeSplide.search?.SearchFerryTicket.choosePerson }}:
+                                        <div class="text-black text-base font-light font-display tracking-tight">
+                                             {{ mainHomeSplide.search?.SearchFerryTicket.choosePerson }}:
 
                                              <span class="ml-1 justify-end fixed font-thin text-base">
                                                   {{ totalPassengerCount }}
                                              </span>
                                         </div>
                                    </button>
-                                   <div v-show="isOpen"
-                                        class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                   <div v-show="isOpen" class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                         <div class="flex flex-col mt-[37px] ml-6">
                                              <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
-                                             <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
-                                                  :key="index"
-                                                  class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                             <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType" :key="index" class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
                                                   <div class="flex flex-row">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight">
+                                                       <div class="text-black text-base font-medium font-display tracking-tight">
                                                             {{ i.TypeName }}
                                                        </div>
                                                   </div>
@@ -257,8 +191,7 @@
                                                        <span @click="decreaseCount(index)" class="mx-2 cursor-pointer">
                                                             <IconMinus />
                                                        </span>
-                                                       <div
-                                                            class="text-black text-[22px] font-normal font-display tracking-wide">
+                                                       <div class="text-black text-[22px] font-normal font-display tracking-wide">
                                                             {{ passenger[index].count }}
                                                        </div>
                                                        <span @click="increaseCount(index)" class="mx-2 cursor-pointer">
@@ -274,20 +207,15 @@
                                         </div>
                                    </div>
                               </div>
-                              <div :class="cursorClass" @click="navigateToSecondPage"
-                                   class="bg-slate-200 rounded-full justify-center items-center p-[17px] m-[11px] ml-10">
+                              <div :class="cursorClass" @click="navigateToSecondPage" class="bg-slate-200 rounded-full justify-center items-center p-[17px] m-[11px] ml-10">
                                    <IconSearchNormal />
                               </div>
                          </div>
                          <div v-show="showTrue">
                               <div>
                                    <div class="flex flex-row justify-between items-center ml-5">
-                                        <SliderReservationInputs placeholder="PNR Sorgula"
-                                             ariaLabel="Rezervasyon Sorgula" type="text"
-                                             class="mr-3 flex flex-row justify-center items-center" />
-                                        <SliderReservationInputs placeholder="Rezervasyon Sorgula"
-                                             ariaLabel="Rezervasyon Sorgula" type="text"
-                                             class="mr-3 flex flex-row justify-center items-center" />
+                                        <SliderReservationInputs placeholder="PNR Sorgula" ariaLabel="Rezervasyon Sorgula" type="text" class="mr-3 flex flex-row justify-center items-center" />
+                                        <SliderReservationInputs placeholder="Rezervasyon Sorgula" ariaLabel="Rezervasyon Sorgula" type="text" class="mr-3 flex flex-row justify-center items-center" />
                                         <div class="bg-slate-200 rounded-full cursor-pointer p-[17px] m-[11px]">
                                              <IconSearchNormal />
                                         </div>
@@ -430,10 +358,10 @@ const togglePickerModal = () => {
 //      passengerModalVisible.value = !passengerModalVisible.value
 // }
 
-const isOpen = ref(false);
+const isOpen = ref(false)
 const toggleDropdown = () => {
-     isOpen.value = !isOpen.value;
-};
+     isOpen.value = !isOpen.value
+}
 
 const formatDate = (dateInstance: string): string => {
      const date = new Date(dateInstance)
@@ -573,23 +501,23 @@ function isEqualTrip(obj1: { Name: string }, obj2: { Name: string }) {
 
 const increaseCount = (index: number) => {
      if (passenger.value[index]) {
-          passenger.value[index].count++;
-          console.log(`Passenger count increased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`);
-          console.log(`Total passenger count: ${totalCount()}`);
+          passenger.value[index].count++
+          console.log(`Passenger count increased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`)
+          console.log(`Total passenger count: ${totalCount()}`)
      }
 }
 
 const decreaseCount = (index: number) => {
      if (passenger.value[index] && passenger.value[index].count > 0) {
-          passenger.value[index].count--;
-          console.log(`Passenger count decreased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`);
-          console.log(`Total passenger count: ${totalCount()}`);
-          console.log(passenger.value[index], 'index');
+          passenger.value[index].count--
+          console.log(`Passenger count decreased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`)
+          console.log(`Total passenger count: ${totalCount()}`)
+          console.log(passenger.value[index], 'index')
      }
 }
 
 const totalCount = () => {
-     return passenger.value.reduce((total, current) => total + current.count, 0);
+     return passenger.value.reduce((total, current) => total + current.count, 0)
 }
 
 const toggleDataPlacement = () => {
@@ -609,7 +537,6 @@ const goToSlide = (index: number) => {
 const getHomeSpide = async () => {
      try {
           let filters = {
-               saleChannel: 'Samosa',
                pageName: 'Home'
           }
 
@@ -621,7 +548,7 @@ const getHomeSpide = async () => {
                initializeSplide()
           }
      } catch (error) {
-          return 
+          return
      }
 }
 
@@ -727,9 +654,9 @@ const isClickable = computed(() => {
 })
 
 const totalPassengerCount = computed(() => {
-     const count = totalCount();
-     return count > 0 ? count : null;
-});
+     const count = totalCount()
+     return count > 0 ? count : null
+})
 
 const fetchFromWhere = async () => {
      let params = {
@@ -878,7 +805,7 @@ function navigateToSecondPage() {
      opacity: 1;
 }
 
-.splide__track--nav>.splide__list>.splide__slide.is-active {
+.splide__track--nav > .splide__list > .splide__slide.is-active {
      border: none !important;
 }
 

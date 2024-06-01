@@ -68,7 +68,6 @@ const langStore = useLanguageStore()
 const getTopMenu = async () => {
      try {
           let filters = {
-               saleChannel: 'Samosa',
                pageName: 'Home'
           }
 

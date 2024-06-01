@@ -135,7 +135,7 @@ const callPostApi = async (applicationName: string, controllerName: string, name
      try {
           const response = await api.post(controllerName + '/' + name, data, { baseURL: mainUrl })
           console.log(response, 'response')
-          if (response.data.status === 1) {  
+          if (response.data.status === 1) {
                if (!dontGoTable) {
                     return response
                     // Assuming getApi is defined elsewhere
@@ -216,7 +216,7 @@ const saveRow = function (applicationName: string, controllerName: string, name:
                if (error && error.Status === 4) {
                     localStorage.setItem('loginModal', 'true')
                } else if (error.response && error.response.status === 400) {
-                    console.log(error.response);
+                    console.log(error.response)
                     console.log('error.response.status')
                }
           })
@@ -359,7 +359,7 @@ console.log(formatDate('2024-02-13T10:20:30.123+03:00')) // Tarih ve saat
 
 //STRAPI API TEST
 const API_BASE_URL = import.meta.env.VITE_STRAPI_URL
-
+const saleChannel = import.meta.env.VITE_SALE_CHANNEL
 // Bearer Token'ınızı buraya ekleyin
 const BEARER_TOKEN = import.meta.env.VITE_STRAPI_TOKEN
 const fetchData = (endpoint: string, locale: string, filters: Record<string, string>) => {
@@ -367,7 +367,7 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
           const filterParams = Object.entries(filters)
                .map(([key, value]) => `filters[${key}][$eq]=${value}`)
                .join('&')
-          const url = `${API_BASE_URL}/${endpoint}?populate=deep&${filterParams}&locale=${locale}`
+          const url = `${API_BASE_URL}/${endpoint}?populate=deep&${filterParams}&filters[saleChannel][$eq]=${saleChannel}&locale=${locale}`
           return axios
                .get(url, {
                     headers: {
