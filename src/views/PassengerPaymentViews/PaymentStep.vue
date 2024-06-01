@@ -306,7 +306,7 @@
                                         <div class="flex flex-col">
                                             <span
                                                 class="text-right text-black text-[22px] font-semibold font-['Plus Jakarta Sans'">
-                                                3260TL
+                                                {{ totalPrice }}€
                                             </span>
                                             <span
                                                 class="text-neutral-500 text-[10px] font-semibold font-['Plus Jakarta Sans'] tracking-wider">KDV
@@ -328,7 +328,7 @@
                                     </span>
                                     <button @click="postData"
                                         class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">
-                                        x TL Şimdi Öde
+                                        Öde
                                     </button>
                                     <!-- <div class="cursor-pointer" @click="showModal">
                                         deneme
@@ -375,6 +375,7 @@ import { useAccordionsStore } from '@/stores/accordions'
 
 
 const departureDataRef = ref(null);
+const totalPrice = ref(null);
 const returnDataRef = ref(null);
 
 import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue';
@@ -606,9 +607,10 @@ onMounted(async () => {
             if (response.data.status == 1) {
                 const fetchFromWhereData = response.data.result;
                 newData.value = JSON.parse(fetchFromWhereData);
-                console.log(newData.value, 'newValue.value');
+                console.log(newData.value, 'newValue.valuenewValue.valuenewValue.valuenewValue.value');
                 departureDataRef.value = newData.value.Departure.DeparturePortName;
                 returnDataRef.value = newData.value.Return.DeparturePortName;
+                totalPrice.value = newData.value.TotalPrice
             }
         }
 

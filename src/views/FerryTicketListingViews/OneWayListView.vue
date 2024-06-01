@@ -15,7 +15,7 @@
                               {{ tripReverseDepartureData[0].ArrivalDetail.SeaportName }},&nbsp;</div>
                          <div
                               class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
-                              {{ queryFormatShortDateTR(tripFilterReverseData[0]?.DepartureDetail.JourneyDate) }}
+                              {{ tripFilterReverseData[0]?.DepartureDetail.JourneyDateString }}
                          </div>
                     </div>
                     <div class="flex flex-row md:mb-0 mb-2">
@@ -59,7 +59,7 @@
                                    <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{
                                         tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}&nbsp;-&nbsp;{{
                                              tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}, {{
-                                             queryFormatShortDateTR(tripFilterReverseData[0]?.DepartureDetail.JourneyDate) }}
+                                             tripFilterReverseData[0]?.DepartureDetail.JourneyDateString }}
                                    </div>
                               </div>
                               <div v-if="selectedDepartureData.length > 0">
@@ -74,7 +74,7 @@
                                         class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
                                              <img class="w-[100px] h-[100px] rounded-xl mr-6"
-                                                  src="./assets/EmbeddedImages/meander.jpg" alt="meander" />
+                                                  src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">Firma
                                                        adı</p>
@@ -88,11 +88,11 @@
                                                   <div class="flex flex-row">
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                            {{ queryFormatDateTR(item.DepartureDetail.JourneyDate) }}
+                                                            {{ item.DepartureDetail.JourneyDateString }}
                                                        </p>
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                            {{ item.DepartureDetail.JourneyTime }} Pazar</p>
+                                                            {{ item.DepartureDetail.JourneyTime }}</p>
                                                   </div>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -104,11 +104,11 @@
                                                   <div class="flex flex-row">
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                            {{ queryFormatDateTR(item.ArrivalDetail.JourneyDate) }}
+                                                            {{ item.ArrivalDetail.JourneyDateString }}
                                                        </p>
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                            {{ item.ArrivalDetail.JourneyTime }} Pazar</p>
+                                                            {{ item.ArrivalDetail.JourneyTime }}</p>
                                                   </div>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -138,7 +138,7 @@
                                                             class="splide__slide">
                                                             <div
                                                                  class="text-center text-black text-lg font-medium font-display">
-                                                                 {{ qq(item.TravelDateString) }}
+                                                                 {{ item.TravelDateString }}
                                                             </div>
                                                             <div
                                                                  class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -178,11 +178,11 @@
                                              <div class="flex flex-row">
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                       {{ queryFormatDate(item.DepartureDetail.JourneyDate) }}
+                                                       {{ item.DepartureDetail.JourneyDateString }}
                                                   </p>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                       {{ item.DepartureDetail.JourneyTime }} Pazar</p>
+                                                       {{ item.DepartureDetail.JourneyTime }} </p>
                                              </div>
                                              <p
                                                   class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -194,11 +194,11 @@
                                              <div class="flex flex-row">
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                       {{ queryFormatDateTR(item.ArrivalDetail.JourneyDate) }}
+                                                       {{ item.ArrivalDetail.JourneyDateString }}
                                                   </p>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                       {{ item.ArrivalDetail.JourneyTime }} Pazar</p>
+                                                       {{ item.ArrivalDetail.JourneyTime }} </p>
                                              </div>
                                              <p
                                                   class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -235,7 +235,7 @@
                                         <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{
                                              tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{
                                                   tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}, {{
-                                                  queryFormatShortDateTR(tripFilterReverseArData[0]?.DepartureDetail.JourneyDate)
+                                                  tripFilterReverseArData[0]?.DepartureDetail.JourneyDateString
                                              }}</div>
                                    </div>
                                    <div v-if="selectedArrivalData.length > 0">
@@ -263,11 +263,11 @@
                                                   <div class="flex flex-row">
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                            {{ queryFormatDateTR(item.DepartureDetail.JourneyDate) }}
+                                                            {{ item.DepartureDetail.JourneyDateString }}
                                                        </p>
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                            {{ item.DepartureDetail.JourneyTime }} Pazar</p>
+                                                            {{ item.DepartureDetail.JourneyTime }} </p>
                                                   </div>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -279,11 +279,11 @@
                                                   <div class="flex flex-row">
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                            {{ queryFormatDateTR(item.ArrivalDetail.JourneyDate) }}
+                                                            {{ item.ArrivalDetail.JourneyDateString }}
                                                        </p>
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                            {{ item.ArrivalDetail.JourneyTime }} Pazar</p>
+                                                            {{ item.ArrivalDetail.JourneyTime }} </p>
                                                   </div>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -312,7 +312,7 @@
                                         <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{
                                              tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{
                                                   tripReverseDepartureData[0]?.DepartureDetail.SeaportName }},&nbsp;{{
-                                                  queryFormatShortDateTR(tripFilterReverseArData[0]?.DepartureDetail.JourneyDate)
+                                                  tripFilterReverseArData[0]?.DepartureDetail.JourneyDateString
                                              }}</div>
                                    </div>
                               </div>
@@ -326,7 +326,7 @@
                                                                  class="splide__slide">
                                                                  <div
                                                                       class="text-center text-black text-lg font-medium font-display">
-                                                                      {{ qq(item.TravelDateString) }}
+                                                                      {{ item.TravelDateString }}
                                                                  </div>
                                                                  <div
                                                                       class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -367,11 +367,11 @@
                                                   <div class="flex flex-row">
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                            {{ queryFormatDateTR(item.DepartureDetail.JourneyDate) }}
+                                                            {{ item.DepartureDetail.JourneyDateString }}
                                                        </p>
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                            {{ item.DepartureDetail.JourneyTime }} Pazar</p>
+                                                            {{ item.DepartureDetail.JourneyTime }} </p>
                                                   </div>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -383,11 +383,11 @@
                                                   <div class="flex flex-row">
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                            {{ queryFormatDateTR(item.ArrivalDetail.JourneyDate) }}
+                                                            {{ item.ArrivalDetail.JourneyDateString }}
                                                        </p>
                                                        <p
                                                             class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight ml-1">
-                                                            {{ item.ArrivalDetail.JourneyTime }} Pazar</p>
+                                                            {{ item.ArrivalDetail.JourneyTime }} </p>
                                                   </div>
                                                   <p
                                                        class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -757,6 +757,7 @@ const fetchData = async () => {
           AgencyID: route.query.AgencyID,
           PriceGroupID: route.query.PriceGroupID,
           FerryTravelType: route.query.FerryTravelType,
+          LanguageIsoCode: route.query.LanguageIsoCode,
      }
      // console.log(applicationName.value, 'applicationName', controllerName.value, 'controllerName', name.value, 'nameValue', params, 'params')
      getQueryApi(applicationName.value, controllerName.value, name.value, params)

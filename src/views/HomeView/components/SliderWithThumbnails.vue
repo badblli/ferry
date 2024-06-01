@@ -209,14 +209,14 @@
                                         <div id="litepicker">
                                              <div
                                                   class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                  <!-- <span
+                                                  <span
                                                   class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
                                                   {{ formattedValue }}
-                                                  <span class="mx-2">
-                                                       <IconDateArrowRight />
+                                                  <span v-if="formattedValue2" class="mx-2">
+                                                       -
                                                   </span>
                                                   {{ formattedValue2 }}
-                                             </span> -->
+                                             </span>
                                              </div>
                                         </div>
                                         <div @click="togglePickerModal"
@@ -714,7 +714,7 @@ const formattedValue2 = computed(() => {
           // console.log('first formattedValue date is here')
           return date.formattedDate2.value
      } else {
-          return 'Tarih Seçiniz'
+          return ''
      }
 })
 
@@ -781,6 +781,8 @@ onMounted(() => {
      fetchFromWhere()
      fetchTravelType()
 })
+const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
+const languageName = selectedLanguage.code || ''
 
 function navigateToSecondPage() {
      if (!isClickable.value) return
@@ -802,7 +804,7 @@ function navigateToSecondPage() {
                PriceGroupID: 1,
                FerryTravelType: _roundTrip.value!.ID,
                // SaleChannelID: 1,
-               // LanguageID: 1
+               LanguageIsoCode: languageName
           }
      })
 }
