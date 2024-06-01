@@ -33,7 +33,7 @@
 
                                    <div v-show="isOpen" class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
                                         <div class="bg-white space-y-3">
-                                             <div v-for="(item, index) in passengerDetails?.passengerType" :key="index" @click="handleClick(item.id)" class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
+                                             <div v-for="(item, index) in passengerDetails?.passengerType" :key="index" @click="handleClick(item.typeId)" class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
                                                   <div class="text-black text-base font-medium font-display tracking-tight">
                                                        {{ item.type }}
                                                   </div>
@@ -90,7 +90,7 @@
                               <div v-for="(accordion, index) in accordions" :key="index" class="items-centers rounded-xl bg-white mb-2">
                                    <div class="w-full overflow-hidden transition-[height] duration-300">
                                         <div class="flex flex-col">
-                                             <AccordionPanel aria-title="contact" :title2="getTitle2(accordion)" :title="getTitle(accordion)" :name="accordion.name" :surname="accordion.surname">
+                                             <AccordionPanel aria-title="contact" :title2="getTitle2(accordion)" :title="getTitle(accordion)" :name="accordion.name" :surname="accordion.surname" :updateBtn="passengerDetails?.passengers[0].updateInformation">
                                                   <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 px-5 mt-[67px] mb-24">
                                                        <form class="w-full max-w-sm md:ml-[83px] ml-2">
                                                             <div class="flex border-b border-neutral-200 mb-10">
@@ -205,7 +205,7 @@ import IconArrowUpRight2 from '@/components/icons/IconArrowUpRight2.vue'
 import IconBaby from '@/components/icons/IconBaby.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import { useRouter } from 'vue-router'
-import { ref, watchEffect, computed, reactive } from 'vue'
+import { ref, watchEffect, computed, reactive, watch } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
@@ -234,13 +234,14 @@ const convertNewlinesToBr = (text: string) => {
      }
 }
 const getTitle = (accordion: any) => {
+     console.log(accordion, 'getTitle', accordion._id)
      switch (accordion._id) {
           case 1:
-               return 'Yetişkin Yolcu'
+               return passengerDetails.value?.passengers[accordion._id - 1].type
           case 2:
-               return 'Çocuk Yolcu'
+               return passengerDetails.value?.passengers[accordion._id - 1].type
           case 3:
-               return 'Bebek Yolcu'
+               return passengerDetails.value?.passengers[accordion._id - 1].type
           default:
                return 'Passenger'
      }
@@ -461,6 +462,7 @@ interface PassengerType {
      id: number
      type: string
      age: string
+     typeId: number
 }
 
 interface Passenger {
@@ -579,7 +581,12 @@ const navigateToPassenger = () => {
           showEmptyAccordionError.value = true
      }
 }
-
+watch(locale, (newLocale, oldLocale) => {
+     if (newLocale !== oldLocale) {
+          console.log(newLocale, 'new', oldLocale, 'old')
+          getPassengersPage()
+     }
+})
 watchEffect(() => {
      if (storedTripParams.value.AdultCount !== undefined) {
           const newAccordions = []
