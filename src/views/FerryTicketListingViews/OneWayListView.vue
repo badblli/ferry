@@ -678,12 +678,15 @@ const initializeSplide = () => {
           }
      })
 }
-const getSlideClass = (index: number) => {
-  if (slideCount.value < 3) {
-    return 'w-full';
-  }
-  return '';
-};
+
+
+// const getSlideClass = (index: number) => {
+//   if (slideCount.value < 3) {
+//     return 'w-full';
+//   }
+//   return '';
+// };
+
 const initializeSplide2 = () => {
      nextTick(() => {
           if (splideRef2.value) {
@@ -765,7 +768,7 @@ const fetchData = async () => {
                if (response.data.status == 1) {
                     const fetchTripDatas = response.data.result
                     tripData.value = JSON.parse(fetchTripDatas)  
-                    // console.log(tripReverseData.value, 'ASD')s
+                    console.log(tripData.value, 'ASD')
                     tripReverseData.value = tripData.value.DepartureValidDates ? tripData.value.DepartureValidDates.reverse() : []
                     // console.log(tripReverseData, 'tripReverseData for slider v-for')
                     tripReverseDepartureData.value = tripData.value.Departures ? tripData.value.Departures.reverse() : []
