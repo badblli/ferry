@@ -742,7 +742,6 @@ onMounted(async () => {
                }
           }
 
-
           await fetchApi()
           isLoading.value = false
      }

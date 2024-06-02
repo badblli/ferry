@@ -250,7 +250,7 @@ onMounted(() => {
                currencyID: ferryList.CurrencyID
           }))
           tripStore.setFerryList2(ferryList.value)
-          const filteredAdults = adults.map((adult) => ({
+          const filteredAdults = adults.map((adult: any) => ({
                invoiceType: 1,
                invoiceName: adult.name,
                invoiceSurname: adult.surname,

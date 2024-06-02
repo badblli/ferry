@@ -16,7 +16,7 @@
                     </div>
                </div>
           </div>
-          <div v-for="passenger in newInvoices" :key="passenger.id || `temp-${index}`" @click="selectPassenger(passenger, index)" class="flex flex-row flex-wrap">
+          <div v-for="(passenger, index) in newInvoices" :key="passenger.id || `temp-${index}`" @click="selectPassenger(passenger, index)" class="flex flex-row flex-wrap">
                <div :class="isSelectedClass(passenger)" class="mr-[10px] m-1 py-[13px] pl-[14px] pr-[14px] rounded-lg border flex flex-row items-center justify-center cursor-pointer">
                     <div class="text-base font-medium font-['Plus Jakarta Sans'] mr-[17px]">{{ passenger.invoiceName }}&nbsp;{{ passenger.invoiceSurname }}</div>
                     <div>
