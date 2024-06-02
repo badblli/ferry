@@ -1,7 +1,7 @@
 <template>
      <div class="flex flex-col justify-center items-center m-auto relative">
-          <div class="w-full h-[223px] bg-slate-200" />
-          <div class="relative top-[-11rem] w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
+          <div v-if="tripReverseData.length > 0" class="w-full h-[223px] bg-slate-200" />
+          <div v-if="tripReverseData.length > 0" class="relative top-[-11rem] w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                <div v-if="tripReverseArData.length > 0" class="flex lg:flex-row flex-col justify-between">
                     <div class="flex flex-row">
                          <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">{{ tripReverseDepartureData[0].DepartureDetail.SeaportName }}&nbsp;</div>
@@ -332,6 +332,11 @@
                     </div>
                </div>
           </div>
+          <div v-else>
+               <!-- <div @click="navigateToHamePage" class="w-full h-[223px] bg-slate-200 p-10 m-20 cursor-pointer flex flex-row justify-center items-center rounded-xl">
+                    The ticket you are looking for is not available.
+               </div> -->
+          </div>
      </div>
 </template>
 
@@ -397,6 +402,7 @@ const logSelectedArrivalData = (item: any) => {
 }
 
 const lang = locale.value.toLowerCase().toString()
+console.log(lang, 'isocode')
 // const queryFormatDate = (dateInstance: string): string => {
 //      const date = new Date(dateInstance)
 //      if (isNaN(date.getTime())) {
@@ -410,6 +416,11 @@ const lang = locale.value.toLowerCase().toString()
 //      return `${year}-${month}-${day}`
 // }
 // locale.value.toLowerCase().toString()
+
+function navigateToHamePage() {
+     router.push({ name: 'home' })
+}
+
 const queryFormatDate = (dateInstance: string, locale = 'en') => {
      const date = new Date(dateInstance)
      if (isNaN(date.getTime())) {
@@ -652,7 +663,6 @@ const getSearchFerry = async () => {
      let adultCountString = route.query.AdultCount as string
      let adultCount = parseInt(adultCountString)
 
-     // AdultCount değeri 1'den küçükse ana sayfaya yönlendir
      if (isNaN(adultCount) || adultCount < 1) {
           router.push('/')
           return
@@ -669,7 +679,7 @@ const getSearchFerry = async () => {
           AgencyID: route.query.AgencyID,
           PriceGroupID: route.query.PriceGroupID,
           FerryTravelType: route.query.FerryTravelType,
-          LanguageIsoCode: route.query.LanguageIsoCode
+          LanguageIsoCode: locale.value
      }
      // console.log(applicationName.value, 'applicationName', controllerName.value, 'controllerName', name.value, 'nameValue', params, 'params')
      getQueryApi(applicationName.value, controllerName.value, name.value, params)
@@ -677,7 +687,7 @@ const getSearchFerry = async () => {
                if (response.data.status == 1) {
                     const fetchTripDatas = response.data.result
                     tripData.value = JSON.parse(fetchTripDatas)
-                    console.log(tripData.value, 'ASD')
+                    console.log(tripData.value, 'tripData.value')
                     tripReverseData.value = tripData.value.DepartureValidDates ? tripData.value.DepartureValidDates.reverse() : []
                     // console.log(tripReverseData, 'tripReverseData for slider v-for')
                     tripReverseDepartureData.value = tripData.value.Departures ? tripData.value.Departures.reverse() : []
