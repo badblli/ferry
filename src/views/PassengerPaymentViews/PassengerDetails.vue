@@ -205,7 +205,8 @@
                                                                       class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200" />
                                                             </div>
                                                        </div>
-                                                       <div
+                                                       <!-- @click="handleAccordionClick(accordion)" -->
+                                                       <div 
                                                             class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                             {{ passengerDetails.passengers[0].clear }}</div>
                                                        <div class="flex flex-col">
@@ -320,6 +321,26 @@ const getTitle = (accordion: any) => {
                return 'Passenger'
      }
 }
+
+// const clearForm = () => {
+
+// }
+
+const resetForm = (accordion: any) => {
+  accordion.name = '';
+  accordion.surname = '';
+  accordion.email = '';
+  accordion.tel = '';
+  accordion.birthDate = '';
+  accordion.nation = '';
+  accordion.passport = '';
+  accordion.id = '';
+};
+
+const handleAccordionClick = (accordion: any) => {
+  resetForm(accordion);
+  // Any other logic to handle accordion click can go here
+};
 
 const handleClick = (_id: any) => {
      console.log('Clicked item ID:', _id)
@@ -508,6 +529,7 @@ const cancelChange2 = () => {
 }
 
 const tripStore = useTripStore()
+
 const storedTripParams = ref<any>([])
 const storedDepartureData = ref<any>([])
 const storedArrivalData = ref<any>([])

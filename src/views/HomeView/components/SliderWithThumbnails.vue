@@ -133,7 +133,6 @@
                                    </button>
                                    <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700" aria-labelledby="hs-dropdown-with-dividers-3">
                                         <div class="flex flex-col w-[277px] p-5">
-                                             <span>here!</span>
                                              <div @click="updateToTrip(i)" v-for="(i, index) in travelObject" :key="index" :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                   <a class="text-black text-base font-medium font-display tracking-tight">{{ i.Name }}</a>
                                              </div>

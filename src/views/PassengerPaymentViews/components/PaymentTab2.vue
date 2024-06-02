@@ -63,7 +63,7 @@
                <div class="ml-8 mt-2 text-gray-500" v-if="invoice.showBtnWarning">*{{ data.requiredField }}</div>
           </div>
      </div>
-     <div class="flex flex-row justify-end mr-9 mb-[34px]" @click="postData">POST DATA USAGE</div>
+     <!-- <div class="flex flex-row justify-end mr-9 mb-[34px]" @click="postData">POST DATA USAGE</div> -->
 </template>
 
 <script setup lang="ts">
