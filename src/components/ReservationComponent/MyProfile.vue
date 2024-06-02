@@ -48,10 +48,15 @@ const formatBirthDate = (dateString: any) => {
 };
 
 const formatBirthDateInput = (index: any) => {
-     const rawDate = people.value[index].value; // Kullanıcının girdiği orijinal tarih değeri
-     const formattedDate = rawDate.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3'); // GG/AA/YYYY formatına dönüştür
-     people.value[index].value = formattedDate; // Formatlanmış değeri güncelle
+    const rawDate = people.value[index].value; // Kullanıcının girdiği orijinal tarih değeri
+    if (typeof rawDate === 'string') {
+        const formattedDate = rawDate.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3'); // GG/AA/YYYY formatına dönüştür
+        people.value[index].value = formattedDate; // Formatlanmış değeri güncelle
+    } else {
+        console.error('rawDate is not a string:', rawDate);
+    }
 };
+
 
 const people = ref([
      { title: 'İsim', value: userInfo.value ? userInfo.value.Name : '', editing: false },
@@ -105,25 +110,25 @@ const saveMember = async (userInfo: any) => {
 
                console.log(userInfo, 'responseVAR')
           } else {
-               console.error('Unexpected response status:', response?.data?.status)
+               return
           }
      } catch (error) {
           console.error('An error occurred:', error)
      }
 }
-const cancelEdit = (index: number) => {
-     people.value[index].editing = false
-     editedValue.value = people.value[index].value
-}
+// const cancelEdit = (index: number) => {
+//      people.value[index].editing = false
+//      editedValue.value = people.value[index].value
+// }
 
-const buttonProps = computed(() => {
-     return (index: number) => {
-          const value = people.value[index].value
-          if (!value.trim()) {
-               return { text: 'Ekle', color: 'red' }
-          } else {
-               return { text: 'Düzenle', color: 'blue' }
-          }
-     }
-})
+// const buttonProps = computed(() => {
+//      return (index: number) => {
+//           const value = people.value[index].value
+//           if (!value.trim()) {
+//                return { text: 'Ekle', color: 'red' }
+//           } else {
+//                return { text: 'Düzenle', color: 'blue' }
+//           }
+//      }
+// })
 </script>

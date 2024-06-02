@@ -47,13 +47,13 @@ import { useI18n } from 'vue-i18n'
 // import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
 
 const { locale } = useI18n()
-const tableHeaders = ref([])
+const tableHeaders = ref<any[]>([]);
 
 const tableData = ref([])
 
 let pageTitle = ref('')
 let whichFerry = ref('')
-let ticketPrice = ref([])
+let ticketPrice = ref<any | null>(null);
 const getTicketPrice = async () => {
      try {
           let filters = {
@@ -78,10 +78,10 @@ const initilizaTableData = (data: any) => {
      let table = data[0]
      console.log(table, 'tableeeeee')
 
-     tableHeaders.value = [table.headers.map((header) => header.text)]
+     tableHeaders.value = [table.headers.map((header: any) => header.text)]
      console.log(tableHeaders.value, 'TABLE HEADERS')
 
-     let rows = table.rows.map((row) => row.row.map((row) => row.text))
+     let rows = table.rows.map((row: any) => row.row.map((row: any) => row.text))
      console.log(rows, 'ROWS')
      tableData.value = rows
      console.log(tableData.value, 'TABLE DATA')

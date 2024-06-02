@@ -158,7 +158,7 @@ const props = defineProps<{
 
 interface Passenger {
      id?: string
-     invoiceType?: null
+     invoiceType?: Number
      invoiceName: string
      invoiceSurname: string
      invoiceCompanyName?: string
@@ -178,9 +178,9 @@ onMounted(() => {
      if (stored.getPassengerData.length === 0) {
           router.push('/')
      } else {
-          const adults = stored.getPassengerData.filter((passenger) => passenger.age === 'yetişkin')
+          const adults = stored.getPassengerData.filter((passenger: any) => passenger.age === 'yetişkin')
           allTurist.value = stored.getPassengerData
-          allTurist.value = stored.getPassengerData.map((passenger) => ({
+          allTurist.value = stored.getPassengerData.map((passenger: any) => ({
                name: passenger.name,
                surname: passenger.surname,
                birthDate: passenger.birth, //birhdate eklememişim ekleyeceğim.
@@ -204,7 +204,7 @@ onMounted(() => {
                currencyID: ferryList.CurrencyID
           }))
           console.log(ferryList.value, 'ferryList.value')
-          const filteredAdults = adults.map((adult) => ({
+          const filteredAdults = adults.map((adult: any) => ({
                invoiceType: 2,
                invoiceName: adult.name,
                invoiceSurname: adult.surname,
@@ -395,7 +395,8 @@ const isSelectedClass = (passenger: any) => {
 //      return selectedPassenger.value && passenger.id === selectedPassenger.value.id ? 'bg-blue-500 text-white' : 'bg-white';
 // };
 
-const selectedPassenger = ref<Passenger | null>(null)
+const selectedPassenger = ref<Passenger | null>(null);
+
 // const getSelectedValue = ref<Passenger | null>(null);
 const selectPassenger = (passenger: Passenger, index: any) => {
      selectedPassenger.value = passenger

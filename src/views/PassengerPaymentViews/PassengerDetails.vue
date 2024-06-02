@@ -48,7 +48,7 @@
                          <div>
                               <transition name="fade">
                                    <div v-show="isOpen2">
-                                        <div class="w-[458px] h-[443px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
+                                        <div class="w-[458px] h-[443px] bg-white rounded-xl border absolute inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
                                                   <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
                                                        <IconPersonSimpleRun />
@@ -71,7 +71,7 @@
                               </transition>
                               <transition name="fade">
                                    <div v-show="isOpen3">
-                                        <div class="w-[458px] h-[343px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
+                                        <div class="w-[458px] h-[343px] bg-white rounded-xl border absolute inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
                                                   <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
                                                        <IconPersonSimpleRun />
@@ -94,7 +94,7 @@
                                                   <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 px-5 mt-[67px] mb-24">
                                                        <form class="w-full max-w-sm md:ml-[83px] ml-2">
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.name" @input="logValue('Name:', accordion.name)" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].name" />
+                                                                 <input v-model="accordion.name" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].name" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
@@ -279,7 +279,7 @@ const toggleDropdown = () => {
 const accordions = ref<any[]>([])
 const countryList = ref<string | null>(null)
 
-const logValue = (label, value) => {
+const logValue = (label: any, value:any) => {
      console.log(label, value)
 }
 
@@ -543,10 +543,6 @@ onMounted(() => {
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'), console.log(storedGetterAccordions.value, 'tripStore.getTripParams'), fetchSelectOptions()
-     const logValue = (label, value) => {
-          console.log(label, value)
-     }
-     console.log(logValue, 'logValue')
 })
 
 interface AgeItem {
@@ -555,11 +551,11 @@ interface AgeItem {
      _id: number
 }
 
-const ages = ref<AgeItem[]>([
-     { title: ' Ekle', age: '+12 yaş', _id: 1 },
-     { title: 'Çocuk Ekle', age: '6-12 yaş', _id: 2 },
-     { title: 'Bebek Ekle', age: '0-5 yaş', _id: 3 }
-])
+// const ages = ref<AgeItem[]>([
+//      { title: ' Ekle', age: '+12 yaş', _id: 1 },
+//      { title: 'Çocuk Ekle', age: '6-12 yaş', _id: 2 },
+//      { title: 'Bebek Ekle', age: '0-5 yaş', _id: 3 }
+// ])
 
 const router = useRouter()
 

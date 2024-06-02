@@ -597,7 +597,7 @@ const saveMember = async (userInfo: any) => {
 
                console.log(userInfo, 'responseVAR')
           } else {
-               console.error('Unexpected response status:', response?.data?.status)
+               return ''
           }
      } catch (error) {
           console.error('An error occurred:', error)
