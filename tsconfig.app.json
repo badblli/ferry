@@ -1,12 +1,12 @@
 {
      "extends": "@vue/tsconfig/tsconfig.dom.json",
-     "include": ["env.d.ts", "src//", "src//.d.ts", "src//*.vue"],
-     "exclude": ["src//_tests_/*"],
+     "include": ["env.d.ts", "src/", "src/**/*.d.ts", "src/**/*.vue", "globals.d.ts"], // Updated include pattern
+     "exclude": ["src/_tests_/*"],
      "compilerOptions": {
           "composite": true,
           "baseUrl": ".",
           "paths": {
-               "@/": ["./src/"]
+               "@/*": ["./src/*"]
           }
      }
 }
