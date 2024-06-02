@@ -15,7 +15,7 @@
                               {{ item && item.buttonText }}
                          </div>
                          <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
-                              <IconFooter/>
+                              <IconFooter />
                          </div>
                     </div>
                </div>
@@ -29,7 +29,7 @@
                     <div class="text-black w-72 text-[38px] font-bold font-['Plus Jakarta Sans'] leading-[43.85px] tracking-wide">
                          {{ item && item.visaDescription }}
                     </div>
-                    <img src="../../../assets/EmbeddedImages/mainPageTicketImage.png" alt="Visa" class="flip-horizontal absolute h-[650px] max-w-[850px] left-[180px] -top-3 -bottom-48 custom-z" />
+                    <img src="/src/assets/EmbeddedImages/mainPageTicketImage.png" alt="Visa" class="flip-horizontal absolute h-[650px] max-w-[850px] left-[180px] -top-3 -bottom-48 custom-z" />
                     <div class="container">
                          <div class="a"></div>
                     </div>
@@ -50,19 +50,18 @@
                               </div>
                          </div>
                     </div>
-          
+
                     <img :src="getImage(item.toursImage.url)" alt="item-image" class="object-fill w-full h-[450px] rounded-xl flip-horizontal" />
                </div>
           </div>
      </section>
-
 </template>
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import {getImage} from '@/utils/globalHelper'
+import { getImage } from '@/utils/globalHelper'
 import IconArrowUpRight from '@/components/icons/IconArrowUpRight.vue'
-import IconFooter from '@/components/icons/IconFooter.vue';
+import IconFooter from '@/components/icons/IconFooter.vue'
 // import mainPageTicketImage from '../../../assets/EmbeddedImages/mainPageTicketImage.png';
 
 const props = defineProps({

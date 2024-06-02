@@ -55,7 +55,7 @@
                               <div v-for="(item, index) in selectedDepartureData" :key="index">
                                    <div class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
-                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
+                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" src="/src/assets/embeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -127,7 +127,7 @@
                               </div>
                               <div v-for="(item, index) in tripFilterReverseData" :key="index" class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                    <div class="flex sm:flex-row flex-col justify-between">
-                                        <img class="w-[100px] h-[100px] rounded-xl mr-6" src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
+                                        <img class="w-[100px] h-[100px] rounded-xl mr-6" src="/src/assets/embeddedImages/meander.jpg" alt="meander" />
                                         <div class="mt-3 mr-5 lg:mr-[75px]">
                                              <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                              <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -194,7 +194,7 @@
                               <div v-for="(item, index) in selectedArrivalData" :key="index">
                                    <div class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
-                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
+                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" src="/src/assets/embeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
@@ -275,7 +275,7 @@
                                    </div>
                                    <div v-for="(item, index) in tripFilterReverseArData" :key="index" class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
-                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" src="../../assets/EmbeddedImages/meander.jpg" alt="meander" />
+                                             <img class="w-[100px] h-[100px] rounded-xl mr-6" src="/src/assets/embeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
