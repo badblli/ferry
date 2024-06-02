@@ -83,9 +83,9 @@ import { fetchData } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 const tableHeaders = ref([])
-const journey = ref([])
+// const journey = ref([])
 const tableData = ref([])
-const pageTitle = ref('')
+// const pageTitle = ref('')
 const tableTitle = ref('')
 // const tableHeaders = [
 //     ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
@@ -97,28 +97,81 @@ const tableTitle = ref('')
 //     ["4 Kasım - Cumartesi", ["Kuşadası - 09:00", "Kuşadası - 09:00"], "Samos Vathy - 17:00"],
 // ];
 
-const infoData = ref([])
+// const infoData = ref([])
+
+interface JourneyNote {
+    text: string;
+}
+
+interface JourneyPage {
+    __component: string;
+    journeyTable: any;  // journeyTable için doğru tipi belirtin
+    notes: JourneyNote[];
+}
+
+interface PageData {
+    layout: JourneyPage[];
+    pageTitle: string;
+}
+
+interface FetchResponse {
+    data: PageData[];
+}
+
+// Reactive variables with appropriate initial values
+const journey = ref<JourneyPage | null>(null);
+const infoData = ref<string[]>([]);
+const pageTitle = ref<string>('');
 
 const getJourney = async () => {
-     try {
-          let filters = {
-               pageName: 'Journey'
-          }
+    try {
+        let filters = {
+            pageName: 'Journey'
+        };
 
-          const res = await fetchData('pages', locale.value.toLowerCase(), filters)
-          if (res) {
-               let data = res.data[0].layout
-               journey.value = data.find((x: any) => x.__component === 'journey-page.journey-page')
-               console.log(journey.value.journeyTable, 'JOURNEY')
-               infoData.value = journey.value.notes.map((x) => x.text)
-               pageTitle.value = res.data[0].pageTitle
-               initilizaTableData(journey.value.journeyTable)
-               console.log(journey.value, 'journeyjourneyjourneyjourneyjourney')
-          }
-     } catch (error) {
-          console.error('Hata:', error)
-     }
-}
+        const res: FetchResponse | null = await fetchData('pages', locale.value.toLowerCase(), filters);
+        if (res) {
+            let data = res.data[0].layout;
+            let journeyPage = data.find((x: JourneyPage) => x.__component === 'journey-page.journey-page');
+
+            if (journeyPage) {
+                journey.value = journeyPage;
+                console.log(journey.value.journeyTable, 'JOURNEY');
+                infoData.value = journey.value.notes.map((x: JourneyNote) => x.text);
+                pageTitle.value = res.data[0].pageTitle;
+                initilizaTableData(journey.value.journeyTable);
+                console.log(journey.value, 'journeyjourneyjourneyjourneyjourney');
+            } else {
+                console.error('Journey page component not found');
+            }
+        }
+    } catch (error) {
+        console.error('Hata:', error);
+    }
+};
+
+
+
+// const getJourney = async () => {
+//      try {
+//           let filters = {
+//                pageName: 'Journey'
+//           }
+
+//           const res = await fetchData('pages', locale.value.toLowerCase(), filters)
+//           if (res) {
+//                let data = res.data[0].layout
+//                journey.value = data.find((x: any) => x.__component === 'journey-page.journey-page')
+//                console.log(journey.value.journeyTable, 'JOURNEY')
+//                infoData.value = journey.value.notes.map((x) => x.text)
+//                pageTitle.value = res.data[0].pageTitle
+//                initilizaTableData(journey.value.journeyTable)
+//                console.log(journey.value, 'journeyjourneyjourneyjourneyjourney')
+//           }
+//      } catch (error) {
+//           console.error('Hata:', error)
+//      }
+// }
 
 const initilizaTableData = (data: any) => {
      let table = data

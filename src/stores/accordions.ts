@@ -32,7 +32,7 @@ export const useAccordionsStore = defineStore('accordions', {
                }
           },
           setAccordionData(id: number, data: Partial<Accordion>) {
-               const index = this.accordions.findIndex((a) => a.id === id)
+               const index = this.accordions.findIndex((a: any) => a.id === id)
                if (index !== -1) {
                     // Ensure reactivity when updating
                     this.accordions[index] = { ...this.accordions[index], ...data }
@@ -52,7 +52,7 @@ export const useAccordionsStore = defineStore('accordions', {
           //      }
           // }
           setAdultPassenger(id: number, data: Partial<Accordion>) {
-               const index = this.adultPassenger.findIndex((a) => a.id === id);
+               const index = this.adultPassenger.findIndex((a: any) => a.id === id);
                if (index !== -1) {
                    // Completely override with new data
                    this.adultPassenger[index] = data as Accordion;

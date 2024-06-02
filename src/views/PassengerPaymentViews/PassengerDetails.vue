@@ -48,7 +48,7 @@
                          <div>
                               <transition name="fade">
                                    <div v-show="isOpen2">
-                                        <div class="w-[458px] h-[443px] bg-white rounded-xl border absolute inset-0 m-auto z-[999] flex flex-col">
+                                        <div class="w-[458px] h-[443px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
                                                   <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
                                                        <IconPersonSimpleRun />
@@ -71,7 +71,7 @@
                               </transition>
                               <transition name="fade">
                                    <div v-show="isOpen3">
-                                        <div class="w-[458px] h-[343px] bg-white rounded-xl border absolute inset-0 m-auto z-[999] flex flex-col">
+                                        <div class="w-[458px] h-[343px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
                                                   <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
                                                        <IconPersonSimpleRun />

@@ -307,23 +307,24 @@ interface PaymentHeader {
 }
 
 interface InvoiceTab {
-     id: number
-     tabTitle: string
-     subTitle: string
-     description: string
-     newInvoiceBtn: string
-     name: string
-     surname: string
-     email: string
-     identity: string
-     phone: string
-     address: string
-     company: string
-     taxNumber: string
-     taxOffice: string
-     saveBtn: string
-     requiredField: string
+  id: number;
+  tabTitle: string;
+  subTitle: string;
+  description: string;
+  newInvoiceBtn: string;
+  name: string;
+  surname: string;
+  email: string;
+  identity: string;
+  phone: string;
+  address: string;
+  company: string;
+  taxNumber: string;
+  taxOffice: string;
+  saveBtn: string;
+  requiredField: string;
 }
+
 interface PaymentTabData {
      id: number
      tabTitle: string
@@ -422,8 +423,6 @@ interface Passenger {
      invoiceTaxOffice?: string
      invoiceTaxNumber?: string
 }
-
-///
 
 const allTurist = ref<any>([])
 const calculateReservationDeparture = ref<any>([])

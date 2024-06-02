@@ -36,7 +36,7 @@ const applicationName = ref(p.Product)
 const controllerName = ref('Product')
 const name = ref('SaveMember')
 
-const formatBirthDate = (dateString) => {
+const formatBirthDate = (dateString: any) => {
      if (!dateString) return ''; // Eğer tarih boşsa, boş bir string döndür
 
      const date = new Date(dateString);
@@ -47,7 +47,7 @@ const formatBirthDate = (dateString) => {
      return `${day}/${month}/${year}`;
 };
 
-const formatBirthDateInput = (index) => {
+const formatBirthDateInput = (index: any) => {
      const rawDate = people.value[index].value; // Kullanıcının girdiği orijinal tarih değeri
      const formattedDate = rawDate.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3'); // GG/AA/YYYY formatına dönüştür
      people.value[index].value = formattedDate; // Formatlanmış değeri güncelle

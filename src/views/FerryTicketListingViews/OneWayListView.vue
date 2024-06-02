@@ -702,7 +702,7 @@ const getSearchFerry = async () => {
                     // console.log(tripReverseData.value, 'tripReverseData.value')
                }
           })
-          .catch((error) => {
+          .catch((error: any) => {
                console.error('An error occurred:', error)
           })
 }

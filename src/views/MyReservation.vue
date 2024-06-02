@@ -182,7 +182,7 @@
                                                                  </div>
                                                                  <div
                                                                       class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
-                                                                      <button @input="formatBirthDate" placeholder="GG/AA/YYYY"
+                                                                      <button placeholder="GG/AA/YYYY"
                                                                            @click="editingBirthDate ? saveEdit('BirthDate') : editField('BirthDate')"
                                                                            class="text-center text-black text-base font-bold font-text leading-normal">
                                                                            {{ editingBirthDate ? 'Kaydet' : 'Düzenle' }}
