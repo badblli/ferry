@@ -25,130 +25,39 @@
                     <div className=" bg-neutral-100 rounded-[20px] p-5">
                          <div class="flex flex-col md:flex-row gap-5">
                               <div class="lg:w-3/5 w-full">
-                                   <div v-if="paymentSuccess" class="bg-white rounded-2xl p-3 text-blue-900 mb-3">
-                                        <PaymentSuccess :data="paymentSuccessData" />
-                                   </div>
-                                   <div v-else class="hs-accordion-group">
-                                        <div class="hs-accordion active items-centers rounded-xl bg-white mb-4 last:mb-[46px]"
-                                             id="hs-basic-heading-one">
-                                             <button
-                                                  class="hs-accordion-toggle inline-flex flex-row justify-between w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-black disabled:opacity-50 disabled:pointer-events-none"
-                                                  aria-controls="hs-basic-collapse-one">
-                                                  <div class="flex flex-row items-center justify-between w-full">
-                                                       <div class="flex flex-row items-center">
-                                                            <div
-                                                                 class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] ml-[40px] py-[35px]">
-                                                                 {{ paymentDetail?.InvoiceTabTopTitle }}</div>
-                                                       </div>
-                                                       <div class="flex flex-row">
-                                                            <div class="items-center flex pl-1 mr-6">
-                                                                 <IconAccordionActiveArrow
-                                                                      class="hs-accordion-active:block hidden" />
-                                                                 <IconAccordionArrow
-                                                                      class="hs-accordion-active:hidden block" />
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                             </button>
-                                             <div id="hs-basic-collapse-one"
-                                                  class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-                                                  aria-labelledby="hs-basic-heading-one">
-                                                  <div class="flex flex-col">
-                                                       <nav class="mt-2 flex overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
-                                                            aria-label="Tabs" role="tablist">
-                                                            <button type="button"
-                                                                 class="hs-tab-active:font-medium hs-tab-active:border-blue-700 hs-tab-active:text-blue-700 pb-[23px] px-1 border-b border-transparent whitespace-nowrap text-neutral-400 text-base font-medium hover:text-blue-600 focus:outline-none disabled:opacity-50 disabled:pointer-events-none active"
-                                                                 id="horizontal-scroll-tab-item-1"
-                                                                 data-hs-tab="#horizontal-scroll-tab-preview"
-                                                                 aria-controls="horizontal-scroll-tab-preview"
-                                                                 role="tab">
-                                                                 <div class="mx-[46px]">{{
-                                                                      paymentDetail?.InvoiceTab[0].tabTitle }}</div>
-                                                            </button>
-                                                            <button type="button"
-                                                                 class="hs-tab-active:font-medium hs-tab-active:border-blue-700 hs-tab-active:text-blue-700 pb-[23px] px-1 border-b border-transparent whitespace-nowrap text-neutral-400 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none"
-                                                                 id="horizontal-scroll-tab-item-2"
-                                                                 data-hs-tab="#horizontal-scroll-tab-2"
-                                                                 aria-controls="horizontal-scroll-tab-2" role="tab">
-                                                                 <div class="mx-[46px]">{{
-                                                                      paymentDetail?.InvoiceTab[1].tabTitle }}</div>
-                                                            </button>
-
-                                                            <!-- <button
-                                                                 v-for="(tab, index) in paymentDetail?.InvoiceTab"
-                                                                 :key="index"
-                                                                 type="button"
-                                                                 class="hs-tab-active:font-medium hs-tab-active:border-blue-700 hs-tab-active:text-blue-700 pb-[23px] px-1 border-b border-transparent whitespace-nowrap text-neutral-400 text-base font-medium hover:text-blue-600 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                                                 :id="'horizontal-scroll-tab-item-' + (index + 1)"
-                                                                 :data-hs-tab="'#horizontal-scroll-tab-' + (index + 1)"
-                                                                 :aria-controls="'horizontal-scroll-tab-' + (index + 1)"
-                                                                 role="tab"
-                                                            >
-                                                                 <div class="mx-[46px]">{{ tab.tabTitle }}</div>
-                                                            </button> -->
-                                                       </nav>
-                                                       <div class="mt-[65px] ml-10">
-                                                            <div id="horizontal-scroll-tab-preview" role="tabpanel"
-                                                                 aria-labelledby="horizontal-scroll-tab-item-1">
-                                                                 <PaymentTab :data="paymentDetail?.InvoiceTab[0]"
-                                                                      @passengerSelected="handlePassengerSelected" />
-                                                            </div>
-                                                            <div id="horizontal-scroll-tab-2" class="hidden"
-                                                                 role="tabpanel"
-                                                                 aria-labelledby="horizontal-scroll-tab-item-2">
-                                                                 <PaymentTab2 :data="paymentDetail?.InvoiceTab[0]" />
-                                                            </div>
-                                                       </div>
-                                                  </div>
+                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle">
+                                        <div class="flex flex-row">
+                                             <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]"
+                                                  :class="{ 'active': activeTab === 'tab1' }">
+                                                  <span class="tab w-48 justify-center items-center flex"
+                                                       :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{
+                                                            paymentDetail?.InvoiceTab[0].tabTitle }}</span>
+                                             </div>
+                                             <div @click="activeTab = 'tab2'" class="flex flex-row mt-[25px]"
+                                                  :class="{ 'active': activeTab === 'tab2' }">
+                                                  <span class="tab w-48 justify-center items-center flex"
+                                                       :class="{ 'text-blue-700 ': activeTab === 'tab2' }">{{
+                                                            paymentDetail?.InvoiceTab[1].tabTitle }}</span>
                                              </div>
                                         </div>
-                                        <div class="hs-accordion items-centers rounded-xl bg-white mb-4 last:mb-[46px]"
-                                             id="hs-basic-heading-two">
-                                             <button
-                                                  class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:text-gray-400"
-                                                  aria-controls="hs-basic-collapse-two">
-                                                  <div class="flex flex-row items-center justify-between w-full">
-                                                       <div class="flex flex-row items-center">
-                                                            <div
-                                                                 class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] ml-[40px] py-[35px]">
-                                                                 {{ paymentDetail?.PaymentTopTitle }}</div>
-                                                       </div>
-                                                       <div class="flex flex-row">
-                                                            <div class="items-center flex pl-1 mr-6">
-                                                                 <IconAccordionActiveArrow
-                                                                      class="hs-accordion-active:block hidden" />
-                                                                 <IconAccordionArrow
-                                                                      class="hs-accordion-active:hidden block" />
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                             </button>
-                                             <div id="hs-basic-collapse-two"
-                                                  class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                                                  aria-labelledby="hs-basic-heading-two">
-                                                  <div class="flex flex-col">
-                                                       <nav class="mt-2 flex overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
-                                                            aria-label="Tabs" role="tablist">
-                                                            <button type="button"
-                                                                 class="hs-tab-active:font-medium hs-tab-active:border-blue-700 hs-tab-active:text-blue-700 pb-[23px] px-1 border-b border-transparent whitespace-nowrap text-neutral-400 text-base font-medium hover:text-blue-600 focus:outline-none disabled:opacity-50 disabled:pointer-events-none active"
-                                                                 id="horizontal-scroll-tab-item-1"
-                                                                 data-hs-tab="#horizontal-scroll-tab-preview"
-                                                                 aria-controls="horizontal-scroll-tab-preview"
-                                                                 role="tab">
-                                                                 <div class="mx-[46px]">{{
-                                                                      paymentDetail?.PaymentTab[0].tabTitle }}</div>
-                                                            </button>
-                                                       </nav>
-                                                       <div class="mt-[58px] ml-10">
-                                                            <div id="horizontal-scroll-tab-preview" role="tabpanel"
-                                                                 aria-labelledby="horizontal-scroll-tab-item-1">
-                                                                 <CreditCartTab :data="paymentDetail?.PaymentTab[0]" />
-                                                            </div>
-                                                       </div>
-                                                  </div>
+                                        <div class="mt-[65px] ml-10">
+                                             <div v-show="activeTab === 'tab1'">
+                                                  <PaymentTab :data="paymentDetail?.InvoiceTab[0]"
+                                                       @passengerSelected="handlePassengerSelected" />
+                                             </div>
+                                             <div v-show="activeTab === 'tab2'">
+                                                  <PaymentTab2 :data="paymentDetail?.InvoiceTab[1]" />
                                              </div>
                                         </div>
-                                   </div>
+                                   </AccordionPanel2>
+                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.PaymentTab[0].tabTitle">
+                                        <div class="mt-[58px] ml-10">
+                                             <div id="horizontal-scroll-tab-preview" role="tabpanel"
+                                                  aria-labelledby="horizontal-scroll-tab-item-1">
+                                                  <CreditCartTab :data="paymentDetail?.PaymentTab[0]" />
+                                             </div>
+                                        </div>
+                                   </AccordionPanel2>
                               </div>
                               <div class="lg:w-2/5 w-full rounded-[20px]">
                                    <div>
@@ -394,6 +303,7 @@ import envConfig from '../../utils/config'
 import { getQueryApi, fetchData, callPostApi } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue'
+import AccordionPanel2 from '@/components/advanced/AccordionPanel2.vue'
 
 const { locale } = useI18n()
 
@@ -515,6 +425,8 @@ const handlePassengerSelected = (passenger: any) => {
      selectedPassengerFromChild.value = passenger
      console.log('Passenger selected in parent:', passenger)
 }
+
+const activeTab = ref('tab1');
 
 interface Passenger {
      id?: string
@@ -748,4 +660,30 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.tab.active {
+     border-bottom: 1px solid #2149D5;
+     /* Aktif durumdaki alt çizgi rengi */
+}
+
+.tab {
+     border-bottom: 2px solid white;
+     /* Pasif durumdaki alt çizgi rengi */
+     cursor: pointer;
+     padding: 0px;
+     padding-bottom: 23px
+}
+
+.active .tab {
+     border-bottom: 1px solid #2149D5;
+     /* Aktif durumdaki alt çizgi rengi */
+}
+
+.flex {
+     display: flex;
+}
+
+.flex-row {
+     flex-direction: row;
+}
+</style>

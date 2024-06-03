@@ -2117,6 +2117,10 @@ select {
   height: 1px;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .max-h-\[300px\] {
   max-height: 300px;
 }

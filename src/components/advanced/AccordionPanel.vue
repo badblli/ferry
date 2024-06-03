@@ -43,10 +43,10 @@ import IconAccordionActiveArrow from '../icons/IconAccordionActiveArrow.vue'
 import IconAccordionArrow from '../icons/IconAccordionArrow.vue'
 
 const props = defineProps({
-     id: { type: Number, required: true },
-     title: { type: String, required: true },
-     title2: { type: [String, Object], required: true },
-     ariaTitle: { type: String, required: true },
+     id: { type: Number, required: false },
+     title: { type: String, required: false },
+     title2: { type: [String, Object], required: false },
+     ariaTitle: { type: String, required: false },
      name: { type: String, required: false },
      surname: { type: String, required: false },
      updateBtn: { type: String, required: false }

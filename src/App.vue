@@ -45,25 +45,6 @@ input.appearance-none.bg-transparent.border-none.w-full.text-gray-700.mr-3.py-1.
     left: revert-layer;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-  height: 52px;
-  background-color: #E8E8E8;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #E8E8E8; 
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #2149D5; 
-  border-radius: 10px;
-  height: 52px;
-}
-
 .vti__dropdown-item.highlighted {
     background-color: #E4EEF3;
     border-radius: 10px;
