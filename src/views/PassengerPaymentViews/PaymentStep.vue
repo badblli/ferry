@@ -24,7 +24,10 @@
                <div>
                     <div className=" bg-neutral-100 rounded-[20px] p-5">
                          <div class="flex flex-col md:flex-row gap-5">
-                              <div class="lg:w-3/5 w-full">
+                              <div v-if="paymentSuccess">
+                                   <PaymentSuccess :data="paymentSuccessData" />
+                              </div>
+                              <div v-else class="lg:w-3/5 w-full">
                                    <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle">
                                         <div class="flex flex-row">
                                              <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]"
@@ -578,20 +581,20 @@ onMounted(async () => {
           const departureData = tripStore.getDepartureData
           console.log(departureData, 'departureDatadepartureDatadepartureData')
           const arrivalData = tripStore.getArrivalData
-          console.log(arrivalData, 'arrivalData')
+          console.log(arrivalData, 'arrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalData')
 
           const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
           console.log(selectedLanguage, 'selectedLanguage')
 
           const LanguageID = selectedLanguage.code || ''
 
-          calculateReservationArrival.value = arrivalData.map((arrival) => ({
+          calculateReservationArrival.value = arrivalData.map((arrival: any) => ({
                ReturnDate: formatDate2(arrival.DepartureDetail.JourneyDate),
                ArrivalSeaportID: arrival.DepartureDetail.SeaportID,
                ReturnJourneyID: arrival.JourneyID
           }))
 
-          calculateReservationDeparture.value = departureData.map((departure) => ({
+          calculateReservationDeparture.value = departureData.map((departure: any) => ({
                FerryID: departure.FerryID,
                DepartureDate: formatDate2(departure.DepartureDetail.JourneyDate),
                DepartureJourneyID: departure.JourneyID,
@@ -658,6 +661,39 @@ onMounted(async () => {
           isLoading.value = false
      }
 })
+
+import { onBeforeUnmount } from 'vue';
+const current_url = window.location.pathname;
+
+// this function will work only when you do reload. 
+  window.onbeforeunload = function () {
+    localStorage.setItem("page",current_url) // Store the page URL 
+  };
+
+// After first redirection and due to bounce effect will come back to current page.
+let initialLoad = true;
+
+// Function to handle page unload logic
+function handleUnload() {
+  localStorage.setItem('page', window.location.pathname);
+}
+
+onMounted(() => {
+  // Attach the beforeunload event listener
+  window.onbeforeunload = handleUnload;
+
+  // Check for redirection on initial load (if necessary)
+  if (localStorage.getItem('page') === window.location.pathname) {
+    localStorage.removeItem('page');
+    router.push('/'); // Replace with your desired redirect path
+  }
+});
+
+onBeforeUnmount(() => {
+  // Remove the beforeunload event listener on component unmount
+  window.onbeforeunload = null;
+});
+
 </script>
 
 <style scoped>

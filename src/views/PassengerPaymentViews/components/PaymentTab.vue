@@ -266,7 +266,8 @@ onMounted(() => {
           ferryTravelType.value = FerryTravelType ?? 0
           priceGroupID.value = PriceGroupID ?? 0
           agencyID.value = AgencyID ?? 0
-          companyID.value = arrivalData[0].CompanyID
+          // companyID.value = arrivalData[0].CompanyID
+          // console.log(companyID.value, )
      }
 })
 

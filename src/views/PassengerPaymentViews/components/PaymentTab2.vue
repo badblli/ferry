@@ -214,12 +214,12 @@ onMounted(() => {
                invoiceAddress: adult.address
           }))
           newInvoices.value.push(...filteredAdults)
-          const arrivalData = tripStore.getArrivalData
+          // const arrivalData = tripStore.getArrivalData
           const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams
           ferryTravelType.value = FerryTravelType ?? 0
           priceGroupID.value = PriceGroupID ?? 0
           agencyID.value = AgencyID ?? 0
-          companyID.value = arrivalData[0].CompanyID
+          // companyID.value = arrivalData[0].CompanyID
      }
 })
 

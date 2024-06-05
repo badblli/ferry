@@ -63,8 +63,6 @@
                               <!-- End Form Group -->
                               <!-- Checkbox -->
                               <!-- End Checkbox -->
-
-                              {{ forms }}
                               <button type="submit" class="m-auto w-[398px] h-[62px] py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                                    <div class="text-center text-white text-base font-bold font-text leading-normal">Üye Ol ve Başla</div>
                               </button>

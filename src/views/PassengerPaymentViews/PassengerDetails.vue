@@ -44,7 +44,7 @@
                                         {{ passengerDetails?.addPassenger }}</p>
 
                                    <div v-show="isOpen"
-                                        class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
+                                        class="z-10 fixed mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
                                         <div class="bg-white space-y-3">
                                              <div v-for="(item, index) in passengerDetails?.passengerType" :key="index"
                                                   @click="handleClick(item.typeId)"
@@ -66,7 +66,7 @@
                               <transition name="fade">
                                    <div v-show="isOpen2">
                                         <div
-                                             class="w-[458px] h-[443px] bg-white rounded-xl border absolute inset-0 m-auto z-[999] flex flex-col">
+                                             class="w-[458px] h-[443px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
                                                   <div
                                                        class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
@@ -82,8 +82,8 @@
                                                        Seçtiğiniz tarihler doğrultusunda<br />
                                                        yolcu, çocuk olarak<br />değişecek ve fiyatlandırmayı<br />güncelleyecektir.
                                                   </span> -->
-                                                  <span v-html="changePassengerTypeModal?.text"
-                                                       class="flex flex-row justify-center mt-7"> </span>
+                                                  <span
+                                                       class="flex flex-row justify-center items-center mx-auto mt-7 ml-10">{{ changePassengerTypeModal?.text }}</span>
                                              </div>
                                              <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12 cursor-pointer"
                                                   @click="confirmChange(accordion_idchange)">{{
@@ -96,7 +96,7 @@
                               <transition name="fade">
                                    <div v-show="isOpen3">
                                         <div
-                                             class="w-[458px] h-[343px] bg-white rounded-xl border absolute inset-0 m-auto z-[999] flex flex-col">
+                                             class="w-[458px] h-[343px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
                                                   <div
                                                        class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
@@ -206,7 +206,7 @@
                                                             </div>
                                                        </div>
                                                        <!-- @click="handleAccordionClick(accordion)" -->
-                                                       <div 
+                                                       <div
                                                             class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                             {{ passengerDetails.passengers[0].clear }}</div>
                                                        <div class="flex flex-col">
@@ -327,19 +327,19 @@ const getTitle = (accordion: any) => {
 // }
 
 const resetForm = (accordion: any) => {
-  accordion.name = '';
-  accordion.surname = '';
-  accordion.email = '';
-  accordion.tel = '';
-  accordion.birthDate = '';
-  accordion.nation = '';
-  accordion.passport = '';
-  accordion.id = '';
+     accordion.name = '';
+     accordion.surname = '';
+     accordion.email = '';
+     accordion.tel = '';
+     accordion.birthDate = '';
+     accordion.nation = '';
+     accordion.passport = '';
+     accordion.id = '';
 };
 
 const handleAccordionClick = (accordion: any) => {
-  resetForm(accordion);
-  // Any other logic to handle accordion click can go here
+     resetForm(accordion);
+     // Any other logic to handle accordion click can go here
 };
 
 const handleClick = (_id: any) => {
@@ -699,7 +699,7 @@ watchEffect(() => {
      }
 })
 
-const formatDate = (accordion) => {
+const formatDate = (accordion: any) => {
      try {
           if (!accordion.birthDate) {
                console.error('birthDate is undefined')
@@ -759,9 +759,38 @@ const formatDate = (accordion) => {
      }
 }
 
-window.onbeforeunload = function () {
-     return 'Data will be lost if you leave the page, are you sure?'
+
+import { onBeforeUnmount } from 'vue';
+const current_url = window.location.pathname;
+
+// this function will work only when you do reload. 
+  window.onbeforeunload = function () {
+    localStorage.setItem("page",current_url) // Store the page URL 
+  };
+
+// After first redirection and due to bounce effect will come back to current page.
+let initialLoad = true;
+
+// Function to handle page unload logic
+function handleUnload() {
+  localStorage.setItem('page', window.location.pathname);
 }
+
+onMounted(() => {
+  // Attach the beforeunload event listener
+  window.onbeforeunload = handleUnload;
+
+  // Check for redirection on initial load (if necessary)
+  if (localStorage.getItem('page') === window.location.pathname) {
+    localStorage.removeItem('page');
+    router.push('/'); // Replace with your desired redirect path
+  }
+});
+
+onBeforeUnmount(() => {
+  // Remove the beforeunload event listener on component unmount
+  window.onbeforeunload = null;
+});
 </script>
 
 <style>
