@@ -34,7 +34,7 @@
                     <SplideSlide v-for="(item, index) in images" :key="index"
                         class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
                         <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="item.src" alt="Slide Image">
-                        <div class="text-gray-800 text-lg font-medium font-['Plus Jakarta Display'] ml-[26px]">{{
+                        <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">{{
                     item.name }}</div>
                     </SplideSlide>
                 </Splide>

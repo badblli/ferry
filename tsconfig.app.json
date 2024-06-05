@@ -1,13 +1,16 @@
 {
-     "extends": "@vue/tsconfig/tsconfig.dom.json",
-     "include": ["env.d.ts", "src/", "src/**/*.d.ts", "src/**/*.vue", "globals.d.ts"], // Updated include pattern
-     "exclude": ["src/_tests_/*"],
-     "compilerOptions": {
-          "composite": true,
-          "baseUrl": ".",
-          "paths": {
-               "@/*": ["./src/*"]
-          },
-          "strict": false
-     }
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "src/**/*.ts"
+  ]
 }

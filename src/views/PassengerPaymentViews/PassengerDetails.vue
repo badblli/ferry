@@ -22,8 +22,7 @@
                          </div>
                          <div class="flex flex-row justify-center items-center mr-2 ml-9">
                               <div class="flex flex-col">
-                                   <div class="text-black text-base font-medium font-display">{{ passengerHeader?.cost
-                                        }}</div>
+                                   <div class="text-black text-base font-medium font-display">{{ passengerHeader?.cost }}</div>
                                    <div
                                         class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">
                                         41TL</div>
@@ -44,7 +43,7 @@
                                         {{ passengerDetails?.addPassenger }}</p>
 
                                    <div v-show="isOpen"
-                                        class="z-10 fixed mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
+                                        class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
                                         <div class="bg-white space-y-3">
                                              <div v-for="(item, index) in passengerDetails?.passengerType" :key="index"
                                                   @click="handleClick(item.typeId)"
@@ -423,7 +422,7 @@ const isOpen3 = ref(false)
 
 const accordion_idchange = ref()
 
-const saveAllPassenger = async (accordion) => {
+const saveAllPassenger = async (accordion: any) => {
      accordion_idchange.value = accordion
      console.log(accordion, 'saveallpassenger accordion')
      accordion.isLoading = true

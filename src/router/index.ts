@@ -87,6 +87,11 @@ const router = createRouter({
                          path: '/payment',
                          name: 'payment',
                          component: () => import('../views/PassengerPaymentViews/PaymentStep.vue')
+                    },
+                    {
+                         path: '/midilli',
+                         name: 'midilli',
+                         component: () => import('../views/SubViews/SubHomeView.vue')
                     }
                     // {
                     //   path: "/about",

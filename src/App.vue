@@ -21,7 +21,6 @@ input.appearance-none.bg-transparent.border-none.w-full.text-gray-700.mr-3.py-1.
   border:none;
   border-bottom: 1px solid #cccc;
   margin-bottom: 40px;
-  flex-direction: row-reverse;
 }
 
 .vti__dropdown-list {
@@ -42,7 +41,6 @@ input.appearance-none.bg-transparent.border-none.w-full.text-gray-700.mr-3.py-1.
 
 .vti__dropdown-list.below {
     top: 43px;
-    left: revert-layer;
 }
 
 .vti__dropdown-item.highlighted {

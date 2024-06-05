@@ -24,7 +24,7 @@
                <div>
                     <div className=" bg-neutral-100 rounded-[20px] p-5">
                          <div class="flex flex-col md:flex-row gap-5">
-                              <div v-if="paymentSuccess">
+                              <div class="lg:w-3/5 w-full" v-if="paymentSuccess">
                                    <PaymentSuccess :data="paymentSuccessData" />
                               </div>
                               <div v-else class="lg:w-3/5 w-full">

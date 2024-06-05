@@ -14,10 +14,10 @@
 import { onMounted, ref, watch } from 'vue'
 import SliderWithThumbnails from './components/SliderWithThumbnails.vue'
 import HomeCardSplide from './components/HomeCardSplide.vue'
-import MainTourCard from './components/MainTourCard.vue'
+import MainTourCard from './components/MainTourCard/MainTourCard.vue'
 import MainTitleCard from './components/MainTitleCard.vue'
 import MainCategories from './components/MainCategories.vue'
-import { fetchData } from '@/utils/globalHelper'
+import { fetchData } from '../../utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()

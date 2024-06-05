@@ -3,7 +3,6 @@ export default {
     props: {
         iconClass: {
             type: String,
-            default: "w-14 h-9",
         },
     },
 };
@@ -17,4 +16,4 @@ export default {
                 fill="white" />
         </g>
     </svg>
-</template> 
+</template>
