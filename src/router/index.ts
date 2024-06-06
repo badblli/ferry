@@ -89,9 +89,10 @@ const router = createRouter({
                          component: () => import('../views/PassengerPaymentViews/PaymentStep.vue')
                     },
                     {
-                         path: '/midilli',
-                         name: 'midilli',
-                         component: () => import('../views/SubViews/SubHomeView.vue')
+                         path: '/:name',
+                         name: 'island',
+                         component: () => import('../views/SubViews/SubHomeView.vue'),
+                         props: true
                     }
                     // {
                     //   path: "/about",

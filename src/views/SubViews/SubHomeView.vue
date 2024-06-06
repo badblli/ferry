@@ -776,6 +776,24 @@ import IconSearchNormal from '../../components/icons/IconSearchNormal.vue'
 import IconBoat from '../../components/icons/IconBoat.vue'
 import IconForkKnife from '../../components/icons/IconForkKnife.vue'
 import IconArrowRight from '../../components/icons/IconArrowRight.vue'
+import { ref, watchEffect } from 'vue'
+import IconArrowUpRightWhite from '../../components/icons/IconArrowUpRightWhite.vue'
+import IconEllips2077 from '../../components/icons/IconEllips2077.vue'
+import IconPlay from '../../components/icons/IconPlay.vue'
+import IconArrowDownBlack from '../../components/icons/IconArrowDownBlack.vue'
+import IconAccordionActiveArrow from '../../components/icons/IconAccordionActiveArrow.vue'
+import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue'
+import IconShieldChevron from '../../components/icons/IconShieldChevron.vue'
+
+import { useChannel } from '../../stores/channel'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const useChannelStore = useChannel()
+watchEffect(() => {
+     const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
+     useChannelStore.setSubSaleChannel(subSaleChannel)
+})
 
 const showTrue = ref(false)
 
@@ -887,17 +905,10 @@ watch(locale, (newLocale, oldLocale) => {
      }
 })
 onMounted(async () => {
+     useChannelStore.setSubSaleChannel(item.href.replace('/', '')) // setSubChannel fonksiyonunu çağırıyoruz (store'da tanımlıdır
+
      await getTicketPrice() // Veriyi asenkron bir şekilde yükleyin
 })
-
-import { ref } from 'vue'
-import IconArrowUpRightWhite from '../../components/icons/IconArrowUpRightWhite.vue'
-import IconEllips2077 from '../../components/icons/IconEllips2077.vue'
-import IconPlay from '../../components/icons/IconPlay.vue'
-import IconArrowDownBlack from '../../components/icons/IconArrowDownBlack.vue'
-import IconAccordionActiveArrow from '../../components/icons/IconAccordionActiveArrow.vue'
-import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue'
-import IconShieldChevron from '../../components/icons/IconShieldChevron.vue'
 
 const accordions = ref([
      {
