@@ -6,6 +6,11 @@
                <MainTourCard v-for="(item, index) in thirdSectionData" :key="index" :item="item" />
                <HomeCardSplide v-for="(item, index) in fourthSectionData" :key="index" :item="item" />
                <MainCategories v-for="(item, index) in fifthSectionData" :key="index" :item="item" />
+               <Teleport to="#target">
+                    <Transition name="custom-classes">
+                         <PopUp v-if="showModal && popUpContent.length > 0" :content="popUpContent[0]" @closeModal="closeModal" />
+                    </Transition>
+               </Teleport>
           </div>
      </div>
 </template>
@@ -18,6 +23,7 @@ import MainTourCard from './components/MainTourCard/MainTourCard.vue'
 import MainTitleCard from './components/MainTitleCard.vue'
 import MainCategories from './components/MainCategories.vue'
 import { fetchData } from '../../utils/globalHelper'
+import PopUp from '../../components/advanced/PopUp.vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
@@ -27,7 +33,7 @@ const secondSectionData = ref([])
 const thirdSectionData = ref([])
 const fourthSectionData = ref([])
 const fifthSectionData = ref([])
-
+const popUpContent = ref([])
 const getHome = async () => {
      try {
           let filters = {
@@ -44,12 +50,18 @@ const getHome = async () => {
                thirdSectionData.value = data.filter((x: any) => x.__component === 'home-page.tour-card')
                fourthSectionData.value = data.filter((x: any) => x.__component === 'home-page.card-splide')
                fifthSectionData.value = data.filter((x: any) => x.__component === 'home-page.categories')
+               popUpContent.value = data.filter((x: any) => x.__component === 'global.pop-up')
+               console.log('popUpContent', popUpContent.value)
           }
      } catch (error) {
           console.error('Hata:', error)
      }
 }
+let showModal = ref(popUpContent.value ? true : false)
 
+const closeModal = () => {
+     showModal.value = false
+}
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')

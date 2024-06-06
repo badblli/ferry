@@ -78,6 +78,13 @@ const handleCloseModal = () => {
      closeModal() // Call the closeModal function when the modal is closed
 }
 
+const props = defineProps({
+     isMeanderLayout: {
+          type: Boolean,
+          default: false
+     }
+})
+
 let isAuthenticated = computed(() => userStore.isAuthenticated)
 let userName = computed(() => userStore.user?.EmailAddress)
 console.log(isAuthenticated.value, 'isAuthenticated')
