@@ -6,9 +6,9 @@ export const useChannel = defineStore({
           saleChannel: import.meta.env.VITE_SALE_CHANNEL,
           subSaleChannel: ''
      }),
-     persist: {
-          storage: sessionStorage
-     },
+     //  persist: {
+     //       storage: sessionStorage
+     //  },
      actions: {
           setSaleChannel(data: any): void {
                this.saleChannel = data

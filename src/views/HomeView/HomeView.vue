@@ -25,8 +25,11 @@ import MainCategories from './components/MainCategories.vue'
 import { fetchData } from '../../utils/globalHelper'
 import PopUp from '../../components/advanced/PopUp.vue'
 import { useI18n } from 'vue-i18n'
+import { useChannel } from '../../stores/channel'
 
 const { locale } = useI18n()
+
+const useChannelStore = useChannel()
 
 // const firstSectionData = ref([])
 const secondSectionData = ref([])
@@ -70,6 +73,8 @@ watch(locale, (newLocale, oldLocale) => {
 })
 
 onMounted(async () => {
+     // useChannelStore.setSubSaleChannel('')
+     localStorage.removeItem('SubSalechannelname')
      await getHome()
 })
 </script>
