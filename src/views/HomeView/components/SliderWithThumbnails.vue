@@ -246,8 +246,9 @@ import { fetchData } from '@/utils/globalHelper'
 import { getImage } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { useTripStore } from '@/stores/tripStore'
+import { useTripStore } from '../../../stores/tripStore'
 
+const tripStore = useTripStore()
 interface searchReservation {
      id: number
      passengerName: string
@@ -713,6 +714,8 @@ const languageName = selectedLanguage.code || ''
 
 function navigateToSecondPage() {
      if (!isClickable.value) return
+
+     tripStore.setFromTo(_fromWhere.value.TownName, _toWhere.value.TownName)
      // router.push metodunu kullanarak belirli bir rota adı ve sorgu parametreleri ile yönlendirme yapın
      const adultCount = passenger.value.find((p: any) => p.id === 'adult')?.count || 0
      const childCount = passenger.value.find((p: any) => p.id === 'child')?.count || 0
