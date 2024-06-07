@@ -114,7 +114,7 @@
                                    </div>
                               </div>
 
-                              <div class="bg-white rounded-b-xl rounded-tr-xl flex items-center">
+                              <div class="rounded-b-xl rounded-tr-xl flex items-center">
                                    <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
                                         <div class="hs-dropdown flex flex-row items-center">
                                              <button id="hs-dropdown-with-dividers" type="button" class="cursor-pointer flex flex-col justify-start py-6 px-7">
@@ -964,7 +964,6 @@ const accordions = ref([
 
 .custom-border-top {
      border-top: 0.5px solid #c5c5c5;
-     background: var(--white, #fff);
 }
 
 .card-border {
