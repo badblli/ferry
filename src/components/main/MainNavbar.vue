@@ -29,11 +29,11 @@
                          </router-link>
                     </div>
                </div>
-               <div class="flex flex-row justify-center items-center cursor-pointer lg:mr-16 mr-0" @click="navigateToHome">
-                    <IconMainSamosa />
+               <div class="flex flex-col justify-center items-center cursor-pointer lg:mr-16 mr-0" @click="navigateToHome">
+                    <img :src="getImage(imageURL)" alt="Image" class="w-40 h-12 object-cover" />
                     <div class="ml-[10px]">
-                         <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{ mainNavbar.NavTitle }}</span>
-                         <span class="text-black text-xl md:text-2xl font-thin font-display tracking-wide">{{ mainNavbar.SecNavTitle }}</span>
+                         <!-- <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{ mainNavbar.NavTitle }}</span> -->
+                         <!-- <span class="text-black text-xl md:text-2xl font-thin font-display tracking-wide">{{ mainNavbar.SecNavTitle }}</span> -->
                     </div>
                </div>
                <div>
@@ -71,6 +71,8 @@ const { locale } = useI18n()
 import { computed, Teleport } from 'vue'
 import { useUserStore } from '@/stores/auth'
 import { useModal } from '../../compasable/useModal'
+import { getImage } from '@/utils/globalHelper'
+const imageURL = ref('');
 
 const { showModalState, showModal, closeModal } = useModal()
 const userStore = useUserStore()
@@ -132,17 +134,15 @@ const getNavbar = async () => {
           let filters = {
                pageName: 'Home'
           }
-
           const res = await fetchData('pages', locale.value.toLowerCase(), filters)
-
           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
-
           if (res) {
                let data = res.data[0].layout
                // console.log(data, 'im in mainNavbar compos')
-
                mainNavbar.value = data.find((x: any) => x.__component === 'global.navbar')
-               console.log(mainNavbar.value, 'global.navbarnavbarnavbarnavbarnavbarnavbarnavbarnavbar')
+               console.log(mainNavbar.value.Logo.url, 'global.navbarnavbarnavbarnavbarnavbarnavbarnavbarnavbar')
+               imageURL.value = mainNavbar.value.Logo.url;
+               console.log(imageURL.value, 'global.navbarnavbarnavbarnavbarnav')
           }
      } catch (error) {
           return

@@ -20,10 +20,10 @@
                     </div>
                     <div>
                          <div class="text-lg font-bold mb-4 flex">
-                              <IconMainSamosa />
-                              <div>
+                              <img :src="getImage(imageURL)" alt="Image" class="w-full h-full object-cover" />
+                              <!-- <div>
                                    <span className="text-black text-2xl font-bold font-display tracking-wide">{{ mainFooter.footerBrand?.title }}</span>
-                              </div>
+                              </div> -->
                          </div>
                          <ul>
                               <li>
@@ -84,8 +84,9 @@ import IconMainSamosa from '../icons/IconMainSamosa.vue'
 import IconArrowTop from '../icons/IconArrowTop.vue'
 import IconArrow from '../icons/IconArrow.vue'
 import ContactModal from '../advanced/ContactModal.vue'
-import { fetchData } from '@/utils/globalHelper'
+import { fetchData, getImage } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
+const imageURL = ref('');
 
 const { locale } = useI18n()
 const isLoading = ref<boolean>(true)
@@ -140,6 +141,8 @@ const getFooter = async () => {
                console.log(data, 'im in mainfooter compos')
 
                mainFooter.value = data.find((x: any) => x.__component === 'global.footer')
+               imageURL.value = mainFooter.value.footerBrand.logo.url;
+               console.log(imageURL.value, 'global.navbarnavbarnavbarnavbarnav')
                console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
           }
      } catch (error) {

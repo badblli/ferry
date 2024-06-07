@@ -2,9 +2,9 @@
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full">
                <SliderWithThumbnails />
+               <HomeCardSplide v-for="(item, index) in fourthSectionData" :key="index" :item="item" />
                <MainTitleCard v-for="(item, index) in secondSectionData" :key="index" :item="item" />
                <MainTourCard v-for="(item, index) in thirdSectionData" :key="index" :item="item" />
-               <HomeCardSplide v-for="(item, index) in fourthSectionData" :key="index" :item="item" />
                <MainCategories v-for="(item, index) in fifthSectionData" :key="index" :item="item" />
                <Teleport to="#target">
                     <Transition name="custom-classes">
