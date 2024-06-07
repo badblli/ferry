@@ -58,7 +58,7 @@
                                              <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                       {{ item.FerryName }}
+                                                       {{ item.CompanyName }}
                                                   </p>
                                              </div>
                                              <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
@@ -130,7 +130,7 @@
                                         <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
                                              <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                              <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                  {{ item.FerryName }}
+                                                  {{ item.CompanyName }}
                                              </p>
                                         </div>
                                         <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
@@ -197,7 +197,7 @@
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                       {{ item.FerryName }}
+                                                       {{ item.CompanyName }}
                                                   </p>
                                              </div>
                                              <div class="mt-3 mr-5 lg:mr-[75px]">
@@ -278,7 +278,7 @@
                                              <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
                                                   <p class="text-black text-base font-medium font-display mb-2">{{ ticketsList?.companyName }}</p>
                                                   <p class="text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] tracking-tight">
-                                                       {{ item.FerryName }}
+                                                       {{ item.CompanyName }}
                                                   </p>
                                              </div>
                                              <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
