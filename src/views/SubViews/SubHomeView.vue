@@ -3,89 +3,25 @@
           <div class="w-full flex flex-col mx-24 centered-w justify-center items-center">
                <div class="flex flex-col">
                     <div class="flex flex-row border-sub-line">
-                         <div @click="activeTab = 'tab1'" class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === 'tab1' }">Midilli Adası</div>
-                         <div @click="activeTab = 'tab2'" class="tab mx-4 px-4" :class="{ active: activeTab === 'tab2' }">Feribot Seferleri</div>
-                         <div @click="activeTab = 'tab3'" class="tab mx-4 px-4" :class="{ active: activeTab === 'tab3' }">Nasıl Gidilir</div>
-                         <div @click="activeTab = 'tab4'" class="tab mx-4 px-4" :class="{ active: activeTab === 'tab4' }">Gezilecek Yerler</div>
-                         <div @click="activeTab = 'tab5'" class="tab mx-4 px-4" :class="{ active: activeTab === 'tab5' }">Sıkça Sorular Sorular</div>
-                         <div @click="activeTab = 'tab6'" class="tab mx-4 px-20 mr-20" :class="{ active: activeTab === 'tab6' }">Midilli Turları</div>
+                         <div v-for="(tab, index) in tabs" :key="index" @click="activeTab = tab.id" class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
                     <div class="w-full bg-blue-700"></div>
                </div>
                <div class="w-full">
                     <div>
-                         <div v-show="activeTab === 'tab1'" class="mt-[75px] mb-16">
+                         <div v-for="(tab, index) in tabs" :key="index" v-show="activeTab == tab.id" class="mt-[75px] mb-16">
                               <div class="flex flex-row justify-center items-center mb-6">
-                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">Ayvalık</div>
+                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">{{ tab.from }}</div>
                                    <ArrowCircleUpRight />
                                    <div>
-                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">Midilli</div>
+                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">{{ tab.to }}</div>
                                    </div>
                               </div>
                               <div>
-                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">Midilli Adası</div>
+                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">{{ tab.contentTitle }}</div>
                               </div>
                          </div>
-                         <div v-show="activeTab === 'tab2'" class="mt-[75px] mb-16">
-                              <div class="flex flex-row justify-center items-center mb-6">
-                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">Ayvalık</div>
-                                   <ArrowCircleUpRight />
-                                   <div>
-                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">Midilli</div>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">Midilli Feribot Seferleri</div>
-                              </div>
-                         </div>
-                         <div v-show="activeTab === 'tab3'" class="mt-[75px] mb-16">
-                              <div class="flex flex-row justify-center items-center mb-6">
-                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">Ayvalık</div>
-                                   <ArrowCircleUpRight />
-                                   <div>
-                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">Midilli</div>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">Midilli Adasına Nasıl Gidilir?</div>
-                              </div>
-                         </div>
-                         <div v-show="activeTab === 'tab4'" class="mt-[75px] mb-16">
-                              <div class="flex flex-row justify-center items-center mb-6">
-                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">Ayvalık</div>
-                                   <ArrowCircleUpRight />
-                                   <div>
-                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">Midilli</div>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">Midilli Adası'nda Gezilecek Yerler</div>
-                              </div>
-                         </div>
-                         <div v-show="activeTab === 'tab5'" class="mt-[75px] mb-16">
-                              <div class="flex flex-row justify-center items-center mb-6">
-                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">Ayvalık</div>
-                                   <ArrowCircleUpRight />
-                                   <div>
-                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">Midilli</div>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">Midilli Hakkında S.S.S.</div>
-                              </div>
-                         </div>
-                         <div v-show="activeTab === 'tab6'" class="mt-[75px] mb-16">
-                              <div class="flex flex-row justify-center items-center mb-6">
-                                   <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">Ayvalık</div>
-                                   <ArrowCircleUpRight />
-                                   <div>
-                                        <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">Midilli</div>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">Midilli Turları</div>
-                              </div>
-                         </div>
+
                          <!-- <  <div class="mt-[75px] mb-16">
                         <div class="flex flex-row justify-center items-center mb-6">
                             <div
@@ -231,11 +167,12 @@
                               </div>
                          </form>
                     </div>
-                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === 'tab1'">
+                    <div v-for="(tab, index) in tabs" class="px-2 md:px-16 sm:px-8 centered-w" :key="index" v-show="activeTab === tab.id">
                          <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
-                              <div class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
-                                   Yunan adalarının en çok tercih edilenleri arasında ilk sırada gelen Midilli'ye en rahat ulaşım yolu; Ayvalık Midilli feribot seferleri olarak bilinmektedir. Nisan ve eylül ayları arası olan dönem; yüksek sezon olarak geçmektedir. Bu dönemde, her gün Ayvalık Midilli feribot seferleri düzenlenmektedir.<br /><br />Türklerin yaz aylarında özellikle tatil için Yunan adalarına gitme sıklığı, son yıllarda artmaktadır. Bu artışta, Yunanistan'ın Yunan adalarına kapıda
-                                   vize uygulaması getirmesinin etkisi büyüktür. Kapı vizesi uygulaması olduğundan dolayı ziyaretçi artışı gösteren Yunan Adaları'na Ege Denizi'nde yer alan ve feribot kullanılarak gidilebilmektedir. Yunan adaları; son yılların en gözde tatil ve ziyaret mekanları arasında yer almaktadır.
+                              <div v-for="(paragraph, index) in tab.description" :key="index" class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
+                                   <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
+                                        {{ child.text }}
+                                   </p>
                               </div>
                          </div>
                          <div>
@@ -790,10 +727,14 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const useChannelStore = useChannel()
+watchEffect(() => {
+     const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
+     useChannelStore.setSubSaleChannel(subSaleChannel)
+})
 
 const showTrue = ref(false)
 
-const activeTab = ref('tab1')
+const activeTab = ref(2)
 
 const tourData = ref({
      btnLink: '/tours',
@@ -853,6 +794,7 @@ const fakeData2 = ref<FakeDataItem[]>([
 // import MySettingsDeactive from "../components/advanced/MySettingsDeactive.vue"
 // import MyProfile from "../components/advanced/MyProfile.vue"
 // import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
+import value from '../../../globals'
 
 const { locale } = useI18n()
 const tableHeaders = ref<any[]>([])
@@ -883,6 +825,47 @@ const getTicketPrice = async () => {
      }
 }
 
+const tabContent = ref([])
+const tabs = ref([])
+
+const getIslands = async () => {
+     try {
+          const res = await fetchData('islands', locale.value.toLowerCase(), {})
+          if (res) {
+               tabs.value = res.data.map((item) => {
+                    // Her bir öğenin içindeki değerleri kontrol et
+                    const newItem = { ...item } // Orijinal öğeyi değiştirmemek için kopyasını oluştur
+                    Object.entries(newItem).forEach(([key, value]) => {
+                         // Eğer değer bir dize ise ve içinde "$" işareti varsa
+                         if (typeof value === 'string' && value.includes('$')) {
+                              // "$" işaretini "Meander" ile değiştir
+                              newItem[key] = value.replace(/\$/g, 'Meander')
+                         }
+                    })
+                    return newItem // Değiştirilmiş öğeyi döndür
+               })
+
+               // let data = res.data[0].layout
+               // tabContent.value = data.find((x: any) => x.__component === 'shared.tab-content')
+               // // Eğer tabContent bulunursa, onun içindeki 'Tab' anahtarına erişip gerekli dönüşümleri yapalım
+               // if (tabContent.value && tabContent.value.Tab) {
+               //      tabs.value = tabContent.value.Tab.map((tabGroup: any) => {
+               //           // Her tabGroup içindeki 'tabs' dizisine erişelim ve bu dizi içindeki her elemanı mapleyelim
+               //           return tabGroup.tabs.map((tab: any) => {
+               //                return {
+               //                     ...tab
+               //                }
+               //           })
+               //      }).flat() // flat() ile iç içe dizileri düzleştiriyoruz
+               // } else {
+               //      console.error('Tab content not found')
+               // }
+          }
+     } catch (error) {
+          console.error('Hata:', error)
+     }
+}
+
 const initilizaTableData = (data: any) => {
      let table = data[0]
      console.log(table, 'tableeeeee')
@@ -899,11 +882,11 @@ watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')
           getTicketPrice()
+          getIslands()
      }
 })
 onMounted(async () => {
-     const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
-     useChannelStore.setSubSaleChannel(subSaleChannel)
+     useChannelStore.setSubSaleChannel(item.href.replace('/', '')) // setSubChannel fonksiyonunu çağırıyoruz (store'da tanımlıdır
 
      await getTicketPrice() // Veriyi asenkron bir şekilde yükleyin
 })

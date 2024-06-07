@@ -54,8 +54,9 @@ const getApi = async <T>(applicationName: string, controllerName: string, name: 
           api.defaults.headers.common.ClientIP = localStorage.getItem('ClientIP') || ''
           api.defaults.headers.common.ApiKey = envConfig.apiKey || ''
           api.defaults.headers.common.SaleChannelName = envConfig.SaleChannelName || ''
-          if (localStorage.getItem('SubSalechannelname')) {
-               api.defaults.headers.common.SubSalechannelname = localStorage.getItem('SubSalechannelname') || ''
+          const sb = localStorage.getItem('SubSalechannelname')
+          if (JSON.parse(sb)) {
+               api.defaults.headers.common.SubSalechannelname = sb.key || ''
           }
           api.defaults.headers.common.LanguageID = languageName || ''
 
@@ -320,10 +321,18 @@ const saleChannel = import.meta.env.VITE_SALE_CHANNEL
 const BEARER_TOKEN = import.meta.env.VITE_STRAPI_TOKEN
 const fetchData = (endpoint: string, locale: string, filters: Record<string, string>) => {
      try {
-          const filterParams = Object.entries(filters)
+          let filterParams = Object.entries(filters)
                .map(([key, value]) => `filters[${key}][$eq]=${value}`)
                .join('&')
-          const url = `${API_BASE_URL}/${endpoint}?populate=deep&${filterParams}&filters[saleChannel][$eq]=${saleChannel}&locale=${locale}`
+
+          // Add saleChannel to the filterParams
+          if (filters) {
+               filterParams += `${filterParams ? '&' : ''}filters[saleChannel][$eq]=${saleChannel}`
+          }
+
+          // Construct the URL conditionally
+          const url = `${API_BASE_URL}/${endpoint}?populate=deep${filterParams ? `&${filterParams}` : ''}&locale=${locale}`
+
           return axios
                .get(url, {
                     headers: {
