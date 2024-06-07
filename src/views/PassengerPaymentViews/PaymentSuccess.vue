@@ -28,12 +28,12 @@
           </div>
           <div class="mt-14">
                <div class="flex flex-col md:flex-row">
-                    <div class="w-[271px] h-[83px] bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mr-3 mb-4">
+                    <!-- <div class="w-[271px] h-[83px] bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mr-3 mb-4">
                          <div class="w-10">
-                              <!-- <img src="../../assets/EmbeddedImages//AppleWallet.png" /> -->
+                              <img src="../../assets/EmbeddedImages//AppleWallet.png" />
                          </div>
                          <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">{{ data.addWallet }}</div>
-                    </div>
+                    </div> -->
                     <div class="w-[271px] h-[83px] mr-3 bg-white rounded-xl border border-zinc-300 flex flex-row items-center justify-center cursor-pointer mb-4">
                          <IconDownloadSimple />
                          <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] ml-7">{{ data.downloadTicket }}</div>

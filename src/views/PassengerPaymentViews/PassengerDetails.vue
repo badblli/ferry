@@ -41,9 +41,6 @@
                                                   <div class="text-black text-base font-medium font-display tracking-tight">
                                                        {{ item.type }}
                                                   </div>
-                                                  <div class="text-right text-black text-base font-light font-display tracking-tight">
-                                                       {{ item.age }}
-                                                  </div>
                                              </div>
                                         </div>
                                    </div>
@@ -87,7 +84,7 @@
                                              <div>
                                                   <span v-html="alertModal?.text" class="flex flex-row justify-center mt-7"> </span>
                                              </div>
-                                             <div class="text-center text-black text-base font-medium font-display mt-7 bg-blue-100 w-16 mx-auto p-2 cursor-pointer bo" @click="cancelChange2">{{ alertModal?.CancelBtn }}</div>
+                                             <div class="text-center text-black text-base font-medium font-display mt-7 bg-blue-100 w-16 mx-auto p-2 cursor-pointer" @click="cancelChange2">{{ alertModal?.CancelBtn }}</div>
                                         </div>
                                    </div>
                               </transition>
@@ -194,7 +191,6 @@
 // @ts-ignore
 import { VueTelInput } from 'vue-tel-input'
 import 'vue-tel-input/vue-tel-input.css'
-
 import { useI18n } from 'vue-i18n'
 // import IconAccordionActiveArrow from '@/components/icons/IconAccordionActiveArrow.vue'
 // import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue'

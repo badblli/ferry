@@ -790,10 +790,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const useChannelStore = useChannel()
-watchEffect(() => {
-     const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
-     useChannelStore.setSubSaleChannel(subSaleChannel)
-})
 
 const showTrue = ref(false)
 
@@ -866,6 +862,7 @@ const tableData = ref([])
 let pageTitle = ref('')
 let whichFerry = ref('')
 let ticketPrice = ref<any | null>(null)
+
 const getTicketPrice = async () => {
      try {
           let filters = {
@@ -905,7 +902,8 @@ watch(locale, (newLocale, oldLocale) => {
      }
 })
 onMounted(async () => {
-     useChannelStore.setSubSaleChannel(item.href.replace('/', '')) // setSubChannel fonksiyonunu çağırıyoruz (store'da tanımlıdır
+     const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
+     useChannelStore.setSubSaleChannel(subSaleChannel)
 
      await getTicketPrice() // Veriyi asenkron bir şekilde yükleyin
 })
