@@ -90,8 +90,7 @@
                                    </div>
                               </div>
 
-                              <!-- @click="toggleDataPlacement" -->
-                              <div class="bg-gray-200 rounded-full flex flex-row justify-center items-center p-[7px] ml-[26px] cursor-pointer">
+                              <div @click="toggleDataPlacement" class="bg-gray-200 rounded-full flex flex-row justify-center items-center p-[7px] ml-[26px] cursor-pointer">
                                    <IconArrowsLeftRight />
                               </div>
 

@@ -1,5 +1,5 @@
 <template>
-     <div v-if="topMenu.links?.length > 0">
+     <div v-if="topMenu.links?.length > 0" ref="menu">
           <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
                <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-[100px] px-2 md:px-16 sm:px-8" aria-label="Global">
                     <div class="lg:flex hidden items-center justify-between">
@@ -10,7 +10,7 @@
                               <router-link v-for="(item, index) in topMenu.links" :key="index" :to="redirect(item)" class="text-sm font-semibold">
                                    {{ item.label }}
                               </router-link>
-                              <div>
+                              <div ref="dropdown">
                                    <button @click="toggleDropdown" type="button" class="flex flex-row justify-center items-center">
                                         <span class="text-white text-sm font-semibold font-['Plus Jakarta Sans'] tracking-tight cursor-pointer mr-[9px]">
                                              {{ selectedLanguage }}
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 import IconArrowWhite from '../../icons/IconArrowWhite.vue'
 
@@ -64,6 +64,9 @@ const props = defineProps<{
 }>()
 
 const isOpen = ref(false)
+const menu = ref(null)
+const dropdown = ref(null)
+
 const toggleDropdown = () => {
      isOpen.value = !isOpen.value
 }
@@ -87,6 +90,20 @@ const updateCurrentLanguage = (language: Language) => {
      locale.value = language.code
      localStorage.setItem('selectedLanguage', JSON.stringify({ name: language.name, code: language.code }))
 }
+
+const handleClickOutside = (event: MouseEvent) => {
+     if (menu.value && !menu.value.contains(event.target) && dropdown.value && !dropdown.value.contains(event.target)) {
+          isOpen.value = false
+     }
+}
+
+onMounted(() => {
+     document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+     document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <style scoped>
