@@ -728,8 +728,10 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const useChannelStore = useChannel()
 watchEffect(() => {
-     const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
-     useChannelStore.setSubSaleChannel(subSaleChannel)
+     if (router.currentRoute.value.params.name) {
+          const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
+          useChannelStore.setSubSaleChannel(subSaleChannel)
+     }
 })
 
 const showTrue = ref(false)
@@ -886,8 +888,8 @@ watch(locale, (newLocale, oldLocale) => {
      }
 })
 onMounted(async () => {
-     useChannelStore.setSubSaleChannel(item.href.replace('/', '')) // setSubChannel fonksiyonunu çağırıyoruz (store'da tanımlıdır
-
+     // useChannelStore.setSubSaleChannel(item.href.replace('/', '')) // setSubChannel fonksiyonunu çağırıyoruz (store'da tanımlıdır
+     await getIslands()
      await getTicketPrice() // Veriyi asenkron bir şekilde yükleyin
 })
 
