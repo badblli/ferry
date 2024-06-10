@@ -20,7 +20,7 @@
                                    <div class="text-black text-base font-medium font-display">{{ passengerHeader?.cost }}</div>
                                    <div class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">41TL</div>
                               </div>
-                              <IconArrowDownBlack class="ml-[20px]" />
+                              <IconArrowDownBlack class="ml-[20px]"/>
                          </div>
                     </div>
                </div>
