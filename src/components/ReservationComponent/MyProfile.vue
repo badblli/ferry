@@ -57,7 +57,6 @@ const formatBirthDateInput = (index: any) => {
     }
 };
 
-
 const people = ref([
      { title: 'İsim', value: userInfo.value ? userInfo.value.Name : '', editing: false },
      { title: 'Soyisim', value: userInfo.value ? userInfo.value.SurName : '', editing: false },

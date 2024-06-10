@@ -101,18 +101,20 @@
                                                        <div class="p-1.5 w-full inline-block align-middle">
                                                             <div
                                                                  class="max-w-[850px] h-[115px] bg-white rounded-2xl border border-stone-300 flex items-center justify-between">
-                                                                 <div class="ml-[46px]">
+                                                                 <div class="ml-[46px] ">
                                                                       <div>
                                                                            <h2
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 İsim
                                                                            </h2>
-                                                                           <input v-model="name"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                           <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="name"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
-                                                                      class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100">
+                                                                      class="w-32 h-14 px-8 py-4 rounded-xl justify-center items-center gap-2.5 inline-flex mr-10 hover:bg-slate-200 cursor-pointer transition ease-in-out delay-100 border-b border-gray-200">
                                                                       <button
                                                                            @click="editingName ? saveEdit('name') : editField('name')"
                                                                            class="text-center text-black text-base font-bold font-text leading-normal">
@@ -130,8 +132,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 Soyisim
                                                                            </h2>
-                                                                           <input v-model="surname"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                           <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="surname"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
@@ -153,8 +157,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 Telefon Numarası
                                                                            </h2>
-                                                                           <input v-model="PhoneNumber"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                           <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="PhoneNumber"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
@@ -176,8 +182,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 Doğum Tarihi
                                                                            </h2>
-                                                                           <input v-model="BirthDate"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                                <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="BirthDate"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
@@ -199,8 +207,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 Uyruğu
                                                                            </h2>
-                                                                           <input v-model="NationalityID"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                                <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="NationalityID"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>  
                                                                       </div>
                                                                  </div>
                                                                  <div
@@ -222,8 +232,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 Pasaport Numarası
                                                                            </h2>
-                                                                           <input v-model="PassportNumber"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                                <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="PassportNumber"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
@@ -245,8 +257,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 TC Kimlik No
                                                                            </h2>
-                                                                           <input v-model="TckNo"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                           <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="TckNo"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
@@ -268,8 +282,10 @@
                                                                                 class="mb-1 text-black text-base font-medium font-display">
                                                                                 Adres Bilgileri
                                                                            </h2>
-                                                                           <input v-model="Address"
-                                                                                class="border border-gray-300 rounded text-zinc-600 text-base font-normal font-display tracking-tight" />
+                                                                           <div class="flex items-center border-b border-gray-200">
+                                                                                <input v-model="Address"
+                                                                                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" />
+                                                                           </div>
                                                                       </div>
                                                                  </div>
                                                                  <div
