@@ -3,13 +3,13 @@
           <div class="w-full flex flex-col mx-24 centered-w justify-center items-center">
                <div class="flex flex-col">
                     <div class="flex flex-row border-sub-line">
-                         <div v-for="(tab, index) in tabs" :key="index" @click="activeTab = tab.id" class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
+                         <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id" class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
                     <div class="w-full bg-blue-700"></div>
                </div>
                <div class="w-full">
                     <div>
-                         <div v-for="(tab, index) in tabs" :key="index" v-show="activeTab == tab.id" class="mt-[75px] mb-16">
+                         <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="mt-[75px] mb-16">
                               <div class="flex flex-row justify-center items-center mb-6">
                                    <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">{{ tab.from }}</div>
                                    <ArrowCircleUpRight />
@@ -167,7 +167,7 @@
                               </div>
                          </form>
                     </div>
-                    <div v-for="(tab, index) in tabs" class="px-2 md:px-16 sm:px-8 centered-w" :key="index" v-show="activeTab === tab.id">
+                    <div v-for="(tab, index) in copyTabs" class="px-2 md:px-16 sm:px-8 centered-w" :key="index" v-show="activeTab === tab.id">
                          <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
                               <div v-for="(paragraph, index) in tab.description" :key="index" class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
                                    <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
@@ -702,7 +702,7 @@ import IconsWhiteLeftRight from '../../components/icons/IconsArrowsLeftRight.vue
 import ArrowCircleUpRight from '../../components/icons/IconCircleUpRight.vue'
 import IconArrowUpRight from '../../components/icons/IconArrowUpRight.vue'
 import MainTourCardComponent from '../HomeView/components/MainTourCard/component/MainTourCardComponent.vue'
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, computed, ref, watchEffect, onUnmounted } from 'vue'
 import { fetchData } from '../../utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 import IconAsteriskSimple from '../../components/icons/IconAsteriskSimple.vue'
@@ -713,7 +713,6 @@ import IconSearchNormal from '../../components/icons/IconSearchNormal.vue'
 import IconBoat from '../../components/icons/IconBoat.vue'
 import IconForkKnife from '../../components/icons/IconForkKnife.vue'
 import IconArrowRight from '../../components/icons/IconArrowRight.vue'
-import { ref, watchEffect } from 'vue'
 import IconArrowUpRightWhite from '../../components/icons/IconArrowUpRightWhite.vue'
 import IconEllips2077 from '../../components/icons/IconEllips2077.vue'
 import IconPlay from '../../components/icons/IconPlay.vue'
@@ -727,14 +726,16 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const useChannelStore = useChannel()
-watchEffect(() => {
-     if (router.currentRoute.value.params.name) {
-          const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
-          useChannelStore.setSubSaleChannel(subSaleChannel)
-     }
-})
+// watchEffect(() => {
+//      if (router.currentRoute.value.params.name) {
+//           const subSaleChannel = router.currentRoute.value.params.name.replace('/', '')
+//           useChannelStore.setSubSaleChannel(subSaleChannel)
+//      }
+// })
 
 const showTrue = ref(false)
+
+const scn = ref(localStorage.getItem('SubSalechannelName'))
 
 const activeTab = ref(2)
 
@@ -796,7 +797,6 @@ const fakeData2 = ref<FakeDataItem[]>([
 // import MySettingsDeactive from "../components/advanced/MySettingsDeactive.vue"
 // import MyProfile from "../components/advanced/MyProfile.vue"
 // import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
-import value from '../../../globals'
 
 const { locale } = useI18n()
 const tableHeaders = ref<any[]>([])
@@ -829,19 +829,21 @@ const getTicketPrice = async () => {
 
 const tabContent = ref([])
 const tabs = ref([])
+const copyTabs = ref([])
 
 const getIslands = async () => {
      try {
           const res = await fetchData('islands', locale.value.toLowerCase(), {})
           if (res) {
-               tabs.value = res.data.map((item) => {
+               tabs.value = res.data
+               copyTabs.value = res.data.map((item) => {
                     // Her bir öğenin içindeki değerleri kontrol et
                     const newItem = { ...item } // Orijinal öğeyi değiştirmemek için kopyasını oluştur
                     Object.entries(newItem).forEach(([key, value]) => {
                          // Eğer değer bir dize ise ve içinde "$" işareti varsa
                          if (typeof value === 'string' && value.includes('$')) {
                               // "$" işaretini "Meander" ile değiştir
-                              newItem[key] = value.replace(/\$/g, 'Meander')
+                              newItem[key] = value.replace(/\$/g, scn.value)
                          }
                     })
                     return newItem // Değiştirilmiş öğeyi döndür
@@ -887,9 +889,39 @@ watch(locale, (newLocale, oldLocale) => {
           getIslands()
      }
 })
+
+const sub = computed(() => useChannelStore.subSaleChannelName)
+
+watch(
+     sub,
+     (newLocale, oldLocale) => {
+          console.log(newLocale, 'new', oldLocale, 'old')
+          console.log('tabs', tabs.value)
+          if (copyTabs.value && copyTabs.value.length > 0) {
+               console.log('IF', tabs.value)
+               copyTabs.value = tabs.value.map((item) => {
+                    console.log('ITEM', item)
+                    // Her bir öğenin içindeki değerleri kontrol et
+                    const newItem = { ...item } // Orijinal öğeyi değiştirmemek için kopyasını oluştur
+                    Object.entries(newItem).forEach(([key, value]) => {
+                         // Eğer değer bir dize ise ve içinde "$" işareti varsa
+                         if (typeof value === 'string' && value.includes('$')) {
+                              // "$" işaretini "Meander" ile değiştir
+                              newItem[key] = value.replace(/\$/g, newLocale)
+                              console.log('NEW ITEM', newItem)
+                         }
+                    })
+
+                    return newItem // Değiştirilmiş öğeyi döndür
+               })
+          }
+     },
+     { immediate: true }
+)
 onMounted(async () => {
      // useChannelStore.setSubSaleChannel(item.href.replace('/', '')) // setSubChannel fonksiyonunu çağırıyoruz (store'da tanımlıdır
      await getIslands()
+
      await getTicketPrice() // Veriyi asenkron bir şekilde yükleyin
 })
 

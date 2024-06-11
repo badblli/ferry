@@ -74,7 +74,7 @@ watch(locale, (newLocale, oldLocale) => {
 
 onMounted(async () => {
      // useChannelStore.setSubSaleChannel('')
-     localStorage.removeItem('SubSalechannelname')
+     localStorage.removeItem('SubSalechannel')
      await getHome()
 })
 </script>

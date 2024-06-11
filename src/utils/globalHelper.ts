@@ -54,9 +54,9 @@ const getApi = async <T>(applicationName: string, controllerName: string, name: 
           api.defaults.headers.common.ClientIP = localStorage.getItem('ClientIP') || ''
           api.defaults.headers.common.ApiKey = envConfig.apiKey || ''
           api.defaults.headers.common.SaleChannelName = envConfig.SaleChannelName || ''
-          const sb = localStorage.getItem('SubSalechannelname')
-          if (JSON.parse(sb)) {
-               api.defaults.headers.common.SubSalechannelname = sb.key || ''
+          const sb = localStorage.getItem('SubSalechannel')
+          if (sb) {
+               api.defaults.headers.common.SubSalechannel = sb || ''
           }
           api.defaults.headers.common.LanguageID = languageName || ''
 
@@ -93,8 +93,8 @@ const getQueryApi = async <T>(applicationName: string, controllerName: string, n
           // api.defaults.headers.common.GlobalCompanyID = 'ProtalyaOfisTest'
           api.defaults.headers.common.ApiKey = envConfig.apiKey || ''
           api.defaults.headers.common.SaleChannelName = envConfig.SaleChannelName || ''
-          if (localStorage.getItem('SubSalechannelname')) {
-               api.defaults.headers.common.SubSalechannelname = localStorage.getItem('SubSalechannelname') || ''
+          if (localStorage.getItem('SubSalechannel')) {
+               api.defaults.headers.common.SubSalechannel = localStorage.getItem('SubSalechannel') || ''
           }
           api.defaults.headers.common.LanguageID = languageName || ''
 
@@ -142,8 +142,8 @@ const callPostApi = async (applicationName: string, controllerName: string, name
      // api.defaults.headers.common.GlobalCompanyID = 'ProtalyaOfisTest'
      api.defaults.headers.common.ApiKey = envConfig.apiKey || ''
      api.defaults.headers.common.SaleChannelName = envConfig.SaleChannelName || ''
-     if (localStorage.getItem('SubSalechannelname')) {
-          api.defaults.headers.common.SubSalechannelname = localStorage.getItem('SubSalechannelname') || ''
+     if (localStorage.getItem('SubSalechannel')) {
+          api.defaults.headers.common.SubSalechannel = localStorage.getItem('SubSalechannel') || ''
      }
      api.defaults.headers.common.LanguageID = languageName || ''
 
