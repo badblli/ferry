@@ -189,7 +189,7 @@ const getNavbar = async () => {
 }
 const setRedirect = (item: any) => {
      let sc = item.href.replace('/', '')
-     useChannelStore.setSubSaleChannel(sc, item.label)
+     useChannelStore.setSubSaleChannel(sc, item.label, item.subSaleChannelID)
 }
 
 const redirect = (item: Links) => {
