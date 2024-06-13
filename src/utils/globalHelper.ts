@@ -352,6 +352,35 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
      }
 }
 
+const findOne = (endpoint: string, locale: string, filters: Record<string, string>) => {
+     console.log('filters', filters)
+     try {
+          const filterParams = Object.entries(filters)
+               .map(([key, value]) => `filters[${key}][$eq]=${value}`)
+               .join('&')
+
+          // Construct the URL conditionally
+          const url = `${API_BASE_URL}/${endpoint}?populate=deep${filterParams ? `&${filterParams}` : ''}&locale=${locale}`
+
+          return axios
+               .get(url, {
+                    headers: {
+                         Authorization: `Bearer ${BEARER_TOKEN}`
+                    }
+               })
+               .then((response: AxiosResponse) => {
+                    return response.data
+               })
+               .catch((error) => {
+                    console.error('Hata:', error)
+                    return null
+               })
+     } catch (error) {
+          console.error('Hata:', error)
+          return null
+     }
+}
+
 // const postData =  (endpoint: string, data: any) => {
 //   try {
 //     const response: AxiosResponse =  axios.post(`${API_BASE_URL}/${endpoint}`, data, {
@@ -443,6 +472,7 @@ export {
      getLang,
      formatDate,
      fetchData,
+     findOne,
      // postData,
      groupByLocale,
      getQueryApi

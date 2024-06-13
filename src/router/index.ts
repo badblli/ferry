@@ -39,7 +39,7 @@ const router = createRouter({
                          component: () => import('@/views/BlogView.vue')
                     },
                     {
-                         path: '/blog/:postId',
+                         path: '/blog/:name',
                          name: 'uniqueBlogPost',
                          component: () => import('@/views/BlogPostView.vue')
                     },
