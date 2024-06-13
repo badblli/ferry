@@ -1,15 +1,17 @@
 <template>
+     <hr class="w-2 border"/>
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full flex flex-col mx-24 centered-w justify-center items-center">
-               <div class="flex flex-col">
+               <div class="flex flex-col mt-10">
                     <div class="flex flex-row border-sub-line">
                          <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id" class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
                     <div class="w-full bg-blue-700"></div>
                </div>
-               <div class="w-full">
+               <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="w-full">
+                    {{ tab }}
                     <div>
-                         <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="mt-[75px] mb-16">
+                         <div  class="mt-[75px] mb-16">
                               <div class="flex flex-row justify-center items-center mb-6">
                                    <div class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">{{ tab.from }}</div>
                                    <ArrowCircleUpRight />
@@ -21,26 +23,7 @@
                                    <div class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">{{ tab.contentTitle }}</div>
                               </div>
                          </div>
-
-                         <!-- <  <div class="mt-[75px] mb-16">
-                        <div class="flex flex-row justify-center items-center mb-6">
-                            <div
-                                class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">
-                                Ayvalık</div>
-                            <ArrowCircleUpRight />
-                            <div>
-                                <div
-                                    class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">
-                                    Midilli</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">
-                                Midilli Feribot Seferleri</div>
-                        </div>
-                    </div>> -->
-                         <form v-show="activeTab !== 'tab4' && activeTab !== 'tab6'" class="md:relative md:max-w-[798px] hidden md:block mx-auto md:z-50 z-40 custom-border">
+                         <form  v-show="activeTab !== copyTabs[3].id && activeTab !== copyTabs[5].id" class="md:relative md:max-w-[798px] hidden md:block mx-auto md:z-50 z-40 custom-border">
                               <div class="flex flex-row">
                                    <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }" class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
                                         <span @click="showTrue = false" class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug" :class="{ '': showTrue, ' text-blue-700': !showTrue }">Search Ferry Title</span>
@@ -167,7 +150,7 @@
                               </div>
                          </form>
                     </div>
-                    <div v-for="(tab, index) in copyTabs" class="px-2 md:px-16 sm:px-8 centered-w" :key="index" v-show="activeTab === tab.id">
+                    <div class="px-2 md:px-16 sm:px-8 centered-w" :key="index" v-show="activeTab === copyTabs[0].id">
                          <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
                               <div v-for="(paragraph, index) in tab.description" :key="index" class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
                                    <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
@@ -260,7 +243,7 @@
                         <HomeCardSplide />
                     </div> -->
                     </div>
-                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === 'tab2'">
+                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[1].id" >
                          <div>
                               <div class="w-full md:mt-[73px] mt-5 text-black text-lg font-normal font-['Plus Jakarta Display'] leading-loose tracking-tight">
                                    Midilli adasına en hızlı ve ekonomik şekilde Ayvalık’tan gidilebilmektedir. Ayvalık Midilli feribot seferlerini gerçekleştiren Jalem Tur ve Turyol firmalarının feribotları vardır. Turyol firmasına ait normal feribot ile 90 dakikada ve Jalem Tur firmasına ait olan hızlı katamaran ile de seferler 45 dakika sürmektedir.<br /><br />Turyol ve Jalem Tur firmalarının Ayvalık Midilli feribot sefer saati yaz ve kış dönemlerinde farklılıklar göstermektedir. Ayvalık
@@ -305,7 +288,7 @@
                               <div></div>
                          </div>
                     </div>
-                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === 'tab3'">
+                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[2].id">
                          <div>
                               <div class="w-full text-black text-lg font-normal font-['Plus Jakarta Display'] leading-loose tracking-tight my-20">
                                    Ayvalık Midilli feribot seferleri tüm yıl boyunca devam etmekte, yaz aylarında ise her gün yapılan seferler karşılıklı olarak düzenlenmektedir. Sabah 09:00 – 18:00 saatleri arasında yapılan feribot seferleri dönemsel olarak yoğunluğa göre ek seferlerle de güncellenmektedir. Seyahat öncesinde feribot saatlerinin kontrol edilmesi gerekmektedir. Ayvalık – Midilli feribot yolculuğu ortalama 1 saat sürmektedir.<br /><br />Bilindiği üzere Türkiye’den Midilli Adasına
@@ -318,7 +301,7 @@
                               <div class="w-[397px] h-[267px] opacity-20 bg-black rounded-[20px]"></div>
                          </div>
                     </div>
-                    <div class="centered-w" v-show="activeTab === 'tab4'">
+                    <div class="centered-w" v-show="activeTab === copyTabs[3].id">
                          <div class="flex flex-col justify-center items-center m-auto relative">
                               <div class="w-full lg:px-[100px] centered-w">
                                    <div v-for="(item, index) in fakeData" :key="index" class="flex flex-col md:flex-row mt-12">
@@ -364,7 +347,7 @@
                               </div>
                          </div>
                     </div>
-                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === 'tab5'">
+                    <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[4].id">
                          <div class="text-black text-lg font-normal leading-loose mt-12 pl-5 md:pl-0 centered-w">
                               <div class="flex flex-col justify-center items-center m-auto relative">
                                    <div class="w-full">
@@ -487,7 +470,7 @@
                               </div>
                          </div>
                     </div>
-                    <div class="centered-w" v-show="activeTab === 'tab6'">
+                    <div class="centered-w" v-show="activeTab === copyTabs[5].id">
                          <div class="flex flex-col items-center m-auto relative justify-between">
                               <div class="w-full lg:px-[100px]">
                                    <div v-for="(item, index) in fakeData2" :key="index" class="flex flex-col md:flex-row mt-12 gap-5">
@@ -981,6 +964,10 @@ const accordions = ref([
 
 .custom-border-top {
      border-top: 0.5px solid #c5c5c5;
+}
+
+.custom-border-seperator {
+     border-top: 0.5px solid #D9D9D9;   
 }
 
 .card-border {

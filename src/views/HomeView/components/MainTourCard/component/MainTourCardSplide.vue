@@ -135,23 +135,23 @@ const props = defineProps({
 //     console.log(item);
 // };
 
-// interface fakeSlidertems {
-//     id: number;
-//     date: string;
-//     price: string;
-//     title: string;
-//     where?: string
-//     url?: string;
-// }
+interface fakeSlidertems {
+    id: number;
+    date: string;
+    price: string;
+    title: string;
+    where?: string
+    url?: string;
+}
 
-// const items: fakeSlidertems[] = [
-//     { id: 7, date: "20 Kasım Cumartesi", price: "En Uygun €39", title: "Ekim Ayında yunan adalarına git.", where: "Samosa Bilet", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//     { id: 2, date: "16 Kasım Cuma", price: "En Uygun €49", title: "Sakız Adasına Feribot", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//     { id: 3, date: "17 Kasım Cumartesi", price: "En Uygun €59", title: "Rodos Adasına Feribot", url: 'https://images.unsplash.com/photo-1696613496496-1c7b2a55e7d2?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//     { id: 4, date: "18 Kasım Cumartesi", price: "En Uygun €69", title: "Santoriniye Feribot", url: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//     { id: 5, date: "19 Kasım Cumartesi", price: "En Uygun €79", title: "Bodruma Feribot", url: 'https://images.unsplash.com/photo-1598114694861-ee40abbdf824?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//     { id: 6, date: "20 Kasım Cumartesi", price: "En Uygun €89", title: "Güllüğe Feribot", url: 'https://images.unsplash.com/photo-1591078314996-ba61623c7284?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-// ];
+const items: fakeSlidertems[] = [
+    { id: 7, date: "20 Kasım Cumartesi", price: "En Uygun €39", title: "Ekim Ayında yunan adalarına git.", where: "Samosa Bilet", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { id: 2, date: "16 Kasım Cuma", price: "En Uygun €49", title: "Sakız Adasına Feribot", url: 'https://images.unsplash.com/photo-1583062482795-d2bef78e9bc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { id: 3, date: "17 Kasım Cumartesi", price: "En Uygun €59", title: "Rodos Adasına Feribot", url: 'https://images.unsplash.com/photo-1696613496496-1c7b2a55e7d2?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { id: 4, date: "18 Kasım Cumartesi", price: "En Uygun €69", title: "Santoriniye Feribot", url: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { id: 5, date: "19 Kasım Cumartesi", price: "En Uygun €79", title: "Bodruma Feribot", url: 'https://images.unsplash.com/photo-1598114694861-ee40abbdf824?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { id: 6, date: "20 Kasım Cumartesi", price: "En Uygun €89", title: "Güllüğe Feribot", url: 'https://images.unsplash.com/photo-1591078314996-ba61623c7284?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+];
 
 const splideRef = ref<string | HTMLElement>('');
 onMounted(() => {

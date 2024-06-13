@@ -1,6 +1,6 @@
 <template>
      <div v-if="mainNavbar.links?.length > 0" ref="menu">
-          <nav class="navbar centered-w w-full h-[100px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
+          <nav class="navbar centered-w w-full h-[112px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="hs-dropdown relative inline-flex md:hidden">
                     <!-- <button id="hs-dropdown-slideup-animation block md:hidden" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                          <IconRwpNavbar />
@@ -52,10 +52,10 @@
                          </div>
                     </div>
                </div>
-               <div>
+               <div class="border rounded-3xl p-[10px]" :class="{ 'border-none': !isMeanderLayout }">
                     <div v-if="isAuthenticated" class="text-center cursor-pointer hidden md:flex">
                          <button @click="showModal" type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">{{ userName }}</button>
-                         <IconChevronDown />
+                         <IconChevronDown />asdsadsad
                     </div>
                     <div v-else class="text-center cursor-pointer hidden md:flex">
                          <button @click="showModal" type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">{{ mainNavbar.LoginTitle }}</button>

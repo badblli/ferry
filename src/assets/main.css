@@ -1160,6 +1160,11 @@ select {
   margin-right: auto;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
@@ -1916,6 +1921,10 @@ select {
   height: 100px;
 }
 
+.h-\[112px\] {
+  height: 112px;
+}
+
 .h-\[115px\] {
   height: 115px;
 }
@@ -2166,10 +2175,6 @@ select {
 
 .min-h-\[350px\] {
   min-height: 350px;
-}
-
-.min-h-screen {
-  min-height: 100vh;
 }
 
 .w-1\/2 {
@@ -3371,6 +3376,10 @@ select {
   padding: 1px;
 }
 
+.p-\[10px\] {
+  padding: 10px;
+}
+
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -3541,10 +3550,6 @@ select {
 
 .pb-2 {
   padding-bottom: 0.5rem;
-}
-
-.pb-20 {
-  padding-bottom: 5rem;
 }
 
 .pb-4 {
@@ -6747,11 +6752,6 @@ input.focus\:outline-none:focus {
     margin-right: auto;
   }
 
-  .sm\:my-8 {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
   .sm\:mb-0 {
     margin-bottom: 0px;
   }
@@ -6776,20 +6776,12 @@ input.focus\:outline-none:focus {
     display: block;
   }
 
-  .sm\:inline-block {
-    display: inline-block;
-  }
-
   .sm\:flex {
     display: flex;
   }
 
   .sm\:hidden {
     display: none;
-  }
-
-  .sm\:h-screen {
-    height: 100vh;
   }
 
   .sm\:w-48 {
@@ -6876,10 +6868,6 @@ input.focus\:outline-none:focus {
 
   .sm\:ps-5 {
     padding-inline-start: 1.25rem;
-  }
-
-  .sm\:align-middle {
-    vertical-align: middle;
   }
 
   .sm\:text-3xl {
