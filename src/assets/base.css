@@ -84,3 +84,43 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+input.focus\:outline-none:focus {
+  /* outline: 2px solid transparent; */
+  /* outline-offset: 2px; */
+  box-shadow: none;
+}
+
+.splide__arrow.splide__arrow--prev {
+  left: -3rem !important;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.splide__arrow.splide__arrow--next {
+  right: -3rem !important;
+  background: linear-gradient(270deg, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.splide__arrow {
+  background: white;
+}
+
+.splide__arrow:disabled {
+  opacity: 1;
+}
+
+.splide__arrow.splide__arrow--prev {
+  left: -3rem;
+}
+
+.splide__arrow.splide__arrow--next {
+  right: -3rem;
+}
+
+.letter-spacing-new{
+  letter-spacing: 0.32px;
+}
+
+/* .vue-tel-input {
+  border: none;
+} */

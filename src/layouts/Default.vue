@@ -1,4 +1,4 @@
-<script>
+<script >
 import { RouterView } from "vue-router";
 
 export default {
@@ -6,8 +6,6 @@ export default {
     name: 'Default',
     components: {
         RouterView,
-
-
     },
     // Component logic goes here
 }
