@@ -61,7 +61,7 @@ const getApi = async <T>(applicationName: string, controllerName: string, name: 
           api.defaults.headers.common.LanguageID = languageName || ''
 
           const actionName = dontUseGet ? '/' + name : '/Get' + name
-          const mainUrl = baseURLLink ? 'http://' + applicationName : envConfig.basePath(applicationName)
+          const mainUrl = baseURLLink ? 'https://' + applicationName : envConfig.basePath(applicationName)
 
           const response = await api.get<T>(controllerName + actionName, {
                params,
@@ -99,7 +99,7 @@ const getQueryApi = async <T>(applicationName: string, controllerName: string, n
           api.defaults.headers.common.LanguageID = languageName || ''
 
           const actionName = dontUseGet ? '/' + name : '/' + name
-          const mainUrl = baseURLLink ? 'http://' + applicationName : envConfig.basePath(applicationName)
+          const mainUrl = baseURLLink ? 'https://' + applicationName : envConfig.basePath(applicationName)
 
           const response = await api.get<T>(controllerName + actionName, {
                params,
@@ -124,10 +124,10 @@ const callPostApi = async (applicationName: string, controllerName: string, name
 
      let mainUrl = ''
      if (manuelURL) {
-          mainUrl = 'http://' + envConfig.mode + '.' + applicationName
+          mainUrl = 'https://' + envConfig.mode + '.' + applicationName
      }
      // else if (baseURLLink) {
-     //     mainUrl = 'http://' + envConfig.applicationId;
+     //     mainUrl = 'https://' + envConfig.applicationId;
      // }
      else {
           mainUrl = envConfig.basePath(applicationName)

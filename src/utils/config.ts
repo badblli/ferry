@@ -20,11 +20,11 @@ const config: Record<string, EnvironmentConfig> = {
           // Diğer dev konfigürasyonları...
      },
      production: {
-          mode: 'test',
+          mode: 'prod',
           apiKey: import.meta.env.VITE_API_KEY,
           SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
           basePath: function (path: string) {
-               return 'http://' + this.mode + path + '.meanderservices.com'
+               return 'https://' + path + '.meanderservices.com'
           }
           // Diğer prod ama aslında test konfigürasyonları...
      }

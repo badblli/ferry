@@ -42,7 +42,7 @@
           <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                <div class="mb-16 md:mb-[204px]">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-                         <router-link v-for="blog in blogCards" :key="blog.id" @click="setStore(blog)" :to="{ name: 'uniqueBlogPost', params: { name: blog.slug }, query: { id: blog.id } }" class="cursor-pointer mb-[50px]">
+                         <router-link v-for="blog in blogCards" :key="blog.id" @click="setStore(blog)" :to="{ name: 'uniqueBlogPost', params: { name: blog.slug } }" class="cursor-pointer mb-[50px]">
                               <img class="w-full h-[295px] object-cover rounded-xl" :src="getImage(blog.images[0].url)" :alt="blog.images[0].name" />
                               <div class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide uppercase mt-[31px]">{{ blog.subtitle }} - {{ readingTime(blog.content, blog.minute) }}</div>
                               <div class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">

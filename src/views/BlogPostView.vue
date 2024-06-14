@@ -90,7 +90,7 @@ const toggleDropdown = () => {
 }
 
 const blogSlug = computed(() => {
-     return router.currentRoute.value.query.id
+     return router.currentRoute.value.params.name
      //  return useBlogStore.blog.id ? useBlogStore.blog.id : router.currentRoute.value.params.id
 })
 
@@ -100,7 +100,7 @@ const getBlogPost = async () => {
      try {
           console.log(blogSlug.value, 'blogSlug')
           let filters = {
-               id: blogSlug.value
+               slug: blogSlug.value
           }
           const res = await findOne('blogs', locale.value.toLowerCase(), filters)
           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
