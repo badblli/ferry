@@ -81,7 +81,9 @@
 
                     <div class="bg-white rounded-b-xl rounded-tr-xl flex justify-between items-center">
                          <div class="flex flex-row items-center w-full" v-show="!showTrue">
+                              
                               <div class="hs-dropdown flex flex-row items-center justify-between ml-7">
+
                                    <button id="hs-dropdown-with-dividers" type="button"
                                         class="cursor-pointer flex flex-col justify-start">
                                         <div class="text-black text-base font-medium font-display tracking-tight">{{
@@ -331,32 +333,6 @@ interface searchFerryTicket {
      title: string
      to: string
      PassengerType: passengerType[]
-}
-
-interface search {
-     SearchFerryTicket: searchFerryTicket
-     SearchReservation: searchReservation
-     id: number
-}
-
-interface Img {
-     id: number
-     name: string
-     alternativeText: string | null
-     caption: string | null
-     width: number | null
-     height: number | null
-     formats: any | null
-     hash: string
-     ext: string
-     mime: string
-     size: number
-     url: string
-     previewUrl: string | null
-     provider: string
-     provider_metadata: any | null
-     createdAt: string
-     updatedAt: string
 }
 
 interface MainSliderData {
