@@ -258,7 +258,7 @@
                                              </span>
                                              <button @click="postData"
                                                   class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{
-                                                       paymentDetail?.PaymentSummary.payBtn }}</button>
+                                                       paymentDetail?.PaymentSummary.payBtn }}adsadsad</button>
                                              <!-- <div class="cursor-pointer" @click="showModal">
                                         deneme
                                     </div> -->
@@ -485,9 +485,17 @@ const ferryList = ref([
      }
 ])
 
+interface DepartureData { 
+     CompanyID?: number
+}
+
 const postData = async () => {
      let params
      const { FerryTravelType, PriceGroupID, AgencyID } = tripStore.getTripParams as TripParams
+
+     const CompanyIdStore = tripStore.getArrivalData[0].CompanyID
+     console.log(CompanyIdStore, 'CompanyID form get arrival')
+
      params = {
           ferryTravelType: FerryTravelType,
           agencyID: AgencyID,
@@ -495,11 +503,10 @@ const postData = async () => {
           priceGroupID: PriceGroupID,
           touristList: tripStore.touristList,
           ferryList: tripStore.ferryList2,
-          // invoiceDetail: selectedPassenger.value //PROP DRİLLİNG HERE!
-          // invoiceDetail: 0
-          invoiceDetail: tripStore.invoiceDetail
+          supplierAgencyID: CompanyIdStore,
+          invoiceDetail: tripStore.invoiceDetail,
      }
-     console.log(params, 'params from payment stepparams from payment step OLDU LA')
+     console.log(params, 'params from payment stepparams from payment step')
      try {
           const response = await callPostApi(applicationName.value, controllerName.value, name2.value, params)
           console.log(response, 'responseVARMI')
@@ -581,6 +588,8 @@ onMounted(async () => {
           const departureData = tripStore.getDepartureData
           console.log(departureData, 'departureDatadepartureDatadepartureData')
           const arrivalData = tripStore.getArrivalData
+          const comp = tripStore.getArrivalData[0].CompanyID
+          console.log(comp, 'compcompcompcompcompcompcompcompcompcompcompcompcompcompcompcomp')
           console.log(arrivalData, 'arrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalDataarrivalData')
 
           const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')

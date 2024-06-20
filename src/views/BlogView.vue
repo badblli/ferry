@@ -122,6 +122,7 @@ const getBlogPage = async () => {
                pageName: 'Blog'
           }
           const res = await fetchData('pages', locale.value.toLowerCase(), filters)
+          console.log(res, 'res')
           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
           if (res) {
                let data = res.data[0].layout
@@ -129,6 +130,8 @@ const getBlogPage = async () => {
                blogHeader.value = data.find((x: any) => x.__component === 'shared.header')
                blogCards.value = data.filter((x: any) => x.__component === 'blog-page.blog-card')[0].blogs
                blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].items
+               console.log(blogCategories.value, 'blogCategories')
+               console.log(blogCards.value, 'blogCards')
           }
      } catch (error) {
           return
