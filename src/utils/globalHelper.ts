@@ -331,7 +331,8 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
           }
 
           // Construct the URL conditionally
-          const url = `${API_BASE_URL}/${endpoint}?populate=deep${filterParams ? `&${filterParams}` : ''}&locale=${locale}`
+          const url = `${API_BASE_URL}/${endpoint}?populate=deep&locale=${locale}${filterParams ? `&${filterParams}` : ''}`
+          console.log(url, 'url blog')
 
           return axios
                .get(url, {
@@ -351,6 +352,45 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
           return null
      }
 }
+
+// const API_BASE_URL = import.meta.env.VITE_STRAPI_URL
+// const saleChannel = import.meta.env.VITE_SALE_CHANNEL
+// // Bearer Token'ınızı buraya ekleyin
+// const BEARER_TOKEN = import.meta.env.VITE_STRAPI_TOKEN
+
+// const fetchData2 = (endpoint: string, locale: string, filters: Record<string, string>) => {
+//      try {
+//           let filterParams = Object.entries(filters)
+//                .map(([key, value]) => `filters[${key}][$eq]=${value}`)
+//                .join('&')
+
+//           // Add saleChannel to the filterParams
+//           if (filters) {
+//                filterParams += `${filterParams ? '&' : ''}filters[id][$eq]=${saleChannel}`
+//           }
+
+//           // Construct the URL conditionally
+//           const url = `${API_BASE_URL}/${endpoint}?populate=deep&locale=${locale}${filterParams ? `&${filterParams}` : ''}`
+//           console.log(url, 'url blog')
+
+//           return axios
+//                .get(url, {
+//                     headers: {
+//                          Authorization: `Bearer ${BEARER_TOKEN}`
+//                     }
+//                })
+//                .then((response: AxiosResponse) => {
+//                     return response.data
+//                })
+//                .catch((error) => {
+//                     console.error('Hata:', error)
+//                     return null
+//                })
+//      } catch (error) {
+//           console.error('Hata:', error)
+//           return null
+//      }
+// }
 
 const findOne = (endpoint: string, locale: string, filters: Record<string, string>) => {
      console.log('filters', filters)

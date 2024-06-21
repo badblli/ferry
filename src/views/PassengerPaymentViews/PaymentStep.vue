@@ -258,7 +258,7 @@
                                              </span>
                                              <button @click="postData"
                                                   class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{
-                                                       paymentDetail?.PaymentSummary.payBtn }}adsadsad</button>
+                                                       paymentDetail?.PaymentSummary.payBtn }}</button>
                                              <!-- <div class="cursor-pointer" @click="showModal">
                                         deneme
                                     </div> -->
@@ -497,14 +497,14 @@ const postData = async () => {
      console.log(CompanyIdStore, 'CompanyID form get arrival')
 
      params = {
-          ferryTravelType: FerryTravelType,
-          agencyID: AgencyID,
-          saleChannelID: 1,
-          priceGroupID: PriceGroupID,
-          touristList: tripStore.touristList,
-          ferryList: tripStore.ferryList2,
-          supplierAgencyID: CompanyIdStore,
-          invoiceDetail: tripStore.invoiceDetail,
+          FerryTravelType: FerryTravelType,
+          AgencyID: AgencyID,
+          SaleChannelID: 1,
+          PriceGroupID: PriceGroupID,
+          TouristList: tripStore.touristList,
+          FerryList: tripStore.ferryList2,
+          SupplierAgencyID: CompanyIdStore,
+          InvoiceDetail: tripStore.invoiceDetail,
      }
      console.log(params, 'params from payment stepparams from payment step')
      try {

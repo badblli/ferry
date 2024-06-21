@@ -116,6 +116,13 @@ const blogHeader = ref([])
 const blogCards = ref([])
 const blogCategories = ref([])
 
+const clickedItemId = ref(null); // Başlangıçta null olarak başlatıyoruz
+
+// Tıklanan öğenin id'sini alacak fonksiyon
+const handleClick = (id: Number) => {
+  clickedItemId.value = id;
+};
+
 const getBlogPage = async () => {
      try {
           let filters = {
@@ -126,7 +133,7 @@ const getBlogPage = async () => {
           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
           if (res) {
                let data = res.data[0].layout
-               // console.log(data, 'im in mainNavbar compos')
+               console.log(data, 'im in mainNavbar compos')
                blogHeader.value = data.find((x: any) => x.__component === 'shared.header')
                blogCards.value = data.filter((x: any) => x.__component === 'blog-page.blog-card')[0].blogs
                blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].items
@@ -138,6 +145,31 @@ const getBlogPage = async () => {
      }
 }
 
+// Categorilere tıklandığında gelen id ile burayı güncelleyerek blog sayfasını güncelleyebiliriz.
+// Blog sayfasını yukarıdaki formasyonda güncelleyebileceğimizi sanmıyorum.
+// Çünkü strapi url lerinde iç içe filtering e izin vermiyor gibi geldi.
+// const getBlogPage2 = async () => {
+//      try {
+//           let filters = {
+//                pageName: clickedItemId
+//           }
+//           const res = await fetchData2('pages', locale.value.toLowerCase(), filters)
+//           console.log(res, 'res')
+//           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
+//           if (res) {
+//                let data = res.data[0].layout
+//                console.log(data, 'im in mainNavbar compos')
+//                blogHeader.value = data.find((x: any) => x.__component === 'shared.header')
+//                blogCards.value = data.filter((x: any) => x.__component === 'blog-page.blog-card')[0].blogs
+//                blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].items
+//                console.log(blogCategories.value, 'blogCategories')
+//                console.log(blogCards.value, 'blogCards')
+//           }
+//      } catch (error) {
+//           return
+//      }
+// }
+
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')
@@ -147,6 +179,8 @@ watch(locale, (newLocale, oldLocale) => {
 onMounted(async () => {
      await getBlogPage() // Veriyi asenkron bir şekilde yükleyin
 })
+
+
 </script>
 
 <style scoped></style>
