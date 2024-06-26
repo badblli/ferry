@@ -148,6 +148,7 @@ const getBlogPage = async () => {
 // Categorilere tıklandığında gelen id ile burayı güncelleyerek blog sayfasını güncelleyebiliriz.
 // Blog sayfasını yukarıdaki formasyonda güncelleyebileceğimizi sanmıyorum.
 // Çünkü strapi url lerinde iç içe filtering e izin vermiyor gibi geldi.
+
 // const getBlogPage2 = async () => {
 //      try {
 //           let filters = {

@@ -13,27 +13,9 @@
                <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="w-full">
                     {{ tab }}
                     <div>
-                         <div class="mt-[75px] mb-16">
-                              <div class="flex flex-row justify-center items-center mb-6">
-                                   <div
-                                        class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal mr-3">
-                                        {{ tab.from }}</div>
-                                   <ArrowCircleUpRight />
-                                   <div>
-                                        <div
-                                             class="text-center text-slate-800 text-2xl font-medium font-['Plus Jakarta Sans'] leading-normal ml-3">
-                                             {{ tab.to }}</div>
-                                   </div>
-                              </div>
-                              <div>
-                                   <div
-                                        class="text-center text-slate-800 text-5xl font-bold font-['Plus Jakarta Sans'] leading-[48px]">
-                                        {{ tab.contentTitle }}</div>
-                              </div>
-                         </div>
+                         <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" />
                          <form v-show="activeTab !== copyTabs[3].id && activeTab !== copyTabs[5].id"
                               class="md:relative md:max-w-[798px] hidden md:block mx-auto md:z-50 z-40 custom-border">
-
                               <div class="flex flex-row">
                                    <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
                                         class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
@@ -50,12 +32,9 @@
                                         </span>
                                    </div>
                               </div>
-
                               <div class="rounded-b-xl rounded-tr-xl flex items-center">
                                    <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
-
                                         <div class="hs-dropdown flex flex-row items-center">
-
                                              <button id="hs-dropdown-with-dividers" type="button"
                                                   class="cursor-pointer flex flex-col justify-start py-6 px-7">
                                                   <div
@@ -66,7 +45,6 @@
                                                        {{ _fromWhere?.TownName }}</div>
 
                                              </button>
-
                                              <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200"
                                                   aria-labelledby="hs-dropdown-with-dividers">
 
@@ -78,7 +56,7 @@
                                                                  class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                                  <a
                                                                       class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                      i.TownName }}</a>
+                                                                           i.TownName }}</a>
                                                             </div>
                                                        </div>
                                                   </div>
@@ -95,14 +73,11 @@
 
                                              </div>
                                         </div>
-
                                         <!-- @click="toggleDataPlacement" -->
-
                                         <div
                                              class="bg-black rounded-full flex flex-row justify-center items-center p-[7px] cursor-pointer">
                                              <IconsWhiteLeftRight />
                                         </div>
-
                                         <div class="hs-dropdown flex flex-row items-center justify-center">
 
                                              <button id="hs-dropdown-with-dividers-2" type="button"
@@ -114,7 +89,6 @@
                                                        class="overflow-hidden whitespace-nowrap truncate text-black text-base font-light font-display tracking-tight text-start">
                                                        {{ _toWhere?.TownName }}</div>
                                              </button>
-
                                              <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                                                   aria-labelledby="hs-dropdown-with-dividers-2">
                                                   <div class="flex flex-col w-[277px] p-5">
@@ -134,74 +108,67 @@
                                                                  class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                                  <a
                                                                       class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                      i.TownName }}</a>
+                                                                           i.TownName }}</a>
                                                             </div>
                                                        </div>
                                                   </div>
                                              </div>
 
                                         </div>
-
                                         <div class="h-14 border-l border-zinc-300"></div>
-
                                         <div class="hs-dropdown flex flex-row items-center justify-center">
-
                                              <button id="hs-dropdown-with-dividers-3" type="button"
                                                   class="cursor-pointer flex flex-col justify-start py-6 px-7">
-
                                                   <div
                                                        class="text-black text-base font-medium font-display tracking-tight">
                                                        Bilet Tipi</div>
                                                   <div
                                                        class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate">
                                                        {{ _roundTrip?.Name }}</div>
-
                                              </button>
-
                                              <div class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200"
                                                   aria-labelledby="hs-dropdown-with-dividers-3">
                                                   <div class="flex flex-col w-[277px] p-5">
                                                        <div @click="updateToTrip(i)" v-for="(i, index) in travelObject"
-                                                  :key="index"
-                                                  :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
-                                                  class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                  <a
-                                                       class="text-black text-base font-medium font-display tracking-tight">{{
-                                                       i.Name }}</a>
-                                             </div>
+                                                            :key="index"
+                                                            :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
+                                                            class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                            <a
+                                                                 class="text-black text-base font-medium font-display tracking-tight">{{
+                                                                      i.Name }}</a>
+                                                       </div>
                                                   </div>
                                              </div>
-                                             
+
                                         </div>
-
                                         <div class="h-14 border-l border-zinc-300"></div>
-
                                         <div class="flex flex-row items-center">
                                              <div class="cursor-pointer flex flex-col justify-start py-6 px-7">
                                                   <span @click="togglePickerModal"
-                                                       class="overflow-hidden whitespace-nowrap truncate text-black text-base font-medium font-display tracking-tight">{{ _roundTrip?.Name }}</span>
+                                                       class="overflow-hidden whitespace-nowrap truncate text-black text-base font-medium font-display tracking-tight">{{
+                                                       _roundTrip?.Name }}</span>
                                                   <span
                                                        class="text-black text-base font-light font-display tracking-tight">
                                                        {{ formattedDateToShow }} </span>
                                              </div>
                                              <div v-show="litepickerModalVisible" id="container"
-                                        class="w-full h-full -bottom-32 left-0 absolute">
-                                        <div id="litepicker">
-                                             <div
-                                                  class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                  <span
-                                                       class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                                       {{ formattedValue }}
-                                                       <span v-if="formattedValue2" class="mx-2"> - </span>
-                                                       {{ formattedValue2 }}
-                                                  </span>
+                                                  class="w-full h-full -bottom-32 left-0 absolute">
+                                                  <div id="litepicker">
+                                                       <div
+                                                            class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                                            <span
+                                                                 class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                                 {{ formattedValue }}
+                                                                 <span v-if="formattedValue2" class="mx-2"> - </span>
+                                                                 {{ formattedValue2 }}
+                                                            </span>
+                                                       </div>
+                                                  </div>
+                                                  <div @click="togglePickerModal"
+                                                       class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                                       <p class="text-stone-800">Seç</p>
+                                                  </div>
                                              </div>
-                                        </div>
-                                        <div @click="togglePickerModal"
-                                             class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
-                                             <p class="text-stone-800">Seç</p>
-                                        </div>
-                                   </div>
                                         </div>
                                         <div class="h-14 border-l border-zinc-300"></div>
                                         <div class="dropdown">
@@ -219,37 +186,40 @@
                                                   </div>
                                              </button>
                                              <div v-show="isOpen"
-                                        class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                        <div class="flex flex-col mt-[37px] ml-6">
-                                             <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
-                                             <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType" :key="index"
-                                                  class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
-                                                  <div class="flex flex-row">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight">
-                                                            {{ i.TypeName }}
+                                                  class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                  <div class="flex flex-col mt-[37px] ml-6">
+                                                       <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
+                                                       <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
+                                                            :key="index"
+                                                            class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                                            <div class="flex flex-row">
+                                                                 <div
+                                                                      class="text-black text-base font-medium font-display tracking-tight">
+                                                                      {{ i.TypeName }}
+                                                                 </div>
+                                                            </div>
+                                                            <div class="mr-4 flex flex-row justify-center items-center">
+                                                                 <span @click="decreaseCount(index)"
+                                                                      class="mx-2 cursor-pointer">
+                                                                      <IconMinus />
+                                                                 </span>
+                                                                 <div
+                                                                      class="text-black text-[22px] font-normal font-display tracking-wide">
+                                                                      {{ passenger[index].count }}
+                                                                 </div>
+                                                                 <span @click="increaseCount(index)"
+                                                                      class="mx-2 cursor-pointer">
+                                                                      <IconPlus />
+                                                                 </span>
+                                                            </div>
                                                        </div>
-                                                  </div>
-                                                  <div class="mr-4 flex flex-row justify-center items-center">
-                                                       <span @click="decreaseCount(index)" class="mx-2 cursor-pointer">
-                                                            <IconMinus />
-                                                       </span>
-                                                       <div
-                                                            class="text-black text-[22px] font-normal font-display tracking-wide">
-                                                            {{ passenger[index].count }}
-                                                       </div>
-                                                       <span @click="increaseCount(index)" class="mx-2 cursor-pointer">
-                                                            <IconPlus />
-                                                       </span>
-                                                  </div>
-                                             </div>
-                                             <!-- <button id="hs-dropdown-auto-close-false" type="button"
+                                                       <!-- <button id="hs-dropdown-auto-close-false" type="button"
                                                   class="w-[353px] h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
                                                   <div class="text-white text-base font-medium font-display">{{
                                                        mainHomeSplide.search?.SearchFerryTicket.submitBtn }}</div>
                                              </button> -->
-                                        </div>
-                                   </div>
+                                                  </div>
+                                             </div>
                                         </div>
                                         <div @click="navigateToSecondPage"
                                              class="w-28 h-[46px] bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
@@ -386,9 +356,7 @@
                                    <MainTourCardComponent :item="tourData" />
                               </div>
                          </div>
-                         <!-- <div>
-                        <HomeCardSplide />
-                    </div> -->
+
                     </div>
                     <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[1].id">
                          <div>
@@ -1077,6 +1045,7 @@ const fakeData2 = ref<FakeDataItem[]>([
 // import MySettingPassword from "../components/advanced/MySettingsPassword.vue"
 import { getApi } from '@/utils/globalHelper'
 import { useTripStore } from '../../../src/stores/tripStore'
+import TabComponent from '../SubViews/components/TabComponent.vue'
 
 const tripStore = useTripStore()
 
@@ -1438,7 +1407,7 @@ const getHomeSpide = async () => {
                let data = res.data[0].layout
                mainHomeSplide.value = data.find((x: any) => x.__component === 'home-page.home-page')
                console.log(mainHomeSplide, 'mainHomeSplidemainHomeSplidemainHomeSplide')
-           
+
           }
      } catch (error) {
           return
