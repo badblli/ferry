@@ -29,5 +29,10 @@ export const useChannel = defineStore({
                }
           }
      },
-     getters: {}
+     getters: {
+          getSaleChannel: (state) => state.saleChannel,
+          getSubSaleChannel: (state) => state.subSaleChannel,
+          getSubSaleChannelName: (state) => state.subSaleChannelName,
+          getSubSaleChannelID: (state) => state.subSaleChannelID
+      }
 })

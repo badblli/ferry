@@ -2,7 +2,10 @@ import forms from '@tailwindcss/forms';
 import prelinePlugin from 'preline/plugin';
 
 export default {
-  content: ['./src/**/*.{html,vue,js,ts}', 'node_modules/preline/dist/*.js'],
+  content: [
+    // './src/**/*.{html,js}',
+      'node_modules/preline/dist/*.js',
+  ],
   darkMode: 'class',
   theme: {
     colors: {
@@ -179,5 +182,5 @@ export default {
     //   // => @media (max-width: 639px) { ... }
     // }
   },
-  plugins: [forms, prelinePlugin]
+  plugins: [prelinePlugin]
 }
