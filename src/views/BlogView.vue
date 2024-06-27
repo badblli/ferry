@@ -32,8 +32,8 @@
                <div class="w-full h-[147px] justify-between relative items-center pt-6 lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <Splide :options="splideOptions">
                          <SplideSlide v-for="item in blogCategories" :key="item.id" class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
-                              <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="getImage(item.image.url)" :alt="item.image.name" />
-                              <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">{{ item.title }}</div>
+                              <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="getImage(item.img.url)" :alt="item.img.name" />
+                              <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">{{ item.category }}</div>
                          </SplideSlide>
                     </Splide>
                </div>
@@ -116,12 +116,12 @@ const blogHeader = ref([])
 const blogCards = ref([])
 const blogCategories = ref([])
 
-const clickedItemId = ref(null); // Başlangıçta null olarak başlatıyoruz
+const clickedItemId = ref(null) // Başlangıçta null olarak başlatıyoruz
 
 // Tıklanan öğenin id'sini alacak fonksiyon
 const handleClick = (id: Number) => {
-  clickedItemId.value = id;
-};
+     clickedItemId.value = id
+}
 
 const getBlogPage = async () => {
      try {
@@ -136,7 +136,7 @@ const getBlogPage = async () => {
                console.log(data, 'im in mainNavbar compos')
                blogHeader.value = data.find((x: any) => x.__component === 'shared.header')
                blogCards.value = data.filter((x: any) => x.__component === 'blog-page.blog-card')[0].blogs
-               blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].items
+               blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].blog_category_definitions
                console.log(blogCategories.value, 'blogCategories')
                console.log(blogCards.value, 'blogCards')
           }
@@ -180,8 +180,6 @@ watch(locale, (newLocale, oldLocale) => {
 onMounted(async () => {
      await getBlogPage() // Veriyi asenkron bir şekilde yükleyin
 })
-
-
 </script>
 
 <style scoped></style>
