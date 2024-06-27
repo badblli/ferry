@@ -4,7 +4,7 @@ import prelinePlugin from 'preline/plugin';
 export default {
   content: [
     // './src/**/*.{html,js}',
-      'node_modules/preline/dist/*.js',
+    'node_modules/preline/dist/*.js',
   ],
   darkMode: 'class',
   theme: {
@@ -182,5 +182,8 @@ export default {
     //   // => @media (max-width: 639px) { ... }
     // }
   },
-  plugins: [prelinePlugin]
+  plugins: [
+    // require('@tailwindcss/forms'),
+    require('preline/plugin'),
+  ],
 }
