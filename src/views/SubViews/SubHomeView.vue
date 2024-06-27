@@ -394,12 +394,14 @@
                                    </p>
                               </div>
                          </div>
-                         <div class="flex flex-row gap-10 justify-between md:mb-32 mb-5">
-                              <!-- <img :src="getImage(sharedImages.images)"
-                              class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" /> -->
-                              <div class="w-[397px] h-[267px] opacity-20 bg-black rounded-[20px]"></div>
-                              <div class="w-[397px] h-[267px] opacity-20 bg-black rounded-[20px]"></div>
+                         <div class="flex flex-row gap-10 justify-between mb-5">
+                              <div v-for="(img, index) in sharedImages.images" :key="index" class="flex flex-row gap-10 justify-between mb-5">
+                              <div class="flex flex-row">
+                                   <img :src="getImage(img.url)" class="w-[397px] h-[267px] bg-black rounded-[20px]"/>
+                              </div>
                          </div>
+                         </div>
+                    
                     </div>
                     <div class="centered-w" v-show="activeTab === copyTabs[3].id">
                          <div class="flex flex-col justify-center items-center m-auto relative">
@@ -411,7 +413,7 @@
                                                   alt="blog image" />
                                              <div
                                                   class="w-[172px] h-[50px] bg-white rounded-[135px] absolute bottom-0 right-0 flex flex-row justify-evenly items-center mr-7 mb-7">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                                        viewBox="0 0 32 32" fill="none">
                                                        <g id="Copy">
                                                             <path id="Vector" opacity="0.2" d="M27 5V21H21V11H11V5H27Z"
