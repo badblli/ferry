@@ -52,7 +52,7 @@ const props = defineProps({
     updateBtn: { type: String, required: false }
 })
 
-const showPanel = ref(true)
+const showPanel = ref(false)
 
 const togglePanel = () => {
     showPanel.value = !showPanel.value
