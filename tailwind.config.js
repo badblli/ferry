@@ -182,8 +182,5 @@ export default {
     //   // => @media (max-width: 639px) { ... }
     // }
   },
-  plugins: [
-    // require('@tailwindcss/forms'),
-    require('preline/plugin'),
-  ],
+  plugins: [require('preline/plugin'),]
 }
