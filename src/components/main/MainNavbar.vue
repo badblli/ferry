@@ -188,7 +188,9 @@ const getNavbar = async () => {
      }
 }
 const setRedirect = (item: any) => {
+     //patmosun id si null gelince hataya düsüyor burayı düzelteceğim
      let sc = item.href.replace('/', '')
+     console.log(item.subSaleChannelID, 'item.subSaleChannelID'),
      useChannelStore.setSubSaleChannel(sc, item.label, item.subSaleChannelID)
 }
 
