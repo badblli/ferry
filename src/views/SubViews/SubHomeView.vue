@@ -50,11 +50,10 @@
                                                   </button>
                                                   <transition name="dropdown">
                                                        <div v-show="isOpen2"
-                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200"
-                                                            aria-labelledby="hs-dropdown-with-dividers">
+                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                             <div class="flex flex-col w-[277px] p-5">
                                                                  <div class="flex flex-col">
-                                                                      <div @click="updateFromWhere(i)"
+                                                                      <div @click="updateFromWhere(i); handleClickInside()"
                                                                            v-for="(i, index) in fromWhereObject"
                                                                            :key="index"
                                                                            :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
@@ -111,7 +110,7 @@
                                                                       </div>
                                                                  </div>
                                                                  <div class="flex flex-col">
-                                                                      <div @click="updateToWhere(i)"
+                                                                      <div @click="updateToWhere(i); handleClickInside2()"
                                                                            v-for="(i, index) in toWhereObject"
                                                                            :key="index"
                                                                            :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
@@ -145,7 +144,7 @@
                                                             class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
                                                             aria-labelledby="hs-dropdown-with-dividers-3">
                                                             <div class="flex flex-col w-[277px] p-5">
-                                                                 <div @click="updateToTrip(i)"
+                                                                 <div @click="updateToTrip(i); handleClickInside3()"
                                                                       v-for="(i, index) in travelObject" :key="index"
                                                                       :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
                                                                       class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
@@ -207,8 +206,9 @@
                                                             TotalPasengerCount </span>
                                                   </div>
                                              </button>
-                                             <transition name="dropdown">
-                                                  <div v-show="isOpen"
+                                             <div ref="dropdown4">
+                                                  <transition name="dropdown">
+                                                  <div v-show="isOpen" 
                                                        class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                        <div class="flex flex-col mt-[37px] ml-6">
                                                             <!-- {{ searchBar?.SearchFerryTicket.PassengerType }} -->
@@ -245,6 +245,8 @@
                                                        </div>
                                                   </div>
                                              </transition>
+                                             </div>
+                                      
 
                                         </div>
                                         <div @click="navigateToSecondPage"
@@ -952,6 +954,7 @@ import { getApi, getImage } from '@/utils/globalHelper'
 import { useTripStore } from '../../../src/stores/tripStore'
 import TabComponent from '../SubViews/components/TabComponent.vue'
 import AccordionPanel2 from '../../components/advanced/AccordionPanel2.vue'
+import { onBeforeUnmount } from 'vue'
 
 const tripStore = useTripStore()
 
@@ -1029,6 +1032,39 @@ const isOpen4 = ref(false)
 const toggleDropdown4 = () => {
      isOpen4.value = !isOpen4.value
 }
+
+const handleClickInside = () => {
+  isOpen2.value = false;
+};
+
+const handleClickInside2 = () => {
+  isOpen3.value = false;
+};
+
+const handleClickInside3 = () => {
+  isOpen4.value = false;
+};
+
+// const handleClickInside4 = () => {
+//   isOpen.value = false;
+// };
+
+const dropdown4 = ref(null);
+
+const handleClickOutside = (event) => {
+  const path = event.composedPath();
+  if (!path.includes(dropdown4.value)) {
+    isOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('mousedown', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('mousedown', handleClickOutside);
+});
 
 const increaseCount = (index: number) => {
      if (passenger.value[index]) {

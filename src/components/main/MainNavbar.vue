@@ -1,18 +1,23 @@
 <template>
-     <div v-if="mainNavbar.links?.length > 0" ref="menu">
-          <nav class="navbar centered-w w-full h-[112px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
+     <div v-if="mainNavbar.links?.length > 0">
+          <nav
+               class="navbar centered-w w-full h-[112px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="hs-dropdown relative inline-flex md:hidden">
                     <!-- <button id="hs-dropdown-slideup-animation block md:hidden" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                          <IconRwpNavbar />
                     </button> -->
                     <!-- <img :src="getImage(imageURL)" alt="Image" class="w-full h-full object-cover" /> -->
-                    <div class="hs-dropdown-menu w-72 p-12 duration hs-dropdown-open:opacity-100 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg" aria-labelledby="hs-dropdsown-slideup-animation">
+                    <div class="w-72 p-12 duration hs-dropdown-open:opacity-100 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg"
+                         >
                          <div v-for="(item, index) in mainNavbar.links" :key="index">
-                              <router-link :to="{ path: item.href }" class="flex cursor-pointer items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none" href="#">
+                              <router-link :to="{ path: item.href }"
+                                   class="flex cursor-pointer items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
+                                   href="#">
                                    {{ item.label }}
                               </router-link>
                          </div>
-                         <a class="flex items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none" href="#" data-hs-overlay="#hs-medium-modal">
+                         <a class="flex items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
+                              href="#" data-hs-overlay="#hs-medium-modal">
                               {{ mainNavbar.LoginTitle }}
                          </a>
                     </div>
@@ -25,40 +30,51 @@
         </div> -->
                <div ref="dropdown" class="flex flex-row items-center">
                     <div class="relative">
-                         <button @click="toggleDropdown" type="button" :class="{ 'bg-white': !isMeanderLayout }" class="w-[50px] h-[50px] bg-slate-200 rounded-full flex flex-row justify-center items-center cursor-pointer">
+                         <button @click="toggleDropdown" type="button" :class="{ 'bg-white': !isMeanderLayout }"
+                              class="w-[50px] h-[50px] bg-slate-200 rounded-full flex flex-row justify-center items-center cursor-pointer">
                               <IconRwpNavbar2 />
                          </button>
                          <transition name="dropdown">
-                              <div v-show="isOpen" id="lang" class="absolute z-50 top-12 w-64 bg-white rounded-xl border transition-[opacity,margin] duration-300 mt-2 min-w-[15rem] p-7">
-                                   <router-link v-for="(item, index) in mainNavbar.hamburgerMenu" :key="index" @click="setRedirect(item)" :to="redirect(item)" class="text-sm font-semibold flex flex-col my-1 hover:bg-slate-100 p-2 rounded-xl">
+                              <div v-show="isOpen" id="lang"
+                                   class="absolute z-50 top-12 w-64 bg-white rounded-xl border transition-[opacity,margin] duration-300 mt-2 min-w-[15rem] p-7">
+                                   <router-link v-for="(item, index) in mainNavbar.hamburgerMenu" :key="index"
+                                        @click="setRedirect(item); handleClickInside()" :to="redirect(item)"
+                                        class="text-sm font-semibold flex flex-col my-1 hover:bg-slate-100 p-2 rounded-xl">
                                         {{ item.label }}
                                    </router-link>
                               </div>
                          </transition>
                     </div>
-
                     <div v-for="(item, index) in mainNavbar.links" :key="index">
-                         <router-link :to="{ path: item.href }" class="hidden ml-4 md:flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
+                         <router-link :to="{ path: item.href }"
+                              class="hidden ml-4 md:flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
                               {{ item.label }}
                          </router-link>
                     </div>
                </div>
-               <div class="flex flex-row justify-center items-center cursor-pointer lg:mr-16 mr-0" @click="navigateToHome">
+               <div class="flex flex-row justify-center items-center cursor-pointer lg:mr-16 mr-0"
+                    @click="navigateToHome">
                     <img :src="getImage(imageURL)" alt="Image" class="w-40 h-12 object-cover" />
                     <div v-if="!isMeanderLayout">
                          <div class="ml-[10px]">
-                              <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{ mainNavbar.NavTitle }}</span>
-                              <span class="text-black text-xl md:text-2xl font-thin font-display tracking-wide">{{ mainNavbar.SecNavTitle }}</span>
+                              <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{
+                                   mainNavbar.NavTitle }}</span>
+                              <span class="text-black text-xl md:text-2xl font-thin font-display tracking-wide">{{
+                                   mainNavbar.SecNavTitle }}</span>
                          </div>
                     </div>
                </div>
                <div class="border rounded-3xl p-[10px]" :class="{ 'border-none': !isMeanderLayout }">
                     <div v-if="isAuthenticated" class="text-center cursor-pointer hidden md:flex">
-                         <button @click="showModal" type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">{{ userName }}</button>
+                         <button @click="showModal" type="button"
+                              class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1"
+                              data-hs-overlay="#hs-medium-modal">{{ userName }}</button>
                          <IconChevronDown />asdsadsad
                     </div>
                     <div v-else class="text-center cursor-pointer hidden md:flex">
-                         <button @click="showModal" type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">{{ mainNavbar.LoginTitle }}</button>
+                         <button @click="showModal" type="button"
+                              class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1"
+                              data-hs-overlay="#hs-medium-modal">{{ mainNavbar.LoginTitle }}</button>
                          <IconChevronDown />
                     </div>
 
@@ -100,10 +116,14 @@ const handleCloseModal = () => {
      closeModal() // Call the closeModal function when the modal is closed
 }
 
-const handleClickOutside = (event: MouseEvent) => {
-     if (menu.value && !menu.value.contains(event.target) && dropdown.value && !dropdown.value.contains(event.target)) {
-          isOpen.value = false
-     }
+const handleClickOutside = (event) => {
+      if (dropdown.value && !dropdown.value.contains(event.target)) {
+        isOpen.value = false;
+      }
+    };
+
+const handleClickInside = () => {
+     isOpen.value = false
 }
 
 onMounted(() => {
@@ -191,7 +211,7 @@ const setRedirect = (item: any) => {
      //patmosun id si null gelince hataya düsüyor burayı düzelteceğim
      let sc = item.href.replace('/', '')
      console.log(item.subSaleChannelID, 'item.subSaleChannelID'),
-     useChannelStore.setSubSaleChannel(sc, item.label, item.subSaleChannelID)
+          useChannelStore.setSubSaleChannel(sc, item.label, item.subSaleChannelID)
 }
 
 const redirect = (item: Links) => {
