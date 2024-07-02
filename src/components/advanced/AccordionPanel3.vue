@@ -1,6 +1,6 @@
 <template>
     <div class="border-2 rounded-2xl shadow-sm bg-white">
-         <button :aria-controls="'accordion-content-' + ariaTitle" :id="'accordion-control-' + ariaTitle" @click.prevent="togglePanel" class="w-full font-semibold flex flex-row items-center justify-between h-24"    >
+         <button :aria-controls="'accordion-content-' + ariaTitle" :id="'accordion-control-' + ariaTitle" @click.prevent="togglePanel" class="w-full font-semibold flex flex-row items-center justify-between h-24">
               <div class="flex flex-row items-center justify-center">
                    <!-- <span class="ml-5 mb-2 mt-3 p-4 bg-neutral-100 rounded-full">
                         <component :is="title2" />

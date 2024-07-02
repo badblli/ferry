@@ -55,6 +55,7 @@ const getHome = async () => {
                fifthSectionData.value = data.filter((x: any) => x.__component === 'home-page.categories')
                popUpContent.value = data.filter((x: any) => x.__component === 'global.pop-up')
                console.log('popUpContent', popUpContent.value)
+               console.log('fourthSectionData', fourthSectionData.value);
           }
      } catch (error) {
           console.error('Hata:', error)
@@ -65,6 +66,7 @@ let showModal = ref(popUpContent.value ? true : false)
 const closeModal = () => {
      showModal.value = false
 }
+
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')

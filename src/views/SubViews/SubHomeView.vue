@@ -76,7 +76,6 @@
                                                             </div>
                                                        </div>
                                                   </transition>
-
                                              </div>
                                         </div>
                                         <!-- @click="toggleDataPlacement" -->
@@ -172,30 +171,30 @@
                                              </div>
                                              <transition name="dropdown">
                                                   <div v-show="litepickerModalVisible" id="container"
-                                                  class="w-full h-full -bottom-32 left-0 absolute">
-                                                  <div id="litepicker">
-                                                       <div
-                                                            class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                            <span
-                                                                 class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                                                 {{ formattedValue }}
-                                                                 <span v-if="formattedValue2" class="mx-2"> - </span>
-                                                                 {{ formattedValue2 }}
-                                                            </span>
+                                                       class="w-full h-full -bottom-32 left-0 absolute">
+                                                       <div id="litepicker">
+                                                            <div
+                                                                 class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                                                 <span
+                                                                      class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                                      {{ formattedValue }}
+                                                                      <span v-if="formattedValue2" class="mx-2"> -
+                                                                      </span>
+                                                                      {{ formattedValue2 }}
+                                                                 </span>
+                                                            </div>
+                                                       </div>
+                                                       <div @click="togglePickerModal"
+                                                            class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                                            <p class="text-stone-800">Seç</p>
                                                        </div>
                                                   </div>
-                                                  <div @click="togglePickerModal"
-                                                       class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
-                                                       <p class="text-stone-800">Seç</p>
-                                                  </div>
-                                             </div>
                                              </transition>
-                                            
                                         </div>
                                         <div class="h-14 border-l border-zinc-300"></div>
                                         <div class="dropdown">
                                              <button @click="toggleDropdown" type="button"
-                                                  class="cursor-pointer flex flex-col justify-start py-3 px-7">
+                                                  class="cursor-pointer flex flex-col justify-start py-6 px-5">
                                                   <div
                                                        class="text-start text-black text-base font-medium font-display tracking-tight">
                                                        {{ searchBar.SearchFerryTicket?.passengers }}
@@ -210,42 +209,43 @@
                                              </button>
                                              <transition name="dropdown">
                                                   <div v-show="isOpen"
-                                                  class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                  <div class="flex flex-col mt-[37px] ml-6">
-                                                       <!-- {{ searchBar?.SearchFerryTicket.PassengerType }} -->
-                                                       <div v-for="(i, index) in searchBar?.SearchFerryTicket.PassengerType"
-                                                            :key="index"
-                                                            class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
-                                                            <div class="flex flex-row">
+                                                       class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <div class="flex flex-col mt-[37px] ml-6">
+                                                            <!-- {{ searchBar?.SearchFerryTicket.PassengerType }} -->
+                                                            <div v-for="(i, index) in searchBar?.SearchFerryTicket.PassengerType"
+                                                                 :key="index"
+                                                                 class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                                                 <div class="flex flex-row">
+                                                                      <div
+                                                                           class="text-black text-base font-medium font-display tracking-tight">
+                                                                           {{ i.TypeName }}
+                                                                      </div>
+                                                                 </div>
                                                                  <div
-                                                                      class="text-black text-base font-medium font-display tracking-tight">
-                                                                      {{ i.TypeName }}
+                                                                      class="mr-4 flex flex-row justify-center items-center">
+                                                                      <span @click="decreaseCount(index)"
+                                                                           class="mx-2 cursor-pointer">
+                                                                           <IconMinus />
+                                                                      </span>
+                                                                      <div
+                                                                           class="text-black text-[22px] font-normal font-display tracking-wide">
+                                                                           {{ passenger[index].count }}
+                                                                      </div>
+                                                                      <span @click="increaseCount(index)"
+                                                                           class="mx-2 cursor-pointer">
+                                                                           <IconPlus />
+                                                                      </span>
                                                                  </div>
                                                             </div>
-                                                            <div class="mr-4 flex flex-row justify-center items-center">
-                                                                 <span @click="decreaseCount(index)"
-                                                                      class="mx-2 cursor-pointer">
-                                                                      <IconMinus />
-                                                                 </span>
-                                                                 <div
-                                                                      class="text-black text-[22px] font-normal font-display tracking-wide">
-                                                                      {{ passenger[index].count }}
-                                                                 </div>
-                                                                 <span @click="increaseCount(index)"
-                                                                      class="mx-2 cursor-pointer">
-                                                                      <IconPlus />
-                                                                 </span>
-                                                            </div>
-                                                       </div>
-                                                       <!-- <button id="hs-dropdown-auto-close-false" type="button"
+                                                            <!-- <button id="hs-dropdown-auto-close-false" type="button"
                                                   class="w-[353px] h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
                                                   <div class="text-white text-base font-medium font-display">{{
                                                        searchBar?.SearchFerryTicket.submitBtn }}</div>
                                              </button> -->
+                                                       </div>
                                                   </div>
-                                             </div>
                                              </transition>
-                                      
+
                                         </div>
                                         <div @click="navigateToSecondPage"
                                              class="w-28 h-[46px] bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
@@ -328,7 +328,11 @@
                               <MainTourCardComponent :item="tourCards" />
                          </div>
                          <div class="mt-10">
-                              <div class="flex flex-row justify-between items-end">
+
+                              <HomeSubCardSplide  :key="index" :item="allTours"/>
+                              
+                              <!-- HERE-->
+                              <!-- <div class="flex flex-row justify-between items-end">
                                    <div>
                                         <div
                                              class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
@@ -344,11 +348,12 @@
                                         <div class="mr-1">{{ allTours.btnText }}</div>
                                         <IconArrowUpRight />
                                    </div>
-                              </div>
+                              </div> -->
+                              <!-- HERE -->
                          </div>
-                         <div class="flex flex-row">
+                         <!-- <div class="flex flex-row">
                               <MainTourCardComponent :item="allTours" />
-                         </div>
+                         </div> -->
                     </div>
                     <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[1].id">
                          <div>
@@ -860,6 +865,10 @@ import { useRouter } from 'vue-router'
 import Litepicker from 'litepicker'
 import IconPlus from '../../components/icons/IconPlus.vue'
 import IconMinus from '../../components/icons/IconMinus.vue'
+import HomeSubCardSplide from '../../views/SubViews/components/HomeSubCardSplide.vue'
+
+import Splide from '@splidejs/splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 const router = useRouter()
 const useChannelStore = useChannel()
@@ -1407,7 +1416,8 @@ const getIslands = async () => {
                console.log(sharedTable.value, 'sharedTable')
                console.log(sharedImages.value, 'sharedImages')
                console.log(sharedBlogCard.value, 'sharedBlogCard')
-               console.log(sharedCategoryQuestions.value, 'sharedCategoryQuestions')
+               console.log(sharedCategoryQuestions.value, 'sharedCategoryQuestions'),
+               console.log(allTours.value, 'allTours.value');
           }
      } catch (error) {
           console.error('Hata:', error)
@@ -1541,6 +1551,52 @@ function navigateToSecondPage() {
           }
      })
 }
+const splideRef2 = ref<string | HTMLElement>('');
+
+onMounted(() => {
+     console.log(splideRef2, 'splideRef2')
+     if (splideRef2.value) {
+          console.log(splideRef2.value, 'splideRef2')
+          const splide = new Splide(splideRef2.value, {
+               type: 'slide',
+               perPage: 3,
+               perMove: 1,
+               arrows: true,
+               pagination: false,
+               focus: 0,
+               interval: 3000,
+               breakpoints: {
+                    1380: {
+                         perPage: 4,
+                    },
+                    1140: {
+                         perPage: 3,
+                    },
+                    840: {
+                         perPage: 2,
+                    },
+                    580: {
+                         perPage: 1,
+                    },
+               },
+          }).mount();
+
+          splide.on('moved', () => {
+               // const activeSlideIndex = splide.index;
+               // const activeSlideContent = items[activeSlideIndex];
+               // console.log(activeSlideContent);
+               // console.log(activeSlideIndex);
+          });
+     }
+});
+
+const items = ref([
+     { id: 1, name: 'Item 1' },
+     { id: 2, name: 'Item 2' },
+     { id: 3, name: 'Item 3' },
+     { id: 4, name: 'Item 4' },
+     { id: 5, name: 'Item 5' },
+])
 </script>
 
 <style scoped>
@@ -1626,5 +1682,156 @@ function navigateToSecondPage() {
 #litepicker {
      display: inline-block !important;
      position: relative !important;
+}
+
+
+.flex-column {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+}
+
+.splide {
+     padding: 10px 0;
+     display: flex;
+     flex-direction: row;
+     width: 100%
+}
+
+.splide__list {
+     display: flex;
+     width: 100%;
+     flex-direction: row;
+     background-color: #000;
+}
+
+.splide__track {
+     width: 100%;
+}
+
+.splide__slide {
+     align-items: center;
+     flex-shrink: 0;
+     border-radius: 20px;
+     height: 470px;
+     max-width: 320px;
+     cursor: pointer;
+     margin-right: 10px;
+     background-color: #0000003a;
+}
+
+/* .splide__slide:first-child {
+    background-color: #b8b8b8;
+} */
+
+.splide__slide.is-active {
+     align-items: center;
+     flex-shrink: 0;
+     border-radius: 20px;
+     height: 470px;
+     max-width: 320px;
+     cursor: pointer;
+     margin-right: 10px;
+}
+
+.splide__slide img {
+     background: rgba(0, 0, 0, 0.30);
+}
+
+/* .splide__slide.is-active img {
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    height: 470px;
+    max-width: 320px;
+    cursor: pointer;
+    margin-right: 10px;
+} */
+
+.splide__slide:first-child img {
+     display: none;
+     background-color: #E4EEF3;
+}
+
+.splide__slide:first-child p {
+     color: #000;
+}
+
+.splide__slide:first-child {
+     background-color: #E4E9EC;
+}
+
+.splide__slide:first-child button {
+     color: black;
+}
+
+.splide__arrow {
+     transform: none;
+     border-radius: unset;
+}
+
+.splide__arrow svg {
+     fill: #000;
+     height: 2em;
+     width: 4em;
+     display: flex;
+     flex-direction: row;
+}
+
+.splide.splide__arrow {
+     background: white;
+}
+
+.splide__arrow.splide__arrow--prev:disabled {
+     opacity: 1;
+     background: transparent
+}
+
+.splide__arrow.splide__arrow--prev {
+     height: full;
+     top: 150px;
+     left: -3rem;
+     opacity: 1;
+     background: transparent;
+     display: none;
+}
+
+.splide__arrow.splide__arrow--next {
+     height: full;
+     top: 200px;
+     right: 18rem;
+     opacity: 1;
+     z-index: 10;
+     background: transparent;
+     padding: 40px;
+     background: #E4E9EC;
+     border-radius: 100%;
+     width: 88px;
+     height: 86px;
+}
+
+.splide__arrow.splide__arrow--next:disabled {
+     height: full;
+     top: 200px;
+     right: 18rem;
+     opacity: 1;
+     z-index: 10;
+     background: transparent;
+     padding: 40px;
+     background: #E4E9EC;
+     border-radius: 100%;
+     width: 88px;
+     height: 86px;
+}
+
+@media (max-width: 1024px) {
+     .splide__arrow.splide__arrow--next {
+          display: none;
+     }
+
+     .splide__arrow.splide__arrow--next:disabled {
+          display: none;
+     }
+
 }
 </style>
