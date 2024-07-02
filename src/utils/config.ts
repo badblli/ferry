@@ -27,20 +27,16 @@ const config: Record<string, EnvironmentConfig> = {
                return 'https://' + path + '.meanderservices.com'
           }
           // Diğer prod ama aslında test konfigürasyonları...
+     },
+     test: {
+          mode: 'prod',
+          apiKey: import.meta.env.VITE_API_KEY,
+          SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
+          basePath: function (path: string) {
+               return 'https://' + path + '.meanderservices.com'
+          }
+          // Diğer prod ama aslında test konfigürasyonları...
      }
-     // production: {
-     //      mode: 'prod',
-     //      apiKey: import.meta.env.VITE_API_KEY,
-     //      SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
-     //      basePath: function (path: string) {
-     //           return 'http://' + path + '.meanderservices.com'
-     //      }
-     //      // Diğer prod konfigürasyonları...
-     // }
-     // test: {
-     //     // Test konfigürasyonları...
-     // }
-     // İhtiyaç duyulan diğer ortamları ekleyin...
 }
 const envConfig: EnvironmentConfig = config[environment]
 export default envConfig

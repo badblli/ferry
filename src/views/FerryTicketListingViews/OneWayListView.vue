@@ -272,7 +272,13 @@
                                              </div>
                                         </div>
                                    </div>
-                                   <div v-for="(item, index) in tripFilterReverseArData" :key="index" class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
+                                   <div v-for="(item, index) in tripFilterReverseArData.filter((item) => {
+                                        if (selectedDepartureData.length > 0) {
+                                             return item.CompanyID === selectedDepartureData[0].CompanyID
+                                        } else {
+                                             return item
+                                        }
+                                   })" :key="index" class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
                                              <img class="w-[100px] h-[100px] rounded-xl mr-6" src="/src/assets/embeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
