@@ -1,39 +1,48 @@
 <template>
-  <section class="mb-[120px] centered-w">
-        <div class="lg:px-[100px] px-2 md:px-16 sm:px-8">
+    <section class="mb-[120px] centered-w">
+        <div>
             <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">{{ props.item.title }}</div>
-            <div class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-[103px]">
+            <div
+                class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-12">
                 {{ props.item.subtitle }}
             </div>
         </div>
         <div>
             <div className="h-full w-full">
-                <div className="flex flex-row items-center mb-[22px] lg:pl-28 md:pl-16 sm:pl-8 pl-4">
+                <div className="flex flex-row items-center">
                     <div id="splide" class="splide" ref="splideRef">
                         <div class="splide__track">
                             <ul class="splide__list">
-                                <li v-for="(item, index) in props.item.Tours" :key="index" class="splide__slide">
-                                    <div class="h-full w-full flex flex-col justify-end mt-9 ">
-                                        <div class="mb-[61px] ml-7 flex flex-col mt-auto">
-                                            <p
-                                                class="max-w-[223px] text-3xl font-semibold font-['Plus Jakarta Sans'] tracking-wide text-white">
+                                <li v-for="(item, index) in props.item.Tours" :key="index" class="splide__slide custom-border">
+
+                                    <div class="rounded-xl m-5 bg-blue-400">
+                                        <img :src="getImage(item.img?.url)" :alt="item.img.name"
+                                            class="object-fill w-full flip-horizontal rounded-xl" />
+                                    </div>
+
+                                    <div class="px-5 pt-2">
+                                        <div>
+                                            <div
+                                                class="text-black text-[23px] font-semibold font-['Plus Jakarta Sans'] tracking-wide custom-pb-28 ">
                                                 {{ item.duration }}
-                                            </p>
-                                            <div class="mt-7 flex flex-row ml-3 text-white">
-                                                <button class="mr-[10px]">
-                                                    {{ item.description }}
-                                                </button>
-                                                <div v-if="index === 0">
-                                                    <IconArrowUpRight />
-                                                </div>
-                                                <div v-else>
-                                                    <IconArrowUpRightWhite />
-                                                </div>
                                             </div>
-                                            <div></div>
+                                            <div
+                                                class="text-black text-base font-normal font-display leading-snug tracking-tight pb-[28px]">
+                                                {{ item.description }}
+                                            </div>
+                                            <div
+                                                class="flex flex-row w-full items-center justify-between text-right text-black text-lg font-medium font-display leading-[18px] tracking-tight mt-7">
+                                                <span>
+                                                    {{ item.price }}
+                                                </span>
+                                                <span>
+                                                    <div
+                                                        class="flex flex-row items-center justify-center p-5 bg-white rounded-full">
+                                                        <IconShare2 />
+                                                    </div>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <img :src="getImage(item.img?.url)"
-                                            class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" />
                                     </div>
                                 </li>
                             </ul>
@@ -57,6 +66,32 @@
     </section>
 </template>
 
+<!--
+<div class="h-full w-full flex flex-col justify-end mt-9 ">
+    <div class="mb-[61px] ml-7 flex flex-col mt-auto">
+        <p
+            class="max-w-[223px] text-3xl font-semibold font-['Plus Jakarta Sans'] tracking-wide text-white">
+            {{ item.duration }}
+        </p>
+        <div class="mt-7 flex flex-row ml-3 text-white">
+            <button class="mr-[10px]">
+                {{ item.description }}
+            </button>
+            <div v-if="index === 0">
+                <IconArrowUpRight />
+            </div>
+            <div v-else>
+                <IconArrowUpRightWhite />
+            </div>
+        </div>
+        <div></div>
+    </div>
+     <img :src="getImage(item.img?.url)"
+        class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" />
+    </div>
+-->
+
+
 <script setup lang="ts">
 // @ts-ignore
 import Splide from '@splidejs/splide';
@@ -67,6 +102,7 @@ import IconSamosaVector from '@/components/icons/IconSamosaVector.vue';
 import IconChevronRight from '@/components/icons/IconChevronRight.vue';
 import { onMounted, ref } from 'vue';
 import { getImage } from '@/utils/globalHelper'
+import IconShare2 from '../../../components/icons/IconShare2.vue';
 
 interface tours {
     description: string,
@@ -123,7 +159,7 @@ onMounted(() => {
         interval: 3000,
         breakpoints: {
             1380: {
-                perPage: 4,
+                perPage: 3,
             },
             1140: {
                 perPage: 3,
@@ -174,11 +210,19 @@ onMounted(() => {
     align-items: center;
     flex-shrink: 0;
     border-radius: 20px;
-    height: 470px;
+    height: 495px;
     max-width: 397px;
     cursor: pointer;
-    margin-right: 10px;
-    background-color: #0000003a;
+    margin-right: 24px;
+}
+
+.custom-border {
+    border-radius: 20px;
+    border: 1px solid #E8E8E8;
+}
+
+.custom-border:hover{
+    background: #E4EEF3;
 }
 
 /* .splide__slide:first-child {
@@ -189,14 +233,15 @@ onMounted(() => {
     align-items: center;
     flex-shrink: 0;
     border-radius: 20px;
-    height: 470px;
-     max-width: 397px;
+    height: 495px;
+    max-width: 397px;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 24px;
 }
 
 .splide__slide img {
     background: rgba(0, 0, 0, 0.30);
+    height: 241px;
 }
 
 /* .splide__slide.is-active img {
@@ -301,5 +346,8 @@ onMounted(() => {
         display: none;
     }
 
+}
+.custom-pb-28{
+    padding-bottom: 28px;
 }
 </style>
