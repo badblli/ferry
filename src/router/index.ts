@@ -1,6 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '../stores/auth'
 
+import { type IStaticMethods } from 'preline/preline'
+declare global {
+     interface Window {
+          HSStaticMethods: IStaticMethods
+     }
+}
+
 const router = createRouter({
      history: createWebHistory(import.meta.env.BASE_URL),
      routes: [
@@ -176,7 +183,7 @@ const router = createRouter({
 router.afterEach((to, from, failure) => {
      if (!failure) {
           setTimeout(() => {
-               HSStaticMethods.autoInit()
+               window.HSStaticMethods.autoInit()
           }, 100)
      }
 })
