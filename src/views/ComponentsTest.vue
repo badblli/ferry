@@ -37,7 +37,7 @@ import 'vue-tel-input/vue-tel-input.css'
 const max = ref(null)
 
 const bindProps = ref({
-     autoFormat: true,
+     autoFormat: false,
      disabledFetchingCountry: false,
      enabledFlags: true,
      dropdownOptions: {

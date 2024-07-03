@@ -243,7 +243,7 @@ onMounted(() => {
                // identityNumber: passenger.identityNumber, //identityNumber bende yok
                passportNumber: passenger.passport, //pasaport var
                email: passenger.email,
-               phone: passenger.tel, //phone eklememişim ekleyeceğim,
+               phone: passenger.formattedPhone, //phone eklememişim ekleyeceğim,
                gender: 0
                // passportValidDate: passenger.passportValidDate, //bende passaport girişi yok
                // visaValidDate: passenger.visaValidDate, //bende vize girişi yok
@@ -262,7 +262,7 @@ onMounted(() => {
                invoiceName: adult.name,
                invoiceSurname: adult.surname,
                invoiceMailAddress: adult.email,
-               invoicePhoneNumber: adult.tel,
+               invoicePhoneNumber: adult.formattedPhone,
                invoiceTCKNo: adult.id,
                invoiceAddress: adult.address
           }))

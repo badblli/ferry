@@ -113,7 +113,7 @@
                                                                  <input v-model="accordion.email" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].email" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
-                                                            <vue-tel-input v-model="accordion.tel" @validate="onPhoneInput" v-bind="bindProps"></vue-tel-input>
+                                                            <vue-tel-input v-model="accordion.tel" @validate="onPhoneInput($event, accordion)" v-bind="bindProps"></vue-tel-input>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <input v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="text" :placeholder="passengerDetails?.passengers[0].birth" @input="formatDate(accordion)" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
@@ -388,7 +388,7 @@ const logValue = (label: any, value: any) => {
 }
 const max = ref(null)
 const bindProps = ref({
-     autoFormat: true,
+     autoFormat: false,
      disabledFetchingCountry: false,
      enabledFlags: true,
      dropdownOptions: {
@@ -405,11 +405,12 @@ const bindProps = ref({
      validCharactersOnly: true
 })
 
-const onPhoneInput = (value) => {
-     console.log(value)
+const onPhoneInput = (value, accordion) => {
+     console.log(value, accordion)
      if (value.valid == true) {
-          bindProps.value.inputOptions.maxlength = value.formatted.length
+          bindProps.value.inputOptions.maxlength = value.nationalNumber.length
           console.log('valid', max.value, bindProps.value)
+          accordion.formattedPhone = value.number
      }
 }
 
