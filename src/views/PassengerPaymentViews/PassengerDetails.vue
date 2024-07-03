@@ -133,8 +133,13 @@
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.id" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].passenderId" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                                 <input v-model="accordion.id" maxlength="11"
+                                                                  @input="validateInput(accordion)"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type"
+                                                                      :placeholder="passengerDetails?.passengers[0].passenderId" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
                                                             </div>
                                                        </form>
                                                   </div>
@@ -157,7 +162,12 @@
                                                             <button :class="buttonClass(accordion)" @click="saveAllPassenger(accordion)" class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                                  {{ buttonText(accordion) }}
                                                             </button>
-                                                            <div class="ml-8 mt-2 text-gray-500" v-if="accordion.showBtnWarning">*Alanlar doldurulmalıdır.</div>
+                                                            <div class="ml-8 mt-2 text-gray-500"
+                                                                 v-if="accordion.showBtnWarning">*Alanlar
+                                                                 doldurulmalıdır.</div>
+                                                                 <div v-if="accordion.showBtnWarning2" class="ml-8 mt-2 text-gray-500">
+                                                                      TC NO 11 Haneden az olmamalıdır.
+                                                                 </div>
                                                        </div>
                                                   </div>
                                              </AccordionPanel>
@@ -324,6 +334,11 @@ const getTitle = (accordion: any) => {
                return 'Passenger'
      }
 }
+
+const validateInput = (accordion) => {
+  const regex = /^\d{11}$/;
+  accordion.showBtnWarning2 = !regex.test(accordion.id);
+};
 
 // const clearForm = () => {
 
