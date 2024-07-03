@@ -161,9 +161,6 @@ onMounted(() => {
             1380: {
                 perPage: 3,
             },
-            1140: {
-                perPage: 3,
-            },
             1024: {
                 perPage: 2,
             },
