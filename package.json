@@ -17,6 +17,7 @@
      },
      "dependencies": {
           "@intlify/unplugin-vue-i18n": "^3.0.1",
+          "@preline/select": "^2.3.0",
           "@splidejs/splide": "^4.1.4",
           "@splidejs/vue-splide": "^0.6.12",
           "@vuepic/vue-datepicker": "^8.2.0",

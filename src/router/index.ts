@@ -12,6 +12,11 @@ const router = createRouter({
      history: createWebHistory(import.meta.env.BASE_URL),
      routes: [
           {
+               path: '/test',
+               name: 'components',
+               component: () => import('@/views/ComponentsTest.vue')
+          },
+          {
                path: '/main',
                component: () => import('../layouts/MainLayout.vue'),
                children: [
@@ -183,8 +188,9 @@ const router = createRouter({
 router.afterEach((to, from, failure) => {
      if (!failure) {
           setTimeout(() => {
+               console.log(window)
                window.HSStaticMethods.autoInit()
-          }, 100)
+          }, 10)
      }
 })
 

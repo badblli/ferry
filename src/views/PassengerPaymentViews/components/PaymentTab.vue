@@ -2,26 +2,21 @@
      <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mb-[34px]">
           {{ data.tabTitle }}
      </div>
-     <div
-          class="w-full text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[34px]">
-          {{ data.description }}</div>
+     <div class="w-full text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[34px]">
+          {{ data.description }}
+     </div>
      <div class="flex flex-row flex-wrap m-1">
           <div>
-               <div
-                    class="mr-[10px] py-[13px] pl-[14px] pr-[11px] bg-white rounded-lg border border-stone-300 flex flex-row items-center justify-center cursor-pointer">
-                    <div @click="clearForm" class="text-black text-base font-medium font-['Plus Jakarta Sans'] mr-7">{{
-                         data.newInvoiceBtn }}</div>
+               <div class="mr-[10px] py-[13px] pl-[14px] pr-[11px] bg-white rounded-lg border border-stone-300 flex flex-row items-center justify-center cursor-pointer">
+                    <div @click="clearForm" class="text-black text-base font-medium font-['Plus Jakarta Sans'] mr-7">{{ data.newInvoiceBtn }}</div>
                     <div>
                          <IconPlus />
                     </div>
                </div>
           </div>
-          <div v-for="(passenger, index) in newInvoices" :key="passenger.id || `temp-${index}`"
-               @click="selectPassenger(passenger, index)" class="flex flex-row flex-wrap">
-               <div :class="isSelectedClass(passenger)"
-                    class="mr-[10px] m-1 py-[13px] pl-[14px] pr-[14px] rounded-lg border flex flex-row items-center justify-center cursor-pointer">
-                    <div class="text-base font-medium font-['Plus Jakarta Sans'] mr-[17px]">{{ passenger.invoiceName
-                         }}&nbsp;{{ passenger.invoiceSurname }}</div>
+          <div v-for="(passenger, index) in newInvoices" :key="passenger.id || `temp-${index}`" @click="selectPassenger(passenger, index)" class="flex flex-row flex-wrap">
+               <div :class="isSelectedClass(passenger)" class="mr-[10px] m-1 py-[13px] pl-[14px] pr-[14px] rounded-lg border flex flex-row items-center justify-center cursor-pointer">
+                    <div class="text-base font-medium font-['Plus Jakarta Sans'] mr-[17px]">{{ passenger.invoiceName }}&nbsp;{{ passenger.invoiceSurname }}</div>
                     <div>
                          <IconCheck />
                     </div>
@@ -32,40 +27,25 @@
           <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 mt-[67px]">
                <form class="w-full max-w-sm md:ml-10 ml-2">
                     <div class="flex border-b border-neutral-200 mb-10">
-                         <input v-model="nameModel"
-                              class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                              type="type" :placeholder="data.name" />
-                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button">
-                         </div>
+                         <input v-model="nameModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.name" />
+                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                     </div>
                     <div class="flex border-b border-neutral-200 mb-10">
-                         <input v-model="surnameModel"
-                              class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                              type="type" :placeholder="data.surname" />
-                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button">
-                         </div>
+                         <input v-model="surnameModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.surname" />
+                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                     </div>
                     <div class="flex border-b border-neutral-200 mb-10">
-                         <input v-model="emailModel"
-                              class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                              type="type" :placeholder="data.email" />
-                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button">
-                         </div>
+                         <input v-model="emailModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.email" />
+                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                     </div>
                     <div class="flex border-b border-neutral-200 mb-10">
-                         <input v-model="tcModel"
-                              class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                              type="type" :placeholder="data.identity" />
-                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button">
-                         </div>
+                         <input v-model="tcModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.identity" />
+                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                     </div>
-                    <vue-tel-input v-model="telModel" mode="international"></vue-tel-input>
+                    <vue-tel-input v-model="telModel" @validate="onPhoneInput" v-bind="bindProps" mode="international"></vue-tel-input>
                     <div class="flex border-b border-neutral-200 mb-10">
-                         <input v-model="addressModel"
-                              class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                              type="type" :placeholder="data.address" />
-                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button">
-                         </div>
+                         <input v-model="addressModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.address" />
+                         <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                     </div>
                </form>
           </div>
@@ -127,6 +107,32 @@ const saleChannelID = ref(0)
 const priceGroupID = ref(0)
 // const postArrivalData = ref<any>(null);
 const journeyID = ref<any>(null)
+const max = ref(null)
+const bindProps = ref({
+     autoFormat: true,
+     disabledFetchingCountry: false,
+     enabledFlags: true,
+     dropdownOptions: {
+          showDialCodeInSelection: true,
+          showDialCodeInList: true,
+          showFlags: true,
+          showSearchBox: true
+     },
+     inputOptions: {
+          maxlength: max.value,
+          placeholder: 'Tel'
+     },
+     mode: 'international',
+     validCharactersOnly: true
+})
+
+const onPhoneInput = (value) => {
+     console.log(value)
+     if (value.valid == true) {
+          bindProps.value.inputOptions.maxlength = value.formatted.length
+          console.log('valid', max.value, bindProps.value)
+     }
+}
 
 const touristList = ref([
      {
@@ -471,13 +477,13 @@ const isSelectedClass = (passenger: any) => {
 const selectedPassenger = ref<Passenger | null>(null)
 
 const selectPassenger = (passenger: any, index: any) => {
-    selectedPassenger.value = passenger;
-    tripStore.setInvoiceDetail(selectedPassenger.value);
-    console.log(`Passenger selected at index ${index}:`, passenger);
+     selectedPassenger.value = passenger
+     tripStore.setInvoiceDetail(selectedPassenger.value)
+     console.log(`Passenger selected at index ${index}:`, passenger)
 
-    // Emit the selected passenger to the parent component
-    emit('passengerSelected', selectedPassenger.value);
-};
+     // Emit the selected passenger to the parent component
+     emit('passengerSelected', selectedPassenger.value)
+}
 console.log(selectedPassenger.value, 'selected passenger value')
 </script>
 

@@ -583,6 +583,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
+"@preline/select@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@preline/select/-/select-2.3.0.tgz#3a3859d3d2bfe992848b6c342b926470b3cb7abf"
+  integrity sha512-qbL9uOvOdugo9uqRt7QIHJ5emi/vzRIKTsVFKMfjLHZAZ+XHWysjOOyPMluA++YvIwKuAhcE0EBb3znGYVu5VQ==
+
 "@rollup/pluginutils@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.0.tgz#7e53eddc8c7f483a4ad0b94afb1f7f5fd3c771e0"
