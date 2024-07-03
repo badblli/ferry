@@ -251,8 +251,7 @@
                                                                       class="w-full h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
                                                                       <div
                                                                            class="text-white text-base font-medium font-display">
-                                                                           {{
-                                                                                searchBar?.SearchFerryTicket.submitBtn }}
+                                                                           {{ searchBar?.SearchFerryTicket.submitBtn }}
                                                                       </div>
                                                                  </button>
                                                             </div>
@@ -266,7 +265,7 @@
                                         </div>
                                    </div>
                                    <div v-show="showTrue">
-                                        <div class="w-[798px]">
+                                        <div class="w-[798px] h-24">
                                              <div class="flex flex-row justify-between items-center ml-5">
                                                   <SliderReservationInputs
                                                        :placeholder="searchBar.SearchReservation?.searchPNR"
