@@ -16,7 +16,7 @@
                               <div class="text-black text-base font-medium font-display">{{ paymentHeader?.cost }}</div>
                               <div
                                    class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">
-                                   41TL</div>
+                                   {{ totalPrice }}€</div>
                          </div>
                          <IconArrowDownBlack class="ml-[20px]" />
                     </div>
@@ -259,20 +259,11 @@
                                              <button @click="postData"
                                                   class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{
                                                        paymentDetail?.PaymentSummary.payBtn }}</button>
-                                             <!-- <div class="cursor-pointer" @click="showModal">
-                                        deneme
-                                    </div> -->
                                              <div>
                                                   <!-- {{ modal.showModalState.value }} -->
                                                   <Teleport to="#target">
                                                        <div v-if="showModalState"
                                                             class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36 m-auto overflow-y-hidden">
-                                                            <!-- <div class=" bg-gray-100 z-60">
-                                                    MODAL AÇ MODAL AÇ
-                                                </div>
-                                                <div @click="closeModal">
-                                                    CLOSE MODAL MODAL
-                                                </div> -->
                                                        </div>
                                                   </Teleport>
                                              </div>
