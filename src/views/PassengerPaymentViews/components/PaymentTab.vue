@@ -42,6 +42,7 @@
                          <input v-model="tcModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.identity" />
                          <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                     </div>
+
                     <vue-tel-input v-model="telModel" @validate="onPhoneInput" v-bind="bindProps" mode="international"></vue-tel-input>
                     <div class="flex border-b border-neutral-200 mb-10">
                          <input v-model="addressModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.address" />
@@ -109,7 +110,7 @@ const priceGroupID = ref(0)
 const journeyID = ref<any>(null)
 const max = ref(null)
 const bindProps = ref({
-     autoFormat: true,
+     autoFormat: false,
      disabledFetchingCountry: false,
      enabledFlags: true,
      dropdownOptions: {
