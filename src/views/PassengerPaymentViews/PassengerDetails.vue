@@ -122,8 +122,8 @@
                                                                  <!-- Select -->
                                                                  <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
                                                                       <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
-                                                                      <option v-for="(data, idx) in countryList4" :key="idx" :value="data.name" class="option-style">
-                                                                           {{ data?.name }}
+                                                                      <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
+                                                                           {{ data?.Name }}
                                                                       </option>
                                                                  </select>
                                                                  <!-- End Select -->
