@@ -27,8 +27,6 @@
           <button type="button" id="destroy" class="py-1 px-2 text-sm font-medium rounded-md border border-red-400 bg-red-100 dark:bg-red-800/25 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-600/50">Destroy Select</button>
           <button type="button" id="reinit" class="py-1 px-2 text-sm font-medium rounded-md border border-gray-400 bg-gray-100 text-gray-600 dark:bg-neutral-800/25 dark:border-neutral-500 dark:text-neutral-300 hover:bg-gray-200 dark:hover:bg-neutral-600/50" disabled="">Reinitialize Select</button>
      </div>
-
-     eğw eğw
 </template>
 
 <script setup lang="ts">
