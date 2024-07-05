@@ -115,7 +115,7 @@
                                                             </div>
                                                             <vue-tel-input v-model="accordion.tel" @validate="onPhoneInput($event, accordion)" v-bind="bindProps"></vue-tel-input>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="text" :placeholder="passengerDetails?.passengers[0].birth" @input="formatDate(accordion)" />
+                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"  :placeholder="passengerDetails?.passengers[0].birth"  />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
@@ -474,8 +474,8 @@ const saveAllPassenger = async (accordion: any) => {
      }
 
      try {
-          const calculatedId = formatDate(accordion)
-          if (calculatedId === null) {
+       const calculatedId = accordion._id
+if (calculatedId === null) {
                console.error('Failed to calculate new _id due to invalid birthDate')
                accordion.isLoading = false
                return
@@ -527,7 +527,7 @@ const confirmChange = (accordion: any) => {
                console.log('Accordion before formatting:', JSON.stringify(accordion))
                console.log('Before formatting date:', accordion.birthDate)
 
-               const calculatedId = formatDate(accordion)
+            const calculatedId = accordion
 
                if (calculatedId === null) {
                     console.error('Failed to calculate new _id due to invalid birthDate')

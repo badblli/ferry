@@ -221,7 +221,8 @@ const formatDateForBackend = (date: any) => {
      const year = d.getFullYear().toString()
      const month = ('0' + (d.getMonth() + 1)).slice(-2)
      const day = ('0' + d.getDate()).slice(-2)
-     return `${year}-${day}-${month}`
+     return `${year}-${month}-${day}`
+     //wechanged
 }
 
 onMounted(() => {

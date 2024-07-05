@@ -17,6 +17,11 @@ const router = createRouter({
                component: () => import('@/views/ComponentsTest.vue')
           },
           {
+               path: '/threedsecure',
+               name: 'threedsecure',
+               component: () => import('../views/PassengerPaymentViews/components/ThreeDSecure.vue')
+          },
+          {
                path: '/main',
                component: () => import('../layouts/MainLayout.vue'),
                children: [
