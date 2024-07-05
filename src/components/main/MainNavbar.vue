@@ -69,7 +69,7 @@
                          <button @click="showModal" type="button"
                               class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1"
                               data-hs-overlay="#hs-medium-modal">{{ userName }}</button>
-                         <IconChevronDown />asdsadsad
+                         <IconChevronDown />
                     </div>
                     <div v-else class="text-center cursor-pointer hidden md:flex">
                          <button @click="showModal" type="button"

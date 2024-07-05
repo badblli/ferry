@@ -340,9 +340,9 @@ const validateInput = (accordion) => {
   accordion.showBtnWarning2 = !regex.test(accordion.id);
 };
 
-// const clearForm = () => {
+const clearForm = () => {
 
-// }
+}
 
 const resetForm = (accordion: any) => {
      accordion.name = ''
@@ -463,6 +463,7 @@ const saveAllPassenger = async (accordion: any) => {
      accordion.isLoading = true
      accordion.isComplete = false
      accordion.showBtnWarning = false
+     accordion.showBtnWarning2 = false
 
      const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email && accordion.tel && accordion.nation && accordion.passport && accordion.id && accordion.birthDate
 
@@ -471,6 +472,15 @@ const saveAllPassenger = async (accordion: any) => {
           console.log('Tüm gerekli alanlar doldurulmalıdır.')
           accordion.isLoading = false
           return
+     }
+
+     // Validate input
+     const regex = /^\d{11}$/;
+     if (!regex.test(accordion.id)) {
+          accordion.showBtnWarning2 = true;
+          accordion.isLoading = false;
+          console.log('ID 11 haneli bir sayı olmalıdır.');
+          return;
      }
 
      try {
@@ -566,7 +576,6 @@ const tripStore = useTripStore()
 
 const from = ref(tripStore.from)
 const to = ref(tripStore.to)
-
 const storedTripParams = ref<any>([])
 const storedDepartureData = ref<any>([])
 const storedArrivalData = ref<any>([])

@@ -303,6 +303,32 @@
                                    {{ tourDetail.subtitle }}
                               </div>
                               <div class="mt-9 flex flex-row">
+                                   <div v-for="(change, index) in routerChange" :key="index"
+                                        class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
+                                        <div class="ml-5 mt-10">
+                                             <div class="w-[42px] h-[42px] relative">
+                                                       <IconReceipt2 v-if="change.meta.id === 1"/>
+                                                       <IconBoat v-if="change.meta.id === 2"/>
+                                                       <IconForkKnife v-if="change.meta.id === 3"/>
+                                                       <IconShieldChevron v-if="change.meta.id === 4"/>
+                                             </div>
+                                        </div>
+                                        <div
+                                             class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
+                                             {{ change.to }}
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <!-- <div>
+                              <div
+                                   class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                   {{ tourDetail.title }}
+                              </div>
+                              <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                   {{ tourDetail.subtitle }}
+                              </div>
+                              <div class="mt-9 flex flex-row">
                                    <div v-for="tourDetail in tourDetail?.tourDetails" :key="tourDetail.id"
                                         class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
                                         <div class="ml-5 mt-10">
@@ -316,7 +342,7 @@
                                         </div>
                                    </div>
                               </div>
-                         </div>
+                         </div> -->
                          <div class="mt-16">
                               <div class="flex flex-row justify-between items-end">
                                    <div>
@@ -878,6 +904,8 @@ import Litepicker from 'litepicker'
 import IconPlus from '../../components/icons/IconPlus.vue'
 import IconMinus from '../../components/icons/IconMinus.vue'
 import HomeSubCardSplide from '../../views/SubViews/components/HomeSubCardSplide.vue'
+import { useRouterStore } from '../../stores/router'
+import IconReceipt2 from '../../components/icons/IconReceipt2.vue'
 
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
@@ -888,6 +916,14 @@ const useChannelStore = useChannel()
 const applicationName = ref(p.Product)
 const controllerName = ref('Keydefinition')
 const name = ref('SearchTownList')
+
+const routerStore = useRouterStore();
+const routerChange = routerStore.getRouterChange;
+
+// Component yüklendiğinde store'dan veriyi almak için
+onMounted(() => {
+     console.log(routerChange, 'routerChanges'); // Veriyi konsola yazdırma
+});
 
 // watchEffect(() => {
 //      if (router.currentRoute.value.params.name) {
