@@ -128,6 +128,11 @@ const routes = [
                     component: () => import('../views/PassengerPaymentViews/PaymentStep.vue')
                },
                {
+                    path: '/paymentsuccess',
+                    name: 'paymentsuccess',
+                    component: () => import('../views/PassengerPaymentViews/PaymentSuccess.vue')
+               },
+               {
                     path: '/:name',
                     name: 'island',
                     component: () => import('../views/SubViews/SubHomeView.vue'),
