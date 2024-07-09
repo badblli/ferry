@@ -120,18 +120,19 @@
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <!-- Select -->
-                                                                 <!-- <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                                      <option selected="">Open this select menu</option>
-                                                                      <option>1</option>
-                                                                      <option>2</option>
-                                                                      <option>3</option>
-                                                                 </select> -->
-                                                                 <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
+                                                                 <select name="nation" :id="'nation-' + index" class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                                                       <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
                                                                       <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
                                                                            {{ data?.Name }}
                                                                       </option>
                                                                  </select>
+
+                                                                 <!-- <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
+                                                                      <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
+                                                                      <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
+                                                                           {{ data?.Name }}
+                                                                      </option>
+                                                                 </select> -->
                                                                  <!-- End Select -->
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
@@ -148,10 +149,15 @@
                                                        <div class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
                                                             <div class="mr-4">{{ passengerDetails.passengers[0].mailPassenger }}</div>
                                                             <div @click="setPrimary(index)">
-                                                                 <input
+                                                                 <!-- <input
                                                                       v-model="accordion.isPrimary"
                                                                       type="checkbox"
                                                                       class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200"
+                                                                 /> -->
+                                                                 <input
+                                                                      v-model="accordion.isPrimary"
+                                                                      type="checkbox"
+                                                                      class="relative w-5 h-5 p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:size-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-blue-200"
                                                                  />
                                                             </div>
                                                        </div>
