@@ -1974,6 +1974,10 @@ video {
   height: 100vh;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .max-h-72 {
   max-height: 18rem;
 }

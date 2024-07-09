@@ -46,7 +46,7 @@
                </div>
 
                <div class="flex flex-1 w-33 flex-row justify-center items-center cursor-pointer" @click="navigateToHome">
-                    <img :src="getImage(imageURL)" alt="Image" class="w-auto h-12 object-content" />
+                    <img :src="getImage(imageURL)" alt="Image" class="w-auto h-20 object-content" />
                     <div v-if="!isMeanderLayout">
                          <div class="ml-[10px]">
                               <span class="text-black text-xl md:text-2xl font-bold font-display tracking-wide">{{ mainNavbar.NavTitle }}</span>
