@@ -1787,10 +1787,6 @@ video {
   height: 211px;
 }
 
-.h-\[21px\] {
-  height: 21px;
-}
-
 .h-\[223px\] {
   height: 223px;
 }
@@ -1907,10 +1903,6 @@ video {
   height: 57px;
 }
 
-.h-\[58px\] {
-  height: 58px;
-}
-
 .h-\[60px\] {
   height: 60px;
 }
@@ -1951,10 +1943,6 @@ video {
   height: 77px;
 }
 
-.h-\[78px\] {
-  height: 78px;
-}
-
 .h-\[82-79px\] {
   height: 82-79px;
 }
@@ -1989,6 +1977,22 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[21px\] {
+  height: 21px;
+}
+
+.h-\[3\.25rem\] {
+  height: 3.25rem;
+}
+
+.h-\[58px\] {
+  height: 58px;
+}
+
+.h-\[78px\] {
+  height: 78px;
 }
 
 .max-h-72 {
@@ -2323,10 +2327,6 @@ video {
   width: 567px;
 }
 
-.w-\[58px\] {
-  width: 58px;
-}
-
 .w-\[600px\] {
   width: 600px;
 }
@@ -2397,6 +2397,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[58px\] {
+  width: 58px;
 }
 
 .min-w-\[15rem\] {
@@ -3119,14 +3123,14 @@ video {
   background-color: rgb(30 45 58 / var(--tw-bg-opacity));
 }
 
-.bg-stone-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-stone-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 208 208 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -5370,11 +5374,6 @@ input.focus\:outline-none:focus {
   height: 100%;
 }
 
-.before\:w-4::before {
-  content: var(--tw-content);
-  width: 1rem;
-}
-
 .before\:w-6::before {
   content: var(--tw-content);
   width: 1.5rem;
@@ -5383,6 +5382,11 @@ input.focus\:outline-none:focus {
 .before\:w-full::before {
   content: var(--tw-content);
   width: 100%;
+}
+
+.before\:w-4::before {
+  content: var(--tw-content);
+  width: 1rem;
 }
 
 .before\:translate-x-0::before {
@@ -7037,16 +7041,16 @@ input.focus\:outline-none:focus {
     margin-top: 55px;
   }
 
-  .md\:mt-\[61px\] {
-    margin-top: 61px;
-  }
-
   .md\:mt-\[73px\] {
     margin-top: 73px;
   }
 
   .md\:mt-\[91px\] {
     margin-top: 91px;
+  }
+
+  .md\:mt-\[61px\] {
+    margin-top: 61px;
   }
 
   .md\:block {

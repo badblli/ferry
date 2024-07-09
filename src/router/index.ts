@@ -1,16 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import axios from 'axios'
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue'
 import { useRouterStore } from '../stores/router'
 
-const homeTitle = ref(null);
-const priceTitle = ref(null);
-const journeyTitle = ref(null);
-const ticketTitle = ref(null);
-const passengerTitle = ref(null);
+const homeTitle = ref(null)
+const priceTitle = ref(null)
+const journeyTitle = ref(null)
+const ticketTitle = ref(null)
+const passengerTitle = ref(null)
 
 import { type IStaticMethods } from 'preline/preline'
-import value from '../../globals';
 
 declare global {
      interface Window {
@@ -19,8 +18,8 @@ declare global {
 }
 
 // localStorage'dan dil kodunu çek
-const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage'));
-const languageCode = selectedLanguage.code.toLowerCase()
+const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage'))
+const languageCode = selectedLanguage ? selectedLanguage.code.toLowerCase() : 'TR'
 console.log(languageCode, 'langlang')
 
 const routes = [
@@ -124,7 +123,7 @@ const routes = [
                     path: '/tickets/passenger',
                     meta: {
                          title: passengerTitle.value,
-                         id: 4,
+                         id: 4
                     },
                     name: 'passenger',
                     component: () => import('../views/PassengerPaymentViews/PassengerDetails.vue')
@@ -144,7 +143,7 @@ const routes = [
                     name: 'island',
                     meta: {
                          title: passengerTitle.value,
-                         id: 4,
+                         id: 4
                     },
                     component: () => import('../views/SubViews/SubHomeView.vue'),
                     props: true
@@ -166,63 +165,66 @@ const router = createRouter({
 // Strapi API'sinden pageTitle verilerini çek ve rotalara ekle
 async function fetchPageTitles() {
      try {
-         const response = await axios.get(`https://testmeandercms.badblli.dev/api/pages?populate=deep&locale=${languageCode}`);
-         console.log(languageCode, 'languageCode')
-         const pages = response.data.data;
- 
-         // Sayfaların pageTitle değerlerini ref değişkenlerine ata
-         const homePage = pages.find(page => page.pageName.toLowerCase() === 'home');
-         const pricePage = pages.find(page => page.pageName.toLowerCase() === 'price');
-         const journeyPage = pages.find(page => page.pageName.toLowerCase() === 'journey');
-         const ticketPage = pages.find(page => page.pageName.toLowerCase() === 'ticket');
-         const passengerPage = pages.find(page => page.pageName.toLowerCase() === 'passenger');
- 
-         homeTitle.value = homePage ? homePage.pageTitle : 'Home';
-         priceTitle.value = pricePage ? pricePage.pageTitle : 'Price';
-         journeyTitle.value = journeyPage ? journeyPage.pageTitle : 'Journey';
-         ticketTitle.value = ticketPage ? ticketPage.pageTitle : 'Ticket';
-         passengerTitle.value = passengerPage ? passengerPage.pageTitle : 'Passenger';
+          const response = await axios.get(`https://testmeandercms.badblli.dev/api/pages?populate=deep&locale=${languageCode}`)
+          console.log(languageCode, 'languageCode')
+          const pages = response.data.data
+
+          // Sayfaların pageTitle değerlerini ref değişkenlerine ata
+          const homePage = pages.find((page) => page.pageName.toLowerCase() === 'home')
+          const pricePage = pages.find((page) => page.pageName.toLowerCase() === 'price')
+          const journeyPage = pages.find((page) => page.pageName.toLowerCase() === 'journey')
+          const ticketPage = pages.find((page) => page.pageName.toLowerCase() === 'ticket')
+          const passengerPage = pages.find((page) => page.pageName.toLowerCase() === 'passenger')
+
+          homeTitle.value = homePage ? homePage.pageTitle : 'Home'
+          priceTitle.value = pricePage ? pricePage.pageTitle : 'Price'
+          journeyTitle.value = journeyPage ? journeyPage.pageTitle : 'Journey'
+          ticketTitle.value = ticketPage ? ticketPage.pageTitle : 'Ticket'
+          passengerTitle.value = passengerPage ? passengerPage.pageTitle : 'Passenger'
      } catch (error) {
-         console.error('Error fetching page titles:', error);
+          console.error('Error fetching page titles:', error)
      }
- }
- 
+}
 
 // Dinamik olarak Strapi'den pageTitle verisini almak için beforeEach kullanabiliriz.
 router.beforeEach(async (to, from, next) => {
-     await fetchPageTitles();
+     await fetchPageTitles()
      if (to.meta) {
-          if (to.name === 'home') to.meta.title = homeTitle.value;
-          if (to.name === 'price') to.meta.title = priceTitle.value;
-          if (to.name === 'journey') to.meta.title = journeyTitle.value;
-          if (to.name === 'tickets') to.meta.title = ticketTitle.value;
-          if (to.name === 'passenger') to.meta.title = passengerTitle.value;
+          if (to.name === 'home') to.meta.title = homeTitle.value
+          if (to.name === 'price') to.meta.title = priceTitle.value
+          if (to.name === 'journey') to.meta.title = journeyTitle.value
+          if (to.name === 'tickets') to.meta.title = ticketTitle.value
+          if (to.name === 'passenger') to.meta.title = passengerTitle.value
      }
-     next();
+     next()
 })
 
 router.afterEach((to, from, failure) => {
      if (!failure) {
-         setTimeout(() => {
-             window.HSStaticMethods.autoInit()
-         }, 10)
+          setTimeout(() => {
+               window.HSStaticMethods.autoInit()
+          }, 10)
      }
      // Dinamik olarak sayfa başlığını güncelle
      document.title = to.meta.title || 'Default Title'
-    
-     const routerStore = useRouterStore();
-     routerStore.addRouteChange({ to: to.fullPath, meta: to.meta });
-     const routerChange = computed(() => routerStore.getRouterChange);
-     console.log(routerChange, 'routerChange');
- })
 
- watch(selectedLanguage, async () => {
-     await fetchPageTitles();
-     const routerStore = useRouterStore();
-     console.log(selectedLanguage, 'selected language2')
-     routerStore.updateLanguage(selectedLanguage); // Store'u güncelle
-     const updatedStore = routerStore.getRouterChange;
-     console.log(updatedStore, 'updated store')
- }, { deep: true })
+     const routerStore = useRouterStore()
+     routerStore.addRouteChange({ to: to.fullPath, meta: to.meta })
+     const routerChange = computed(() => routerStore.getRouterChange)
+     console.log(routerChange, 'routerChange')
+})
+
+watch(
+     selectedLanguage,
+     async () => {
+          await fetchPageTitles()
+          const routerStore = useRouterStore()
+          console.log(selectedLanguage, 'selected language2')
+          routerStore.updateLanguage(selectedLanguage) // Store'u güncelle
+          const updatedStore = routerStore.getRouterChange
+          console.log(updatedStore, 'updated store')
+     },
+     { deep: true }
+)
 
 export default router
