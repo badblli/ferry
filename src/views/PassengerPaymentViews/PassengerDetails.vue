@@ -115,17 +115,24 @@
                                                             </div>
                                                             <vue-tel-input v-model="accordion.tel" @validate="onPhoneInput($event, accordion)" v-bind="bindProps"></vue-tel-input>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"  :placeholder="passengerDetails?.passengers[0].birth"  />
+                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" :placeholder="passengerDetails?.passengers[0].birth" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <!-- Select -->
-                                                                 <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
+                                                                 <select name="nation" :id="'nation-' + index" class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                                                       <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
                                                                       <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
                                                                            {{ data?.Name }}
                                                                       </option>
                                                                  </select>
+
+                                                                 <!-- <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
+                                                                      <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
+                                                                      <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
+                                                                           {{ data?.Name }}
+                                                                      </option>
+                                                                 </select> -->
                                                                  <!-- End Select -->
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
@@ -133,13 +140,8 @@
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.id" maxlength="11"
-                                                                  @input="validateInput(accordion)"
-                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                      type="type"
-                                                                      :placeholder="passengerDetails?.passengers[0].passenderId" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                      type="button"></div>
+                                                                 <input v-model="accordion.id" maxlength="11" @input="validateInput(accordion)" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].passenderId" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                        </form>
                                                   </div>
@@ -147,10 +149,15 @@
                                                        <div class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
                                                             <div class="mr-4">{{ passengerDetails.passengers[0].mailPassenger }}</div>
                                                             <div @click="setPrimary(index)">
-                                                                 <input
+                                                                 <!-- <input
                                                                       v-model="accordion.isPrimary"
                                                                       type="checkbox"
                                                                       class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200"
+                                                                 /> -->
+                                                                 <input
+                                                                      v-model="accordion.isPrimary"
+                                                                      type="checkbox"
+                                                                      class="relative w-5 h-5 p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:size-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-blue-200"
                                                                  />
                                                             </div>
                                                        </div>
@@ -162,12 +169,8 @@
                                                             <button :class="buttonClass(accordion)" @click="saveAllPassenger(accordion)" class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                                  {{ buttonText(accordion) }}
                                                             </button>
-                                                            <div class="ml-8 mt-2 text-gray-500"
-                                                                 v-if="accordion.showBtnWarning">*Alanlar
-                                                                 doldurulmalıdır.</div>
-                                                                 <div v-if="accordion.showBtnWarning2" class="ml-8 mt-2 text-gray-500">
-                                                                      TC NO 11 Haneden az olmamalıdır.
-                                                                 </div>
+                                                            <div class="ml-8 mt-2 text-gray-500" v-if="accordion.showBtnWarning">*Alanlar doldurulmalıdır.</div>
+                                                            <div v-if="accordion.showBtnWarning2" class="ml-8 mt-2 text-gray-500">TC NO 11 Haneden az olmamalıdır.</div>
                                                        </div>
                                                   </div>
                                              </AccordionPanel>
@@ -336,13 +339,11 @@ const getTitle = (accordion: any) => {
 }
 
 const validateInput = (accordion) => {
-  const regex = /^\d{11}$/;
-  accordion.showBtnWarning2 = !regex.test(accordion.id);
-};
-
-const clearForm = () => {
-
+     const regex = /^\d{11}$/
+     accordion.showBtnWarning2 = !regex.test(accordion.id)
 }
+
+const clearForm = () => {}
 
 const resetForm = (accordion: any) => {
      accordion.name = ''
@@ -475,17 +476,17 @@ const saveAllPassenger = async (accordion: any) => {
      }
 
      // Validate input
-     const regex = /^\d{11}$/;
+     const regex = /^\d{11}$/
      if (!regex.test(accordion.id)) {
-          accordion.showBtnWarning2 = true;
-          accordion.isLoading = false;
-          console.log('ID 11 haneli bir sayı olmalıdır.');
-          return;
+          accordion.showBtnWarning2 = true
+          accordion.isLoading = false
+          console.log('ID 11 haneli bir sayı olmalıdır.')
+          return
      }
 
      try {
-       const calculatedId = accordion._id
-if (calculatedId === null) {
+          const calculatedId = accordion._id
+          if (calculatedId === null) {
                console.error('Failed to calculate new _id due to invalid birthDate')
                accordion.isLoading = false
                return
@@ -537,7 +538,7 @@ const confirmChange = (accordion: any) => {
                console.log('Accordion before formatting:', JSON.stringify(accordion))
                console.log('Before formatting date:', accordion.birthDate)
 
-            const calculatedId = accordion
+               const calculatedId = accordion
 
                if (calculatedId === null) {
                     console.error('Failed to calculate new _id due to invalid birthDate')
