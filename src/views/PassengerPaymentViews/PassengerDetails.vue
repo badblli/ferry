@@ -115,11 +115,17 @@
                                                             </div>
                                                             <vue-tel-input v-model="accordion.tel" @validate="onPhoneInput($event, accordion)" v-bind="bindProps"></vue-tel-input>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"  :placeholder="passengerDetails?.passengers[0].birth"  />
+                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" :placeholder="passengerDetails?.passengers[0].birth" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <!-- Select -->
+                                                                 <!-- <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                                      <option selected="">Open this select menu</option>
+                                                                      <option>1</option>
+                                                                      <option>2</option>
+                                                                      <option>3</option>
+                                                                 </select> -->
                                                                  <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
                                                                       <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
                                                                       <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
@@ -133,13 +139,8 @@
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.id" maxlength="11"
-                                                                  @input="validateInput(accordion)"
-                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
-                                                                      type="type"
-                                                                      :placeholder="passengerDetails?.passengers[0].passenderId" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
-                                                                      type="button"></div>
+                                                                 <input v-model="accordion.id" maxlength="11" @input="validateInput(accordion)" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].passenderId" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                        </form>
                                                   </div>
@@ -162,12 +163,8 @@
                                                             <button :class="buttonClass(accordion)" @click="saveAllPassenger(accordion)" class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                                  {{ buttonText(accordion) }}
                                                             </button>
-                                                            <div class="ml-8 mt-2 text-gray-500"
-                                                                 v-if="accordion.showBtnWarning">*Alanlar
-                                                                 doldurulmalıdır.</div>
-                                                                 <div v-if="accordion.showBtnWarning2" class="ml-8 mt-2 text-gray-500">
-                                                                      TC NO 11 Haneden az olmamalıdır.
-                                                                 </div>
+                                                            <div class="ml-8 mt-2 text-gray-500" v-if="accordion.showBtnWarning">*Alanlar doldurulmalıdır.</div>
+                                                            <div v-if="accordion.showBtnWarning2" class="ml-8 mt-2 text-gray-500">TC NO 11 Haneden az olmamalıdır.</div>
                                                        </div>
                                                   </div>
                                              </AccordionPanel>
@@ -336,13 +333,11 @@ const getTitle = (accordion: any) => {
 }
 
 const validateInput = (accordion) => {
-  const regex = /^\d{11}$/;
-  accordion.showBtnWarning2 = !regex.test(accordion.id);
-};
-
-const clearForm = () => {
-
+     const regex = /^\d{11}$/
+     accordion.showBtnWarning2 = !regex.test(accordion.id)
 }
+
+const clearForm = () => {}
 
 const resetForm = (accordion: any) => {
      accordion.name = ''
@@ -475,17 +470,17 @@ const saveAllPassenger = async (accordion: any) => {
      }
 
      // Validate input
-     const regex = /^\d{11}$/;
+     const regex = /^\d{11}$/
      if (!regex.test(accordion.id)) {
-          accordion.showBtnWarning2 = true;
-          accordion.isLoading = false;
-          console.log('ID 11 haneli bir sayı olmalıdır.');
-          return;
+          accordion.showBtnWarning2 = true
+          accordion.isLoading = false
+          console.log('ID 11 haneli bir sayı olmalıdır.')
+          return
      }
 
      try {
-       const calculatedId = accordion._id
-if (calculatedId === null) {
+          const calculatedId = accordion._id
+          if (calculatedId === null) {
                console.error('Failed to calculate new _id due to invalid birthDate')
                accordion.isLoading = false
                return
@@ -537,7 +532,7 @@ const confirmChange = (accordion: any) => {
                console.log('Accordion before formatting:', JSON.stringify(accordion))
                console.log('Before formatting date:', accordion.birthDate)
 
-            const calculatedId = accordion
+               const calculatedId = accordion
 
                if (calculatedId === null) {
                     console.error('Failed to calculate new _id due to invalid birthDate')
