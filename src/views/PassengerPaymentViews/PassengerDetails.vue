@@ -114,9 +114,8 @@
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
                                                             </div>
                                                             <vue-tel-input v-model="accordion.tel" @validate="onPhoneInput($event, accordion)" v-bind="bindProps"></vue-tel-input>
-                                                            <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" :placeholder="passengerDetails?.passengers[0].birth" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                            <div class="flex border-b h-12 border-neutral-200 mb-10">
+                                                                 <input type="date" v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" :placeholder="passengerDetails?.passengers[0].birth" />
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <!-- Select -->
