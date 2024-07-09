@@ -1770,6 +1770,10 @@ video {
   height: 211px;
 }
 
+.h-\[21px\] {
+  height: 21px;
+}
+
 .h-\[223px\] {
   height: 223px;
 }
@@ -1968,14 +1972,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[21px\] {
-  height: 21px;
-}
-
-.h-\[3\.25rem\] {
-  height: 3.25rem;
 }
 
 .max-h-72 {
@@ -3102,14 +3098,14 @@ video {
   background-color: rgb(30 45 58 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .bg-stone-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(208 208 208 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -5339,6 +5335,11 @@ input.focus\:outline-none:focus {
   height: 100%;
 }
 
+.before\:w-4::before {
+  content: var(--tw-content);
+  width: 1rem;
+}
+
 .before\:w-6::before {
   content: var(--tw-content);
   width: 1.5rem;
@@ -5347,11 +5348,6 @@ input.focus\:outline-none:focus {
 .before\:w-full::before {
   content: var(--tw-content);
   width: 100%;
-}
-
-.before\:w-4::before {
-  content: var(--tw-content);
-  width: 1rem;
 }
 
 .before\:translate-x-0::before {
