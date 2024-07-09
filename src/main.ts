@@ -1,8 +1,9 @@
+import 'preline/preline'
 import './assets/main.css'
 import 'vue-tel-input/vue-tel-input.css' // Assuming a phone input library
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import 'preline/preline'
+
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'

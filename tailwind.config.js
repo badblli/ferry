@@ -1,9 +1,7 @@
 
 
 export default {
-  content: [
-    './node_modules/preline/preline.js',
-  ],
+  content: ['./src/**/*.{html,vue,js,tsx}', 'node_modules/preline/dist/*.js',],
   darkMode: 'class',
   theme: {
     colors: {

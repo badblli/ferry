@@ -1,17 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import axios from 'axios'
-import { ref, watch, computed } from 'vue';
+import { ref, watch, computed } from 'vue'
 import { useRouterStore } from '../stores/router'
-
-const homeTitle = ref(null);
-const priceTitle = ref(null);
-const journeyTitle = ref(null);
-const ticketTitle = ref(null);
-const passengerTitle = ref(null);
-const routeChanges = ref([]);
- 
 import { type IStaticMethods } from 'preline/preline'
-import value from '../../globals';
+const homeTitle = ref(null)
+const priceTitle = ref(null)
+const journeyTitle = ref(null)
+const ticketTitle = ref(null)
+const passengerTitle = ref(null)
+const routeChanges = ref([])
+
 declare global {
      interface Window {
           HSStaticMethods: IStaticMethods
@@ -38,7 +36,7 @@ const routes = [
                     name: 'home',
                     meta: {
                          title: homeTitle.value,
-                         id: 1,
+                         id: 1
                     },
                     component: () => import('@/views/HomeView/HomeView.vue')
                },
@@ -47,7 +45,7 @@ const routes = [
                     name: 'price',
                     meta: {
                          title: priceTitle.value,
-                         id: 2,
+                         id: 2
                     },
                     component: () => import('@/views/TicketPrice.vue')
                },
@@ -100,7 +98,7 @@ const routes = [
                     path: '/journey',
                     meta: {
                          title: journeyTitle.value,
-                         id: 3,
+                         id: 3
                     },
                     name: 'journey',
                     component: () => import('../views/JourneyView.vue')
@@ -111,7 +109,7 @@ const routes = [
                     name: 'tickets',
                     meta: {
                          title: ticketTitle.value,
-                         id: 4,
+                         id: 4
                     },
                     component: () => import('../views/FerryTicketListingViews/OneWayListView.vue')
                },
@@ -155,16 +153,16 @@ const router = createRouter({
 // Strapi API'sinden pageTitle verilerini çek ve rotalara ekle
 async function fetchPageTitles() {
      try {
-          const response = await axios.get(`https://testmeandercms.badblli.dev/api/pages?populate=deep&locale=${languageCode}`);
-          const pages = response.data.data;
-          console.log(pages, 'pages');
+          const response = await axios.get(`https://testmeandercms.badblli.dev/api/pages?populate=deep&locale=${languageCode}`)
+          const pages = response.data.data
+          console.log(pages, 'pages')
 
           // "Home" sayfasının pageTitle değerini almak
-          const homePage = pages.find(page => page.pageName === 'Home');
-          const pricePage = pages.find(page => page.pageName === 'Price');
-          const journeyPage = pages.find(page => page.pageName === 'Journey');
-          const ticketPage = pages.find(page => page.pageName === 'Ticket');
-          const passengerPage = pages.find(page => page.pageName === 'Passenger');
+          const homePage = pages.find((page) => page.pageName === 'Home')
+          const pricePage = pages.find((page) => page.pageName === 'Price')
+          const journeyPage = pages.find((page) => page.pageName === 'Journey')
+          const ticketPage = pages.find((page) => page.pageName === 'Ticket')
+          const passengerPage = pages.find((page) => page.pageName === 'Passenger')
           homeTitle.value = homePage.pageTitle
           priceTitle.value = pricePage.pageTitle
           journeyTitle.value = journeyPage.pageTitle
@@ -172,18 +170,18 @@ async function fetchPageTitles() {
           passengerTitle.value = passengerPage.pageTitle
           // const homePageTitle = homePage ? homePage.pageTitle : 'Default Home Title';
           // Her rota için pageTitle verisini belirleme
-          routes.forEach(route => {
+          routes.forEach((route) => {
                if (!route.meta) {
-                    route.meta = {};
+                    route.meta = {}
                }
-               const pageData = pages.find(page => page.pageName === route.name);
-               console.log(pageData, 'pageData');
+               const pageData = pages.find((page) => page.pageName === route.name)
+               console.log(pageData, 'pageData')
                if (pageData && pageData.pageTitle) {
-                    route.meta.pageTitle = pageData.pageTitle;
+                    route.meta.pageTitle = pageData.pageTitle
                }
-          });
+          })
      } catch (error) {
-          console.error('Error fetching page titles:', error);
+          console.error('Error fetching page titles:', error)
      }
 }
 
@@ -196,26 +194,30 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach((to, from, failure) => {
      console.log(to, 'tototototo')
      if (!failure) {
-         setTimeout(() => {
-             console.log(window)
-             window.HSStaticMethods.autoInit()
-         }, 10)
+          setTimeout(() => {
+               console.log(window)
+               window.HSStaticMethods.autoInit()
+          }, 10)
      }
      // Dinamik olarak sayfa başlığını güncelle
      document.title = to.meta.pageTitle || 'Default Title'
-    
-     const routerStore = useRouterStore();
-     // Route değişikliklerini izlemek ve diziye atamak
-     routerStore.addRouteChange({ to: to.fullPath, meta: to.meta, id: to.id });
-     const routerChange = computed(() => routerStore.getRouterChange);
-     console.log(routerChange, 'routerChange');
-     console.log(routerStore.routerChange, 'routeChange store');
-     console.log(routeChanges, 'routeChanges')
-     console.log(routerStore, 'routerStore');
- })
 
-watch(routeChanges, (newChanges) => {
-     console.log('Route changes:', newChanges);
-}, { deep: true });
+     const routerStore = useRouterStore()
+     // Route değişikliklerini izlemek ve diziye atamak
+     routerStore.addRouteChange({ to: to.fullPath, meta: to.meta, id: to.id })
+     const routerChange = computed(() => routerStore.getRouterChange)
+     console.log(routerChange, 'routerChange')
+     console.log(routerStore.routerChange, 'routeChange store')
+     console.log(routeChanges, 'routeChanges')
+     console.log(routerStore, 'routerStore')
+})
+
+watch(
+     routeChanges,
+     (newChanges) => {
+          console.log('Route changes:', newChanges)
+     },
+     { deep: true }
+)
 
 export default router
