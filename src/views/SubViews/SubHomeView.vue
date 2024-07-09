@@ -307,15 +307,15 @@
                                         class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
                                         <div class="ml-5 mt-10">
                                              <div class="w-[42px] h-[42px] relative">
-                                                       <IconReceipt2 v-if="change.meta.id === 1"/>
-                                                       <IconBoat v-if="change.meta.id === 2"/>
-                                                       <IconForkKnife v-if="change.meta.id === 3"/>
-                                                       <IconShieldChevron v-if="change.meta.id === 4"/>
+                                                  <IconReceipt2 v-if="change.meta.id === 1" />
+                                                  <IconBoat v-if="change.meta.id === 2" />
+                                                  <IconForkKnife v-if="change.meta.id === 3" />
+                                                  <IconShieldChevron v-if="change.meta.id === 4" />
                                              </div>
                                         </div>
                                         <div
                                              class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
-                                             {{ change.to }}
+                                             {{ change.meta.title }}
                                         </div>
                                    </div>
                               </div>
