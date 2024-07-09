@@ -1,8 +1,10 @@
 <template>
      <div v-if="mainNavbar.links?.length > 0">
           <nav
-               class="navbar centered-w w-full h-[112px] bg-white flex justify-between items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
-               <div class="hs-dropdown relative inline-flex md:hidden">
+               class="navbar centered-w w-full justify-between h-[112px] bg-white flex items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
+
+               <div>
+                    <div class="hs-dropdown relative inline-flex md:hidden">
                     <!-- <button id="hs-dropdown-slideup-animation block md:hidden" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                          <IconRwpNavbar />
                     </button> -->
@@ -22,12 +24,12 @@
                          </a>
                     </div>
                </div>
-               <!-- <div className="hidden md:flex">
-            <router-link v-for="(item, index) in navBarItems" :key="index" :to="item.to"
-                class="flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
-                {{ item.text }}
-            </router-link>
-        </div> -->
+                              <!-- <div className="hidden md:flex">
+                         <router-link v-for="(item, index) in navBarItems" :key="index" :to="item.to"
+                              class="flex flex-row cursor-pointer items-center gap-x-3.5 py-2 pr-3 rounded-lg text-md text-gray-800 focus:outline-none">
+                              {{ item.text }}
+                         </router-link>
+                    </div> -->
                <div ref="dropdown" class="flex flex-row items-center">
                     <div class="relative">
                          <button @click="toggleDropdown" type="button" :class="{ 'bg-white': !isMeanderLayout }"
@@ -52,6 +54,8 @@
                          </router-link>
                     </div>
                </div>
+               </div>
+
                <div class="flex flex-row justify-center items-center cursor-pointer lg:mr-16 mr-0"
                     @click="navigateToHome">
                     <img :src="getImage(imageURL)" alt="Image" class="w-40 h-12 object-cover" />
@@ -64,6 +68,7 @@
                          </div>
                     </div>
                </div>
+
                <div class="border rounded-3xl p-[10px]" :class="{ 'border-none': !isMeanderLayout }">
                     <div v-if="isAuthenticated" class="text-center cursor-pointer hidden md:flex">
                          <button @click="showModal" type="button"
@@ -84,6 +89,7 @@
                          </Transition>
                     </Teleport>
                </div>
+
           </nav>
           <!-- <div class="w-full h-[1px] border border-gray-200"></div> -->
      </div>

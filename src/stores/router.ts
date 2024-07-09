@@ -2,18 +2,21 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 interface RouterChange {
-    to: string,
+    title: string,
     meta: {
-        pageTitle?: string,
+        id: number,
+        title: string
     }
 }
 
 export const useRouterStore = defineStore({
     id: 'router',
     state: (): {
-        routerChange: RouterChange[]
+        routerChange: RouterChange[],
+        language: string
     } => ({
-        routerChange: []
+        routerChange: [],
+        language: 'tr' // Varsayılan dil kodu
     }),
     getters: {
         getRouterChange: (state) => state.routerChange
@@ -21,9 +24,15 @@ export const useRouterStore = defineStore({
     actions: {
         addRouteChange(change: RouterChange) {
             if (this.routerChange.length >= 4) {
-                this.routerChange.shift(); // En eski değeri kaldır
+                this.routerChange.shift();
             }
-            this.routerChange.push(change);
+            const exists = this.routerChange.find(rc => rc.to === change.to);
+            if (!exists) {  
+                this.routerChange.push(change);
+            }
+        },
+        updateLanguage(newLanguage: string) {
+            this.language = newLanguage;
         }
     },
     persist: true

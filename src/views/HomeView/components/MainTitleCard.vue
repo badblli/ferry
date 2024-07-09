@@ -35,7 +35,7 @@
                     </div>
                </div>
                <div class="relative w-full rounded-xl flex flex-col justify-between mb-10">
-                    <div class="absolute bottom-0 z-10 bg-white md:w-2/3 w-full p-7 md:ml-4 md:mb-4 rounded-xl">
+                    <div class="absolute bottom-0 z-10 bg-white p-7 mx-4 mb-4 rounded-xl">
                          <div class="flex flex-col justify-between h-full">
                               <div class="text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[18.46px] tracking-[2.96px] mb-4">
                                    {{ item && item.toursTitle }}
@@ -50,7 +50,6 @@
                               </div>
                          </div>
                     </div>
-
                     <img :src="getImage(item.toursImage.url)" alt="item-image" class="object-fill w-full h-[450px] rounded-xl flip-horizontal" />
                </div>
           </div>
