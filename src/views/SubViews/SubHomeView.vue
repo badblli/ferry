@@ -599,7 +599,7 @@
                                                        class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] leading-[37.06px] mb-9">
                                                        {{ accordion.category }}</h1>
                                                   <div>
-                                                       <AccordionPanel2 :title="question.title"
+                                                       <AccordionPanel3 :title="question.title"
                                                             v-for="(question, qIndex) in accordion.CategoryQuestion"
                                                             :key="qIndex"
                                                             class=" border border-transparent rounded-xl mb-[24px]">
@@ -616,7 +616,7 @@
                                                                       </p>
                                                                  </div>
                                                             </div>
-                                                       </AccordionPanel2>
+                                                       </AccordionPanel3>
                                                   </div>
                                                   <!-- <div
                                                        class="flex flex-row justify-center items-center text-black text-lg font-medium font-display mr-1 cursor-pointer">
@@ -1019,7 +1019,7 @@ const fakeData2 = ref<FakeDataItem[]>([
 import { getApi, getImage } from '@/utils/globalHelper'
 import { useTripStore } from '../../../src/stores/tripStore'
 import TabComponent from '../SubViews/components/TabComponent.vue'
-import AccordionPanel2 from '../../components/advanced/AccordionPanel2.vue'
+import AccordionPanel3 from '../../components/advanced/AccordionPanel3.vue'
 import { onBeforeUnmount } from 'vue'
 
 const tripStore = useTripStore()
