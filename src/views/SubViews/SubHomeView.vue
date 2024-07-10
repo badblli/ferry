@@ -1,9 +1,9 @@
 <template>
      <hr class="w-2 border" />
      <div class="flex flex-col justify-center items-center m-auto relative">
-          <div class="w-full flex flex-col mx-24 centered-w justify-center items-center">
+          <div class="w-full flex flex-col justify-center items-center">
                <div class="flex flex-col mt-10">
-                    <div class="flex flex-row border-sub-line">
+                        <div class="flex flex-row border-sub-line">
                          <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id"
                               class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === tab.id }">{{ tab.title
                               }}</div>
@@ -15,7 +15,7 @@
                          <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" />
                          <!-- && activeTab !== copyTabs[5].id -->
                          <form v-show="activeTab !== copyTabs[3].id"
-                              class="md:relative md:max-w-[798px] hidden md:block mx-auto md:z-50 z-40 custom-border">
+                              class="md:relative md:max-w-[849px] hidden md:block mx-auto md:z-50 z-40 custom-border">
                               <div class="flex flex-row">
                                    <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
                                         class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
@@ -285,114 +285,115 @@
                               </div>
                          </form>
                     </div>
-                    <div class="px-2 md:px-16 sm:px-8 centered-w" :key="index" v-show="activeTab === copyTabs[0].id">
-                         <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
-                              <div v-for="(paragraph, index) in tab.description" :key="index"
-                                   class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
-                                   <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
-                                        {{ child.text }}
-                                   </p>
+                    <div :key="index" v-show="activeTab === copyTabs[0].id">
+                         <div class="centered-w" >
+                              <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
+                                   <div v-for="(paragraph, index) in tab.description" :key="index"
+                                        class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
+                                        <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
+                                             {{ child.text }}
+                                        </p>
+                                   </div>
                               </div>
-                         </div>
-                         <div>
-                              <div
-                                   class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
-                                   {{ tourDetail.title }}
-                              </div>
-                              <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
-                                   {{ tourDetail.subtitle }}
-                              </div>
-                              <div class="mt-9 flex flex-row">
-                                   <div v-for="(change, index) in routerChange" :key="index"
-                                        class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
-                                        <div class="ml-5 mt-10">
-                                             <div class="w-[42px] h-[42px] relative">
-                                                  <IconReceipt2 v-if="change.meta.id === 1" />
-                                                  <IconBoat v-if="change.meta.id === 2" />
-                                                  <IconForkKnife v-if="change.meta.id === 3" />
-                                                  <IconShieldChevron v-if="change.meta.id === 4" />
+                              <div>
+                                   <div
+                                        class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                        {{ tourDetail.title }}
+                                   </div>
+                                   <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                        {{ tourDetail.subtitle }}
+                                   </div>
+                                   <div class="mt-9 flex flex-row">
+                                        <div v-for="(change, index) in routerChange" :key="index"
+                                             class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
+                                             <div class="ml-5 mt-10">
+                                                  <div class="w-[42px] h-[42px] relative">
+                                                       <IconReceipt2 v-if="change.meta.id === 1" />
+                                                       <IconBoat v-if="change.meta.id === 2" />
+                                                       <IconForkKnife v-if="change.meta.id === 3" />
+                                                       <IconShieldChevron v-if="change.meta.id === 4" />
+                                                  </div>
+                                             </div>
+                                             <div
+                                                  class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
+                                                  {{ change.meta.title }}
                                              </div>
                                         </div>
-                                        <div
-                                             class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
-                                             {{ change.meta.title }}
-                                        </div>
                                    </div>
                               </div>
-                         </div>
-                         <!-- <div>
-                              <div
-                                   class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
-                                   {{ tourDetail.title }}
-                              </div>
-                              <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
-                                   {{ tourDetail.subtitle }}
-                              </div>
-                              <div class="mt-9 flex flex-row">
-                                   <div v-for="tourDetail in tourDetail?.tourDetails" :key="tourDetail.id"
-                                        class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
-                                        <div class="ml-5 mt-10">
-                                             <div class="w-[42px] h-[42px] relative">
-                                                  <img :src="getImage(tourDetail.img.url)" :alt="tourDetail.img.name" />
+                              <!-- <div>
+                                   <div
+                                        class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                        {{ tourDetail.title }}
+                                   </div>
+                                   <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                        {{ tourDetail.subtitle }}
+                                   </div>
+                                   <div class="mt-9 flex flex-row">
+                                        <div v-for="tourDetail in tourDetail?.tourDetails" :key="tourDetail.id"
+                                             class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
+                                             <div class="ml-5 mt-10">
+                                                  <div class="w-[42px] h-[42px] relative">
+                                                       <img :src="getImage(tourDetail.img.url)" :alt="tourDetail.img.name" />
+                                                  </div>
+                                             </div>
+                                             <div
+                                                  class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
+                                                  {{ tourDetail.title }}
                                              </div>
                                         </div>
-                                        <div
-                                             class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
-                                             {{ tourDetail.title }}
-                                        </div>
-                                   </div>
-                              </div>
-                         </div> -->
-                         <div class="mt-16">
-                              <div class="flex flex-row justify-between items-end">
-                                   <div>
-                                        <div
-                                             class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
-                                             {{ tourCards.title }}
-                                        </div>
-                                        <div
-                                             class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
-                                             {{ tourCards.subtitle }}
-                                        </div>
-                                   </div>
-                                   <div
-                                        class="w-[125px] h-8 bg-slate-200 rounded-lg border justify-center items-center flex">
-                                        <div class="mr-1">{{ tourCards.btnText }}</div>
-                                        <IconArrowUpRight />
-                                   </div>
-                              </div>
-                         </div>
-                         <div class="flex flex-row">
-                              <MainTourCardComponent :item="tourCards" />
-                         </div>
-                         <div class="mt-10">
-
-                              <HomeSubCardSplide :key="index" :item="allTours" />
-
-                              <!-- HERE-->
-                              <!-- <div class="flex flex-row justify-between items-end">
-                                   <div>
-                                        <div
-                                             class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
-                                             {{ allTours.title }}
-                                        </div>
-                                        <div
-                                             class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
-                                             {{ allTours.subtitle }}
-                                        </div>
-                                   </div>
-                                   <div
-                                        class="w-[125px] h-8 bg-slate-200 rounded-lg border justify-center items-center flex">
-                                        <div class="mr-1">{{ allTours.btnText }}</div>
-                                        <IconArrowUpRight />
                                    </div>
                               </div> -->
-                              <!-- HERE -->
+                              <div class="mt-16">
+                                   <div class="flex flex-row justify-between items-end">
+                                        <div>
+                                             <div
+                                                  class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                                  {{ tourCards.title }}
+                                             </div>
+                                             <div
+                                                  class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                                  {{ tourCards.subtitle }}
+                                             </div>
+                                        </div>
+                                        <div
+                                             class="w-[125px] h-8 bg-slate-200 rounded-lg border justify-center items-center flex">
+                                             <div class="mr-1">{{ tourCards.btnText }}</div>
+                                             <IconArrowUpRight />
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="flex flex-row">
+                                   <MainTourCardComponent :item="tourCards" />
+                              </div>
+                              <div class="mt-10">
+                                   <!-- HERE-->
+                                   <!-- <div class="flex flex-row justify-between items-end">
+                                        <div>
+                                             <div
+                                                  class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                                  {{ allTours.title }}
+                                             </div>
+                                             <div
+                                                  class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                                  {{ allTours.subtitle }}
+                                             </div>
+                                        </div>
+                                        <div
+                                             class="w-[125px] h-8 bg-slate-200 rounded-lg border justify-center items-center flex">
+                                             <div class="mr-1">{{ allTours.btnText }}</div>
+                                             <IconArrowUpRight />
+                                        </div>
+                                   </div> -->
+                                   <!-- HERE -->
+                              </div>
+                              <!-- <div class="flex flex-row">
+                                   <MainTourCardComponent :item="allTours" />
+                              </div> -->
                          </div>
-                         <!-- <div class="flex flex-row">
-                              <MainTourCardComponent :item="allTours" />
-                         </div> -->
+                         <HomeSubCardSplide :key="index" :item="allTours" />
                     </div>
+
                     <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[1].id">
                          <div>
                               <div v-for="(paragraph, index) in tab.description" :key="index"

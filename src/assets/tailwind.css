@@ -550,6 +550,11 @@ input.focus\:outline-none:focus {
      margin-right: auto;
 }
 
+.centered-l-w{
+  max-width: 1400px;
+  margin-left: auto;
+}
+
 .dp__month_year_row {
      display: flex;
      align-items: center;
