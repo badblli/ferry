@@ -21,7 +21,7 @@
                         Fırsatlar
                     </li>
                 </ol>
-                <h1 class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center">
+                <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide my-auto flex items-center">
                     <span class="font-bold">Samos</span>Fırsatlar
                 </h1>
             </div>
@@ -31,7 +31,7 @@
                 <div class=" flex md:mt-[55px] md:mb-24 mb-6 mt-6">
                     <div class="flex justify-center">
                         <div
-                            class="max-w-[508px] text-black text-2xl font-medium font-['Plus Jakarta Sans'] md:leading-[37.06px] leading-7">
+                            class="max-w-[508px] text-black md:text-2xl texl-xl font-medium font-['Plus Jakarta Sans'] md:leading-[37.06px] leading-7">
                             En güncel fırsatları gezginler için sunuyoruz. Alttaki listeden size en uygun olanı
                             değerlendirebilirsiniz.</div>
                     </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="md:w-7/12 mb-5">
                     <div class="w-11/12">
-                        <div class=" text-black text-[32px] font-semibold font-['Plus Jakarta Sans'] tracking-wide md:ml-6">
+                        <div class=" text-black md:text-[32px] text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide md:ml-6">
                             {{ item.title }}</div>
                         <div
                             class=" text-black text-base font-normal font-['Plus Jakarta Sans'] md:leading-[29.03px] leading-5 md:ml-6 md:mt-3 mt-5">
