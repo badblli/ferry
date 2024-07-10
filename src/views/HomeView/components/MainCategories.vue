@@ -1,11 +1,11 @@
 <template>
      <section>
-          <div class="w-full bg-slate-200 flex flex-col items-center">
-               <div class="text-black text-[42px] font-medium font-display tracking-wide mt-[100px] mb-7">{{ item.title }}</div>
+          <div class="w-full bg-slate-200 lg:px-[100px] px-2 md:px-16 sm:px-8 flex flex-col items-center">
+               <div class="text-black text-[42px] font-medium font-display tracking-wide mt-[100px] mb-7 text-center">{{ item.title }}</div>
                <div class="w-full text-center text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
                     {{ item.subtitle }}
                </div>
-               <div class="mt-[107px] flex flex-col lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
+               <div class="mt-[107px] flex flex-col centered-w">
                     <div class="flex flex-row flex-wrap justify-center">
                          <div v-for="(category, index) in props.item.blog_category_definitions" :key="index" class="category-item">
                               <!-- <CategorieSlider :title="category.title" :imageUrl="category.imageUrl" /> -->
