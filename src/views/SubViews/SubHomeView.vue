@@ -496,14 +496,14 @@
                     </div>
                     <div class="centered-w" v-show="activeTab === copyTabs[3].id">
                          <div class="flex flex-col justify-center items-center m-auto relative">
-                              <div class="w-full lg:px-[100px] centered-w">
+                              <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                                    <div v-for="(blog, index) in sharedBlogCard.BlogCard" :key="index"
-                                        class="flex flex-col md:flex-row mt-12">
-                                        <div class="md:mb-[20px] mb-5 relative w-1/3">
+                                        class="flex flex-col items-center md:items-start justify-center md:justify-normal md:flex-row mt-12">
+                                        <div class="md:mb-[20px] mb-5 relative md:w-1/3">
                                              <img :src="getImage(blog.img.url)" class="h-full rounded-xl"
                                                   alt="blog image" />
                                              <div
-                                                  class="w-[172px] h-[50px] bg-white rounded-[135px] absolute bottom-0 right-0 flex flex-row justify-evenly items-center mr-7 mb-7">
+                                                  class="w-[172px] h-[50px] hidden md:flex bg-white rounded-[135px] absolute bottom-0 right-0 flex-row justify-evenly items-center mr-7 mb-7">
                                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                                        viewBox="0 0 32 32" fill="none">
                                                        <g id="Copy">
@@ -517,10 +517,10 @@
                                                   <span>{{ blog.btnText }}</span>
                                              </div>
                                         </div>
-                                        <div class="mb-5 w-2/5 md:ml-6">
+                                        <div class="mb-5 md:w-2/5 w-full md:ml-6">
                                              <div>
                                                   <div
-                                                       class="text-black text-[32px] font-semibold font-['Plus Jakarta Sans'] tracking-wide">
+                                                       class="text-black md:text-[32px] text-xl font-semibold font-['Plus Jakarta Sans'] tracking-wide">
                                                        {{ blog.title }}
                                                   </div>
                                                   <div
