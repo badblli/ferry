@@ -3,10 +3,10 @@
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full flex flex-col justify-center items-center">
                <div class="flex flex-col mt-10">
-                        <div class="flex flex-row border-sub-line">
+                    <div class="flex border-sub-line overflow-x-auto whitespace-nowrap w-full">
                          <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id"
-                              class="tab mx-4 px-20 first:ml-20" :class="{ active: activeTab === tab.id }">{{ tab.title
-                              }}</div>
+                              class="tab inline-block md:mx-4 mx-2 md:px-20 px-2 first:ml-20 min-w-max"
+                              :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
                     <div class="w-full bg-blue-700"></div>
                </div>
@@ -286,7 +286,7 @@
                          </form>
                     </div>
                     <div :key="index" v-show="activeTab === copyTabs[0].id">
-                         <div class="centered-w" >
+                         <div class="centered-w lg:px-[100px] px-2 md:px-16 sm:px-8">
                               <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
                                    <div v-for="(paragraph, index) in tab.description" :key="index"
                                         class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
@@ -295,18 +295,21 @@
                                         </p>
                                    </div>
                               </div>
-                              <div>
-                                   <div
-                                        class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
-                                        {{ tourDetail.title }}
+                              <div class="flex flex-col">
+                                   <div>
+                                        <div
+                                             class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                             {{ tourDetail.title }}
+                                        </div>
+                                        <div
+                                             class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                             {{ tourDetail.subtitle }}
+                                        </div>
                                    </div>
-                                   <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
-                                        {{ tourDetail.subtitle }}
-                                   </div>
-                                   <div class="mt-9 flex flex-row">
+                                   <div class="mt-9 flex flex-row flex-wrap">
                                         <div v-for="(change, index) in routerChange" :key="index"
-                                             class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-5">
-                                             <div class="ml-5 mt-10">
+                                             class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-2 my-3">
+                                             <div class="mx-5 mt-10">
                                                   <div class="w-[42px] h-[42px] relative">
                                                        <IconReceipt2 v-if="change.meta.id === 1" />
                                                        <IconBoat v-if="change.meta.id === 2" />
@@ -345,7 +348,7 @@
                                    </div>
                               </div> -->
                               <div class="mt-16">
-                                   <div class="flex flex-row justify-between items-end">
+                                   <div class="flex md:flex-row flex-col justify-between md:items-end md:mt-12">
                                         <div>
                                              <div
                                                   class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
@@ -357,7 +360,7 @@
                                              </div>
                                         </div>
                                         <div
-                                             class="w-[125px] h-8 bg-slate-200 rounded-lg border justify-center items-center flex">
+                                             class="px-3 h-8 max-w-[150px] md:mt-0 mt-5 bg-slate-200 rounded-lg border justify-center items-center flex">
                                              <div class="mr-1">{{ tourCards.btnText }}</div>
                                              <IconArrowUpRight />
                                         </div>
@@ -464,15 +467,31 @@
                                    </p>
                               </div>
                          </div>
-                         <div class="flex flex-row gap-10 justify-between mb-5">
+                         <div class="flex md:flex-row flex-col gap-10 justify-between mb-5">
                               <div v-for="(img, index) in sharedImages.images" :key="index"
-                                   class="flex flex-row gap-10 justify-between mb-5">
-                                   <div class="flex flex-row">
+                                   class="relative flex flex-row gap-10 justify-between mb-5">
+                                   <div class="relative flex flex-row">
                                         <img :src="getImage(img.url)"
-                                             class="w-[397px] h-[267px] bg-black rounded-[20px]" />
+                                             class="w-[397px] h-[267px] bg-black rounded-[20px] cursor-pointer" />
+                                        <div v-if="index === 1"
+                                             class="absolute inset-0 flex items-center justify-center cursor-pointer">
+                                             <div
+                                                  class="w-[100px] h-[100px] bg-blue-700 rounded-full flex flex-row justify-center items-center">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                       viewBox="0 0 32 32" fill="none">
+                                                       <g id="ArrowsOutSimple">
+                                                            <path id="Vector"
+                                                                 d="M27 6V12C27 12.2652 26.8946 12.5196 26.7071 12.7071C26.5196 12.8946 26.2652 13 26 13C25.7348 13 25.4804 12.8946 25.2929 12.7071C25.1054 12.5196 25 12.2652 25 12V8.41375L18.7075 14.7075C18.5199 14.8951 18.2654 15.0006 18 15.0006C17.7346 15.0006 17.4801 14.8951 17.2925 14.7075C17.1049 14.5199 16.9994 14.2654 16.9994 14C16.9994 13.7346 17.1049 13.4801 17.2925 13.2925L23.5863 7H20C19.7348 7 19.4804 6.89464 19.2929 6.70711C19.1054 6.51957 19 6.26522 19 6C19 5.73478 19.1054 5.48043 19.2929 5.29289C19.4804 5.10536 19.7348 5 20 5H26C26.2652 5 26.5196 5.10536 26.7071 5.29289C26.8946 5.48043 27 5.73478 27 6ZM13.2925 17.2925L7 23.5863V20C7 19.7348 6.89464 19.4804 6.70711 19.2929C6.51957 19.1054 6.26522 19 6 19C5.73478 19 5.48043 19.1054 5.29289 19.2929C5.10536 19.4804 5 19.7348 5 20V26C5 26.2652 5.10536 26.5196 5.29289 26.7071C5.48043 26.8946 5.73478 27 6 27H12C12.2652 27 12.5196 26.8946 12.7071 26.7071C12.8946 26.5196 13 26.2652 13 26C13 25.7348 12.8946 25.4804 12.7071 25.2929C12.5196 25.1054 12.2652 25 12 25H8.41375L14.7075 18.7075C14.8951 18.5199 15.0006 18.2654 15.0006 18C15.0006 17.7346 14.8951 17.4801 14.7075 17.2925C14.5199 17.1049 14.2654 16.9994 14 16.9994C13.7346 16.9994 13.4801 17.1049 13.2925 17.2925Z"
+                                                                 fill="white" />
+                                                       </g>
+                                                  </svg>
+                                             </div>
+                                        </div>
                                    </div>
                               </div>
                          </div>
+
+
 
                     </div>
                     <div class="centered-w" v-show="activeTab === copyTabs[3].id">

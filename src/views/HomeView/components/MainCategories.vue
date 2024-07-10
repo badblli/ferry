@@ -1,6 +1,6 @@
 <template>
      <section>
-          <div class="w-full bg-slate-200 flex flex-col items-center mb-[120px]">
+          <div class="w-full bg-slate-200 flex flex-col items-center">
                <div class="text-black text-[42px] font-medium font-display tracking-wide mt-[100px] mb-7">{{ item.title }}</div>
                <div class="w-full text-center text-neutral-600 text-base font-normal font-display leading-[24.86px] tracking-tight">
                     {{ item.subtitle }}

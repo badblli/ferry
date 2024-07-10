@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-[120px] centered-w">
+    <section class="mb-[120px] centered-w lg:px-[100px] px-2 md:px-16 sm:px-8">
         <div>
             <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">{{ props.item.title }}</div>
             <div
