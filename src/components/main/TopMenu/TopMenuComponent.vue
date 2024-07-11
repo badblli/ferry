@@ -1,10 +1,10 @@
 <template>
      <div v-if="topMenu.links?.length > 0">
-          <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4 overflow-hidden">
+          <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full h-[60px] bg-blue-700 text-sm py-4">
                <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between lg:px-[100px] px-2 md:px-16 sm:px-8" aria-label="Global">
                     <div class="lg:flex hidden items-center justify-between">
-                         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-10" href="#">{{ topMenu.title }}</a>
-                         <div class="absolute translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-55px] clip-rect">
+                         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-30" href="#">{{ topMenu.title }}</a>
+                         <div class="absolute z-20 translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-55px] clip-rect">
                               <span class="text-white font-bold text-[15px]">{{ topMenu.more }}</span>
                               <IconTopMenu />
                          </div>
@@ -23,7 +23,7 @@
                                         <IconArrowWhite />
                                    </button>
                                    <transition name="dropdown">
-                                        <div v-show="isOpen" id="lang" class="absolute z-1000 top-12 w-64 bg-white rounded-xl border transition-[opacity,margin] duration-300 mt-2 min-w-[15rem] p-7">
+                                        <div v-show="isOpen" id="lang" class="absolute custom-z top-12 w-64 bg-white rounded-xl border transition-[opacity,margin] duration-300 mt-2 min-w-[15rem] p-7">
                                              <a v-for="(language, langIndex) in languages" :key="langIndex" @click="updateCurrentLanguage(language)" class="cursor-pointer flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">
                                                   {{ language.name }}
                                              </a>
@@ -153,5 +153,9 @@ header {
 .dropdown-leave-from {
      opacity: 1;
      transform: translateY(0);
+}
+
+.custom-z{
+     z-index: 60;
 }
 </style>

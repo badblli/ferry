@@ -1,7 +1,6 @@
 <template>
-     <div v-if="mainNavbar.links?.length > 0">
-          <nav
-               class="navbar flex centered-w w-full justify-between h-[112px] bg-white items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
+     <div class="sticky z-50" v-if="mainNavbar.links?.length > 0">
+          <nav class="flex centered-w w-full justify-between h-[112px] bg-white items-center z-30 lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="flex-1 w-33">
                     <div class="hs-dropdown relative inline-flex md:hidden">
                          <!-- <button id="hs-dropdown-slideup-animation block md:hidden" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
@@ -9,7 +8,7 @@
                     </button> -->
                          <!-- <img :src="getImage(imageURL)" alt="Image" class="w-full h-full object-cover" /> -->
                          <div
-                              class="w-72 p-12 duration hs-dropdown-open:opacity-100 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg">
+                              class="w-72 p-12 duration hs-dropdown-open:opacity-100 hidden z-40 transition-[margin,opacity] opacity-0 duration-300 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg">
                               <div v-for="(item, index) in mainNavbar.links" :key="index">
                                    <router-link :to="{ path: item.href }"
                                         class="flex cursor-pointer items-center gap-x-3.5 py-2 pr-6 rounded-lg text-md text-gray-800 hover:bg-gray-100 focus:outline-none"
@@ -29,7 +28,7 @@
                               {{ item.text }}
                          </router-link>
                     </div> -->
-                    <div ref="dropdown" class="flex flex-row justify-center items-center">
+                    <div ref="dropdown" class="flex flex-row items-center">
                          <div class="relative">
                               <button @click="toggleDropdown" type="button" :class="{ 'bg-white': !isMeanderLayout }"
                                    class="w-[50px] h-[50px] bg-slate-200 rounded-full flex flex-row justify-center items-center cursor-pointer">
@@ -41,7 +40,7 @@
                                         <ul>
                                              <li v-for="(item, index) in mainNavbar.hamburgerMenu" :key="index"
                                                   class="parent cursor-pointer">
-                                                  <router-link  :to="{ path: item.href }"  class="py-3 pl-4">{{ item.label }}&nbsp;
+                                                  <router-link   @click="setRedirect(item)" :to="redirect(item)" class="py-3 pl-4">{{ item.label }}&nbsp;
                                                   </router-link>
                                                   <ul class="child">
                                                        <ul class="parent border">

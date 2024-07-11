@@ -838,6 +838,18 @@ video {
   z-index: 999;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
+.z-auto {
+  z-index: auto;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
 .col-start-1 {
   grid-column-start: 1;
 }
@@ -958,11 +970,6 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
 }
 
 .my-10 {
@@ -2775,6 +2782,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-clip {
+  overflow: clip;
 }
 
 .overflow-x-auto {
