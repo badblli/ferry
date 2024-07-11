@@ -1,7 +1,7 @@
 <template>
      <div v-if="mainNavbar.links?.length > 0">
-          <nav class="navbar flex centered-w w-full justify-between h-[112px] bg-white items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
-               <div class="flex-1 w-33">
+          <nav class="navbar flex centered-w w-full justify-center h-[112px] bg-white items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
+               <div class="flex justify-start items-center flex-1 w-33">
                     <div class="hs-dropdown relative inline-flex md:hidden">
                          <!-- <button id="hs-dropdown-slideup-animation block md:hidden" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                          <IconRwpNavbar />
@@ -24,7 +24,7 @@
                               {{ item.text }}
                          </router-link>
                     </div> -->
-                    <div ref="dropdown" class="flex flex-row items-center">
+                    <div ref="dropdown" class="flex flex-row justify-center items-center">
                          <div class="relative">
                               <button @click="toggleDropdown" type="button" :class="{ 'bg-white': !isMeanderLayout }" class="w-[50px] h-[50px] bg-slate-200 rounded-full flex flex-row justify-center items-center cursor-pointer">
                                    <IconRwpNavbar2 />
