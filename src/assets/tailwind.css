@@ -4,6 +4,9 @@
 
 /* HS Only  */
 @layer utilities {
+     .clip-rect {
+          clip-path: rect(0px, 100%, 60px, 0px);
+     }
      .animation-sliding-img-up-1 {
           animation: sliding-img-up-1 30s linear infinite;
      }
@@ -550,9 +553,9 @@ input.focus\:outline-none:focus {
      margin-right: auto;
 }
 
-.centered-l-w{
-  max-width: 1400px;
-  margin-left: auto;
+.centered-l-w {
+     max-width: 1400px;
+     margin-left: auto;
 }
 
 .dp__month_year_row {
