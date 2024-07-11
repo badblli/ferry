@@ -4,7 +4,7 @@
                <SliderWithThumbnails />
                <HomeCardSplide v-for="(item, index) in fourthSectionData" :key="index" :item="item" />
                <MainTitleCard v-for="(item, index) in secondSectionData" :key="index" :item="item" />
-               <MainTourCard v-for="(item, index) in thirdSectionData" :key="index" :item="item" />
+               <HomeSubCardSplide v-for="(item, index) in thirdSectionData" :key="index" :item="item" />
                <MainCategories v-for="(item, index) in fifthSectionData" :key="index" :item="item" />
                <Teleport to="#target">
                     <Transition name="custom-classes">
@@ -19,7 +19,7 @@
 import { onMounted, ref, watch } from 'vue'
 import SliderWithThumbnails from './components/SliderWithThumbnails.vue'
 import HomeCardSplide from './components/HomeCardSplide.vue'
-import MainTourCard from './components/MainTourCard/MainTourCard.vue'
+import HomeSubCardSplide from '../../views/SubViews/components/HomeSubCardSplide.vue'
 import MainTitleCard from './components/MainTitleCard.vue'
 import MainCategories from './components/MainCategories.vue'
 import { fetchData } from '../../utils/globalHelper'
@@ -55,7 +55,7 @@ const getHome = async () => {
                fifthSectionData.value = data.filter((x: any) => x.__component === 'home-page.categories')
                popUpContent.value = data.filter((x: any) => x.__component === 'global.pop-up')
                console.log('popUpContent', popUpContent.value)
-               console.log('fourthSectionData', fourthSectionData.value);
+               console.log('fourthSectionData', fourthSectionData.value)
           }
      } catch (error) {
           console.error('Hata:', error)
