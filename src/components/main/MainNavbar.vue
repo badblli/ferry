@@ -1,5 +1,5 @@
 <template>
-     <div v-if="mainNavbar.links?.length > 0">
+     <div class="sticky z-50" v-if="mainNavbar.links?.length > 0">
           <nav class="navbar flex centered-w w-full justify-center h-[112px] bg-white items-center z-50 lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="flex justify-start items-center flex-1 w-33">
                     <div class="hs-dropdown relative inline-flex md:hidden">
