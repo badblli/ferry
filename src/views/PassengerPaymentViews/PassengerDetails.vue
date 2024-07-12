@@ -119,7 +119,7 @@
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <!-- Select -->
-                                                                 <select name="nation" :id="'nation-' + index" class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                                 <select name="nation" :id="'nation-' + index" @change="updateAccordionNation($event, accordion)" class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                                                       <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
                                                                       <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
                                                                            {{ data?.Name }}
@@ -469,6 +469,7 @@ const saveAllPassenger = async (accordion: any) => {
 
      if (!isAllFieldsFilled) {
           accordion.showBtnWarning = true
+          console.log('acordion', accordion)
           console.log('Tüm gerekli alanlar doldurulmalıdır.')
           accordion.isLoading = false
           return

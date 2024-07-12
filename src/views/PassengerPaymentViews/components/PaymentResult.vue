@@ -5,25 +5,17 @@
      </div>
 </template>
 
-<script lang="ts">
-import { defineEmits, watch, ref } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, watch } from 'vue'
 
 const paymentStatus = ref(new URLSearchParams(window.location.search).get('Status'))
 
-const emit = defineEmits(['updatePaymentStatus'])
-
-watch(
-    () => paymentStatus.value,
-    (newValue, oldValue) => {
-        if (newValue) {
-            //const data = JSON.parse(newValue);
-            paymentStatus.value = newValue;
-            console.log('paymentStatus changed:', paymentStatus.value)
-            emit('updatePaymentStatus', paymentStatus.value)
-        }
-    },
-    { deep: true }
-);
+onMounted(() => {
+     if (paymentStatus.value) {
+          console.log('paymentStatus onmounted:', paymentStatus.value)
+          window.parent.postMessage({ type: 'updatePaymentStatus', status: paymentStatus.value }, '*')
+     }
+})
 </script>
 
 <style scoped>

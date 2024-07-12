@@ -29,6 +29,16 @@ const routes = [
           component: () => import('@/views/ComponentsTest.vue')
      },
      {
+          path: '/threedsecure',
+          name: 'threedsecure',
+          component: () => import('../views/PassengerPaymentViews/components/ThreeDSecure.vue')
+     },
+     {
+          path: '/paymentresult',
+          name: 'paymentresult',
+          component: () => import('../views/PassengerPaymentViews/components/PaymentResult.vue')
+     },
+     {
           path: '/main',
           component: () => import('../layouts/MainLayout.vue'),
           children: [
