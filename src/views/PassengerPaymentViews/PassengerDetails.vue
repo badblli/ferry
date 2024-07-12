@@ -205,7 +205,7 @@
                     </div>
                </div>
           </div>
-     </div>
+     </div>    
 </template>
 
 <script setup lang="ts">
@@ -224,7 +224,7 @@ import IconArrowUpRight2 from '@/components/icons/IconArrowUpRight2.vue'
 import IconBaby from '@/components/icons/IconBaby.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import IconsArrowsLeftRight from '@/components/icons/IconsArrowsLeftRight.vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ref, watchEffect, computed, reactive, watch } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
@@ -675,6 +675,19 @@ const getPassengersPage = async () => {
           console.error('Hata:', error)
      }
 }
+const router = useRouter()
+const route = useRoute()
+const navigateToPassengerWithQuery = () => {
+    // Parametreleri query string'e dönüştürmek
+    const queryParams = Object.assign({}, storedTripParams.value)
+
+    // Router'ı kullanarak yeni route'a yönlendiriyoruz
+    if (Object.keys(queryParams).length > 0) {
+        router.push({ path: '/tickets/passenger', query: queryParams })
+    } else {
+        router.push('/')
+    }
+}
 
 onMounted(() => {
      getPassengersPage()
@@ -685,6 +698,7 @@ onMounted(() => {
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'), console.log(storedGetterAccordions.value, 'tripStore.getTripParams'), fetchSelectOptions()
+     navigateToPassengerWithQuery()
 })
 
 interface AgeItem {
@@ -699,7 +713,6 @@ interface AgeItem {
 //      { title: 'Bebek Ekle', age: '0-5 yaş', _id: 3 }
 // ])
 
-const router = useRouter()
 
 const navigateToPassenger = () => {
      if (accordions.value.length > 0) {
