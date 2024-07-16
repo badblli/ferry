@@ -302,10 +302,11 @@ const configureDatePicker = () => {
           autoApply: true,
           minDate: today,
           maxDate: maxDate,
+          startDate: today,
           setup: (picker) => {
-               picker.on('show', () => {
-                    picker.setDateRange(today, null)
-               })
+               // picker.on('show', () => {
+               //      picker.setDateRange(today, null)
+               // })
 
                picker.on('selected', (startDate, endDate) => {
                     selectedDates.value.start = startDate.format('YYYY-MM-DD')
