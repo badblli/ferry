@@ -82,6 +82,10 @@ onMounted(async () => {
 </script>
 
 <style>
+#litepicker {
+     display: inline-block !important;
+     position: relative !important;
+}
 .container {
      width: 718px;
      height: 718px;

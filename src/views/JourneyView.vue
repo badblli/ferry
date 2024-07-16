@@ -16,26 +16,30 @@
                     <div className="flex flex-col">
                          <div className="p-8">
                               <div className="flex flex-col md:flex-row justify-start">
-                                   <div class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer hs-dropdown relative">
-                                        <div id="hs-dropdown-auto-close-outside" class="hs-dropdown-toggle text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">Hangi tarihlerde gitmek istersin?</div>
-                                        <div class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px] hs-dropdown-toggle">Tarih aralığı seçin</div>
-                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 bg-white shadow-md rounded-lg p-2" aria-labelledby="hs-dropdown-auto-close-outside">
-                                             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#"> Date picker component will be here </a>
-                                        </div>
+                                   <div ref="datepicker" class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer relative">
+                                        <div class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">Hangi tarihlerde gitmek istersin?</div>
+                                        <div class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px]">{{ selectedDatesLabel }}</div>
                                    </div>
-                                   <div class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
+                                   <div class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer hs-dropdown">
                                         <div class="flex flex-row justify-between items-center mr-[15px]">
                                              <div class="flex flex-col mb-[3px] mr-[100px]">
                                                   <div class="text-black text-base font-medium font-display tracking-tight ml-[24px]">Rota Seçin</div>
-                                                  <div class="text-black text-base font-light font-display tracking-tight ml-[24px]">Kuşadası - Samos</div>
+                                                  <div class="text-black text-base font-light font-display tracking-tight ml-[24px]">{{ baseRoute?.BaseRouteName }}</div>
                                              </div>
                                              <div>
                                                   <IconArrowDownBlack />
                                              </div>
                                         </div>
+
+                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 z-50 hidden mt-2 bg-white shadow-md rounded-lg p-2" aria-labelledby="hs-dropdown-auto-close-outside">
+                                             <a v-for="(route, index) in baseRouteList" :key="index" @click="changeBaseRoute(route)" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                                                  {{ route.BaseRouteName }}
+                                             </a>
+                                        </div>
                                    </div>
                               </div>
-                              <div class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
+
+                              <div v-if="formattedTableData && formattedTableData.length > 0" class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
                                    <div class="bg-white pt-10 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                         {{ tableTitle }}
                                    </div>
@@ -48,7 +52,7 @@
                                              </tr>
                                         </thead>
                                         <tbody class="">
-                                             <tr v-for="(row, index) in tableData" :key="index" class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
+                                             <tr v-for="(row, index) in formattedTableData" :key="index" class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
                                                   <td v-for="(cell, cellIndex) in row" :key="cellIndex" class="w-full border-r border-neutral-300 pt-[33px] pb-[33px] lg:pl-[50px] pl-2 lg:pr-[50px] pr-2">
                                                        <span v-if="Array.isArray(cell)">
                                                             <ul>
@@ -79,14 +83,25 @@
 import IconAsteriskSimple from '../components/icons/IconAsteriskSimple.vue'
 import IconArrowDownBlack from '@/components/icons/IconArrowDownBlack.vue'
 import { ref, onMounted, computed, watch } from 'vue'
-import { fetchData } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
+import { getApi } from '@/utils/globalHelper'
+import p from '@/utils/pathConfig'
+import { fetchData, formatDateToString } from '@/utils/globalHelper'
+import Litepicker from 'litepicker'
 const { locale } = useI18n()
 const tableHeaders = ref([])
 // const journey = ref([])
 const tableData = ref([])
 // const pageTitle = ref('')
 const tableTitle = ref('')
+
+const applicationName = ref(p.Product)
+
+const controllerName = ref('Product')
+const controllerName2 = ref('Keydefinition')
+
+const name = ref('SearchFerryJourneyList')
+const name2 = ref('BaseRouteList')
 // const tableHeaders = [
 //     ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
 // ];
@@ -100,57 +115,122 @@ const tableTitle = ref('')
 // const infoData = ref([])
 
 interface JourneyNote {
-    text: string;
+     text: string
 }
 
 interface JourneyPage {
-    __component: string;
-    journeyTable: any;  // journeyTable için doğru tipi belirtin
-    notes: JourneyNote[];
+     __component: string
+     journeyTable: any // journeyTable için doğru tipi belirtin
+     notes: JourneyNote[]
 }
 
 interface PageData {
-    layout: JourneyPage[];
-    pageTitle: string;
+     layout: JourneyPage[]
+     pageTitle: string
 }
 
 interface FetchResponse {
-    data: PageData[];
+     data: PageData[]
+}
+interface Route {
+     DepartureTownID: number
+     ArrivalTownID: number
+     BaseRouteName: string
 }
 
+const baseRoute = ref<Route | null>(null)
+const datepicker = ref(null)
+const selectedDates = ref({
+     start: '',
+     end: ''
+})
+const selectedDatesLabel = computed(() => {
+     console.log(selectedDates.value, 'selectedDates', formatDateToString(selectedDates.value.start))
+     return selectedDates.value.start && selectedDates.value.end ? `${formatDateToString(selectedDates.value.start)}  -  ${formatDateToString(selectedDates.value.end)}` : 'Tarih aralığı seçin'
+})
 // Reactive variables with appropriate initial values
-const journey = ref<JourneyPage | null>(null);
-const infoData = ref<string[]>([]);
-const pageTitle = ref<string>('');
+const journey = ref<JourneyPage | null>(null)
+const infoData = ref<string[]>([])
+const pageTitle = ref<string>('')
+const journeyList = ref<any>([])
+const baseRouteList = ref<any>([])
+const formattedTableData = ref<any>([])
 
 const getJourney = async () => {
-    try {
-        let filters = {
-            pageName: 'Journey'
-        };
+     try {
+          let filters = {
+               pageName: 'Journey'
+          }
 
-        const res: FetchResponse | null = await fetchData('pages', locale.value.toLowerCase(), filters);
-        if (res) {
-            let data = res.data[0].layout;
-            let journeyPage = data.find((x: JourneyPage) => x.__component === 'journey-page.journey-page');
+          const res: FetchResponse | null = await fetchData('pages', locale.value.toLowerCase(), filters)
+          if (res) {
+               let data = res.data[0].layout
+               let journeyPage = data.find((x: JourneyPage) => x.__component === 'journey-page.journey-page')
 
-            if (journeyPage) {
-                journey.value = journeyPage;
-                console.log(journey.value.journeyTable, 'JOURNEY');
-                infoData.value = journey.value.notes.map((x: JourneyNote) => x.text);
-                pageTitle.value = res.data[0].pageTitle;
-                initilizaTableData(journey.value.journeyTable);
-                console.log(journey.value, 'journeyjourneyjourneyjourneyjourney');
-            } else {
-                console.error('Journey page component not found');
-            }
-        }
-    } catch (error) {
-        console.error('Hata:', error);
-    }
-};
+               if (journeyPage) {
+                    journey.value = journeyPage
+                    console.log(journey.value.journeyTable, 'JOURNEY')
+                    infoData.value = journey.value.notes.map((x: JourneyNote) => x.text)
+                    pageTitle.value = res.data[0].pageTitle
+                    initilizaTableData(journey.value.journeyTable)
+                    console.log(journey.value, 'journeyjourneyjourneyjourneyjourney')
+               } else {
+                    console.error('Journey page component not found')
+               }
+          }
+     } catch (error) {
+          console.error('Hata:', error)
+     }
+}
+const formatJourneys = (data) => {
+     data.Journeys.forEach((journey) => {
+          let departureStrings = journey.Departures.map((dep) => dep.JourneyString)
+          let returnString = journey.Returns[0].JourneyString
 
+          let formattedJourney = [journey.JourneyDateString, departureStrings.length === 1 ? departureStrings[0] : departureStrings, returnString]
 
+          formattedTableData.value.push(formattedJourney)
+          console.log(formattedTableData.value, 'formattedData')
+     })
+}
+const getJourneyList = async () => {
+     let params = {
+          DepartureTownID: baseRoute.value?.DepartureTownID,
+          ArrivalTownID: baseRoute.value?.ArrivalTownID,
+          BeginDate: selectedDates.value.start,
+          EndDate: selectedDates.value.end
+     }
+     getApi(applicationName.value, controllerName.value, name.value, params, true).then((response: any) => {
+          if (response.data.status == 1) {
+               journeyList.value = JSON.parse(response.data.result)
+               formatJourneys(journeyList.value)
+          }
+     })
+}
+
+const getBaseRouteList = async () => {
+     let params = {}
+     getApi(applicationName.value, controllerName2.value, name2.value, params).then((response: any) => {
+          if (response.data.status == 1) {
+               baseRouteList.value = JSON.parse(response.data.result)
+          }
+     })
+}
+
+watch(
+     [baseRoute, selectedDates],
+     async () => {
+          if (baseRoute.value && baseRoute.value.DepartureTownID && baseRoute.value.ArrivalTownID && selectedDates.value && selectedDates.value.start && selectedDates.value.end) {
+               getJourneyList()
+          }
+     },
+     { immediate: true }
+)
+
+const changeBaseRoute = (route: Route) => {
+     baseRoute.value = route
+     console.log('changeBaseRoute')
+}
 
 // const getJourney = async () => {
 //      try {
@@ -193,14 +273,45 @@ const initilizaTableData = (data: any) => {
      tableData.value = rows
      console.log(tableData.value, 'TABLE DATA')
 }
+
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')
           getJourney()
      }
 })
+const configureDatePicker = () => {
+     const today = new Date() // Bugünün tarihini al
+     today.setDate(today.getDate() - 1) // Bugünden bir gün geri al
+
+     const maxDate = new Date(today) // Bugünden başlayarak bir ay sonrasının tarihini al
+     maxDate.setMonth(maxDate.getMonth() + 1)
+
+     const picker = new Litepicker({
+          element: datepicker.value,
+          singleMode: false,
+          format: 'YYYY-MM-DD',
+          autoApply: true,
+          minDate: today, // Bugünden önceki tarihleri seçilemez yap
+          maxDate: maxDate, // Bugünden bir ay sonrasına kadar tarih seçilebilir yap
+          setup: (picker) => {
+               picker.on('show', () => {
+                    picker.setDateRange(today, null) // Bugünden başlayarak herhangi bir tarih seçilebilir
+               })
+
+               picker.on('selected', (startDate, endDate) => {
+                    selectedDates.value.start = startDate.format('YYYY-MM-DD')
+                    selectedDates.value.end = endDate.format('YYYY-MM-DD')
+               })
+          }
+     })
+}
+
 onMounted(async () => {
+     configureDatePicker()
      await getJourney() // Veriyi asenkron bir şekilde yükleyin
+
+     getBaseRouteList()
 })
 </script>
 

@@ -310,6 +310,12 @@ function formatDate(item: string) {
      }
 }
 
+function formatDateToString(inputDate) {
+     const dateParts = inputDate.split('-') // Tarihi '-' karakterinden ayır
+     const formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}` // Yıl, ay ve günü istenen formatta birleştir
+     return formattedDate
+}
+
 // Test
 console.log(formatDate('2024-02-13T00:00:00Z')) // Sadece tarih
 console.log(formatDate('2024-02-13T10:20:30.123+03:00')) // Tarih ve saat
@@ -511,6 +517,7 @@ export {
      getLabel,
      getLang,
      formatDate,
+     formatDateToString,
      fetchData,
      findOne,
      // postData,
