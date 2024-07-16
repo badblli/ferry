@@ -7,7 +7,8 @@
                     <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
                          {{ pageTitle }}
                     </h1>
-                    <div class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
+                    <div
+                         class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
                          <div class="text-black text-lg font-medium font-display ml-1">Feribot Bileti Al</div>
                          <IconArrowDownBlack />
                     </div>
@@ -16,47 +17,76 @@
                     <div className="flex flex-col">
                          <div className="p-8">
                               <div className="flex flex-col md:flex-row justify-start">
-                                   <div ref="datepicker" class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer relative">
-                                        <div class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">Hangi tarihlerde gitmek istersin?</div>
-                                        <div class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px]">{{ selectedDatesLabel }}</div>
-                                   </div>
-                                   <div class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer hs-dropdown">
-                                        <div class="flex flex-row justify-between items-center mr-[15px]">
-                                             <div class="flex flex-col mb-[3px] mr-[100px]">
-                                                  <div class="text-black text-base font-medium font-display tracking-tight ml-[24px]">Rota Seçin</div>
-                                                  <div class="text-black text-base font-light font-display tracking-tight ml-[24px]">{{ baseRoute?.BaseRouteName }}</div>
+                                   <div @click="togglePickerModal" class="relative">
+                                        <div ref="datepicker"
+                                             class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer">
+                                             <div
+                                                  class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">
+                                                  Hangi tarihlerde gitmek istersin?
                                              </div>
-                                             <div>
-                                                  <IconArrowDownBlack />
+                                             <div
+                                                  class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px]">
+                                                  {{ selectedDatesLabel }}
+                                                  <!-- {{ selectedDates.start }} {{ selectedDates.end }} -->
                                              </div>
                                         </div>
-
-                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 z-50 hidden mt-2 bg-white shadow-md rounded-lg p-2" aria-labelledby="hs-dropdown-auto-close-outside">
-                                             <a v-for="(route, index) in baseRouteList" :key="index" @click="changeBaseRoute(route)" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
-                                                  {{ route.BaseRouteName }}
-                                             </a>
+                                   </div>
+                                   <div @click="toggleDropdown2"
+                                        class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer ">
+                                        <div>
+                                             <button class="flex flex-row justify-between items-center mr-[15px]">
+                                                  <div class="flex flex-col mb-[3px] mr-[100px]">
+                                                       <div
+                                                            class="text-black text-start font-medium font-display tracking-tight ml-[24px]">
+                                                            Rota Seçin</div>
+                                                       <div
+                                                            class="text-black text-base font-light font-display tracking-tight ml-[24px]">
+                                                            {{ baseRoute?.BaseRouteName }}</div>
+                                                  </div>
+                                                  <div>
+                                                       <IconArrowDownBlack />
+                                                  </div>
+                                             </button>
+                                             <transition name="dropdown">
+                                                  <div v-show="isOpen2"
+                                                       class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <a v-for="(route, index) in baseRouteList" :key="index"
+                                                            @click="changeBaseRoute(route)"
+                                                            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                                            href="#">
+                                                            {{ route.BaseRouteName }}
+                                                       </a>
+                                                  </div>
+                                             </transition>
                                         </div>
                                    </div>
                               </div>
 
-                              <div v-if="formattedTableData && formattedTableData.length > 0" class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
-                                   <div class="bg-white pt-10 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                              <div v-if="formattedTableData && formattedTableData.length > 0"
+                                   class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
+                                   <div
+                                        class="bg-white pt-10 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                         {{ tableTitle }}
                                    </div>
                                    <table className="relative w-full bg-white">
                                         <thead>
-                                             <tr v-for="(header, index) in tableHeaders" :key="index" class="mt-[64px] md:pl-[50px] md:ml-16 m-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-lg">
-                                                  <th v-for="(label, labelIndex) in header" :key="labelIndex" class="w-full flex">
+                                             <tr v-for="(header, index) in tableHeaders" :key="index"
+                                                  class="mt-[64px] md:pl-[50px] md:ml-16 m-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-lg">
+                                                  <th v-for="(label, labelIndex) in header" :key="labelIndex"
+                                                       class="w-full flex">
                                                        {{ label }}
                                                   </th>
                                              </tr>
                                         </thead>
                                         <tbody class="">
-                                             <tr v-for="(row, index) in formattedTableData" :key="index" class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
-                                                  <td v-for="(cell, cellIndex) in row" :key="cellIndex" class="w-full border-r border-neutral-300 pt-[33px] pb-[33px] lg:pl-[50px] pl-2 lg:pr-[50px] pr-2">
+                                             <tr v-for="(row, index) in formattedTableData" :key="index"
+                                                  class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
+                                                  <td v-for="(cell, cellIndex) in row" :key="cellIndex"
+                                                       class="w-full border-r border-neutral-300 pt-[33px] pb-[33px] lg:pl-[50px] pl-2 lg:pr-[50px] pr-2">
                                                        <span v-if="Array.isArray(cell)">
                                                             <ul>
-                                                                 <li v-for="(item, itemIndex) in cell" :key="itemIndex" class="leading-4 mb-[27px]">{{ item }}</li>
+                                                                 <li v-for="(item, itemIndex) in cell" :key="itemIndex"
+                                                                      class="leading-4 mb-[27px]">{{ item }}</li>
                                                             </ul>
                                                        </span>
                                                        <span v-else>{{ cell }}</span>
@@ -65,7 +95,8 @@
                                         </tbody>
                                    </table>
                                    <div class="mt-16 lg:w-4/6 w-full">
-                                        <div v-for="(info, index) in infoData" :key="index" class="flex items-center mt-5">
+                                        <div v-for="(info, index) in infoData" :key="index"
+                                             class="flex items-center mt-5">
                                              <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">
                                                   {{ info }}
                                              </h2>
@@ -102,6 +133,16 @@ const controllerName2 = ref('Keydefinition')
 
 const name = ref('SearchFerryJourneyList')
 const name2 = ref('BaseRouteList')
+
+const isOpen2 = ref(false)
+const toggleDropdown2 = () => {
+     isOpen2.value = !isOpen2.value
+}
+
+const litepickerModalVisible = ref(false)
+const togglePickerModal = () => {
+     litepickerModalVisible.value = !litepickerModalVisible.value
+}
 // const tableHeaders = [
 //     ["Gün", "Kuşadası Kalkış", "Samosa Kalkış"]
 // ];
@@ -145,8 +186,13 @@ const selectedDates = ref({
      end: ''
 })
 const selectedDatesLabel = computed(() => {
-     console.log(selectedDates.value, 'selectedDates', formatDateToString(selectedDates.value.start))
-     return selectedDates.value.start && selectedDates.value.end ? `${formatDateToString(selectedDates.value.start)}  -  ${formatDateToString(selectedDates.value.end)}` : 'Tarih aralığı seçin'
+  if (datepicker.value) {
+    return selectedDates.value.start && selectedDates.value.end
+      ? `${formatDateToString(selectedDates.value.start)} - ${formatDateToString(selectedDates.value.end)}`
+      : 'Tarih aralığı seçin'
+  } else {
+    return `${selectedDates.value.start} ${selectedDates.value.end}`
+  }
 })
 // Reactive variables with appropriate initial values
 const journey = ref<JourneyPage | null>(null)
@@ -281,10 +327,10 @@ watch(locale, (newLocale, oldLocale) => {
      }
 })
 const configureDatePicker = () => {
-     const today = new Date() // Bugünün tarihini al
-     today.setDate(today.getDate() - 1) // Bugünden bir gün geri al
+     const today = new Date()
+     today.setDate(today.getDate() - 1)
 
-     const maxDate = new Date(today) // Bugünden başlayarak bir ay sonrasının tarihini al
+     const maxDate = new Date(today)
      maxDate.setMonth(maxDate.getMonth() + 1)
 
      const picker = new Litepicker({
@@ -292,11 +338,11 @@ const configureDatePicker = () => {
           singleMode: false,
           format: 'YYYY-MM-DD',
           autoApply: true,
-          minDate: today, // Bugünden önceki tarihleri seçilemez yap
-          maxDate: maxDate, // Bugünden bir ay sonrasına kadar tarih seçilebilir yap
+          minDate: today,
+          maxDate: maxDate,
           setup: (picker) => {
                picker.on('show', () => {
-                    picker.setDateRange(today, null) // Bugünden başlayarak herhangi bir tarih seçilebilir
+                    picker.setDateRange(today, null)
                })
 
                picker.on('selected', (startDate, endDate) => {
@@ -309,10 +355,28 @@ const configureDatePicker = () => {
 
 onMounted(async () => {
      configureDatePicker()
-     await getJourney() // Veriyi asenkron bir şekilde yükleyin
-
+     await getJourney()
      getBaseRouteList()
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.dropdown-enter-active,
+.dropdown-leave-active {
+     transition:
+          opacity 0.3s,
+          transform 0.3s;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+     opacity: 0;
+     transform: translateY(-10px);
+}
+
+.dropdown-enter-to,
+.dropdown-leave-from {
+     opacity: 1;
+     transform: translateY(0);
+}
+</style>
