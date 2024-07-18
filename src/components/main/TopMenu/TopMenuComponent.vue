@@ -16,7 +16,7 @@
                     <div id="navbar-with-mega-menu"
                          class="hs-collapse justify-center my-auto overflow-hidden transition-all duration-300 basis-full grow sm:block ">
                          <div
-                              class="flex gap-5 items-center sm:flex-row sm:items-center lg:justify-end sm:mt-0 md:pl-0 pl-5">
+                              class="flex gap-5 items-center sm:flex-row sm:items-center justify-end sm:mt-0 md:pl-0 pl-5">
                               <router-link v-for="(item, index) in topMenu.links" :key="index" :to="item.href"
                                    class="text-sm font-semibold">
                                    {{ item.label }}

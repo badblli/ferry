@@ -7052,6 +7052,10 @@ input.focus\:outline-none:focus {
     bottom: -8rem;
   }
 
+  .sm\:right-0 {
+    right: 0px;
+  }
+
   .sm\:mx-auto {
     margin-left: auto;
     margin-right: auto;
