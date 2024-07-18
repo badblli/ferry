@@ -565,16 +565,18 @@ input.focus\:outline-none:focus {
      font-size: 50px;
 }
 
+@media (max-width: 768px){
+     
 .litepicker {
-     width: 100%;
+     width: 10%;
      background-color: #fff;
      border-radius: 30px;
      -webkit-box-shadow: 0 4px 50px rgba(20, 28, 58, 0.1);
      box-shadow: 0 4px 50px rgba(20, 28, 58, 0.1);
      max-width: fit-content;
      display: inline-block;
-     position: relative;
 }
+
 
 .litepicker button {
      border: none;
@@ -626,6 +628,379 @@ input.focus\:outline-none:focus {
      .litepicker .container__months .month-item {
           padding: 38px 48px;
      }
+     
+}
+
+.litepicker .container__months .month-item-header {
+     display: -moz-box;
+     display: flex;
+     -moz-box-align: center;
+     align-items: center;
+     -moz-box-pack: justify;
+     justify-content: space-between;
+     margin-bottom: 18px;
+     color: var(--Gray-3, #828282);
+     font-size: 20px;
+     line-height: 1;
+     text-align: center;
+     font-family: Lato;
+     font-weight: 600;
+     line-height: normal;
+     border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.litepicker .container__months .month-item-header {
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex;
+     -webkit-box-pack: justify;
+     -ms-flex-pack: justify;
+     justify-content: space-between;
+     font-weight: 500;
+     padding: 16px 5px;
+     text-align: center;
+     -webkit-box-align: center;
+     -ms-flex-align: center;
+     align-items: center;
+     color: var(--litepicker-month-header-color);
+}
+
+.litepicker .container__months .month-item-header div {
+     -moz-box-flex: 1;
+     flex: 1 1;
+}
+
+.litepicker .container__months .month-item-header div > .month-item-name {
+     font-family: Lato;
+     font-style: normal;
+     font-weight: 500;
+     margin-right: 5px;
+}
+
+.litepicker .container__months .month-item-header div > .month-item-year {
+     display: none;
+}
+
+.litepicker .container__months .month-item-header .reset-button {
+     color: var(--litepicker-button-reset-color);
+}
+
+.litepicker .container__months .month-item-header .reset-button > svg {
+     fill: var(--litepicker-button-reset-color);
+}
+
+.litepicker .container__months .month-item-header .reset-button * {
+     pointer-events: none;
+}
+
+.litepicker .container__months .month-item-header .reset-button:hover {
+     color: var(--litepicker-button-reset-color-hover);
+}
+
+.litepicker .container__months .month-item-header .reset-button:hover > svg {
+     fill: var(--litepicker-button-reset-color-hover);
+}
+
+.litepicker .container__months .month-item-header .button-next-month,
+.litepicker .container__months .month-item-header .button-previous-month {
+     padding: 3px 5px;
+     border-radius: 3px;
+     cursor: default;
+     text-decoration: none;
+     -webkit-transition:
+          color 0.3s,
+          border 0.3s;
+     -moz-transition:
+          color 0.3s,
+          border 0.3s;
+     transition:
+          color 0.3s,
+          border 0.3s;
+}
+
+.litepicker .container__months .month-item-header .button-next-month *,
+.litepicker .container__months .month-item-header .button-previous-month * {
+     pointer-events: none;
+}
+
+.litepicker .container__months .month-item-header .button-next-month,
+.litepicker .container__months .month-item-header .button-previous-month {
+     cursor: pointer;
+}
+
+.litepicker .container__months .month-item:first-child .button-previous-month,
+.litepicker .container__months .month-item:last-child .button-next-month {
+     visibility: visible;
+}
+
+.litepicker .container__months .month-item.no-next-month .button-next-month,
+.litepicker .container__months .month-item.no-previous-month .button-previous-month {
+}
+
+.litepicker .container__days {
+     display: -moz-box;
+     display: flex;
+     -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content-box;
+     flex-wrap: wrap;
+     -moz-box-pack: start;
+     justify-content: flex-start;
+     margin-top: 5px;
+     margin-bottom: -4px;
+     justify-self: center;
+     text-align: center;
+}
+
+.litepicker .container__days > a,
+.litepicker .container__days > div {
+     -moz-box-flex: 0;
+     flex: 0 1 14.2857142857%;
+     padding: 5px 0;
+}
+
+.litepicker .container__days .day-item {
+     font-family: Lato;
+     height: 42px;
+     padding: 10px;
+     font-style: normal;
+     font-weight: 400;
+     position: relative;
+     display: -moz-box;
+     display: flex;
+     height: auto !important;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+     flex-direction: column;
+     -moz-box-align: center;
+     align-items: center;
+     -moz-box-pack: center;
+     justify-content: center;
+     margin-bottom: 4px;
+     color: #141c3a;
+     cursor: pointer;
+     font-size: 18px;
+     line-height: 1;
+     text-align: center;
+     text-decoration: none;
+     -webkit-transition: none !important;
+     -moz-transition: none !important;
+     transition: none !important;
+}
+
+.litepicker .container__days .day-item:hover {
+     -webkit-box-shadow: none !important;
+     box-shadow: none !important;
+     color: rgba(20, 28, 58, 0.9);
+}
+
+.litepicker .container__days .day-item:before {
+     display: inline-block;
+     width: 100%;
+     padding-top: calc(50% - 8px);
+     content: '';
+}
+
+.litepicker .container__days .day-item.is-today {
+     color: #2249d6 !important;
+}
+
+.litepicker .container__days .day-item:after {
+     display: inline-block;
+     width: 100%;
+     padding-bottom: calc(50% - 8px);
+     content: '';
+}
+
+.litepicker .container__days .day-item.is-locked {
+     color: rgba(20, 28, 58, 0.4);
+     text-decoration: line-through;
+}
+
+.litepicker .container__days .day-item.is-locked:hover {
+     -webkit-box-shadow: none;
+     box-shadow: none;
+     color: var(--litepicker-is-locked-color);
+     cursor: default;
+}
+
+.litepicker .container__days .day-item.is-end-date,
+.litepicker .container__days .day-item.is-start-date {
+     position: relative;
+     z-index: 2;
+     background-color: #2149d5;
+     color: #fff !important;
+}
+
+.litepicker .container__days .day-item.is-start-date {
+     border-bottom-left-radius: 50%;
+     border-top-left-radius: 50%;
+}
+
+.litepicker .container__days .day-item.is-end-date {
+     border-bottom-right-radius: 50%;
+     border-top-right-radius: 50%;
+}
+
+.litepicker .container__days .day-item.is-start-date.is-end-date {
+     border-radius: 50%;
+}
+
+.litepicker .container__days .day-item.is-in-range {
+     background-color: #e4eef3;
+     border-radius: 0;
+     color: #141c3a !important;
+}
+
+.litepicker .container__days .day-item.is-in-range:hover {
+     color: #141c3a;
+}
+
+/* 
+.litepicker .container__days .day-item.is-highlighted {
+  background-color: var(--litepicker-highlighted-day-color-bg);
+  color: var(--litepicker-highlighted-day-color)
+} */
+
+.litepicker .container__days .week-number {
+     display: -moz-box;
+     display: flex;
+     -moz-box-align: center;
+     align-items: center;
+     -moz-box-pack: center;
+     justify-content: center;
+     color: var(--litepicker-month-week-number-color);
+     font-size: 85%;
+}
+
+/* .litepicker .container__footer {
+  padding: 10px 5px;
+  margin: 0 5px;
+  background-color: var(--litepicker-footer-color-bg);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-box-shadow: inset 0 3px 3px 0 var(--litepicker-footer-box-shadow-color);
+  box-shadow: inset 0 3px 3px 0 var(--litepicker-footer-box-shadow-color);
+  text-align: right
+}
+
+.litepicker .container__footer .preview-date-range {
+  margin-right: 10px;
+  font-size: 90%
+}
+
+.litepicker .container__footer .button-cancel {
+  padding: 3px 7px 4px;
+  border: 0;
+  background-color: var(--litepicker-button-cancel-color-bg);
+  border-radius: 3px;
+  color: var(--litepicker-button-cancel-color)
+}
+
+.litepicker .container__footer .button-cancel * {
+  pointer-events: none
+}
+
+.litepicker .container__footer .button-apply {
+  padding: 3px 7px 4px;
+  border: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: var(--litepicker-button-apply-color-bg);
+  border-radius: 3px;
+  color: var(--litepicker-button-apply-color)
+}
+
+.litepicker .container__footer .button-apply:disabled {
+  opacity: .7
+}
+
+.litepicker .container__footer .button-apply * {
+  pointer-events: none
+} */
+
+/* .litepicker .container__months .month-item-header .button-next-month>img,
+.litepicker .container__months .month-item-header .button-next-month>svg,
+.litepicker .container__months .month-item-header .button-previous-month>img,
+.litepicker .container__months .month-item-header .button-previous-month>svg {
+  fill: none !important
+} */
+}
+
+.litepicker {
+     width: 100%;
+     background-color: #fff;
+     border-radius: 30px;
+     -webkit-box-shadow: 0 4px 50px rgba(20, 28, 58, 0.1);
+     box-shadow: 0 4px 50px rgba(20, 28, 58, 0.1);
+     max-width: fit-content;
+     display: inline-block;
+}
+
+.litepicker button {
+     border: none;
+     background: 0 0;
+}
+
+/* .litepicker .container__tooltip {} */
+
+.litepicker .container {
+     width: 100%;
+}
+
+.litepicker .container__main {
+     display: -moz-box;
+}
+
+.litepicker .container__months {
+     display: -moz-box;
+     display: flex;
+     width: 100%;
+     -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content-box;
+     flex-wrap: wrap;
+     border-radius: 30px;
+     -webkit-box-shadow: none !important;
+     box-shadow: none !important;
+}
+
+.litepicker .container__months.columns-2 {
+     -moz-box-flex: 1;
+     flex: 1 1;
+}
+
+.litepicker .container__months.split-view .month-item-header .button-next-month,
+.litepicker .container__months.split-view .month-item-header .button-previous-month {
+     visibility: visible;
+}
+
+.litepicker .container__months .month-item {
+     -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content-box;
+     -moz-box-flex: 1;
+     padding: 78px 48px;
+}
+
+@media only screen and (min-width: 1px) and (max-width: 768px) {
+     .litepicker .container__months .month-item {
+          padding: 1px 1px;
+     }
+
+     .litepicker {
+          width: 100wv;
+          height: 100vh;
+          top: 0;
+          left: 0;
+          background-color: #fff;
+          border-radius: 30px;
+          box-shadow: 0 4px 50px rgba(20, 28, 58, 0.1);
+          max-width: -moz-fit-content;
+          max-width: fit-content;
+          display: inline-block;
+        }
+   
 }
 
 .litepicker .container__months .month-item-header {

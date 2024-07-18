@@ -2,8 +2,9 @@
      <hr class="w-2 border" />
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full flex flex-col justify-center items-center">
-               <div class="flex flex-col mt-10">
-                    <div class="flex border-sub-line overflow-x-auto whitespace-nowrap w-full">
+               <div class="flex flex-col mt-10 w-full mx-auto">
+                    <div
+                         class="flex justify-center items-center border-sub-line overflow-x-auto whitespace-nowrap w-full mx-auto">
                          <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id"
                               class="tab inline-block md:mx-4 mx-2 md:px-20 px-2 first:ml-20 min-w-max"
                               :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>

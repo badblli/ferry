@@ -202,6 +202,8 @@ onMounted(() => {
      display: flex;
      width: 100%;
      flex-direction: row;
+     position: relative;
+     z-index: 10;
 }
 
 .splide__track {
@@ -217,6 +219,7 @@ onMounted(() => {
      cursor: pointer;
      margin-right: 10px;
      background-color: #0000003a;
+     
 }
 
 /* .splide__slide:first-child {

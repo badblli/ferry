@@ -326,6 +326,7 @@ watch(locale, (newLocale, oldLocale) => {
           getJourney()
      }
 })
+
 const configureDatePicker = () => {
      const today = new Date()
      today.setDate(today.getDate() - 1)
