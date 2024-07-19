@@ -6,10 +6,9 @@
                     <div
                          class="flex justify-center items-center border-sub-line overflow-x-auto w-full mx-auto">
                          <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id"
-                              class="tab inline-block md:mx-4 mx-2 md:px-20 px-2 first:ml-20 "
+                              class="tab md:mx-4 mx-2 md:px-20 px-2 first:ml-20 md:last:mr-20"
                               :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
-                
                </div>
                <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="w-full">
                     <div>
@@ -1735,8 +1734,15 @@ const items = ref([
      /* Pasif durumdaki alt çizgi rengi */
      cursor: pointer;
      padding: 0px;
-     padding-bottom: 23px;
+     height: 59px;
 }
+
+@media (max-width: 680px) {
+     .tab {
+          height: 75px;
+     }
+}
+
 
 /* Remove the incorrect selector */
 .flex {

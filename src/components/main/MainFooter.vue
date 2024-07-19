@@ -1,6 +1,6 @@
 <template>
      <div v-if="!isLoading">
-          <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 h-[172px] bg-slate-200 flex justify-evenly items-center grid-cols-4">
+          <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 h-[172px] bg-slate-200 flex flex-col md:flex-row justify-evenly items-center grid-cols-4">
                <div class="text-center text-black md:text-lg text-base font-medium lg:m-0 m-2">
                     {{ mainFooter.ContactBar?.title }}
                </div>
