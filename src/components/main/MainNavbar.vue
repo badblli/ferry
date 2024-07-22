@@ -200,12 +200,12 @@ const setRedirect = (item: any) => {
      //patmosun id si null gelince hataya düsüyor burayı düzelteceğim
      let sc = item.href.replace('/', '')
      console.log(item.subSaleChannelID, 'item.subSaleChannelID'), useChannelStore.setSubSaleChannel(sc, item.label, item.subSaleChannelID)
+     handleClickInside()
 }
 
 const redirect = (item: Links) => {
      console.log('item', item.href.replace('/', ''))
      let sc = item.href.replace('/', '')
-
      return {
           name: 'island',
           params: {

@@ -64,8 +64,8 @@ qqq<template>
                     </div>
                </div>
 
-               <form
-                    class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
+               <form class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
+
                     <div class="flex flex-row">
                          <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
                               class="bg-slate-200 mr-[5px] py-3 md:px-9 sm:px-4 px-2 rounded-t-xl cursor-pointer">
@@ -81,7 +81,7 @@ qqq<template>
                          </div>
                     </div>
 
-                    <div class="bg-white rounded-b-xl rounded-tr-xl flex justify-between items-center">
+                    <div class="bg-white rounded-b-xl rounded-tr-xl">
                          <div class="flex flex-row items-center w-full" v-show="!showTrue">
                               <div class="flex flex-row items-center w-full">
                                    <div class="flex flex-col sm:flex-row">

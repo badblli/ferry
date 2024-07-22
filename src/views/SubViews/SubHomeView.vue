@@ -3,286 +3,275 @@
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full flex flex-col justify-center items-center">
                <div class="flex flex-col mt-10 w-full centered-small-w mx-auto">
-                    <div
-                         class="flex justify-center items-center border-sub-line overflow-x-auto w-full mx-auto">
+                    <div class="flex justify-center items-center border-sub-line overflow-x-auto w-full mx-auto">
                          <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id"
                               class="tab md:mx-4 mx-2 md:px-20 px-2 first:ml-20 md:last:mr-20"
                               :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
                </div>
+               <div v-for="(tab, index) in copyTabs" :key="index">
+                    <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" v-show="activeTab == tab.id" />
+               </div>
+               <form class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border">
+                    <div class="flex flex-row">
+                         <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
+                              class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
+                              <span @click="showTrue = false"
+                                   class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
+                                   :class="{ '': showTrue, ' text-blue-700': !showTrue }"> {{
+                                        searchBar.SearchFerryTicket?.title }}</span>
+                         </div>
+                         <div :class="{ '': !showTrue, 'border-b-2 border-blue-700': showTrue }"
+                              class="mr-4 py-3 px-9 rounded-t-xl text-white cursor-pointer">
+                              <span @click="showTrue = true"
+                                   class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
+                                   :class="{ '': !showTrue, 'text-blue-700': showTrue }"> {{
+                                        searchBar.SearchReservation?.reservationNo }} </span>
+                         </div>
+                    </div>
+
+                    <div class="rounded-b-xl rounded-tr-xl flex items-center">
+                         <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
+                              <div class="flex flex-col sm:flex-row items-center">
+                                   <div>
+                                        <button @click="toggleDropdown2" type="button"
+                                             class="cursor-pointer flex flex-col justify-start px-5">
+                                             <div class="text-black text-base font-medium font-display tracking-tight">
+                                                  {{ searchBar.SearchFerryTicket?.from }}
+                                             </div>
+                                             <div
+                                                  class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                                  {{ _fromWhere?.TownName }}
+                                             </div>
+                                        </button>
+                                        <transition name="dropdown">
+                                             <div v-show="isOpen2"
+                                                  class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                  <div class="flex flex-col w-[277px] p-5">
+                                                       <div class="flex flex-col">
+                                                            <div @click="updateFromWhere(i); handleClickInside()"
+                                                                 v-for="(i, index) in fromWhereObject" :key="index"
+                                                                 :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
+                                                                 class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate">
+                                                                 <a
+                                                                      class="text-black text-base font-medium font-display tracking-tight truncate">{{
+                                                                           i.TownName }}</a>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div class="pl-7 py-6 flex flex-row cursor-pointer">
+                                                       <div
+                                                            class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">
+                                                            Samos Turlarını Keşfet</div>
+                                                       <div
+                                                            class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
+                                                            <IconFooter />
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </transition>
+                                   </div>
+                              </div>
+                              <!-- @click="toggleDataPlacement" -->
+                              <div
+                                   class="bg-black rounded-full flex flex-row justify-center items-center p-[7px] cursor-pointer">
+                                   <IconsWhiteLeftRight />
+                              </div>
+                              <div class="flex flex-row items-center justify-center">
+                                   <div>
+                                        <button @click="toggleDropdown3" type="button"
+                                             class="cursor-pointer flex flex-col justify-start px-7">
+                                             <div class="text-black text-base font-medium font-display tracking-tight">
+                                                  {{ searchBar.SearchFerryTicket?.to }}
+                                             </div>
+                                             <div
+                                                  class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                                  {{ _toWhere?.TownName }}
+                                             </div>
+                                        </button>
+                                        <transition name="dropdown">
+                                             <div v-show="isOpen3"
+                                                  class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                  <div class="flex flex-col w-[277px] p-5">
+                                                       <div class="flex flex-col" v-if="toWhereObject.length === 0">
+                                                            <div class="flex flex-col">
+                                                                 <div class="flex flex-col">
+                                                                      <div
+                                                                           class="text-black text-base font-medium font-display tracking-tight">
+                                                                           Gidiş Seçiniz</div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                       <div class="flex flex-col">
+                                                            <div @click="updateToWhere(i); handleClickInside2()"
+                                                                 v-for="(i, index) in toWhereObject" :key="index"
+                                                                 :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
+                                                                 class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                                 <a
+                                                                      class="text-black text-base font-medium font-display tracking-tight">{{
+                                                                           i.TownName }}</a>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </transition>
+                                   </div>
+                              </div>
+                              <div class="h-14 border-l border-zinc-300"></div>
+                              <div class="flex flex-row items-center">
+                                   <div>
+                                        <button @click="toggleDropdown4" type="button"
+                                             class="cursor-pointer text-start ml-7">
+                                             <div class="text-black text-base font-medium font-display tracking-tight">
+                                                  {{
+                                                       mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
+                                             <div
+                                                  class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
+                                                  {{ _roundTrip?.Name }}
+                                             </div>
+                                        </button>
+                                        <div ref="dropdown3">
+                                             <transition name="dropdown">
+                                                  <div v-show="isOpen4"
+                                                       class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <div class="flex flex-col w-[277px] p-5">
+                                                            <div @click="updateToTrip(i); handleClickInside3()"
+                                                                 v-for="(i, index) in travelObject" :key="index"
+                                                                 :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
+                                                                 class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                                 <a
+                                                                      class="text-black text-base font-medium font-display tracking-tight">{{
+                                                                      i.Name }}</a>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </transition>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="h-14 border-l border-zinc-300"></div>
+                              <div class="flex flex-row items-center ml-7">
+                                   <div class="cursor-pointer flex flex-col">
+                                        <!-- Always display formattedDateToShow -->
+                                        <span v-if="_roundTrip?.Name" @click="togglePickerModal"
+                                             class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
+                                             {{ _roundTrip.Name }}
+                                             <div
+                                                  class="text-black text-base font-light font-display tracking-tight mr-7">
+                                                  {{ formattedDateToShow }}
+                                             </div>
+                                        </span>
+                                        <span v-else
+                                             class="text-black text-base font-light font-display tracking-tight mr-7">
+                                             {{ formattedDateToShow }}
+                                        </span>
+                                   </div>
+                                   <div>
+                                        <transition name="dropdown">
+                                             <div v-show="litepickerModalVisible" id="container"
+                                                  class="w-full h-full -bottom-32 left-0 absolute">
+                                                  <div id="litepicker" class="font-['Plus Jakarta Sans']">
+                                                       <div
+                                                            class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                                            <span
+                                                                 class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                                 {{ formattedValue }}
+                                                                 <span v-if="formattedValue2" class="mx-2"> - </span>
+                                                                 {{ formattedValue2 }}
+                                                            </span>
+                                                       </div>
+                                                  </div>
+                                                  <div @click="togglePickerModal"
+                                                       class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                                       <p class="text-stone-800">Seç</p>
+                                                  </div>
+                                             </div>
+                                        </transition>
+                                   </div>
+                              </div>
+                              <div class="h-14 border-l border-zinc-300"></div>
+                              <div class="dropdown">
+                                   <button @click="toggleDropdown" type="button"
+                                        class="cursor-pointer flex flex-col justify-start py-6 px-5">
+                                        <div
+                                             class="text-start text-black text-base font-medium font-display tracking-tight">
+                                             {{ searchBar.SearchFerryTicket?.passengers }}
+                                        </div>
+                                        <div class="text-black text-base font-light font-display tracking-tight">
+                                             {{ searchBar.SearchFerryTicket?.choosePerson }}
+
+                                             <span class="ml-1 justify-end hidden font-thin text-base">
+                                                  TotalPasengerCount </span>
+                                        </div>
+                                   </button>
+                                   <div>
+                                        <transition name="dropdown">
+                                             <div v-show="isOpen"
+                                                  class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                  <div class="flex flex-col mt-[37px] ml-6">
+                                                       <!-- {{ searchBar?.SearchFerryTicket.PassengerType }} -->
+                                                       <div v-for="(i, index) in searchBar?.SearchFerryTicket?.PassengerType"
+                                                            :key="index"
+                                                            class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                                            <div class="flex flex-row">
+                                                                 <div
+                                                                      class="text-black text-base font-medium font-display tracking-tight">
+                                                                      {{ i.TypeName }}
+                                                                 </div>
+                                                            </div>
+                                                            <div class="mr-4 flex flex-row justify-center items-center">
+                                                                 <span @click="decreaseCount(index)"
+                                                                      class="mx-2 cursor-pointer">
+                                                                      <IconMinus />
+                                                                 </span>
+                                                                 <div
+                                                                      class="text-black text-[22px] font-normal font-display tracking-wide">
+                                                                      {{ passenger[index].count }}
+                                                                 </div>
+                                                                 <span @click="increaseCount(index)"
+                                                                      class="mx-2 cursor-pointer">
+                                                                      <IconPlus />
+                                                                 </span>
+                                                            </div>
+                                                       </div>
+                                                       <button @click="toggleDropdown" type="button"
+                                                            class="w-full h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
+                                                            <div class="text-white text-base font-medium font-display">
+                                                                 {{ searchBar?.SearchFerryTicket?.submitBtn }}
+                                                            </div>
+                                                       </button>
+                                                  </div>
+                                             </div>
+                                        </transition>
+                                   </div>
+                              </div>
+                              <div @click="navigateToSecondPage"
+                                   class="w-28 h-[46px] bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
+                                   {{ searchBar.SearchFerryTicket?.submitBtn }}
+                              </div>
+                         </div>
+                         <div v-show="showTrue">
+                              <div class="w-[798px] h-24">
+                                   <div class="flex flex-row justify-between items-center ml-5">
+                                        <SliderReservationInputs :placeholder="searchBar.SearchReservation?.searchPNR"
+                                             ariaLabel="Rezervasyon Sorgula" type="text"
+                                             class="mr-3 flex flex-row justify-center items-center" />
+                                        <SliderReservationInputs
+                                             :placeholder="searchBar.SearchReservation?.searchReservation"
+                                             ariaLabel="Rezervasyon Sorgula" type="text"
+                                             class="mr-3 flex flex-row justify-center items-center" />
+                                        <div @click="navigateToSecondPage"
+                                             class="bg-slate-200 rounded-full cursor-pointer p-[17px] m-[11px]">
+                                             <IconSearchNormal />
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </form>
                <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="w-full">
                     <div>
-                         <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" />
                          <!-- && activeTab !== copyTabs[5].id -->
-                         <form v-show="activeTab !== copyTabs[3].id" class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border">
-                              <div class="flex flex-row">
-                                   <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
-                                        class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
-                                        <span @click="showTrue = false"
-                                             class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
-                                             :class="{ '': showTrue, ' text-blue-700': !showTrue }"> {{
-                                                  searchBar.SearchFerryTicket?.title }}</span>
-                                   </div>
-                                   <div :class="{ '': !showTrue, 'border-b-2 border-blue-700': showTrue }"
-                                        class="mr-4 py-3 px-9 rounded-t-xl text-white cursor-pointer">
-                                        <span @click="showTrue = true"
-                                             class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
-                                             :class="{ '': !showTrue, 'text-blue-700': showTrue }"> {{
-                                                  searchBar.SearchReservation?.reservationNo }} </span>
-                                   </div>
-                              </div>
-                              <div class="rounded-b-xl rounded-tr-xl flex items-center">
-                                   <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
-                                        <div class="flex flex-row items-center">
-                                             <div>
-                                                  <button @click="toggleDropdown2" id="hs-dropdown-with-dividers"
-                                                       type="button"
-                                                       class="cursor-pointer flex flex-col justify-start px-5">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight">
-                                                            {{ searchBar.SearchFerryTicket?.from }}
-                                                       </div>
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
-                                                            {{ _fromWhere?.TownName }}
-                                                       </div>
-                                                  </button>
-                                                  <transition name="dropdown">
-                                                       <div v-show="isOpen2"
-                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                            <div class="flex flex-col w-[277px] p-5">
-                                                                 <div class="flex flex-col">
-                                                                      <div @click="updateFromWhere(i); handleClickInside()"
-                                                                           v-for="(i, index) in fromWhereObject"
-                                                                           :key="index"
-                                                                           :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate">
-                                                                           <a
-                                                                                class="text-black text-base font-medium font-display tracking-tight truncate">{{
-                                                                                     i.TownName }}</a>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="pl-7 py-6 flex flex-row cursor-pointer">
-                                                                 <div
-                                                                      class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">
-                                                                      Samos Turlarını Keşfet</div>
-                                                                 <div
-                                                                      class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
-                                                                      <IconFooter />
-                                                                 </div>
-                                                            </div>
-                                                       </div>
-                                                  </transition>
-                                             </div>
-                                        </div>
-                                        <!-- @click="toggleDataPlacement" -->
-                                        <div
-                                             class="bg-black rounded-full flex flex-row justify-center items-center p-[7px] cursor-pointer">
-                                             <IconsWhiteLeftRight />
-                                        </div>
-                                        <div class="flex flex-row items-center justify-center">
-                                             <div>
-                                                  <button @click="toggleDropdown3" type="button"
-                                                       class="cursor-pointer flex flex-col justify-start px-7">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight">
-                                                            {{ searchBar.SearchFerryTicket?.to }}
-                                                       </div>
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
-                                                            {{ _toWhere?.TownName }}
-                                                       </div>
-                                                  </button>
-                                                  <transition name="dropdown">
-                                                       <div v-show="isOpen3"
-                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                            <div class="flex flex-col w-[277px] p-5">
-                                                                 <div class="flex flex-col"
-                                                                      v-if="toWhereObject.length === 0">
-                                                                      <div class="flex flex-col">
-                                                                           <div class="flex flex-col">
-                                                                                <div
-                                                                                     class="text-black text-base font-medium font-display tracking-tight">
-                                                                                     Gidiş Seçiniz</div>
-                                                                           </div>
-                                                                      </div>
-                                                                 </div>
-                                                                 <div class="flex flex-col">
-                                                                      <div @click="updateToWhere(i); handleClickInside2()"
-                                                                           v-for="(i, index) in toWhereObject"
-                                                                           :key="index"
-                                                                           :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                                           <a
-                                                                                class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                                     i.TownName }}</a>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                       </div>
-                                                  </transition>
-                                             </div>
-                                        </div>
-                                        <div class="h-14 border-l border-zinc-300"></div>
-                                        <div class="flex flex-row items-center">
-                                             <div>
-                                                  <button @click="toggleDropdown4" type="button"
-                                                       class="cursor-pointer text-start ml-7">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight">
-                                                            {{
-                                                                 mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
-                                                            {{ _roundTrip?.Name }}
-                                                       </div>
-                                                  </button>
-                                                  <div ref="dropdown3">
-                                                       <transition name="dropdown">
-                                                            <div v-show="isOpen4"
-                                                                 class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                                 <div class="flex flex-col w-[277px] p-5">
-                                                                      <div @click="updateToTrip(i); handleClickInside3()"
-                                                                           v-for="(i, index) in travelObject"
-                                                                           :key="index"
-                                                                           :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                                           <a
-                                                                                class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                                     i.Name }}</a>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                       </transition>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="h-14 border-l border-zinc-300"></div>
-                                        <div class="flex flex-row items-center ml-7">
-                                             <div class="cursor-pointer flex flex-col">
-                                                  <!-- Always display formattedDateToShow -->
-                                                  <span v-if="_roundTrip?.Name" @click="togglePickerModal"
-                                                       class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
-                                                       {{ _roundTrip.Name }}
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight mr-7">
-                                                            {{ formattedDateToShow }}
-                                                       </div>
-                                                  </span>
-                                                  <span v-else
-                                                       class="text-black text-base font-light font-display tracking-tight mr-7">
-                                                       {{ formattedDateToShow }}
-                                                  </span>
-                                             </div>
-                                             <div>
-                                                  <transition name="dropdown">
-                                                       <div v-show="litepickerModalVisible" id="container"
-                                                            class="w-full h-full -bottom-32 left-0 absolute">
-                                                            <div id="litepicker" class="font-['Plus Jakarta Sans']">
-                                                                 <div
-                                                                      class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                                      <span
-                                                                           class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                                                           {{ formattedValue }}
-                                                                           <span v-if="formattedValue2" class="mx-2"> -
-                                                                           </span>
-                                                                           {{ formattedValue2 }}
-                                                                      </span>
-                                                                 </div>
-                                                            </div>
-                                                            <div @click="togglePickerModal"
-                                                                 class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
-                                                                 <p class="text-stone-800">Seç</p>
-                                                            </div>
-                                                       </div>
-                                                  </transition>
-                                             </div>
-                                        </div>
-                                        <div class="h-14 border-l border-zinc-300"></div>
-                                        <div class="dropdown">
-                                             <button @click="toggleDropdown" type="button"
-                                                  class="cursor-pointer flex flex-col justify-start py-6 px-5">
-                                                  <div
-                                                       class="text-start text-black text-base font-medium font-display tracking-tight">
-                                                       {{ searchBar.SearchFerryTicket?.passengers }}
-                                                  </div>
-                                                  <div
-                                                       class="text-black text-base font-light font-display tracking-tight">
-                                                       {{ searchBar.SearchFerryTicket?.choosePerson }}
-
-                                                       <span class="ml-1 justify-end hidden font-thin text-base">
-                                                            TotalPasengerCount </span>
-                                                  </div>
-                                             </button>
-                                             <div>
-                                                  <transition name="dropdown">
-                                                       <div v-show="isOpen"
-                                                            class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                            <div class="flex flex-col mt-[37px] ml-6">
-                                                                 <!-- {{ searchBar?.SearchFerryTicket.PassengerType }} -->
-                                                                 <div v-for="(i, index) in searchBar?.SearchFerryTicket.PassengerType"
-                                                                      :key="index"
-                                                                      class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
-                                                                      <div class="flex flex-row">
-                                                                           <div
-                                                                                class="text-black text-base font-medium font-display tracking-tight">
-                                                                                {{ i.TypeName }}
-                                                                           </div>
-                                                                      </div>
-                                                                      <div
-                                                                           class="mr-4 flex flex-row justify-center items-center">
-                                                                           <span @click="decreaseCount(index)"
-                                                                                class="mx-2 cursor-pointer">
-                                                                                <IconMinus />
-                                                                           </span>
-                                                                           <div
-                                                                                class="text-black text-[22px] font-normal font-display tracking-wide">
-                                                                                {{ passenger[index].count }}
-                                                                           </div>
-                                                                           <span @click="increaseCount(index)"
-                                                                                class="mx-2 cursor-pointer">
-                                                                                <IconPlus />
-                                                                           </span>
-                                                                      </div>
-                                                                 </div>
-                                                                 <button @click="toggleDropdown" type="button"
-                                                                      class="w-full h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
-                                                                      <div
-                                                                           class="text-white text-base font-medium font-display">
-                                                                           {{ searchBar?.SearchFerryTicket.submitBtn }}
-                                                                      </div>
-                                                                 </button>
-                                                            </div>
-                                                       </div>
-                                                  </transition>
-                                             </div>
-                                        </div>
-                                        <div @click="navigateToSecondPage"
-                                             class="w-28 h-[46px] bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
-                                             {{ searchBar.SearchFerryTicket?.submitBtn }}
-                                        </div>
-                                   </div>
-                                   <div v-show="showTrue">
-                                        <div class="w-[798px] h-24">
-                                             <div class="flex flex-row justify-between items-center ml-5">
-                                                  <SliderReservationInputs
-                                                       :placeholder="searchBar.SearchReservation?.searchPNR"
-                                                       ariaLabel="Rezervasyon Sorgula" type="text"
-                                                       class="mr-3 flex flex-row justify-center items-center" />
-                                                  <SliderReservationInputs
-                                                       :placeholder="searchBar.SearchReservation?.searchReservation"
-                                                       ariaLabel="Rezervasyon Sorgula" type="text"
-                                                       class="mr-3 flex flex-row justify-center items-center" />
-                                                  <div @click="navigateToSecondPage"
-                                                       class="bg-slate-200 rounded-full cursor-pointer p-[17px] m-[11px]">
-                                                       <IconSearchNormal />
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-                         </form>
                     </div>
                     <div :key="index" v-show="activeTab === copyTabs[0].id">
                          <div class="centered-w lg:px-[100px] px-2 md:px-16 sm:px-8">
@@ -296,12 +285,10 @@
                               </div>
                               <div class="flex flex-col">
                                    <div>
-                                        <div
-                                             class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
-                                             {{ tourDetail.title }}
+                                        <div class="text-black text-[32px] font-medium font-display tracking-wide">
+                                             {{ tourDetail.title }}asd
                                         </div>
-                                        <div
-                                             class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                        <div class="text-black text-lg font-normal font-display tracking-tight">
                                              {{ tourDetail.subtitle }}
                                         </div>
                                    </div>
@@ -395,7 +382,6 @@
                          </div>
                          <HomeSubCardSplide :key="index" :item="allTours" />
                     </div>
-
                     <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[1].id">
                          <div>
                               <div v-for="(paragraph, index) in tab.description" :key="index"
@@ -1020,6 +1006,7 @@ import { useTripStore } from '../../../src/stores/tripStore'
 import TabComponent from '../SubViews/components/TabComponent.vue'
 import AccordionPanel3 from '../../components/advanced/AccordionPanel3.vue'
 import { onBeforeUnmount } from 'vue'
+import { nextTick } from 'process'
 
 const tripStore = useTripStore()
 
@@ -1700,6 +1687,7 @@ const items = ref([
      { id: 4, name: 'Item 4' },
      { id: 5, name: 'Item 5' },
 ])
+
 </script>
 
 <style scoped>

@@ -1062,6 +1062,10 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.mb-36 {
+  margin-bottom: 9rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -1636,14 +1640,6 @@ video {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mb-28 {
-  margin-bottom: 7rem;
-}
-
-.mb-36 {
-  margin-bottom: 9rem;
 }
 
 .block {
@@ -6720,6 +6716,10 @@ input.focus\:outline-none:focus {
     margin-bottom: 0px;
   }
 
+  .sm\:mb-28 {
+    margin-bottom: 7rem;
+  }
+
   .sm\:ml-3 {
     margin-left: 0.75rem;
   }
@@ -6734,10 +6734,6 @@ input.focus\:outline-none:focus {
 
   .sm\:mt-8 {
     margin-top: 2rem;
-  }
-
-  .sm\:mb-28 {
-    margin-bottom: 7rem;
   }
 
   .sm\:block {
