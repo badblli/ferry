@@ -12,7 +12,7 @@
                <div v-for="(tab, index) in copyTabs" :key="index">
                     <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" v-show="activeTab == tab.id" />
                </div>
-               <form class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border">
+               <form class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border" v-show="activeTab !== 5">
                     <div class="flex flex-row">
                          <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
                               class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
@@ -286,7 +286,7 @@
                               <div class="flex flex-col">
                                    <div>
                                         <div class="text-black text-[32px] font-medium font-display tracking-wide">
-                                             {{ tourDetail.title }}asd
+                                             {{ tourDetail.title }}
                                         </div>
                                         <div class="text-black text-lg font-normal font-display tracking-tight">
                                              {{ tourDetail.subtitle }}
