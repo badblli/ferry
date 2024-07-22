@@ -14,8 +14,7 @@
                     <div>
                          <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" />
                          <!-- && activeTab !== copyTabs[5].id -->
-                         <form v-show="activeTab !== copyTabs[3].id"
-                              class="md:relative md:max-w-[849px] hidden md:block mx-auto md:z-50 z-40 custom-border">
+                         <form v-show="activeTab !== copyTabs[3].id" class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border">
                               <div class="flex flex-row">
                                    <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
                                         class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
@@ -180,7 +179,7 @@
                                                   <transition name="dropdown">
                                                        <div v-show="litepickerModalVisible" id="container"
                                                             class="w-full h-full -bottom-32 left-0 absolute">
-                                                            <div id="litepicker">
+                                                            <div id="litepicker" class="font-['Plus Jakarta Sans']">
                                                                  <div
                                                                       class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
                                                                       <span

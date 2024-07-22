@@ -2,7 +2,7 @@
      <section class="mb-[120px] centered-w">
           <div class="lg:px-[100px] px-2 md:px-16 sm:px-8">
                <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">{{ item.title }}</div>
-               <div class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 mb-[103px]">
+               <div class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 sm:mb-28 mb-36">
                     {{ item.description }}
                </div>
           </div>

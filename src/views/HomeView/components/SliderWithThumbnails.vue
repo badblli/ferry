@@ -124,7 +124,6 @@ qqq<template>
                                                        </div>
                                                   </div>
                                              </div>
-
                                         </div>
 
                                         <div @click="toggleDataPlacement"
