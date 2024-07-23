@@ -64,8 +64,8 @@ qqq<template>
                     </div>
                </div>
 
-               <form class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
-
+               <form
+                    class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
                     <div class="flex flex-row">
                          <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
                               class="bg-slate-200 mr-[5px] py-3 md:px-9 sm:px-4 px-2 rounded-t-xl cursor-pointer">
@@ -216,24 +216,6 @@ qqq<template>
                                                        {{ formattedDateToShow }}
                                                   </span>
                                              </div>
-                                             <div v-show="litepickerModalVisible" id="container"
-                                                  class="w-full h-full -bottom-36 sm:-bottom-32 left-0 absolute">
-                                                  <div id="litepicker">
-                                                       <div
-                                                            class="hidden md:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                            <span
-                                                                 class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                                                 {{ formattedValue }}
-                                                                 <span v-if="formattedValue2" class="mx-2"> - </span>
-                                                                 {{ formattedValue2 }}
-                                                            </span>
-                                                       </div>
-                                                  </div>
-                                                  <div @click="togglePickerModal"
-                                                       class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
-                                                       <p class="text-stone-800">Seç</p>
-                                                  </div>
-                                             </div>
                                         </div>
                                    </div>
                                    <div class="h-14 border-l border-zinc-300"></div>
@@ -306,6 +288,24 @@ qqq<template>
                               </div>
                          </div>
                     </div>
+                    <div v-show="litepickerModalVisible" id="container"
+                                                  class="w-full h-full -bottom-36 sm:-bottom-32 left-0 absolute">
+                                                  <div id="litepicker">
+                                                       <div
+                                                            class="hidden md:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                                            <span
+                                                                 class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                                 {{ formattedValue }}
+                                                                 <span v-if="formattedValue2" class="mx-2"> - </span>
+                                                                 {{ formattedValue2 }}
+                                                            </span>
+                                                       </div>
+                                                  </div>
+                                                  <div @click="togglePickerModal"
+                                                       class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                                       <p class="text-stone-800">Seç</p>
+                                                  </div>
+                                             </div>
                </form>
           </div>
      </div>
@@ -1006,5 +1006,24 @@ function navigateToSecondPage() {
 .custom-radiel-gradient {
      background: rgb(255, 255, 255);
      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(233, 238, 245, 1) 35%, rgba(255, 255, 255, 1) 100%);
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+     transition:
+          opacity 0.3s,
+          transform 0.3s;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+     opacity: 0;
+     transform: translateY(-10px);
+}
+
+.dropdown-enter-to,
+.dropdown-leave-from {
+     opacity: 1;
+     transform: translateY(0);
 }
 </style>

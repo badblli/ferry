@@ -10,7 +10,8 @@
                     </div>
                </div>
                <div v-for="(tab, index) in copyTabs" :key="index">
-                    <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" v-show="activeTab == tab.id" />
+                    <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle"
+                         v-show="activeTab == tab.id" />
                </div>
                <form class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border" v-show="activeTab !== 5">
                     <div class="flex flex-row">
@@ -29,7 +30,6 @@
                                         searchBar.SearchReservation?.reservationNo }} </span>
                          </div>
                     </div>
-
                     <div class="rounded-b-xl rounded-tr-xl flex items-center">
                          <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
                               <div class="flex flex-col sm:flex-row items-center">
@@ -141,7 +141,7 @@
                                                                  class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                                  <a
                                                                       class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                      i.Name }}</a>
+                                                                           i.Name }}</a>
                                                             </div>
                                                        </div>
                                                   </div>
@@ -165,28 +165,6 @@
                                              class="text-black text-base font-light font-display tracking-tight mr-7">
                                              {{ formattedDateToShow }}
                                         </span>
-                                   </div>
-                                   <div>
-                                        <transition name="dropdown">
-                                             <div v-show="litepickerModalVisible" id="container"
-                                                  class="w-full h-full -bottom-32 left-0 absolute">
-                                                  <div id="litepicker" class="font-['Plus Jakarta Sans']">
-                                                       <div
-                                                            class="absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                                            <span
-                                                                 class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                                                 {{ formattedValue }}
-                                                                 <span v-if="formattedValue2" class="mx-2"> - </span>
-                                                                 {{ formattedValue2 }}
-                                                            </span>
-                                                       </div>
-                                                  </div>
-                                                  <div @click="togglePickerModal"
-                                                       class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
-                                                       <p class="text-stone-800">Seç</p>
-                                                  </div>
-                                             </div>
-                                        </transition>
                                    </div>
                               </div>
                               <div class="h-14 border-l border-zinc-300"></div>
@@ -267,6 +245,27 @@
                                    </div>
                               </div>
                          </div>
+                    </div>
+                    <div>
+                         <transition name="dropdown">
+                              <div v-show="litepickerModalVisible" id="container" class="w-full h-full left-0 absolute">
+                                   <div id="litepicker">
+                                        <div
+                                             class="hidden sm:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                             <span
+                                                  class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                  {{ formattedValue }}
+                                                  <span v-if="formattedValue2" class="mx-2"> - </span>
+                                                  {{ formattedValue2 }}
+                                             </span>
+                                        </div>
+                                   </div>
+                                   <div @click="togglePickerModal"
+                                        class="relative bottom-14 right-0 md:ml-12 ml-2 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                        <p class="text-stone-800">Seç</p>
+                                   </div>
+                              </div>
+                         </transition>
                     </div>
                </form>
                <div v-for="(tab, index) in copyTabs" :key="index" v-show="activeTab == tab.id" class="w-full">
@@ -1932,4 +1931,12 @@ const items = ref([
      }
 
 }
+
+@media only screen and (min-width: 224px) and (max-width: 555px) {
+     .choose-btn {
+          margin-left: 0px;
+     }
+}
+
+
 </style>
