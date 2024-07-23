@@ -31,94 +31,100 @@
                          </div>
                     </div>
                     <div class="rounded-b-xl rounded-tr-xl flex items-center">
-                         <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
-                              <div class="flex flex-col sm:flex-row items-center">
-                                   <div>
-                                        <button @click="toggleDropdown2" type="button"
-                                             class="cursor-pointer flex flex-col justify-start px-5">
-                                             <div class="text-black text-base font-medium font-display tracking-tight">
-                                                  {{ searchBar.SearchFerryTicket?.from }}
-                                             </div>
-                                             <div
-                                                  class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
-                                                  {{ _fromWhere?.TownName }}
-                                             </div>
-                                        </button>
-                                        <transition name="dropdown">
-                                             <div v-show="isOpen2"
-                                                  class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                  <div class="flex flex-col w-[277px] p-5">
-                                                       <div class="flex flex-col">
-                                                            <div @click="updateFromWhere(i); handleClickInside()"
-                                                                 v-for="(i, index) in fromWhereObject" :key="index"
-                                                                 :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
-                                                                 class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate">
-                                                                 <a
-                                                                      class="text-black text-base font-medium font-display tracking-tight truncate">{{
-                                                                           i.TownName }}</a>
-                                                            </div>
-                                                       </div>
+                         <div class="flex flex-row  items-center w-full custom-border-top" v-show="!showTrue">
+                              <div class="flex flex-col sm:flex-row">
+                                   <div class="flex flex-row items-center">
+                                        <div>
+                                             <button @click="toggleDropdown2" type="button"
+                                                  class="cursor-pointer flex flex-col justify-start px-5">
+                                                  <div
+                                                       class="text-black text-base font-medium font-display tracking-tight">
+                                                       {{ searchBar.SearchFerryTicket?.from }}
                                                   </div>
-                                                  <div class="pl-7 py-6 flex flex-row cursor-pointer">
-                                                       <div
-                                                            class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">
-                                                            Samos Turlarını Keşfet</div>
-                                                       <div
-                                                            class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
-                                                            <IconFooter />
-                                                       </div>
+                                                  <div
+                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                                       {{ _fromWhere?.TownName }}
                                                   </div>
-                                             </div>
-                                        </transition>
-                                   </div>
-                              </div>
-                              <!-- @click="toggleDataPlacement" -->
-                              <div
-                                   class="bg-black rounded-full flex flex-row justify-center items-center p-[7px] cursor-pointer">
-                                   <IconsWhiteLeftRight />
-                              </div>
-                              <div class="flex flex-row items-center justify-center">
-                                   <div>
-                                        <button @click="toggleDropdown3" type="button"
-                                             class="cursor-pointer flex flex-col justify-start px-7">
-                                             <div class="text-black text-base font-medium font-display tracking-tight">
-                                                  {{ searchBar.SearchFerryTicket?.to }}
-                                             </div>
-                                             <div
-                                                  class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
-                                                  {{ _toWhere?.TownName }}
-                                             </div>
-                                        </button>
-                                        <transition name="dropdown">
-                                             <div v-show="isOpen3"
-                                                  class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                  <div class="flex flex-col w-[277px] p-5">
-                                                       <div class="flex flex-col" v-if="toWhereObject.length === 0">
+                                             </button>
+                                             <transition name="dropdown">
+                                                  <div v-show="isOpen2"
+                                                       class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <div class="flex flex-col w-[277px] p-5">
                                                             <div class="flex flex-col">
-                                                                 <div class="flex flex-col">
-                                                                      <div
-                                                                           class="text-black text-base font-medium font-display tracking-tight">
-                                                                           Gidiş Seçiniz</div>
+                                                                 <div @click="updateFromWhere(i); handleClickInside()"
+                                                                      v-for="(i, index) in fromWhereObject" :key="index"
+                                                                      :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
+                                                                      class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate">
+                                                                      <a
+                                                                           class="text-black text-base font-medium font-display tracking-tight truncate">{{
+                                                                                i.TownName }}</a>
                                                                  </div>
                                                             </div>
                                                        </div>
-                                                       <div class="flex flex-col">
-                                                            <div @click="updateToWhere(i); handleClickInside2()"
-                                                                 v-for="(i, index) in toWhereObject" :key="index"
-                                                                 :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
-                                                                 class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                                 <a
-                                                                      class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                           i.TownName }}</a>
+                                                       <div class="pl-7 py-6 flex flex-row cursor-pointer">
+                                                            <div
+                                                                 class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">
+                                                                 Samos Turlarını Keşfet</div>
+                                                            <div
+                                                                 class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
+                                                                 <IconFooter />
                                                             </div>
                                                        </div>
                                                   </div>
-                                             </div>
-                                        </transition>
+                                             </transition>
+                                        </div>
+                                   </div>
+                                   <!-- @click="toggleDataPlacement" -->
+                                   <div
+                                        class="bg-black rounded-full flex flex-row justify-center items-center p-[7px] cursor-pointer w-24 md:w-full mx-auto">
+                                        <IconsWhiteLeftRight />
+                                   </div>
+                                   <div class="flex flex-row items-center justify-center">
+                                        <div>
+                                             <button @click="toggleDropdown3" type="button"
+                                                  class="cursor-pointer flex flex-col justify-start px-7">
+                                                  <div
+                                                       class="text-black text-base font-medium font-display tracking-tight">
+                                                       {{ searchBar.SearchFerryTicket?.to }}
+                                                  </div>
+                                                  <div
+                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                                       {{ _toWhere?.TownName }}
+                                                  </div>
+                                             </button>
+                                             <transition name="dropdown">
+                                                  <div v-show="isOpen3"
+                                                       class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <div class="flex flex-col w-[277px] p-5">
+                                                            <div class="flex flex-col"
+                                                                 v-if="toWhereObject.length === 0">
+                                                                 <div class="flex flex-col">
+                                                                      <div class="flex flex-col">
+                                                                           <div
+                                                                                class="text-black text-base font-medium font-display tracking-tight">
+                                                                                Gidiş Seçiniz</div>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                            <div class="flex flex-col">
+                                                                 <div @click="updateToWhere(i); handleClickInside2()"
+                                                                      v-for="(i, index) in toWhereObject" :key="index"
+                                                                      :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
+                                                                      class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                                      <a
+                                                                           class="text-black text-base font-medium font-display tracking-tight">{{
+                                                                                i.TownName }}</a>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </transition>
+                                        </div>
                                    </div>
                               </div>
-                              <div class="h-14 border-l border-zinc-300"></div>
-                              <div class="flex flex-row items-center">
+                              <div class="hidden md:block h-14 border-l border-zinc-300"></div>
+                              <div class="flex flex-col md:flex-row">
+                                   <div class="flex flex-row items-center">
                                    <div>
                                         <button @click="toggleDropdown4" type="button"
                                              class="cursor-pointer text-start ml-7">
@@ -149,7 +155,7 @@
                                         </div>
                                    </div>
                               </div>
-                              <div class="h-14 border-l border-zinc-300"></div>
+                              <div class="hidden md:block h-14 border-l border-zinc-300"></div>
                               <div class="flex flex-row items-center ml-7">
                                    <div class="cursor-pointer flex flex-col">
                                         <!-- Always display formattedDateToShow -->
@@ -167,6 +173,7 @@
                                         </span>
                                    </div>
                               </div>
+                              </div>
                               <div class="h-14 border-l border-zinc-300"></div>
                               <div class="dropdown">
                                    <button @click="toggleDropdown" type="button"
@@ -175,7 +182,7 @@
                                              class="text-start text-black text-base font-medium font-display tracking-tight">
                                              {{ searchBar.SearchFerryTicket?.passengers }}
                                         </div>
-                                        <div class="text-black text-base font-light font-display tracking-tight">
+                                        <div class="text-black text-left md:text-base font-light font-display tracking-tight">
                                              {{ searchBar.SearchFerryTicket?.choosePerson }}
 
                                              <span class="ml-1 justify-end hidden font-thin text-base">
@@ -1937,6 +1944,4 @@ const items = ref([
           margin-left: 0px;
      }
 }
-
-
 </style>

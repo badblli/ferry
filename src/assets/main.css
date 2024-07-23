@@ -7172,6 +7172,10 @@ input.focus\:outline-none:focus {
     width: 100%;
   }
 
+  .md\:w-24 {
+    width: 6rem;
+  }
+
   .md\:max-w-2xl {
     max-width: 42rem;
   }
