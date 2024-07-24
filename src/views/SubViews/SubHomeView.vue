@@ -125,54 +125,55 @@
                               <div class="hidden md:block h-14 border-l border-zinc-300"></div>
                               <div class="flex flex-col md:flex-row">
                                    <div class="flex flex-row items-center">
-                                   <div>
-                                        <button @click="toggleDropdown4" type="button"
-                                             class="cursor-pointer text-start ml-7">
-                                             <div class="text-black text-base font-medium font-display tracking-tight">
-                                                  {{
-                                                       mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
-                                             <div
-                                                  class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
-                                                  {{ _roundTrip?.Name }}
-                                             </div>
-                                        </button>
-                                        <div ref="dropdown3">
-                                             <transition name="dropdown">
-                                                  <div v-show="isOpen4"
-                                                       class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                       <div class="flex flex-col w-[277px] p-5">
-                                                            <div @click="updateToTrip(i); handleClickInside3()"
-                                                                 v-for="(i, index) in travelObject" :key="index"
-                                                                 :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
-                                                                 class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                                 <a
-                                                                      class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                           i.Name }}</a>
+                                        <div>
+                                             <button @click="toggleDropdown4" type="button"
+                                                  class="cursor-pointer text-start ml-7">
+                                                  <div
+                                                       class="text-black text-base font-medium font-display tracking-tight">
+                                                       {{
+                                                            mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
+                                                  <div
+                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
+                                                       {{ _roundTrip?.Name }}
+                                                  </div>
+                                             </button>
+                                             <div ref="dropdown3">
+                                                  <transition name="dropdown">
+                                                       <div v-show="isOpen4"
+                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                            <div class="flex flex-col w-[277px] p-5">
+                                                                 <div @click="updateToTrip(i); handleClickInside3()"
+                                                                      v-for="(i, index) in travelObject" :key="index"
+                                                                      :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
+                                                                      class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
+                                                                      <a
+                                                                           class="text-black text-base font-medium font-display tracking-tight">{{
+                                                                                i.Name }}</a>
+                                                                 </div>
                                                             </div>
                                                        </div>
-                                                  </div>
-                                             </transition>
+                                                  </transition>
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                              <div class="hidden md:block h-14 border-l border-zinc-300"></div>
-                              <div class="flex flex-row items-center ml-7">
-                                   <div class="cursor-pointer flex flex-col">
-                                        <!-- Always display formattedDateToShow -->
-                                        <span v-if="_roundTrip?.Name" @click="togglePickerModal"
-                                             class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
-                                             {{ _roundTrip.Name }}
-                                             <div
+                                   <div class="hidden md:block h-14 border-l border-zinc-300"></div>
+                                   <div class="flex flex-row items-center ml-7">
+                                        <div class="cursor-pointer flex flex-col">
+                                             <!-- Always display formattedDateToShow -->
+                                             <span v-if="_roundTrip?.Name" @click="togglePickerModal"
+                                                  class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
+                                                  {{ _roundTrip.Name }}
+                                                  <div
+                                                       class="text-black text-base font-light font-display tracking-tight mr-7">
+                                                       {{ formattedDateToShow }}
+                                                  </div>
+                                             </span>
+                                             <span v-else
                                                   class="text-black text-base font-light font-display tracking-tight mr-7">
                                                   {{ formattedDateToShow }}
-                                             </div>
-                                        </span>
-                                        <span v-else
-                                             class="text-black text-base font-light font-display tracking-tight mr-7">
-                                             {{ formattedDateToShow }}
-                                        </span>
+                                             </span>
+                                        </div>
                                    </div>
-                              </div>
                               </div>
                               <div class="h-14 border-l border-zinc-300"></div>
                               <div class="dropdown">
@@ -182,7 +183,8 @@
                                              class="text-start text-black text-base font-medium font-display tracking-tight">
                                              {{ searchBar.SearchFerryTicket?.passengers }}
                                         </div>
-                                        <div class="text-black text-left md:text-base font-light font-display tracking-tight">
+                                        <div
+                                             class="text-black text-left md:text-base font-light font-display tracking-tight">
                                              {{ searchBar.SearchFerryTicket?.choosePerson }}
 
                                              <span class="ml-1 justify-end hidden font-thin text-base">
@@ -192,10 +194,10 @@
                                    <div>
                                         <transition name="dropdown">
                                              <div v-show="isOpen"
-                                                  class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                  <div class="flex flex-col mt-[37px] ml-6">
-                                                       <!-- {{ searchBar?.SearchFerryTicket.PassengerType }} -->
-                                                       <div v-for="(i, index) in searchBar?.SearchFerryTicket?.PassengerType"
+                                                  class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200 right-0">
+                                                  <div class="flex flex-col mt-[37px] ml-1 md:ml-2 lg:ml-6">
+                                                       <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
+                                                       <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
                                                             :key="index"
                                                             class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
                                                             <div class="flex flex-row">
@@ -219,12 +221,11 @@
                                                                  </span>
                                                             </div>
                                                        </div>
-                                                       <button @click="toggleDropdown" type="button"
-                                                            class="w-full h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
-                                                            <div class="text-white text-base font-medium font-display">
-                                                                 {{ searchBar?.SearchFerryTicket?.submitBtn }}
-                                                            </div>
-                                                       </button>
+                                                       <!-- <button id="hs-dropdown-auto-close-false" type="button"
+                                                  class="w-[353px] h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
+                                                  <div class="text-white text-base font-medium font-display">{{
+                                                       mainHomeSplide.search?.SearchFerryTicket.submitBtn }}</div>
+                                             </button> -->
                                                   </div>
                                              </div>
                                         </transition>

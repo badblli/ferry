@@ -288,23 +288,26 @@ qqq<template>
                               </div>
                          </div>
                     </div>
-                    <div v-show="litepickerModalVisible" id="container"
-                         class="w-full h-full -bottom-36 sm:-bottom-32 left-0 absolute">
-                         <div id="litepicker">
-                              <div
-                                   class="hidden md:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                   <span
-                                        class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
-                                        {{ formattedValue }}
-                                        <span v-if="formattedValue2" class="mx-2"> - </span>
-                                        {{ formattedValue2 }}
-                                   </span>
+                    <div>
+                         <transition name="dropdown">
+                              <div v-show="litepickerModalVisible" id="container" class="w-full h-full left-0 absolute">
+                                   <div id="litepicker">
+                                        <div
+                                             class="hidden sm:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                             <span
+                                                  class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                                  {{ formattedValue }}
+                                                  <span v-if="formattedValue2" class="mx-2"> - </span>
+                                                  {{ formattedValue2 }}
+                                             </span>
+                                        </div>
+                                   </div>
+                                   <div @click="togglePickerModal"
+                                        class="relative bottom-14 right-0 md:ml-12 ml-2 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                        <p class="text-stone-800">Seç</p>
+                                   </div>
                               </div>
-                         </div>
-                         <div @click="togglePickerModal"
-                              class="relative bottom-14 right-0 ml-12 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
-                              <p class="text-stone-800">Seç</p>
-                         </div>
+                         </transition>
                     </div>
                </form>
           </div>
