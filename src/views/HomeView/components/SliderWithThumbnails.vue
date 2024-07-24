@@ -1,4 +1,4 @@
-qqq<template>
+<template>
      <div v-show="mainHomeSplide.img?.length > 0">
           <div class="lg:px-[100px] px-2 md:px-16 sm:px-8 relative centered-w">
                <div
@@ -206,17 +206,23 @@ qqq<template>
                                         <div class="h-14 border-l border-zinc-300 hidden md:block ml-0 md:ml-2 lg:ml-3">
                                         </div>
 
-                                        <div class="cursor-pointer text-start items-center flex ml-4 lg:ml-7">
-                                             <div class="cursor-pointer flex flex-col">
-                                                  <span @click="togglePickerModal"
-                                                       class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">{{
-                                                            _roundTrip?.Name }}</span>
-                                                  <span
-                                                       class="text-black text-base font-light font-display tracking-tight">
+                                        <div class="flex flex-row items-center ml-4 lg:ml-7">
+                                        <div class="cursor-pointer flex flex-col">
+                                             <!-- Always display formattedDateToShow -->
+                                             <span v-if="_roundTrip?.Name" @click="togglePickerModal"
+                                                  class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
+                                                  {{ _roundTrip.Name }}
+                                                  <div
+                                                       class="text-black text-base font-light font-display tracking-tight mr-7">
                                                        {{ formattedDateToShow }}
-                                                  </span>
-                                             </div>
+                                                  </div>
+                                             </span>
+                                             <span v-else
+                                                  class="text-black text-base font-light font-display tracking-tight mr-7">
+                                                  {{ formattedDateToShow }}
+                                             </span>
                                         </div>
+                                   </div>
                                    </div>
                                    <div class="h-14 border-l border-zinc-300"></div>
                                    <div class="dropdown ml-2 md:ml-4 lg:ml-7">
@@ -303,7 +309,7 @@ qqq<template>
                                         </div>
                                    </div>
                                    <div @click="togglePickerModal"
-                                        class="relative bottom-14 right-0 md:ml-12 ml-2 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                        class="relative bottom-14 z-50 right-0 md:ml-12 ml-2 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
                                         <p class="text-stone-800">Seç</p>
                                    </div>
                               </div>
@@ -831,7 +837,6 @@ function navigateToSecondPage() {
 #litepicker {
      display: inline-block !important;
      position: relative !important;
-     z-index: 1600 !important;
 }
 
 .splide {

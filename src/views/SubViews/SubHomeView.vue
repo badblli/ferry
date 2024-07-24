@@ -13,7 +13,7 @@
                     <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle"
                          v-show="activeTab == tab.id" />
                </div>
-               <form class="md:relative md:max-w-[849px] mx-auto md:z-50 z-40 custom-border" v-show="activeTab !== 5">
+               <form class="md:relative md:block mx-auto custom-border" v-show="activeTab !== 5">
                     <div class="flex flex-row">
                          <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
                               class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
@@ -31,12 +31,12 @@
                          </div>
                     </div>
                     <div class="rounded-b-xl rounded-tr-xl flex items-center">
-                         <div class="flex flex-row  items-center w-full custom-border-top" v-show="!showTrue">
+                         <div class="flex flex-row items-center w-full custom-border-top" v-show="!showTrue">
                               <div class="flex flex-col sm:flex-row">
                                    <div class="flex flex-row items-center">
                                         <div>
                                              <button @click="toggleDropdown2" type="button"
-                                                  class="cursor-pointer flex flex-col justify-start px-5">
+                                                  class="cursor-pointer flex flex-col justify-start px-3">
                                                   <div
                                                        class="text-black text-base font-medium font-display tracking-tight">
                                                        {{ searchBar.SearchFerryTicket?.from }}
@@ -76,19 +76,19 @@
                                    </div>
                                    <!-- @click="toggleDataPlacement" -->
                                    <div
-                                        class="bg-black rounded-full flex flex-row justify-center items-center p-[7px] cursor-pointer w-24 md:w-full mx-auto">
+                                        class="bg-black rounded-full flex flex-row justify-center items-center lg:p-[7px] md:p-3 p-2 cursor-pointer md:w-full mx-auto">
                                         <IconsWhiteLeftRight />
                                    </div>
                                    <div class="flex flex-row items-center justify-center">
                                         <div>
                                              <button @click="toggleDropdown3" type="button"
-                                                  class="cursor-pointer flex flex-col justify-start px-7">
+                                                  class="cursor-pointer flex flex-col justify-start">
                                                   <div
-                                                       class="text-black text-base font-medium font-display tracking-tight">
+                                                       class="text-black text-base font-medium font-display tracking-tight lg:ml-2 ml-0">
                                                        {{ searchBar.SearchFerryTicket?.to }}
                                                   </div>
                                                   <div
-                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 lg:ml-2 ml-0 text-start">
                                                        {{ _toWhere?.TownName }}
                                                   </div>
                                              </button>
@@ -127,13 +127,13 @@
                                    <div class="flex flex-row items-center">
                                         <div>
                                              <button @click="toggleDropdown4" type="button"
-                                                  class="cursor-pointer text-start ml-7">
+                                                  class="cursor-pointer text-start sm:ml-2 ml-0 sm:mr-6 lg:ml-7">
                                                   <div
                                                        class="text-black text-base font-medium font-display tracking-tight">
                                                        {{
                                                             mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
                                                   <div
-                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-24">
+                                                       class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate">
                                                        {{ _roundTrip?.Name }}
                                                   </div>
                                              </button>
@@ -141,14 +141,15 @@
                                                   <transition name="dropdown">
                                                        <div v-show="isOpen4"
                                                             class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                            <div class="flex flex-col w-[277px] p-5">
+                                                            <div class="flex flex-col md:w-[277px] w-52 p-5">
                                                                  <div @click="updateToTrip(i); handleClickInside3()"
                                                                       v-for="(i, index) in travelObject" :key="index"
                                                                       :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
                                                                       class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                                       <a
                                                                            class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                                i.Name }}</a>
+                                                                                i.Name
+                                                                           }}</a>
                                                                  </div>
                                                             </div>
                                                        </div>
@@ -157,7 +158,7 @@
                                         </div>
                                    </div>
                                    <div class="hidden md:block h-14 border-l border-zinc-300"></div>
-                                   <div class="flex flex-row items-center ml-7">
+                                   <div class="flex flex-row items-center ml-0 lg:ml-7">
                                         <div class="cursor-pointer flex flex-col">
                                              <!-- Always display formattedDateToShow -->
                                              <span v-if="_roundTrip?.Name" @click="togglePickerModal"
@@ -176,80 +177,71 @@
                                    </div>
                               </div>
                               <div class="h-14 border-l border-zinc-300"></div>
-                              <div class="dropdown">
-                                   <button @click="toggleDropdown" type="button"
-                                        class="cursor-pointer flex flex-col justify-start py-6 px-5">
+                              <div class="dropdown ml-1 md:ml-4 lg:ml-7">
+                                   <button @click="toggleDropdown" type="button" class="cursor-pointer">
                                         <div
                                              class="text-start text-black text-base font-medium font-display tracking-tight">
-                                             {{ searchBar.SearchFerryTicket?.passengers }}
+                                             {{ mainHomeSplide.search?.SearchFerryTicket.passengers }}
                                         </div>
-                                        <div
-                                             class="text-black text-left md:text-base font-light font-display tracking-tight">
-                                             {{ searchBar.SearchFerryTicket?.choosePerson }}
+                                        <div class="text-black text-start font-light font-display tracking-tight">
+                                             {{ mainHomeSplide.search?.SearchFerryTicket.choosePerson }}:
 
-                                             <span class="ml-1 justify-end hidden font-thin text-base">
-                                                  TotalPasengerCount </span>
+                                             <span class="ml-1 justify-end font-thin text-start">
+                                                  {{ totalPassengerCount }}
+                                             </span>
                                         </div>
                                    </button>
-                                   <div>
-                                        <transition name="dropdown">
-                                             <div v-show="isOpen"
-                                                  class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200 right-0">
-                                                  <div class="flex flex-col mt-[37px] ml-1 md:ml-2 lg:ml-6">
-                                                       <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
-                                                       <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
-                                                            :key="index"
-                                                            class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
-                                                            <div class="flex flex-row">
-                                                                 <div
-                                                                      class="text-black text-base font-medium font-display tracking-tight">
-                                                                      {{ i.TypeName }}
-                                                                 </div>
-                                                            </div>
-                                                            <div class="mr-4 flex flex-row justify-center items-center">
-                                                                 <span @click="decreaseCount(index)"
-                                                                      class="mx-2 cursor-pointer">
-                                                                      <IconMinus />
-                                                                 </span>
-                                                                 <div
-                                                                      class="text-black text-[22px] font-normal font-display tracking-wide">
-                                                                      {{ passenger[index].count }}
-                                                                 </div>
-                                                                 <span @click="increaseCount(index)"
-                                                                      class="mx-2 cursor-pointer">
-                                                                      <IconPlus />
-                                                                 </span>
-                                                            </div>
+                                   <div v-show="isOpen"
+                                        class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200 right-0">
+                                        <div class="flex flex-col mt-[37px] ml-1 md:ml-2 lg:ml-6">
+                                             <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
+                                             <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
+                                                  :key="index"
+                                                  class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                                  <div class="flex flex-row">
+                                                       <div
+                                                            class="text-black text-base font-medium font-display tracking-tight">
+                                                            {{ i.TypeName }}
                                                        </div>
-                                                       <!-- <button id="hs-dropdown-auto-close-false" type="button"
+                                                  </div>
+                                                  <div class="mr-4 flex flex-row justify-center items-center">
+                                                       <span @click="decreaseCount(index)" class="mx-2 cursor-pointer">
+                                                            <IconMinus />
+                                                       </span>
+                                                       <div
+                                                            class="text-black text-[22px] font-normal font-display tracking-wide">
+                                                            {{ passenger[index].count }}
+                                                       </div>
+                                                       <span @click="increaseCount(index)" class="mx-2 cursor-pointer">
+                                                            <IconPlus />
+                                                       </span>
+                                                  </div>
+                                             </div>
+                                             <!-- <button id="hs-dropdown-auto-close-false" type="button"
                                                   class="w-[353px] h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
                                                   <div class="text-white text-base font-medium font-display">{{
                                                        mainHomeSplide.search?.SearchFerryTicket.submitBtn }}</div>
                                              </button> -->
-                                                  </div>
-                                             </div>
-                                        </transition>
+                                        </div>
                                    </div>
                               </div>
                               <div @click="navigateToSecondPage"
-                                   class="w-28 h-[46px] bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
+                                   class="lg:w-28 w-20 h-[46px] my-5 md:mx-7 mx-0 ml-3 lg:text-base text-sm bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
                                    {{ searchBar.SearchFerryTicket?.submitBtn }}
                               </div>
                          </div>
                          <div v-show="showTrue">
-                              <div class="w-[798px] h-24">
-                                   <div class="flex flex-row justify-between items-center ml-5">
-                                        <SliderReservationInputs :placeholder="searchBar.SearchReservation?.searchPNR"
-                                             ariaLabel="Rezervasyon Sorgula" type="text"
-                                             class="mr-3 flex flex-row justify-center items-center" />
-                                        <SliderReservationInputs
-                                             :placeholder="searchBar.SearchReservation?.searchReservation"
-                                             ariaLabel="Rezervasyon Sorgula" type="text"
-                                             class="mr-3 flex flex-row justify-center items-center" />
-                                        <div @click="navigateToSecondPage"
-                                             class="bg-slate-200 rounded-full cursor-pointer p-[17px] m-[11px]">
-                                             <IconSearchNormal />
-                                        </div>
+                              <div class="flex flex-row max-w-[849px] justify-between items-center mx-3">
+                                   <SliderReservationInputs :placeholder="searchBar.SearchReservation?.searchPNR"
+                                        ariaLabel="Rezervasyon Sorgula" type="text"
+                                        class="mr-3 flex flex-row justify-center items-center" />
+                                   <SliderReservationInputs
+                                        :placeholder="searchBar.SearchReservation?.searchReservation"
+                                        ariaLabel="Rezervasyon Sorgula" type="text"
+                                        class="mr-3 flex flex-row justify-center items-center md:ml-28 ml-5" />
+                                   <div @click="navigateToSecondPage"
+                                        class="bg-slate-200 rounded-full cursor-pointer p-[17px] m-3 md:ml-28 ml-5">
+                                        <IconSearchNormal />
                                    </div>
                               </div>
                          </div>
@@ -482,9 +474,6 @@
                                    </div>
                               </div>
                          </div>
-
-
-
                     </div>
                     <div class="centered-w" v-show="activeTab === copyTabs[3].id">
                          <div class="flex flex-col justify-center items-center m-auto relative">
@@ -944,6 +933,11 @@ onMounted(() => {
 //      }
 // })
 
+const totalPassengerCount = computed(() => {
+     const count = totalCount()
+     return count > 0 ? count : null
+})
+
 const showTrue = ref(false)
 
 const scn = ref(localStorage.getItem('SubSalechannelName'))
@@ -1143,6 +1137,7 @@ const decreaseCount = (index: number) => {
 }
 
 const totalCount = () => {
+     console.log(passenger.value, 'passenger')
      return passenger.value.reduce((total, current) => total + current.count, 0)
 }
 
