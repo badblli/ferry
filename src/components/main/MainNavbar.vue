@@ -56,12 +56,12 @@
                </div>
 
                <div class="flex flex-1 w-33 justify-end">
-                    <div class="border rounded-3xl p-[10px]" :class="{ 'border-none': !isMeanderLayout }">
+                    <div class="border rounded-3xl md:p-[10px] p-2" :class="{ 'border-none': !isMeanderLayout }">
                          <div v-if="isAuthenticated" class="text-center cursor-pointer hidden md:flex">
                               <button @click="showModal" type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">{{ userName }}</button>
                               <IconChevronDown />
                          </div>
-                         <div v-else class="text-center cursor-pointer hidden md:flex">
+                         <div v-else class="text-center cursor-pointer flex">
                               <button @click="showModal" type="button" class="text-black text-sm md:text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight mr-1" data-hs-overlay="#hs-medium-modal">{{ mainNavbar.LoginTitle }}</button>
                               <IconChevronDown />
                          </div>
@@ -102,7 +102,7 @@ const dropdown = ref(null)
 const { showModalState, showModal, closeModal } = useModal()
 const userStore = useUserStore()
 const handleCloseModal = () => {
-     closeModal() // Call the closeModal function when the modal is closed
+     closeModal()
 }
 
 const handleClickOutside = (event) => {

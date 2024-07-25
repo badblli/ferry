@@ -25,7 +25,7 @@
      </div>
      <div class="mt-[70px]">
           <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 mt-[67px]">
-               <form class="w-full max-w-sm md:ml-10 ml-2">
+               <form class="w-full max-w-sm md:ml-10 ml-0">
                     <div class="flex border-b border-neutral-200 mb-10">
                          <input v-model="nameModel" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="data.name" />
                          <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
@@ -64,8 +64,8 @@
 </template>
 
 <script setup lang="ts">
-import InputBasic from './InputBasic.vue'
-import InputBirth from './InputBirth.vue'
+// import InputBasic from './InputBasic.vue'
+// import InputBirth from './InputBirth.vue'
 // import InputPhone from './InputPhone.vue';
 import { VueTelInput } from 'vue-tel-input'
 import 'vue-tel-input/vue-tel-input.css'

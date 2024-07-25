@@ -1,5 +1,5 @@
 <template>
-     <div class="w-[378px] text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[34px]">{{ data.description }}</div>
+     <div class="max-w-[378px] text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight mb-[34px]">{{ data.description }}</div>
      <div class="mt-[70px]">
           <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 mt-[58px]">
                <form class="w-full max-w-sm">

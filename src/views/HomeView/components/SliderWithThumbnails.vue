@@ -64,8 +64,7 @@
                     </div>
                </div>
 
-               <form
-                    class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
+               <form class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
                     <div class="flex flex-row">
                          <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
                               class="bg-slate-200 mr-[5px] py-3 md:px-9 sm:px-4 px-2 rounded-t-xl cursor-pointer">
@@ -103,7 +102,6 @@
                                                   aria-labelledby="hs-dropdown-with-dividers">
                                                   <div class="flex flex-col w-[277px] p-5">
                                                        <div class="flex flex-col">
-                                                            <!-- BURADA KALDIM -->
                                                             <div @click="updateFromWhere(i)"
                                                                  v-for="(i, index) in fromWhereObject" :key="index"
                                                                  :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
@@ -125,12 +123,10 @@
                                                   </div>
                                              </div>
                                         </div>
-
                                         <div @click="toggleDataPlacement"
                                              class="bg-gray-200 rounded-full flex flex-row justify-center items-center p-[7px] ml-2 md:ml-4 lg:ml-[26px] cursor-pointer">
                                              <IconArrowsLeftRight />
                                         </div>
-
                                         <div class="hs-dropdown flex flex-row items-center">
                                              <button id="hs-dropdown-with-dividers-2" type="button"
                                                   class="cursor-pointer flex flex-col justify-start ml-[21px]">
@@ -171,11 +167,8 @@
                                              </div>
                                         </div>
                                    </div>
-
                                    <div class="block h-14 border-l border-zinc-300 ml-1 md:ml-2 lg:ml-3"></div>
-
                                    <div class="flex flex-col sm:flex-row">
-
                                         <div class="hs-dropdown flex flex-row items-center">
                                              <button id="hs-dropdown-with-dividers-3" type="button"
                                                   class="cursor-pointer text-start ml-4 lg:ml-7">
@@ -202,10 +195,8 @@
                                                   </div>
                                              </div>
                                         </div>
-
                                         <div class="h-14 border-l border-zinc-300 hidden md:block ml-0 md:ml-2 lg:ml-3">
                                         </div>
-
                                         <div class="flex flex-row items-center ml-4 lg:ml-7">
                                         <div class="cursor-pointer flex flex-col">
                                              <!-- Always display formattedDateToShow -->
@@ -231,9 +222,8 @@
                                                   class="text-start text-black text-base font-medium font-display tracking-tight">
                                                   {{ mainHomeSplide.search?.SearchFerryTicket.passengers }}
                                              </div>
-                                             <div class="text-black text-base font-light font-display tracking-tight">
+                                             <div class="text-start text-black text-base font-light font-display tracking-tight">
                                                   {{ mainHomeSplide.search?.SearchFerryTicket.choosePerson }}:
-
                                                   <span class="ml-1 justify-end fixed font-thin text-base">
                                                        {{ totalPassengerCount }}
                                                   </span>

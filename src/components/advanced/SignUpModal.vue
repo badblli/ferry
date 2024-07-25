@@ -74,9 +74,6 @@
                             </button>
                         </div>
                     </form>
-                    <div>
-                        DENEME DENEME DENEME
-                    </div>
                     <div
                         class="text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[21px] tracking-widest mt-5 flex justify-center items-center mb-[20px]">
                         YA DA </div>

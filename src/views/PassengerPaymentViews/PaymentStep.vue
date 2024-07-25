@@ -7,7 +7,7 @@
                          <div class="w-[52px] h-[52px] origin-top-left opacity-75 bg-white rounded-full flex justify-center items-center cursor-pointer" @click="navigateToPassenger">
                               <IconArrowPaymentL />
                          </div>
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">{{ paymentHeader?.title }}</div>
+                         <div class="text-black md:text-4xl text-2xl font-medium font-display tracking-wide">{{ paymentHeader?.title }}</div>
                     </div>
                     <div v-if="!paymentSuccess" class="flex flex-row justify-center items-center mr-2 ml-9">
                          <div class="flex flex-col">
@@ -27,10 +27,10 @@
                                    <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle">
                                         <div class="flex flex-row">
                                              <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]" :class="{ active: activeTab === 'tab1' }">
-                                                  <span class="tab w-48 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{ paymentDetail?.InvoiceTab[0].tabTitle }}</span>
+                                                  <span class="tab md:w-48 w-40 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{ paymentDetail?.InvoiceTab[0].tabTitle }}</span>
                                              </div>
                                              <div @click="activeTab = 'tab2'" class="flex flex-row mt-[25px]" :class="{ active: activeTab === 'tab2' }">
-                                                  <span class="tab w-48 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab2' }">{{ paymentDetail?.InvoiceTab[1].tabTitle }}</span>
+                                                  <span class="tab md:w-48 w-40 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab2' }">{{ paymentDetail?.InvoiceTab[1].tabTitle }}</span>
                                              </div>
                                         </div>
                                         <div class="mt-[65px] ml-10">

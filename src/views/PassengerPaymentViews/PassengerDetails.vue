@@ -2,9 +2,9 @@
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full h-[223px] bg-slate-200" />
           <div class="relative top-[-11rem] w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-               <div class="flex flex-row justify-between items-center mb-9">
+               <div class="flex flex-col md:flex-row justify-between items-center md:mb-9 mb-4">
                     <div class="flex flex-row justify-center items-center">
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">{{ from }}
+                         <div class="text-black md:text-4xl text-xl font-medium font-display tracking-wide">{{ from }}
                          </div>
                          <div
                               class="w-[52px] h-[52px] opacity-75 bg-white rounded-full flex justify-center items-center mx-[33px] p-4">
@@ -17,10 +17,10 @@
                                    </g>
                               </svg>
                          </div>
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">{{ to }}
+                         <div class="text-black md:text-4xl text-xl font-medium font-display tracking-wide">{{ to }}
                          </div>
                     </div>
-                    <div class="flex flex-row items-center justify-end w-full">
+                    <div class="flex flex-row items-center justify-end w-full mt-1 md:mt-0">
                          <div
                               class="bg-white rounded-lg border flex justify-center items-center cursor-pointer px-5 py-1">
                               <div class="text-black text-lg font-medium font-display ml-1">{{
@@ -85,11 +85,11 @@
                                                   </span> -->
                                                   <span
                                                        class="flex flex-row justify-center items-center mx-auto mt-7 ml-10">{{
-                                                       changePassengerTypeModal?.text }}</span>
+                                                            changePassengerTypeModal?.text }}</span>
                                              </div>
                                              <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12 cursor-pointer"
                                                   @click="confirmChange(accordion_idchange)">{{
-                                                  changePassengerTypeModal?.ConfirmBtn }}</div>
+                                                       changePassengerTypeModal?.ConfirmBtn }}</div>
                                              <div class="w-[200px] mx-auto text-center text-black text-base font-medium font-display mt-7 cursor-pointer"
                                                   @click="cancelChange">{{ changePassengerTypeModal?.CancelBtn }}</div>
                                         </div>
@@ -163,9 +163,15 @@
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <!-- Select -->
-                                                                 <select name="nation" :id="'nation-' + index" @change="updateAccordionNation($event, accordion)" class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                                      <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
-                                                                      <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
+                                                                 <select name="nation" :id="'nation-' + index"
+                                                                      @change="updateAccordionNation($event, accordion)"
+                                                                      class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                                      <option value="" disabled selected>{{
+                                                                           passengerDetails.passengers[0].nation }}
+                                                                      </option>
+                                                                      <option v-for="(data, idx) in countryList"
+                                                                           :key="idx" :value="data.Name"
+                                                                           class="option-style">
                                                                            {{ data?.Name }}
                                                                       </option>
                                                                  </select>
@@ -196,7 +202,7 @@
                                                             </div>
                                                        </form>
                                                   </div>
-                                                  <div class="px-5 flex flex-row items-center justify-end">
+                                                  <div class="px-5 flex flex-col md:flex-row items-center md:justify-end">
                                                        <div
                                                             class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
                                                             <div class="mr-4">{{
@@ -213,10 +219,10 @@
                                                        </div>
                                                        <!-- @click="handleAccordionClick(accordion)" -->
                                                        <div
-                                                            class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
+                                                            class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer md:mt-0 mt-2">
                                                             {{ passengerDetails.passengers[0].clear }}
                                                        </div>
-                                                       <div class="flex flex-col">
+                                                       <div class="flex flex-col md:mt-0 mt-2">
                                                             <button :class="buttonClass(accordion)"
                                                                  @click="saveAllPassenger(accordion)"
                                                                  class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
@@ -743,12 +749,25 @@ const getPassengersPage = async () => {
      }
 }
 
+const navigateToPassengerWithQuery = () => {
+    // Parametreleri query string'e dönüştürmek
+    const queryParams = Object.assign({}, storedTripParams.value)
+
+    // Router'ı kullanarak yeni route'a yönlendiriyoruz
+    if (Object.keys(queryParams).length > 0) {
+        router.push({ path: '/tickets/passenger', query: queryParams })
+    } else {
+        router.push('/')
+    }
+}
+
 onMounted(() => {
      getPassengersPage()
      storedTripParams.value = tripStore.getTripParams
      storedDepartureData.value = tripStore.getDepartureData
      storedArrivalData.value = tripStore.getArrivalData
      storedGetterAccordions.value = store.getTripParams
+     navigateToPassengerWithQuery()
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'), console.log(storedGetterAccordions.value, 'tripStore.getTripParams'), fetchSelectOptions()
