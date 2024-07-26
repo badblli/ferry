@@ -16,15 +16,17 @@
                <form class="custom-border w-full max-w-[849px] md:block mx-auto md:relative" v-show="activeTab !== 5">
                     <div class="flex flex-row">
                          <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
-                              class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer">
-                              <span @click="showTrue = false"
+                              class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer"
+                              @click="showTrue = false">
+                              <span 
                                    class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
                                    :class="{ '': showTrue, ' text-blue-700': !showTrue }"> {{
                                         searchBar.SearchFerryTicket?.title }}</span>
                          </div>
                          <div :class="{ '': !showTrue, 'border-b-2 border-blue-700': showTrue }"
-                              class="mr-4 py-3 px-9 rounded-t-xl text-white cursor-pointer">
-                              <span @click="showTrue = true"
+                              class="mr-4 py-3 px-9 rounded-t-xl text-white cursor-pointer"
+                              @click="showTrue = true">
+                              <span
                                    class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
                                    :class="{ '': !showTrue, 'text-blue-700': showTrue }"> {{
                                         searchBar.SearchReservation?.reservationNo }} </span>
@@ -298,7 +300,7 @@
                                         </div>
                                    </div>
                                    <div class="mt-9 flex flex-row flex-wrap">
-                                        <div v-for="(change, index) in routerChange" :key="index"
+                                        <div v-for="(change, index) in routerArray" :key="index"
                                              class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-2 my-3">
                                              <div class="mx-5 mt-10">
                                                   <div class="w-[42px] h-[42px] relative">
@@ -926,6 +928,22 @@ const name = ref('SearchTownList')
 
 const routerStore = useRouterStore();
 const routerChange = routerStore.getRouterChange;
+
+const routerArray = computed(() => {
+      const uniqueRoutes = [];
+      const seenTitles = new Set();
+
+      
+      for (let i = routerStore.getRouterChange.length - 1; i >= 0; i--) {
+        const change = routerStore.getRouterChange[i];
+        if (!seenTitles.has(change.meta.title)) {
+          seenTitles.add(change.meta.title);
+          uniqueRoutes.push(change);
+        }
+      }
+      console.log(uniqueRoutes, 'uniqueRoutes');
+      return uniqueRoutes;
+    });
 
 // Component yüklendiğinde store'dan veriyi almak için
 onMounted(() => {
