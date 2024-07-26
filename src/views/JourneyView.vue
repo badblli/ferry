@@ -18,8 +18,8 @@
                               <div className="flex flex-col md:flex-row justify-start">
                                    <div @click="togglePickerModal" class="relative">
                                         <div ref="datepicker" class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer">
-                                             <div class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px]">Hangi tarihlerde gitmek istersin?</div>
-                                             <div class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px]">
+                                             <div class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px] pointer-events-none">Hangi tarihlerde gitmek istersin?</div>
+                                             <div class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px] pointer-events-none">
                                                   {{ selectedDatesLabel }}
                                                   <!-- {{ selectedDates.start }} {{ selectedDates.end }} -->
                                              </div>
@@ -50,7 +50,7 @@
                               </div>
 
                               <div class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
-                                   <div class="bg-white pt-10 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                                   <div class="bg-white pt-6 pb-4 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                         {{ tableTitle }}
                                    </div>
 

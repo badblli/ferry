@@ -18,7 +18,7 @@
                     </div>
                </div>
                <div>
-                    <div className=" bg-neutral-100 rounded-[20px] p-5">
+                    <div className=" bg-neutral-100 rounded-[20px] p-5"  v-if="stored.getPassengerData.length > 0">
                          <div class="flex flex-col md:flex-row gap-5">
                               <div class="lg:w-3/5 w-full" v-if="paymentSuccess">
                                    <PaymentSuccess :data="paymentSuccessData" />
@@ -214,7 +214,7 @@
                                    </div>
                                    <Teleport to="#target">
                                         <Transition name="custom-classes">
-                                             <ThreeDSecure v-if="threeDSecureModal" :iframeHTML="threeDSecureHtml" @closePayment="closePayment" @paymentStatus="handlePaymentStatus"/>
+                                             <ThreeDSecure v-if="threeDSecureModal" :iframeHTML="threeDSecureHtml" @closePayment="closePayment" @paymentStatus="handlePaymentStatus" />
                                         </Transition>
                                    </Teleport>
                               </div>
@@ -247,7 +247,8 @@ import { useI18n } from 'vue-i18n'
 import newSignUp from '../../../src/components/advanced/newSıgnInModal.vue'
 import AccordionPanel2 from '@/components/advanced/AccordionPanel2.vue'
 import ThreeDSecure from './components/ThreeDSecure.vue'
-
+const router = useRouter()
+const stored = useAccordionsStore()
 const { locale } = useI18n()
 
 const departureDataRef = ref(null)
@@ -341,23 +342,27 @@ const paymentDetail = ref<PaymentDetail | null>(null)
 const paymentSuccessData = ref<PaymentSuccessData | null>(null)
 
 const getPaymentPage = async () => {
-     try {
-          let filters = {
-               pageName: 'Payment'
-          }
+     if (stored.getPassengerData && stored.getPassengerData.length > 0) {
+          try {
+               let filters = {
+                    pageName: 'Payment'
+               }
 
-          // const res = await fetchData('pages', 'en', filters)
-          const res = await fetchData('pages', locale.value.toLowerCase(), filters)
+               // const res = await fetchData('pages', 'en', filters)
+               const res = await fetchData('pages', locale.value.toLowerCase(), filters)
 
-          if (res) {
-               let data = res.data[0].layout
-               console.log(data, 'getPaymentPage')
-               paymentHeader.value = data.find((x: any) => x.__component === 'payment-page.payment-header') as PaymentHeader
-               paymentDetail.value = data.find((x: any) => x.__component === 'payment-page.payment-detail') as PaymentDetail
-               paymentSuccessData.value = data.find((x: any) => x.__component === 'payment-page.payment-success') as PaymentSuccessData
+               if (res) {
+                    let data = res.data[0].layout
+                    console.log(data, 'getPaymentPage')
+                    paymentHeader.value = data.find((x: any) => x.__component === 'payment-page.payment-header') as PaymentHeader
+                    paymentDetail.value = data.find((x: any) => x.__component === 'payment-page.payment-detail') as PaymentDetail
+                    paymentSuccessData.value = data.find((x: any) => x.__component === 'payment-page.payment-success') as PaymentSuccessData
+               }
+          } catch (error) {
+               console.error('Hata:', error)
           }
-     } catch (error) {
-          console.error('Hata:', error)
+     } else {
+          router.push('/')
      }
 }
 getPaymentPage()
@@ -391,7 +396,7 @@ const companyID = ref<string | null>(null)
 const SaleChannelName = envConfig.SaleChannelName || ''
 console.log(SaleChannelName, 'SaleChannelName')
 const tripStore = useTripStore()
-const stored = useAccordionsStore()
+
 const applicationName = ref(p.Product)
 const controllerName = ref('Product')
 const name = ref('CalculateReservationFerryPrice')
@@ -425,8 +430,8 @@ const closePayment = (status: any) => {
      }
 }
 const handlePaymentStatus = (status: any) => {
-  console.log('Payment status received in PaymentStep:', status)
-  closePayment(status)
+     console.log('Payment status received in PaymentStep:', status)
+     closePayment(status)
 }
 
 interface TripParams {
@@ -449,7 +454,6 @@ interface DepartureData {
 }
 
 const paymentSuccess = ref(false)
-
 
 const postData = async () => {
      let params
@@ -554,7 +558,6 @@ interface Data {
      title: string
 }
 
-const router = useRouter()
 const navigateToPassenger = () => {
      router.push('/tickets/passenger')
 }
@@ -594,10 +597,10 @@ watch(locale, (newLocale, oldLocale) => {
      }
 })
 onMounted(async () => {
-     await getPaymentPage()
-     if (stored.getPassengerData.length === 0) {
-          // router.push('/')
+     if (!stored.getPassengerData || stored.getPassengerData.length == 0) {
+          router.push('/')
      } else {
+          await getPaymentPage()
           const departureData = tripStore.getDepartureData
           console.log(departureData, 'departureDatadepartureDatadepartureData')
           const arrivalData = tripStore.getArrivalData
