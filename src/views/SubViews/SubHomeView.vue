@@ -1738,7 +1738,6 @@ const items = ref([
      }
 }
 
-
 /* Remove the incorrect selector */
 .flex {
      display: flex;
