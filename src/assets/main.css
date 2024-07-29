@@ -4783,6 +4783,9 @@ input.focus\:outline-none:focus {
   max-width: -moz-fit-content;
   max-width: fit-content;
   display: inline-block;
+  font-family: "lato", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .litepicker button {
@@ -4971,11 +4974,11 @@ input.focus\:outline-none:focus {
 }
 
 .litepicker .container__days .day-item {
-  font-family: Lato;
+  font-family: "lato", sans-serif;
   height: 42px;
   padding: 10px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   position: relative;
   display: flex;
   height: auto !important;
@@ -4986,7 +4989,7 @@ input.focus\:outline-none:focus {
   color: #141c3a;
   cursor: pointer;
   font-size: 18px;
-  line-height: 1;
+  line-height: 22px;
   text-align: center;
   text-decoration: none;
   transition: none !important;
@@ -5125,12 +5128,12 @@ input.focus\:outline-none:focus {
   fill: none !important
 } */
 
-.detailed-search-calendar {
+/* .detailed-search-calendar {
   position: relative;
   top: calc(100% + 20px);
   left: 0;
   width: 100%;
-}
+} */
 
 /* @media only screen and (min-width: 320px)and (max-width:991px) {
   .detailed-search-calendar {
@@ -5154,7 +5157,7 @@ input.focus\:outline-none:focus {
   }
 } */
 
-.detailed-search-calendar-body {
+/* .detailed-search-calendar-body {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -5165,8 +5168,8 @@ input.focus\:outline-none:focus {
   padding-top: 30px;
   padding-right: 20px;
   padding-left: 20px;
-}
-
+} */
+/* 
 @media only screen and (min-width: 320px) and (max-width: 991px) {
   .detailed-search-calendar-body-head {
     display: block;
@@ -5198,7 +5201,7 @@ input.focus\:outline-none:focus {
 
 .detailed-search-calendar-body-head-close button i {
   display: flex;
-}
+} */
 
 .month-item-weekdays-row {
   color: #000;
@@ -5218,7 +5221,7 @@ input.focus\:outline-none:focus {
   -ms-flex-pack: start;
   color: black;
 }
-
+/* 
 .detailed-search-calendar-body-head .month-item-weekdays-row {
   padding-bottom: 6px;
   border-bottom: 1px solid #eee;
@@ -5266,7 +5269,7 @@ input.focus\:outline-none:focus {
 
 .detailed-search-calendar-body-content {
   position: relative;
-}
+} */
 
 /* @media only screen and (min-width: 320px)and (max-width:991px) {
   .detailed-search-calendar-body-content {
@@ -5280,7 +5283,7 @@ input.focus\:outline-none:focus {
       width: 100%
   }
 } */
-
+/* 
 .detailed-search-calendar-body-content-error {
   color: #fb8989;
   display: flex;
@@ -5293,7 +5296,7 @@ input.focus\:outline-none:focus {
   font-family: Lato;
   font-style: normal;
   font-weight: 400;
-}
+} */
 
 /* @media only screen and (max-width:991px) {
   .litepicker .container__months {
@@ -5310,7 +5313,7 @@ input.focus\:outline-none:focus {
       box-shadow: none !important;
   }
 } */
-
+/* 
 .detailed-search-calendar-body-content-error i {
   display: flex;
   margin-right: 6px;
@@ -5319,7 +5322,7 @@ input.focus\:outline-none:focus {
 .detailed-search-calendar-body-footer {
   flex-shrink: 0;
   padding: 20px;
-}
+} */
 
 /* @media only screen and (min-width: 320px)and (max-width:991px) {
   .detailed-search-calendar-body-footer {

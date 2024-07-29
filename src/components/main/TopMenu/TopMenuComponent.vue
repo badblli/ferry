@@ -116,6 +116,12 @@ const handleClickInside = () => {
 
 onMounted(() => {
      document.addEventListener('click', handleClickOutside)
+     const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
+     if (selectedLanguage && selectedLanguage.name && selectedLanguage.code) {
+          updateCurrentLanguage(selectedLanguage)
+     } else {
+          updateCurrentLanguage({ name: props.selectedLanguage, code: locale.value })
+     }
 })
 
 onBeforeUnmount(() => {
