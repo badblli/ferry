@@ -1,15 +1,15 @@
 <template>
-     <div class="flex flex-col w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
+     <div class="flex flex-col w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w font-text">
           <ol class="flex items-center whitespace-nowrap mt-[30px] pl-5 md:pl-0" aria-label="Breadcrumb">
                <li class="inline-flex items-center">
-                    <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight" href="#"> Anasayfa </a>
+                    <a class="mr-[6px] opacity-60 text-black text-base font-normal font-text tracking-tight" href="#"> Anasayfa </a>
                     <IconChevronRight />
                </li>
-               <li class="ml-[6px] text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight" aria-current="page">{{ term.title }}</li>
+               <li class="ml-[6px] text-black text-base font-semibold font-text tracking-tight" aria-current="page">{{ term.title }}</li>
           </ol>
           <div class="w-full">
                <div class="mt-[39px] mb-[10px] flex flex-row justify-between">
-                    <div class="text-black text-4xl font-semibold font-['Plus Jakarta Sans'] pl-5 md:pl-0">{{ term.title }}</div>
+                    <div class="text-black text-4xl font-semibold font-text pl-5 md:pl-0">{{ term.title }}</div>
                     <!-- <div class="flex flex-col md:flex-row">
                          <div class="w-[77px] h-[77px] bg-white rounded-full border border-neutral-200 ml-[15px] justify-center items-center flex cursor-pointer">
                               <IconAa />
@@ -34,7 +34,7 @@
                     </div>
                </div>
           </div>
-          <div class="flex flex-row px-5 md:px-0">
+          <div class="flex flex-row w-full px-5 md:px-0">
                <div class="prose w-full" v-html="term.content"></div>
           </div>
      </div>
@@ -126,5 +126,10 @@ onMounted(async () => {
 <style scoped>
 html {
      scroll-behavior: smooth; /* Tarayıcıdaki varsayılan animasyon */
+}
+.prose {
+    max-width: 100% !important; /* Maksimum genişliği %100 yap */
+    width: auto !important;     /* Genişliği otomatik yap */
+    font-weight: 900;
 }
 </style>
