@@ -37,16 +37,7 @@
                                                        <div v-show="isOpen2" class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                             <div class="flex flex-col w-[277px] p-5">
                                                                  <div class="flex flex-col">
-                                                                      <div
-                                                                           @click="
-                                                                                updateFromWhere(i)
-                                                                                handleClickInside()
-                                                                           "
-                                                                           v-for="(i, index) in fromWhereObject"
-                                                                           :key="index"
-                                                                           :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate"
-                                                                      >
+                                                                      <div @click="updateFromWhere(i), handleClickInside()" v-for="(i, index) in fromWhereObject" :key="index" :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate">
                                                                            <a class="text-black text-base font-medium font-display tracking-tight truncate">{{ i.TownName }}</a>
                                                                       </div>
                                                                  </div>
@@ -86,16 +77,7 @@
                                                                       </div>
                                                                  </div>
                                                                  <div class="flex flex-col">
-                                                                      <div
-                                                                           @click="
-                                                                                updateToWhere(i)
-                                                                                handleClickInside2()
-                                                                           "
-                                                                           v-for="(i, index) in toWhereObject"
-                                                                           :key="index"
-                                                                           :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer"
-                                                                      >
+                                                                      <div @click="updateToWhere(i), handleClickInside2()" v-for="(i, index) in toWhereObject" :key="index" :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                                            <a class="text-black text-base font-medium font-display tracking-tight">{{ i.TownName }}</a>
                                                                       </div>
                                                                  </div>
@@ -121,16 +103,7 @@
                                                        <transition name="dropdown">
                                                             <div v-show="isOpen4" class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                                  <div class="flex flex-col md:w-[277px] w-52 p-5">
-                                                                      <div
-                                                                           @click="
-                                                                                updateToTrip(i)
-                                                                                handleClickInside3()
-                                                                           "
-                                                                           v-for="(i, index) in travelObject"
-                                                                           :key="index"
-                                                                           :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer"
-                                                                      >
+                                                                      <div @click="updateToTrip(i), handleClickInside3()" v-for="(i, index) in travelObject" :key="index" :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }" class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
                                                                            <a class="text-black text-base font-medium font-display tracking-tight">{{ i.Name }}</a>
                                                                       </div>
                                                                  </div>
