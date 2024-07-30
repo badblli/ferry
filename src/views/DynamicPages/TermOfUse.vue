@@ -128,8 +128,7 @@ html {
      scroll-behavior: smooth; /* Tarayıcıdaki varsayılan animasyon */
 }
 .prose {
-    max-width: 100% !important; /* Maksimum genişliği %100 yap */
-    width: auto !important;     /* Genişliği otomatik yap */
-    font-weight: 900;
+     max-width: 100% !important; /* Maksimum genişliği %100 yap */
+     width: auto !important; /* Genişliği otomatik yap */
 }
 </style>
