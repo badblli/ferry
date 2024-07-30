@@ -301,19 +301,19 @@ import { ref, watchEffect, computed, reactive, watch } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
-const showWarning = ref(false)
-const showEmptyAccordionError = ref(false)
-
 import IconPersonSimpleRun from '@/components/icons/IconPersonSimpleRun.vue'
 import IconArrowPaymentL from '@/components/icons/IconArrowPaymentL.vue'
-const formattedBirthValue = ref('')
 import AccordionPanel from '@/components/advanced/AccordionPanel.vue'
 import { getApi, fetchData } from '@/utils/globalHelper'
+import p from '@/utils/pathConfig'
+
+const showWarning = ref(false)
+const showEmptyAccordionError = ref(false)
 const applicationName = ref(p.Product)
 const controllerName = ref('Keydefinition')
 const name = ref('CountryList')
+const formattedBirthValue = ref('')
 
-import p from '@/utils/pathConfig'
 const countryList4 = [
      { name: 'United States', code: 'US' },
      { name: 'Canada', code: 'CA' },

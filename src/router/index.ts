@@ -108,7 +108,7 @@ const routes = [
                {
                     path: '/tours/:id',
                     name: 'tour',
-                    component: () => import('@/views/CampaingToursView.vue')
+                    component: () => import('@/views/ToursDetailView.vue')
                },
                {
                     path: '/journey',
