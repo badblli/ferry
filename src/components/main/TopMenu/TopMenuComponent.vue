@@ -1,41 +1,29 @@
 <template>
      <div class="w-full bg-blue-700 lg:px-[100px] px-2 md:px-16 sm:px-8" v-if="topMenu.links?.length > 0">
-          <header
-               class="relative flex flex-wrap sm:justify-start sm:flex-nowrap md:max-w-[1230px] mx-auto h-[60px] bg-blue-700 text-sm py-4">
-               <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between "
-                    aria-label="Global">
+          <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap md:max-w-[1230px] mx-auto h-[60px] bg-blue-700 text-sm py-4">
+               <nav class="centered-w w-full mx-auto sm:flex sm:items-center sm:justify-between" aria-label="Global">
                     <div class="lg:flex hidden items-center justify-between">
-                         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-30" href="#">{{
-                              topMenu.title }}</a>
-                         <div
-                              class="absolute z-20 translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-55px] clip-rect">
+                         <a class="flex-none opacity-80 text-[15px] font-medium text-white z-30" href="#">{{ topMenu.title }}</a>
+                         <div class="absolute z-20 translate-x-[450px] top-1/2 -translate-y-1/2 w-44 h-44 bg-blue-600 rounded-full flex items-center justify-center ml-[-55px] clip-rect">
                               <span class="text-white font-bold text-[15px]">{{ topMenu.more }}</span>
                               <IconTopMenu />
                          </div>
                     </div>
-                    <div id="navbar-with-mega-menu"
-                         class="hs-collapse justify-center my-auto overflow-hidden transition-all duration-300 basis-full grow sm:block ">
-                         <div
-                              class="flex gap-5 items-center sm:flex-row sm:items-center justify-end sm:mt-0 md:pl-0 pl-5">
-                              <router-link v-for="(item, index) in topMenu.links" :key="index" :to="item.href"
-                                   class="text-sm font-semibold">
+                    <div id="navbar-with-mega-menu" class="hs-collapse justify-center my-auto overflow-hidden transition-all duration-300 basis-full grow sm:block">
+                         <div class="flex gap-5 items-center sm:flex-row sm:items-center justify-end sm:mt-0 md:pl-0 pl-5">
+                              <router-link v-for="(item, index) in topMenu.links" :key="index" :to="item.href" class="text-sm font-semibold">
                                    {{ item.label }}
                               </router-link>
                               <div class="">
-                                   <button @click="toggleDropdown" type="button"
-                                        class="flex flex-row justify-center items-center">
-                                        <span
-                                             class="text-white text-sm font-semibold font-['Plus Jakarta Sans'] tracking-tight cursor-pointer mr-[9px]">
+                                   <button @click="toggleDropdown" type="button" class="flex flex-row justify-center items-center">
+                                        <span class="text-white text-sm font-semibold font-['Plus Jakarta Sans'] tracking-tight cursor-pointer mr-[9px]">
                                              {{ localSelectedLanguage }}
                                         </span>
                                         <IconArrowWhite />
                                    </button>
                                    <transition name="dropdown">
-                                        <div v-show="isOpen" id="lang"
-                                             class="absolute custom-z top-12 right-0 w-64 bg-white rounded-xl border transition-[opacity,margin] duration-300 mt-2 min-w-[15rem] p-7">
-                                             <a v-for="(language, langIndex) in languages" :key="langIndex"
-                                                  @click="updateCurrentLanguage(language)"
-                                                  class="cursor-pointer flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">
+                                        <div v-show="isOpen" id="lang" class="absolute custom-z top-12 right-0 w-64 bg-white rounded-xl border transition-[opacity,margin] duration-300 mt-2 min-w-[15rem] p-7">
+                                             <a v-for="(language, langIndex) in languages" :key="langIndex" @click="updateCurrentLanguage(language)" class="cursor-pointer flex items-center gap-x-3.5 py-[9px] px-[14px] mb-[9px] text-black text-base font-medium font-display tracking-tight rounded-lg hover:bg-slate-200 focus:outline-none">
                                                   {{ language.name }}
                                              </a>
                                         </div>

@@ -151,12 +151,14 @@ const routes = [
                {
                     path: '/:name',
                     name: 'island',
-                    meta: {
-                         title: passengerTitle.value,
-                         id: 4
-                    },
                     component: () => import('../views/SubViews/SubHomeView.vue'),
-                    props: true
+                    props: (route: any) => ({ name: route.params.name })
+               },
+               {
+                    path: '/:name',
+                    name: 'term',
+                    component: () => import('../views/DynamicPages/TermOfUse.vue'),
+                    props: (route: any) => ({ name: route.params.name, type: route.query.type })
                }
           ]
      },

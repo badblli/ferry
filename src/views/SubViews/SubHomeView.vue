@@ -4,32 +4,19 @@
           <div class="w-full flex flex-col justify-center items-center">
                <div class="flex flex-col mt-10 w-full centered-small-w mx-auto">
                     <div class="flex justify-center items-center border-sub-line overflow-x-auto w-full mx-auto">
-                         <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id"
-                              class="tab md:mx-4 mx-2 md:px-20 px-2 first:ml-20 md:last:mr-20"
-                              :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
+                         <div v-for="(tab, index) in copyTabs" :key="index" @click="activeTab = tab.id" class="tab md:mx-4 mx-2 md:px-20 px-2 first:ml-20 md:last:mr-20" :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
                     </div>
                </div>
                <div v-for="(tab, index) in copyTabs" :key="index">
-                    <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle"
-                         v-show="activeTab == tab.id" />
+                    <TabComponent :from="tab.from" :to="tab.to" :contentTitle="tab.contentTitle" v-show="activeTab == tab.id" />
                </div>
                <form class="custom-border w-full max-w-[849px] md:block mx-auto md:relative" v-show="activeTab !== 5">
                     <div class="flex flex-row">
-                         <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }"
-                              class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer"
-                              @click="showTrue = false">
-                              <span 
-                                   class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
-                                   :class="{ '': showTrue, ' text-blue-700': !showTrue }"> {{
-                                        searchBar.SearchFerryTicket?.title }}</span>
+                         <div :class="{ '': showTrue, 'border-b-2 border-blue-700': !showTrue }" class="mr-[5px] py-3 px-6 rounded-t-xl cursor-pointer" @click="showTrue = false">
+                              <span class="text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug" :class="{ '': showTrue, ' text-blue-700': !showTrue }"> {{ searchBar.SearchFerryTicket?.title }}</span>
                          </div>
-                         <div :class="{ '': !showTrue, 'border-b-2 border-blue-700': showTrue }"
-                              class="mr-4 py-3 px-9 rounded-t-xl text-white cursor-pointer"
-                              @click="showTrue = true">
-                              <span
-                                   class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug"
-                                   :class="{ '': !showTrue, 'text-blue-700': showTrue }"> {{
-                                        searchBar.SearchReservation?.reservationNo }} </span>
+                         <div :class="{ '': !showTrue, 'border-b-2 border-blue-700': showTrue }" class="mr-4 py-3 px-9 rounded-t-xl text-white cursor-pointer" @click="showTrue = true">
+                              <span class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] leading-snug" :class="{ '': !showTrue, 'text-blue-700': showTrue }"> {{ searchBar.SearchReservation?.reservationNo }} </span>
                          </div>
                     </div>
                     <div class="rounded-b-xl rounded-tr-xl">
@@ -38,39 +25,35 @@
                                    <div class="flex flex-col sm:flex-row">
                                         <div class="flex flex-row items-center">
                                              <div>
-                                                  <button @click="toggleDropdown2" type="button"
-                                                       class="cursor-pointer flex flex-col justify-start md:px-6 px-2 items-center">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight text-center">
+                                                  <button @click="toggleDropdown2" type="button" class="cursor-pointer flex flex-col justify-start md:px-6 px-2 items-center">
+                                                       <div class="text-black text-base font-medium font-display tracking-tight text-center">
                                                             {{ searchBar.SearchFerryTicket?.from }}
                                                        </div>
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
+                                                       <div class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 text-start">
                                                             {{ _fromWhere?.TownName }}
                                                        </div>
                                                   </button>
                                                   <transition name="dropdown">
-                                                       <div v-show="isOpen2"
-                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <div v-show="isOpen2" class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                             <div class="flex flex-col w-[277px] p-5">
                                                                  <div class="flex flex-col">
-                                                                      <div @click="updateFromWhere(i); handleClickInside()"
+                                                                      <div
+                                                                           @click="
+                                                                                updateFromWhere(i)
+                                                                                handleClickInside()
+                                                                           "
                                                                            v-for="(i, index) in fromWhereObject"
                                                                            :key="index"
                                                                            :class="{ 'bg-slate-200': _fromWhere !== null && typeof _fromWhere === 'object' && isEqual(i, _fromWhere) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate">
-                                                                           <a
-                                                                                class="text-black text-base font-medium font-display tracking-tight truncate">{{
-                                                                                     i.TownName }}</a>
+                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer truncate"
+                                                                      >
+                                                                           <a class="text-black text-base font-medium font-display tracking-tight truncate">{{ i.TownName }}</a>
                                                                       </div>
                                                                  </div>
                                                             </div>
                                                             <div class="pl-7 py-6 flex flex-row cursor-pointer">
-                                                                 <div
-                                                                      class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">
-                                                                      Samos Turlarını Keşfet</div>
-                                                                 <div
-                                                                      class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
+                                                                 <div class="text-gray-800 text-base font-medium font-display leading-[24.86px] tracking-tight mr-[17px]">Samos Turlarını Keşfet</div>
+                                                                 <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
                                                                       <IconFooter />
                                                                  </div>
                                                             </div>
@@ -79,46 +62,41 @@
                                              </div>
                                         </div>
                                         <!-- @click="toggleDataPlacement" -->
-                                        <div
-                                             class="bg-black rounded-full flex flex-row justify-center items-center lg:p-[7px] md:p-3 p-2 cursor-pointer md:w-full mx-auto">
+                                        <div class="bg-black rounded-full flex flex-row justify-center items-center lg:p-[7px] md:p-3 p-2 cursor-pointer md:w-full mx-auto">
                                              <IconsWhiteLeftRight />
                                         </div>
                                         <div class="flex flex-row items-center justify-center md:px-5 px-2">
                                              <div>
-                                                  <button @click="toggleDropdown3" type="button"
-                                                       class="cursor-pointer flex flex-col justify-start items-center">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight lg:ml-2 ml-0">
+                                                  <button @click="toggleDropdown3" type="button" class="cursor-pointer flex flex-col justify-start items-center">
+                                                       <div class="text-black text-base font-medium font-display tracking-tight lg:ml-2 ml-0">
                                                             {{ searchBar.SearchFerryTicket?.to }}
                                                        </div>
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 lg:ml-2 ml-0 text-start">
+                                                       <div class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate w-20 lg:ml-2 ml-0 text-start">
                                                             {{ _toWhere?.TownName }}
                                                        </div>
                                                   </button>
                                                   <transition name="dropdown">
-                                                       <div v-show="isOpen3"
-                                                            class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <div v-show="isOpen3" class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                             <div class="flex flex-col w-[277px] p-5">
-                                                                 <div class="flex flex-col"
-                                                                      v-if="toWhereObject.length === 0">
+                                                                 <div class="flex flex-col" v-if="toWhereObject.length === 0">
                                                                       <div class="flex flex-col">
                                                                            <div class="flex flex-col">
-                                                                                <div
-                                                                                     class="text-black text-base font-medium font-display tracking-tight">
-                                                                                     Gidiş Seçiniz</div>
+                                                                                <div class="text-black text-base font-medium font-display tracking-tight">Gidiş Seçiniz</div>
                                                                            </div>
                                                                       </div>
                                                                  </div>
                                                                  <div class="flex flex-col">
-                                                                      <div @click="updateToWhere(i); handleClickInside2()"
+                                                                      <div
+                                                                           @click="
+                                                                                updateToWhere(i)
+                                                                                handleClickInside2()
+                                                                           "
                                                                            v-for="(i, index) in toWhereObject"
                                                                            :key="index"
                                                                            :class="{ 'bg-slate-200': _toWhere !== null && typeof _toWhere === 'object' && isEqual(i, _toWhere) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                                           <a
-                                                                                class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                                     i.TownName }}</a>
+                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer"
+                                                                      >
+                                                                           <a class="text-black text-base font-medium font-display tracking-tight">{{ i.TownName }}</a>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -131,31 +109,29 @@
                                    <div class="flex flex-col md:flex-row">
                                         <div class="flex flex-row items-center">
                                              <div>
-                                                  <button @click="toggleDropdown4" type="button"
-                                                       class="cursor-pointer text-start mt-2">
-                                                       <div
-                                                            class="text-black text-base font-medium font-display tracking-tight">
-                                                            {{
-                                                                 mainHomeSplide.search?.SearchFerryTicket.ticketType }}</div>
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate">
+                                                  <button @click="toggleDropdown4" type="button" class="cursor-pointer text-start mt-2">
+                                                       <div class="text-black text-base font-medium font-display tracking-tight">
+                                                            {{ mainHomeSplide.search?.SearchFerryTicket.ticketType }}
+                                                       </div>
+                                                       <div class="text-black text-base font-light font-display tracking-tight overflow-hidden whitespace-nowrap truncate">
                                                             {{ _roundTrip?.Name }}
                                                        </div>
                                                   </button>
                                                   <div ref="dropdown3">
                                                        <transition name="dropdown">
-                                                            <div v-show="isOpen4"
-                                                                 class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                            <div v-show="isOpen4" class="absolute min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
                                                                  <div class="flex flex-col md:w-[277px] w-52 p-5">
-                                                                      <div @click="updateToTrip(i); handleClickInside3()"
+                                                                      <div
+                                                                           @click="
+                                                                                updateToTrip(i)
+                                                                                handleClickInside3()
+                                                                           "
                                                                            v-for="(i, index) in travelObject"
                                                                            :key="index"
                                                                            :class="{ 'bg-slate-200': _roundTrip !== null && typeof _roundTrip === 'object' && isEqualTrip(i, _roundTrip) }"
-                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer">
-                                                                           <a
-                                                                                class="text-black text-base font-medium font-display tracking-tight">{{
-                                                                                     i.Name
-                                                                                }}</a>
+                                                                           class="flex flex-col hover:bg-slate-200 transition delay-[5ms] mb-5 pt-[7px] pl-[14px] pb-2 rounded-lg cursor-pointer"
+                                                                      >
+                                                                           <a class="text-black text-base font-medium font-display tracking-tight">{{ i.Name }}</a>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -163,22 +139,17 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div
-                                             class="hidden md:block h-14 border-l border-zinc-300 ml-7 mr-7">
-                                        </div>
+                                        <div class="hidden md:block h-14 border-l border-zinc-300 ml-7 mr-7"></div>
                                         <div class="flex flex-row items-center">
                                              <div class="cursor-pointer flex flex-col">
                                                   <!-- Always display formattedDateToShow -->
-                                                  <span v-if="_roundTrip?.Name" @click="togglePickerModal"
-                                                       class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
+                                                  <span v-if="_roundTrip?.Name" @click="togglePickerModal" class="overflow-hidden whitespace-nowrap truncate w-28 text-black text-base font-medium font-display tracking-tight">
                                                        {{ _roundTrip.Name }}
-                                                       <div
-                                                            class="text-black text-base font-light font-display tracking-tight mr-7">
+                                                       <div class="text-black text-base font-light font-display tracking-tight mr-7">
                                                             {{ formattedDateToShow }}
                                                        </div>
                                                   </span>
-                                                  <span v-else
-                                                       class="text-black text-base font-light font-display tracking-tight mr-7">
+                                                  <span v-else class="text-black text-base font-light font-display tracking-tight mr-7">
                                                        {{ formattedDateToShow }}
                                                   </span>
                                              </div>
@@ -187,42 +158,33 @@
                                    <div class="h-14 border-l border-zinc-300 md:px-4 px-2"></div>
                                    <div class="dropdown">
                                         <button @click="toggleDropdown" type="button" class="cursor-pointer">
-                                             <div
-                                                  class="text-start text-black text-base font-medium font-display tracking-tight">
+                                             <div class="text-start text-black text-base font-medium font-display tracking-tight">
                                                   {{ mainHomeSplide.search?.SearchFerryTicket.passengers }}
                                              </div>
                                              <div class="text-black text-start font-light font-display tracking-tight">
-                                                  {{ mainHomeSplide.search?.SearchFerryTicket.choosePerson }}: {{
-                                                       totalPassengerCount }}
+                                                  {{ mainHomeSplide.search?.SearchFerryTicket.choosePerson }}: {{ totalPassengerCount }}
                                                   <!-- <span class="ml-1 justify-end font-thin text-start">
                                                       
                                                   </span> -->
                                              </div>
                                         </button>
-                                        <div v-show="isOpen"
-                                             class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg divide-y divide-gray-200 right-0">
+                                        <div v-show="isOpen" class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg divide-y divide-gray-200 right-0">
                                              <div class="flex flex-col mt-[37px] ml-1 md:ml-2 lg:ml-6">
                                                   <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
-                                                  <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
-                                                       :key="index"
-                                                       class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                                  <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType" :key="index" class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
                                                        <div class="flex flex-row">
-                                                            <div
-                                                                 class="text-black text-base font-medium font-display tracking-tight">
+                                                            <div class="text-black text-base font-medium font-display tracking-tight">
                                                                  {{ i.TypeName }}
                                                             </div>
                                                        </div>
                                                        <div class="mr-4 flex flex-row justify-center items-center">
-                                                            <span @click="decreaseCount(index)"
-                                                                 class="mx-2 cursor-pointer">
+                                                            <span @click="decreaseCount(index)" class="mx-2 cursor-pointer">
                                                                  <IconMinus />
                                                             </span>
-                                                            <div
-                                                                 class="text-black text-[22px] font-normal font-display tracking-wide">
+                                                            <div class="text-black text-[22px] font-normal font-display tracking-wide">
                                                                  {{ passenger[index].count }}
                                                             </div>
-                                                            <span @click="increaseCount(index)"
-                                                                 class="mx-2 cursor-pointer">
+                                                            <span @click="increaseCount(index)" class="mx-2 cursor-pointer">
                                                                  <IconPlus />
                                                             </span>
                                                        </div>
@@ -236,18 +198,14 @@
                                         </div>
                                    </div>
                               </div>
-                              <div @click="navigateToSecondPage"
-                                   class="lg:w-28 w-20 h-[46px] my-5 md:mx-7 mx-1 ml-3 lg:text-base text-sm bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
+                              <div @click="navigateToSecondPage" class="lg:w-28 w-20 h-[46px] my-5 md:mx-7 mx-1 ml-3 lg:text-base text-sm bg-blue-600 rounded-[82px] text-white justify-center items-center flex flex-row cursor-pointer">
                                    {{ searchBar.SearchFerryTicket?.submitBtn }}
                               </div>
                          </div>
                          <div v-show="showTrue">
                               <div class="flex flex-row justify-between items-center mx-auto mb-1 custom-border-top">
-                                   <SliderReservationInputs placeholder="PNR Sorgula" ariaLabel="Rezervasyon Sorgula"
-                                        type="text" class="mr-3 ml-5 flex flex-row justify-center items-center" />
-                                   <SliderReservationInputs placeholder="Rezervasyon Sorgula"
-                                        ariaLabel="Rezervasyon Sorgula" type="text"
-                                        class="mr-3 flex flex-row justify-center items-center" />
+                                   <SliderReservationInputs placeholder="PNR Sorgula" ariaLabel="Rezervasyon Sorgula" type="text" class="mr-3 ml-5 flex flex-row justify-center items-center" />
+                                   <SliderReservationInputs placeholder="Rezervasyon Sorgula" ariaLabel="Rezervasyon Sorgula" type="text" class="mr-3 flex flex-row justify-center items-center" />
                                    <div class="bg-slate-200 rounded-full cursor-pointer p-[17px] m-[11px] mr-6">
                                         <IconSearchNormal />
                                    </div>
@@ -258,18 +216,15 @@
                          <transition name="dropdown">
                               <div v-show="litepickerModalVisible" id="container" class="w-full h-full left-0 absolute">
                                    <div id="litepicker">
-                                        <div
-                                             class="hidden sm:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
-                                             <span
-                                                  class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
+                                        <div class="hidden sm:block absolute z-50 border-b-[1px] custom-border-color mt-5 pb-5 w-full">
+                                             <span class="ml-12 text-zinc-700 text-lg font-semibold font-sans flex flex-row items-center">
                                                   {{ formattedValue }}
                                                   <span v-if="formattedValue2" class="mx-2"> - </span>
                                                   {{ formattedValue2 }}
                                              </span>
                                         </div>
                                    </div>
-                                   <div @click="togglePickerModal"
-                                        class="relative bottom-14 right-0 md:ml-12 ml-2 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
+                                   <div @click="togglePickerModal" class="relative bottom-14 right-0 md:ml-12 ml-2 mb-2 bg-slate-100 w-12 items-center justify-center p-2 rounded-2xl cursor-pointer">
                                         <p class="text-stone-800">Seç</p>
                                    </div>
                               </div>
@@ -283,8 +238,7 @@
                     <div :key="index" v-show="activeTab === copyTabs[0].id">
                          <div class="centered-w lg:px-[100px] px-2 md:px-16 sm:px-8">
                               <div class="md:mt-[73px] md:mb-32 mb-5 mt-5">
-                                   <div v-for="(paragraph, index) in tab.description" :key="index"
-                                        class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
+                                   <div v-for="(paragraph, index) in tab.description" :key="index" class="w-full text-black text-lg font-normal font-display leading-loose tracking-tight">
                                         <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
                                              {{ child.text }}
                                         </p>
@@ -300,8 +254,7 @@
                                         </div>
                                    </div>
                                    <div class="mt-9 flex flex-row flex-wrap">
-                                        <div v-for="(change, index) in routerArray" :key="index"
-                                             class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-2 my-3">
+                                        <div v-for="(change, index) in routerArray" :key="index" class="w-[292px] h-[211px] bg-white rounded-xl border border-stone-300 mx-2 my-3">
                                              <div class="mx-5 mt-10">
                                                   <div class="w-[42px] h-[42px] relative">
                                                        <IconReceipt2 v-if="change.meta.id === 1" />
@@ -310,8 +263,7 @@
                                                        <IconShieldChevron v-if="change.meta.id === 4" />
                                                   </div>
                                              </div>
-                                             <div
-                                                  class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
+                                             <div class="text-slate-800 text-lg font-medium font-display leading-[31px] tracking-tight ml-5 mt-8">
                                                   {{ change.meta.title }}
                                              </div>
                                         </div>
@@ -343,17 +295,14 @@
                               <div class="mt-16">
                                    <div class="flex md:flex-row flex-col justify-between md:items-end md:mt-12">
                                         <div>
-                                             <div
-                                                  class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
+                                             <div class="text-black text-[32px] font-medium font-['Plus Jakarta Display'] tracking-wide">
                                                   {{ tourCards.title }}
                                              </div>
-                                             <div
-                                                  class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
+                                             <div class="text-black text-lg font-normal font-['Plus Jakarta Display'] tracking-tight">
                                                   {{ tourCards.subtitle }}
                                              </div>
                                         </div>
-                                        <div
-                                             class="px-3 h-8 max-w-[150px] md:mt-0 mt-5 bg-slate-200 rounded-lg border justify-center items-center flex">
+                                        <div class="px-3 h-8 max-w-[150px] md:mt-0 mt-5 bg-slate-200 rounded-lg border justify-center items-center flex">
                                              <div class="mr-1">{{ tourCards.btnText }}</div>
                                              <IconArrowUpRight />
                                         </div>
@@ -391,8 +340,7 @@
                     </div>
                     <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[1].id">
                          <div>
-                              <div v-for="(paragraph, index) in tab.description" :key="index"
-                                   class="w-full md:mt-[73px] mt-5 text-black text-lg font-normal font-['Plus Jakarta Display'] leading-loose tracking-tight">
+                              <div v-for="(paragraph, index) in tab.description" :key="index" class="w-full md:mt-[73px] mt-5 text-black text-lg font-normal font-['Plus Jakarta Display'] leading-loose tracking-tight">
                                    <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
                                         {{ child.text }}
                                    </p>
@@ -408,20 +356,15 @@
                                     </div> -->
                                              <table className="relative bg-white mb-4 rounded-2xl w-full">
                                                   <thead>
-                                                       <tr
-                                                            class="md:mx-6 mx-4 mt-8 md:mt-14 md:mb-9 flex flex-row justify-between text-black md:text-lg text-base font-semibold leading-loose rounded-2xl">
-                                                            <th v-for="(header, headerIndex) in sharedTable.headers"
-                                                                 :key="headerIndex"
-                                                                 class="md:pl-14 first:pl-2 w-full flex">
+                                                       <tr class="md:mx-6 mx-4 mt-8 md:mt-14 md:mb-9 flex flex-row justify-between text-black md:text-lg text-base font-semibold leading-loose rounded-2xl">
+                                                            <th v-for="(header, headerIndex) in sharedTable.headers" :key="headerIndex" class="md:pl-14 first:pl-2 w-full flex">
                                                                  {{ header.text }}
                                                             </th>
                                                        </tr>
                                                   </thead>
                                                   <tbody>
-                                                       <tr v-for="(row, rowIndex) in sharedTable.rows" :key="rowIndex"
-                                                            className="flex flex-row mx-6 mb-[15px] last:mb-[70px] border border-stone-300 rounded-2xl [&>*:nth-last-child(1)]:border-none">
-                                                            <td v-for="(cell, cellIndex) in row.row" :key="cellIndex"
-                                                                 className="w-full border-r border-neutral-300 md:py-[21px] py-2 md:pl-10 pl-3 first:text-lg first:font-semibold first:leading-loose md:text-2xl text-xl font-normal">
+                                                       <tr v-for="(row, rowIndex) in sharedTable.rows" :key="rowIndex" className="flex flex-row mx-6 mb-[15px] last:mb-[70px] border border-stone-300 rounded-2xl [&>*:nth-last-child(1)]:border-none">
+                                                            <td v-for="(cell, cellIndex) in row.row" :key="cellIndex" className="w-full border-r border-neutral-300 md:py-[21px] py-2 md:pl-10 pl-3 first:text-lg first:font-semibold first:leading-loose md:text-2xl text-xl font-normal">
                                                                  {{ cell.text }}
                                                             </td>
                                                        </tr>
@@ -431,18 +374,11 @@
                                         <div class="mx-12">
                                              <div class="flex flex-row items-center mt-3">
                                                   <IconAsteriskSimple />
-                                                  <div
-                                                       class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight ml-6">
-                                                       Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos
-                                                       liman vergileri dahildir.</div>
+                                                  <div class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight ml-6">Alttaki Samos’a feribot bileti ücretlerine Kuşadası ve Samos liman vergileri dahildir.</div>
                                              </div>
                                              <div class="flex flex-row items-center mt-3">
                                                   <IconAsteriskSimple />
-                                                  <div
-                                                       class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight ml-5">
-                                                       Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli
-                                                       bir pasaport ve Schengen vizesi olup vize konusunda dilerseniz
-                                                       firmamız sizlere yardımcı olmaktan mutluluk duyacaktır.</div>
+                                                  <div class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight ml-5">Samos adasına seyahatiniz için gerekli olan en az altı ay geçerli bir pasaport ve Schengen vizesi olup vize konusunda dilerseniz firmamız sizlere yardımcı olmaktan mutluluk duyacaktır.</div>
                                              </div>
                                         </div>
                                    </div>
@@ -452,29 +388,25 @@
                     </div>
                     <div class="px-2 md:px-16 sm:px-8 centered-w" v-show="activeTab === copyTabs[2].id">
                          <div>
-                              <div v-for="(paragraph, index) in tab.description" :key="index"
-                                   class="w-full text-black text-lg font-normal font-['Plus Jakarta Display'] leading-loose tracking-tight my-20">
+                              <div v-for="(paragraph, index) in tab.description" :key="index" class="w-full text-black text-lg font-normal font-['Plus Jakarta Display'] leading-loose tracking-tight my-20">
                                    <p v-for="(child, childIndex) in paragraph.children" :key="childIndex">
                                         {{ child.text }}
                                    </p>
                               </div>
                          </div>
                          <div class="flex md:flex-row flex-col gap-10 justify-between mb-5">
-                              <div v-for="(img, index) in sharedImages.images" :key="index"
-                                   class="relative flex flex-row gap-10 justify-between mb-5">
+                              <div v-for="(img, index) in sharedImages.images" :key="index" class="relative flex flex-row gap-10 justify-between mb-5">
                                    <div class="relative flex flex-row">
-                                        <img :src="getImage(img.url)"
-                                             class="w-[397px] h-[267px] bg-black rounded-[20px] cursor-pointer" />
-                                        <div v-if="index === 1"
-                                             class="absolute inset-0 flex items-center justify-center cursor-pointer">
-                                             <div
-                                                  class="w-[100px] h-[100px] bg-blue-700 rounded-full flex flex-row justify-center items-center">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                       viewBox="0 0 32 32" fill="none">
+                                        <img :src="getImage(img.url)" class="w-[397px] h-[267px] bg-black rounded-[20px] cursor-pointer" />
+                                        <div v-if="index === 1" class="absolute inset-0 flex items-center justify-center cursor-pointer">
+                                             <div class="w-[100px] h-[100px] bg-blue-700 rounded-full flex flex-row justify-center items-center">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                                                        <g id="ArrowsOutSimple">
-                                                            <path id="Vector"
+                                                            <path
+                                                                 id="Vector"
                                                                  d="M27 6V12C27 12.2652 26.8946 12.5196 26.7071 12.7071C26.5196 12.8946 26.2652 13 26 13C25.7348 13 25.4804 12.8946 25.2929 12.7071C25.1054 12.5196 25 12.2652 25 12V8.41375L18.7075 14.7075C18.5199 14.8951 18.2654 15.0006 18 15.0006C17.7346 15.0006 17.4801 14.8951 17.2925 14.7075C17.1049 14.5199 16.9994 14.2654 16.9994 14C16.9994 13.7346 17.1049 13.4801 17.2925 13.2925L23.5863 7H20C19.7348 7 19.4804 6.89464 19.2929 6.70711C19.1054 6.51957 19 6.26522 19 6C19 5.73478 19.1054 5.48043 19.2929 5.29289C19.4804 5.10536 19.7348 5 20 5H26C26.2652 5 26.5196 5.10536 26.7071 5.29289C26.8946 5.48043 27 5.73478 27 6ZM13.2925 17.2925L7 23.5863V20C7 19.7348 6.89464 19.4804 6.70711 19.2929C6.51957 19.1054 6.26522 19 6 19C5.73478 19 5.48043 19.1054 5.29289 19.2929C5.10536 19.4804 5 19.7348 5 20V26C5 26.2652 5.10536 26.5196 5.29289 26.7071C5.48043 26.8946 5.73478 27 6 27H12C12.2652 27 12.5196 26.8946 12.7071 26.7071C12.8946 26.5196 13 26.2652 13 26C13 25.7348 12.8946 25.4804 12.7071 25.2929C12.5196 25.1054 12.2652 25 12 25H8.41375L14.7075 18.7075C14.8951 18.5199 15.0006 18.2654 15.0006 18C15.0006 17.7346 14.8951 17.4801 14.7075 17.2925C14.5199 17.1049 14.2654 16.9994 14 16.9994C13.7346 16.9994 13.4801 17.1049 13.2925 17.2925Z"
-                                                                 fill="white" />
+                                                                 fill="white"
+                                                            />
                                                        </g>
                                                   </svg>
                                              </div>
@@ -486,21 +418,18 @@
                     <div class="centered-w" v-show="activeTab === copyTabs[3].id">
                          <div class="flex flex-col justify-center items-center m-auto relative">
                               <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-                                   <div v-for="(blog, index) in sharedBlogCard.BlogCard" :key="index"
-                                        class="flex flex-col items-center md:items-start justify-center md:justify-normal md:flex-row mt-12">
+                                   <div v-for="(blog, index) in sharedBlogCard.BlogCard" :key="index" class="flex flex-col items-center md:items-start justify-center md:justify-normal md:flex-row mt-12">
                                         <div class="md:mb-[20px] mb-5 relative md:w-1/3">
-                                             <img :src="getImage(blog.img.url)" class="h-full rounded-xl"
-                                                  alt="blog image" />
-                                             <div
-                                                  class="w-[172px] h-[50px] hidden md:flex bg-white rounded-[135px] absolute bottom-0 right-0 flex-row justify-evenly items-center mr-7 mb-7">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                       viewBox="0 0 32 32" fill="none">
+                                             <img :src="getImage(blog.img.url)" class="h-full rounded-xl" alt="blog image" />
+                                             <div class="w-[172px] h-[50px] hidden md:flex bg-white rounded-[135px] absolute bottom-0 right-0 flex-row justify-evenly items-center mr-7 mb-7">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                                                        <g id="Copy">
-                                                            <path id="Vector" opacity="0.2" d="M27 5V21H21V11H11V5H27Z"
-                                                                 fill="#1F2A37" />
-                                                            <path id="Vector_2"
+                                                            <path id="Vector" opacity="0.2" d="M27 5V21H21V11H11V5H27Z" fill="#1F2A37" />
+                                                            <path
+                                                                 id="Vector_2"
                                                                  d="M27 4H11C10.7348 4 10.4804 4.10536 10.2929 4.29289C10.1054 4.48043 10 4.73478 10 5V10H5C4.73478 10 4.48043 10.1054 4.29289 10.2929C4.10536 10.4804 4 10.7348 4 11V27C4 27.2652 4.10536 27.5196 4.29289 27.7071C4.48043 27.8946 4.73478 28 5 28H21C21.2652 28 21.5196 27.8946 21.7071 27.7071C21.8946 27.5196 22 27.2652 22 27V22H27C27.2652 22 27.5196 21.8946 27.7071 21.7071C27.8946 21.5196 28 21.2652 28 21V5C28 4.73478 27.8946 4.48043 27.7071 4.29289C27.5196 4.10536 27.2652 4 27 4ZM20 26H6V12H20V26ZM26 20H22V11C22 10.7348 21.8946 10.4804 21.7071 10.2929C21.5196 10.1054 21.2652 10 21 10H12V6H26V20Z"
-                                                                 fill="#1F2A37" />
+                                                                 fill="#1F2A37"
+                                                            />
                                                        </g>
                                                   </svg>
                                                   <span>{{ blog.btnText }}</span>
@@ -508,12 +437,10 @@
                                         </div>
                                         <div class="mb-5 md:w-2/5 w-full md:ml-6">
                                              <div>
-                                                  <div
-                                                       class="text-black md:text-[32px] text-xl font-semibold font-['Plus Jakarta Sans'] tracking-wide">
+                                                  <div class="text-black md:text-[32px] text-xl font-semibold font-['Plus Jakarta Sans'] tracking-wide">
                                                        {{ blog.title }}
                                                   </div>
-                                                  <div
-                                                       class="text-black text-base font-normal font-['Plus Jakarta Sans'] md:leading-[29.03px] leading-5 mt-5">
+                                                  <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] md:leading-[29.03px] leading-5 mt-5">
                                                        <span v-for="desc in blog.description" :key="desc.type">
                                                             <span v-for="child in desc.children" :key="child.type">
                                                                  {{ child.text }}
@@ -522,24 +449,19 @@
                                                   </div>
                                              </div>
                                              <div class="flex flex-col md:flex-row mt-5">
-                                                  <div
-                                                       class="h-[66px] w-[152px] rounded-xl border border-zinc-200 flex flex-col justify-center pl-6 bg-slate-50">
-                                                       <div
-                                                            class="text-black text-sm font-light font-display leading-normal">
+                                                  <div class="h-[66px] w-[152px] rounded-xl border border-zinc-200 flex flex-col justify-center pl-6 bg-slate-50">
+                                                       <div class="text-black text-sm font-light font-display leading-normal">
                                                             {{ blog.locationTitle }}
                                                        </div>
-                                                       <div
-                                                            class="text-black text-sm font-medium font-display leading-normal">
+                                                       <div class="text-black text-sm font-medium font-display leading-normal">
                                                             {{ blog.location }}
                                                        </div>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
-                                   <div
-                                        class="flex flex-row justify-center items-center mt-10 cursor-pointer lg:mb-[146px] mb-10">
-                                        <div class="text-black text-lg font-medium font-display mr-2">{{
-                                             sharedBlogCard.more }}</div>
+                                   <div class="flex flex-row justify-center items-center mt-10 cursor-pointer lg:mb-[146px] mb-10">
+                                        <div class="text-black text-lg font-medium font-display mr-2">{{ sharedBlogCard.more }}</div>
                                         <IconArrowTopRight />
                                    </div>
                               </div>
@@ -549,54 +471,40 @@
                          <div class="text-black text-lg font-normal leading-loose mt-12 pl-5 md:pl-0 centered-w">
                               <div class="flex flex-col justify-center items-center m-auto relative">
                                    <div class="w-full">
-                                        <div
-                                             class="flex flex-col md:flex-row w-full justify-between lg:px-28 md:px-16 sm:px-8 items-center mt-[50px] mb-10 md:mb-40">
-                                             <div
-                                                  class="text-black text-2xl font-medium font-['Plus Jakarta Sans'] leading-[37.06px]">
+                                        <div class="flex flex-col md:flex-row w-full justify-between lg:px-28 md:px-16 sm:px-8 items-center mt-[50px] mb-10 md:mb-40">
+                                             <div class="text-black text-2xl font-medium font-['Plus Jakarta Sans'] leading-[37.06px]">
                                                   {{ sharedYoutubeArea.title }}
                                              </div>
-                                             <div
-                                                  class="flex md:flex-row flex-col justify-center md:items-center cursor-pointer">
+                                             <div class="flex md:flex-row flex-col justify-center md:items-center cursor-pointer">
                                                   <div class="flex flex-row md:mr-12 mr-2 md:mt-0 mt-5">
-                                                       <div
-                                                            class="text-gray-700 text-base font-medium font-display leading-[24.86px] tracking-tight mr-1">
-                                                            {{ sharedYoutubeArea.goYoutubeText }}</div>
-                                                       <div
-                                                            class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
-                                                            <div
-                                                                 class="w-5 h-5 relative flex-col justify-start items-start flex">
+                                                       <div class="text-gray-700 text-base font-medium font-display leading-[24.86px] tracking-tight mr-1">
+                                                            {{ sharedYoutubeArea.goYoutubeText }}
+                                                       </div>
+                                                       <div class="w-7 h-7 p-1 bg-gray-800 rounded-full justify-center items-center inline-flex">
+                                                            <div class="w-5 h-5 relative flex-col justify-start items-start flex">
                                                                  <ArrowUpRightWhite />
                                                             </div>
                                                        </div>
                                                   </div>
 
-                                                  <a href="{{ sharedYoutubeArea.youtubeLink }}" target="_blank"
-                                                       class="flex flex-row justify-center items-center">
-                                                       <div
-                                                            class="w-[178px] h-[121px] bg-gray-500 rounded-2xl items-center justify-center flex">
+                                                  <a href="{{ sharedYoutubeArea.youtubeLink }}" target="_blank" class="flex flex-row justify-center items-center">
+                                                       <div class="w-[178px] h-[121px] bg-gray-500 rounded-2xl items-center justify-center flex">
                                                             <IconPlay />
-
                                                        </div>
                                                        <IconEllips2077 class="-left-36 relative -z-50" />
                                                   </a>
                                              </div>
                                         </div>
-                                        <div v-for="(accordion, index) in objWithId6" :key="index"
-                                             class="w-full mb-12 md:mb-44 relative lg:px-28 md:px-16 sm:px-8">
+                                        <div v-for="(accordion, index) in objWithId6" :key="index" class="w-full mb-12 md:mb-44 relative lg:px-28 md:px-16 sm:px-8">
                                              <div>
-                                                  <h1
-                                                       class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] leading-[37.06px] mb-9">
-                                                       {{ accordion.category }}</h1>
+                                                  <h1 class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] leading-[37.06px] mb-9">
+                                                       {{ accordion.category }}
+                                                  </h1>
                                                   <div>
-                                                       <AccordionPanel3 :title="question.title"
-                                                            v-for="(question, qIndex) in accordion.CategoryQuestion"
-                                                            :key="qIndex"
-                                                            class=" border border-transparent rounded-xl mb-[24px]">
-                                                            <div
-                                                                 class="w-full overflow-hidden transition-[height] duration-300">
+                                                       <AccordionPanel3 :title="question.title" v-for="(question, qIndex) in accordion.CategoryQuestion" :key="qIndex" class="border border-transparent rounded-xl mb-[24px]">
+                                                            <div class="w-full overflow-hidden transition-[height] duration-300">
                                                                  <div class="pb-4 px-10 items-center flex flex-row">
-                                                                      <p
-                                                                           class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
+                                                                      <p class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
                                                                            <br />
                                                                            {{ question.description }}
                                                                            <br />
@@ -623,19 +531,14 @@
                     <div class="centered-w" v-show="activeTab === copyTabs[5]?.id">
                          <div class="flex flex-col items-center m-auto relative justify-between">
                               <div class="w-full lg:px-[100px]">
-                                   <div v-for="(item, index) in fakeData2" :key="index"
-                                        class="flex flex-col md:flex-row mt-12 gap-5">
+                                   <div v-for="(item, index) in fakeData2" :key="index" class="flex flex-col md:flex-row mt-12 gap-5">
                                         <!-- Left Column -->
                                         <div class="md:mb-[20px] mb-5 w-full md:w-1/4 relative top-0">
-                                             <div
-                                                  class="bg-neutral-100 flex flex-row justify-center items-center py-6 px-14 rounded-xl">
-                                                  <div
-                                                       class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans']">
-                                                       Tüm Filtreleri Temizle</div>
+                                             <div class="bg-neutral-100 flex flex-row justify-center items-center py-6 px-14 rounded-xl">
+                                                  <div class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans']">Tüm Filtreleri Temizle</div>
                                              </div>
                                              <!-- First Box -->
-                                             <div
-                                                  class="w-full bg-white rounded-[20px] border border-neutral-400 flex flex-col justify-between items-start mt-3">
+                                             <div class="w-full bg-white rounded-[20px] border border-neutral-400 flex flex-col justify-between items-start mt-3">
                                                   <div class="p-5 flex flex-col h-full w-full justify-between">
                                                        <div class="mb-4">Tur Tipi</div>
                                                        <div class="flex flex-row justify-between">
@@ -649,8 +552,7 @@
                                                   </div>
                                              </div>
                                              <!-- Second Box -->
-                                             <div
-                                                  class="w-full bg-white rounded-[20px] border border-neutral-400 flex flex-col justify-between items-start mt-3">
+                                             <div class="w-full bg-white rounded-[20px] border border-neutral-400 flex flex-col justify-between items-start mt-3">
                                                   <div class="p-5 flex flex-col h-full w-full justify-between">
                                                        <div class="mb-4">Gece Sayısı</div>
                                                        <div class="flex flex-row justify-between mb-4">
@@ -665,14 +567,11 @@
                                                             <div>3 Gece 4 Gün</div>
                                                             <div class="w-5 h-5 bg-gray-200 rounded-[5px]"></div>
                                                        </div>
-                                                       <div
-                                                            class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer">
-                                                            +5 Daha Fazla</div>
+                                                       <div class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer">+5 Daha Fazla</div>
                                                   </div>
                                              </div>
                                              <!-- Third Box -->
-                                             <div
-                                                  class="w-full bg-white rounded-[20px] border border-neutral-400 flex flex-col justify-between items-start mt-3">
+                                             <div class="w-full bg-white rounded-[20px] border border-neutral-400 flex flex-col justify-between items-start mt-3">
                                                   <div class="p-5 flex flex-col h-full w-full justify-between">
                                                        <div class="mb-4">Gece Sayısı</div>
                                                        <div class="flex flex-row justify-between">
@@ -687,9 +586,7 @@
                                                             <div class="mb-4">3 Gece 4 Gün</div>
                                                             <div class="w-5 h-5 bg-gray-200 rounded-[5px]"></div>
                                                        </div>
-                                                       <div
-                                                            class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer">
-                                                            +5 Daha Fazla</div>
+                                                       <div class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer">+5 Daha Fazla</div>
                                                   </div>
                                              </div>
                                         </div>
@@ -697,26 +594,18 @@
                                         <div class="md:w-2/3 mb-5">
                                              <div class="w-full mb-5">
                                                   <div class="bg-white p-4 rounded-[20px] card-border flex flex-row">
-                                                       <img class="w-[180px] h-[170px] rounded-[18px]"
-                                                            src="https://via.placeholder.com/180x170" />
+                                                       <img class="w-[180px] h-[170px] rounded-[18px]" src="https://via.placeholder.com/180x170" />
                                                        <div class="w-full">
                                                             <div class="flex flex-row justify-between items-center">
-                                                                 <div
-                                                                      class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                                      Midilli Turu 1 Gece - Kasım</div>
+                                                                 <div class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">Midilli Turu 1 Gece - Kasım</div>
                                                                  <IconShare3 />
                                                             </div>
-                                                            <div
-                                                                 class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                                 Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                                 içermektedir.</div>
+                                                            <div class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">Feribot, liman vergisi, oda-kahvaltı konaklama içermektedir.</div>
                                                             <div clas="flex flex-row justify-between">
                                                                  <div class="flex flex-row justify-between mb-4">
-                                                                      <div
-                                                                           class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                      <div class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
                                                                            <div class="flex flex-row">
-                                                                                <div
-                                                                                     class="flex flex-row items-center justify-center">
+                                                                                <div class="flex flex-row items-center justify-center">
                                                                                      <IconMoon />
                                                                                 </div>
                                                                                 <div class="flex flex-col ml-4 my-2">
@@ -726,14 +615,12 @@
                                                                            </div>
                                                                       </div>
                                                                       <div class="flex flex-row justify-end items-end">
-                                                                           <div
-                                                                                class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                                                €59’dan başlayan fiyatlar</div>
-                                                                           <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24" height="24"
-                                                                                viewBox="0 0 24 24" fill="none">
-                                                                                <path d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                                     fill="#2249D6" />
+                                                                           <div class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">€59’dan başlayan fiyatlar</div>
+                                                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                                <path
+                                                                                     d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                                                                     fill="#2249D6"
+                                                                                />
                                                                            </svg>
                                                                       </div>
                                                                  </div>
@@ -743,26 +630,18 @@
                                              </div>
                                              <div class="w-full mb-5">
                                                   <div class="bg-white p-4 rounded-[20px] card-border flex flex-row">
-                                                       <img class="w-[180px] h-[170px] rounded-[18px]"
-                                                            src="https://via.placeholder.com/180x170" />
+                                                       <img class="w-[180px] h-[170px] rounded-[18px]" src="https://via.placeholder.com/180x170" />
                                                        <div class="w-full">
                                                             <div class="flex flex-row justify-between items-center">
-                                                                 <div
-                                                                      class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                                      Midilli Turu 1 Gece - Kasım</div>
+                                                                 <div class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">Midilli Turu 1 Gece - Kasım</div>
                                                                  <IconShare3 />
                                                             </div>
-                                                            <div
-                                                                 class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                                 Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                                 içermektedir.</div>
+                                                            <div class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">Feribot, liman vergisi, oda-kahvaltı konaklama içermektedir.</div>
                                                             <div clas="flex flex-row justify-between">
                                                                  <div class="flex flex-row justify-between mb-4">
-                                                                      <div
-                                                                           class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                      <div class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
                                                                            <div class="flex flex-row">
-                                                                                <div
-                                                                                     class="flex flex-row items-center justify-center">
+                                                                                <div class="flex flex-row items-center justify-center">
                                                                                      <IconMoon />
                                                                                 </div>
                                                                                 <div class="flex flex-col ml-4 my-2">
@@ -772,9 +651,7 @@
                                                                            </div>
                                                                       </div>
                                                                       <div class="flex flex-row justify-end items-end">
-                                                                           <div
-                                                                                class="text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                                                €59’dan başlayan fiyatlar</div>
+                                                                           <div class="text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">€59’dan başlayan fiyatlar</div>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -783,26 +660,18 @@
                                              </div>
                                              <div class="w-full mb-5">
                                                   <div class="bg-white p-4 rounded-[20px] card-border flex flex-row">
-                                                       <img class="w-[180px] h-[170px] rounded-[18px]"
-                                                            src="https://via.placeholder.com/180x170" />
+                                                       <img class="w-[180px] h-[170px] rounded-[18px]" src="https://via.placeholder.com/180x170" />
                                                        <div class="w-full">
                                                             <div class="flex flex-row justify-between items-center">
-                                                                 <div
-                                                                      class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                                      Midilli Turu 1 Gece - Kasım</div>
+                                                                 <div class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">Midilli Turu 1 Gece - Kasım</div>
                                                                  <IconShare3 />
                                                             </div>
-                                                            <div
-                                                                 class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                                 Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                                 içermektedir.</div>
+                                                            <div class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">Feribot, liman vergisi, oda-kahvaltı konaklama içermektedir.</div>
                                                             <div clas="flex flex-row justify-between">
                                                                  <div class="flex flex-row justify-between mb-4">
-                                                                      <div
-                                                                           class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                      <div class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
                                                                            <div class="flex flex-row">
-                                                                                <div
-                                                                                     class="flex flex-row items-center justify-center">
+                                                                                <div class="flex flex-row items-center justify-center">
                                                                                      <IconMoon />
                                                                                 </div>
                                                                                 <div class="flex flex-col ml-4 my-2">
@@ -812,9 +681,7 @@
                                                                            </div>
                                                                       </div>
                                                                       <div class="flex flex-row justify-end items-end">
-                                                                           <div
-                                                                                class="text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                                                €59’dan başlayan fiyatlar</div>
+                                                                           <div class="text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">€59’dan başlayan fiyatlar</div>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -823,26 +690,18 @@
                                              </div>
                                              <div class="w-full mb-5">
                                                   <div class="bg-white p-4 rounded-[20px] card-border flex flex-row">
-                                                       <img class="w-[180px] h-[170px] rounded-[18px]"
-                                                            src="https://via.placeholder.com/180x170" />
+                                                       <img class="w-[180px] h-[170px] rounded-[18px]" src="https://via.placeholder.com/180x170" />
                                                        <div class="w-full">
                                                             <div class="flex flex-row justify-between">
-                                                                 <div
-                                                                      class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                                      Midilli Turu 1 Gece - Kasım</div>
+                                                                 <div class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">Midilli Turu 1 Gece - Kasım</div>
                                                                  <IconShare3 />
                                                             </div>
-                                                            <div
-                                                                 class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                                 Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                                 içermektedir.</div>
+                                                            <div class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">Feribot, liman vergisi, oda-kahvaltı konaklama içermektedir.</div>
                                                             <div clas="flex flex-row justify-between">
                                                                  <div class="flex flex-row justify-between mb-4">
-                                                                      <div
-                                                                           class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                      <div class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
                                                                            <div class="flex flex-row">
-                                                                                <div
-                                                                                     class="flex flex-row items-center justify-center">
+                                                                                <div class="flex flex-row items-center justify-center">
                                                                                      <IconMoon />
                                                                                 </div>
                                                                                 <div class="flex flex-col ml-4 my-2">
@@ -852,14 +711,12 @@
                                                                            </div>
                                                                       </div>
                                                                       <div class="flex flex-row justify-end items-end">
-                                                                           <div
-                                                                                class="text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                                                €59’dan başlayan fiyatlar</div>
-                                                                           <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24" height="24"
-                                                                                viewBox="0 0 24 24" fill="none">
-                                                                                <path d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                                     fill="#2249D6" />
+                                                                           <div class="text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">€59’dan başlayan fiyatlar</div>
+                                                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                                <path
+                                                                                     d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                                                                     fill="#2249D6"
+                                                                                />
                                                                            </svg>
                                                                       </div>
                                                                  </div>
@@ -869,10 +726,8 @@
                                              </div>
                                         </div>
                                    </div>
-                                   <div
-                                        class="flex flex-row justify-center items-center mt-[83px] cursor-pointer lg:mb-[146px] mb-10">
-                                        <div class="text-black text-lg font-medium font-display mr-[16px]">Daha fazla
-                                             yazı</div>
+                                   <div class="flex flex-row justify-center items-center mt-[83px] cursor-pointer lg:mb-[146px] mb-10">
+                                        <div class="text-black text-lg font-medium font-display mr-[16px]">Daha fazla yazı</div>
                                         <IconArrowTopRight />
                                    </div>
                               </div>
@@ -916,8 +771,8 @@ import HomeSubCardSplide from '../../views/SubViews/components/HomeSubCardSplide
 import { useRouterStore } from '../../stores/router'
 import IconReceipt2 from '../../components/icons/IconReceipt2.vue'
 
-import Splide from '@splidejs/splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+import Splide from '@splidejs/splide'
+import '@splidejs/splide/dist/css/themes/splide-default.min.css'
 
 const router = useRouter()
 const useChannelStore = useChannel()
@@ -926,29 +781,28 @@ const applicationName = ref(p.Product)
 const controllerName = ref('Keydefinition')
 const name = ref('SearchTownList')
 
-const routerStore = useRouterStore();
-const routerChange = routerStore.getRouterChange;
+const routerStore = useRouterStore()
+const routerChange = routerStore.getRouterChange
 
 const routerArray = computed(() => {
-      const uniqueRoutes = [];
-      const seenTitles = new Set();
+     const uniqueRoutes = []
+     const seenTitles = new Set()
 
-      
-      for (let i = routerStore.getRouterChange.length - 1; i >= 0; i--) {
-        const change = routerStore.getRouterChange[i];
-        if (!seenTitles.has(change.meta.title)) {
-          seenTitles.add(change.meta.title);
-          uniqueRoutes.push(change);
-        }
-      }
-      console.log(uniqueRoutes, 'uniqueRoutes');
-      return uniqueRoutes;
-    });
+     for (let i = routerStore.getRouterChange.length - 1; i >= 0; i--) {
+          const change = routerStore.getRouterChange[i]
+          if (!seenTitles.has(change.meta.title)) {
+               seenTitles.add(change.meta.title)
+               uniqueRoutes.push(change)
+          }
+     }
+     console.log(uniqueRoutes, 'uniqueRoutes')
+     return uniqueRoutes
+})
 
 // Component yüklendiğinde store'dan veriyi almak için
 onMounted(() => {
-     console.log(routerChange, 'routerChanges'); // Veriyi konsola yazdırma
-});
+     console.log(routerChange, 'routerChanges') // Veriyi konsola yazdırma
+})
 
 // watchEffect(() => {
 //      if (router.currentRoute.value.params.name) {
@@ -1111,16 +965,16 @@ const toggleDropdown4 = () => {
 }
 
 const handleClickInside = () => {
-     isOpen2.value = false;
-};
+     isOpen2.value = false
+}
 
 const handleClickInside2 = () => {
-     isOpen3.value = false;
-};
+     isOpen3.value = false
+}
 
 const handleClickInside3 = () => {
-     isOpen4.value = false;
-};
+     isOpen4.value = false
+}
 
 // const handleClickInside4 = () => {
 //   isOpen.value = false;
@@ -1532,8 +1386,7 @@ const getIslands = async () => {
                console.log(sharedTable.value, 'sharedTable')
                console.log(sharedImages.value, 'sharedImages')
                console.log(sharedBlogCard.value, 'sharedBlogCard')
-               console.log(sharedCategoryQuestions.value, 'sharedCategoryQuestions'),
-                    console.log(allTours.value, 'allTours.value');
+               console.log(sharedCategoryQuestions.value, 'sharedCategoryQuestions'), console.log(allTours.value, 'allTours.value')
           }
      } catch (error) {
           console.error('Hata:', error)
@@ -1667,7 +1520,7 @@ function navigateToSecondPage() {
           }
      })
 }
-const splideRef2 = ref<string | HTMLElement>('');
+const splideRef2 = ref<string | HTMLElement>('')
 
 onMounted(() => {
      console.log(splideRef2, 'splideRef2')
@@ -1683,37 +1536,36 @@ onMounted(() => {
                interval: 3000,
                breakpoints: {
                     1380: {
-                         perPage: 4,
+                         perPage: 4
                     },
                     1140: {
-                         perPage: 3,
+                         perPage: 3
                     },
                     840: {
-                         perPage: 2,
+                         perPage: 2
                     },
                     580: {
-                         perPage: 1,
-                    },
-               },
-          }).mount();
+                         perPage: 1
+                    }
+               }
+          }).mount()
 
           splide.on('moved', () => {
                // const activeSlideIndex = splide.index;
                // const activeSlideContent = items[activeSlideIndex];
                // console.log(activeSlideContent);
                // console.log(activeSlideIndex);
-          });
+          })
      }
-});
+})
 
 const items = ref([
      { id: 1, name: 'Item 1' },
      { id: 2, name: 'Item 2' },
      { id: 3, name: 'Item 3' },
      { id: 4, name: 'Item 4' },
-     { id: 5, name: 'Item 5' },
+     { id: 5, name: 'Item 5' }
 ])
-
 </script>
 
 <style scoped>
@@ -1807,7 +1659,6 @@ const items = ref([
      position: relative !important;
 }
 
-
 .flex-column {
      display: flex;
      flex-direction: column;
@@ -1818,7 +1669,7 @@ const items = ref([
      padding: 10px 0;
      display: flex;
      flex-direction: row;
-     width: 100%
+     width: 100%;
 }
 
 .splide__list {
@@ -1858,7 +1709,7 @@ const items = ref([
 }
 
 .splide__slide img {
-     background: rgba(0, 0, 0, 0.30);
+     background: rgba(0, 0, 0, 0.3);
 }
 
 /* .splide__slide.is-active img {
@@ -1873,7 +1724,7 @@ const items = ref([
 
 .splide__slide:first-child img {
      display: none;
-     background-color: #E4EEF3;
+     background-color: #e4eef3;
 }
 
 .splide__slide:first-child p {
@@ -1881,7 +1732,7 @@ const items = ref([
 }
 
 .splide__slide:first-child {
-     background-color: #E4E9EC;
+     background-color: #e4e9ec;
 }
 
 .splide__slide:first-child button {
@@ -1907,7 +1758,7 @@ const items = ref([
 
 .splide__arrow.splide__arrow--prev:disabled {
      opacity: 1;
-     background: transparent
+     background: transparent;
 }
 
 .splide__arrow.splide__arrow--prev {
@@ -1927,7 +1778,7 @@ const items = ref([
      z-index: 10;
      background: transparent;
      padding: 40px;
-     background: #E4E9EC;
+     background: #e4e9ec;
      border-radius: 100%;
      width: 88px;
      height: 86px;
@@ -1941,7 +1792,7 @@ const items = ref([
      z-index: 10;
      background: transparent;
      padding: 40px;
-     background: #E4E9EC;
+     background: #e4e9ec;
      border-radius: 100%;
      width: 88px;
      height: 86px;
@@ -1955,7 +1806,6 @@ const items = ref([
      .splide__arrow.splide__arrow--next:disabled {
           display: none;
      }
-
 }
 
 @media only screen and (min-width: 224px) and (max-width: 555px) {
