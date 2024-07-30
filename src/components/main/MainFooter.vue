@@ -54,18 +54,10 @@
                          <div>
                               <div class="text-black text-lg font-medium font-display mb-5">{{ item.title }}</div>
                               <div v-for="(sub, index) in item.subItem" :key="index" className="mb-5">
-                                   <a :href="sub.url?.slug" class="text-zinc-600 text-sm font-normal font-display">{{ sub.text }}</a>
-                                   <!-- <router-link
-                                        :to="{
-                                             name: 'term',
-                                             path: sub.url?.slug,
-                                             params: {
-                                                  type: 'term'
-                                             }
-                                        }"
-                                        class="text-zinc-600 text-sm font-normal font-display"
-                                        >{{ sub.text }}</router-link
-                                   > -->
+                                   <router-link v-if="sub.url?.slug" :to="{ name: 'term', params: { slug: sub.url.slug } }" class="text-zinc-600 text-sm font-normal font-display">
+                                        {{ sub.text }}
+                                   </router-link>
+                                   <a v-else :href="sub.href" class="text-zinc-600 text-sm font-normal font-display"> {{ sub.text }} </a>
                               </div>
                          </div>
                     </div>
@@ -103,9 +95,14 @@ const imageURL = ref('')
 const { locale } = useI18n()
 const isLoading = ref<boolean>(true)
 
+interface SubUrls {
+     href: string
+     slug: string
+}
 interface SubItem {
      id: number
      text: string
+     url: SubUrls[]
 }
 
 interface FooterAreas {

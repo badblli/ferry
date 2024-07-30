@@ -155,10 +155,10 @@ const routes = [
                     props: (route: any) => ({ name: route.params.name })
                },
                {
-                    path: '/:name',
+                    path: '/:slug',
                     name: 'term',
                     component: () => import('../views/DynamicPages/TermOfUse.vue'),
-                    props: (route: any) => ({ name: route.params.name, type: route.query.type })
+                    props: (route: any) => ({ slug: route.params.slug })
                }
           ]
      },
