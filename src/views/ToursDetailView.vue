@@ -228,7 +228,191 @@
         </section>
     </div>
     <div v-if="showCustomComponent" class="lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-        DENEME DENEME
+        <section>
+            <div class="mt-12 md:mt-28 md:mb-16 mb-7">
+                <h1
+                    class="text-black text-[42px] font-bold font-['Plus Jakarta Sans'] tracking-wide mb-5  md:mb-[45px]">
+                    Tur Programı</h1>
+                <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[17.06px]">1 gece
+                    2
+                    günü kapsayan bu turun<br /> programı aşağıdaki gibidir.</p>
+            </div>
+            <div
+                class="w-[604px] h-[92px] bg-white rounded-xl border border-[#a4a4a4] flex flex-row justify-between items-center">
+                <div class="ml-5 cursor-pointer">
+                    <p class="text-black text-base font-medium font-display tracking-tight">Katılmak İstenilen Tarih</p>
+                    <p>Tarih Seçin</p>
+                </div>
+                <div class="h-14 border-l border-zinc-300 hidden md:block ml-0 md:ml-2 lg:ml-3">
+                </div>
+                <div class="cursor-pointer">
+                    <p class="text-black text-base font-medium font-display tracking-tight">Kişi Sayısı</p>
+                    <p>2 yetişkin, 2 çocuk, 1 bebek</p>
+                </div>
+                <div
+                    class="bg-slate-200 rounded-full justify-centeer items-center sm:p-[17px] p-3 m-[11px] ml-0 lg:ml-3">
+                    <IconSearchNormal />
+                </div>
+            </div>
+        </section>
+        <section class="mt-14">
+            <div
+                class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                <div class="flex flex-col my-8 ml-6">
+                    <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
+                        Samos City Hotel - Standart Oda
+                    </p>
+                    <div>
+                        <div class="flex flex-row gap-3 mt-[14px]">
+                            <div class="py-[6px] px-[9px] bg-neutral-100 rounded-lg border flex justify-center">
+                                <IconStar />
+                                <p
+                                    class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
+                                    3 Stars
+                                </p>
+                            </div>
+                            <div class="py-[6px] px-[13px] bg-neutral-100 rounded-lg border flex justify-center">
+                                <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight">
+                                    Standard Room</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mr-5 flex flex-row justify-center items-center">
+                    <div class="flex flex-col">
+                        <p class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">
+                            39 €
+                        </p>
+                        <p class="text-right text-[#353535] text-[15px] font-medium font-['Plus Jakarta Sans']">
+                            /Kişi Başı
+                        </p>
+                    </div>
+                    <div class="flex flex-col ml-20">
+                        <div class="flex flex-row justify-center bg-[#f5ebeb] rounded-lg border p-1">
+                            <IconHouse />
+                            <span
+                                class="text-[#8f2929] text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
+                                Son 2 oda kaldı.
+                            </span>
+                        </div>
+                        <div
+                            class="max-w-[222px] cursor-pointer my-2 bg-[#2948b5] rounded-lg border text-white p-3 items-center flex flex-row justify-center">
+                            Satın Al
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                <div class="flex flex-col my-8 ml-6">
+                    <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
+                        Samos City Hotel - Standart Oda
+                    </p>
+                    <div>
+                        <div class="flex flex-row gap-3 mt-[14px]">
+                            <div class="py-[6px] px-[9px] bg-neutral-100 rounded-lg border flex justify-center">
+                                <IconStar />
+                                <p
+                                    class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
+                                    3 Stars
+                                </p>
+                            </div>
+                            <div class="py-[6px] px-[13px] bg-neutral-100 rounded-lg border flex justify-center">
+                                <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight">
+                                    Standard Room</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mr-5 flex flex-row justify-center items-center">
+                    <div class="flex flex-col">
+                        <p class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">
+                            39 €
+                        </p>
+                        <p class="text-right text-[#353535] text-[15px] font-medium font-['Plus Jakarta Sans']">
+                            /Kişi Başı
+                        </p>
+                    </div>
+                    <div class="flex flex-col ml-20">
+                        <div class="flex flex-row justify-center bg-[#f5ebeb] rounded-lg border p-1">
+                            <IconHouse />
+                            <span
+                                class="text-[#8f2929] text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
+                                Son 2 oda kaldı.
+                            </span>
+                        </div>
+                        <div
+                            class="max-w-[222px] cursor-pointer my-2 bg-[#2948b5] rounded-lg border text-white p-3 items-center flex flex-row justify-center">
+                            Satın Al
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                <div class="flex flex-col my-8 ml-6">
+                    <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
+                        Samos City Hotel - Standart Oda
+                    </p>
+                    <div>
+                        <div class="flex flex-row gap-3 mt-[14px]">
+                            <div class="py-[6px] px-[9px] bg-neutral-100 rounded-lg border flex justify-center">
+                                <IconStar />
+                                <p
+                                    class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
+                                    3 Stars
+                                </p>
+                            </div>
+                            <div class="py-[6px] px-[13px] bg-neutral-100 rounded-lg border flex justify-center">
+                                <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight">
+                                    Standard Room</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mr-5 flex flex-row justify-center items-center">
+                    <div class="flex flex-col">
+                        <p class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">
+                            39 €
+                        </p>
+                        <p class="text-right text-[#353535] text-[15px] font-medium font-['Plus Jakarta Sans']">
+                            /Kişi Başı
+                        </p>
+                    </div>
+                    <div class="flex flex-col ml-20">
+                        <div class="flex flex-row justify-center bg-[#f5ebeb] rounded-lg border p-1">
+                            <IconHouse />
+                            <span
+                                class="text-[#8f2929] text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
+                                Son 2 oda kaldı.
+                            </span>
+                        </div>
+                        <div
+                            class="max-w-[222px] cursor-pointer my-2 bg-[#2948b5] rounded-lg border text-white p-3 items-center flex flex-row justify-center">
+                            Satın Al
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <div class="flex flex-col justify-center items-center">
+            <div class="w-[152px] py-14 flex flex-row bg-neutral-100 rounded-full justify-center items-center">
+                <IconReceiptX />
+            </div>
+            <div class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans'] mt-5">Bu tarih
+                aralığında otel bulunmuyor.</div>
+            <div class="w-[306px] text-center text-black text-base font-light font-display tracking-tight mt-5">En yakın
+                tarih aralığına ilerleyip tatilini yeniden planlayabilirsin.</div>
+
+            <div
+                class="w-[222px] h-[53px] bg-[#2149d5] rounded-lg border mt-10 justify-center items-center flex flex-row">
+                <div class="text-center text-white text-base font-medium font-display">En Uygun Tarihe
+                    Git</div>
+            </div>
+        </div> -->
+        <p class="flex flex-row justify-center text-black text-lg font-medium font-display mb-10 mt-10">
+            Daha fazla
+        </p>
     </div>
 </template>
 
@@ -237,6 +421,11 @@ import IconAccordionActiveArrow from '@/components/icons/IconAccordionActiveArro
 import IconAsteriskSimple from '@/components/icons/IconAsteriskSimple.vue';
 import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue';
 import example from '@/assets/embeddedImages/examp.jpg'
+import IconSearchNormal from '@/components/icons/IconSearchNormal.vue'
+import IconStar from '@/components/icons/IconStar.vue'
+import IconHouse from '@/components/icons/IconHouse.vue'
+import IconReceiptX from '@/components/icons/IconReceiptX.vue'
+
 import { ref } from 'vue';
 
 const isOpen = ref(true);
