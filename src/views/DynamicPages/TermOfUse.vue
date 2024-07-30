@@ -61,7 +61,25 @@ const isOpen = ref(true)
 const toggleDropdown = () => {
      isOpen.value = !isOpen.value
 }
+// Smooth scroll animation function
+const smoothScrollToTop = () => {
+     const duration = 600 // Animasyon süresi
+     const start = window.scrollY
+     const startTime = performance.now()
 
+     const scroll = (currentTime: number) => {
+          const timeElapsed = currentTime - startTime
+          const progress = Math.min(timeElapsed / duration, 1)
+          const easing = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress
+          window.scrollTo(0, start - start * easing)
+
+          if (timeElapsed < duration) {
+               window.requestAnimationFrame(scroll)
+          }
+     }
+
+     window.requestAnimationFrame(scroll)
+}
 const termSlug = computed(() => {
      return router.currentRoute.value.params.slug
 })
@@ -95,12 +113,18 @@ watch(termSlug, (newSlug, oldSlug) => {
      if (newSlug !== oldSlug) {
           console.log(newSlug, 'new', oldSlug, 'old')
           getTermPage()
+          smoothScrollToTop() // Animasyonlu kaydırma
      }
 })
 
 onMounted(async () => {
      await getTermPage() // Veriyi asenkron bir şekilde yükleyin
+     smoothScrollToTop() // Animasyonlu kaydırma
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+html {
+     scroll-behavior: smooth; /* Tarayıcıdaki varsayılan animasyon */
+}
+</style>
