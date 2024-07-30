@@ -80,7 +80,7 @@ import p from '@/utils/pathConfig'
 import envConfig from '../../../utils/config'
 import { defineEmits } from 'vue'
 
-const emit = defineEmits(['passengerSelected'])
+const emit = defineEmits(['passengerSelected', 'passengerSaved'])
 
 const companyID = ref<string | null>(null)
 const allTurist = ref<any>([])
@@ -320,7 +320,7 @@ const saveInvoice = async () => {
      }
 
      try {
-          await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulate a delay
+          await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate a delay
 
           const invoiceData = {
                invoiceName: nameModel.value,
@@ -350,6 +350,7 @@ const saveInvoice = async () => {
           console.error('Error saving invoice:', error)
      } finally {
           invoice.value.isLoading = false
+          emit('passengerSaved', 'üçüncü')
      }
 }
 

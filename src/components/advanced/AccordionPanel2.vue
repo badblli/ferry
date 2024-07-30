@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, toRef } from 'vue'
 import IconAccordionActiveArrow from '../icons/IconAccordionActiveArrow.vue'
 import IconAccordionArrow from '../icons/IconAccordionArrow.vue'
 
@@ -49,7 +49,8 @@ const props = defineProps({
     ariaTitle: { type: String, required: false },
     name: { type: String, required: false },
     surname: { type: String, required: false },
-    updateBtn: { type: String, required: false }
+    updateBtn: { type: String, required: false },
+    invoiceModal: { type: Boolean, required: true }
 })
 
 const showPanel = ref(true)
@@ -57,6 +58,13 @@ const showPanel = ref(true)
 const togglePanel = () => {
     showPanel.value = !showPanel.value
 }
+
+const invoiceModalRef = toRef(props, 'invoiceModal')
+
+watch(invoiceModalRef, (newValue, oldValue) => {
+  console.log('watch invoiceModal', oldValue, '->', newValue)
+  showPanel.value = !newValue
+})
 
 </script>
 

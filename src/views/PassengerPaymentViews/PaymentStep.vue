@@ -18,13 +18,13 @@
                     </div>
                </div>
                <div>
-                    <div className=" bg-neutral-100 rounded-[20px] p-5"  v-if="stored.getPassengerData.length > 0">
+                    <div className=" bg-neutral-100 rounded-[20px] p-5" v-if="stored.getPassengerData.length > 0">
                          <div class="flex flex-col md:flex-row gap-5">
                               <div class="lg:w-3/5 w-full" v-if="paymentSuccess">
                                    <PaymentSuccess :data="paymentSuccessData" />
                               </div>
                               <div v-else class="lg:w-3/5 w-full">
-                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle">
+                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle" :invoiceModal="invoiceModal">
                                         <div class="flex flex-row">
                                              <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]" :class="{ active: activeTab === 'tab1' }">
                                                   <span class="tab md:w-48 w-40 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{ paymentDetail?.InvoiceTab[0].tabTitle }}</span>
@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="mt-[65px] ml-10">
                                              <div v-show="activeTab === 'tab1'">
-                                                  <PaymentTab :data="paymentDetail?.InvoiceTab[0]" @passengerSelected="handlePassengerSelected" />
+                                                  <PaymentTab :data="paymentDetail?.InvoiceTab[0]" @passengerSelected="handlePassengerSelected" @passengerSaved="handlePassengerSaved" />
                                              </div>
                                              <div v-show="activeTab === 'tab2'">
                                                   <PaymentTab2 :data="paymentDetail?.InvoiceTab[1]" />
@@ -45,7 +45,7 @@
                                    <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.PaymentTab[0].tabTitle">
                                         <div class="mt-[58px] ml-10">
                                              <div id="horizontal-scroll-tab-preview" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-1">
-                                                  <CreditCartTab :data="paymentDetail?.PaymentTab[0]" />
+                                                  <CreditCartTab :data="paymentDetail?.PaymentTab[0]" @updateData="handleUpdateData" />
                                              </div>
                                         </div>
                                    </AccordionPanel2>
@@ -374,6 +374,23 @@ const handlePassengerSelected = (passenger: any) => {
      console.log('Passenger selected in parent:', passenger)
 }
 
+const invoiceModal = ref(false)
+const handlePassengerSaved = () => {
+     invoiceModal.value = !invoiceModal.value
+     console.log('Paymentstep emit çalıstı')
+}
+
+const paymentData = ref({
+     creditCardNo: '',
+     creditCardName: '',
+     lastUseDate: '',
+     cvv: ''
+})
+
+const handleUpdateData = (data: { key: string; value: string }) => {
+     paymentData.value[data.key] = data.value
+}
+
 const activeTab = ref('tab1')
 
 interface Passenger {
@@ -510,12 +527,15 @@ const postData = async () => {
           if (response && response.data.status === 1) {
                const data = JSON.parse(response.data.result)
                orderID.value = data.RecordID
+               let paymentExpireYear = paymentData.value.lastUseDate.split('/')[1]
+               let paymentExpireMonth = paymentData.value.lastUseDate.split('/')[0]
+               console.log('paymentData value:', paymentData.value)
                const paymentParams = {
-                    CreditCardNumber: 5209882483498019,
-                    CardHolderName: 'Alican Sur',
-                    ExpireYear: 25,
-                    ExpireMonth: 12,
-                    Cvv: 123,
+                    CreditCardNumber: paymentData.value.creditCardNo,
+                    CardHolderName: paymentData.value.creditCardName,
+                    ExpireYear: paymentExpireYear,
+                    ExpireMonth: paymentExpireMonth,
+                    Cvv: paymentData.value.cvv,
                     TotalPrice: 10.0,
                     Currency: 'TRY',
                     Installment: 1,
