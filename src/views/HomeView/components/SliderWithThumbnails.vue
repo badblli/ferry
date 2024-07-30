@@ -446,10 +446,27 @@ let picker: Litepicker | null = null
 let currentSingleMode: boolean | null = null
 
 console.log(locale.value.toLowerCase().toString(), 'locale.value.toLowerCase().toString()')
+const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
+const languageName = selectedLanguage.code || ''
+
+
 
 function createOrUpdateLitepicker(singleMode: boolean) {
      console.log(singleMode, 'singleMode')
      const element = document.getElementById('litepicker')
+     const storedLanguage = localStorage.getItem('selectedLanguage')
+     let selectedLanguageCode = locale.value.toLowerCase().toString()
+
+     if (storedLanguage) {
+          console.log('storedLanguage ifi var, değeri:', storedLanguage)
+          try {
+               const parsedLanguage = JSON.parse(storedLanguage)
+               console.log('parsedLanguage:', parsedLanguage.code.toLowerCase())
+               selectedLanguageCode = parsedLanguage.code.toLowerCase()
+          } catch (error) {
+               console.error('Error parsing selectedLanguage from localStorage:', error)
+          }
+     }
      if (element instanceof HTMLElement) {
           if (!picker || currentSingleMode !== singleMode) {
                currentSingleMode = singleMode
@@ -460,11 +477,11 @@ function createOrUpdateLitepicker(singleMode: boolean) {
                     element: element,
                     singleMode: singleMode,
                     numberOfMonths: 2,
-                    lang: locale.value.toLowerCase().toString(),
+                    lang: selectedLanguageCode,
                     autoRefresh: true,
                     inlineMode: true
                })
-
+               console.log('Litepicker created lang:', selectedLanguageCode)
                picker.on('selected', (date1, date2) => {
                     // Tarih seçimi yapıldığında, tarihleri kontrol edip formatlayalım
                     if (date1.dateInstance && !isNaN(new Date(date1.dateInstance).getTime())) {
@@ -530,6 +547,14 @@ function updateToTrip(value: { Name: string; ID: number }) {
      } else {
           console.log('singleMode has not changed. No need to update Litepicker.')
      }
+}
+
+function updateLitepickerLanguage(languageCode: string) {
+    const element = document.getElementById('litepicker');
+    if (element instanceof HTMLElement && picker) {
+        picker.setOptions({ lang: languageCode.toLowerCase() });
+        console.log('Litepicker dil güncellendi:', languageCode);
+    }
 }
 
 function updateFromWhere(value: { TownName: string; TownID: string }) {
@@ -658,6 +683,12 @@ const initializeSplide = () => {
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')
+          let currentLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
+          updateLitepickerLanguage(currentLanguage.code)
+          _roundTrip.value = null
+          date.formattedDate.value = null
+          date.formattedDate2.value = null
+          createOrUpdateLitepicker(true)
           getHomeSpide()
      }
 })
@@ -765,8 +796,6 @@ onMounted(() => {
      fetchFromWhere()
      fetchTravelType()
 })
-const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage') || '{}')
-const languageName = selectedLanguage.code || ''
 
 function navigateToSecondPage() {
      if (!isClickable.value) return

@@ -1,4 +1,5 @@
 <template>
+     {{ console.log(mainFooter, 'mainFooter') }}
      <div v-if="!isLoading">
           <div class="w-full lg:px-[100px] px-16 md:px-16 sm:px-8 h-[172px] bg-slate-200 flex flex-col md:flex-row justify-evenly items-center grid-cols-4">
                <div class="text-center text-black md:text-lg text-base font-medium lg:m-0 m-2">
@@ -53,7 +54,10 @@
                          <div>
                               <div class="text-black text-lg font-medium font-display mb-5">{{ item.title }}</div>
                               <div v-for="(sub, index) in item.subItem" :key="index" className="mb-5">
-                                   <a class="text-zinc-600 text-sm font-normal font-display">{{ sub.text }}</a>
+                                   <router-link v-if="sub.url?.slug" :to="{ name: 'term', params: { slug: sub.url.slug } }" class="text-zinc-600 text-sm font-normal font-display">
+                                        {{ sub.text }}
+                                   </router-link>
+                                   <a v-else :href="sub.href" class="text-zinc-600 text-sm font-normal font-display"> {{ sub.text }} </a>
                               </div>
                          </div>
                     </div>
@@ -86,14 +90,19 @@ import IconArrow from '../icons/IconArrow.vue'
 import ContactModal from '../advanced/ContactModal.vue'
 import { fetchData, getImage } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
-const imageURL = ref('');
+const imageURL = ref('')
 
 const { locale } = useI18n()
 const isLoading = ref<boolean>(true)
 
+interface SubUrls {
+     href: string
+     slug: string
+}
 interface SubItem {
      id: number
      text: string
+     url: SubUrls[]
 }
 
 interface FooterAreas {
@@ -141,7 +150,7 @@ const getFooter = async () => {
                console.log(data, 'im in mainfooter compos')
 
                mainFooter.value = data.find((x: any) => x.__component === 'global.footer')
-               imageURL.value = mainFooter.value.footerBrand.logo.url;
+               imageURL.value = mainFooter.value.footerBrand.logo.url
                console.log(imageURL.value, 'global.navbarnavbarnavbarnavbarnav')
                console.log(mainFooter.value, 'global.footer!!!!!!!!!!!!!!')
           }

@@ -36,6 +36,8 @@ const topMenu = ref<TopMenuData | any>([])
 const languages = ref<Language[]>([])
 const langStore = useLanguageStore()
 const tabAllIslandView = ref([])
+const userStore = useUserStore()
+const selectedLanguage = ref(userStore.selectedLanguage)
 const getTopMenu = async () => {
      try {
           const filters = {
@@ -70,6 +72,4 @@ onMounted(() => {
      getTopMenu()
 })
 
-const userStore = useUserStore()
-const selectedLanguage = ref(userStore.selectedLanguage)
 </script>

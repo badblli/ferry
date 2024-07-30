@@ -35,7 +35,7 @@
                </div>
           </div>
           <div class="flex flex-row px-5 md:px-0">
-               <div v-html="blog.content" class="w-3/4"></div>
+               <div class="prose w-3/4" v-html="blog.content"></div>
                <div class="w-1/4">
                     <div class="flex flex-row justify-end items-end">
                          <div class="hs-dropdown relative inline-flex [--auto-close:outside]">
