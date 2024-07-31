@@ -59,9 +59,7 @@
                     <h1
                         class="text-black text-[42px] font-bold font-['Plus Jakarta Sans'] tracking-wide mb-5  md:mb-[45px]">
                         Tur Programı</h1>
-                    <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[17.06px]">1 gece
-                        2
-                        günü kapsayan bu turun<br /> programı aşağıdaki gibidir.</p>
+                    <p class="text-[#4D4D4D] text-base font-normal font-display leading-6 w-72">1 gece 2 günü kapsayan bu turun<br /> programı aşağıdaki gibidir.</p>
                 </div>
                 <div>
                     <div class="hs-accordion-group">
@@ -227,15 +225,14 @@
             </div>
         </section>
     </div>
-    <div v-if="showCustomComponent" class="lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-        <section>
+    <section id="5" v-if="showCustomComponent" class="lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
+        <div>
             <div class="mt-12 md:mt-28 md:mb-16 mb-7">
                 <h1
                     class="text-black text-[42px] font-bold font-['Plus Jakarta Sans'] tracking-wide mb-5  md:mb-[45px]">
-                    Tur Programı</h1>
-                <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[17.06px]">1 gece
-                    2
-                    günü kapsayan bu turun<br /> programı aşağıdaki gibidir.</p>
+                    Tur Otel Seçimi</h1>
+                <p class="text-[#4D4D4D] text-base font-normal font-display leading-6 w-72">Bu turu satın
+                    almak için alttaki arama alanını kullanın.</p>
             </div>
             <div
                 class="w-[604px] h-[92px] bg-white rounded-xl border border-[#a4a4a4] flex flex-row justify-between items-center">
@@ -254,8 +251,8 @@
                     <IconSearchNormal />
                 </div>
             </div>
-        </section>
-        <section class="mt-14">
+        </div>
+        <div class="mt-14">
             <div
                 class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
                 <div class="flex flex-col my-8 ml-6">
@@ -394,7 +391,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
         <!-- <div class="flex flex-col justify-center items-center">
             <div class="w-[152px] py-14 flex flex-row bg-neutral-100 rounded-full justify-center items-center">
                 <IconReceiptX />
@@ -413,7 +410,7 @@
         <p class="flex flex-row justify-center text-black text-lg font-medium font-display mb-10 mt-10">
             Daha fazla
         </p>
-    </div>
+    </section>
 </template>
 
 <script setup lang="ts">
@@ -441,20 +438,18 @@ const handleTabClick = (sectionId: any) => {
         showCustomComponent.value = true;
     } else {
         showCustomComponent.value = false;
-        console.log(sectionId, 'sectionId is here!')
-        setTimeout(() => {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 0);
+        console.log(sectionId, 'sectionId is here!');
     }
     activeTab.value = sectionId;
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
+
+    setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 0);  // 0 milisaniyelik gecikme ile kaydırma işlemi yapılır
 };
+
 
 const copyTabs = [
     { id: 1, title: 'Tur Programı' },

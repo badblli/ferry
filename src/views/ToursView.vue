@@ -76,7 +76,7 @@
                             <!-- Left Column -->
                             <div class="md:mb-[20px] mb-5 w-full max-w-[295px] relative top-0">
                                 <div
-                                    class="bg-neutral-100 flex flex-row justify-center items-center py-6 px-14 rounded-xl">
+                                    class="bg-neutral-100 flex flex-row justify-center items-center py-6 px-14 rounded-xl cursor-pointer">
                                     <div
                                         class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans']">
                                         Tüm Filtreleri Temizle</div>

@@ -16,7 +16,7 @@
                                              <div class="h-full w-full flex flex-col justify-end mt-9">
                                                   <div v-if="item.where" class="text-black text-[25px] font-['Plus Jakarta Sans'] flex flex-col justify-start ml-7">
                                                        <div>
-                                                            <span class="font-bold">{{ item.where.split(' ')[0] }}sadsad</span>
+                                                            <span class="font-bold">{{ item.where.split(' ')[0] }}</span>
                                                             <span class="font-normal">{{ item.where.split(' ')[1] }}</span>
                                                        </div>
                                                        <span class="md:flex hidden flex-row justify-center relative md:-left-12">

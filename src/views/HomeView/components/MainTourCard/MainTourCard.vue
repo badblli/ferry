@@ -5,7 +5,7 @@
         <div class="w-full flex md:flex-row flex-col justify-between md:items-center items-start md:mt-[61px] mt-5">
             <p
                 class="text-black text-lg font-normal font-display tracking-tight flex flex-row justify-center items-center">
-                {{ item && item.subtitle }}DENEME</p>
+                {{ item && item.subtitle }}</p>
             <div class="flex flex-row  items-center justify-centerh-8 bg-slate-200 rounded-lg border pr-[9px]">
                 <p
                     class="text-black text-[15px] font-medium font-display flex justify-center items-center mt-1 mr-1 pl-3 py-[6px] cursor-pointer">
