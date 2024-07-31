@@ -1,53 +1,66 @@
 <template>
-    <div class="w-full bg-slate-100 relative">
-        <img :src="example" alt="Background Image" class="absolute top-0 left-0 w-full h-full object-cover bg-black/50">
+    <div class="w-full bg-slate-100 relative ">
+        <img :src="example" alt="Background Image" class="absolute top-0 left-0 w-full h-full object-cover ">
+        <div class="absolute top-0 left-0 w-full h-full bg-black/50"></div>
         <div class="relative flex h-[352px] items-center lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w z-10"
             aria-label="Breadcrumb">
-            <div class="flex flex-col">
-                <ul class="flex flex-row">
-                    <li class="inline-flex items-center">
-                        <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
-                            href="#">
-                            Anasayfa
-                        </a>
+            <div class="flex flex-row justify-between w-full items-center">
+                <div>
+                    <ul class="flex flex-row">
+                        <li class="inline-flex items-center">
+                            <a class="mr-[6px] opacity-60 text-white text-base font-normal font-['Plus Jakarta Sans'] tracking-tight"
+                                href="#">
+                                Anasayfa
+                            </a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <g id="Chevron - Down" opacity="0.6">
+                                    <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M8.46967 18.5303C8.17678 18.2374 8.17678 17.7626 8.46967 17.4697L13.9393 12L8.46967 6.53033C8.17678 6.23744 8.17678 5.76256 8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967L15.5303 11.4697C15.8232 11.7626 15.8232 12.2374 15.5303 12.5303L9.53033 18.5303C9.23744 18.8232 8.76256 18.8232 8.46967 18.5303Z"
+                                        fill="white" />
+                                </g>
+                            </svg>
+                        </li>
+                        <li class="ml-[6px] text-white opacity-60 text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight"
+                            aria-current="page">
+                            Turlar
+                        </li>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g id="Chevron - Down" opacity="0.6">
                                 <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
                                     d="M8.46967 18.5303C8.17678 18.2374 8.17678 17.7626 8.46967 17.4697L13.9393 12L8.46967 6.53033C8.17678 6.23744 8.17678 5.76256 8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967L15.5303 11.4697C15.8232 11.7626 15.8232 12.2374 15.5303 12.5303L9.53033 18.5303C9.23744 18.8232 8.76256 18.8232 8.46967 18.5303Z"
-                                    fill="black" />
+                                    fill="white" />
                             </g>
                         </svg>
-                    </li>
-                    <li class="ml-[6px] text-black opacity-60 text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight"
-                        aria-current="page">
-                        Turlar
-                    </li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <g id="Chevron - Down" opacity="0.6">
-                            <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M8.46967 18.5303C8.17678 18.2374 8.17678 17.7626 8.46967 17.4697L13.9393 12L8.46967 6.53033C8.17678 6.23744 8.17678 5.76256 8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967L15.5303 11.4697C15.8232 11.7626 15.8232 12.2374 15.5303 12.5303L9.53033 18.5303C9.23744 18.8232 8.76256 18.8232 8.46967 18.5303Z"
-                                fill="black" />
+                        <li class="ml-[6px] text-white text-base font-medium font-display tracking-tight"
+                            aria-current="page">
+                            Sakız Adası Turu
+                        </li>
+                    </ul>
+                    <ul class="flex flex-row box-border">
+                        <li class="max-w-[679px] text-white text-[52px] font-medium font-display tracking-wide">
+                            Samos Turu | 1 Gece | Ramazan Bayramı
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-24 h-24 bg-white rounded-full justify-center items-center flex cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <g id="ShareNetwork">
+                            <path id="Vector"
+                                d="M22.0003 20.0001C21.3332 19.9999 20.6729 20.1335 20.0584 20.3931C19.4439 20.6527 18.8877 21.0329 18.4228 21.5113L12.6603 17.8076C13.1136 16.6452 13.1136 15.355 12.6603 14.1926L18.4228 10.4888C19.2884 11.3755 20.4523 11.9092 21.689 11.9864C22.9257 12.0636 24.147 11.6789 25.1161 10.9068C26.0853 10.1347 26.7332 9.03025 26.9343 7.80758C27.1354 6.58492 26.8754 5.33113 26.2046 4.28931C25.5338 3.24749 24.5 2.49186 23.3038 2.16891C22.1075 1.84596 20.8339 1.97871 19.73 2.54142C18.626 3.10412 17.7703 4.0567 17.3288 5.21446C16.8873 6.37222 16.8914 7.65269 17.3403 8.8076L11.5778 12.5113C10.8839 11.7989 9.99328 11.3097 9.01985 11.106C8.04641 10.9024 7.03437 10.9937 6.11308 11.3682C5.1918 11.7428 4.40313 12.3835 3.8479 13.2086C3.29267 14.0337 2.99609 15.0056 2.99609 16.0001C2.99609 16.9946 3.29267 17.9665 3.8479 18.7916C4.40313 19.6167 5.1918 20.2574 6.11308 20.632C7.03437 21.0065 8.04641 21.0978 9.01985 20.8942C9.99328 20.6905 10.8839 20.2013 11.5778 19.4888L17.3403 23.1926C16.9543 24.1883 16.8971 25.2814 17.1773 26.3118C17.4574 27.3423 18.0602 28.256 18.8972 28.9192C19.7342 29.5823 20.7615 29.9601 21.8288 29.9971C22.896 30.0341 23.9471 29.7285 24.828 29.125C25.709 28.5214 26.3736 27.6517 26.7245 26.6431C27.0754 25.6345 27.0942 24.5401 26.7781 23.5201C26.462 22.5 25.8276 21.608 24.9679 20.9746C24.1081 20.3412 23.0682 19.9997 22.0003 20.0001ZM22.0003 4.0001C22.5936 4.0001 23.1737 4.17604 23.667 4.50569C24.1604 4.83533 24.5449 5.30387 24.7719 5.85205C24.999 6.40023 25.0584 7.00343 24.9427 7.58537C24.8269 8.16731 24.5412 8.70186 24.1216 9.12142C23.7021 9.54098 23.1675 9.8267 22.5856 9.94245C22.0036 10.0582 21.4004 9.9988 20.8523 9.77174C20.3041 9.54467 19.8355 9.16016 19.5059 8.66681C19.1762 8.17346 19.0003 7.59344 19.0003 7.0001C19.0003 6.20445 19.3164 5.44139 19.879 4.87878C20.4416 4.31617 21.2047 4.0001 22.0003 4.0001ZM8.0003 19.0001C7.40696 19.0001 6.82694 18.8242 6.33359 18.4945C5.84024 18.1649 5.45573 17.6963 5.22866 17.1481C5.0016 16.6 4.94219 15.9968 5.05795 15.4148C5.1737 14.8329 5.45942 14.2983 5.87898 13.8788C6.29854 13.4592 6.83309 13.1735 7.41503 13.0577C7.99697 12.942 8.60017 13.0014 9.14835 13.2285C9.69653 13.4555 10.1651 13.84 10.4947 14.3334C10.8244 14.8267 11.0003 15.4068 11.0003 16.0001C11.0003 16.7957 10.6842 17.5588 10.1216 18.1214C9.55901 18.684 8.79595 19.0001 8.0003 19.0001ZM22.0003 28.0001C21.407 28.0001 20.8269 27.8242 20.3336 27.4945C19.8402 27.1649 19.4557 26.6963 19.2287 26.1481C19.0016 25.6 18.9422 24.9968 19.0579 24.4148C19.1737 23.8329 19.4594 23.2983 19.879 22.8788C20.2985 22.4592 20.8331 22.1735 21.415 22.0577C21.997 21.942 22.6002 22.0014 23.1484 22.2285C23.6965 22.4555 24.1651 22.84 24.4947 23.3334C24.8244 23.8267 25.0003 24.4068 25.0003 25.0001C25.0003 25.7957 24.6842 26.5588 24.1216 27.1214C23.559 27.684 22.7959 28.0001 22.0003 28.0001Z"
+                                fill="#1F2A37" />
                         </g>
                     </svg>
-                    <li class="ml-[6px] text-white text-base font-medium font-display tracking-tight"
-                        aria-current="page">
-                        Sakız Adası Turu
-                    </li>
-                </ul>
-                <ul class="flex flex-row box-border">
-                    <li class="max-w-[679px] text-white text-[52px] font-medium font-display tracking-wide">
-                        Samos Turu | 1 Gece | Ramazan Bayramı
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
     </div>
     <section>
-        <div class="flex flex-col w-full mx-auto bg-neutral-100 ">
+        <div class="flex flex-col w-full mx-auto bg-neutral-100 h-full">
             <div
-                class="flex justify-between items-end border-sub-line overflow-x-auto w-full mx-auto centered-small-w h-[91px]">
+                class="flex justify-between items-end border-sub-line overflow-x-auto w-full mx-auto centered-small-w h-full">
                 <div v-for="(tab, index) in copyTabs" :key="index" @click="handleTabClick(tab.id)"
-                    class="tab md:mx-4 mx-2 md:px-20 px-2 first:ml-20 md:last:mr-20"
+                    class="tab md:mx-4 mx-2 md:px-20 px-2 h-full first:ml-20 md:last:mr-20"
                     :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
             </div>
         </div>
@@ -59,7 +72,8 @@
                     <h1
                         class="text-black text-[42px] font-bold font-['Plus Jakarta Sans'] tracking-wide mb-5  md:mb-[45px]">
                         Tur Programı</h1>
-                    <p class="text-[#4D4D4D] text-base font-normal font-display leading-6 w-72">1 gece 2 günü kapsayan bu turun<br /> programı aşağıdaki gibidir.</p>
+                    <p class="text-[#4D4D4D] text-base font-normal font-display leading-6 w-72">1 gece 2 günü kapsayan
+                        bu turun<br /> programı aşağıdaki gibidir.</p>
                 </div>
                 <div>
                     <div class="hs-accordion-group">
@@ -108,7 +122,7 @@
                     <ul>
                         <li v-for="(item, index) in travelItems" :key="index">
                             {{ item }}
-                            <div class="w-full md:w-3/4 mt-[35px] mb-[35px] half-pixel origin-top-left border border-neutral-300"
+                            <div class="w-full md:w-3/4 mt-[35px] mb-[35px] half-pixel origin-top-left border border-neutral-200"
                                 :class="{ 'border-none': index === travelItems.length - 1 }" />
                         </li>
                     </ul>
@@ -418,6 +432,7 @@ import IconAccordionActiveArrow from '@/components/icons/IconAccordionActiveArro
 import IconAsteriskSimple from '@/components/icons/IconAsteriskSimple.vue';
 import IconAccordionArrow from '@/components/icons/IconAccordionArrow.vue';
 import example from '@/assets/embeddedImages/examp.jpg'
+// import example from '@/assets/embeddedImages/new.jpg'
 import IconSearchNormal from '@/components/icons/IconSearchNormal.vue'
 import IconStar from '@/components/icons/IconStar.vue'
 import IconHouse from '@/components/icons/IconHouse.vue'
@@ -441,7 +456,6 @@ const handleTabClick = (sectionId: any) => {
         console.log(sectionId, 'sectionId is here!');
     }
     activeTab.value = sectionId;
-
     setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -449,7 +463,6 @@ const handleTabClick = (sectionId: any) => {
         }
     }, 0);  // 0 milisaniyelik gecikme ile kaydırma işlemi yapılır
 };
-
 
 const copyTabs = [
     { id: 1, title: 'Tur Programı' },
@@ -507,17 +520,15 @@ const tableData = [
 }
 
 .tab.active {
-    border-bottom: 2px solid #2149d5;
+    border-bottom: 1px solid #2149d5;
     color: #2149d5;
-    /* Aktif durumdaki alt çizgi rengi */
 }
 
 .tab {
-    border-bottom: 2px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
     /* Pasif durumdaki alt çizgi rengi */
     cursor: pointer;
-    padding: 0px;
-    height: 58px;
+    padding: 32.5px 0px;
 }
 
 @media (max-width: 680px) {

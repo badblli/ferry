@@ -42,14 +42,15 @@
                                 Paket Turlar
                             </h1>
                         </div>
-                        <div
-                            class="w-80 h-[78px] bg-white rounded-xl border flex flex-row justify-between items-center p-5">
-                            <div>
-                                <div>Ne Zaman Gitmek İstersiniz?</div>
+                        <div class="h-[78px] bg-white rounded-xl border flex flex-row justify-between items-center p-5">
+                            <div class="cursor-pointer">
+                                <div class="text-black text-base font-medium font-display tracking-tight">Ne Zaman
+                                    Gitmek İstersiniz?</div>
                                 <div>Tarih Seçin</div>
                             </div>
                             <div>
-                                <div class="w-[58px] h-[58px] bg-slate-200 rounded-full p-5">
+                                <div
+                                    class="w-[58px] h-[58px] bg-slate-200 rounded-full flex flex-row justify-center items-center ml-7">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <g id="vuesax/outline/search-normal">
@@ -89,7 +90,7 @@
                                         <li v-for="(item, index) in fakeData" :key="index"
                                             class="flex flex-row justify-between mb-4">
                                             {{ item.item }}
-                                            <input type="radio" name="toggle" checked
+                                            <input type="radio" name="toggle"
                                                 class="w-5 h-5 bg-gray-200 rounded-[5px]">
                                         </li>
                                     </div>
@@ -100,8 +101,8 @@
                                 </div>
                                 <!-- Second Box -->
                                 <div
-                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
-                                    <div class="p-5 flex flex-col h-full w-full justify-between">
+                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                    <div class="flex flex-col h-full w-full justify-between">
                                         <div class="mb-4 left-card-title">Gece Sayısı</div>
                                         <li v-for="(item, index) in displayedItems" :key="index"
                                             class="flex flex-row justify-between mb-4">
@@ -110,7 +111,7 @@
                                         </li>
                                     </div>
                                     <div v-if="fakeData2.length > 3" @click="toggleShowMore"
-                                        class="bg-slate-200 w-full py-4 items-center justify-center flex rounded-xl cursor-pointer">
+                                        class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
                                         {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
                                     </div>
                                 </div>
@@ -125,13 +126,13 @@
                                         </li>
                                     </div>
                                     <div v-if="fakeData3.length > 3" @click="toggleShowMore"
-                                        class="bg-slate-200 w-full py-4 items-center justify-center flex rounded-xl cursor-pointer">
+                                        class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
                                         {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
                                     </div>
                                 </div>
                                 <div
-                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
-                                    <div class="p-5 flex flex-col h-full w-full justify-between">
+                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                    <div class="flex flex-col h-full w-full justify-between">
                                         <div class="mb-4 left-card-title">Konsept</div>
                                         <li v-for="(item, index) in displayedItems4" :key="index"
                                             class="flex flex-row justify-between mb-4">
@@ -140,7 +141,7 @@
                                         </li>
                                     </div>
                                     <div v-if="fakeData4.length > 3" @click="toggleShowMore4"
-                                        class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer w-full">
+                                        class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer w-full mt-2">
                                         {{ showMore4 ? 'Daha Az Göster' : `+${countItem4} Daha Fazla` }}
                                     </div>
                                 </div>
@@ -148,6 +149,7 @@
                             <!-- Right Column -->
                             <div class="w-full mb-5">
                                 <div class="max-w-[925px] mb-5">
+                                    
                                     <router-link to="/tours/detail">
                                         <div
                                             class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 cursor-pointer">
@@ -161,7 +163,7 @@
                                                     <IconShare3 />
                                                 </div>
                                                 <div
-                                                    class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
+                                                    class="text-black text-base font-light font-display leading-7 pl-5 pt-3">
                                                     Feribot, liman vergisi, oda-kahvaltı konaklama
                                                     içermektedir.</div>
                                                 <div clas="flex flex-row justify-between">
@@ -174,8 +176,8 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconMoon />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span> 1 gece </span>
-                                                                            <span> 2 gün </span>
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -185,10 +187,10 @@
                                                                 <div class="flex flex-row">
                                                                     <div
                                                                         class="flex flex-row items-center justify-center">
-                                                                        <IconMoon />
+                                                                        <IconPersonSimpleRun />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span> 1 gece </span>
-                                                                            <span> 2 gün </span>
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -196,7 +198,7 @@
                                                         </div>
                                                         <div class="flex flex-row justify-end items-end">
                                                             <div
-                                                                class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
+                                                                class="mr-3 text-right text-black hover:text-blue-600 text-base font-medium font-display leading-[25.12px] justify-end flex flex-col items-end">
                                                                 €59’dan başlayan fiyatlar</div>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                 height="24" viewBox="0 0 24 24" fill="none">
@@ -210,291 +212,192 @@
                                             </div>
                                         </div>
                                     </router-link>
-                                    <div class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 ">
-                                        <img class="w-[180px] h-[170px] rounded-[18px]"
-                                            src="https://via.placeholder.com/180x170" />
-                                        <div class="w-full">
-                                            <div class="flex flex-row justify-between items-center">
+                                    <router-link to="/tours/detail">
+                                        <div
+                                            class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 cursor-pointer">
+                                            <img class="w-[180px] h-[170px] rounded-[18px]"
+                                                src="https://via.placeholder.com/180x170" />
+                                            <div class="w-full">
+                                                <div class="flex flex-row justify-between items-center">
+                                                    <div
+                                                        class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
+                                                        Midilli Turu 1 Gece - Kasım</div>
+                                                    <IconShare3 />
+                                                </div>
                                                 <div
-                                                    class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                    Midilli Turu 1 Gece - Kasım</div>
-                                                <IconShare3 />
-                                            </div>
-                                            <div
-                                                class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                içermektedir.</div>
-                                            <div clas="flex flex-row justify-between">
-                                                <div class="flex flex-row mb-4 justify-between">
-                                                    <div class="flex flex-row">
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
+                                                    class="text-black text-base font-light font-display leading-7 pl-5 pt-3">
+                                                    Feribot, liman vergisi, oda-kahvaltı konaklama
+                                                    içermektedir.</div>
+                                                <div clas="flex flex-row justify-between">
+                                                    <div class="flex flex-row mb-4 justify-between">
+                                                        <div class="flex flex-row">
+                                                            <div
+                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                <div class="flex flex-row">
+                                                                    <div
+                                                                        class="flex flex-row items-center justify-center">
+                                                                        <IconMoon />
+                                                                        <div class="flex flex-col ml-4 my-2">
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                <div class="flex flex-row">
+                                                                    <div
+                                                                        class="flex flex-row items-center justify-center">
+                                                                        <IconPersonSimpleRun />
+                                                                        <div class="flex flex-col ml-4 my-2">
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        <div class="flex flex-row justify-end items-end">
+                                                            <div
+                                                                class="mr-3 text-right text-black hover:text-blue-600 text-base font-medium font-display leading-[25.12px] justify-end flex flex-col items-end">
+                                                                €59’dan başlayan fiyatlar</div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path
+                                                                    d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                                                    fill="#2249D6" />
+                                                            </svg>
                                                         </div>
-                                                    </div>
-                                                    <div class="flex flex-row justify-end items-end">
-                                                        <div
-                                                            class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                            €59’dan başlayan fiyatlar</div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none">
-                                                            <path
-                                                                d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                fill="#2249D6" />
-                                                        </svg>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5">
-                                        <img class="w-[180px] h-[170px] rounded-[18px]"
-                                            src="https://via.placeholder.com/180x170" />
-                                        <div class="w-full">
-                                            <div class="flex flex-row justify-between items-center">
+                                    </router-link>
+                                    <router-link to="/tours/detail">
+                                        <div
+                                            class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 cursor-pointer">
+                                            <img class="w-[180px] h-[170px] rounded-[18px]"
+                                                src="https://via.placeholder.com/180x170" />
+                                            <div class="w-full">
+                                                <div class="flex flex-row justify-between items-center">
+                                                    <div
+                                                        class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
+                                                        Midilli Turu 1 Gece - Kasım</div>
+                                                    <IconShare3 />
+                                                </div>
                                                 <div
-                                                    class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                    Midilli Turu 1 Gece - Kasım</div>
-                                                <IconShare3 />
-                                            </div>
-                                            <div
-                                                class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                içermektedir.</div>
-                                            <div clas="flex flex-row justify-between">
-                                                <div class="flex flex-row mb-4 justify-between">
-                                                    <div class="flex flex-row">
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
+                                                    class="text-black text-base font-light font-display leading-7 pl-5 pt-3">
+                                                    Feribot, liman vergisi, oda-kahvaltı konaklama
+                                                    içermektedir.</div>
+                                                <div clas="flex flex-row justify-between">
+                                                    <div class="flex flex-row mb-4 justify-between">
+                                                        <div class="flex flex-row">
+                                                            <div
+                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                <div class="flex flex-row">
+                                                                    <div
+                                                                        class="flex flex-row items-center justify-center">
+                                                                        <IconMoon />
+                                                                        <div class="flex flex-col ml-4 my-2">
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                <div class="flex flex-row">
+                                                                    <div
+                                                                        class="flex flex-row items-center justify-center">
+                                                                        <IconPersonSimpleRun />
+                                                                        <div class="flex flex-col ml-4 my-2">
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        <div class="flex flex-row justify-end items-end">
+                                                            <div
+                                                                class="mr-3 text-right text-black hover:text-blue-600 text-base font-medium font-display leading-[25.12px] justify-end flex flex-col items-end">
+                                                                €59’dan başlayan fiyatlar</div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path
+                                                                    d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                                                    fill="#2249D6" />
+                                                            </svg>
                                                         </div>
-                                                    </div>
-                                                    <div class="flex flex-row justify-end items-end">
-                                                        <div
-                                                            class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                            €59’dan başlayan fiyatlar</div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none">
-                                                            <path
-                                                                d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                fill="#2249D6" />
-                                                        </svg>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5">
-                                        <img class="w-[180px] h-[170px] rounded-[18px]"
-                                            src="https://via.placeholder.com/180x170" />
-                                        <div class="w-full">
-                                            <div class="flex flex-row justify-between items-center">
+                                    </router-link>
+                                    <router-link to="/tours/detail">
+                                        <div
+                                            class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 cursor-pointer">
+                                            <img class="w-[180px] h-[170px] rounded-[18px]"
+                                                src="https://via.placeholder.com/180x170" />
+                                            <div class="w-full">
+                                                <div class="flex flex-row justify-between items-center">
+                                                    <div
+                                                        class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
+                                                        Midilli Turu 1 Gece - Kasım</div>
+                                                    <IconShare3 />
+                                                </div>
                                                 <div
-                                                    class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                    Midilli Turu 1 Gece - Kasım</div>
-                                                <IconShare3 />
-                                            </div>
-                                            <div
-                                                class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                içermektedir.</div>
-                                            <div clas="flex flex-row justify-between">
-                                                <div class="flex flex-row mb-4 justify-between">
-                                                    <div class="flex flex-row">
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
+                                                    class="text-black text-base font-light font-display leading-7 pl-5 pt-3">
+                                                    Feribot, liman vergisi, oda-kahvaltı konaklama
+                                                    içermektedir.</div>
+                                                <div clas="flex flex-row justify-between">
+                                                    <div class="flex flex-row mb-4 justify-between">
+                                                        <div class="flex flex-row">
+                                                            <div
+                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                <div class="flex flex-row">
+                                                                    <div
+                                                                        class="flex flex-row items-center justify-center">
+                                                                        <IconMoon />
+                                                                        <div class="flex flex-col ml-4 my-2">
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
+                                                                <div class="flex flex-row">
+                                                                    <div
+                                                                        class="flex flex-row items-center justify-center">
+                                                                        <IconPersonSimpleRun />
+                                                                        <div class="flex flex-col ml-4 my-2">
+                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
+                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        <div class="flex flex-row justify-end items-end">
+                                                            <div
+                                                                class="mr-3 text-right text-black hover:text-blue-600 text-base font-medium font-display leading-[25.12px] justify-end flex flex-col items-end">
+                                                                €59’dan başlayan fiyatlar</div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path
+                                                                    d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                                                    fill="#2249D6" />
+                                                            </svg>
                                                         </div>
-                                                    </div>
-                                                    <div class="flex flex-row justify-end items-end">
-                                                        <div
-                                                            class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                            €59’dan başlayan fiyatlar</div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none">
-                                                            <path
-                                                                d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                fill="#2249D6" />
-                                                        </svg>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5">
-                                        <img class="w-[180px] h-[170px] rounded-[18px]"
-                                            src="https://via.placeholder.com/180x170" />
-                                        <div class="w-full">
-                                            <div class="flex flex-row justify-between items-center">
-                                                <div
-                                                    class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                    Midilli Turu 1 Gece - Kasım</div>
-                                                <IconShare3 />
-                                            </div>
-                                            <div
-                                                class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                içermektedir.</div>
-                                            <div clas="flex flex-row justify-between">
-                                                <div class="flex flex-row mb-4 justify-between">
-                                                    <div class="flex flex-row">
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex flex-row justify-end items-end">
-                                                        <div
-                                                            class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                            €59’dan başlayan fiyatlar</div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none">
-                                                            <path
-                                                                d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                fill="#2249D6" />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5">
-                                        <img class="w-[180px] h-[170px] rounded-[18px]"
-                                            src="https://via.placeholder.com/180x170" />
-                                        <div class="w-full">
-                                            <div class="flex flex-row justify-between items-center">
-                                                <div
-                                                    class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                    Midilli Turu 1 Gece - Kasım</div>
-                                                <IconShare3 />
-                                            </div>
-                                            <div
-                                                class="text-black text-base font-light font-['Plus Jakarta Display'] leading-7 pl-5 pt-3">
-                                                Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                içermektedir.</div>
-                                            <div clas="flex flex-row justify-between">
-                                                <div class="flex flex-row mb-4 justify-between">
-                                                    <div class="flex flex-row">
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                            <div class="flex flex-row">
-                                                                <div class="flex flex-row items-center justify-center">
-                                                                    <IconMoon />
-                                                                    <div class="flex flex-col ml-4 my-2">
-                                                                        <span> 1 gece </span>
-                                                                        <span> 2 gün </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex flex-row justify-end items-end">
-                                                        <div
-                                                            class="mr-3 text-right text-blue-700 text-base font-medium font-['Plus Jakarta Display'] leading-[25.12px] justify-end flex flex-col items-end">
-                                                            €59’dan başlayan fiyatlar</div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none">
-                                                            <path
-                                                                d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                fill="#2249D6" />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </router-link>
 
                                 </div>
                             </div>
@@ -516,6 +419,7 @@
 
 import { ref, computed } from 'vue'
 import IconMoon from '../components/icons/IconMoon.vue'
+import IconPersonSimpleRun from '../components/icons/IconPersonSimpleRun.vue';
 
 const showMore = ref(false)
 const showMore4 = ref(false)
@@ -653,7 +557,7 @@ const fakeData4 = ref([
 }
 
 .card-border {
-    border: 0.5px solid #a4a4a4;
+    border: 0.5px solid #c9c9c9;
 }
 
 .card-border:hover {
@@ -662,7 +566,7 @@ const fakeData4 = ref([
 }
 
 .mini-card-border {
-    border: 1px solid #bababa;
+    border: 1px solid #c9c9c9;
 }
 
 .border-sub-line {
@@ -671,7 +575,7 @@ const fakeData4 = ref([
 
 .custom-form-border {
     border-radius: 12px;
-    border: 0.5px solid #c5c5c5;
+    border: 1px solid #c9c9c9;
     background: var(--white, #fff);
 }
 
