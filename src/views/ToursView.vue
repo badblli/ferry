@@ -44,8 +44,8 @@
                         </div>
                         <div class="h-[78px] bg-white rounded-xl border flex flex-row justify-between items-center p-5">
                             <div class="cursor-pointer">
-                                <div class="text-black text-base font-medium font-display tracking-tight">Ne Zaman
-                                    Gitmek İstersiniz?</div>
+                                <div class="text-black text-base font-medium font-display tracking-tight">
+                                    Ne Zaman Gitmek İstersiniz?</div>
                                 <div>Tarih Seçin</div>
                             </div>
                             <div>
@@ -90,8 +90,8 @@
                                         <li v-for="(item, index) in fakeData" :key="index"
                                             class="flex flex-row justify-between mb-4">
                                             {{ item.item }}
-                                            <input type="radio" name="toggle"
-                                                class="w-5 h-5 bg-gray-200 rounded-[5px]">
+                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
+                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
                                         </li>
                                     </div>
                                     <div v-if="fakeData.length > 3" @click="toggleShowMore"
@@ -107,7 +107,8 @@
                                         <li v-for="(item, index) in displayedItems" :key="index"
                                             class="flex flex-row justify-between mb-4">
                                             {{ item.item }}
-                                            <button class="w-5 h-5 bg-gray-200 rounded-[5px]"></button>
+                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
                                         </li>
                                     </div>
                                     <div v-if="fakeData2.length > 3" @click="toggleShowMore"
@@ -122,7 +123,8 @@
                                         <li v-for="(item, index) in fakeData3" :key="index"
                                             class="flex flex-row justify-between mb-4">
                                             {{ item.item }}
-                                            <button class="w-5 h-5 bg-gray-200 rounded-[5px]"></button>
+                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
                                         </li>
                                     </div>
                                     <div v-if="fakeData3.length > 3" @click="toggleShowMore"
@@ -137,7 +139,8 @@
                                         <li v-for="(item, index) in displayedItems4" :key="index"
                                             class="flex flex-row justify-between mb-4">
                                             {{ item.item }}
-                                            <button class="w-5 h-5 bg-gray-200 rounded-[5px]"></button>
+                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
                                         </li>
                                     </div>
                                     <div v-if="fakeData4.length > 3" @click="toggleShowMore4"
@@ -149,7 +152,7 @@
                             <!-- Right Column -->
                             <div class="w-full mb-5">
                                 <div class="max-w-[925px] mb-5">
-                                    
+
                                     <router-link to="/tours/detail">
                                         <div
                                             class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 cursor-pointer">
@@ -176,8 +179,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconMoon />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                1 gece </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                2 gün </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -189,8 +196,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconPersonSimpleRun />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                Bilgi </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                Rehberli </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -238,8 +249,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconMoon />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                1 gece </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                2 gün </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -251,8 +266,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconPersonSimpleRun />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                Bilgi </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                Rehberli </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -300,8 +319,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconMoon />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                1 gece </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                2 gün </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -313,8 +336,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconPersonSimpleRun />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                Bilgi </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                Rehberli </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -362,8 +389,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconMoon />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> 1 gece </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> 2 gün </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                1 gece </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                2 gün </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -375,8 +406,12 @@
                                                                         class="flex flex-row items-center justify-center">
                                                                         <IconPersonSimpleRun />
                                                                         <div class="flex flex-col ml-4 my-2">
-                                                                            <span class="text-black text-sm font-light font-display leading-normal"> Bilgi </span>
-                                                                            <span class="text-black text-base font-medium font-display leading-7"> Rehberli </span>
+                                                                            <span
+                                                                                class="text-black text-sm font-light font-display leading-normal">
+                                                                                Bilgi </span>
+                                                                            <span
+                                                                                class="text-black text-base font-medium font-display leading-7">
+                                                                                Rehberli </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -592,5 +627,33 @@ const fakeData4 = ref([
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.32px;
+}
+
+.custom-checkbox {
+    display: grid;
+    place-content: center;
+    appearance: none;
+    /* Remove default checkbox */
+    -webkit-appearance: none;
+    /* Remove default checkbox for Safari */
+    background-color: #e5e7eb;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+}
+
+.custom-checkbox::before {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: 50ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color, #2149d5);
+    border-radius: 0.3125rem;
+    background-color: #2149d5;
+    transform: scale(0);
+}
+
+.custom-checkbox:checked::before {
+    transform: scale(1);
+    border-radius: 0.3125rem;
 }
 </style>
