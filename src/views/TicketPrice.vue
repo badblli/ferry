@@ -7,7 +7,7 @@
                </h1>
                <div class="w-full mx-auto bg-neutral-100 rounded-[20px] p-4">
                     <div class="flex flex-col overflow-x-auto">
-                         <div class="p-8">
+                         <div class="md:p-8 p-0">
                               <div class="flex flex-row items-center">
                                    <IconAsteriskSimple />
                                    <h2 class="text-black text-base font-medium h-7 ml-3 md:mb-0 mb-2">
@@ -47,7 +47,7 @@
                                    </div>
                               </div>
                               <div class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
-                                   <div class="bg-white pt-6 pb-4 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                                   <div class="bg-white pt-6 pb-4 md:pl-10 pl-4 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                         {{ tableTitle }}
                                    </div>
 

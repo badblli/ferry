@@ -8206,6 +8206,14 @@ input.focus\:outline-none:focus {
     padding-right: 40px;
   }
 
+  .lg\:pl-\[50px\] {
+    padding-left: 50px;
+  }
+
+  .lg\:pr-\[50px\] {
+    padding-right: 50px;
+  }
+
   .lg\:text-\[32px\] {
     font-size: 32px;
   }

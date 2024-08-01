@@ -15,7 +15,7 @@
                </div>
                <div className="w-full mx-auto bg-neutral-100 rounded-[20px] md:p-4 p-0">
                     <div className="flex flex-col">
-                         <div className="p-8">
+                         <div className="md:p-8 p-4">
                               <div className="flex flex-col md:flex-row justify-start">
                                    <div @click="togglePickerModal" class="relative">
                                         <div ref="datepicker"
@@ -64,7 +64,7 @@
 
                               <div class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
                                    <div
-                                        class="bg-white pt-6 pb-4 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                                        class="bg-white pt-6 pb-4 md:pl-10 pl-4 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                         {{ tableTitle }}
                                    </div>
                                    <table v-if="formattedTableData && formattedTableData.length > 0"
