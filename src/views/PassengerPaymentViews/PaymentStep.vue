@@ -24,7 +24,7 @@
                                    <PaymentSuccess :data="paymentSuccessData" />
                               </div>
                               <div v-else class="lg:w-3/5 w-full">
-                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle" :invoiceModal="invoiceModal">
+                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle" :invoiceAccordionState="invoiceAccordionState" :initialState="true">
                                         <div class="flex flex-row">
                                              <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]" :class="{ active: activeTab === 'tab1' }">
                                                   <span class="tab md:w-48 w-40 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{ paymentDetail?.InvoiceTab[0].tabTitle }}</span>
@@ -42,7 +42,7 @@
                                              </div>
                                         </div>
                                    </AccordionPanel2>
-                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.PaymentTab[0].tabTitle">
+                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.PaymentTab[0].tabTitle" :creditCardAccordionState="creditCardAccordionState" :initialState="false" >
                                         <div class="mt-[58px] ml-10">
                                              <div id="horizontal-scroll-tab-preview" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-1">
                                                   <CreditCartTab :data="paymentDetail?.PaymentTab[0]" @updateData="handleUpdateData" />
@@ -374,9 +374,11 @@ const handlePassengerSelected = (passenger: any) => {
      console.log('Passenger selected in parent:', passenger)
 }
 
-const invoiceModal = ref(false)
+const invoiceAccordionState = ref(true)
+const creditCardAccordionState = ref(false)
 const handlePassengerSaved = () => {
-     invoiceModal.value = !invoiceModal.value
+     invoiceAccordionState.value = !invoiceAccordionState.value
+     creditCardAccordionState.value = !creditCardAccordionState.value
      console.log('Paymentstep emit çalıstı')
 }
 
