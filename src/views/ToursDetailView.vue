@@ -438,7 +438,7 @@ import IconStar from '@/components/icons/IconStar.vue'
 import IconHouse from '@/components/icons/IconHouse.vue'
 import IconReceiptX from '@/components/icons/IconReceiptX.vue'
 
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
 const isOpen = ref(true);
 const showCustomComponent = ref(false);
