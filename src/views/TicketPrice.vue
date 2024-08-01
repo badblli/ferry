@@ -146,7 +146,7 @@ const formatPrices = (data: any[]): any[] => {
                // RouteName: item.RouteName,
                CompanyName: item.CompanyName,
                // CurrencyName: prices.CurrencyName || '',
-               AdultPrice: prices.AdultPrice > 0 ? `${prices.AdultPrice} €` : 'free',
+               AdultPrice: prices.AdultPrice > 0 ? `${prices.AdultPrice} €` : '',
                ChildPrice: prices.ChildPrice > 0 ? `${prices.ChildPrice} €` : 'free',
                InfantPrice: prices.InfantPrice > 0 ? `${prices.InfantPrice} €` : 'free'
           }
