@@ -323,6 +323,8 @@ const configureDatePicker = () => {
           singleMode: false,
           format: 'YYYY-MM-DD',
           autoApply: true,
+          minDate: today,
+          maxDate: maxDate,
           startDate: today,
           setup: (picker) => {
                // picker.on('show', () => {
