@@ -7,7 +7,8 @@
                     <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
                          {{ pageTitle }}
                     </h1>
-                    <div class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
+                    <div
+                         class="h-[37px] w-[174px] bg-white rounded-lg border flex justify-center items-center p-1 cursor-pointer md:mb-0 mb-4">
                          <div class="text-black text-lg font-medium font-display ml-1">Feribot Bileti Al</div>
                          <IconArrowDownBlack />
                     </div>
@@ -17,20 +18,28 @@
                          <div className="p-8">
                               <div className="flex flex-col md:flex-row justify-start">
                                    <div @click="togglePickerModal" class="relative">
-                                        <div ref="datepicker" class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer">
-                                             <div class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px] pointer-events-none">Hangi tarihlerde gitmek istersin?</div>
-                                             <div class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px] pointer-events-none">
+                                        <div ref="datepicker"
+                                             class="py-5 flex flex-col mb-2 md:mb-0 justify-center bg-white rounded-xl border cursor-pointer">
+                                             <div
+                                                  class="text-black text-base font-medium font-display tracking-tight ml-[24px] mr-[24px] pointer-events-none">
+                                                  Hangi tarihlerde gitmek istersin?</div>
+                                             <div
+                                                  class="text-black text-base font-light font-display tracking-tight ml-[24px] mr-[24px] pointer-events-none">
                                                   {{ selectedDatesLabel }}
                                                   <!-- {{ selectedDates.start }} {{ selectedDates.end }} -->
                                              </div>
                                         </div>
                                    </div>
-                                   <div @click="toggleDropdown2" class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
+                                   <div @click="toggleDropdown2"
+                                        class="py-3 flex flex-col justify-center bg-white rounded-xl border md:ml-[15px] cursor-pointer">
                                         <div>
                                              <button class="flex flex-row justify-between items-center mr-[15px]">
                                                   <div class="flex flex-col mb-[3px] mr-[100px]">
-                                                       <div class="text-black text-start font-medium font-display tracking-tight ml-[24px]">Rota Seçin</div>
-                                                       <div class="text-black text-base font-light font-display tracking-tight ml-[24px]">
+                                                       <div
+                                                            class="text-black text-start font-medium font-display tracking-tight ml-[24px]">
+                                                            Rota Seçin</div>
+                                                       <div
+                                                            class="text-black text-base font-light font-display tracking-tight ml-[24px]">
                                                             {{ baseRoute?.BaseRouteName }}
                                                        </div>
                                                   </div>
@@ -39,8 +48,12 @@
                                                   </div>
                                              </button>
                                              <transition name="dropdown">
-                                                  <div v-show="isOpen2" class="absolute min-w-60 z-50 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
-                                                       <a v-for="(route, index) in baseRouteList" :key="index" @click="changeBaseRoute(route)" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                                                  <div v-show="isOpen2"
+                                                       class="absolute min-w-60 z-50 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200">
+                                                       <a v-for="(route, index) in baseRouteList" :key="index"
+                                                            @click="changeBaseRoute(route)"
+                                                            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                                            href="#">
                                                             {{ route.BaseRouteName }}
                                                        </a>
                                                   </div>
@@ -50,34 +63,43 @@
                               </div>
 
                               <div class="mt-8 mb-[80px] rounded-2xl rounded-b-lg">
-                                   <div class="bg-white pt-6 pb-4 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                                   <div
+                                        class="bg-white pt-6 pb-4 pl-10 rounded-t-lg text-black text-xl font-semibold font-['Plus Jakarta Sans']">
                                         {{ tableTitle }}
                                    </div>
-
-                                   <table v-if="formattedTableData && formattedTableData.length > 0" className="relative w-full bg-white">
+                                   <table v-if="formattedTableData && formattedTableData.length > 0"
+                                        class="relative w-full bg-white">
                                         <thead>
-                                             <tr v-for="(header, index) in tableHeaders" :key="index" class="mt-[64px] md:pl-[50px] md:ml-16 m-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-lg">
-                                                  <th v-for="(label, labelIndex) in header" :key="labelIndex" class="w-full flex">
+                                             <tr v-for="(header, index) in tableHeaders" :key="index"
+                                                  class="mt-[64px] md:pl-[50px] first:md:ml-16 md:ml-20 m-4 flex flex-row justify-between items-center text-black text-lg font-semibold leading-loose rounded-lg"
+                                                  :class="[index === 0 ? 'mb:mb-16' : 'mb:mb-20']">
+                                                  <th v-for="(label, labelIndex) in header" :key="labelIndex"
+                                                  class="first:ml-0 ml-8 last:ml-0"
+                                                       :class="[labelIndex === 0 ? 'w-1/2' : 'w-full', 'flex']">
                                                        {{ label }}
                                                   </th>
                                              </tr>
                                         </thead>
-                                        <tbody class="">
-                                             <tr v-for="(row, index) in formattedTableData" :key="index" class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal leading-loose border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
-                                                  <td v-for="(cell, cellIndex) in row" :key="cellIndex" class="w-full border-r border-neutral-300 pt-[33px] pb-[33px] lg:pl-[50px] pl-2 lg:pr-[50px] pr-2">
+                                        <tbody>
+                                             <tr v-for="(row, index) in formattedTableData" :key="index"
+                                                  class="md:ml-16 md:mr-16 mb:mb-16 m-4 flex flex-row justify-between text-black text-lg font-normal border border-neutral-200 rounded-lg [&>*:nth-last-child(1)]:border-none">
+                                                  <td v-for="(cell, cellIndex) in row" :key="cellIndex"
+                                                       :class="[cellIndex === 0 ? 'w-1/2' : 'w-full', 'border-r border-neutral-300 pt-[33px] pb-[33px] lg:pl-[40px] pl-2 lg:pr-[40px] pr-2']">
                                                        <span v-if="Array.isArray(cell)">
                                                             <ul>
-                                                                 <li v-for="(item, itemIndex) in cell" :key="itemIndex" class="leading-4 mb-[27px]">{{ item }}</li>
+                                                                 <li v-for="(item, itemIndex) in cell" :key="itemIndex"
+                                                                      class="leading-6 mb-[27px]">{{ item }}</li>
                                                             </ul>
                                                        </span>
-                                                       <span v-else>{{ cell }}</span>
+                                                       <span class="leading-6" v-else>{{ cell }}</span>
                                                   </td>
                                              </tr>
                                         </tbody>
                                    </table>
-
-                                   <div v-if="formattedTableData && formattedTableData.length > 0" class="mt-16 lg:w-4/6 w-full">
-                                        <div v-for="(info, index) in infoData" :key="index" class="flex items-center mt-5">
+                                   <div v-if="formattedTableData && formattedTableData.length > 0"
+                                        class="mt-16 lg:w-4/6 w-full">
+                                        <div v-for="(info, index) in infoData" :key="index"
+                                             class="flex items-center mt-5">
                                              <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">
                                                   {{ info }}
                                              </h2>
@@ -301,8 +323,6 @@ const configureDatePicker = () => {
           singleMode: false,
           format: 'YYYY-MM-DD',
           autoApply: true,
-          minDate: today,
-          maxDate: maxDate,
           startDate: today,
           setup: (picker) => {
                // picker.on('show', () => {
