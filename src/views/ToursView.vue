@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="flex flex-col justify-center items-center m-auto relative">
-            <div class="w-full h-[223px] bg-slate-200 flex flex-row items-center">
+            <div class="w-full bg-slate-200 flex flex-row items-center">
                 <div class="relative w-full lg:px-[100px] px-0 md:px-16 sm:px-8 centered-w">
-                    <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
                         <div>
                             <ol class="flex items-center whitespace-nowrap mt-[30px] mb-7" aria-label="Breadcrumb">
                                 <li class="inline-flex items-center">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="relative">
                             <div @click="togglePickerModal"
-                                class="h-[78px] w-96 bg-white rounded-xl border flex flex-row justify-between items-center p-5 cursor-pointer">
+                                class="h-[78px] w-full bg-white rounded-xl border flex flex-row justify-between items-center px-6 mx-2 cursor-pointer mb-5 sm:mb-0">
                                 <div class="cursor-pointer ">
                                     <div class="text-black text-base font-medium font-display tracking-tight">
                                         Ne Zaman Gitmek İstersiniz?</div>
@@ -70,175 +70,183 @@
                                     </div>
                                 </div>
                             </div>
-                                <div ref="datepicker" v-show="litepickerModalVisible" id="container"
-                                    class="w-full h-full absolute left-0">
-                                </div>
+                            <div ref="datepicker" v-show="litepickerModalVisible" id="container"
+                                class="w-full h-full absolute left-0">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="w-full mx-auto bg-white rounded-[20px] centered-w mt-14">
+            <div className="w-full bg-white rounded-[20px]">
                 <div class="flex flex-col items-center m-auto relative justify-between">
-                    <div class="w-full lg:px-[100px]">
-                        <div class="flex flex-col md:flex-row gap-5">
-                            <!-- Left Column -->
-                            <div class="md:mb-[20px] mb-5 w-full max-w-[295px] relative top-0">
-                                <div
-                                    class="bg-neutral-100 flex flex-row justify-center items-center py-6 px-14 rounded-xl cursor-pointer">
-                                    <div
-                                        class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans']">
-                                        Tüm Filtreleri Temizle</div>
-                                </div>
-                                <!-- First Box -->
-                                <div
-                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
-                                    <div class="p-5 flex flex-col h-full w-full justify-between">
-                                        <div class="mb-4 left-card-title">Gece Sayısı</div>
-                                        <li v-for="(item, index) in fakeData" :key="index"
-                                            class="flex flex-row justify-between mb-4">
-                                            {{ item.item }}
-                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
-                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                        </li>
-                                    </div>
-                                    <div v-if="fakeData.length > 3" @click="toggleShowMore"
-                                        class="bg-slate-200 w-full py-4 items-center justify-center flex rounded-xl cursor-pointer">
-                                        {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
-                                    </div>
-                                </div>
-                                <!-- Second Box -->
-                                <div
-                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
-                                    <div class="flex flex-col h-full w-full justify-between">
-                                        <div class="mb-4 left-card-title">Gece Sayısı</div>
-                                        <li v-for="(item, index) in displayedItems" :key="index"
-                                            class="flex flex-row justify-between mb-4">
-                                            {{ item.item }}
-                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
-                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                        </li>
-                                    </div>
-                                    <div v-if="fakeData2.length > 3" @click="toggleShowMore"
-                                        class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
-                                        {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
-                                    </div>
-                                </div>
-                                <div
-                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
-                                    <div class="p-5 flex flex-col h-full w-full justify-between">
-                                        <div class="mb-4 left-card-title">Kalkış Noktası</div>
-                                        <li v-for="(item, index) in fakeData3" :key="index"
-                                            class="flex flex-row justify-between mb-4">
-                                            {{ item.item }}
-                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
-                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                        </li>
-                                    </div>
-                                    <div v-if="fakeData3.length > 3" @click="toggleShowMore"
-                                        class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
-                                        {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
-                                    </div>
-                                </div>
-                                <div
-                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
-                                    <div class="flex flex-col h-full w-full justify-between">
-                                        <div class="mb-4 left-card-title">Konsept</div>
-                                        <li v-for="(item, index) in displayedItems4" :key="index"
-                                            class="flex flex-row justify-between mb-4">
-                                            {{ item.item }}
-                                            <input type="checkbox" :value="item.id" v-model="selectedItems"
-                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                        </li>
-                                    </div>
-                                    <div v-if="fakeData4.length > 3" @click="toggleShowMore4"
-                                        class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer w-full mt-2">
-                                        {{ showMore4 ? 'Daha Az Göster' : `+${countItem4} Daha Fazla` }}
-                                    </div>
+                    <div
+                        class="grid gap-4 sm:grid-cols-[295px,1fr] grid-cols-1 mt-0 sm:mt-14 w-full centered-w lg:px-[100px]">
+                        <div @click="toggleVisibility"
+                            class="bg-slate-200 p-5 rounded-xl mt-10 block sm:hidden w-48 ml-5">
+                            Filtreler
+                        </div>
+                        <!-- Left Column -->
+                        <div
+                            :class="['h-full custom-z bg-white overflow-y-auto sm:overflow-hidden inset-0 sm:inset-auto fixed sm:relative', { 'hidden': !isVisible }]">
+                            <div
+                                class="bg-neutral-100 flex flex-row justify-center items-center py-6 md:px-14 px-1 rounded-xl cursor-pointer">
+                                <div class="text-center text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                    Tüm Filtreleri Temizle
                                 </div>
                             </div>
-                            <!-- Right Column -->
-                            <div class="w-full mb-5">
-                                <div class="max-w-[925px] mb-5">
-
-                                    <router-link to="/tours/detail">
-                                        <div
-                                            class="bg-white p-4 rounded-[20px] card-border flex flex-row mb-5 cursor-pointer">
-                                            <img class="w-[180px] h-[170px] rounded-[18px]"
-                                                src="https://via.placeholder.com/180x170" />
-                                            <div class="w-full">
-                                                <div class="flex flex-row justify-between items-center">
-                                                    <div
-                                                        class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide pl-5">
-                                                        Midilli Turu 1 Gece - Kasım</div>
-                                                    <IconShare3 />
-                                                </div>
+                            <!-- First Box -->
+                            <div
+                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
+                                <div class="p-5 flex flex-col h-full w-full justify-between">
+                                    <div class="mb-4 left-card-title w-full flex flex-row">Gece Sayısı</div>
+                                    <li v-for="(item, index) in displayedItems" :key="index"
+                                        class="flex flex-row justify-between mb-4">
+                                        {{ item.item }}
+                                        <input type="checkbox" :value="item.id"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                    </li>
+                                </div>
+                                <div v-if="fakeData.length > 3" @click="toggleShowMore"
+                                    class="bg-slate-200 w-full py-4 items-center justify-center flex rounded-xl cursor-pointer">
+                                    {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
+                                </div>
+                            </div>
+                            <!-- Second Box -->
+                            <div
+                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                <div class="flex flex-col h-full w-full justify-between">
+                                    <div class="mb-4 left-card-title w-full flex flex-row">Gece Sayısı</div>
+                                    <li v-for="(item, index) in displayedItems2" :key="index"
+                                        class="flex flex-row justify-between mb-4">
+                                        {{ item.item }}
+                                        <input type="checkbox" :value="item.id"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                    </li>
+                                </div>
+                                <div v-if="fakeData2.length > 3" @click="toggleShowMore2"
+                                    class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
+                                    {{ showMore2 ? 'Daha Az Göster' : `+${countItem2} Daha Fazla` }}
+                                </div>
+                            </div>
+                            <!-- Third Box -->
+                            <div
+                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                <div class="flex flex-col h-full w-full justify-between">
+                                    <div class="mb-4 left-card-title w-full flex flex-row">Kalkış Noktası</div>
+                                    <li v-for="(item, index) in displayedItems3" :key="index"
+                                        class="flex flex-row justify-between mb-4">
+                                        {{ item.item }}
+                                        <input type="checkbox" :value="item.id"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                    </li>
+                                </div>
+                                <div v-if="fakeData3.length > 3" @click="toggleShowMore3"
+                                    class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
+                                    {{ showMore3 ? 'Daha Az Göster' : `+${countItem3} Daha Fazla` }}
+                                </div>
+                            </div>
+                            <!-- Fourth Box -->
+                            <div
+                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                <div class="flex flex-col h-full w-full justify-between">
+                                    <div class="mb-4 left-card-title w-full flex flex-row">Konsept</div>
+                                    <li v-for="(item, index) in displayedItems4" :key="index"
+                                        class="flex flex-row justify-between mb-4">
+                                        {{ item.item }}
+                                        <input type="checkbox" :value="item.id"
+                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                    </li>
+                                </div>
+                                <div v-if="fakeData4.length > 3" @click="toggleShowMore4"
+                                    class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer w-full mt-2">
+                                    {{ showMore4 ? 'Daha Az Göster' : `+${countItem4} Daha Fazla` }}
+                                </div>
+                            </div>
+                            <button @click="toggleVisibility"
+                                class="fixed sm:hidden bottom-0 w-full h-20 bg-blue-500 text-center text-white">
+                                SEÇ
+                            </button>
+                        </div>
+                        <!-- Right Column -->
+                        <div class="w-full">
+                            <div class="mb-5">
+                                <router-link to="/tours/detail">
+                                    <div
+                                        class="bg-white p-4 rounded-[20px] card-border flex flex-col sm:flex-row mb-5 cursor-pointer">
+                                        <img class="sm:w-[180px] w-full h-[170px] rounded-[18px]"
+                                            src="https://via.placeholder.com/180x170" />
+                                        <div class="w-full">
+                                            <div class="flex flex-row justify-between items-center">
                                                 <div
-                                                    class="text-black text-base font-light font-display leading-7 pl-5 pt-3">
-                                                    Feribot, liman vergisi, oda-kahvaltı konaklama
-                                                    içermektedir.</div>
-                                                <div clas="flex flex-row justify-between">
-                                                    <div class="flex flex-row mb-4 justify-between">
-                                                        <div class="flex flex-row">
-                                                            <div
-                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                                <div class="flex flex-row">
-                                                                    <div
-                                                                        class="flex flex-row items-center justify-center">
-                                                                        <IconMoon />
-                                                                        <div class="flex flex-col ml-4 my-2">
-                                                                            <span
-                                                                                class="text-black text-sm font-light font-display leading-normal">
-                                                                                1 gece </span>
-                                                                            <span
-                                                                                class="text-black text-base font-medium font-display leading-7">
-                                                                                2 gün </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="flex flex-row justify-center items-center rounded-xl mini-card-border ml-5 w-36 mt-4">
-                                                                <div class="flex flex-row">
-                                                                    <div
-                                                                        class="flex flex-row items-center justify-center">
-                                                                        <IconPersonSimpleRun />
-                                                                        <div class="flex flex-col ml-4 my-2">
-                                                                            <span
-                                                                                class="text-black text-sm font-light font-display leading-normal">
-                                                                                Bilgi </span>
-                                                                            <span
-                                                                                class="text-black text-base font-medium font-display leading-7">
-                                                                                Rehberli </span>
-                                                                        </div>
+                                                    class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide sm:pl-5 mt-3 sm:mt-0 ">
+                                                    Midilli Turu 1 Gece - Kasım</div>
+                                                <IconShare3 />
+                                            </div>
+                                            <div
+                                                class="text-black text-base font-light font-display leading-7 sm:pl-5 pl-0 pt-3">
+                                                Feribot, liman vergisi, oda-kahvaltı konaklama
+                                                içermektedir.</div>
+                                            <div clas="flex flex-row justify-between">
+                                                <div class="flex flex-col xl:flex-row mb-4 justify-between">
+                                                    <div class="flex flex-col lg:flex-row">
+                                                        <div
+                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border sm:ml-5 xl:w-36 w-32 mt-4">
+                                                            <div class="flex flex-row">
+                                                                <div class="flex flex-row items-center justify-center">
+                                                                    <IconMoon />
+                                                                    <div class="flex flex-col ml-4 my-2">
+                                                                        <span
+                                                                            class="text-black text-sm font-light font-display leading-normal">
+                                                                            1 gece </span>
+                                                                        <span
+                                                                            class="text-black text-base font-medium font-display leading-7">
+                                                                            2 gün </span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="flex flex-row justify-end items-end">
-                                                            <div
-                                                                class="mr-3 text-right text-black hover:text-blue-600 text-base font-medium font-display leading-[25.12px] justify-end flex flex-col items-end">
-                                                                €59’dan başlayan fiyatlar</div>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path
-                                                                    d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
-                                                                    fill="#2249D6" />
-                                                            </svg>
+                                                        <div
+                                                            class="flex flex-row justify-center items-center rounded-xl mini-card-border sm:ml-5 lg:w-36 w-32 mt-4">
+                                                            <div class="flex flex-row">
+                                                                <div class="flex flex-row items-center justify-center">
+                                                                    <IconPersonSimpleRun />
+                                                                    <div class="flex flex-col ml-4 my-2">
+                                                                        <span
+                                                                            class="text-black text-sm font-light font-display leading-normal">
+                                                                            Bilgi </span>
+                                                                        <span
+                                                                            class="text-black text-base font-medium font-display leading-7">
+                                                                            Rehberli </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <div
+                                                        class="flex flex-row justify-start mt-5 sm:ml-5 xl:ml-0 xl:mt-0 xl:justify-end items-end">
+                                                        <div
+                                                            class="mr-3 text-right text-black hover:text-blue-600 text-base font-medium font-display leading-[25.12px] justify-end flex flex-col items-end">
+                                                            €59’dan başlayan fiyatlar</div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none">
+                                                            <path
+                                                                d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                                                fill="#2249D6" />
+                                                        </svg>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </router-link>
-                                </div>
+                                    </div>
+                                </router-link>
                             </div>
                         </div>
-                        <div
+                        <!-- <div
                             class="flex flex-row justify-center items-center mt-[83px] cursor-pointer lg:mb-[146px] mb-10">
                             <div class="text-black text-lg font-medium font-display mr-[16px]">Daha fazla
                                 yazı</div>
                             <IconArrowTopRight />
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -248,14 +256,11 @@
 
 <script setup>
 
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import IconMoon from '../components/icons/IconMoon.vue'
 import IconPersonSimpleRun from '../components/icons/IconPersonSimpleRun.vue';
 import { formatDateToString } from '@/utils/globalHelper'
-
-
-const showMore = ref(false)
-const showMore4 = ref(false)
+import Litepicker from 'litepicker'
 
 const findBool = computed(() => {
     if (fakeData2.value.length > 3) {
@@ -264,13 +269,37 @@ const findBool = computed(() => {
         return false
     }
 })
-import Litepicker from 'litepicker'
+
+const isVisible = ref(false);
+
+const toggleVisibility = () => {
+    isVisible.value = !isVisible.value;
+};
+
+const isSmallScreen = ref(window.innerWidth < 640);
+
+const handleResize = () => {
+    isSmallScreen.value = window.innerWidth <= 640;
+    if (isSmallScreen.value) {
+        isVisible.value = false;
+    } else {
+        isVisible.value = true;
+    }
+};
+
+onMounted(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+});
+
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize);
+});
 
 const litepickerModalVisible = ref(false)
 const togglePickerModal = () => {
     litepickerModalVisible.value = !litepickerModalVisible.value
 }
-
 const datepicker = ref(null)
 const selectedDates = ref({
     start: '',
@@ -287,7 +316,6 @@ const selectedDatesLabel = computed(() => {
 const configureDatePicker = () => {
     const today = new Date()
     today.setDate(today.getDate() - 1)
-
     const maxDate = new Date(today)
     maxDate.setMonth(maxDate.getMonth() + 1)
 
@@ -333,16 +361,37 @@ onMounted(() => {
 // })
 
 const displayedItems = computed(() => {
-    return fakeData2.value.slice(0, showMore.value ? fakeData2.value.length : 3)
+    return fakeData.value.slice(0, showMore.value ? fakeData.value.length : 3)
+})
+
+const displayedItems2 = computed(() => {
+    return fakeData2.value.slice(0, showMore2.value ? fakeData2.value.length : 3)
+})
+
+const displayedItems3 = computed(() => {
+    return fakeData3.value.slice(0, showMore3.value ? fakeData3.value.length : 3)
 })
 
 const displayedItems4 = computed(() => {
     return fakeData4.value.slice(0, showMore4.value ? fakeData4.value.length : 3)
 })
 
+const showMore = ref(false)
+const showMore2 = ref(false);
+const showMore3 = ref(false);
+const showMore4 = ref(false)
+
 // Toggle function for showMore
 const toggleShowMore = () => {
     showMore.value = !showMore.value
+}
+
+const toggleShowMore2 = () => {
+    showMore2.value = !showMore2.value
+}
+
+const toggleShowMore3 = () => {
+    showMore3.value = !showMore3.value;
 }
 
 const toggleShowMore4 = () => {
@@ -351,6 +400,14 @@ const toggleShowMore4 = () => {
 
 const countItem = computed(() => {
     return fakeData2.value.length - 3;
+})
+
+const countItem2 = computed(() => {
+    return fakeData2.value.length - 3;
+})
+
+const countItem3 = computed(() => {
+    return fakeData3.value.length - 3;
 })
 
 const countItem4 = computed(() => {
@@ -396,6 +453,9 @@ const fakeData3 = ref([
     },
     {
         item: "Phyta Liman"
+    },
+    {
+        item: "Samos Liman"
     },
 ])
 
@@ -507,5 +567,15 @@ const fakeData4 = ref([
 .custom-checkbox:checked::before {
     transform: scale(1);
     border-radius: 0.3125rem;
+}
+
+@media (max-width: 639px) {
+    .hidden {
+        display: none;
+    }
+}
+
+.custom-z {
+    z-index: 50 !important;
 }
 </style>

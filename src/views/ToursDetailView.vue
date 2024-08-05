@@ -2,7 +2,7 @@
     <div class="w-full bg-slate-100 relative ">
         <img :src="example" alt="Background Image" class="absolute top-0 left-0 w-full h-full object-cover ">
         <div class="absolute top-0 left-0 w-full h-full bg-black/50"></div>
-        <div class="relative flex h-[352px] items-center lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w z-10"
+        <div class="relative flex md:h-[352px] h-64 items-center lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w z-10"
             aria-label="Breadcrumb">
             <div class="flex flex-row justify-between w-full items-center">
                 <div>
@@ -38,12 +38,14 @@
                         </li>
                     </ul>
                     <ul class="flex flex-row box-border">
-                        <li class="max-w-[679px] text-white text-[52px] font-medium font-display tracking-wide">
+                        <li
+                            class="max-w-[679px] text-white text-[30px] md:text-[52px] font-medium font-display tracking-wide">
                             Samos Turu | 1 Gece | Ramazan Bayramı
                         </li>
                     </ul>
                 </div>
-                <div class="w-24 h-24 bg-white rounded-full justify-center items-center flex cursor-pointer">
+                <div
+                    class="md:w-24 w-14 md:h-24 h-14 bg-white rounded-full justify-center items-center flex cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <g id="ShareNetwork">
                             <path id="Vector"
@@ -56,7 +58,7 @@
         </div>
     </div>
     <section>
-        <div class="flex flex-col w-full mx-auto bg-neutral-100 h-full">
+        <div class="flex flex-col w-full h-full mx-auto bg-neutral-100">
             <div
                 class="flex justify-between items-end border-sub-line overflow-x-auto w-full mx-auto centered-small-w h-full">
                 <div v-for="(tab, index) in copyTabs" :key="index" @click="handleTabClick(tab.id)"
@@ -248,27 +250,66 @@
                 <p class="text-[#4D4D4D] text-base font-normal font-display leading-6 w-72">Bu turu satın
                     almak için alttaki arama alanını kullanın.</p>
             </div>
+        </div>
+        <div>
             <div
-                class="w-[604px] h-[92px] bg-white rounded-xl border border-[#a4a4a4] flex flex-row justify-between items-center">
-                <div class="ml-5 cursor-pointer">
-                    <p class="text-black text-base font-medium font-display tracking-tight">Katılmak İstenilen Tarih</p>
-                    <p>Tarih Seçin</p>
+                class="max-w-[604px] relative bg-white rounded-xl border border-[#a4a4a4] flex flex-col sm:flex-row sm:items-center p-5 sm:p-0 justify-between">
+                <div @click="togglePickerModal" class="sm:ml-5 mb-2 sm:mb-0 cursor-pointer">
+                    <p class="text-black text-base font-medium font-display tracking-tight">Katılmak İstenilen Tarih
+                    </p>
+                    <p>{{ selectedDatesLabel }}</p>
                 </div>
-                <div class="h-14 border-l border-zinc-300 hidden md:block ml-0 md:ml-2 lg:ml-3">
+                <div class="sm:h-14 h-0 border-l border-zinc-300 hidden sm:block ml-0 md:ml-2 lg:ml-3">
                 </div>
-                <div class="cursor-pointer">
-                    <p class="text-black text-base font-medium font-display tracking-tight">Kişi Sayısı</p>
-                    <p>2 yetişkin, 2 çocuk, 1 bebek</p>
+                <div class="h-0 w-full border-b border-zinc-300 block sm:hidden ml-0 md:ml-2 lg:ml-3 bg-black mb-2">
+                </div>
+                <div>
+                    <div @click="toggleDropdown2" class="cursor-pointer">
+                        <p class="text-black text-base font-medium font-display tracking-tight">Kişi Sayısı</p>
+                        <p>{{ passenger[0].count }} yetişkin, {{ passenger[1].count }} çocuk, {{ passenger[2].count }} bebek</p>
+                    </div>
+                    <div v-show="isOpen2"
+                        class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200 right-0">
+                        <div class="flex flex-col mt-[37px] ml-1 md:ml-2 lg:ml-6">
+                            <!-- {{ mainHomeSplide.search?.SearchFerryTicket.PassengerType }} -->
+                            <div v-for="(i, index) in mainHomeSplide.search?.SearchFerryTicket.PassengerType"
+                                :key="index" class="flex flex-row mb-[46px] last:mb-9 justify-between items-center">
+                                <div class="flex flex-row">
+                                    <div class="text-black text-base font-medium font-display tracking-tight">
+                                        {{ i.TypeName }}
+                                    </div>
+                                </div>
+                                <div class="mr-4 flex flex-row justify-center items-center">
+                                    <span @click="decreaseCount(index)" class="mx-2 cursor-pointer">
+                                        <IconMinus />
+                                    </span>
+                                    <div class="text-black text-[22px] font-normal font-display tracking-wide">
+                                        {{ passenger[index].count }}
+                                    </div>
+                                    <span @click="increaseCount(index)" class="mx-2 cursor-pointer">
+                                        <IconPlus />
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- <button id="hs-dropdown-auto-close-false" type="button"
+                                                  class="w-[353px] h-[53px] bg-blue-700 rounded-lg border flex flex-row justify-center items-center mb-5 cursor-pointer">
+                                                  <div class="text-white text-base font-medium font-display">{{
+                                                       mainHomeSplide.search?.SearchFerryTicket.submitBtn }}</div>
+                                             </button> -->
+                        </div>
+                    </div>
                 </div>
                 <div
                     class="bg-slate-200 rounded-full justify-centeer items-center sm:p-[17px] p-3 m-[11px] ml-0 lg:ml-3">
                     <IconSearchNormal />
                 </div>
             </div>
+            <div ref="datepicker" v-if="litepickerModalVisible" class="w-full h-full absolute">
+            </div>
         </div>
         <div class="mt-14">
             <div
-                class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                class="w-full h-auto flex flex-row flex-wrap  justify-center md:justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
                 <div class="flex flex-col my-8 ml-6">
                     <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
                         Samos City Hotel - Standart Oda
@@ -314,53 +355,7 @@
                 </div>
             </div>
             <div
-                class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
-                <div class="flex flex-col my-8 ml-6">
-                    <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
-                        Samos City Hotel - Standart Oda
-                    </p>
-                    <div>
-                        <div class="flex flex-row gap-3 mt-[14px]">
-                            <div class="py-[6px] px-[9px] bg-neutral-100 rounded-lg border flex justify-center">
-                                <IconStar />
-                                <p
-                                    class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
-                                    3 Stars
-                                </p>
-                            </div>
-                            <div class="py-[6px] px-[13px] bg-neutral-100 rounded-lg border flex justify-center">
-                                <p class="text-black text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight">
-                                    Standard Room</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mr-5 flex flex-row justify-center items-center">
-                    <div class="flex flex-col">
-                        <p class="text-right text-black text-[28px] font-medium font-['Plus Jakarta Sans']">
-                            39 €
-                        </p>
-                        <p class="text-right text-[#353535] text-[15px] font-medium font-['Plus Jakarta Sans']">
-                            /Kişi Başı
-                        </p>
-                    </div>
-                    <div class="flex flex-col ml-20">
-                        <div class="flex flex-row justify-center bg-[#f5ebeb] rounded-lg border p-1">
-                            <IconHouse />
-                            <span
-                                class="text-[#8f2929] text-base font-semibold font-['Plus Jakarta Sans'] tracking-tight ml-2">
-                                Son 2 oda kaldı.
-                            </span>
-                        </div>
-                        <div
-                            class="max-w-[222px] cursor-pointer my-2 bg-[#2948b5] rounded-lg border text-white p-3 items-center flex flex-row justify-center">
-                            Satın Al
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="w-full h-auto flex flex-row items-center justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                class="w-full h-auto flex flex-row flex-wrap items-center justify-center md:justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
                 <div class="flex flex-col my-8 ml-6">
                     <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
                         Samos City Hotel - Standart Oda
@@ -438,19 +433,158 @@ import IconStar from '@/components/icons/IconStar.vue'
 import IconHouse from '@/components/icons/IconHouse.vue'
 import IconReceiptX from '@/components/icons/IconReceiptX.vue'
 
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, nextTick, watch } from 'vue';
+import { formatDateToString } from '@/utils/globalHelper'
+import Litepicker from 'litepicker'
+const mainHomeSplide = ref<MainSliderData | any>([])
+const AdultCount: Passenger = { id: 'adult', age: 'Yetişkin', price: '€41', count: 0 }
+const ChildCount: Passenger = { id: 'child', age: 'Çocuk', price: '€31', count: 0 }
+const InfantCount: Passenger = { id: 'infant', age: 'Bebek', price: '€0', count: 0 }
+const passenger = ref<Passenger[]>([AdultCount, ChildCount, InfantCount])
+
+
+interface Passenger {
+    age: string
+    price: string
+    count: number
+    id: string
+}
+
+
+interface MainSliderData {
+    btnLink: string
+    btnText: string
+    id: number
+    img: Img[]
+    price: string
+    search: search
+    subtitle: string
+    title: string
+}
 
 const isOpen = ref(true);
 const showCustomComponent = ref(false);
 const activeTab = ref(1)
 
+const increaseCount = (index: number) => {
+    if (passenger.value[index]) {
+        passenger.value[index].count++
+        console.log(`Passenger count increased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`)
+        console.log(`Total passenger count: ${totalCount()}`)
+    }
+}
+
+const decreaseCount = (index: number) => {
+    if (passenger.value[index] && passenger.value[index].count > 0) {
+        passenger.value[index].count--
+        console.log(`Passenger count decreased for ${passenger.value[index].age}. New count: ${passenger.value[index].count}`)
+        console.log(`Total passenger count: ${totalCount()}`)
+        console.log(passenger.value[index], 'index')
+    }
+}
+
 const toggleDropdown = () => {
     isOpen.value = !isOpen.value;
 };
 
+const isOpen2 = ref(false)
+const toggleDropdown2 = () => {
+    isOpen2.value = !isOpen2.value
+}
+
+const togglePickerModal = () => {
+    litepickerModalVisible.value = !litepickerModalVisible.value
+}
+
+const litepickerModalVisible = ref(false)
+const datepicker = ref(null)
+const selectedDates = ref({
+    start: '',
+    end: ''
+})
+
+watch(() => datepicker.value, () => {
+    configureDatePicker();
+});
+
+const selectedDatesLabel = computed(() => {
+    if (datepicker.value) {
+        return selectedDates.value.start && selectedDates.value.end ? `${formatDateToString(selectedDates.value.start)} - ${formatDateToString(selectedDates.value.end)}` : 'Tarih aralığı seçin'
+    } else {
+        return `${selectedDates.value.start} ${selectedDates.value.end}`
+    }
+})
+
+const configureDatePicker = () => {
+    const today = new Date();
+    today.setDate(today.getDate() - 1);
+
+    const maxDate = new Date(today);
+    maxDate.setMonth(maxDate.getMonth() + 1);
+
+    console.log('working here1');
+
+    const picker = new Litepicker({
+        element: datepicker.value,
+        singleMode: false,
+        format: 'YYYY-MM-DD',
+        autoApply: true,
+        minDate: today,
+        maxDate: maxDate,
+        startDate: today,
+        inlineMode: true,
+        setup: (picker) => {
+            // picker.on('show', () => {
+            //     picker.setDateRange(today, null);
+            // });
+
+            picker.on('selected', (startDate, endDate) => {
+                selectedDates.value.start = startDate.format('YYYY-MM-DD');
+                selectedDates.value.end = endDate.format('YYYY-MM-DD');
+            });
+        }
+    });
+    console.log('working here2');
+};
+
+import { useI18n } from 'vue-i18n'
+import IconPlus from '@/components/icons/IconPlus.vue'
+import IconMinus from '@/components/icons/IconMinus.vue'
+import { fetchData } from '@/utils/globalHelper'
+const totalCount = () => {
+    return passenger.value.reduce((total, current) => total + current.count, 0)
+}
+const { locale } = useI18n()
+
+const getHomeSpide = async () => {
+    try {
+        let filters = {
+            pageName: 'Home'
+        }
+
+        const res = await fetchData('pages', locale.value.toLowerCase(), filters)
+        if (res) {
+            let data = res.data[0].layout
+            mainHomeSplide.value = data.find((x: any) => x.__component === 'home-page.home-page')
+            console.log(mainHomeSplide, 'mainHomeSplidemainHomeSplidemainHomeSplide')
+        }
+    } catch (error) {
+        return
+    }
+}
+onMounted(() => {
+    nextTick(() => {
+        configureDatePicker()
+    })
+    getHomeSpide();
+})
+
 const handleTabClick = (sectionId: any) => {
     if (sectionId === 5) {
         showCustomComponent.value = true;
+        nextTick(() => {
+            configureDatePicker();
+        });
     } else {
         showCustomComponent.value = false;
         console.log(sectionId, 'sectionId is here!');
@@ -533,7 +667,8 @@ const tableData = [
 
 @media (max-width: 680px) {
     .tab {
-        height: 75px;
+        height: 90px;
+        padding: 5px 0px;
     }
 }
 </style>
