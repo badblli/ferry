@@ -38,9 +38,14 @@
                <div>
                     <div className=" bg-neutral-100 rounded-[20px] p-4">
                          <div class="flex md:flex-row flex-col justify-between">
-                              <div
-                                   class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
-                                   {{ passengerDetails?.passengerInformation }}
+                              <div class="flex flex-row items-center">
+                                   <div
+                                        class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
+                                        {{ passengerDetails?.passengerInformation }}
+                                   </div>
+                                   <div v-if="isPackageTour" class="mt-5 ml-4 bg-[#f5ebeb] py-[6px] px-[7px] rounded-2xl text-base text-[#902929] font-semibold leading-normal tracking-tight">
+                                        Max 3 yolcu olabilir.
+                                   </div>
                               </div>
                               <div class="relative inline-flex">
                                    <p @click="toggleDropdown"
@@ -202,7 +207,8 @@
                                                             </div>
                                                        </form>
                                                   </div>
-                                                  <div class="px-5 flex flex-col md:flex-row items-center md:justify-end">
+                                                  <div
+                                                       class="px-5 flex flex-col md:flex-row items-center md:justify-end">
                                                        <div
                                                             class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
                                                             <div class="mr-4">{{
@@ -529,6 +535,8 @@ const isOpen3 = ref(false)
 
 const accordion_idchange = ref()
 
+const isPackageTour = ref(false);
+
 const saveAllPassenger = async (accordion: any) => {
      accordion_idchange.value = accordion
      console.log(accordion, 'saveallpassenger accordion')
@@ -646,7 +654,6 @@ const cancelChange2 = () => {
 }
 
 const tripStore = useTripStore()
-
 const from = ref(tripStore.from)
 const to = ref(tripStore.to)
 const storedTripParams = ref<any>([])
@@ -750,15 +757,15 @@ const getPassengersPage = async () => {
 }
 
 const navigateToPassengerWithQuery = () => {
-    // Parametreleri query string'e dönüştürmek
-    const queryParams = Object.assign({}, storedTripParams.value)
+     // Parametreleri query string'e dönüştürmek
+     const queryParams = Object.assign({}, storedTripParams.value)
 
-    // Router'ı kullanarak yeni route'a yönlendiriyoruz
-    if (Object.keys(queryParams).length > 0) {
-        router.push({ path: '/tickets/passenger', query: queryParams })
-    } else {
-        router.push('/')
-    }
+     // Router'ı kullanarak yeni route'a yönlendiriyoruz
+     if (Object.keys(queryParams).length > 0) {
+          router.push({ path: '/tickets/passenger', query: queryParams })
+     } else {
+          router.push('/')
+     }
 }
 
 onMounted(() => {

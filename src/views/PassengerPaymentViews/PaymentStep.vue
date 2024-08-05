@@ -4,15 +4,19 @@
           <div class="relative top-[-11rem] w-full lg:px-[100px] px-0 md:px-16 sm:px-8 centered-w">
                <div class="flex lg:flex-row flex-col justify-between items-center mb-10">
                     <div class="flex flex-row justify-center items-center gap-5">
-                         <div class="w-[52px] h-[52px] origin-top-left opacity-75 bg-white rounded-full flex justify-center items-center cursor-pointer" @click="navigateToPassenger">
+                         <div class="w-[52px] h-[52px] origin-top-left opacity-75 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                              @click="navigateToPassenger">
                               <IconArrowPaymentL />
                          </div>
-                         <div class="text-black md:text-4xl text-2xl font-medium font-display tracking-wide">{{ paymentHeader?.title }}</div>
+                         <div class="text-black md:text-4xl text-2xl font-medium font-display tracking-wide">{{
+                              paymentHeader?.title }}</div>
                     </div>
                     <div v-if="!paymentSuccess" class="flex flex-row justify-center items-center mr-2 ml-9">
                          <div class="flex flex-col">
                               <div class="text-black text-base font-medium font-display">{{ paymentHeader?.cost }}</div>
-                              <div class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">{{ totalPrice }}€</div>
+                              <div
+                                   class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">
+                                   {{ totalPrice }}€</div>
                          </div>
                          <IconArrowDownBlack class="ml-[20px]" />
                     </div>
@@ -24,197 +28,447 @@
                                    <PaymentSuccess :data="paymentSuccessData" />
                               </div>
                               <div v-else class="lg:w-3/5 w-full">
-                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle" :invoiceAccordionState="invoiceAccordionState" :initialState="true">
+                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.InvoiceTabTopTitle"
+                                        :invoiceAccordionState="invoiceAccordionState" :initialState="true">
                                         <div class="flex flex-row">
-                                             <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]" :class="{ active: activeTab === 'tab1' }">
-                                                  <span class="tab md:w-48 w-40 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{ paymentDetail?.InvoiceTab[0].tabTitle }}</span>
+                                             <div @click="activeTab = 'tab1'" class="flex flex-row mt-[25px]"
+                                                  :class="{ active: activeTab === 'tab1' }">
+                                                  <span class="tab md:w-48 w-40 justify-center items-center flex"
+                                                       :class="{ 'text-blue-700 ': activeTab === 'tab1' }">{{
+                                                            paymentDetail?.InvoiceTab[0].tabTitle }}</span>
                                              </div>
-                                             <div @click="activeTab = 'tab2'" class="flex flex-row mt-[25px]" :class="{ active: activeTab === 'tab2' }">
-                                                  <span class="tab md:w-48 w-40 justify-center items-center flex" :class="{ 'text-blue-700 ': activeTab === 'tab2' }">{{ paymentDetail?.InvoiceTab[1].tabTitle }}</span>
+                                             <div @click="activeTab = 'tab2'" class="flex flex-row mt-[25px]"
+                                                  :class="{ active: activeTab === 'tab2' }">
+                                                  <span class="tab md:w-48 w-40 justify-center items-center flex"
+                                                       :class="{ 'text-blue-700 ': activeTab === 'tab2' }">{{
+                                                            paymentDetail?.InvoiceTab[1].tabTitle }}</span>
                                              </div>
                                         </div>
                                         <div class="mt-[65px] ml-10">
                                              <div v-show="activeTab === 'tab1'">
-                                                  <PaymentTab :data="paymentDetail?.InvoiceTab[0]" @passengerSelected="handlePassengerSelected" @passengerSaved="handlePassengerSaved" />
+                                                  <PaymentTab :data="paymentDetail?.InvoiceTab[0]"
+                                                       @passengerSelected="handlePassengerSelected"
+                                                       @passengerSaved="handlePassengerSaved" />
                                              </div>
                                              <div v-show="activeTab === 'tab2'">
                                                   <PaymentTab2 :data="paymentDetail?.InvoiceTab[1]" />
                                              </div>
                                         </div>
                                    </AccordionPanel2>
-                                   <AccordionPanel2 aria-title="incidents" :title="paymentDetail?.PaymentTab[0].tabTitle" :creditCardAccordionState="creditCardAccordionState" :initialState="false" >
+                                   <AccordionPanel2 aria-title="incidents"
+                                        :title="paymentDetail?.PaymentTab[0].tabTitle"
+                                        :creditCardAccordionState="creditCardAccordionState" :initialState="false">
                                         <div class="mt-[58px] ml-10">
-                                             <div id="horizontal-scroll-tab-preview" role="tabpanel" aria-labelledby="horizontal-scroll-tab-item-1">
-                                                  <CreditCartTab :data="paymentDetail?.PaymentTab[0]" @updateData="handleUpdateData" />
+                                             <div id="horizontal-scroll-tab-preview" role="tabpanel"
+                                                  aria-labelledby="horizontal-scroll-tab-item-1">
+                                                  <CreditCartTab :data="paymentDetail?.PaymentTab[0]"
+                                                       @updateData="handleUpdateData" />
                                              </div>
                                         </div>
                                    </AccordionPanel2>
                               </div>
                               <div class="lg:w-2/5 w-full rounded-[20px]">
                                    <div>
-                                        <div v-for="(item, index) in fakeData" :key="index" class="bg-white p-[30px] rounded-[20px]">
-                                             <h2 class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[10px] mb-[31px] ml-[10px]">
+                                        <div v-for="(item, index) in fakeData" :key="index"
+                                             class="bg-white p-[30px] rounded-[20px]">
+                                             <h2
+                                                  class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[10px] mb-[31px] ml-[10px]">
                                                   {{ paymentDetail?.PaymentSummary.title }}
                                              </h2>
 
+                                             <!-- new component -->
+                                             <!-- <div class="rounded-xl border border-zinc-300 mb-5">
+                                                  <div
+                                                       class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px] ">
+                                                       <div class="flex flex-row justify-between">
+                                                            <div
+                                                                 class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                                 Samos turu 1 Gece Kasım Ayı</div>
+                                                            <div>
+                                                                 <svg width="30" height="30" viewBox="0 0 30 30"
+                                                                      fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                           d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
+                                                                           fill="black" />
+                                                                 </svg>
+                                                            </div>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px]">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Tarih
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 18.11.2023
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Otel
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 Samos City Hotel
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Kişi Sayısı
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 2 Yetişkin, 1 Çocuk
+                                                            </p>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div class="rounded-xl border border-zinc-300 mb-5">
+                                                  <div
+                                                       class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px] ">
+                                                       <div class="flex flex-row justify-between">
+                                                            <div
+                                                                 class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                                 Gidiş Seferi</div>
+                                                            <div>
+                                                                 <svg width="30" height="30" viewBox="0 0 30 30"
+                                                                      fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                           d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
+                                                                           fill="black" />
+                                                                 </svg>
+                                                            </div>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px]">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Firma
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 Kuşadası Feribot İş.
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Rota
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 Kuşadası - Samos
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Tarih
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 18.11.2023
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Saat
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 10:15
+                                                            </p>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div class="rounded-xl border border-zinc-300">
+                                                  <div
+                                                       class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px] ">
+                                                       <div class="flex flex-row justify-between">
+                                                            <div
+                                                                 class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                                 Dönüş Seferi</div>
+                                                            <div>
+                                                                 <svg width="30" height="30" viewBox="0 0 30 30"
+                                                                      fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                           d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
+                                                                           fill="black" />
+                                                                 </svg>
+                                                            </div>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px]">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Firma
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 Kuşadası Feribot İş.
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Rota
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 Kuşadası - Samos
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Tarih
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 19.11.2023
+                                                            </p>
+                                                       </div>
+                                                       <div v-if="newData.Departure?.AdultSummary !== null"
+                                                            class="flex flex-row justify-between mb-[31px] ">
+                                                            <p
+                                                                 class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 Saat
+                                                            </p>
+                                                            <p
+                                                                 class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 10:15
+                                                            </p>
+                                                       </div>
+                                                  </div>
+                                             </div> -->
+                                             <!-- new component -->
+                                              
+                                             <!-- < COMPONENT> -->
                                              <div class="rounded-xl border border-zinc-300">
                                                   <div v-if="isLoading">Loading...</div>
                                                   <div else>
-                                                       <div class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px]">
+                                                       <div
+                                                            class="flex flex-col justify-between px-[30px] pt-[27px] pb-[13px] ">
                                                             <div class="flex flex-row justify-between">
-                                                                 <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">Kuşadası - Samos Bileti</div>
+                                                                 <div
+                                                                      class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                                      Kuşadası - Samos Bileti</div>
                                                                  <div>
-                                                                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                           <path
-                                                                                fill-rule="evenodd"
-                                                                                clip-rule="evenodd"
+                                                                      <svg width="30" height="30" viewBox="0 0 30 30"
+                                                                           fill="none"
+                                                                           xmlns="http://www.w3.org/2000/svg">
+                                                                           <path fill-rule="evenodd" clip-rule="evenodd"
                                                                                 d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
-                                                                                fill="black"
-                                                                           />
+                                                                                fill="black" />
                                                                       </svg>
                                                                  </div>
                                                             </div>
-                                                            <div v-if="newData.Departure?.AdultSummary !== null" class="flex flex-row justify-between mb-[31px] mt-10">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                            <div v-if="newData.Departure?.AdultSummary !== null"
+                                                                 class="flex flex-row justify-between mb-[31px] mt-10">
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                                       {{ paymentDetail?.PaymentSummary.adultPassenger }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ newData.Departure?.AdultSummary }}
                                                                  </p>
                                                             </div>
-                                                            <div v-if="newData.Departure?.ChildSummary !== null" class="flex flex-row justify-between mb-[31px]">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                            <div v-if="newData.Departure?.ChildSummary !== null"
+                                                                 class="flex flex-row justify-between mb-[31px]">
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                                       {{ paymentDetail?.PaymentSummary.childPassenger }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ newData.Departure?.ChildSummary }}
                                                                  </p>
                                                             </div>
-                                                            <div v-if="newData.Departure?.InfantSummary !== null" class="flex flex-row justify-between mb-[41px]">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                            <div v-if="newData.Departure?.InfantSummary !== null"
+                                                                 class="flex flex-row justify-between mb-[41px]">
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                                       {{ paymentDetail?.PaymentSummary.babyPassenger }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ newData.Departure?.InfantSummary }}
                                                                  </p>
                                                             </div>
                                                        </div>
-                                                       <div class="w-full h-[1px] origin-top-left border border-zinc-300"></div>
-                                                       <div class="flex flex-col justify-between px-[30px] pt-[31px] pb-10">
+                                                       <div
+                                                            class="w-full h-[1px] origin-top-left border border-zinc-300">
+                                                       </div>
+                                                       <div
+                                                            class="flex flex-col justify-between px-[30px] pt-[31px] pb-10">
                                                             <div class="flex flex-row justify-between">
-                                                                 <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
-                                                                      {{ paymentDetail?.PaymentSummary.passengerInformation }}
+                                                                 <div
+                                                                      class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                                      {{
+                                                                      paymentDetail?.PaymentSummary.passengerInformation
+                                                                      }}
                                                                  </div>
                                                                  <div>
-                                                                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                           <path
-                                                                                fill-rule="evenodd"
-                                                                                clip-rule="evenodd"
+                                                                      <svg width="30" height="30" viewBox="0 0 30 30"
+                                                                           fill="none"
+                                                                           xmlns="http://www.w3.org/2000/svg">
+                                                                           <path fill-rule="evenodd" clip-rule="evenodd"
                                                                                 d="M8.33948 13.6536C8.08642 13.4005 8.08642 12.9902 8.33948 12.7372L14.2045 6.87213C14.4576 6.61907 14.8679 6.61907 15.1209 6.87213L20.986 12.7372C21.239 12.9902 21.239 13.4005 20.986 13.6536C20.7329 13.9066 20.3226 13.9066 20.0696 13.6536L15.3107 8.89475V21.9929C15.3107 22.3508 15.0206 22.6409 14.6627 22.6409C14.3049 22.6409 14.0147 22.3508 14.0147 21.9929L14.0147 8.89475L9.25589 13.6536C9.00283 13.9066 8.59254 13.9066 8.33948 13.6536Z"
-                                                                                fill="black"
-                                                                           />
+                                                                                fill="black" />
                                                                       </svg>
                                                                  </div>
                                                             </div>
                                                             <div class="flex flex-row justify-between mb-[31px] mt-10">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                                       {{ paymentDetail?.PaymentSummary.departureDate }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ formatDate(newData.Departure?.DepartureDate) }}
                                                                  </p>
                                                             </div>
                                                             <div class="flex flex-row justify-between mb-[31px]">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                                      {{ paymentDetail?.PaymentSummary.destinationDate }}
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                      {{ paymentDetail?.PaymentSummary.destinationDate
+                                                                      }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ formatDate(newData.Return?.DepartureDate) }}
                                                                  </p>
                                                             </div>
                                                             <div class="flex flex-row justify-between mb-[41px]">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
                                                                       {{ paymentDetail?.PaymentSummary.departurePort }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ departureDataRef }}
                                                                  </p>
                                                             </div>
                                                             <div class="flex flex-row justify-between mb-[41px]">
-                                                                 <p class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
-                                                                      {{ paymentDetail?.PaymentSummary.destinationPort }}
+                                                                 <p
+                                                                      class="text-neutral-700 text-base font-normal font-['Plus Jakarta Sans']">
+                                                                      {{ paymentDetail?.PaymentSummary.destinationPort
+                                                                      }}
                                                                  </p>
-                                                                 <p class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                                 <p
+                                                                      class="text-right text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                                       {{ returnDataRef }}
                                                                  </p>
                                                             </div>
                                                        </div>
                                                   </div>
-                                                  <div v-if="!paymentSuccess" class="w-full h-[1px] origin-top-left border border-zinc-300"></div>
-                                                  <div v-if="!paymentSuccess" class="flex flex-row items-center justify-between px-[30px] py-9">
-                                                       <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                  <div v-if="!paymentSuccess"
+                                                       class="w-full h-[1px] origin-top-left border border-zinc-300">
+                                                  </div>
+                                                  <div v-if="!paymentSuccess"
+                                                       class="flex flex-row items-center justify-between px-[30px] py-9">
+                                                       <div
+                                                            class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
                                                             {{ paymentDetail?.PaymentSummary.EarnedMilePoints }}
                                                        </div>
-                                                       <div class="text-right text-black text-xl font-semibold font-['Plus Jakarta Sans']">5 puan</div>
+                                                       <div
+                                                            class="text-right text-black text-xl font-semibold font-['Plus Jakarta Sans']">
+                                                            5 puan</div>
                                                   </div>
                                              </div>
-                                             <div v-if="!paymentSuccess" class="w-full flex flex-row items-center justify-between px-[30px] bg-slate-200 mt-[10px] rounded-2xl">
-                                                  <div class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">{{ paymentDetail?.PaymentSummary.myMiles }}: 45</div>
+                                             <!-- COMPONENT -->
+
+                                             <div v-if="!paymentSuccess"
+                                                  class="w-full flex flex-row items-center justify-between px-[30px] bg-slate-200 mt-[10px] rounded-2xl">
+                                                  <div
+                                                       class="text-black text-lg font-semibold font-['Plus Jakarta Sans']">
+                                                       {{ paymentDetail?.PaymentSummary.myMiles }}: 45</div>
                                                   <div>
-                                                       <div class="px-5 py-2 my-5 bg-white rounded-lg border text-center text-black text-base font-medium font-display cursor-pointer">
+                                                       <div
+                                                            class="px-5 py-2 my-5 bg-white rounded-lg border text-center text-black text-base font-medium font-display cursor-pointer">
                                                             {{ paymentDetail?.PaymentSummary.useIt }}
                                                        </div>
                                                   </div>
                                              </div>
                                              <div v-if="paymentSuccess" class="flex flex-row mt-[41px] mb-4">
-                                                  <div class="w-[60px] h-[60px] bg-slate-200 rounded-full flex flex-row justify-center items-center">
-                                                       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                 d="M26 5H6C5.46957 5 4.96086 5.21071 4.58579 5.58579C4.21071 5.96086 4 6.46957 4 7V14.3462C4 25.5487 13.4775 29.2638 15.375 29.8937C15.7801 30.0324 16.2199 30.0324 16.625 29.8937C18.525 29.2625 28 25.5475 28 14.345V7C28 6.46957 27.7893 5.96086 27.4142 5.58579C27.0391 5.21071 26.5304 5 26 5ZM26 14.3488C26 24.1512 17.7075 27.4263 16 27.9963C14.3088 27.4338 6 24.1613 6 14.3488V7H26V14.3488ZM15 17V12C15 11.7348 15.1054 11.4804 15.2929 11.2929C15.4804 11.1054 15.7348 11 16 11C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12V17C17 17.2652 16.8946 17.5196 16.7071 17.7071C16.5196 17.8946 16.2652 18 16 18C15.7348 18 15.4804 17.8946 15.2929 17.7071C15.1054 17.5196 15 17.2652 15 17ZM14.5 21.5C14.5 21.2033 14.588 20.9133 14.7528 20.6666C14.9176 20.42 15.1519 20.2277 15.426 20.1142C15.7001 20.0007 16.0017 19.9709 16.2926 20.0288C16.5836 20.0867 16.8509 20.2296 17.0607 20.4393C17.2704 20.6491 17.4133 20.9164 17.4712 21.2074C17.5291 21.4983 17.4993 21.7999 17.3858 22.074C17.2723 22.3481 17.08 22.5824 16.8334 22.7472C16.5867 22.912 16.2967 23 16 23C15.6022 23 15.2206 22.842 14.9393 22.5607C14.658 22.2794 14.5 21.8978 14.5 21.5Z"
-                                                                 fill="#1F2A37"
-                                                            />
+                                                  <div
+                                                       class="w-[60px] h-[60px] bg-slate-200 rounded-full flex flex-row justify-center items-center">
+                                                       <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M26 5H6C5.46957 5 4.96086 5.21071 4.58579 5.58579C4.21071 5.96086 4 6.46957 4 7V14.3462C4 25.5487 13.4775 29.2638 15.375 29.8937C15.7801 30.0324 16.2199 30.0324 16.625 29.8937C18.525 29.2625 28 25.5475 28 14.345V7C28 6.46957 27.7893 5.96086 27.4142 5.58579C27.0391 5.21071 26.5304 5 26 5ZM26 14.3488C26 24.1512 17.7075 27.4263 16 27.9963C14.3088 27.4338 6 24.1613 6 14.3488V7H26V14.3488ZM15 17V12C15 11.7348 15.1054 11.4804 15.2929 11.2929C15.4804 11.1054 15.7348 11 16 11C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12V17C17 17.2652 16.8946 17.5196 16.7071 17.7071C16.5196 17.8946 16.2652 18 16 18C15.7348 18 15.4804 17.8946 15.2929 17.7071C15.1054 17.5196 15 17.2652 15 17ZM14.5 21.5C14.5 21.2033 14.588 20.9133 14.7528 20.6666C14.9176 20.42 15.1519 20.2277 15.426 20.1142C15.7001 20.0007 16.0017 19.9709 16.2926 20.0288C16.5836 20.0867 16.8509 20.2296 17.0607 20.4393C17.2704 20.6491 17.4133 20.9164 17.4712 21.2074C17.5291 21.4983 17.4993 21.7999 17.3858 22.074C17.2723 22.3481 17.08 22.5824 16.8334 22.7472C16.5867 22.912 16.2967 23 16 23C15.6022 23 15.2206 22.842 14.9393 22.5607C14.658 22.2794 14.5 21.8978 14.5 21.5Z"
+                                                                 fill="#1F2A37" />
                                                        </svg>
                                                   </div>
                                                   <div class="flex flex-col ml-[19px]">
-                                                       <div class="text-black text-base font-semibold font-['Plus Jakarta Sans']">
+                                                       <div
+                                                            class="text-black text-base font-semibold font-['Plus Jakarta Sans']">
                                                             {{ paymentDetail?.PaymentSummary.cancelAndRefund }}
                                                        </div>
-                                                       <div class="w-full text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug tracking-tight">
+                                                       <div
+                                                            class="w-full text-neutral-700 text-sm font-normal font-['Plus Jakarta Sans'] leading-snug tracking-tight">
                                                             {{ paymentDetail?.PaymentSummary.payDescription }}
                                                        </div>
                                                   </div>
                                              </div>
-                                             <div v-if="!paymentSuccess" class="flex flex-row items-center justify-between mt-8 mb-[5px]">
-                                                  <div class="text-neutral-700 text-lg font-normal font-['Plus Jakarta Sans']">
+                                             <div v-if="!paymentSuccess"
+                                                  class="flex flex-row items-center justify-between mt-8 mb-[5px]">
+                                                  <div
+                                                       class="text-neutral-700 text-lg font-normal font-['Plus Jakarta Sans']">
                                                        {{ paymentDetail?.PaymentSummary.totalPayment }}
                                                   </div>
                                                   <div class="flex flex-col">
-                                                       <span class="text-right text-black text-[22px] font-semibold font-['Plus Jakarta Sans'"> {{ totalPrice }}€ </span>
-                                                       <span class="text-neutral-500 text-[10px] font-semibold font-['Plus Jakarta Sans'] tracking-wider">{{ paymentDetail?.PaymentSummary.kdv }}</span>
+                                                       <span
+                                                            class="text-right text-black text-[22px] font-semibold font-['Plus Jakarta Sans'">
+                                                            {{ totalPrice }}€ </span>
+                                                       <span
+                                                            class="text-neutral-500 text-[10px] font-semibold font-['Plus Jakarta Sans'] tracking-wider">{{
+                                                                 paymentDetail?.PaymentSummary.kdv }}</span>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
                                    <div v-if="!paymentSuccess">
-                                        <div :class="['flex flex-row items-center justify-end mt-7', { 'opacity-40': !isPaymentDataFilled }]">
-                                             <span class="] bg-white rounded-lg border px-4 py-4 flex flex-row just items-center">
+                                        <div
+                                             :class="['flex flex-row items-center justify-end mt-7', { 'opacity-40': !isPaymentDataFilled }]">
+                                             <span
+                                                  class="] bg-white rounded-lg border px-4 py-4 flex flex-row just items-center">
                                                   {{ paymentDetail?.PaymentSummary.createAcc }}
                                                   <div class="flex">
-                                                       <input v-model="accountState" @change="handleAccountState" type="checkbox" class="cursor-pointer ml-3 shrink-0 mt-0.5 border-gray-400 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-default-checkbox" />
+                                                       <input v-model="accountState" @change="handleAccountState"
+                                                            type="checkbox"
+                                                            class="cursor-pointer ml-3 shrink-0 mt-0.5 border-gray-400 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                                                            id="hs-default-checkbox" />
                                                   </div>
                                              </span>
-                                             <button @click="postData" :disabled="!isPaymentDataFilled" class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{ paymentDetail?.PaymentSummary.payBtn }}</button>
+                                             <button @click="postData" :disabled="!isPaymentDataFilled"
+                                                  class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{
+                                                       paymentDetail?.PaymentSummary.payBtn }}</button>
                                              <div>
                                                   <!-- {{ modal.showModalState.value }} -->
                                                   <Teleport to="#target">
-                                                       <div v-if="showModalState" class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36 m-auto overflow-y-hidden"></div>
+                                                       <div v-if="showModalState"
+                                                            class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 opacity-40 w-36 h-36 m-auto overflow-y-hidden">
+                                                       </div>
                                                   </Teleport>
                                              </div>
                                         </div>
                                    </div>
                                    <Teleport to="#target">
                                         <Transition name="custom-classes">
-                                             <ThreeDSecure v-if="threeDSecureModal" :iframeHTML="threeDSecureHtml" @closePayment="closePayment" @paymentStatus="handlePaymentStatus" />
+                                             <ThreeDSecure v-if="threeDSecureModal" :iframeHTML="threeDSecureHtml"
+                                                  @closePayment="closePayment" @paymentStatus="handlePaymentStatus" />
                                         </Transition>
                                    </Teleport>
                               </div>
@@ -475,11 +729,11 @@ interface DepartureData {
 const paymentSuccess = ref(false)
 
 const isPaymentDataFilled = computed(() => {
-      return paymentData.value.creditCardNo !== '' &&
-             paymentData.value.creditCardName !== '' &&
-             paymentData.value.lastUseDate !== '' &&
-             paymentData.value.cvv !== '';
-    });
+     return paymentData.value.creditCardNo !== '' &&
+          paymentData.value.creditCardName !== '' &&
+          paymentData.value.lastUseDate !== '' &&
+          paymentData.value.cvv !== '';
+});
 
 const postData = async () => {
      let params
