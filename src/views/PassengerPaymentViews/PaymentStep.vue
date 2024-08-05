@@ -196,14 +196,14 @@
                                         </div>
                                    </div>
                                    <div v-if="!paymentSuccess">
-                                        <div class="flex flex-row items-center justify-end mt-7 opacity-40">
+                                        <div :class="['flex flex-row items-center justify-end mt-7', { 'opacity-40': !isPaymentDataFilled }]">
                                              <span class="] bg-white rounded-lg border px-4 py-4 flex flex-row just items-center">
                                                   {{ paymentDetail?.PaymentSummary.createAcc }}
                                                   <div class="flex">
                                                        <input v-model="accountState" @change="handleAccountState" type="checkbox" class="cursor-pointer ml-3 shrink-0 mt-0.5 border-gray-400 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-default-checkbox" />
                                                   </div>
                                              </span>
-                                             <button @click="postData" class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{ paymentDetail?.PaymentSummary.payBtn }}</button>
+                                             <button @click="postData" :disabled="!isPaymentDataFilled" class="rounded-lg border px-5 py-4 bg-blue-700 text-white ml-3">{{ paymentDetail?.PaymentSummary.payBtn }}</button>
                                              <div>
                                                   <!-- {{ modal.showModalState.value }} -->
                                                   <Teleport to="#target">
@@ -473,6 +473,13 @@ interface DepartureData {
 }
 
 const paymentSuccess = ref(false)
+
+const isPaymentDataFilled = computed(() => {
+      return paymentData.value.creditCardNo !== '' &&
+             paymentData.value.creditCardName !== '' &&
+             paymentData.value.lastUseDate !== '' &&
+             paymentData.value.cvv !== '';
+    });
 
 const postData = async () => {
      let params
