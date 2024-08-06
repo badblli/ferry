@@ -2,7 +2,7 @@
     <div>
         <div class="flex flex-col justify-center items-center m-auto relative">
             <div class="w-full bg-slate-200 flex flex-row items-center">
-                <div class="relative w-full lg:px-[100px] px-0 md:px-16 sm:px-8 centered-w">
+                <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <div class="flex flex-col md:flex-row md:items-center justify-between">
                         <div>
                             <ol class="flex items-center whitespace-nowrap mt-[30px] mb-7" aria-label="Breadcrumb">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="relative">
                             <div @click="togglePickerModal"
-                                class="h-[78px] w-full bg-white rounded-xl border flex flex-row justify-between items-center px-6 mx-2 cursor-pointer mb-5 sm:mb-0">
+                                class="h-[78px] w-full bg-white rounded-xl border flex flex-row justify-between items-center px-6 sm:mx-2 cursor-pointer mb-5 sm:mb-0">
                                 <div class="cursor-pointer ">
                                     <div class="text-black text-base font-medium font-display tracking-tight">
                                         Ne Zaman Gitmek İstersiniz?</div>
@@ -77,13 +77,14 @@
                     </div>
                 </div>
             </div>
-            <div className="w-full bg-white rounded-[20px]">
+            <div className="w-full bg-white rounded-[20px] overflow-y-hidden">
                 <div class="flex flex-col items-center m-auto relative justify-between">
                     <div
                         class="grid gap-4 sm:grid-cols-[295px,1fr] grid-cols-1 mt-0 sm:mt-14 w-full centered-w lg:px-[100px]">
                         <div @click="toggleVisibility"
-                            class="bg-slate-200 p-5 rounded-xl mt-10 block sm:hidden w-48 ml-5">
+                            class="bg-slate-200 px-4 p-2 rounded-xl mt-10 sm:hidden w-36 ml-2 flex flex-row justify-between items-center cursor-pointer">
                             Filtreler
+                            <IconFilter />
                         </div>
                         <!-- Left Column -->
                         <div
@@ -95,81 +96,83 @@
                                 </div>
                             </div>
                             <!-- First Box -->
-                            <div
-                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
-                                <div class="p-5 flex flex-col h-full w-full justify-between">
-                                    <div class="mb-4 left-card-title w-full flex flex-row">Gece Sayısı</div>
-                                    <li v-for="(item, index) in displayedItems" :key="index"
-                                        class="flex flex-row justify-between mb-4">
-                                        {{ item.item }}
-                                        <input type="checkbox" :value="item.id"
-                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                    </li>
+                            <div class="p-2">
+                                <div
+                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3">
+                                    <div class="p-5 flex flex-col h-full w-full justify-between">
+                                        <div class="mb-4 left-card-title w-full flex flex-row">Gece Sayısı</div>
+                                        <li v-for="(item, index) in displayedItems" :key="index"
+                                            class="flex flex-row justify-between mb-4">
+                                            {{ item.item }}
+                                            <input type="checkbox" :value="item.id"
+                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                        </li>
+                                    </div>
+                                    <div v-if="fakeData.length > 3" @click="toggleShowMore"
+                                        class="bg-slate-200 w-full py-4 items-center justify-center flex rounded-xl cursor-pointer">
+                                        {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
+                                    </div>
                                 </div>
-                                <div v-if="fakeData.length > 3" @click="toggleShowMore"
-                                    class="bg-slate-200 w-full py-4 items-center justify-center flex rounded-xl cursor-pointer">
-                                    {{ showMore ? 'Daha Az Göster' : `+${countItem} Daha Fazla` }}
+                                <!-- Second Box -->
+                                <div
+                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                    <div class="flex flex-col h-full w-full justify-between">
+                                        <div class="mb-4 left-card-title w-full flex flex-row">Gece Sayısı</div>
+                                        <li v-for="(item, index) in displayedItems2" :key="index"
+                                            class="flex flex-row justify-between mb-4">
+                                            {{ item.item }}
+                                            <input type="checkbox" :value="item.id"
+                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                        </li>
+                                    </div>
+                                    <div v-if="fakeData2.length > 3" @click="toggleShowMore2"
+                                        class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
+                                        {{ showMore2 ? 'Daha Az Göster' : `+${countItem2} Daha Fazla` }}
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Second Box -->
-                            <div
-                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
-                                <div class="flex flex-col h-full w-full justify-between">
-                                    <div class="mb-4 left-card-title w-full flex flex-row">Gece Sayısı</div>
-                                    <li v-for="(item, index) in displayedItems2" :key="index"
-                                        class="flex flex-row justify-between mb-4">
-                                        {{ item.item }}
-                                        <input type="checkbox" :value="item.id"
-                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                    </li>
+                                <!-- Third Box -->
+                                <div
+                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
+                                    <div class="flex flex-col h-full w-full justify-between">
+                                        <div class="mb-4 left-card-title w-full flex flex-row">Kalkış Noktası</div>
+                                        <li v-for="(item, index) in displayedItems3" :key="index"
+                                            class="flex flex-row justify-between mb-4">
+                                            {{ item.item }}
+                                            <input type="checkbox" :value="item.id"
+                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                        </li>
+                                    </div>
+                                    <div v-if="fakeData3.length > 3" @click="toggleShowMore3"
+                                        class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
+                                        {{ showMore3 ? 'Daha Az Göster' : `+${countItem3} Daha Fazla` }}
+                                    </div>
                                 </div>
-                                <div v-if="fakeData2.length > 3" @click="toggleShowMore2"
-                                    class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
-                                    {{ showMore2 ? 'Daha Az Göster' : `+${countItem2} Daha Fazla` }}
-                                </div>
-                            </div>
-                            <!-- Third Box -->
-                            <div
-                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
-                                <div class="flex flex-col h-full w-full justify-between">
-                                    <div class="mb-4 left-card-title w-full flex flex-row">Kalkış Noktası</div>
-                                    <li v-for="(item, index) in displayedItems3" :key="index"
-                                        class="flex flex-row justify-between mb-4">
-                                        {{ item.item }}
-                                        <input type="checkbox" :value="item.id"
-                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                    </li>
-                                </div>
-                                <div v-if="fakeData3.length > 3" @click="toggleShowMore3"
-                                    class="bg-slate-200 w-full py-4 mt-2 items-center justify-center flex rounded-xl cursor-pointer">
-                                    {{ showMore3 ? 'Daha Az Göster' : `+${countItem3} Daha Fazla` }}
-                                </div>
-                            </div>
-                            <!-- Fourth Box -->
-                            <div
-                                class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 p-5">
-                                <div class="flex flex-col h-full w-full justify-between">
-                                    <div class="mb-4 left-card-title w-full flex flex-row">Konsept</div>
-                                    <li v-for="(item, index) in displayedItems4" :key="index"
-                                        class="flex flex-row justify-between mb-4">
-                                        {{ item.item }}
-                                        <input type="checkbox" :value="item.id"
-                                            class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
-                                    </li>
-                                </div>
-                                <div v-if="fakeData4.length > 3" @click="toggleShowMore4"
-                                    class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer w-full mt-2">
-                                    {{ showMore4 ? 'Daha Az Göster' : `+${countItem4} Daha Fazla` }}
+                                <!-- Fourth Box -->
+                                <div
+                                    class="w-full bg-white left-card-border flex flex-col justify-between items-start mt-3 mb-24 p-5">
+                                    <div class="flex flex-col h-full w-full justify-between">
+                                        <div class="mb-4 left-card-title w-full flex flex-row">Konsept</div>
+                                        <li v-for="(item, index) in displayedItems4" :key="index"
+                                            class="flex flex-row justify-between mb-4">
+                                            {{ item.item }}
+                                            <input type="checkbox" :value="item.id"
+                                                class="w-5 h-5 bg-gray-200 rounded-[5px] border-none cursor-pointer custom-checkbox">
+                                        </li>
+                                    </div>
+                                    <div v-if="fakeData4.length > 3" @click="toggleShowMore4"
+                                        class="bg-slate-200 py-4 items-center justify-center flex rounded-xl cursor-pointer w-full mt-2">
+                                        {{ showMore4 ? 'Daha Az Göster' : `+${countItem4} Daha Fazla` }}
+                                    </div>
                                 </div>
                             </div>
                             <button @click="toggleVisibility"
-                                class="fixed sm:hidden bottom-0 w-full h-20 bg-blue-500 text-center text-white">
+                                class="fixed sm:hidden bottom-0 w-full h-20 bg-neutral-100 rounded-t-lg tracking-wider text-slate-700 text-lg font-bold font-['Plus Jakarta Sans']">
                                 SEÇ
                             </button>
                         </div>
                         <!-- Right Column -->
                         <div class="w-full">
-                            <div class="mb-5">
+                            <div class="mb-5 mx-2">
                                 <router-link to="/tours/detail">
                                     <div
                                         class="bg-white p-4 rounded-[20px] card-border flex flex-col sm:flex-row mb-5 cursor-pointer">
@@ -256,11 +259,12 @@
 
 <script setup>
 
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import IconMoon from '../components/icons/IconMoon.vue'
 import IconPersonSimpleRun from '../components/icons/IconPersonSimpleRun.vue';
 import { formatDateToString } from '@/utils/globalHelper'
 import Litepicker from 'litepicker'
+import IconFilter from '../components/icons/IconFilter.vue';
 
 const findBool = computed(() => {
     if (fakeData2.value.length > 3) {
@@ -271,10 +275,20 @@ const findBool = computed(() => {
 })
 
 const isVisible = ref(false);
+const isOverflowHidden = ref(false);
 
 const toggleVisibility = () => {
     isVisible.value = !isVisible.value;
+    isOverflowHidden.value = !isOverflowHidden.value;
 };
+
+watch(isOverflowHidden, (newValue) => {
+    if (newValue) {
+        document.documentElement.style.overflow = 'hidden';
+    } else {
+        document.documentElement.style.overflow = '';
+    }
+});
 
 const isSmallScreen = ref(window.innerWidth < 640);
 
@@ -284,6 +298,7 @@ const handleResize = () => {
         isVisible.value = false;
     } else {
         isVisible.value = true;
+        isOverflowHidden.value = false;
     }
 };
 
@@ -300,11 +315,13 @@ const litepickerModalVisible = ref(false)
 const togglePickerModal = () => {
     litepickerModalVisible.value = !litepickerModalVisible.value
 }
+
 const datepicker = ref(null)
 const selectedDates = ref({
     start: '',
     end: ''
 })
+
 const selectedDatesLabel = computed(() => {
     if (datepicker.value) {
         return selectedDates.value.start && selectedDates.value.end ? `${formatDateToString(selectedDates.value.start)} - ${formatDateToString(selectedDates.value.end)}` : 'Tarih aralığı seçin'
@@ -318,8 +335,6 @@ const configureDatePicker = () => {
     today.setDate(today.getDate() - 1)
     const maxDate = new Date(today)
     maxDate.setMonth(maxDate.getMonth() + 1)
-
-    console.log('')
 
     const picker = new Litepicker({
         element: datepicker.value,
@@ -485,10 +500,9 @@ const fakeData4 = ref([
         item: "Koy Turları"
     },
 ])
-
 </script>
 
-<style scoped>
+<style>
 .custom-border {
     border-radius: 12px;
     border: 1px solid #c5c5c5;
@@ -577,5 +591,17 @@ const fakeData4 = ref([
 
 .custom-z {
     z-index: 50 !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .overflow-hidden {
+        html {
+            overflow: hidden;
+        }
+    }
 }
 </style>

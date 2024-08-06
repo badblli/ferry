@@ -431,17 +431,21 @@ import example from '@/assets/embeddedImages/examp.jpg'
 import IconSearchNormal from '@/components/icons/IconSearchNormal.vue'
 import IconStar from '@/components/icons/IconStar.vue'
 import IconHouse from '@/components/icons/IconHouse.vue'
-import IconReceiptX from '@/components/icons/IconReceiptX.vue'
-
+// import IconReceiptX from '@/components/icons/IconReceiptX.vue'
+import { useI18n } from 'vue-i18n'
+import IconPlus from '@/components/icons/IconPlus.vue'
+import IconMinus from '@/components/icons/IconMinus.vue'
+import { fetchData } from '@/utils/globalHelper'
 import { ref, onMounted, computed, nextTick, watch } from 'vue';
 import { formatDateToString } from '@/utils/globalHelper'
 import Litepicker from 'litepicker'
+
+const { locale } = useI18n()
 const mainHomeSplide = ref<MainSliderData | any>([])
 const AdultCount: Passenger = { id: 'adult', age: 'Yetişkin', price: '€41', count: 0 }
 const ChildCount: Passenger = { id: 'child', age: 'Çocuk', price: '€31', count: 0 }
 const InfantCount: Passenger = { id: 'infant', age: 'Bebek', price: '€0', count: 0 }
 const passenger = ref<Passenger[]>([AdultCount, ChildCount, InfantCount])
-
 
 interface Passenger {
     age: string
@@ -449,7 +453,6 @@ interface Passenger {
     count: number
     id: string
 }
-
 
 interface MainSliderData {
     btnLink: string
@@ -503,10 +506,6 @@ const selectedDates = ref({
     end: ''
 })
 
-watch(() => datepicker.value, () => {
-    configureDatePicker();
-});
-
 const selectedDatesLabel = computed(() => {
     if (datepicker.value) {
         return selectedDates.value.start && selectedDates.value.end ? `${formatDateToString(selectedDates.value.start)} - ${formatDateToString(selectedDates.value.end)}` : 'Tarih aralığı seçin'
@@ -518,12 +517,9 @@ const selectedDatesLabel = computed(() => {
 const configureDatePicker = () => {
     const today = new Date();
     today.setDate(today.getDate() - 1);
-
     const maxDate = new Date(today);
     maxDate.setMonth(maxDate.getMonth() + 1);
-
-    console.log('working here1');
-
+    
     const picker = new Litepicker({
         element: datepicker.value,
         singleMode: false,
@@ -544,17 +540,11 @@ const configureDatePicker = () => {
             });
         }
     });
-    console.log('working here2');
 };
 
-import { useI18n } from 'vue-i18n'
-import IconPlus from '@/components/icons/IconPlus.vue'
-import IconMinus from '@/components/icons/IconMinus.vue'
-import { fetchData } from '@/utils/globalHelper'
 const totalCount = () => {
     return passenger.value.reduce((total, current) => total + current.count, 0)
 }
-const { locale } = useI18n()
 
 const getHomeSpide = async () => {
     try {
@@ -572,6 +562,11 @@ const getHomeSpide = async () => {
         return
     }
 }
+
+watch(() => datepicker.value, () => {
+    configureDatePicker();
+});
+
 onMounted(() => {
     nextTick(() => {
         configureDatePicker()
@@ -595,7 +590,7 @@ const handleTabClick = (sectionId: any) => {
         if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
         }
-    }, 0);  // 0 milisaniyelik gecikme ile kaydırma işlemi yapılır
+    }, 0);
 };
 
 const copyTabs = [
