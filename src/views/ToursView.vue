@@ -518,6 +518,7 @@ const fakeData4 = ref([
 
 .card-border {
     border: 0.5px solid #c9c9c9;
+    transition: border-color 0.1s ease;
 }
 
 .card-border:hover {
