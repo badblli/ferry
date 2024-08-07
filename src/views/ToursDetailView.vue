@@ -132,7 +132,7 @@
                         <div class="flex flex-row mt-10 md:mt-20 mb-9 md:mb-[89px]">
                             <IconAsteriskSimple />
                             <h2
-                                class="ml-4 w-80 md:w-[500px]  text-black text-base font-normal font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight">
+                                class="ml-4 w-80 md:w-[500px] text-black text-base font-normal font-['Plus Jakarta Sans'] leading-[26.88px] tracking-tight">
                                 Dahil olan servisler ile ilgili soru işaretleriniz var ise blog yazılarımızı
                                 okuyabilir ya
                                 da destek alabilirsiniz.</h2>
@@ -218,19 +218,20 @@
                             <div>
                                 <table className="relative bg-white mb-8 rounded-2xl w-full">
                                     <thead>
-                                        <tr v-for="(header, index) in tableHeaders" :key="index"
-                                            class="flex flex-row mb-[23px] justify-between items-center text-black text-lg font-normal rounded-lg">
-                                            <th v-for="(label, labelIndex) in header" :key="labelIndex"
-                                                class=" w-full flex">{{
-                                                    label }}</th>
+                                        <tr class="text-black text-lg font-normal bg-rounded-lg">
+                                            <th v-for="(label, labelIndex) in tableHeaders[0]" :key="labelIndex"
+                                                class="border-b border-neutral-200 text-left py-8 first:pl-8">
+                                                {{ label }}
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-for="(row, index) in tableData" :key="index"
-                                            className="flex flex-row justify-between text-black text-lg font-normal border border-neutral-200 rounded-lg mb-[10px]">
+                                            class="justify-between text-black text-lg font-normal border border-neutral-200 rounded-lg">
                                             <td v-for="(cell, cellIndex) in row" :key="cellIndex"
-                                                className="w-full pt-8 pb-8 pl-8">
-                                                {{ cell }}</td>
+                                                class="py-8 first:pl-8">
+                                                {{ cell }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -253,7 +254,7 @@
         </div>
         <div>
             <div
-                class="max-w-[604px] relative bg-white rounded-xl border border-[#a4a4a4] flex flex-col sm:flex-row sm:items-center p-5 sm:p-0 justify-between">
+                class="max-w-[604px] relative bg-white rounded-xl custom-border flex flex-col sm:flex-row sm:items-center p-5 sm:p-0 justify-between">
                 <div @click="togglePickerModal" class="sm:ml-5 mb-2 sm:mb-0 cursor-pointer">
                     <p class="text-black text-base font-medium font-display tracking-tight">Katılmak İstenilen Tarih
                     </p>
@@ -266,7 +267,8 @@
                 <div>
                     <div @click="toggleDropdown2" class="cursor-pointer">
                         <p class="text-black text-base font-medium font-display tracking-tight">Kişi Sayısı</p>
-                        <p>{{ passenger[0].count }} yetişkin, {{ passenger[1].count }} çocuk, {{ passenger[2].count }} bebek</p>
+                        <p>{{ passenger[0].count }} yetişkin, {{ passenger[1].count }} çocuk, {{ passenger[2].count }}
+                            bebek</p>
                     </div>
                     <div v-show="isOpen2"
                         class="absolute min-w-60 bg-white w-[369px] shadow-md rounded-lg mt-2 divide-y divide-gray-200 right-0">
@@ -304,12 +306,12 @@
                     <IconSearchNormal />
                 </div>
             </div>
-            <div ref="datepicker" v-if="litepickerModalVisible" class="w-full h-full absolute">
+            <div ref="datepicker" v-if="litepickerModalVisible" class="absolute">
             </div>
         </div>
         <div class="mt-14">
             <div
-                class="w-full h-auto flex flex-row flex-wrap  justify-center md:justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                class="w-full h-auto flex flex-row flex-wrap  justify-center md:justify-between bg-white rounded-[20px] custom-border mb-5">
                 <div class="flex flex-col my-8 ml-6">
                     <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
                         Samos City Hotel - Standart Oda
@@ -355,7 +357,7 @@
                 </div>
             </div>
             <div
-                class="w-full h-auto flex flex-row flex-wrap items-center justify-center md:justify-between bg-white rounded-[20px] border border-[#a4a4a4] mb-5">
+                class="w-full h-auto flex flex-row flex-wrap items-center justify-center md:justify-between bg-white rounded-[20px] custom-border mb-5">
                 <div class="flex flex-col my-8 ml-6">
                     <p class="text-black text-2xl font-bold font-['Plus Jakarta Sans'] tracking-wide">
                         Samos City Hotel - Standart Oda
@@ -507,10 +509,10 @@ const selectedDates = ref({
 })
 
 const selectedDatesLabel = computed(() => {
-    if (datepicker.value) {
-        return selectedDates.value.start && selectedDates.value.end ? `${formatDateToString(selectedDates.value.start)} - ${formatDateToString(selectedDates.value.end)}` : 'Tarih aralığı seçin'
+    if (selectedDates.value.start && selectedDates.value.end) {
+        return `${formatDateToString(selectedDates.value.start)} - ${formatDateToString(selectedDates.value.end)}`
     } else {
-        return `${selectedDates.value.start} ${selectedDates.value.end}`
+        return 'Tarih aralığı seçin';
     }
 })
 
@@ -519,27 +521,27 @@ const configureDatePicker = () => {
     today.setDate(today.getDate() - 1);
     const maxDate = new Date(today);
     maxDate.setMonth(maxDate.getMonth() + 1);
-    
-    const picker = new Litepicker({
-        element: datepicker.value,
-        singleMode: false,
-        format: 'YYYY-MM-DD',
-        autoApply: true,
-        minDate: today,
-        maxDate: maxDate,
-        startDate: today,
-        inlineMode: true,
-        setup: (picker) => {
-            // picker.on('show', () => {
-            //     picker.setDateRange(today, null);
-            // });
 
-            picker.on('selected', (startDate, endDate) => {
-                selectedDates.value.start = startDate.format('YYYY-MM-DD');
-                selectedDates.value.end = endDate.format('YYYY-MM-DD');
-            });
-        }
-    });
+    if (datepicker.value) {
+        new Litepicker({
+            element: datepicker.value,
+            singleMode: false,
+            format: 'YYYY-MM-DD',
+            autoApply: true,
+            minDate: today,
+            maxDate: maxDate,
+            startDate: today,
+            inlineMode: true,
+            setup: (picker) => {
+                picker.on('selected', (startDate, endDate) => {
+                    selectedDates.value.start = startDate.format('YYYY-MM-DD');
+                    selectedDates.value.end = endDate.format('YYYY-MM-DD');
+                });
+            }
+        });
+    } else {
+        return;
+    }
 };
 
 const totalCount = () => {
@@ -563,18 +565,22 @@ const getHomeSpide = async () => {
     }
 }
 
-watch(() => datepicker.value, () => {
-    configureDatePicker();
+watch(() => litepickerModalVisible.value, (newVal) => {
+    if (newVal) {
+        nextTick(() => {
+            configureDatePicker();
+        });
+    }
 });
 
 onMounted(() => {
     nextTick(() => {
-        configureDatePicker()
-    })
+        configureDatePicker();
+    });
     getHomeSpide();
-})
+});
 
-const handleTabClick = (sectionId: any) => {
+const handleTabClick = (sectionId) => {
     if (sectionId === 5) {
         showCustomComponent.value = true;
         nextTick(() => {
@@ -582,7 +588,6 @@ const handleTabClick = (sectionId: any) => {
         });
     } else {
         showCustomComponent.value = false;
-        console.log(sectionId, 'sectionId is here!');
     }
     activeTab.value = sectionId;
     setTimeout(() => {
@@ -631,14 +636,14 @@ const travelItems = ref([
 ]);
 
 const tableHeaders = [
-    ["Otel", "Tarih Aralığı", "Kişi Başı", "İlave Yatak", "Tek Kişi", "Çocuk", "Bebek"]
+    ["Otel", "Tarih Aralığı", "Kişi Başı", "İlave Yatak", "Tek Kişi", "Bebek", "Çocuk"]
 ];
 
 const tableData = [
-    ["Samosa City Hotel", "01-30 Kasım", "39TL", "39TL", "39TL", "Bebek 0TL", "Çocuk 39TL"],
-    ["Samosa City Hotel", "01-30 Kasım", "39TL", "39TL", "39TL", "Bebek 0TL", "Çocuk 39TL"],
-    ["Samosa City Hotel", "01-30 Kasım", "39TL", "39TL", "39TL", "Bebek 0TL", "Çocuk 39TL"],
-    ["Samosa City Hotel", "01-30 Kasım", "39TL", "39TL", "39TL", "Bebek 0TL", "Çocuk 39TL"],
+    ["Samosa City Hotel", "01-30 Kasım", "39 TL", "39 TL", "39 TL", "Bebek 0TL", "Çocuk 39TL"],
+    ["Samosa City Hotel", "01-30 Kasım", "39 TL", "39 TL", "39 TL", "Bebek 0TL", "Çocuk 39TL"],
+    ["Samosa City Hotel", "01-30 Kasım", "39 TL", "39 TL", "39 TL", "Bebek 0TL", "Çocuk 39TL"],
+    ["Samosa City Hotel", "01-30 Kasım", "39 TL", "39 TL", "39 TL", "Bebek 0TL", "Çocuk 39TL"],
 ];
 
 </script>
@@ -665,5 +670,53 @@ const tableData = [
         height: 90px;
         padding: 5px 0px;
     }
+}
+
+.custom-border {
+    border: 1px solid #c9c9c9;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+    border-color: black;
+    border: #2149d5;
+}
+
+th {
+    border: 0px solid #ffffff;
+}
+
+td {
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+td {
+    border-right: none;
+}
+
+td:first-child {
+    border-left: 1px solid #d3d3d3;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+td:last-child {
+    border-right: 1px solid #d3d3d3;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+thead th {
+    background-color: #ffffff;
+}
+
+tbody tr {
+    background-color: #ffffff;
+}
+
+tbody tr:last-child td {
+    border-bottom: 1px solid #d3d3d3;
 }
 </style>

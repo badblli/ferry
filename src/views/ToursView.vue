@@ -311,11 +311,11 @@ onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
 });
 
-const litepickerModalVisible = ref(false)
 const togglePickerModal = () => {
     litepickerModalVisible.value = !litepickerModalVisible.value
 }
 
+const litepickerModalVisible = ref(false)
 const datepicker = ref(null)
 const selectedDates = ref({
     start: '',
@@ -369,7 +369,6 @@ onMounted(() => {
 // const displayedItems = computed(() => {
 //     return fakeData2.value.slice(0, findBool.value ? fakeData2.value.length : 3);
 // });
-
 
 // const displayedItems = computed(() => {
 //     return fakeData.value.slice(0, showMore.value ? fakeData.value.length : 3)
