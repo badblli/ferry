@@ -67,7 +67,7 @@
                          </div>
 
                          <Teleport to="#target">
-                              <Transition name="custom-classes">
+                              <Transition>
                                    <newSıgnInModal v-if="showModalState" @closeModal="handleCloseModal" />
                               </Transition>
                          </Teleport>
