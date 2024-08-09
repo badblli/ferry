@@ -60,8 +60,7 @@
     <section>
         <div class="flex flex-col w-full h-full mx-auto bg-neutral-100">
             <div class="flex justify-evenly items-end overflow-x-auto w-full mx-auto centered-small-w h-full">
-                <div v-for="(tab, index) in copyTabs" :key="index" @click="handleTabClick(tab.id)"
-                    class="tab"
+                <div v-for="(tab, index) in copyTabs" :key="index" @click="handleTabClick(tab.id)" class="tab"
                     :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
             </div>
         </div>
@@ -568,7 +567,7 @@ onMounted(() => {
     getHomeSpide();
 });
 
-const handleTabClick = (sectionId) => {
+const handleTabClick = (sectionId: any) => {
     if (sectionId === 5) {
         showCustomComponent.value = true;
         nextTick(() => {
@@ -672,6 +671,19 @@ const tableData = [
         place-content: center;
         align-items: center;
         text-align: center;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .tab.active {
+        border-bottom: 1px solid #000000;
+        color: #000000;
+        color: #000;
+        font-family: "Plus Jakarta Sans";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px;
     }
 }
 
@@ -685,9 +697,8 @@ const tableData = [
 
 @media (max-width: 768px) {
     .custom-margin:last-child {
-        margin-right: 1rem
-            /* 80px */
-        ;
+        margin-right: 1rem;
+        /* 80px */
     }
 
     .custom-margin:first-child {

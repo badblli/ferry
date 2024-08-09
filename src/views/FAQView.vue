@@ -40,7 +40,7 @@
                             Genel Bilgiler</h1>
                         <div class="hs-accordion-group">
                             <div v-for="(accordion, index) in accordions" :key="index"
-                                class="hs-accordion hs-accordion-active:border-blue-600 border border-transparent rounded-xl mb-[24px]"
+                                class="hs-accordion hs-accordion-active:border-blue-600 border border-[#D0D0D0] rounded-xl mb-[24px]"
                                 id="hs-active-bordered-heading-one">
                                 <button
                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center py-8 gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-5 disabled:opacity-50 disabled:pointer-events-none"
@@ -80,7 +80,7 @@
                             Vize</h1>
                         <div class="hs-accordion-group">
                             <div v-for="(accordion, index) in accordions" :key="index"
-                                class="hs-accordion hs-accordion-active:border-blue-600 border border-transparent rounded-xl mb-[24px]"
+                                class="hs-accordion hs-accordion-active:border-blue-600 border border-[#D0D0D0] rounded-xl mb-[24px]"
                                 id="hs-active-bordered-heading-one">
                                 <button
                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center py-8 gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-5 disabled:opacity-50 disabled:pointer-events-none"
@@ -120,7 +120,7 @@
                             Paket Turlar</h1>
                         <div class="hs-accordion-group">
                             <div v-for="(accordion, index) in accordions" :key="index"
-                                class="hs-accordion hs-accordion-active:border-blue-600 border border-transparent rounded-xl mb-[24px]"
+                                class="hs-accordion hs-accordion-active:border-blue-600 border border-[#D0D0D0] rounded-xl mb-[24px]"
                                 id="hs-active-bordered-heading-one">
                                 <button
                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center py-8 gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-5 disabled:opacity-50 disabled:pointer-events-none"
