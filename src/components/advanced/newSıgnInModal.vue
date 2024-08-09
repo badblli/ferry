@@ -1,6 +1,6 @@
 <template>
      <div>
-          <div class="fixed inset-0 flex flex-col items-center justify-start z-50 bg-white w-full max-w-[849px] h-[732px] m-auto overflow-y-hidden rounded-3xl">
+          <div class="fixed inset-0 flex flex-col items-center justify-start z-50 bg-white w-full max-w-[749px] h-[732px] m-auto overflow-y-hidden rounded-3xl">
                <div class="flex flex-row items-center justify-center mt-10 w-full">
                     <div class="w-full flex flex-row justify-center">
                          <div class="text-black text-xl font-semibold font-['Plus Jakarta Sans'] ml-20">Kullanıcı Kaydı</div>

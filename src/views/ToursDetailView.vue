@@ -59,10 +59,9 @@
     </div>
     <section>
         <div class="flex flex-col w-full h-full mx-auto bg-neutral-100">
-            <div
-                class="flex justify-between items-end border-sub-line overflow-x-auto w-full mx-auto centered-small-w h-full">
+            <div class="flex justify-evenly items-end overflow-x-auto w-full mx-auto centered-small-w h-full">
                 <div v-for="(tab, index) in copyTabs" :key="index" @click="handleTabClick(tab.id)"
-                    class="tab md:mx-4 mx-2 md:px-20 px-2 h-full first:ml-20 md:last:mr-20"
+                    class="tab"
                     :class="{ active: activeTab === tab.id }">{{ tab.title }}</div>
             </div>
         </div>
@@ -78,35 +77,14 @@
                         bu turun<br /> programı aşağıdaki gibidir.</p>
                 </div>
                 <div>
-                    <div class="hs-accordion-group">
-                        <div v-for="(accordion, index) in accordions" :key="index"
-                            class="hs-accordion hs-accordion-active:border-blue-700 border border-transparent rounded-xl mb-[24px]"
-                            id="hs-active-bordered-heading-one">
-                            <button
-                                class="hs-accordion-toggle hs-accordion-active:text-blue-700 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-xl font-['Plus Jakarta Sans'] leading-[38px] text-start text-black px-11 disabled:opacity-50 disabled:pointer-events-none"
-                                aria-controls="hs-basic-active-bordered-collapse-one">
-                                {{ accordion.title }}
-                                <div class="flex flex-row justify-center items-center ">
-                                    <span
-                                        class="flex flex-row justify-end text-sm rounded-md mr-[18px] my-4 py-3 px-6 bg-slate-200 hs-accordion-active:bg-white">
-                                        GÜN {{ index + 1 }} </span>
-                                    <IconAccordionActiveArrow class="hs-accordion-active:block hidden" />
-                                    <IconAccordionArrow class="hs-accordion-active:hidden block" />
+                    <div>
+                        <div v-for="(accordion, index) in accordions" :key="index" class="mb-5">
+                            <AccordionPanel4 :title="accordion.title" :borderState="true"
+                                :is-open="index === activeIndex" @toggle="setActiveIndex(index)">
+                                <div class="mt-4 ml-4 mb-16">
+                                    {{ accordion.body }}
                                 </div>
-                            </button>
-                            <div id="hs-basic-active-bordered-collapse-one"
-                                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                                aria-labelledby="hs-active-bordered-heading-one">
-                                <div class="pb-4 px-11 justify-center items-center flex flex-row">
-                                    <p class="text-black text-base font-medium font-['Plus Jakarta Sans'] leading-7">
-                                        <br />
-                                        {{ accordion.body }}
-                                        <br />
-                                        <br />
-                                        <br />
-                                    </p>
-                                </div>
-                            </div>
+                            </AccordionPanel4>
                         </div>
                     </div>
                 </div>
@@ -201,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div id="4" class="border px-10 bg-white mb-[30px] rounded-[20px]">
+            <div id="4" class="border sm:px-10 px-1 bg-white mb-[30px] rounded-[20px]">
                 <div>
                     <div>
                         <h1 class="text-black text-[42px] font-medium font-display tracking-wide pt-[74px] pb-[37px]">
@@ -441,6 +419,7 @@ import { fetchData } from '@/utils/globalHelper'
 import { ref, onMounted, computed, nextTick, watch } from 'vue';
 import { formatDateToString } from '@/utils/globalHelper'
 import Litepicker from 'litepicker'
+import AccordionPanel4 from '../components/advanced/AccordionPanel4.vue';
 
 const { locale } = useI18n()
 const mainHomeSplide = ref<MainSliderData | any>([])
@@ -470,6 +449,15 @@ interface MainSliderData {
 const isOpen = ref(true);
 const showCustomComponent = ref(false);
 const activeTab = ref(1)
+const activeIndex = ref(0)
+
+const setActiveIndex = (index: number) => {
+    if (activeIndex.value === index) {
+        activeIndex.value = -1
+    } else {
+        activeIndex.value = index
+    }
+}
 
 const increaseCount = (index: number) => {
     if (passenger.value[index]) {
@@ -654,26 +642,61 @@ const tableData = [
 }
 
 .tab.active {
-    border-bottom: 1px solid #2149d5;
-    color: #2149d5;
+    border-bottom: 1px solid #000000;
+    color: #000000;
+    color: #000;
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
 }
 
 .tab {
     border-bottom: 1px solid rgb(255, 255, 255);
-    /* Pasif durumdaki alt çizgi rengi */
     cursor: pointer;
     padding: 32.5px 0px;
+    color: #7D7E7E;
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
 }
 
 @media (max-width: 680px) {
     .tab {
         height: 90px;
-        padding: 5px 0px;
+        padding: 12px 0px;
+        justify-content: center;
+        place-content: center;
+        align-items: center;
+        text-align: center;
     }
 }
 
 .custom-border {
     border: 1px solid #c9c9c9;
+}
+
+.custom-margin {
+    margin-left: 5rem;
+}
+
+@media (max-width: 768px) {
+    .custom-margin:last-child {
+        margin-right: 1rem
+            /* 80px */
+        ;
+    }
+
+    .custom-margin:first-child {
+        margin-left: 1rem;
+    }
+
+    .custom-margin {
+        margin-left: 2rem;
+    }
 }
 
 table {

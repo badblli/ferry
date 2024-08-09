@@ -43,7 +43,8 @@
                                         class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
                                         {{ passengerDetails?.passengerInformation }}
                                    </div>
-                                   <div v-if="isPackageTour" class="mt-5 ml-4 bg-[#f5ebeb] py-[6px] px-[7px] rounded-2xl text-base text-[#902929] font-semibold leading-normal tracking-tight">
+                                   <div v-if="isPackageTour"
+                                        class="mt-5 ml-4 bg-[#f5ebeb] py-[6px] px-[7px] rounded-2xl text-base text-[#902929] font-semibold leading-normal tracking-tight">
                                         Max 3 yolcu olabilir.
                                    </div>
                               </div>
@@ -315,10 +316,11 @@ import p from '@/utils/pathConfig'
 
 const showWarning = ref(false)
 const showEmptyAccordionError = ref(false)
+const formattedBirthValue = ref('')
 const applicationName = ref(p.Product)
 const controllerName = ref('Keydefinition')
 const name = ref('CountryList')
-const formattedBirthValue = ref('')
+const isPackageTour = ref(true);
 
 const countryList4 = [
      { name: 'United States', code: 'US' },
@@ -535,8 +537,6 @@ const isOpen3 = ref(false)
 
 const accordion_idchange = ref()
 
-const isPackageTour = ref(false);
-
 const saveAllPassenger = async (accordion: any) => {
      accordion_idchange.value = accordion
      console.log(accordion, 'saveallpassenger accordion')
@@ -654,6 +654,7 @@ const cancelChange2 = () => {
 }
 
 const tripStore = useTripStore()
+
 const from = ref(tripStore.from)
 const to = ref(tripStore.to)
 const storedTripParams = ref<any>([])

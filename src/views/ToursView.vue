@@ -5,7 +5,7 @@
                 <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <div class="flex flex-col md:flex-row md:items-center justify-between">
                         <div>
-                            <ol class="flex items-center whitespace-nowrap mt-[30px] mb-7" aria-label="Breadcrumb">
+                            <ol class="flex items-center whitespace-nowrap mt-[30px] mb-3 md:mb-7" aria-label="Breadcrumb">
                                 <li class="inline-flex items-center">
                                     <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight border-b border-black"
                                         href="#">
@@ -38,13 +38,13 @@
                                 </li>
                             </ol>
                             <h1
-                                class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-14 md:pl-0">
+                                class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide mb-5 md:mb-14 md:pl-0">
                                 Paket Turlar
                             </h1>
                         </div>
-                        <div class="relative">
+                        <div class="relative mb-5 md:mb-0">
                             <div @click="togglePickerModal"
-                                class="h-[78px] w-full bg-white rounded-xl border flex flex-row justify-between items-center px-6 sm:mx-2 cursor-pointer mb-5 sm:mb-0">
+                                class="h-[78px] w-full bg-white rounded-xl border flex flex-row justify-between items-center px-6 sm:mx-2 cursor-pointer mb-0 md:mb-0">
                                 <div class="cursor-pointer ">
                                     <div class="text-black text-base font-medium font-display tracking-tight">
                                         Ne Zaman Gitmek İstersiniz?</div>
@@ -82,7 +82,7 @@
                     <div
                         class="grid gap-4 sm:grid-cols-[295px,1fr] grid-cols-1 mt-0 sm:mt-14 w-full centered-w lg:px-[100px]">
                         <div @click="toggleVisibility"
-                            class="bg-slate-200 px-4 p-2 rounded-xl mt-10 sm:hidden w-36 ml-2 flex flex-row justify-between items-center cursor-pointer">
+                            class="bg-slate-200 px-4 p-2 rounded-xl mt-5 md:mt-10 sm:hidden w-36 ml-2 flex flex-row justify-between items-center cursor-pointer">
                             Filtreler
                             <IconFilter />
                         </div>
@@ -590,7 +590,7 @@ const fakeData4 = ref([
 }
 
 .custom-z {
-    z-index: 50 !important;
+    z-index: 70 ;
 }
 
 .overflow-hidden {
