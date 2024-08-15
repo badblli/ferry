@@ -40,12 +40,12 @@
                               <ul class="splide__list">
                                    <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img"
                                         :key="`image-${index}`">
-                                        <img :src="getImage(image.url)" alt="Slide Image" />
+                                        <img :src="getImage(image.url)" alt="Meander Feribot Tur" />
                                         <div>{{ image.title }}</div>
                                    </li>
                                    <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img"
                                         :key="`image-${index}`">
-                                        <img :src="getImage(image.url)" alt="Slide Image" />
+                                        <img :src="getImage(image.url)" alt="Meander Ferry Tour" />
                                         <div>{{ image.title }}</div>
                                    </li>
                               </ul>
@@ -56,14 +56,13 @@
                               <ul class="splide__list">
                                    <li class="splide__slide" v-for="(image, index) in mainHomeSplide.img"
                                         :key="`image-${index}`">
-                                        <img :src="getImage(image.url)" alt="Slide Image" />
+                                        <img :src="getImage(image.url)" alt="Meander Feribot" />
                                         <div>{{ image.title }}</div>
                                    </li>
                               </ul>
                          </div>
                     </div>
                </div>
-
                <form class="md:relative md:max-w-[798px] md:block mx-auto -translate-y-36 md:-translate-y-72 md:z-50 z-40">
                     <div class="flex flex-row">
                          <div :class="{ 'bg-slate-200': showTrue, 'bg-white': !showTrue }"
@@ -79,7 +78,6 @@
                                    {{ mainHomeSplide.search?.SearchReservation?.reservationNo }} </span>
                          </div>
                     </div>
-
                     <div class="bg-white rounded-b-xl rounded-tr-xl">
                          <div class="flex flex-row items-center w-full" v-show="!showTrue">
                               <div class="flex flex-row items-center w-full">

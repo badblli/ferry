@@ -1,10 +1,11 @@
 <template>
      <section class="mb-[120px] centered-w">
           <div class="lg:px-[100px] px-2 md:px-16 sm:px-8">
-               <div class="text-black text-[42px] font-medium font-display tracking-wide mb-7">{{ item.title }}</div>
-               <div class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 sm:mb-28 mb-48">
+               <h1 class="text-black text-[42px] font-medium font-display tracking-wide mb-7">{{ item.title }}</h1>
+               <p
+                    class="md:w-1/2 w-full text-zinc-600 text-lg font-medium font-['Plus Jakarta Sans'] leading-7 sm:mb-28 mb-48">
                     {{ item.description }}
-               </div>
+               </p>
           </div>
           <div>
                <div className="h-full w-full">
@@ -12,19 +13,25 @@
                          <div id="splide" class="splide" ref="splideRef">
                               <div class="splide__track">
                                    <ul class="splide__list">
-                                        <li v-for="(item, index) in props.item.Ferry" :key="index" class="splide__slide">
+                                        <li v-for="(item, index) in props.item.Ferry" :key="index"
+                                             class="splide__slide">
                                              <div class="h-full w-full flex flex-col justify-end mt-9">
-                                                  <div v-if="item.where" class="text-black text-[25px] font-['Plus Jakarta Sans'] flex flex-col justify-start ml-7">
+                                                  <div v-if="item.where"
+                                                       class="text-black text-[25px] font-['Plus Jakarta Sans'] flex flex-col justify-start ml-7">
                                                        <div>
-                                                            <span class="font-bold">{{ item.where.split(' ')[0] }}</span>
-                                                            <span class="font-normal">{{ item.where.split(' ')[1] }}</span>
+                                                            <span class="font-bold">{{ item.where.split(' ')[0]
+                                                                 }}</span>
+                                                            <span class="font-normal">{{ item.where.split(' ')[1]
+                                                                 }}</span>
                                                        </div>
-                                                       <span class="md:flex hidden flex-row justify-center relative md:-left-12">
+                                                       <span
+                                                            class="md:flex hidden flex-row justify-center relative md:-left-12">
                                                             <IconSamosaVector />
                                                        </span>
                                                   </div>
                                                   <div class="mb-[61px] ml-7 flex flex-col mt-auto">
-                                                       <p class="max-w-[223px] text-3xl font-semibold font-['Plus Jakarta Sans'] tracking-wide text-white">
+                                                       <p
+                                                            class="max-w-[223px] text-3xl font-semibold font-['Plus Jakarta Sans'] tracking-wide text-white">
                                                             {{ item.title }}
                                                        </p>
                                                        <div class="mt-7 flex flex-row ml-3 text-white">
@@ -40,16 +47,20 @@
                                                        </div>
                                                        <div></div>
                                                   </div>
-                                                  <img :src="getImage(item.img.url)" class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" />
+                                                  <img :src="getImage(item.img.url)"
+                                                  :alt="item.title"
+                                                       class="absolute top-0 left-0 w-full h-full object-cover z-[-1] rounded-[20px]" />
                                              </div>
                                         </li>
                                    </ul>
                               </div>
                               <div class="splide__arrows">
-                                   <button class="splide__arrow splide__arrow--prev" type="button" aria-controls="mobile-testim-carousel-track" aria-label="Go to last slide">
+                                   <button class="splide__arrow splide__arrow--prev" type="button"
+                                        aria-controls="mobile-testim-carousel-track" aria-label="Go to last slide">
                                         <IconChevronRight />
                                    </button>
-                                   <button class="splide__arrow splide__arrow--next" type="button" aria-controls="mobile-testim-carousel-track" aria-label="Next slide">
+                                   <button class="splide__arrow splide__arrow--next" type="button"
+                                        aria-controls="mobile-testim-carousel-track" aria-label="Next slide">
                                         <div>
                                              <IconChevronRight />
                                         </div>
@@ -219,7 +230,7 @@ onMounted(() => {
      cursor: pointer;
      margin-right: 10px;
      background-color: #0000003a;
-     
+
 }
 
 /* .splide__slide:first-child {

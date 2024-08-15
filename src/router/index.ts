@@ -2,14 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import axios from 'axios'
 import { ref, computed, watch } from 'vue'
 import { useRouterStore } from '../stores/router'
+import { type IStaticMethods } from 'preline/preline'
 
 const homeTitle = ref(null)
 const priceTitle = ref(null)
 const journeyTitle = ref(null)
 const ticketTitle = ref(null)
 const passengerTitle = ref(null)
-
-import { type IStaticMethods } from 'preline/preline'
 
 declare global {
      interface Window {
@@ -20,7 +19,7 @@ declare global {
 // localStorage'dan dil kodunu çek
 const selectedLanguage = JSON.parse(localStorage.getItem('selectedLanguage'))
 const languageCode = selectedLanguage ? selectedLanguage.code.toLowerCase() : 'TR'
-console.log(languageCode, 'langlang')
+// console.log(languageCode, 'langlang')
 
 const routes = [
      {
@@ -112,10 +111,12 @@ const routes = [
                },
                {
                     path: '/journey',
-                    meta: {
-                         title: journeyTitle.value,
-                         id: 3
-                    },
+                    meta: [
+                         {
+                              title: journeyTitle.value,
+                              id: 3,
+                         },
+                    ],
                     name: 'journey',
                     component: () => import('../views/JourneyView.vue')
                },
@@ -217,8 +218,8 @@ router.afterEach((to, from, failure) => {
                window.HSStaticMethods.autoInit()
           }, 10)
      }
-     // Dinamik olarak sayfa başlığını güncelle
-     document.title = to.meta.title || 'Default Title'
+
+     document.title = to.meta.title || 'Meander Feribot'
 
      const routerStore = useRouterStore()
      routerStore.addRouteChange({ to: to.fullPath, meta: to.meta })

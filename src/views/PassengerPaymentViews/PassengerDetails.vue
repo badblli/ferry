@@ -43,7 +43,7 @@
                                         class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
                                         {{ passengerDetails?.passengerInformation }}
                                    </div>
-                                   <div v-if="isPackageTour"
+                                   <div v-if="!isPackageTour"
                                         class="mt-5 ml-4 bg-[#f5ebeb] py-[6px] px-[7px] rounded-2xl text-base text-[#902929] font-semibold leading-normal tracking-tight">
                                         Max 3 yolcu olabilir.
                                    </div>

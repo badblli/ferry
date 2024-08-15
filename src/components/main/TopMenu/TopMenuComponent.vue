@@ -100,7 +100,7 @@ const updateCurrentLanguage = (language: Language) => {
      localSelectedLanguage.value = language.name
      locale.value = language.code
      localStorage.setItem('selectedLanguage', JSON.stringify({ name: language.name, code: language.code }))
-     handleClickInside() // Dropdown menüsünü kapatmak için fonksiyonu çağırın.
+     handleClickInside()
 }
 
 const handleClickOutside = (event: MouseEvent) => {

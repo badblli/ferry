@@ -6,9 +6,9 @@
                 <span v-if="title2" class="ml-5 mb-2 mt-3 p-4 bg-neutral-100 rounded-full">
                     <component :is="title2" />
                 </span>
-                <span :class="isOpen ? 'text-[#2149d5]' : ''" class="ml-11 text-start">
+                <h3 :class="isOpen ? 'text-[#2149d5]' : ''" class="ml-11 text-start">
                     {{ title }}
-                </span>
+                </h3>
             </div>
             <div class="flex flex-row">
                 <div class="flex flex-row">
