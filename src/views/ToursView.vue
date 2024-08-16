@@ -5,7 +5,8 @@
                 <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <div class="flex flex-col md:flex-row md:items-center justify-between">
                         <div>
-                            <ol class="flex items-center whitespace-nowrap mt-[30px] mb-3 md:mb-7" aria-label="Breadcrumb">
+                            <ol class="flex items-center whitespace-nowrap mt-[30px] mb-3 md:mb-7"
+                                aria-label="Breadcrumb">
                                 <li class="inline-flex items-center">
                                     <a class="mr-[6px] opacity-60 text-black text-base font-normal font-['Plus Jakarta Sans'] tracking-tight border-b border-black"
                                         href="#">
@@ -265,6 +266,7 @@ import IconPersonSimpleRun from '../components/icons/IconPersonSimpleRun.vue';
 import { formatDateToString } from '@/utils/globalHelper'
 import Litepicker from 'litepicker'
 import IconFilter from '../components/icons/IconFilter.vue';
+import { useHead } from '@vueuse/head';
 
 const findBool = computed(() => {
     if (fakeData2.value.length > 3) {
@@ -499,6 +501,22 @@ const fakeData4 = ref([
         item: "Koy Turları"
     },
 ])
+
+useHead({
+    title: `Meander - Paket Turlar`,
+    meta: [
+        { name: 'description', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:title', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:description', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:image', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:url', content: window.location.href },
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ],
+    link: [
+        { rel: 'canonical', href: window.location.href }
+    ]
+});
+
 </script>
 
 <style>
@@ -590,7 +608,7 @@ const fakeData4 = ref([
 }
 
 .custom-z {
-    z-index: 70 ;
+    z-index: 70;
 }
 
 .overflow-hidden {

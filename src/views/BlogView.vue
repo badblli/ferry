@@ -165,7 +165,7 @@ const getBlogPage = async () => {
      };
 
      useHead({
-          title: blogCards.value[0].title,
+          title: `Meander - ${blogHeader.value.title}`,
           meta: [
                { name: 'description', content: blogCards.value[0].subtitle || 'Meander Blog' },
                { property: 'og:title', content: blogCards.value[0].title },

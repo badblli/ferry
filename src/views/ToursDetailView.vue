@@ -419,6 +419,7 @@ import { ref, onMounted, computed, nextTick, watch } from 'vue';
 import { formatDateToString } from '@/utils/globalHelper'
 import Litepicker from 'litepicker'
 import AccordionPanel4 from '../components/advanced/AccordionPanel4.vue';
+import { useHead } from '@vueuse/head';
 
 const { locale } = useI18n()
 const mainHomeSplide = ref<MainSliderData | any>([])
@@ -632,6 +633,21 @@ const tableData = [
     ["Samosa City Hotel", "01-30 Kasım", "39 TL", "39 TL", "39 TL", "Bebek 0TL", "Çocuk 39TL"],
     ["Samosa City Hotel", "01-30 Kasım", "39 TL", "39 TL", "39 TL", "Bebek 0TL", "Çocuk 39TL"],
 ];
+
+useHead({
+    title: `Meander - Paket Turlar`,
+    meta: [
+        { name: 'description', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:title', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:description', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:image', content: 'Meander Feribot Paket Turlar' },
+        { property: 'og:url', content: window.location.href },
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ],
+    link: [
+        { rel: 'canonical', href: window.location.href }
+    ]
+});
 
 </script>
 

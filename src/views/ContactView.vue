@@ -136,22 +136,38 @@
 import IconPhoneIncoming from "../components/icons/IconPhoneIncoming.vue";
 import IconWhatsapp from "../components/icons/IconWhatsapp.vue";
 import IconHouseSimple from "@/components/icons/IconHouseSimple.vue";
+import { useHead } from '@vueuse/head';
+
+useHead({
+    title: `Meander Travel | İletişim`,
+    meta: [
+        { name: 'description', content: 'Meander Feribot - İletişim' },
+        { property: 'og:title', content: 'Meander Feribot - İletişim' },
+        { property: 'og:description', content: 'Meander Feribot - İletişim' },
+        { property: 'og:image', content: 'Meander Feribot - İletişim' },
+        { property: 'og:url', content: window.location.href },
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ],
+    link: [
+        { rel: 'canonical', href: window.location.href }
+    ]
+});
 </script>
 
 <style scoped>
 @media (min-width: 768px) and (max-width: 1025px) {
-  .grids {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-left: -30px;
-  }
+    .grids {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-left: -30px;
+    }
 }
 
 @media (max-width: 430px) {
-  .title {
-    justify-content: center;
-    text-align: center;
-  }
+    .title {
+        justify-content: center;
+        text-align: center;
+    }
 }
 </style>

@@ -183,6 +183,22 @@ const accordions = ref([
     },
 ]);
 
+import { useHead } from '@vueuse/head';
+
+useHead({
+    title: `Meander Travel | S.S.S.`,
+    meta: [
+        { name: 'description', content: 'Meander Feribot - S.S.S.' },
+        { property: 'og:title', content: 'Meander Feribot - S.S.S.' },
+        { property: 'og:description', content: 'Meander Feribot - S.S.S.' },
+        { property: 'og:image', content: 'Meander Feribot - S.S.S.' },
+        { property: 'og:url', content: window.location.href },
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ],
+    link: [
+        { rel: 'canonical', href: window.location.href }
+    ]
+});
 
 </script>
 

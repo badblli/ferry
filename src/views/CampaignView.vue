@@ -112,6 +112,23 @@ const fakeData = ref<FakeDataItem[]>([
         lastTime: '01-30 Kasım Arası'
     }
 ]);
+
+import { useHead } from '@vueuse/head';
+
+useHead({
+    title: `Meander Travel | Kampanya`,
+    meta: [
+        { name: 'description', content: 'Meander Feribot - Kampanya' },
+        { property: 'og:title', content: 'Meander Feribot - Kampanya' },
+        { property: 'og:description', content: 'Meander Feribot - Kampanya' },
+        { property: 'og:image', content: 'Meander Feribot - Kampanya' },
+        { property: 'og:url', content: window.location.href },
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ],
+    link: [
+        { rel: 'canonical', href: window.location.href }
+    ]
+});
 </script>
   
 <style scoped></style>
