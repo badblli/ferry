@@ -65,7 +65,6 @@ const getHome = async () => {
      }
 }
 
-
 const closeModal = () => {
      showModal.value = false
 }
@@ -92,7 +91,7 @@ useHead({
           { property: 'og:image', content: '' },
           { property: 'og:url', content: pageUrl.value },
           { name: 'twitter:card', content: 'summary_large_image' },
-          { name: 'twitter:title', content: 'Default Title' },
+          { name: 'twitter:title', content: 'Meander Travel' },
           { name: 'twitter:description', content: 'Meander Travel' },
           { name: 'twitter:image', content: '' },
           { name: 'twitter:url', content: pageUrl.value }
