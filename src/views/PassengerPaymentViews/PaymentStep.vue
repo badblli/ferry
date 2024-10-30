@@ -766,7 +766,10 @@ const postData = async () => {
                journeyID: ferry.journeyID,
                journeyTravelDirection: ferry.journeyTravelDirection,
                price: ferry.price,
-               currencyID: ferry.currencyID
+               currencyID: ferry.currencyID,
+               netPrice: ferry.netPrice,
+               taxPrice: ferry.taxPrice,
+               commissionPrice: ferry.commissionPrice,
           })),
           invoiceDetail: {
                invoiceType: tripStore.invoiceDetail.invoiceType,

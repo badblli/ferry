@@ -201,7 +201,10 @@ onMounted(() => {
                journeyID: ferryList.JourneyID,
                journeyTravelDirection: ferryList.FerryTravelType,
                price: ferryList.Price,
-               currencyID: ferryList.CurrencyID
+               currencyID: ferryList.CurrencyID,
+               netPrice: ferryList.NetPrice,
+               taxPrice: ferryList.TaxPrice,
+               commisionPrice: ferryList.CommisionPrice,
           }))
           console.log(ferryList.value, 'ferryList.value')
           const filteredAdults = adults.map((adult: any) => ({
