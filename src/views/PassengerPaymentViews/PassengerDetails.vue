@@ -139,7 +139,8 @@
                                                                  <input v-model="accordion.name"
                                                                       class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
                                                                       type="type"
-                                                                      :placeholder="passengerDetails?.passengers[0].name" />
+                                                                      :placeholder="passengerDetails?.passengers[0].name"
+                                                                      @input="handleNameInput($event, accordion)" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                       type="button"></div>
                                                             </div>
@@ -147,7 +148,8 @@
                                                                  <input v-model="accordion.surname"
                                                                       class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
                                                                       type="type"
-                                                                      :placeholder="passengerDetails?.passengers[0].surname" />
+                                                                      :placeholder="passengerDetails?.passengers[0].surname"
+                                                                      @input="handleSurnameInput($event, accordion)" />
                                                                  <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
                                                                       type="button"></div>
                                                             </div>
@@ -930,6 +932,40 @@ onBeforeUnmount(() => {
      // Remove the beforeunload event listener on component unmount
      window.onbeforeunload = null
 })
+
+const turkishToEnglish = {
+  'ı': 'i',
+  'ğ': 'g',
+  'ü': 'u',
+  'ş': 's',
+  'ö': 'o',
+  'ç': 'c',
+  'İ': 'I',
+  'Ğ': 'G',
+  'Ü': 'U',
+  'Ş': 'S',
+  'Ö': 'O',
+  'Ç': 'C'
+};
+
+const convertToEnglishChars = (text) => {
+  return text
+    .split('')
+    .map(char => turkishToEnglish[char] || char)
+    .join('')
+    .toUpperCase();
+};
+
+// Add these methods to your setup script
+const handleNameInput = (event, accordion) => {
+  const value = event.target.value;
+  accordion.name = convertToEnglishChars(value);
+};
+
+const handleSurnameInput = (event, accordion) => {
+  const value = event.target.value;
+  accordion.surname = convertToEnglishChars(value);
+};
 </script>
 
 <style>
