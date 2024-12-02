@@ -193,6 +193,7 @@
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
                                                                  <input v-model="accordion.passport"
+                                                                 @input="() => validatePassport(accordion)"
                                                                       class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
                                                                       type="type"
                                                                       :placeholder="passengerDetails?.passengers[0].passport" />
@@ -405,6 +406,28 @@ const convertNewlinesToBr = (text: string) => {
           return ''
      }
 }
+
+const validatePassport = (accordion: any) => {
+  // Türkçe karakterleri İngilizce karşılıklarına dönüştüren fonksiyon
+  const turkishToEnglish = (text: string) => {
+    const map: { [key: string]: string } = {
+      'ç': 'C', 'ş': 'S', 'ğ': 'G', 'ü': 'U', 'ı': 'I', 'ö': 'O', // küçük harfler
+      'Ç': 'C', 'Ş': 'S', 'Ğ': 'G', 'Ü': 'U', 'İ': 'I', 'Ö': 'O'  // büyük harfler
+    };
+    return text.replace(/[ÇŞĞÜİÖçşğüıö]/g, char => map[char] || char);
+  };
+
+  // Tüm metni önce büyük harfe çevir, sonra Türkçe karakterleri dönüştür
+  accordion.passport = turkishToEnglish(accordion.passport.toUpperCase())
+    .replace(/[^A-Z0-9]/g, ''); // Sadece harf ve rakamları koru
+
+  // Koşullu doğrulama: Eğer 6 karakterden küçükse bir işlem yapabiliriz
+  if (accordion.passport.length > 0 && accordion.passport.length < 6) {
+    console.log('Pasaport ID en az 6 karakter olmalı.');
+  }
+};
+
+
 const getTitle = (accordion: any) => {
      console.log(accordion, 'getTitle', accordion._id)
      switch (accordion._id) {
