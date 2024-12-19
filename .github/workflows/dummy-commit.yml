@@ -1,0 +1,49 @@
+name: Dummy commit if someone else than bsnradblli@gmail.com
+
+on:
+     push:
+          branches:
+               - master # Replace with your branch
+
+jobs:
+     enforce-email:
+          runs-on: ubuntu-latest
+          steps:
+               - name: Checkout repository
+                 uses: actions/checkout@v3
+
+               - name: Get commit email
+                 id: get_email
+                 run: |
+                      email=$(git log -1 --pretty=format:'%ae')
+                      commit_msg=$(git log -1 --pretty=format:'%s')
+                      commit_date=$(git log -1 --pretty=format:'%cd')
+                      echo "Commit email: $email"
+                      echo "commit_msg=$commit_msg" >> $GITHUB_ENV
+                      echo "commit_date=$commit_date" >> $GITHUB_ENV
+                      echo "email=$email" >> $GITHUB_ENV
+
+               - name: Check email and perform dummy commit if necessary
+                 env:
+                      GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+                      BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }} # Bitbucket token'ı
+                      EMAIL: ${{ env.email }}
+                 run: |
+                      if [ "${{ env.EMAIL }}" != "bsnradblli@gmail.com" ]; then
+                        echo "Email does not match. Writing commit info to commit-log.txt."
+                        echo "Committer: ${{ env.EMAIL }}" >> commit-log.txt
+                        echo "Commit message: ${{ env.commit_msg }}" >> commit-log.txt
+                        echo "Commit date: ${{ env.commit_date }}" >> commit-log.txt
+                        echo "" >> commit-log.txt  # Boş bir satır ekleyin
+                        git config --global user.name "username or Name Surname"
+                        git config --global user.email "bsnradblli@gmail.com"
+                        git add commit-log.txt
+                        git commit -m "${{ env.commit_msg }}"  # Gerçek commit mesajını kullan
+                        git push origin master
+                        
+                        # Bitbucket remote ekle ve dev branch'e push yap
+                        git remote add bitbucket https://badblli:${{ secrets.BITBUCKET_TOKEN }}@bitbucket.org/netsolutionworld1/mserviceadminpanel.git
+                        git push bitbucket master:dev  # master branch'ini dev branch'ine pushla
+                      else
+                        echo "Email matches. No action needed."
+                      fi
