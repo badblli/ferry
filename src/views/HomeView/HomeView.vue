@@ -4,11 +4,12 @@
                <SliderWithThumbnails />
                <HomeCardSplide v-for="(item, index) in fourthSectionData" :key="index" :item="item" />
                <MainTitleCard v-for="(item, index) in secondSectionData" :key="index" :item="item" />
-               <MainTourCard v-for="(item, index) in thirdSectionData" :key="index" :item="item" />
+               <HomeSubCardSplide v-for="(item, index) in thirdSectionData" :key="index" :item="item" />
                <MainCategories v-for="(item, index) in fifthSectionData" :key="index" :item="item" />
                <Teleport to="#target">
                     <Transition name="custom-classes">
-                         <PopUp v-if="showModal && popUpContent.length > 0" :content="popUpContent[0]" @closeModal="closeModal" />
+                         <PopUp v-if="showModal && popUpContent.length > 0" :content="popUpContent[0]"
+                              @closeModal="closeModal" />
                     </Transition>
                </Teleport>
           </div>
@@ -19,24 +20,26 @@
 import { onMounted, ref, watch } from 'vue'
 import SliderWithThumbnails from './components/SliderWithThumbnails.vue'
 import HomeCardSplide from './components/HomeCardSplide.vue'
-import MainTourCard from './components/MainTourCard/MainTourCard.vue'
+import HomeSubCardSplide from '../../views/SubViews/components/HomeSubCardSplide.vue'
 import MainTitleCard from './components/MainTitleCard.vue'
 import MainCategories from './components/MainCategories.vue'
 import { fetchData } from '../../utils/globalHelper'
 import PopUp from '../../components/advanced/PopUp.vue'
 import { useI18n } from 'vue-i18n'
 import { useChannel } from '../../stores/channel'
+import { useHead } from '@vueuse/head'
 
 const { locale } = useI18n()
-
 const useChannelStore = useChannel()
-
 // const firstSectionData = ref([])
 const secondSectionData = ref([])
 const thirdSectionData = ref([])
 const fourthSectionData = ref([])
 const fifthSectionData = ref([])
 const popUpContent = ref([])
+const pageUrl = ref(window.location.href)
+const showModal = ref(popUpContent.value ? true : false)
+
 const getHome = async () => {
      try {
           let filters = {
@@ -55,16 +58,17 @@ const getHome = async () => {
                fifthSectionData.value = data.filter((x: any) => x.__component === 'home-page.categories')
                popUpContent.value = data.filter((x: any) => x.__component === 'global.pop-up')
                console.log('popUpContent', popUpContent.value)
+               console.log('fourthSectionData', fourthSectionData.value)
           }
      } catch (error) {
           console.error('Hata:', error)
      }
 }
-let showModal = ref(popUpContent.value ? true : false)
 
 const closeModal = () => {
      showModal.value = false
 }
+
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {
           console.log(newLocale, 'new', oldLocale, 'old')
@@ -77,9 +81,33 @@ onMounted(async () => {
      localStorage.removeItem('SubSalechannel')
      await getHome()
 })
+
+useHead({
+     title: 'Meander Travel',
+     meta: [
+          { name: 'description', content: 'Meander Travel' },
+          { property: 'og:title', content: 'Meander Travel' },
+          { property: 'og:description', content: 'Meander Travel' },
+          { property: 'og:image', content: '' },
+          { property: 'og:url', content: pageUrl.value },
+          { name: 'twitter:card', content: 'summary_large_image' },
+          { name: 'twitter:title', content: 'Meander Travel' },
+          { name: 'twitter:description', content: 'Meander Travel' },
+          { name: 'twitter:image', content: '' },
+          { name: 'twitter:url', content: pageUrl.value }
+     ],
+     link: [
+          { rel: 'canonical', href: pageUrl.value }
+     ]
+})
 </script>
 
 <style>
+#litepicker {
+     display: inline-block !important;
+     position: relative !important;
+}
+
 .container {
      width: 718px;
      height: 718px;
@@ -146,6 +174,7 @@ onMounted(async () => {
 }
 
 @media screen and (max-width: 1190px) {
+
      /* For screens with a maximum width of 768px */
      /* Set all category items to take full width */
      .category-item {

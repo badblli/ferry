@@ -4,36 +4,42 @@
                <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <ol class="pb-4 flex items-center whitespace-nowrap pl-10 md:pl-0" aria-label="Breadcrumb">
                          <li v-for="(slug, index) in blogHeader.slug" :key="index" class="inline-flex items-center">
-                              <a
-                                   :class="{
-                                        'mr-[6px] text-base font-normal font-[\'Plus Jakarta Sans\'] tracking-tight': true,
-                                        'opacity-60': index !== blogHeader.slug.length - 1,
-                                        'text-black  text-base font-semibold tracking-tight ': index === blogHeader.slug.length - 1
-                                   }"
-                                   :href="slug.href"
-                              >
+                              <a :class="{
+                                   'mr-[6px] text-base font-normal font-[\'Plus Jakarta Sans\'] tracking-tight': true,
+                                   'opacity-60': index !== blogHeader.slug.length - 1,
+                                   'text-black  text-base font-semibold tracking-tight ': index === blogHeader.slug.length - 1
+                              }" :href="slug.href">
                                    {{ slug.name }}
                               </a>
                               <template v-if="index !== blogHeader.slug.length - 1">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
                                         <g id="Chevron - Down" opacity="0.6">
-                                             <path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M8.46967 18.5303C8.17678 18.2374 8.17678 17.7626 8.46967 17.4697L13.9393 12L8.46967 6.53033C8.17678 6.23744 8.17678 5.76256 8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967L15.5303 11.4697C15.8232 11.7626 15.8232 12.2374 15.5303 12.5303L9.53033 18.5303C9.23744 18.8232 8.76256 18.8232 8.46967 18.5303Z" fill="black" />
+                                             <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M8.46967 18.5303C8.17678 18.2374 8.17678 17.7626 8.46967 17.4697L13.9393 12L8.46967 6.53033C8.17678 6.23744 8.17678 5.76256 8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967L15.5303 11.4697C15.8232 11.7626 15.8232 12.2374 15.5303 12.5303L9.53033 18.5303C9.23744 18.8232 8.76256 18.8232 8.46967 18.5303Z"
+                                                  fill="black" />
                                         </g>
                                    </svg>
                               </template>
                          </li>
                     </ol>
 
-                    <h1 class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide my-auto flex items-center pl-10 md:pl-0">{{ blogHeader.title }}</h1>
+                    <h1
+                         class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide my-auto flex items-center pl-10 md:pl-0">
+                         {{ blogHeader.title }}</h1>
                </div>
           </div>
           <!-- CONTENT SWİPER SECTİON -->
           <section class="w-full px-10 md:pl-0">
-               <div class="w-full h-[147px] justify-between relative items-center pt-6 lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
+               <div
+                    class="w-full h-[147px] justify-between relative items-center pt-6 lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                     <Splide :options="splideOptions">
-                         <SplideSlide v-for="item in blogCategories" :key="item.id" class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
-                              <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="getImage(item.image.url)" :alt="item.image.name" />
-                              <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">{{ item.title }}</div>
+                         <SplideSlide v-for="item in blogCategories" :key="item.id"
+                              class="flex flex-row -w-[270px] h-[90px] rounded-[128px] border border-neutral-200 items-center cursor-pointer">
+                              <img class="w-[66px] h-[66px] rounded-full ml-[17px]" :src="getImage(item.img.url)"
+                                   :alt="item.img.name" />
+                              <div class="text-gray-800 text-lg font-medium font-display ml-[26px]">{{ item.category }}
+                              </div>
                          </SplideSlide>
                     </Splide>
                </div>
@@ -42,15 +48,22 @@
           <div class="w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                <div class="mb-16 md:mb-[204px]">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-                         <router-link v-for="blog in blogCards" :key="blog.id" @click="setStore(blog)" :to="{ name: 'uniqueBlogPost', params: { name: blog.slug } }" class="cursor-pointer mb-[50px]">
-                              <img class="w-full h-[295px] object-cover rounded-xl" :src="getImage(blog.images[0].url)" :alt="blog.images[0].name" />
-                              <div class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide uppercase mt-[31px]">{{ blog.subtitle }} - {{ readingTime(blog.content, blog.minute) }}</div>
-                              <div class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
+                         <router-link v-for="blog in blogCards" :key="blog.id" @click="setStore(blog)"
+                              :to="{ name: 'uniqueBlogPost', params: { name: blog.slug } }"
+                              class="cursor-pointer mb-[50px]">
+                              <img class="w-full h-[295px] object-cover rounded-xl" :src="getImage(blog.images[0].url)"
+                                   :alt="blog.images[0].name" />
+                              <div
+                                   class="text-blue-700 text-xs font-bold font-['Plus Jakarta Sans'] leading-3 tracking-wide uppercase mt-[31px]">
+                                   {{ blog.subtitle }} - {{ readingTime(blog.content, blog.minute) }}</div>
+                              <div
+                                   class="text-black text-[21px] font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-[13px]">
                                    {{ blog.title }}
                               </div>
                          </router-link>
                     </div>
-                    <div v-if="blogCards && blogCards.length > 5" class="flex flex-row justify-center items-center mt-[83px] cursor-pointer">
+                    <div v-if="blogCards && blogCards.length > 5"
+                         class="flex flex-row justify-center items-center mt-[83px] cursor-pointer">
                          <div class="text-black text-lg font-medium font-display mr-[16px]">Daha fazla yazı</div>
                          <IconArrowTopRight />
                     </div>
@@ -71,6 +84,10 @@ import '@splidejs/vue-splide/css'
 import { fetchData, getImage } from '@/utils/globalHelper'
 import { useI18n } from 'vue-i18n'
 import { useBlog } from '../stores/blog'
+// import { useMeta } from 'vue-meta';
+import { useHead } from '@vueuse/head';
+
+const blogMeta = ref({ title: '', description: '' });
 
 const { locale } = useI18n()
 
@@ -115,6 +132,11 @@ const splideOptions = {
 const blogHeader = ref([])
 const blogCards = ref([])
 const blogCategories = ref([])
+const clickedItemId = ref(null)
+
+const handleClick = (id: Number) => {
+     clickedItemId.value = id
+}
 
 const getBlogPage = async () => {
      try {
@@ -122,18 +144,67 @@ const getBlogPage = async () => {
                pageName: 'Blog'
           }
           const res = await fetchData('pages', locale.value.toLowerCase(), filters)
+          console.log(res, 'res')
           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
           if (res) {
                let data = res.data[0].layout
-               // console.log(data, 'im in mainNavbar compos')
+               console.log(data, 'im in mainNavbar compos')
                blogHeader.value = data.find((x: any) => x.__component === 'shared.header')
                blogCards.value = data.filter((x: any) => x.__component === 'blog-page.blog-card')[0].blogs
-               blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].items
+               blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].blog_category_definitions
+               console.log(blogCategories.value, 'blogCategories')
+               console.log(blogCards.value, 'blogCards')
           }
      } catch (error) {
           return
      }
+
+     blogMeta.value = {
+          title: 'Meander Blog',
+          description: 'Meander Blog'
+     };
+
+     useHead({
+          title: `Meander - ${blogHeader.value.title}`,
+          meta: [
+               { name: 'description', content: blogCards.value[0].subtitle || 'Meander Blog' },
+               { property: 'og:title', content: blogCards.value[0].title },
+               { property: 'og:description', content: blogCards.value[0].subtitle || 'Meander Blog' },
+               { property: 'og:image', content: blogCards.value[0].imageURL },
+               { property: 'og:url', content: window.location.href },
+               { name: 'twitter:card', content: 'summary_large_image' }
+          ],
+          link: [
+               { rel: 'canonical', href: window.location.href }
+          ]
+     });
 }
+
+// Categorilere tıklandığında gelen id ile burayı güncelleyerek blog sayfasını güncelleyebiliriz.
+// Blog sayfasını yukarıdaki formasyonda güncelleyebileceğimizi sanmıyorum.
+// Çünkü strapi url lerinde iç içe filtering e izin vermiyor gibi geldi.
+
+// const getBlogPage2 = async () => {
+//      try {
+//           let filters = {
+//                pageName: clickedItemId
+//           }
+//           const res = await fetchData2('pages', locale.value.toLowerCase(), filters)
+//           console.log(res, 'res')
+//           // console.log(locale.value.toLowerCase(), 'locale value to lowercase main navbar');
+//           if (res) {
+//                let data = res.data[0].layout
+//                console.log(data, 'im in mainNavbar compos')
+//                blogHeader.value = data.find((x: any) => x.__component === 'shared.header')
+//                blogCards.value = data.filter((x: any) => x.__component === 'blog-page.blog-card')[0].blogs
+//                blogCategories.value = data.filter((x: any) => x.__component === 'blog-page.blog-page')[0].items
+//                console.log(blogCategories.value, 'blogCategories')
+//                console.log(blogCards.value, 'blogCards')
+//           }
+//      } catch (error) {
+//           return
+//      }
+// }
 
 watch(locale, (newLocale, oldLocale) => {
      if (newLocale !== oldLocale) {

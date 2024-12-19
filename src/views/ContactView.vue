@@ -3,7 +3,7 @@
         <div class="w-full h-[145px] bg-slate-200 flex flex-col justify-center items-center">
             <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                 <h1
-                    class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center md:pl-0">
+                    class="text-black text-4xl font-medium font-display tracking-wide my-auto flex items-center md:pl-0 title">
                     İletişim
                 </h1>
             </div>
@@ -11,7 +11,7 @@
         <div className="w-full">
             <div class="w-full flex flex-col justify-center items-center">
                 <div class="relative w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-                    <div class="my-auto mt-[50px] flex md:flex-row flex-col">
+                    <div class="my-auto mt-[50px] flex md:flex-row flex-col grids">
                         <div
                             class="h-[179px] w-full rounded-xl border border-neutral-200 flex flex-row items-center justify-between mr-5 mb-2">
                             <div class="pl-7">
@@ -136,6 +136,38 @@
 import IconPhoneIncoming from "../components/icons/IconPhoneIncoming.vue";
 import IconWhatsapp from "../components/icons/IconWhatsapp.vue";
 import IconHouseSimple from "@/components/icons/IconHouseSimple.vue";
+import { useHead } from '@vueuse/head';
+
+useHead({
+    title: `Meander Travel | İletişim`,
+    meta: [
+        { name: 'description', content: 'Meander Feribot - İletişim' },
+        { property: 'og:title', content: 'Meander Feribot - İletişim' },
+        { property: 'og:description', content: 'Meander Feribot - İletişim' },
+        { property: 'og:image', content: 'Meander Feribot - İletişim' },
+        { property: 'og:url', content: window.location.href },
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ],
+    link: [
+        { rel: 'canonical', href: window.location.href }
+    ]
+});
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (min-width: 768px) and (max-width: 1025px) {
+    .grids {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-left: -30px;
+    }
+}
+
+@media (max-width: 430px) {
+    .title {
+        justify-content: center;
+        text-align: center;
+    }
+}
+</style>

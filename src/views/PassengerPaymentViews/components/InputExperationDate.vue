@@ -25,11 +25,15 @@ const props = defineProps({
      },
      ariaLabel: {
           type: String,
-          required: true
+          required: false
+     },
+     modelValue: {
+          type: String,
+          default: ''
      }
 })
-
-const formattedDate = ref('')
+const emit = defineEmits(['update:modelValue'])
+const formattedDate = ref(props.modelValue)
 
 watch(formattedDate, (newValue, oldValue) => {
      const maxLength = 5
@@ -48,6 +52,8 @@ watch(formattedDate, (newValue, oldValue) => {
           formattedDate.value = oldValue
           return
      }
+
+     emit('update:modelValue', formattedDate.value)
 })
 </script>
 

@@ -11,12 +11,19 @@ const environment = process.env.NODE_ENV || 'dev' // Default olarak 'dev' kullan
 console.log('environment', environment)
 const config: Record<string, EnvironmentConfig> = {
      development: {
-          mode: 'test',
+          // mode: 'test',
+          // apiKey: import.meta.env.VITE_API_KEY,
+          // SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
+          // basePath: function (path: string) {
+          //      return 'http://' + this.mode + path + '.meanderservices.com'
+          // }
+          mode: 'prod',
           apiKey: import.meta.env.VITE_API_KEY,
           SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
           basePath: function (path: string) {
-               return 'http://' + this.mode + path + '.meanderservices.com'
+               return 'https://' + path + '.meanderservices.com'
           }
+
           // Diğer dev konfigürasyonları...
      },
      production: {
@@ -27,20 +34,16 @@ const config: Record<string, EnvironmentConfig> = {
                return 'https://' + path + '.meanderservices.com'
           }
           // Diğer prod ama aslında test konfigürasyonları...
+     },
+     test: {
+          mode: 'prod',
+          apiKey: import.meta.env.VITE_API_KEY,
+          SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
+          basePath: function (path: string) {
+               return 'https://' + path + '.meanderservices.com'
+          }
+          // Diğer prod ama aslında test konfigürasyonları...
      }
-     // production: {
-     //      mode: 'prod',
-     //      apiKey: import.meta.env.VITE_API_KEY,
-     //      SaleChannelName: import.meta.env.VITE_SALE_CHANNEL,
-     //      basePath: function (path: string) {
-     //           return 'http://' + path + '.meanderservices.com'
-     //      }
-     //      // Diğer prod konfigürasyonları...
-     // }
-     // test: {
-     //     // Test konfigürasyonları...
-     // }
-     // İhtiyaç duyulan diğer ortamları ekleyin...
 }
 const envConfig: EnvironmentConfig = config[environment]
 export default envConfig

@@ -1,6 +1,7 @@
 <template>
      <div>
-          <div class="fixed inset-0 flex flex-col items-center justify-start z-50 bg-white w-[638px] h-[732px] m-auto overflow-y-hidden rounded-3xl">
+          <div class="bg-gray-500 opacity-75 modal-overlay" @click="closeModal"></div>
+          <div class="fixed inset-0 flex flex-col items-center justify-start z-50 bg-white w-full max-w-[849px] h-[732px] m-auto overflow-y-hidden rounded-3xl">
                <div class="flex flex-row items-center justify-center mt-10 w-full">
                     <div class="w-full flex flex-row justify-center">
                          <div class="text-black text-xl font-semibold font-['Plus Jakarta Sans'] ml-20">Kullanıcı Kaydı</div>
@@ -142,4 +143,13 @@ const closeModal = () => {
 const emit = defineEmits(['closeModal'])
 </script>
 
-<style></style>
+<style scoped>
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+}
+</style>

@@ -310,6 +310,12 @@ function formatDate(item: string) {
      }
 }
 
+function formatDateToString(inputDate) {
+     const dateParts = inputDate.split('-') // Tarihi '-' karakterinden ayır
+     const formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}` // Yıl, ay ve günü istenen formatta birleştir
+     return formattedDate
+}
+
 // Test
 console.log(formatDate('2024-02-13T00:00:00Z')) // Sadece tarih
 console.log(formatDate('2024-02-13T10:20:30.123+03:00')) // Tarih ve saat
@@ -331,7 +337,8 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
           }
 
           // Construct the URL conditionally
-          const url = `${API_BASE_URL}/${endpoint}?populate=deep${filterParams ? `&${filterParams}` : ''}&locale=${locale}`
+          const url = `${API_BASE_URL}/${endpoint}?populate=deep&locale=${locale}${filterParams ? `&${filterParams}` : ''}`
+          console.log(url, 'url blog')
 
           return axios
                .get(url, {
@@ -351,6 +358,45 @@ const fetchData = (endpoint: string, locale: string, filters: Record<string, str
           return null
      }
 }
+
+// const API_BASE_URL = import.meta.env.VITE_STRAPI_URL
+// const saleChannel = import.meta.env.VITE_SALE_CHANNEL
+// // Bearer Token'ınızı buraya ekleyin
+// const BEARER_TOKEN = import.meta.env.VITE_STRAPI_TOKEN
+
+// const fetchData2 = (endpoint: string, locale: string, filters: Record<string, string>) => {
+//      try {
+//           let filterParams = Object.entries(filters)
+//                .map(([key, value]) => `filters[${key}][$eq]=${value}`)
+//                .join('&')
+
+//           // Add saleChannel to the filterParams
+//           if (filters) {
+//                filterParams += `${filterParams ? '&' : ''}filters[id][$eq]=${saleChannel}`
+//           }
+
+//           // Construct the URL conditionally
+//           const url = `${API_BASE_URL}/${endpoint}?populate=deep&locale=${locale}${filterParams ? `&${filterParams}` : ''}`
+//           console.log(url, 'url blog')
+
+//           return axios
+//                .get(url, {
+//                     headers: {
+//                          Authorization: `Bearer ${BEARER_TOKEN}`
+//                     }
+//                })
+//                .then((response: AxiosResponse) => {
+//                     return response.data
+//                })
+//                .catch((error) => {
+//                     console.error('Hata:', error)
+//                     return null
+//                })
+//      } catch (error) {
+//           console.error('Hata:', error)
+//           return null
+//      }
+// }
 
 const findOne = (endpoint: string, locale: string, filters: Record<string, string>) => {
      console.log('filters', filters)
@@ -471,6 +517,7 @@ export {
      getLabel,
      getLang,
      formatDate,
+     formatDateToString,
      fetchData,
      findOne,
      // postData,

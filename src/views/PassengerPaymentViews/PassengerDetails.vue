@@ -2,43 +2,66 @@
      <div class="flex flex-col justify-center items-center m-auto relative">
           <div class="w-full h-[223px] bg-slate-200" />
           <div class="relative top-[-11rem] w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
-               <div class="flex lg:flex-row flex-col justify-between items-center mb-9">
+               <div class="flex flex-col md:flex-row justify-between items-center md:mb-9 mb-4">
                     <div class="flex flex-row justify-center items-center">
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">{{ from }}</div>
-                         <div class="w-[52px] h-[52px] opacity-75 bg-white rounded-full flex justify-center items-center mx-[33px]">
-                              <IconsArrowsLeftRight />
+                         <div class="text-black md:text-4xl text-xl font-medium font-display tracking-wide">{{ from }}
                          </div>
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide">{{ to }}</div>
+                         <div
+                              class="w-[52px] h-[52px] opacity-75 bg-white rounded-full flex justify-center items-center mx-[33px] p-4">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                   fill="none">
+                                   <g id="ArrowRight">
+                                        <path id="Vector"
+                                             d="M20.7806 12.5307L14.0306 19.2807C13.8899 19.4214 13.699 19.5005 13.5 19.5005C13.301 19.5005 13.1101 19.4214 12.9694 19.2807C12.8286 19.1399 12.7496 18.9491 12.7496 18.7501C12.7496 18.551 12.8286 18.3602 12.9694 18.2194L18.4397 12.7501H3.75C3.55109 12.7501 3.36032 12.671 3.21967 12.5304C3.07902 12.3897 3 12.199 3 12.0001C3 11.8011 3.07902 11.6104 3.21967 11.4697C3.36032 11.3291 3.55109 11.2501 3.75 11.2501H18.4397L12.9694 5.78068C12.8286 5.63995 12.7496 5.44907 12.7496 5.25005C12.7496 5.05103 12.8286 4.86016 12.9694 4.71943C13.1101 4.5787 13.301 4.49963 13.5 4.49963C13.699 4.49963 13.8899 4.5787 14.0306 4.71943L20.7806 11.4694C20.8504 11.5391 20.9057 11.6218 20.9434 11.7128C20.9812 11.8039 21.0006 11.9015 21.0006 12.0001C21.0006 12.0986 20.9812 12.1962 20.9434 12.2873C20.9057 12.3783 20.8504 12.461 20.7806 12.5307Z"
+                                             fill="#1F2A37" />
+                                   </g>
+                              </svg>
+                         </div>
+                         <div class="text-black md:text-4xl text-xl font-medium font-display tracking-wide">{{ to }}
+                         </div>
                     </div>
-                    <div class="flex flex-row items-center">
-                         <div class="h-[37px] bg-white rounded-lg border flex justify-center items-center py-[7px] px-5 cursor-pointer">
-                              <div class="text-black text-lg font-medium font-display ml-1">{{ passengerHeader?.searchTicket }}</div>
-                              <IconArrowDownBlack />
+                    <div class="flex flex-row items-center justify-end w-full mt-1 md:mt-0">
+                         <div
+                              class="bg-white rounded-lg border flex justify-center items-center cursor-pointer px-5 py-1">
+                              <div class="text-black text-lg font-medium font-display ml-1">{{
+                                   passengerHeader?.searchTicket }}</div>
                          </div>
-                         <div class="flex flex-row justify-center items-center mr-2 ml-9">
+                         <!-- <div class="flex flex-row justify-center items-center mr-2 ml-9">
                               <div class="flex flex-col">
                                    <div class="text-black text-base font-medium font-display">{{ passengerHeader?.cost }}</div>
                                    <div class="text-black text-[32px] font-medium font-['Plus Jakarta Sans'] items-end flex flex-row justify-end">41TL</div>
                               </div>
                               <IconArrowDownBlack class="ml-[20px]"/>
-                         </div>
+                         </div> -->
                     </div>
                </div>
                <div>
                     <div className=" bg-neutral-100 rounded-[20px] p-4">
                          <div class="flex md:flex-row flex-col justify-between">
-                              <div class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
-                                   {{ passengerDetails?.passengerInformation }}
+                              <div class="flex flex-row items-center">
+                                   <div
+                                        class="text-black text-2xl font-semibold font-['Plus Jakarta Sans'] tracking-wide mt-5">
+                                        {{ passengerDetails?.passengerInformation }}
+                                   </div>
+                                   <div v-if="!isPackageTour"
+                                        class="mt-5 ml-4 bg-[#f5ebeb] py-[6px] px-[7px] rounded-2xl text-base text-[#902929] font-semibold leading-normal tracking-tight">
+                                        Max 3 yolcu olabilir.
+                                   </div>
                               </div>
                               <div class="relative inline-flex">
-                                   <p @click="toggleDropdown" class="text-black text-lg font-medium font-display items-center justify-center mt-4 mb-8 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
+                                   <p @click="toggleDropdown"
+                                        class="text-black text-lg font-medium font-display items-center justify-center mt-4 mb-8 mr-[14px] p-5 bg-white rounded-lg border px-6 py-2 flex flex-row cursor-pointer">
                                         {{ passengerDetails?.addPassenger }}
                                    </p>
 
-                                   <div v-show="isOpen" class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
+                                   <div v-show="isOpen"
+                                        class="z-10 absolute mt-20 duration-300 w-[277px] h-[239px] bg-white rounded-xl border py-6 px-4">
                                         <div class="bg-white space-y-3">
-                                             <div v-for="(item, index) in passengerDetails?.passengerType" :key="index" @click="handleClick(item.typeId)" class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
-                                                  <div class="text-black text-base font-medium font-display tracking-tight">
+                                             <div v-for="(item, index) in passengerDetails?.passengerType" :key="index"
+                                                  @click="handleClick(item.typeId)"
+                                                  class="w-full h-[57px] rounded-lg flex flex-row items-center justify-center cursor-pointer gap-[60px] hover:bg-slate-200 transition-all duration-300">
+                                                  <div
+                                                       class="text-black text-base font-medium font-display tracking-tight">
                                                        {{ item.type }}
                                                   </div>
                                              </div>
@@ -49,12 +72,15 @@
                          <div>
                               <transition name="fade">
                                    <div v-show="isOpen2">
-                                        <div class="w-[458px] h-[443px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
+                                        <div
+                                             class="w-[458px] h-[443px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
-                                                  <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
+                                                  <div
+                                                       class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
                                                        <IconPersonSimpleRun />
                                                   </div>
-                                                  <div class="w-[95px] h-[95px] bg-slate-300 rounded-full flex justify-center items-center -translate-x-9">
+                                                  <div
+                                                       class="w-[95px] h-[95px] bg-slate-300 rounded-full flex justify-center items-center -translate-x-9">
                                                        <IconPersonSimpleRun />
                                                   </div>
                                              </div>
@@ -63,92 +89,161 @@
                                                        Seçtiğiniz tarihler doğrultusunda<br />
                                                        yolcu, çocuk olarak<br />değişecek ve fiyatlandırmayı<br />güncelleyecektir.
                                                   </span> -->
-                                                  <span class="flex flex-row justify-center items-center mx-auto mt-7 ml-10">{{ changePassengerTypeModal?.text }}</span>
+                                                  <span
+                                                       class="flex flex-row justify-center items-center mx-auto mt-7 ml-10">{{
+                                                            changePassengerTypeModal?.text }}</span>
                                              </div>
-                                             <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12 cursor-pointer" @click="confirmChange(accordion_idchange)">{{ changePassengerTypeModal?.ConfirmBtn }}</div>
-                                             <div class="w-[200px] mx-auto text-center text-black text-base font-medium font-display mt-7 cursor-pointer" @click="cancelChange">{{ changePassengerTypeModal?.CancelBtn }}</div>
+                                             <div class="w-[222px] h-[53px] bg-slate-200 rounded-lg border flex flex-row justify-center items-center mx-auto mt-12 cursor-pointer"
+                                                  @click="confirmChange(accordion_idchange)">{{
+                                                       changePassengerTypeModal?.ConfirmBtn }}</div>
+                                             <div class="w-[200px] mx-auto text-center text-black text-base font-medium font-display mt-7 cursor-pointer"
+                                                  @click="cancelChange">{{ changePassengerTypeModal?.CancelBtn }}</div>
                                         </div>
                                    </div>
                               </transition>
                               <transition name="fade">
                                    <div v-show="isOpen3">
-                                        <div class="w-[458px] h-[343px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
+                                        <div
+                                             class="w-[458px] h-[343px] bg-white rounded-xl border fixed inset-0 m-auto z-[999] flex flex-col">
                                              <div class="flex flex-row justify-center mx-auto mt-14">
-                                                  <div class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
+                                                  <div
+                                                       class="w-[95px] h-[95px] bg-slate-200 rounded-full flex justify-center items-center">
                                                        <IconPersonSimpleRun />
                                                   </div>
-                                                  <div class="w-[95px] h-[95px] bg-slate-300 rounded-full flex justify-center items-center -translate-x-9">
+                                                  <div
+                                                       class="w-[95px] h-[95px] bg-slate-300 rounded-full flex justify-center items-center -translate-x-9">
                                                        <IconPersonSimpleRun />
                                                   </div>
                                              </div>
                                              <div>
-                                                  <span v-html="alertModal?.text" class="flex flex-row justify-center mt-7"> </span>
+                                                  <span v-html="alertModal?.text"
+                                                       class="flex flex-row justify-center mt-7"> </span>
                                              </div>
-                                             <div class="text-center text-black text-base font-medium font-display mt-7 bg-blue-100 w-16 mx-auto p-2 cursor-pointer" @click="cancelChange2">{{ alertModal?.CancelBtn }}</div>
+                                             <div class="text-center text-black text-base font-medium font-display mt-7 bg-blue-100 w-16 mx-auto p-2 cursor-pointer"
+                                                  @click="cancelChange2">{{ alertModal?.CancelBtn }}</div>
                                         </div>
                                    </div>
                               </transition>
-                              <div v-for="(accordion, index) in accordions" :key="index" class="items-centers rounded-xl bg-white mb-2">
+                              <div v-for="(accordion, index) in accordions" :key="index"
+                                   class="items-centers rounded-xl bg-white mb-2">
                                    <div class="w-full overflow-hidden transition-[height] duration-300">
                                         <div class="flex flex-col">
-                                             <AccordionPanel :id="accordion.id" :ariaTitle="'contact'" :title2="getTitle2(accordion)" :title="getTitle(accordion)" :name="accordion.name" :surname="accordion.surname" :updateBtn="passengerDetails?.passengers[0].updateInformation">
-                                                  <div class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 px-5 mt-[67px] mb-24">
+                                             <AccordionPanel :id="accordion.id" :ariaTitle="'contact'"
+                                                  :title2="getTitle2(accordion)" :title="getTitle(accordion)"
+                                                  :name="accordion.name" :surname="accordion.surname"
+                                                  :updateBtn="passengerDetails?.passengers[0].updateInformation">
+                                                  <div
+                                                       class="text-black text-base font-normal font-['Plus Jakarta Sans'] leading-7 px-5 mt-[67px] mb-24">
                                                        <form class="w-full max-w-sm md:ml-[83px] ml-2">
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.name" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].name" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                                 <input v-model="accordion.name"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type"
+                                                                      :placeholder="passengerDetails?.passengers[0].name"
+                                                                      @input="handleNameInput($event, accordion)" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.surname" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].surname" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                                 <input v-model="accordion.surname"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type"
+                                                                      :placeholder="passengerDetails?.passengers[0].surname"
+                                                                      @input="handleSurnameInput($event, accordion)" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.email" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].email" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                                 <input v-model="accordion.email"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type"
+                                                                      :placeholder="passengerDetails?.passengers[0].email" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
                                                             </div>
-                                                            <vue-tel-input v-model="accordion.tel" v-bind="bindProps"></vue-tel-input>
-                                                            <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.birthDate" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="text" :placeholder="passengerDetails?.passengers[0].birth" @input="formatDate(accordion)" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                            <vue-tel-input v-model="accordion.tel"
+                                                                 @validate="onPhoneInput($event, accordion)"
+                                                                 v-bind="bindProps"></vue-tel-input>
+                                                            <div class="flex border-b h-12 border-neutral-200 mb-10">
+                                                                 <input type="date" v-model="accordion.birthDate"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      :placeholder="passengerDetails?.passengers[0].birth" />
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <select v-model="accordion.nation" name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="logValue('Selected Nation:', accordion.nation)">
-                                                                      <option disabled value="" selected>{{ passengerDetails.passengers[0].nation }}</option>
-                                                                      <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
+                                                                 <!-- Select -->
+                                                                 <select name="nation" :id="'nation-' + index"
+                                                                      @change="updateAccordionNation($event, accordion)"
+                                                                      class="pb-5 h-12 pl-4 pe-9 block text-gray-700 leading-tight w-full border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                                      <option value="" disabled selected>{{
+                                                                           passengerDetails.passengers[0].nation }}
+                                                                      </option>
+                                                                      <option v-for="(data, idx) in countryList"
+                                                                           :key="idx" :value="data.Name"
+                                                                           class="option-style">
                                                                            {{ data?.Name }}
                                                                       </option>
                                                                  </select>
+                                                                 <!-- <select name="nation" :id="'nation-' + index" class="cursor-pointer w-full h-12 appearance-none bg-transparent border-none text-gray-700 leading-tight focus:outline-none focus:border-none focus:ring-0 border-transparent pb-5 custom-placeholder pl-4" @change="updateAccordionNation($event, accordion)">
+                                                                      <option value="" disabled selected>{{ passengerDetails.passengers[0].nation }}</option>
+                                                                      <option v-for="(data, idx) in countryList" :key="idx" :value="data.Name" class="option-style">
+                                                                           {{ data?.Name }}
+                                                                      </option>
+                                                                 </select> -->
+                                                                 <!-- End Select -->
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.passport" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].passport" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                                 <input v-model="accordion.passport"
+                                                                 @input="() => validatePassport(accordion)"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type"
+                                                                      :placeholder="passengerDetails?.passengers[0].passport" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
                                                             </div>
                                                             <div class="flex border-b border-neutral-200 mb-10">
-                                                                 <input v-model="accordion.id" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4" type="type" :placeholder="passengerDetails?.passengers[0].passenderId" />
-                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]" type="button"></div>
+                                                                 <input v-model="accordion.id" maxlength="11"
+                                                                      @input="validateInput(accordion)"
+                                                                      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none border-transparent h-5 custom-placeholder pl-4"
+                                                                      type="type"
+                                                                      :placeholder="passengerDetails?.passengers[0].passenderId" />
+                                                                 <div class="flex-shrink-0 bg-white text-sm text-white flex w-[39px] h-[39px]"
+                                                                      type="button"></div>
                                                             </div>
                                                        </form>
                                                   </div>
-                                                  <div class="px-5 flex flex-row items-center justify-end">
-                                                       <div class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
-                                                            <div class="mr-4">{{ passengerDetails.passengers[0].mailPassenger }}</div>
+                                                  <div
+                                                       class="px-5 flex flex-col md:flex-row items-center md:justify-end">
+                                                       <div
+                                                            class="flex flex-row rounded-lg border border-gray-300 py-4 px-5 text-center text-black text-base font-medium font-['Plus Jakarta Sans']">
+                                                            <div class="mr-4">{{
+                                                                 passengerDetails.passengers[0].mailPassenger }}</div>
                                                             <div @click="setPrimary(index)">
-                                                                 <input
+                                                                 <!-- <input
                                                                       v-model="accordion.isPrimary"
                                                                       type="checkbox"
                                                                       class="relative w-[35px] h-[21px] bg-stone-300 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 before:inline-block before:w-4 before:h-4 before:bg-white checked:before:bg-white :translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200"
-                                                                 />
+                                                                 /> -->
+                                                                 <input v-model="accordion.isPrimary" type="checkbox"
+                                                                      class="relative w-5 h-5 p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:size-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-blue-200" />
                                                             </div>
                                                        </div>
                                                        <!-- @click="handleAccordionClick(accordion)" -->
-                                                       <div class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
+                                                       <div
+                                                            class="text-center text-black text-base font-medium font-display ml-8 cursor-pointer md:mt-0 mt-2">
                                                             {{ passengerDetails.passengers[0].clear }}
                                                        </div>
-                                                       <div class="flex flex-col">
-                                                            <button :class="buttonClass(accordion)" @click="saveAllPassenger(accordion)" class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
+                                                       <div class="flex flex-col md:mt-0 mt-2">
+                                                            <button :class="buttonClass(accordion)"
+                                                                 @click="saveAllPassenger(accordion)"
+                                                                 class="bg-slate-200 rounded-lg border py-4 px-12 text-center text-black text-base font-medium font-display ml-8 cursor-pointer">
                                                                  {{ buttonText(accordion) }}
                                                             </button>
-                                                            <div class="ml-8 mt-2 text-gray-500" v-if="accordion.showBtnWarning">*Alanlar doldurulmalıdır.</div>
+                                                            <div class="ml-8 mt-2 text-gray-500"
+                                                                 v-if="accordion.showBtnWarning">*Alanlar
+                                                                 doldurulmalıdır.</div>
+                                                            <div v-if="accordion.showBtnWarning2"
+                                                                 class="ml-8 mt-2 text-gray-500">TC NO 11 Haneden az
+                                                                 olmamalıdır.</div>
                                                        </div>
                                                   </div>
                                              </AccordionPanel>
@@ -161,23 +256,31 @@
                                    <div class="flex md:flex-row flex-col items-center">
                                         <div class="flex">
                                              <IconAsteriskSimple />
-                                             <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">{{ passengerDetails?.note }}.</h2>
+                                             <h2 class="text-black text-base font-medium leading-[26.88px] ml-3">{{
+                                                  passengerDetails?.note }}.</h2>
                                         </div>
-                                        <div class="flex flex-row ml-6 md:mt-0 mt-5 justify-center items-center bg-white py-[7px] pl-4 pr-[3px] rounded-full cursor-pointer">
-                                             <div class="text-black text-base font-medium font-display mr-4">{{ passengerDetails?.supportBtn }}</div>
-                                             <div class="w-[35px] h-[35px] relative flex-col rounded-full flex bg-slate-100 justify-center items-center">
+                                        <div
+                                             class="flex flex-row ml-6 md:mt-0 mt-5 justify-center items-center bg-white py-[7px] pl-4 pr-[3px] rounded-full cursor-pointer">
+                                             <div class="text-black text-base font-medium font-display mr-4">{{
+                                                  passengerDetails?.supportBtn }}</div>
+                                             <div
+                                                  class="w-[35px] h-[35px] relative flex-col rounded-full flex bg-slate-100 justify-center items-center">
                                                   <IconArrowUpRight2 />
                                              </div>
                                         </div>
                                    </div>
                                    <div class="flex flex-col">
-                                        <div class="py-5 px-8 ml-5 md:mt-0 mt-5 bg-blue-700 rounded-lg border cursor-pointer">
-                                             <div @click="navigateToPassenger" class="flex items-center justify-center text-center text-white text-base font-medium font-display">
+                                        <div
+                                             class="py-5 px-8 ml-5 md:mt-0 mt-5 bg-blue-700 rounded-lg border cursor-pointer">
+                                             <div @click="navigateToPassenger"
+                                                  class="flex items-center justify-center text-center text-white text-base font-medium font-display">
                                                   {{ passengerDetails?.billingBtn }}
                                              </div>
                                         </div>
-                                        <p v-if="showWarning" class="ml-6 mt-2 text-gray-500">{{ passengerDetails?.requiredField }}</p>
-                                        <p v-if="showEmptyAccordionError" class="ml-6 mt-2 text-gray-500">{{ passengerDetails?.requiredField }}.</p>
+                                        <p v-if="showWarning" class="ml-6 mt-2 text-gray-500">{{
+                                             passengerDetails?.requiredField }}</p>
+                                        <p v-if="showEmptyAccordionError" class="ml-6 mt-2 text-gray-500">{{
+                                             passengerDetails?.requiredField }}.</p>
                                    </div>
                               </div>
                          </div>
@@ -208,20 +311,90 @@ import { ref, watchEffect, computed, reactive, watch } from 'vue'
 import { onMounted } from 'vue'
 import { useTripStore } from '@/stores/tripStore'
 import { useAccordionsStore } from '@/stores/accordions'
-const showWarning = ref(false)
-const showEmptyAccordionError = ref(false)
-
 import IconPersonSimpleRun from '@/components/icons/IconPersonSimpleRun.vue'
 import IconArrowPaymentL from '@/components/icons/IconArrowPaymentL.vue'
-const formattedBirthValue = ref('')
 import AccordionPanel from '@/components/advanced/AccordionPanel.vue'
 import { getApi, fetchData } from '@/utils/globalHelper'
+import p from '@/utils/pathConfig'
+
+const showWarning = ref(false)
+const showEmptyAccordionError = ref(false)
+const formattedBirthValue = ref('')
 const applicationName = ref(p.Product)
 const controllerName = ref('Keydefinition')
 const name = ref('CountryList')
+const isPackageTour = ref(true);
 
-import p from '@/utils/pathConfig'
-
+const countryList4 = [
+     { name: 'United States', code: 'US' },
+     { name: 'Canada', code: 'CA' },
+     { name: 'United Kingdom', code: 'GB' },
+     { name: 'Australia', code: 'AU' },
+     { name: 'Germany', code: 'DE' },
+     { name: 'France', code: 'FR' },
+     { name: 'Italy', code: 'IT' },
+     { name: 'Spain', code: 'ES' },
+     { name: 'Brazil', code: 'BR' },
+     { name: 'Japan', code: 'JP' },
+     { name: 'China', code: 'CN' },
+     { name: 'India', code: 'IN' },
+     { name: 'Russia', code: 'RU' },
+     { name: 'South Korea', code: 'KR' },
+     { name: 'Mexico', code: 'MX' },
+     { name: 'South Africa', code: 'ZA' },
+     { name: 'Saudi Arabia', code: 'SA' },
+     { name: 'Turkey', code: 'TR' },
+     { name: 'Argentina', code: 'AR' },
+     { name: 'Netherlands', code: 'NL' },
+     { name: 'Switzerland', code: 'CH' },
+     { name: 'Sweden', code: 'SE' },
+     { name: 'Norway', code: 'NO' },
+     { name: 'Denmark', code: 'DK' },
+     { name: 'Finland', code: 'FI' },
+     { name: 'Belgium', code: 'BE' },
+     { name: 'Austria', code: 'AT' },
+     { name: 'Ireland', code: 'IE' },
+     { name: 'Portugal', code: 'PT' },
+     { name: 'Greece', code: 'GR' },
+     { name: 'New Zealand', code: 'NZ' },
+     { name: 'Singapore', code: 'SG' },
+     { name: 'Thailand', code: 'TH' },
+     { name: 'Philippines', code: 'PH' },
+     { name: 'Malaysia', code: 'MY' },
+     { name: 'Indonesia', code: 'ID' },
+     { name: 'Vietnam', code: 'VN' },
+     { name: 'Egypt', code: 'EG' },
+     { name: 'Nigeria', code: 'NG' },
+     { name: 'Kenya', code: 'KE' },
+     { name: 'Morocco', code: 'MA' },
+     { name: 'Tunisia', code: 'TN' },
+     { name: 'Chile', code: 'CL' },
+     { name: 'Colombia', code: 'CO' },
+     { name: 'Peru', code: 'PE' },
+     { name: 'Venezuela', code: 'VE' },
+     { name: 'Uruguay', code: 'UY' },
+     { name: 'Czech Republic', code: 'CZ' },
+     { name: 'Hungary', code: 'HU' },
+     { name: 'Poland', code: 'PL' },
+     { name: 'Slovakia', code: 'SK' },
+     { name: 'Romania', code: 'RO' },
+     { name: 'Bulgaria', code: 'BG' },
+     { name: 'Croatia', code: 'HR' },
+     { name: 'Serbia', code: 'RS' },
+     { name: 'Bosnia and Herzegovina', code: 'BA' },
+     { name: 'Slovenia', code: 'SI' },
+     { name: 'Albania', code: 'AL' },
+     { name: 'North Macedonia', code: 'MK' },
+     { name: 'Montenegro', code: 'ME' },
+     { name: 'Kosovo', code: 'XK' },
+     { name: 'Lithuania', code: 'LT' },
+     { name: 'Latvia', code: 'LV' },
+     { name: 'Estonia', code: 'EE' },
+     { name: 'Ireland', code: 'IE' },
+     { name: 'Luxembourg', code: 'LU' },
+     { name: 'Malta', code: 'MT' },
+     { name: 'Iceland', code: 'IS' }
+]
 const { locale } = useI18n()
 
 const convertNewlinesToBr = (text: string) => {
@@ -233,6 +406,28 @@ const convertNewlinesToBr = (text: string) => {
           return ''
      }
 }
+
+const validatePassport = (accordion: any) => {
+  // Türkçe karakterleri İngilizce karşılıklarına dönüştüren fonksiyon
+  const turkishToEnglish = (text: string) => {
+    const map: { [key: string]: string } = {
+      'ç': 'C', 'ş': 'S', 'ğ': 'G', 'ü': 'U', 'ı': 'I', 'ö': 'O', // küçük harfler
+      'Ç': 'C', 'Ş': 'S', 'Ğ': 'G', 'Ü': 'U', 'İ': 'I', 'Ö': 'O'  // büyük harfler
+    };
+    return text.replace(/[ÇŞĞÜİÖçşğüıö]/g, char => map[char] || char);
+  };
+
+  // Tüm metni önce büyük harfe çevir, sonra Türkçe karakterleri dönüştür
+  accordion.passport = turkishToEnglish(accordion.passport.toUpperCase())
+    .replace(/[^A-Z0-9]/g, ''); // Sadece harf ve rakamları koru
+
+  // Koşullu doğrulama: Eğer 6 karakterden küçükse bir işlem yapabiliriz
+  if (accordion.passport.length > 0 && accordion.passport.length < 6) {
+    console.log('Pasaport ID en az 6 karakter olmalı.');
+  }
+};
+
+
 const getTitle = (accordion: any) => {
      console.log(accordion, 'getTitle', accordion._id)
      switch (accordion._id) {
@@ -247,9 +442,12 @@ const getTitle = (accordion: any) => {
      }
 }
 
-// const clearForm = () => {
+const validateInput = (accordion) => {
+     const regex = /^\d{11}$/
+     accordion.showBtnWarning2 = !regex.test(accordion.id)
+}
 
-// }
+const clearForm = () => { }
 
 const resetForm = (accordion: any) => {
      accordion.name = ''
@@ -299,25 +497,41 @@ const toggleDropdown = () => {
 const accordions = ref<any[]>([])
 const countryList = ref<string | null>(null)
 
+const updateAccordionNation = (event, accordion) => {
+     console.log(event.target.value, 'event.target.value', event, accordion, 'accordion')
+     accordion.nation = event.target.value
+     console.log(accordions.value, 'accordion.nation')
+}
+
 const logValue = (label: any, value: any) => {
      console.log(label, value)
 }
-
-const bindProps = {
+const max = ref(null)
+const bindProps = ref({
      autoFormat: false,
      disabledFetchingCountry: false,
      enabledFlags: true,
      dropdownOptions: {
           showDialCodeInSelection: true,
           showDialCodeInList: true,
-          showFlags: true
+          showFlags: true,
+          showSearchBox: true
      },
      inputOptions: {
-          maxlength: 16,
+          maxlength: max.value,
           placeholder: 'Tel'
      },
      mode: 'international',
      validCharactersOnly: true
+})
+
+const onPhoneInput = (value, accordion) => {
+     console.log(value, accordion)
+     if (value.valid == true) {
+          bindProps.value.inputOptions.maxlength = value.nationalNumber.length
+          console.log('valid', max.value, bindProps.value)
+          accordion.formattedPhone = value.number
+     }
 }
 
 const setPrimary = (index: any) => {
@@ -354,18 +568,29 @@ const saveAllPassenger = async (accordion: any) => {
      accordion.isLoading = true
      accordion.isComplete = false
      accordion.showBtnWarning = false
+     accordion.showBtnWarning2 = false
 
      const isAllFieldsFilled = accordion.name && accordion.surname && accordion.email && accordion.tel && accordion.nation && accordion.passport && accordion.id && accordion.birthDate
 
      if (!isAllFieldsFilled) {
           accordion.showBtnWarning = true
+          console.log('acordion', accordion)
           console.log('Tüm gerekli alanlar doldurulmalıdır.')
           accordion.isLoading = false
           return
      }
 
+     // Validate input
+     const regex = /^\d{11}$/
+     if (!regex.test(accordion.id)) {
+          accordion.showBtnWarning2 = true
+          accordion.isLoading = false
+          console.log('ID 11 haneli bir sayı olmalıdır.')
+          return
+     }
+
      try {
-          const calculatedId = formatDate(accordion)
+          const calculatedId = accordion._id
           if (calculatedId === null) {
                console.error('Failed to calculate new _id due to invalid birthDate')
                accordion.isLoading = false
@@ -418,7 +643,7 @@ const confirmChange = (accordion: any) => {
                console.log('Accordion before formatting:', JSON.stringify(accordion))
                console.log('Before formatting date:', accordion.birthDate)
 
-               const calculatedId = formatDate(accordion)
+               const calculatedId = accordion
 
                if (calculatedId === null) {
                     console.error('Failed to calculate new _id due to invalid birthDate')
@@ -457,7 +682,6 @@ const tripStore = useTripStore()
 
 const from = ref(tripStore.from)
 const to = ref(tripStore.to)
-
 const storedTripParams = ref<any>([])
 const storedDepartureData = ref<any>([])
 const storedArrivalData = ref<any>([])
@@ -558,12 +782,25 @@ const getPassengersPage = async () => {
      }
 }
 
+const navigateToPassengerWithQuery = () => {
+     // Parametreleri query string'e dönüştürmek
+     const queryParams = Object.assign({}, storedTripParams.value)
+
+     // Router'ı kullanarak yeni route'a yönlendiriyoruz
+     if (Object.keys(queryParams).length > 0) {
+          router.push({ path: '/tickets/passenger', query: queryParams })
+     } else {
+          router.push('/')
+     }
+}
+
 onMounted(() => {
      getPassengersPage()
      storedTripParams.value = tripStore.getTripParams
      storedDepartureData.value = tripStore.getDepartureData
      storedArrivalData.value = tripStore.getArrivalData
      storedGetterAccordions.value = store.getTripParams
+     navigateToPassengerWithQuery()
      console.log(storedTripParams.value.AdultCount, 'tripStore.getTripParams')
      console.log(storedDepartureData.value, 'tripStore.getDepartureData')
      console.log(storedArrivalData.value, 'tripStore.getArrivalData'), console.log(storedGetterAccordions.value, 'tripStore.getTripParams'), fetchSelectOptions()
@@ -710,7 +947,7 @@ onMounted(() => {
      // Check for redirection on initial load (if necessary)
      if (localStorage.getItem('page') === window.location.pathname) {
           localStorage.removeItem('page')
-          router.push('/') // Replace with your desired redirect path
+          // router.push('/') // Replace with your desired redirect path
      }
 })
 
@@ -718,6 +955,40 @@ onBeforeUnmount(() => {
      // Remove the beforeunload event listener on component unmount
      window.onbeforeunload = null
 })
+
+const turkishToEnglish = {
+  'ı': 'i',
+  'ğ': 'g',
+  'ü': 'u',
+  'ş': 's',
+  'ö': 'o',
+  'ç': 'c',
+  'İ': 'I',
+  'Ğ': 'G',
+  'Ü': 'U',
+  'Ş': 'S',
+  'Ö': 'O',
+  'Ç': 'C'
+};
+
+const convertToEnglishChars = (text) => {
+  return text
+    .split('')
+    .map(char => turkishToEnglish[char] || char)
+    .join('')
+    .toUpperCase();
+};
+
+// Add these methods to your setup script
+const handleNameInput = (event, accordion) => {
+  const value = event.target.value;
+  accordion.name = convertToEnglishChars(value);
+};
+
+const handleSurnameInput = (event, accordion) => {
+  const value = event.target.value;
+  accordion.surname = convertToEnglishChars(value);
+};
 </script>
 
 <style>
@@ -740,7 +1011,8 @@ select option {
 .fade-enter,
 .fade-leave-to
 
-/* .fade-leave-active in <2.1.8 */ {
+/* .fade-leave-active in <2.1.8 */
+     {
      opacity: 0;
 }
 </style>

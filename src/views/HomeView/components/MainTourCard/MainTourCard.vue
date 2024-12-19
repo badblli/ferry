@@ -2,7 +2,7 @@
     <section class="w-full flex flex-col px-2 md:px-16 sm:px-8 relative centered-w">
         <h1 class="text-black text-[42px] font-medium font-display tracking-wide mt-[76px]">{{ item && item.title }}
         </h1>
-        <div class="w-full flex md:flex-row flex-col justify-between md:items-center items-start mt-[37px]">
+        <div class="w-full flex md:flex-row flex-col justify-between md:items-center items-start md:mt-[61px] mt-5">
             <p
                 class="text-black text-lg font-normal font-display tracking-tight flex flex-row justify-center items-center">
                 {{ item && item.subtitle }}</p>

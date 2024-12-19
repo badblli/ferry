@@ -4,10 +4,10 @@
           <div v-if="tripReverseData.length > 0" class="relative top-[-11rem] w-full lg:px-[100px] px-2 md:px-16 sm:px-8 centered-w">
                <div v-if="tripReverseArData.length > 0" class="flex lg:flex-row flex-col justify-between">
                     <div class="flex flex-row">
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">{{ tripReverseDepartureData[0].DepartureDetail.SeaportName }}&nbsp;</div>
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide lg:mb-14 mb-5">-&nbsp;</div>
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">{{ tripReverseDepartureData[0].ArrivalDetail.SeaportName }},&nbsp;</div>
-                         <div class="text-black md:text-4xl text-3xl font-medium font-display tracking-wide md:mb-14 mb-5">
+                         <div class="text-black md:text-4xl text-2xl font-medium font-display tracking-wide lg:mb-14 mb-3">{{ tripReverseDepartureData[0].DepartureDetail.SeaportName }}&nbsp;</div>
+                         <div class="text-black md:text-4xl text-2xl font-medium font-display tracking-wide lg:mb-14 mb-3">-&nbsp;</div>
+                         <div class="text-black md:text-4xl text-2xl font-medium font-display tracking-wide md:mb-14 mb-5">{{ tripReverseDepartureData[0].ArrivalDetail.SeaportName }},&nbsp;</div>
+                         <div class="text-black md:text-4xl text-xl font-medium font-display tracking-wide md:mb-14 mb-5">
                               {{ tripFilterReverseData[0]?.DepartureDetail.JourneyDateString2 }}
                          </div>
                     </div>
@@ -39,12 +39,12 @@
                </div>
                <div>
                     <div className=" bg-neutral-100 rounded-[20px] p-4">
-                         <div v-if="tripReverseArData.length > 0" class="mx-12 mt-1 mb-4 flex flex-row items-center justify-between">
+                         <div v-if="tripReverseArData.length > 0" class="md:mx-12 mx-6 mt-1 md:mb-4 mb-2 flex flex-row items-center justify-between">
                               <div class="flex flex-row items-center">
                                    <div class="w-[63px] h-[63px] bg-white rounded-full">
                                         <IconGroupFerrry />
                                    </div>
-                                   <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}&nbsp;-&nbsp;{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}, {{ tripFilterReverseData[0]?.DepartureDetail.JourneyDateString2 }}</div>
+                                   <div class="text-black md:text-2xl text-xl font-medium font-display tracking-wide md:ml-5 ml-2">{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}&nbsp;-&nbsp;{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}, {{ tripFilterReverseData[0]?.DepartureDetail.JourneyDateString2 }}</div>
                               </div>
                               <div v-if="selectedDepartureData.length > 0">
                                    <button @click="resetSelectedDepartureData" class="bg-white rounded-lg border px-4 py-2 text-black text-[15px] font-medium font-display cursor-pointer">{{ ticketsList?.changeSelection }}</button>
@@ -179,12 +179,12 @@
                          <!-- Arrival Date -->
                          <!-- Arrival Date -->
                          <div v-if="selectedArrivalData.length > 0">
-                              <div class="mx-12 mt-1 mb-4 flex flex-row items-center justify-between">
+                              <div class="md:mx-12 mx-6 mt-1 md:mb-4 mb-2 flex flex-row items-center justify-between">
                                    <div class="flex flex-row justify-between items-center">
                                         <div class="w-[63px] h-[63px] bg-white rounded-full">
                                              <IconGroupFerrry />
                                         </div>
-                                        <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}, {{ tripFilterReverseArData[0]?.DepartureDetail.JourneyDateString2 }}</div>
+                                        <div class="text-black md:text-2xl text-xl font-medium font-display tracking-wide md:ml-5 ml-2">{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }}, {{ tripFilterReverseArData[0]?.DepartureDetail.JourneyDateString2 }}</div>
                                    </div>
                                    <div v-if="selectedArrivalData.length > 0">
                                         <button @click="resetSelectedArrivalData" class="bg-white rounded-lg border px-4 py-2 text-black text-[15px] font-medium font-display cursor-pointer">{{ ticketsList?.changeSelection }}</button>
@@ -239,12 +239,12 @@
                               </div>
                          </div>
                          <div v-else>
-                              <div class="mx-12 mt-1 mb-4 flex flex-row items-center">
+                              <div class="md:mx-12 mx-6 mt-1 md:mb-4 mb-2 flex flex-row items-center">
                                    <div v-if="tripReverseArData.length > 0" class="flex flex-row items-center">
                                         <div class="w-[63px] h-[63px] bg-white rounded-full">
                                              <IconGroupFerrry />
                                         </div>
-                                        <div class="text-black text-2xl font-medium font-display tracking-wide ml-5">{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }},&nbsp;{{ tripFilterReverseArData[0]?.DepartureDetail.JourneyDateString2 }}</div>
+                                        <div class="text-black md:text-2xl text-xl font-medium font-display tracking-wide md:ml-5 ml-2">{{ tripReverseDepartureData[0]?.ArrivalDetail.SeaportName }}&nbsp;-&nbsp;{{ tripReverseDepartureData[0]?.DepartureDetail.SeaportName }},&nbsp;{{ tripFilterReverseArData[0]?.DepartureDetail.JourneyDateString2 }}</div>
                                    </div>
                               </div>
                               <div v-if="tripReverseArData.length > 0">
@@ -272,7 +272,13 @@
                                              </div>
                                         </div>
                                    </div>
-                                   <div v-for="(item, index) in tripFilterReverseArData" :key="index" class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
+                                   <div v-for="(item, index) in tripFilterReverseArData.filter((item) => {
+                                        if (selectedDepartureData.length > 0) {
+                                             return item.CompanyID === selectedDepartureData[0].CompanyID
+                                        } else {
+                                             return item
+                                        }
+                                   })" :key="index" class="flex flex-col md:flex-row md:justify-between bg-white mb-[15px] p-3 rounded-2xl lg:mx-12 md:mx-6 mx-3">
                                         <div class="flex sm:flex-row flex-col justify-between">
                                              <img class="w-[100px] h-[100px] rounded-xl mr-6" src="/src/assets/embeddedImages/meander.jpg" alt="meander" />
                                              <div class="mt-3 mr-5 ml-5 lg:mr-[75px]">
