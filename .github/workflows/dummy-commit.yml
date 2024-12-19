@@ -42,7 +42,7 @@ jobs:
                         git push origin master
                         
                         # Bitbucket remote ekle ve dev branch'e push yap
-                        git remote add bitbucket https://badblli:${{ secrets.BITBUCKET_TOKEN }}@bitbucket.org/netsolutionworld1/mserviceadminpanel.git
+                        git remote add bitbucket https://badblli:${{ secrets.BITBUCKET_TOKEN }}@bitbucket.org/meanderb2c.frontend.git
                         git push bitbucket master:dev  # master branch'ini dev branch'ine pushla
                       else
                         echo "Email matches. No action needed."
